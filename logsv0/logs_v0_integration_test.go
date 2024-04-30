@@ -25,8 +25,8 @@ import (
 	"math/rand"
 
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/logs-go-sdk/logsv0"
 	"github.com/go-openapi/strfmt"
-	"github.com/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

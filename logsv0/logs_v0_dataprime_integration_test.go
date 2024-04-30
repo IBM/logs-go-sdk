@@ -23,7 +23,7 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/logs-go-sdk/logsv0"
+	"github.com/IBM/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
