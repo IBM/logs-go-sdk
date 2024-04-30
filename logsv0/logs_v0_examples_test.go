@@ -24,12 +24,11 @@ import (
 	"os"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/logs-go-sdk/logsv0"
+	"github.com/IBM/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-//
 // This file provides an example of how to use the logs service.
 //
 // The following configuration properties are assumed to be defined:
@@ -41,14 +40,13 @@ import (
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
-//
 var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 	const externalConfigFile = "../logs_v0.env"
 
 	var (
 		logsService *logsv0.LogsV0
-		config       map[string]string
+		config      map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -128,16 +126,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-update_alert
 
 			alertsV2ConditionParametersModel := &logsv0.AlertsV2ConditionParameters{
-				Threshold: core.Float64Ptr(float64(1)),
-				Timeframe: core.StringPtr("timeframe_10_min"),
-				GroupBy: []string{"coralogix.metadata.applicationName"},
-				IgnoreInfinity: core.BoolPtr(true),
+				Threshold:         core.Float64Ptr(float64(1)),
+				Timeframe:         core.StringPtr("timeframe_10_min"),
+				GroupBy:           []string{"coralogix.metadata.applicationName"},
+				IgnoreInfinity:    core.BoolPtr(true),
 				RelativeTimeframe: core.StringPtr("hour_or_unspecified"),
 				CardinalityFields: []string{},
 			}
 
 			alertsV2MoreThanConditionModel := &logsv0.AlertsV2MoreThanCondition{
-				Parameters: alertsV2ConditionParametersModel,
+				Parameters:       alertsV2ConditionParametersModel,
 				EvaluationWindow: core.StringPtr("rolling_or_unspecified"),
 			}
 
@@ -145,42 +143,39 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				MoreThan: alertsV2MoreThanConditionModel,
 			}
 
-			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{
-			}
+			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{}
 
 			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
 				GroupByFields: []string{"coralogix.metadata.applicationName"},
 				Notifications: []logsv0.AlertsV2AlertNotificationIntf{alertsV2AlertNotificationModel},
 			}
 
-			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{
-			}
+			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{}
 
-			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
-			}
+			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{}
 
 			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
-				Severities: []string{"info"},
-				Metadata: alertsV1AlertFiltersMetadataFiltersModel,
-				Text: core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
+				Severities:  []string{"info"},
+				Metadata:    alertsV1AlertFiltersMetadataFiltersModel,
+				Text:        core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
 				RatioAlerts: []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel},
-				FilterType: core.StringPtr("text_or_unspecified"),
+				FilterType:  core.StringPtr("text_or_unspecified"),
 			}
 
 			alertsV1TimeModel := &logsv0.AlertsV1Time{
-				Hours: core.Int64Ptr(int64(18)),
+				Hours:   core.Int64Ptr(int64(18)),
 				Minutes: core.Int64Ptr(int64(30)),
 				Seconds: core.Int64Ptr(int64(0)),
 			}
 
 			alertsV1TimeRangeModel := &logsv0.AlertsV1TimeRange{
 				Start: alertsV1TimeModel,
-				End: alertsV1TimeModel,
+				End:   alertsV1TimeModel,
 			}
 
 			alertsV1AlertActiveTimeframeModel := &logsv0.AlertsV1AlertActiveTimeframe{
 				DaysOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				Range: alertsV1TimeRangeModel,
+				Range:      alertsV1TimeRangeModel,
 			}
 
 			alertsV1AlertActiveWhenModel := &logsv0.AlertsV1AlertActiveWhen{
@@ -188,13 +183,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			alertsV1MetaLabelModel := &logsv0.AlertsV1MetaLabel{
-				Key: core.StringPtr("env"),
+				Key:   core.StringPtr("env"),
 				Value: core.StringPtr("dev"),
 			}
 
 			alertsV2AlertIncidentSettingsModel := &logsv0.AlertsV2AlertIncidentSettings{
 				RetriggeringPeriodSeconds: core.Int64Ptr(int64(300)),
-				NotifyOn: core.StringPtr("triggered_only"),
+				NotifyOn:                  core.StringPtr("triggered_only"),
 				UseAsNotificationSettings: core.BoolPtr(true),
 			}
 
@@ -250,16 +245,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-create_alert
 
 			alertsV2ConditionParametersModel := &logsv0.AlertsV2ConditionParameters{
-				Threshold: core.Float64Ptr(float64(1)),
-				Timeframe: core.StringPtr("timeframe_10_min"),
-				GroupBy: []string{"coralogix.metadata.applicationName"},
-				IgnoreInfinity: core.BoolPtr(true),
+				Threshold:         core.Float64Ptr(float64(1)),
+				Timeframe:         core.StringPtr("timeframe_10_min"),
+				GroupBy:           []string{"coralogix.metadata.applicationName"},
+				IgnoreInfinity:    core.BoolPtr(true),
 				RelativeTimeframe: core.StringPtr("hour_or_unspecified"),
 				CardinalityFields: []string{},
 			}
 
 			alertsV2MoreThanConditionModel := &logsv0.AlertsV2MoreThanCondition{
-				Parameters: alertsV2ConditionParametersModel,
+				Parameters:       alertsV2ConditionParametersModel,
 				EvaluationWindow: core.StringPtr("rolling_or_unspecified"),
 			}
 
@@ -267,42 +262,39 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				MoreThan: alertsV2MoreThanConditionModel,
 			}
 
-			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{
-			}
+			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{}
 
 			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
 				GroupByFields: []string{"coralogix.metadata.applicationName"},
 				Notifications: []logsv0.AlertsV2AlertNotificationIntf{alertsV2AlertNotificationModel},
 			}
 
-			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{
-			}
+			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{}
 
-			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
-			}
+			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{}
 
 			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
-				Severities: []string{"info"},
-				Metadata: alertsV1AlertFiltersMetadataFiltersModel,
-				Text: core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
+				Severities:  []string{"info"},
+				Metadata:    alertsV1AlertFiltersMetadataFiltersModel,
+				Text:        core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
 				RatioAlerts: []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel},
-				FilterType: core.StringPtr("text_or_unspecified"),
+				FilterType:  core.StringPtr("text_or_unspecified"),
 			}
 
 			alertsV1TimeModel := &logsv0.AlertsV1Time{
-				Hours: core.Int64Ptr(int64(18)),
+				Hours:   core.Int64Ptr(int64(18)),
 				Minutes: core.Int64Ptr(int64(30)),
 				Seconds: core.Int64Ptr(int64(0)),
 			}
 
 			alertsV1TimeRangeModel := &logsv0.AlertsV1TimeRange{
 				Start: alertsV1TimeModel,
-				End: alertsV1TimeModel,
+				End:   alertsV1TimeModel,
 			}
 
 			alertsV1AlertActiveTimeframeModel := &logsv0.AlertsV1AlertActiveTimeframe{
 				DaysOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				Range: alertsV1TimeRangeModel,
+				Range:      alertsV1TimeRangeModel,
 			}
 
 			alertsV1AlertActiveWhenModel := &logsv0.AlertsV1AlertActiveWhen{
@@ -310,13 +302,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			alertsV1MetaLabelModel := &logsv0.AlertsV1MetaLabel{
-				Key: core.StringPtr("env"),
+				Key:   core.StringPtr("env"),
 				Value: core.StringPtr("dev"),
 			}
 
 			alertsV2AlertIncidentSettingsModel := &logsv0.AlertsV2AlertIncidentSettings{
 				RetriggeringPeriodSeconds: core.Int64Ptr(int64(300)),
-				NotifyOn: core.StringPtr("triggered_only"),
+				NotifyOn:                  core.StringPtr("triggered_only"),
 				UseAsNotificationSettings: core.BoolPtr(true),
 			}
 
@@ -374,7 +366,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
 				DestinationField: core.StringPtr("text"),
-				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+				Rule:             core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
 			}
 
 			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
@@ -382,18 +374,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name: core.StringPtr("mysql-parse"),
+				Name:        core.StringPtr("mysql-parse"),
 				SourceField: core.StringPtr("text"),
-				Parameters: rulesV1RuleParametersModel,
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
+				Parameters:  rulesV1RuleParametersModel,
+				Enabled:     core.BoolPtr(true),
+				Order:       core.Int64Ptr(int64(1)),
 				Description: core.StringPtr("mysql-parse"),
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Rules:   []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
 				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
+				Order:   core.Int64Ptr(int64(1)),
 			}
 
 			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
@@ -452,7 +444,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
 				DestinationField: core.StringPtr("text"),
-				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+				Rule:             core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
 			}
 
 			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
@@ -460,18 +452,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name: core.StringPtr("mysql-parse"),
+				Name:        core.StringPtr("mysql-parse"),
 				SourceField: core.StringPtr("text"),
-				Parameters: rulesV1RuleParametersModel,
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
+				Parameters:  rulesV1RuleParametersModel,
+				Enabled:     core.BoolPtr(true),
+				Order:       core.Int64Ptr(int64(1)),
 				Description: core.StringPtr("mysql-parse"),
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Rules:   []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
 				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
+				Order:   core.Int64Ptr(int64(1)),
 			}
 
 			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
@@ -625,7 +617,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			quotaV1RuleModel := &logsv0.QuotaV1Rule{
 				RuleTypeID: core.StringPtr("is"),
-				Name: core.StringPtr("policy-test"),
+				Name:       core.StringPtr("policy-test"),
 			}
 
 			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
@@ -633,12 +625,12 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name: core.StringPtr("Med_policy"),
-				Description: core.StringPtr("Medium policy"),
-				Priority: core.StringPtr("type_high"),
+				Name:            core.StringPtr("Med_policy"),
+				Description:     core.StringPtr("Medium policy"),
+				Priority:        core.StringPtr("type_high"),
 				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule: quotaV1RuleModel,
-				LogRules: quotaV1LogRulesModel,
+				SubsystemRule:   quotaV1RuleModel,
+				LogRules:        quotaV1LogRulesModel,
 			}
 
 			updatePolicyOptions := logsService.NewUpdatePolicyOptions(
@@ -686,7 +678,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			quotaV1RuleModel := &logsv0.QuotaV1Rule{
 				RuleTypeID: core.StringPtr("is"),
-				Name: core.StringPtr("policy-test"),
+				Name:       core.StringPtr("policy-test"),
 			}
 
 			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
@@ -694,12 +686,12 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name: core.StringPtr("Med_policy"),
-				Description: core.StringPtr("Medium Policy"),
-				Priority: core.StringPtr("type_high"),
+				Name:            core.StringPtr("Med_policy"),
+				Description:     core.StringPtr("Medium Policy"),
+				Priority:        core.StringPtr("type_high"),
 				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule: quotaV1RuleModel,
-				LogRules: quotaV1LogRulesModel,
+				SubsystemRule:   quotaV1RuleModel,
+				LogRules:        quotaV1LogRulesModel,
 			}
 
 			createPolicyOptions := logsService.NewCreatePolicyOptions(
@@ -732,13 +724,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsCommonLegendModel := &logsv0.ApisDashboardsV1AstWidgetsCommonLegend{
-				IsVisible: core.BoolPtr(true),
+				IsVisible:    core.BoolPtr(true),
 				GroupByQuery: core.BoolPtr(true),
 			}
 
 			apisDashboardsV1AstWidgetsLineChartTooltipModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartTooltip{
 				ShowLabels: core.BoolPtr(false),
-				Type: core.StringPtr("all"),
+				Type:       core.StringPtr("all"),
 			}
 
 			apisDashboardsV1AstWidgetsCommonPromQlQueryModel := &logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery{
@@ -758,19 +750,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{
-				ID: CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
-				Query: apisDashboardsV1AstWidgetsLineChartQueryModel,
+				ID:               CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
+				Query:            apisDashboardsV1AstWidgetsLineChartQueryModel,
 				SeriesCountLimit: core.StringPtr("20"),
-				ScaleType: core.StringPtr("linear"),
-				Name: core.StringPtr("Query1"),
-				IsVisible: core.BoolPtr(true),
-				ColorScheme: core.StringPtr("classic"),
-				Resolution: apisDashboardsV1AstWidgetsLineChartResolutionModel,
+				ScaleType:        core.StringPtr("linear"),
+				Name:             core.StringPtr("Query1"),
+				IsVisible:        core.BoolPtr(true),
+				ColorScheme:      core.StringPtr("classic"),
+				Resolution:       apisDashboardsV1AstWidgetsLineChartResolutionModel,
 			}
 
 			apisDashboardsV1AstWidgetsLineChartModel := &logsv0.ApisDashboardsV1AstWidgetsLineChart{
-				Legend: apisDashboardsV1AstWidgetsCommonLegendModel,
-				Tooltip: apisDashboardsV1AstWidgetsLineChartTooltipModel,
+				Legend:           apisDashboardsV1AstWidgetsCommonLegendModel,
+				Tooltip:          apisDashboardsV1AstWidgetsLineChartTooltipModel,
 				QueryDefinitions: []logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{*apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel},
 			}
 
@@ -779,19 +771,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetModel := &logsv0.ApisDashboardsV1AstWidget{
-				ID: apisDashboardsV1UUIDModel,
-				Title: core.StringPtr("Size"),
+				ID:         apisDashboardsV1UUIDModel,
+				Title:      core.StringPtr("Size"),
 				Definition: apisDashboardsV1AstWidgetDefinitionModel,
 			}
 
 			apisDashboardsV1AstRowModel := &logsv0.ApisDashboardsV1AstRow{
-				ID: apisDashboardsV1UUIDModel,
+				ID:         apisDashboardsV1UUIDModel,
 				Appearance: apisDashboardsV1AstRowAppearanceModel,
-				Widgets: []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
+				Widgets:    []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
 			}
 
 			apisDashboardsV1AstSectionModel := &logsv0.ApisDashboardsV1AstSection{
-				ID: apisDashboardsV1UUIDModel,
+				ID:   apisDashboardsV1UUIDModel,
 				Rows: []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel},
 			}
 
@@ -799,8 +791,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				Sections: []logsv0.ApisDashboardsV1AstSection{*apisDashboardsV1AstSectionModel},
 			}
 
-			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{
-			}
+			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{}
 
 			apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueList{
 				List: apisDashboardsV1AstFilterEqualsSelectionListSelectionModel,
@@ -816,11 +807,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisDashboardsV1CommonObservationFieldModel := &logsv0.ApisDashboardsV1CommonObservationField{
 				Keypath: []string{"applicationname"},
-				Scope: core.StringPtr("label"),
+				Scope:   core.StringPtr("label"),
 			}
 
 			apisDashboardsV1AstFilterLogsFilterModel := &logsv0.ApisDashboardsV1AstFilterLogsFilter{
-				Operator: apisDashboardsV1AstFilterOperatorModel,
+				Operator:         apisDashboardsV1AstFilterOperatorModel,
 				ObservationField: apisDashboardsV1CommonObservationFieldModel,
 			}
 
@@ -829,16 +820,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstFilterModel := &logsv0.ApisDashboardsV1AstFilter{
-				Source: apisDashboardsV1AstFilterSourceModel,
-				Enabled: core.BoolPtr(true),
+				Source:    apisDashboardsV1AstFilterSourceModel,
+				Enabled:   core.BoolPtr(true),
 				Collapsed: core.BoolPtr(false),
 			}
 
 			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				ID: core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
-				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
-				Layout: apisDashboardsV1AstLayoutModel,
-				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
+				ID:                core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
+				Name:              core.StringPtr("DataUsageToMetrics Dashboard"),
+				Layout:            apisDashboardsV1AstLayoutModel,
+				Filters:           []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
 				RelativeTimeFrame: core.StringPtr("86400s"),
 			}
 
@@ -893,13 +884,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsCommonLegendModel := &logsv0.ApisDashboardsV1AstWidgetsCommonLegend{
-				IsVisible: core.BoolPtr(true),
+				IsVisible:    core.BoolPtr(true),
 				GroupByQuery: core.BoolPtr(true),
 			}
 
 			apisDashboardsV1AstWidgetsLineChartTooltipModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartTooltip{
 				ShowLabels: core.BoolPtr(false),
-				Type: core.StringPtr("all"),
+				Type:       core.StringPtr("all"),
 			}
 
 			apisDashboardsV1AstWidgetsCommonPromQlQueryModel := &logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery{
@@ -919,19 +910,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{
-				ID: CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
-				Query: apisDashboardsV1AstWidgetsLineChartQueryModel,
+				ID:               CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
+				Query:            apisDashboardsV1AstWidgetsLineChartQueryModel,
 				SeriesCountLimit: core.StringPtr("20"),
-				ScaleType: core.StringPtr("linear"),
-				Name: core.StringPtr("Query1"),
-				IsVisible: core.BoolPtr(true),
-				ColorScheme: core.StringPtr("classic"),
-				Resolution: apisDashboardsV1AstWidgetsLineChartResolutionModel,
+				ScaleType:        core.StringPtr("linear"),
+				Name:             core.StringPtr("Query1"),
+				IsVisible:        core.BoolPtr(true),
+				ColorScheme:      core.StringPtr("classic"),
+				Resolution:       apisDashboardsV1AstWidgetsLineChartResolutionModel,
 			}
 
 			apisDashboardsV1AstWidgetsLineChartModel := &logsv0.ApisDashboardsV1AstWidgetsLineChart{
-				Legend: apisDashboardsV1AstWidgetsCommonLegendModel,
-				Tooltip: apisDashboardsV1AstWidgetsLineChartTooltipModel,
+				Legend:           apisDashboardsV1AstWidgetsCommonLegendModel,
+				Tooltip:          apisDashboardsV1AstWidgetsLineChartTooltipModel,
 				QueryDefinitions: []logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{*apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel},
 			}
 
@@ -940,19 +931,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetModel := &logsv0.ApisDashboardsV1AstWidget{
-				ID: apisDashboardsV1UUIDModel,
-				Title: core.StringPtr("Size"),
+				ID:         apisDashboardsV1UUIDModel,
+				Title:      core.StringPtr("Size"),
 				Definition: apisDashboardsV1AstWidgetDefinitionModel,
 			}
 
 			apisDashboardsV1AstRowModel := &logsv0.ApisDashboardsV1AstRow{
-				ID: apisDashboardsV1UUIDModel,
+				ID:         apisDashboardsV1UUIDModel,
 				Appearance: apisDashboardsV1AstRowAppearanceModel,
-				Widgets: []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
+				Widgets:    []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
 			}
 
 			apisDashboardsV1AstSectionModel := &logsv0.ApisDashboardsV1AstSection{
-				ID: apisDashboardsV1UUIDModel,
+				ID:   apisDashboardsV1UUIDModel,
 				Rows: []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel},
 			}
 
@@ -960,8 +951,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				Sections: []logsv0.ApisDashboardsV1AstSection{*apisDashboardsV1AstSectionModel},
 			}
 
-			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{
-			}
+			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{}
 
 			apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueList{
 				List: apisDashboardsV1AstFilterEqualsSelectionListSelectionModel,
@@ -977,11 +967,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisDashboardsV1CommonObservationFieldModel := &logsv0.ApisDashboardsV1CommonObservationField{
 				Keypath: []string{"applicationname"},
-				Scope: core.StringPtr("label"),
+				Scope:   core.StringPtr("label"),
 			}
 
 			apisDashboardsV1AstFilterLogsFilterModel := &logsv0.ApisDashboardsV1AstFilterLogsFilter{
-				Operator: apisDashboardsV1AstFilterOperatorModel,
+				Operator:         apisDashboardsV1AstFilterOperatorModel,
 				ObservationField: apisDashboardsV1CommonObservationFieldModel,
 			}
 
@@ -990,16 +980,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstFilterModel := &logsv0.ApisDashboardsV1AstFilter{
-				Source: apisDashboardsV1AstFilterSourceModel,
-				Enabled: core.BoolPtr(true),
+				Source:    apisDashboardsV1AstFilterSourceModel,
+				Enabled:   core.BoolPtr(true),
 				Collapsed: core.BoolPtr(false),
 			}
 
 			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				ID: core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
-				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
-				Layout: apisDashboardsV1AstLayoutModel,
-				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
+				ID:                core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
+				Name:              core.StringPtr("DataUsageToMetrics Dashboard"),
+				Layout:            apisDashboardsV1AstLayoutModel,
+				Filters:           []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
 				RelativeTimeFrame: core.StringPtr("86400s"),
 			}
 
@@ -1175,11 +1165,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
-				Name: core.StringPtr("test em2"),
-				Description: core.StringPtr("Test e2m"),
+				Name:              core.StringPtr("test em2"),
+				Description:       core.StringPtr("Test e2m"),
 				PermutationsLimit: core.Int64Ptr(int64(1)),
-				Type: core.StringPtr("logs2metrics"),
-				LogsQuery: apisLogs2metricsV2LogsQueryModel,
+				Type:              core.StringPtr("logs2metrics"),
+				LogsQuery:         apisLogs2metricsV2LogsQueryModel,
 			}
 
 			createE2mOptions := logsService.NewCreateE2mOptions(
@@ -1229,11 +1219,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
-				Name: core.StringPtr("test em2"),
-				Description: core.StringPtr("Test e2m updated"),
+				Name:              core.StringPtr("test em2"),
+				Description:       core.StringPtr("Test e2m updated"),
 				PermutationsLimit: core.Int64Ptr(int64(1)),
-				Type: core.StringPtr("logs2metrics"),
-				LogsQuery: apisLogs2metricsV2LogsQueryModel,
+				Type:              core.StringPtr("logs2metrics"),
+				LogsQuery:         apisLogs2metricsV2LogsQueryModel,
 			}
 
 			replaceE2mOptions := logsService.NewReplaceE2mOptions(
@@ -1283,7 +1273,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
 			}
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
@@ -1291,7 +1281,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name: core.StringPtr("applicationName"),
+				Name:           core.StringPtr("applicationName"),
 				SelectedValues: map[string]bool{"key1": true},
 			}
 
@@ -1350,7 +1340,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
 			}
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
@@ -1358,7 +1348,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name: core.StringPtr("applicationName"),
+				Name:           core.StringPtr("applicationName"),
 				SelectedValues: map[string]bool{"key1": true},
 			}
 

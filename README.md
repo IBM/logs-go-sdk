@@ -1,4 +1,4 @@
-[![Build Status](https://v3.travis-ci.com/observability-c/dragonlog-logs-go-sdk.svg?token=Z799xXryYYPor3yyJxEs&branch=main)](https://v3.travis.ibm.com/observability-c/dragonlog-logs-go-sdk)
+[![Build Status](https://v3.travis-ci.com/IBM/logs-go-sdk.svg?token=Z799xXryYYPor3yyJxEs&branch=main)](https://v3.travis.ibm.com/IBM/logs-go-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # IBM Cloud Logs Services Go SDK 0.1.0
@@ -60,7 +60,7 @@ Here is an example:
 
 ```go
 import (
-	"github.com/observability-c/dragonlog-logs-go-sdk/logsv0"
+	"github.com/IBM/logs-go-sdk/logsv0"
 )
 ```
 Next, run `go build` or `go mod tidy` to download and install the new dependencies and update your application's
@@ -73,12 +73,12 @@ See the service table above to find the approprate package name for the services
 ### `go get` command  
 Alternatively, you can use the `go get` command to download and install the appropriate packages needed by your application:
 ```
-go get -u github.com/observability-c/dragonlog-logs-go-sdk/logsv0
+go get -u github.com/IBM/logs-go-sdk/logsv0
 ```
 Be sure to use the appropriate package name from the service table above for the services used by your application.
 
 ## Using the SDK
-Examples are available [here](https://github.com/observability-c/dragonlog-logs-go-sdk/tree/main/example/v0/README.md).
+Examples are available [here](https://github.com/IBM/logs-go-sdk/tree/main/example/v0/README.md).
 For general SDK usage information, please see [this link](https://github.com/IBM/ibm-cloud-sdk-common/blob/main/README.md)
 
 ## Questions
@@ -89,7 +89,7 @@ please ask a question at
 
 ## Issues
 If you encounter an issue with the project, you are welcome to submit a
-[bug report](https://github.com/observability-c/dragonlog-logs-go-sdk/issues).
+[bug report](https://github.com/IBM/logs-go-sdk/issues).
 Before that, please search for similar issues. It's possible that someone has already reported the problem.
 
 ## Open source @ IBM

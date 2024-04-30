@@ -1,4 +1,4 @@
-module github.com/logs-go-sdk
+module github.com/IBM/logs-go-sdk
 
 go 1.19
 
