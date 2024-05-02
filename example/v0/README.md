@@ -4,7 +4,7 @@
 
 To run the example, run the following commands from this directory:
 1. `export LOGS_API_KEY=<Your IBM Cloud API key>`
-2. `export LOGS_SERVICE_URL=<logs_service_url>` `eg. "https://api.cxdev.eu-gb.logs.dev.appdomain.cloud"`
+2. `export LOGS_SERVICE_URL=<logs_service_url>` `eg. "https://<service_instance_ID>.api.eu-es.logs.cloud.ibm.com"`
 3. `go run example_v0.go`
 
 ## How-to
