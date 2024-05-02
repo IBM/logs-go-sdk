@@ -28,8 +28,8 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/IBM/logs-go-sdk/logsv0"
 	"github.com/go-openapi/strfmt"
+	"github.com/IBM/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -67,13 +67,14 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_URL":       "https://logsv0/api",
+				"LOGS_URL": "https://logsv0/api",
 				"LOGS_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+				})
 				Expect(logsService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -102,7 +103,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+				})
 				err := logsService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
@@ -120,12 +122,13 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_URL":       "https://logsv0/api",
+				"LOGS_URL": "https://logsv0/api",
 				"LOGS_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+			logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+			})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(logsService).To(BeNil())
@@ -136,7 +139,7 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_AUTH_TYPE": "NOAuth",
+				"LOGS_AUTH_TYPE":   "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
