@@ -3,7 +3,7 @@
 ## Running example_v0.go
 
 To run the example, run the following commands from this directory:
-1. `export Logs_API_KEY=<Your IBM Cloud API key>`
+1. `export LOGS_API_KEY=<Your IBM Cloud API key>`
 2. `export LOGS_SERVICE_URL=<logs_service_url>` `eg. "https://api.cxdev.eu-gb.logs.dev.appdomain.cloud"`
 3. `go run example_v0.go`
 
@@ -12,7 +12,7 @@ To run the example, run the following commands from this directory:
 ### Set up an authenticator
 ```go
 authenticator := &core.IamAuthenticator{
-    ApiKey:       os.Getenv("Logs_API_KEY"),
+    ApiKey:       os.Getenv("LOGS_API_KEY"),
     ClientId:     "bx",
     ClientSecret: "bx",
     URL:          "https://iam.test.cloud.ibm.com",
@@ -24,7 +24,7 @@ authenticator := &core.IamAuthenticator{
 logsServiceOptions := &logsv0.LogsV0Options{
     ServiceName:   "logs",
     Authenticator: authenticator,
-    URL:           os.Getenv("Logs_Service_URL"), // Optional: Defaults to the service's constant DefaultServiceURL if not provided.
+    URL:           os.Getenv("LOGS_SERVICE_URL"), // Optional: Defaults to the service's constant DefaultServiceURL if not provided.
 }
 
 logsService, err := logsv0.NewLogsV0UsingExternalConfig(logsServiceOptions)
