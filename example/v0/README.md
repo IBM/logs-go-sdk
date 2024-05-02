@@ -217,4 +217,4 @@ deleteAlertOptions := &logsv0.DeleteAlertOptions{
 detailedResponse, err := logsService.DeleteAlert(deleteAlertOptions)
 ```
 
-The other API examples can be found in [example_v0.go](https://github.com/IBM/logs-go-sdk/tree/main/example/v0/example_v0) file.
+The other API examples can be found in [example_v0.go](https://github.com/IBM/logs-go-sdk/tree/main/example/v0/example_v0.go) file.
