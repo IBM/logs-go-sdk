@@ -67,7 +67,7 @@ Next, run `go build` or `go mod tidy` to download and install the new dependenci
 `go.mod` file.  
 
 In the example above, the `logsv0` part of the import path is the package name
-associated with the Example Service service.
+associated with the Logs service.
 See the service table above to find the approprate package name for the services used by your application.
 
 ### `go get` command  
