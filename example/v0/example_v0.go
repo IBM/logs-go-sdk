@@ -10,8 +10,8 @@ import (
 	"sync"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/IBM/logs-go-sdk/logsv0"
 	"github.com/go-openapi/strfmt"
+	"github.com/IBM/logs-go-sdk/logsv0"
 )
 
 func getRandomName() string {
@@ -707,13 +707,13 @@ func main() {
 		Value: core.StringPtr(`coralogix.metadata.applicationName:"production"`),
 	}
 
-	apisDashboardsV1CommonLogsAggregationCountModel := &logsv0.ApisDashboardsV1CommonLogsAggregationCount{}
+	apisDashboardsV1CommonLogsAggregationCountModel := &logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty{}
 
 	apisDashboardsV1CommonLogsAggregationModel := &logsv0.ApisDashboardsV1CommonLogsAggregationValueCount{
 		Count: apisDashboardsV1CommonLogsAggregationCountModel,
 	}
 
-	apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection{}
+	apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty{}
 
 	apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll{
 		All: apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel,
@@ -807,7 +807,7 @@ func main() {
 		LogsPath: apisDashboardsV1AstMultiSelectLogsPathSourceModel,
 	}
 
-	apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := &logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection{}
+	apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := &logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty{}
 
 	apisDashboardsV1AstMultiSelectSelectionModel := &logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll{
 		All: apisDashboardsV1AstMultiSelectSelectionAllSelectionModel,
@@ -843,7 +843,7 @@ func main() {
 		Value: core.StringPtr("sum(up)"),
 	}
 
-	apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := &logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric{}
+	apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := &logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty{}
 
 	apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := &logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy{
 		StartTimeMetric: apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel,

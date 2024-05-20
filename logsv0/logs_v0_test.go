@@ -28,8 +28,8 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/IBM/logs-go-sdk/logsv0"
 	"github.com/go-openapi/strfmt"
+	"github.com/IBM/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
@@ -67,13 +67,14 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_URL":       "https://logsv0/api",
+				"LOGS_URL": "https://logsv0/api",
 				"LOGS_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+				})
 				Expect(logsService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -102,7 +103,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+				logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+				})
 				err := logsService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
@@ -120,12 +122,13 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_URL":       "https://logsv0/api",
+				"LOGS_URL": "https://logsv0/api",
 				"LOGS_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{})
+			logsService, serviceErr := logsv0.NewLogsV0UsingExternalConfig(&logsv0.LogsV0Options{
+			})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(logsService).To(BeNil())
@@ -136,7 +139,7 @@ var _ = Describe(`LogsV0`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"LOGS_AUTH_TYPE": "NOAuth",
+				"LOGS_AUTH_TYPE":   "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -223,7 +226,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke GetAlert successfully with retries`, func() {
@@ -277,7 +280,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke GetAlert successfully`, func() {
@@ -398,20 +401,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -442,9 +445,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -453,37 +456,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -510,22 +508,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -547,7 +529,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -601,7 +582,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke UpdateAlert successfully with retries`, func() {
@@ -615,20 +596,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -659,9 +640,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -670,37 +651,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -727,22 +703,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -764,7 +724,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -821,7 +780,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke UpdateAlert successfully`, func() {
@@ -840,20 +799,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -884,9 +843,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -895,37 +854,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -952,22 +906,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -989,7 +927,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1010,20 +947,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1054,9 +991,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1065,37 +1002,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1122,22 +1054,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1159,7 +1075,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -1201,20 +1116,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1245,9 +1160,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1256,37 +1171,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1313,22 +1223,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1350,7 +1244,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1496,7 +1389,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
 				}))
 			})
 			It(`Invoke GetAlerts successfully with retries`, func() {
@@ -1549,7 +1442,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
 				}))
 			})
 			It(`Invoke GetAlerts successfully`, func() {
@@ -1660,20 +1553,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1704,9 +1597,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1715,37 +1608,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1772,22 +1660,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1808,7 +1680,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -1862,7 +1733,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke CreateAlert successfully with retries`, func() {
@@ -1876,20 +1747,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1920,9 +1791,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1931,37 +1802,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1988,22 +1854,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2024,7 +1874,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2081,7 +1930,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke CreateAlert successfully`, func() {
@@ -2100,20 +1949,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2144,9 +1993,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2155,37 +2004,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2212,22 +2056,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2248,7 +2076,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2269,20 +2096,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2313,9 +2140,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2324,37 +2151,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2381,22 +2203,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2417,7 +2223,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -2459,20 +2264,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2503,9 +2308,9 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2514,37 +2319,32 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2571,22 +2371,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2607,7 +2391,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2625,7 +2408,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions) - Operation response error`, func() {
-		getRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		getRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2670,7 +2453,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions)`, func() {
-		getRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		getRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2837,7 +2620,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions) - Operation response error`, func() {
-		updateRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		updateRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2871,11 +2654,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -2920,7 +2703,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions)`, func() {
-		updateRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		updateRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2976,11 +2759,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3089,11 +2872,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3147,11 +2930,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3226,11 +3009,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3271,7 +3054,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteRuleGroup(deleteRuleGroupOptions *DeleteRuleGroupOptions)`, func() {
-		deleteRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		deleteRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3339,7 +3122,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions) - Operation response error`, func() {
-		listRuleGroupsPath := "/v1/rulegroups"
+		listRuleGroupsPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3383,7 +3166,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions)`, func() {
-		listRuleGroupsPath := "/v1/rulegroups"
+		listRuleGroupsPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3539,7 +3322,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions) - Operation response error`, func() {
-		createRuleGroupPath := "/v1/rulegroups"
+		createRuleGroupPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3573,11 +3356,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3621,7 +3404,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions)`, func() {
-		createRuleGroupPath := "/v1/rulegroups"
+		createRuleGroupPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3677,11 +3460,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3789,11 +3572,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3846,11 +3629,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3924,11 +3707,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -4031,7 +3814,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
+					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
 				}))
 			})
 			It(`Invoke ListOutgoingWebhooks successfully with retries`, func() {
@@ -4086,7 +3869,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
+					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
 				}))
 			})
 			It(`Invoke ListOutgoingWebhooks successfully`, func() {
@@ -4201,12 +3984,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4265,7 +4048,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully with retries`, func() {
@@ -4280,12 +4063,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4347,7 +4130,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully`, func() {
@@ -4367,12 +4150,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4399,12 +4182,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4452,12 +4235,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4541,7 +4324,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully with retries`, func() {
@@ -4595,7 +4378,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully`, func() {
@@ -4717,12 +4500,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4782,7 +4565,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully with retries`, func() {
@@ -4797,12 +4580,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4865,7 +4648,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully`, func() {
@@ -4885,12 +4668,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4918,12 +4701,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4972,12 +4755,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -6333,13 +6116,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6433,13 +6216,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -6480,13 +6263,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -6609,13 +6392,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6709,13 +6492,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -6756,13 +6539,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -6893,13 +6676,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6993,13 +6776,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -7040,13 +6823,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7122,13 +6905,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7222,13 +7005,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -7269,13 +7052,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7372,13 +7155,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7472,13 +7255,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -7519,13 +7302,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7834,13 +7617,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7934,13 +7717,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -7981,13 +7764,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8111,13 +7894,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8211,13 +7994,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -8258,13 +8041,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8396,13 +8179,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8496,13 +8279,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -8543,13 +8326,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8626,13 +8409,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8726,13 +8509,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -8773,13 +8556,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8877,13 +8660,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8977,13 +8760,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -9024,13 +8807,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -10314,7 +10097,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) - Operation response error`, func() {
-		replaceDashboardFolderPath := "/v1/folders/testString"
+		replaceDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10338,7 +10121,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10362,7 +10145,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions)`, func() {
-		replaceDashboardFolderPath := "/v1/folders/testString"
+		replaceDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10408,7 +10191,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10486,7 +10269,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10509,7 +10292,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10553,7 +10336,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10573,7 +10356,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteDashboardFolder(deleteDashboardFolderOptions *DeleteDashboardFolderOptions)`, func() {
-		deleteDashboardFolderPath := "/v1/folders/testString"
+		deleteDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10601,7 +10384,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteDashboardFolderOptions model
 				deleteDashboardFolderOptionsModel := new(logsv0.DeleteDashboardFolderOptions)
-				deleteDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				deleteDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -10619,7 +10402,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteDashboardFolderOptions model
 				deleteDashboardFolderOptionsModel := new(logsv0.DeleteDashboardFolderOptions)
-				deleteDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				deleteDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -10701,7 +10484,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke ListE2m successfully with retries`, func() {
@@ -10754,7 +10537,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke ListE2m successfully`, func() {
@@ -10865,8 +10648,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -10876,21 +10659,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -10958,7 +10741,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreateE2m successfully with retries`, func() {
@@ -10972,8 +10755,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -10983,21 +10766,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11068,7 +10851,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreateE2m successfully`, func() {
@@ -11087,8 +10870,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11098,21 +10881,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11147,8 +10930,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11158,21 +10941,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11228,8 +11011,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11239,21 +11022,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11285,7 +11068,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetE2m(getE2mOptions *GetE2mOptions) - Operation response error`, func() {
-		getE2mPath := "/v1/events2metrics/testString"
+		getE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11309,7 +11092,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := logsService.GetE2m(getE2mOptionsModel)
@@ -11330,7 +11113,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetE2m(getE2mOptions *GetE2mOptions)`, func() {
-		getE2mPath := "/v1/events2metrics/testString"
+		getE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11346,7 +11129,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetE2m successfully with retries`, func() {
@@ -11360,7 +11143,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -11400,7 +11183,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetE2m successfully`, func() {
@@ -11419,7 +11202,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -11439,7 +11222,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -11480,7 +11263,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -11497,7 +11280,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions) - Operation response error`, func() {
-		replaceE2mPath := "/v1/events2metrics/testString"
+		replaceE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11521,8 +11304,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11532,21 +11315,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11561,7 +11344,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -11583,7 +11366,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions)`, func() {
-		replaceE2mPath := "/v1/events2metrics/testString"
+		replaceE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11615,7 +11398,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke ReplaceE2m successfully with retries`, func() {
@@ -11629,8 +11412,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11640,21 +11423,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11669,7 +11452,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11726,7 +11509,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke ReplaceE2m successfully`, func() {
@@ -11745,8 +11528,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11756,21 +11539,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11785,7 +11568,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11806,8 +11589,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11817,21 +11600,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11846,7 +11629,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -11888,8 +11671,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11899,21 +11682,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11928,7 +11711,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11946,7 +11729,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteE2m(deleteE2mOptions *DeleteE2mOptions)`, func() {
-		deleteE2mPath := "/v1/events2metrics/testString"
+		deleteE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11974,7 +11757,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteE2mOptions model
 				deleteE2mOptionsModel := new(logsv0.DeleteE2mOptions)
-				deleteE2mOptionsModel.ID = core.StringPtr("testString")
+				deleteE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -11992,7 +11775,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteE2mOptions model
 				deleteE2mOptionsModel := new(logsv0.DeleteE2mOptions)
-				deleteE2mOptionsModel.ID = core.StringPtr("testString")
+				deleteE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -14237,27 +14020,24 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
-			It(`Invoke NewAlertsV1FilterData successfully`, func() {
-				field := "testString"
-				_model, err := logsService.NewAlertsV1FilterData(field)
+			It(`Invoke NewAlertsV1AlertFiltersRatioAlert successfully`, func() {
+				alias := "TopLevelAlert"
+				_model, err := logsService.NewAlertsV1AlertFiltersRatioAlert(alias)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewAlertsV1MetricAlertConditionParameters successfully`, func() {
-				metricField := "testString"
+				metricField := "cpu_usage"
 				metricSource := "prometheus"
 				arithmeticOperator := "percentile"
-				sampleThresholdPercentage := int64(0)
-				nonNullPercentage := int64(0)
-				_model, err := logsService.NewAlertsV1MetricAlertConditionParameters(metricField, metricSource, arithmeticOperator, sampleThresholdPercentage, nonNullPercentage)
+				_model, err := logsService.NewAlertsV1MetricAlertConditionParameters(metricField, metricSource, arithmeticOperator)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewAlertsV1MetricAlertPromqlConditionParameters successfully`, func() {
-				promqlText := "testString"
-				sampleThresholdPercentage := int64(0)
-				nonNullPercentage := int64(0)
-				_model, err := logsService.NewAlertsV1MetricAlertPromqlConditionParameters(promqlText, sampleThresholdPercentage, nonNullPercentage)
+				promqlText := "sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)"
+				sampleThresholdPercentage := int64(100)
+				_model, err := logsService.NewAlertsV1MetricAlertPromqlConditionParameters(promqlText, sampleThresholdPercentage)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -14267,14 +14047,8 @@ var _ = Describe(`LogsV0`, func() {
 				_, err := logsService.NewAlertsV1TimeRange(start, end)
 				Expect(err).ToNot(BeNil())
 			})
-			It(`Invoke NewAlertsV1TracingAlert successfully`, func() {
-				conditionLatency := int64(0)
-				_model, err := logsService.NewAlertsV1TracingAlert(conditionLatency)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
 			It(`Invoke NewAlertsV2ConditionParameters successfully`, func() {
-				threshold := float64(72.5)
+				threshold := float64(0.4)
 				timeframe := "timeframe_36_h"
 				_model, err := logsService.NewAlertsV2ConditionParameters(threshold, timeframe)
 				Expect(_model).ToNot(BeNil())
@@ -14626,33 +14400,33 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
 				Expect(alertsV1MetricAlertConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("cpu_usage")))
 				Expect(alertsV1MetricAlertConditionParametersModel.MetricSource).To(Equal(core.StringPtr("prometheus")))
 				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperator).To(Equal(core.StringPtr("percentile")))
-				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -14702,12 +14476,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
-				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(0))))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(60))))
 				Expect(alertsV2AlertNotificationModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
-				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -14720,49 +14494,39 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
 				Expect(alertsV1AlertFiltersMetadataFiltersModel).ToNot(BeNil())
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Categories).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Computers).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Classes).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Methods).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.IpAddresses).To(Equal([]string{"testString"}))
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
 				Expect(alertsV1AlertFiltersRatioAlertModel).ToNot(BeNil())
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
-				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("testString")))
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
+				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("TopLevelAlert")))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("_exists_:\"container_name\"")))
 				Expect(alertsV1AlertFiltersRatioAlertModel.Severities).To(Equal([]string{"critical"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"testString"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"Host", "Thread"}))
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				Expect(alertsV1AlertFiltersModel).ToNot(BeNil())
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 				Expect(alertsV1AlertFiltersModel.Severities).To(Equal([]string{"info"}))
 				Expect(alertsV1AlertFiltersModel.Metadata).To(Equal(alertsV1AlertFiltersMetadataFiltersModel))
-				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("monitorQuery")))
 				Expect(alertsV1AlertFiltersModel.Text).To(Equal(core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")))
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
@@ -14770,12 +14534,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
 				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(38))))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -14817,32 +14581,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1MetaLabelModel.Key).To(Equal(core.StringPtr("env")))
 				Expect(alertsV1MetaLabelModel.Value).To(Equal(core.StringPtr("dev")))
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				Expect(alertsV1FiltersModel).ToNot(BeNil())
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-				Expect(alertsV1FiltersModel.Values).To(Equal([]string{"testString"}))
-				Expect(alertsV1FiltersModel.Operator).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				Expect(alertsV1FilterDataModel).ToNot(BeNil())
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-				Expect(alertsV1FilterDataModel.Field).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1FilterDataModel.Filters).To(Equal([]logsv0.AlertsV1Filters{*alertsV1FiltersModel}))
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				Expect(alertsV1TracingAlertModel).ToNot(BeNil())
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				Expect(alertsV1TracingAlertModel.ConditionLatency).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1TracingAlertModel.FieldFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-				Expect(alertsV1TracingAlertModel.TagFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				Expect(alertsV2AlertIncidentSettingsModel).ToNot(BeNil())
@@ -14873,7 +14611,6 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				createAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 				createAlertOptionsModel.SetMetaLabelsStrings([]string{})
-				createAlertOptionsModel.SetTracingAlert(alertsV1TracingAlertModel)
 				createAlertOptionsModel.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
 				createAlertOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createAlertOptionsModel).ToNot(BeNil())
@@ -14889,7 +14626,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(createAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
 				Expect(createAlertOptionsModel.MetaLabelsStrings).To(Equal([]string{}))
-				Expect(createAlertOptionsModel.TracingAlert).To(Equal(alertsV1TracingAlertModel))
 				Expect(createAlertOptionsModel.IncidentSettings).To(Equal(alertsV2AlertIncidentSettingsModel))
 				Expect(createAlertOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -14944,49 +14680,49 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value = core.StringPtr("coralogix.metadata.applicationName:\"production\"")
 				Expect(apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value).To(Equal(core.StringPtr("coralogix.metadata.applicationName:\"production\"")))
 
-				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCount model
-				apisDashboardsV1CommonLogsAggregationCountModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCountEmpty model
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel).ToNot(BeNil())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(nil)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap)
-				apisDashboardsV1CommonLogsAggregationCountModelActualMap := apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()
-				Expect(apisDashboardsV1CommonLogsAggregationCountModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap))
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap)
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap := apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationValueCount model
 				apisDashboardsV1CommonLogsAggregationModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationValueCount)
 				Expect(apisDashboardsV1CommonLogsAggregationModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountModel
-				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountModel))
+				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountEmptyModel
+				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModel))
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
 				Expect(apisDashboardsV1AstFilterEqualsSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel))
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -15146,27 +14882,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 				Expect(apisDashboardsV1AstMultiSelectSourceModel.LogsPath).To(Equal(apisDashboardsV1AstMultiSelectLogsPathSourceModel))
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel))
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -15216,27 +14952,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 				Expect(apisDashboardsV1CommonPromQlQueryModel.Value).To(Equal(core.StringPtr("sum(up)")))
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap))
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
 				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel))
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -15313,10 +15049,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
 				Expect(apisEvents2metricsV2MetricLabelModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
-				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("testString")))
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
+				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("alias_label_name")))
+				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("log_obj.string_value")))
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -15329,35 +15065,35 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisEvents2metricsV2AggregationModel).ToNot(BeNil())
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 				Expect(apisEvents2metricsV2AggregationModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(apisEvents2metricsV2AggregationModel.AggType).To(Equal(core.StringPtr("samples")))
-				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("alias_field_name_agg_func")))
 				Expect(apisEvents2metricsV2AggregationModel.Samples).To(Equal(apisEvents2metricsV2E2mAggSamplesModel))
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
 				Expect(apisEvents2metricsV2MetricFieldModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
-				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("alias_field_name")))
+				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("log_obj.numeric_field")))
 				Expect(apisEvents2metricsV2MetricFieldModel.Aggregations).To(Equal([]logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}))
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				Expect(apisLogs2metricsV2LogsQueryModel).ToNot(BeNil())
-				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
-				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"testString"}))
-				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"testString"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("log_obj.numeric_field: [50 TO 100]")))
+				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("new_query")))
+				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"app_name"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"sub_name"}))
 				Expect(apisLogs2metricsV2LogsQueryModel.SeverityFilters).To(Equal([]string{"critical"}))
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -15365,14 +15101,14 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(event2MetricPrototypeModel).ToNot(BeNil())
 				event2MetricPrototypeModel.Name = core.StringPtr("Service catalog latency")
 				event2MetricPrototypeModel.Description = core.StringPtr("avg and max the latency of catalog service")
-				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(38))
+				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(30000))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
 				event2MetricPrototypeModel.Type = core.StringPtr("logs2metrics")
 				event2MetricPrototypeModel.LogsQuery = apisLogs2metricsV2LogsQueryModel
 				Expect(event2MetricPrototypeModel.Name).To(Equal(core.StringPtr("Service catalog latency")))
 				Expect(event2MetricPrototypeModel.Description).To(Equal(core.StringPtr("avg and max the latency of catalog service")))
-				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(38))))
+				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(30000))))
 				Expect(event2MetricPrototypeModel.MetricLabels).To(Equal([]logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}))
 				Expect(event2MetricPrototypeModel.MetricFields).To(Equal([]logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}))
 				Expect(event2MetricPrototypeModel.Type).To(Equal(core.StringPtr("logs2metrics")))
@@ -15392,19 +15128,19 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
-				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("us-prod-1")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				Expect(outgoingWebhookPrototypeModel).ToNot(BeNil())
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 				Expect(outgoingWebhookPrototypeModel.Type).To(Equal(core.StringPtr("ibm_event_notifications")))
-				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("My Outbound Webhook")))
+				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("Event Notifications Integration")))
 				Expect(outgoingWebhookPrototypeModel.URL).To(Equal(core.StringPtr("https://example.com")))
 				Expect(outgoingWebhookPrototypeModel.IbmEventNotifications).To(Equal(outgoingWebhooksV1IbmEventNotificationsConfigModel))
 
@@ -15484,17 +15220,17 @@ var _ = Describe(`LogsV0`, func() {
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel).ToNot(BeNil())
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name).To(Equal(core.StringPtr("mysql-parse")))
+				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField).To(Equal(core.StringPtr("text")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters).To(Equal(rulesV1RuleParametersModel))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -15620,12 +15356,12 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewDeleteDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the DeleteDashboardFolderOptions model
-				folderID := "testString"
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel := logsService.NewDeleteDashboardFolderOptions(folderID)
-				deleteDashboardFolderOptionsModel.SetFolderID("testString")
+				deleteDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				deleteDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteDashboardFolderOptionsModel).ToNot(BeNil())
-				Expect(deleteDashboardFolderOptionsModel.FolderID).To(Equal(core.StringPtr("testString")))
+				Expect(deleteDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(deleteDashboardFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteDashboardOptions successfully`, func() {
@@ -15640,12 +15376,12 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewDeleteE2mOptions successfully`, func() {
 				// Construct an instance of the DeleteE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				deleteE2mOptionsModel := logsService.NewDeleteE2mOptions(id)
-				deleteE2mOptionsModel.SetID("testString")
+				deleteE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteE2mOptionsModel).ToNot(BeNil())
-				Expect(deleteE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(deleteE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(deleteE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteOutgoingWebhookOptions successfully`, func() {
@@ -15738,12 +15474,12 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewGetE2mOptions successfully`, func() {
 				// Construct an instance of the GetE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				getE2mOptionsModel := logsService.NewGetE2mOptions(id)
-				getE2mOptionsModel.SetID("testString")
+				getE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getE2mOptionsModel).ToNot(BeNil())
-				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(getE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
@@ -15842,7 +15578,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewOutgoingWebhooksV1IbmEventNotificationsConfig successfully`, func() {
 				eventNotificationsInstanceID := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				regionID := "us-prod-1"
+				regionID := "eu-es"
 				_model, err := logsService.NewOutgoingWebhooksV1IbmEventNotificationsConfig(eventNotificationsInstanceID, regionID)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -15872,16 +15608,16 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewReplaceDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the ReplaceDashboardFolderOptions model
-				folderID := "testString"
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsName := "My Folder"
 				replaceDashboardFolderOptionsModel := logsService.NewReplaceDashboardFolderOptions(folderID, replaceDashboardFolderOptionsName)
-				replaceDashboardFolderOptionsModel.SetFolderID("testString")
+				replaceDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetName("My Folder")
 				replaceDashboardFolderOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetParentID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceDashboardFolderOptionsModel).ToNot(BeNil())
-				Expect(replaceDashboardFolderOptionsModel.FolderID).To(Equal(core.StringPtr("testString")))
+				Expect(replaceDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(replaceDashboardFolderOptionsModel.Name).To(Equal(core.StringPtr("My Folder")))
 				Expect(replaceDashboardFolderOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(replaceDashboardFolderOptionsModel.ParentID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
@@ -15924,49 +15660,49 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value = core.StringPtr("coralogix.metadata.applicationName:\"production\"")
 				Expect(apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value).To(Equal(core.StringPtr("coralogix.metadata.applicationName:\"production\"")))
 
-				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCount model
-				apisDashboardsV1CommonLogsAggregationCountModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCountEmpty model
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel).ToNot(BeNil())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(nil)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap)
-				apisDashboardsV1CommonLogsAggregationCountModelActualMap := apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()
-				Expect(apisDashboardsV1CommonLogsAggregationCountModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap))
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap)
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap := apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationValueCount model
 				apisDashboardsV1CommonLogsAggregationModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationValueCount)
 				Expect(apisDashboardsV1CommonLogsAggregationModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountModel
-				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountModel))
+				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountEmptyModel
+				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModel))
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
 				Expect(apisDashboardsV1AstFilterEqualsSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel))
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -16126,27 +15862,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 				Expect(apisDashboardsV1AstMultiSelectSourceModel.LogsPath).To(Equal(apisDashboardsV1AstMultiSelectLogsPathSourceModel))
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel))
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -16196,27 +15932,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 				Expect(apisDashboardsV1CommonPromQlQueryModel.Value).To(Equal(core.StringPtr("sum(up)")))
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap))
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
 				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel))
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -16306,10 +16042,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
 				Expect(apisEvents2metricsV2MetricLabelModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
-				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("testString")))
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
+				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("alias_label_name")))
+				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("log_obj.string_value")))
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -16322,35 +16058,35 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisEvents2metricsV2AggregationModel).ToNot(BeNil())
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 				Expect(apisEvents2metricsV2AggregationModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(apisEvents2metricsV2AggregationModel.AggType).To(Equal(core.StringPtr("samples")))
-				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("alias_field_name_agg_func")))
 				Expect(apisEvents2metricsV2AggregationModel.Samples).To(Equal(apisEvents2metricsV2E2mAggSamplesModel))
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
 				Expect(apisEvents2metricsV2MetricFieldModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
-				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("alias_field_name")))
+				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("log_obj.numeric_field")))
 				Expect(apisEvents2metricsV2MetricFieldModel.Aggregations).To(Equal([]logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}))
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				Expect(apisLogs2metricsV2LogsQueryModel).ToNot(BeNil())
-				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
-				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"testString"}))
-				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"testString"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("log_obj.numeric_field: [50 TO 100]")))
+				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("new_query")))
+				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"app_name"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"sub_name"}))
 				Expect(apisLogs2metricsV2LogsQueryModel.SeverityFilters).To(Equal([]string{"critical"}))
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -16358,28 +16094,28 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(event2MetricPrototypeModel).ToNot(BeNil())
 				event2MetricPrototypeModel.Name = core.StringPtr("Service catalog latency")
 				event2MetricPrototypeModel.Description = core.StringPtr("avg and max the latency of catalog service")
-				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(38))
+				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(30000))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
 				event2MetricPrototypeModel.Type = core.StringPtr("logs2metrics")
 				event2MetricPrototypeModel.LogsQuery = apisLogs2metricsV2LogsQueryModel
 				Expect(event2MetricPrototypeModel.Name).To(Equal(core.StringPtr("Service catalog latency")))
 				Expect(event2MetricPrototypeModel.Description).To(Equal(core.StringPtr("avg and max the latency of catalog service")))
-				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(38))))
+				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(30000))))
 				Expect(event2MetricPrototypeModel.MetricLabels).To(Equal([]logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}))
 				Expect(event2MetricPrototypeModel.MetricFields).To(Equal([]logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}))
 				Expect(event2MetricPrototypeModel.Type).To(Equal(core.StringPtr("logs2metrics")))
 				Expect(event2MetricPrototypeModel.LogsQuery).To(Equal(apisLogs2metricsV2LogsQueryModel))
 
 				// Construct an instance of the ReplaceE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				var event2MetricPrototype logsv0.Event2MetricPrototypeIntf = nil
 				replaceE2mOptionsModel := logsService.NewReplaceE2mOptions(id, event2MetricPrototype)
-				replaceE2mOptionsModel.SetID("testString")
+				replaceE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.SetEvent2MetricPrototype(event2MetricPrototypeModel)
 				replaceE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceE2mOptionsModel).ToNot(BeNil())
-				Expect(replaceE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(replaceE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(replaceE2mOptionsModel.Event2MetricPrototype).To(Equal(event2MetricPrototypeModel))
 				Expect(replaceE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -16561,33 +16297,33 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
 				Expect(alertsV1MetricAlertConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("cpu_usage")))
 				Expect(alertsV1MetricAlertConditionParametersModel.MetricSource).To(Equal(core.StringPtr("prometheus")))
 				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperator).To(Equal(core.StringPtr("percentile")))
-				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -16637,12 +16373,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
-				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(0))))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(60))))
 				Expect(alertsV2AlertNotificationModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
-				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -16655,49 +16391,39 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
 				Expect(alertsV1AlertFiltersMetadataFiltersModel).ToNot(BeNil())
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Categories).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Computers).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Classes).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Methods).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.IpAddresses).To(Equal([]string{"testString"}))
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
 				Expect(alertsV1AlertFiltersRatioAlertModel).ToNot(BeNil())
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
-				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("testString")))
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
+				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("TopLevelAlert")))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("_exists_:\"container_name\"")))
 				Expect(alertsV1AlertFiltersRatioAlertModel.Severities).To(Equal([]string{"critical"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"testString"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"Host", "Thread"}))
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				Expect(alertsV1AlertFiltersModel).ToNot(BeNil())
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 				Expect(alertsV1AlertFiltersModel.Severities).To(Equal([]string{"info"}))
 				Expect(alertsV1AlertFiltersModel.Metadata).To(Equal(alertsV1AlertFiltersMetadataFiltersModel))
-				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("monitorQuery")))
 				Expect(alertsV1AlertFiltersModel.Text).To(Equal(core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")))
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
@@ -16705,12 +16431,12 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1Date model
 				alertsV1DateModel := new(logsv0.AlertsV1Date)
 				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(38))))
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -16752,32 +16478,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1MetaLabelModel.Key).To(Equal(core.StringPtr("env")))
 				Expect(alertsV1MetaLabelModel.Value).To(Equal(core.StringPtr("dev")))
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				Expect(alertsV1FiltersModel).ToNot(BeNil())
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-				Expect(alertsV1FiltersModel.Values).To(Equal([]string{"testString"}))
-				Expect(alertsV1FiltersModel.Operator).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				Expect(alertsV1FilterDataModel).ToNot(BeNil())
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-				Expect(alertsV1FilterDataModel.Field).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1FilterDataModel.Filters).To(Equal([]logsv0.AlertsV1Filters{*alertsV1FiltersModel}))
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				Expect(alertsV1TracingAlertModel).ToNot(BeNil())
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				Expect(alertsV1TracingAlertModel.ConditionLatency).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1TracingAlertModel.FieldFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-				Expect(alertsV1TracingAlertModel.TagFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				Expect(alertsV2AlertIncidentSettingsModel).ToNot(BeNil())
@@ -16810,7 +16510,6 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				updateAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 				updateAlertOptionsModel.SetMetaLabelsStrings([]string{})
-				updateAlertOptionsModel.SetTracingAlert(alertsV1TracingAlertModel)
 				updateAlertOptionsModel.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
 				updateAlertOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateAlertOptionsModel).ToNot(BeNil())
@@ -16827,7 +16526,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(updateAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
 				Expect(updateAlertOptionsModel.MetaLabelsStrings).To(Equal([]string{}))
-				Expect(updateAlertOptionsModel.TracingAlert).To(Equal(alertsV1TracingAlertModel))
 				Expect(updateAlertOptionsModel.IncidentSettings).To(Equal(alertsV2AlertIncidentSettingsModel))
 				Expect(updateAlertOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -16836,19 +16534,19 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
-				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("us-prod-1")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				Expect(outgoingWebhookPrototypeModel).ToNot(BeNil())
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 				Expect(outgoingWebhookPrototypeModel.Type).To(Equal(core.StringPtr("ibm_event_notifications")))
-				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("My Outbound Webhook")))
+				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("Event Notifications Integration")))
 				Expect(outgoingWebhookPrototypeModel.URL).To(Equal(core.StringPtr("https://example.com")))
 				Expect(outgoingWebhookPrototypeModel.IbmEventNotifications).To(Equal(outgoingWebhooksV1IbmEventNotificationsConfigModel))
 
@@ -16934,17 +16632,17 @@ var _ = Describe(`LogsV0`, func() {
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel).ToNot(BeNil())
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name).To(Equal(core.StringPtr("mysql-parse")))
+				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField).To(Equal(core.StringPtr("text")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters).To(Equal(rulesV1RuleParametersModel))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -16992,52 +16690,45 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateRuleGroupOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardFolderFolderID successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderID(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderID(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardFolderFolderPath successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewEvent2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery successfully`, func() {
@@ -17048,7 +16739,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications successfully`, func() {
 				typeVar := "ibm_event_notifications"
-				name := "My Outbound Webhook"
+				name := "Event Notifications Integration"
 				_model, err := logsService.NewOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications(typeVar, name)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -17105,8 +16796,8 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.AlertsV1AlertFilters)
 			model.Severities = []string{"critical"}
 			model.Metadata = nil
-			model.Alias = core.StringPtr("testString")
-			model.Text = core.StringPtr("testString")
+			model.Alias = core.StringPtr("monitorQuery")
+			model.Text = core.StringPtr("_exists_:\"container_name\"")
 			model.RatioAlerts = nil
 			model.FilterType = core.StringPtr("flow")
 
@@ -17126,13 +16817,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1AlertFiltersMetadataFilters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-			model.Categories = []string{"testString"}
-			model.Applications = []string{"testString"}
-			model.Subsystems = []string{"testString"}
-			model.Computers = []string{"testString"}
-			model.Classes = []string{"testString"}
-			model.Methods = []string{"testString"}
-			model.IpAddresses = []string{"testString"}
+			model.Applications = []string{"CpuMonitoring", "WebApi"}
+			model.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17150,12 +16836,12 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1AlertFiltersRatioAlert successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-			model.Alias = core.StringPtr("testString")
-			model.Text = core.StringPtr("testString")
+			model.Alias = core.StringPtr("TopLevelAlert")
+			model.Text = core.StringPtr("_exists_:\"container_name\"")
 			model.Severities = []string{"critical"}
-			model.Applications = []string{"testString"}
-			model.Subsystems = []string{"testString"}
-			model.GroupBy = []string{"testString"}
+			model.Applications = []string{"CpuMonitoring", "WebApi"}
+			model.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+			model.GroupBy = []string{"Host", "Thread"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17173,9 +16859,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1Date successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1Date)
-			model.Year = core.Int64Ptr(int64(38))
-			model.Month = core.Int64Ptr(int64(38))
-			model.Day = core.Int64Ptr(int64(38))
+			model.Year = core.Int64Ptr(int64(2012))
+			model.Month = core.Int64Ptr(int64(12))
+			model.Day = core.Int64Ptr(int64(24))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17190,48 +16876,10 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV1FilterData successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1FilterData)
-			model.Field = core.StringPtr("testString")
-			model.Filters = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1FilterData
-			err = logsv0.UnmarshalAlertsV1FilterData(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalAlertsV1Filters successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1Filters)
-			model.Values = []string{"testString"}
-			model.Operator = core.StringPtr("testString")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1Filters
-			err = logsv0.UnmarshalAlertsV1Filters(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalAlertsV1FlowAlert successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1FlowAlert)
-			model.ID = core.StringPtr("testString")
+			model.ID = core.StringPtr("6ad87d32-1613-4cb1-b7e3-d97fee561913")
 			model.Not = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17307,7 +16955,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1FlowTimeframe successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1FlowTimeframe)
-			model.Ms = core.Int64Ptr(int64(0))
+			model.Ms = core.Int64Ptr(int64(1000))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17325,8 +16973,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetaLabel successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetaLabel)
-			model.Key = core.StringPtr("testString")
-			model.Value = core.StringPtr("testString")
+			model.Key = core.StringPtr("ColorLabel")
+			model.Value = core.StringPtr("Red")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17344,12 +16992,12 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetricAlertConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetricAlertConditionParameters)
-			model.MetricField = core.StringPtr("testString")
+			model.MetricField = core.StringPtr("cpu_usage")
 			model.MetricSource = core.StringPtr("prometheus")
 			model.ArithmeticOperator = core.StringPtr("percentile")
-			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-			model.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-			model.NonNullPercentage = core.Int64Ptr(int64(0))
+			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+			model.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+			model.NonNullPercentage = core.Int64Ptr(int64(100))
 			model.SwapNullValues = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17368,10 +17016,10 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetricAlertPromqlConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-			model.PromqlText = core.StringPtr("testString")
-			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-			model.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-			model.NonNullPercentage = core.Int64Ptr(int64(0))
+			model.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+			model.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+			model.NonNullPercentage = core.Int64Ptr(int64(100))
 			model.SwapNullValues = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17409,9 +17057,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1Time successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1Time)
-			model.Hours = core.Int64Ptr(int64(38))
-			model.Minutes = core.Int64Ptr(int64(38))
-			model.Seconds = core.Int64Ptr(int64(38))
+			model.Hours = core.Int64Ptr(int64(22))
+			model.Minutes = core.Int64Ptr(int64(22))
+			model.Seconds = core.Int64Ptr(int64(22))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17445,26 +17093,6 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV1TracingAlert successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1TracingAlert)
-			model.ConditionLatency = core.Int64Ptr(int64(0))
-			model.FieldFilters = nil
-			model.TagFilters = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1TracingAlert
-			err = logsv0.UnmarshalAlertsV1TracingAlert(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalAlertsV2AlertCondition successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertCondition)
@@ -17493,7 +17121,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertIncidentSettings successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertIncidentSettings)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
 			model.UseAsNotificationSettings = core.BoolPtr(true)
 
@@ -17513,9 +17141,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotification successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotification)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
-			model.IntegrationID = core.Int64Ptr(int64(0))
+			model.IntegrationID = core.Int64Ptr(int64(123))
 			model.Recipients = nil
 
 			b, err := json.Marshal(model)
@@ -17534,7 +17162,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationGroups successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationGroups)
-			model.GroupByFields = []string{"testString"}
+			model.GroupByFields = []string{"cpu"}
 			model.Notifications = nil
 
 			b, err := json.Marshal(model)
@@ -17553,14 +17181,14 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2ConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2ConditionParameters)
-			model.Threshold = core.Float64Ptr(float64(72.5))
+			model.Threshold = core.Float64Ptr(float64(0.4))
 			model.Timeframe = core.StringPtr("timeframe_36_h")
-			model.GroupBy = []string{"testString"}
+			model.GroupBy = []string{"message.severity"}
 			model.MetricAlertParameters = nil
 			model.MetricAlertPromqlParameters = nil
 			model.IgnoreInfinity = core.BoolPtr(true)
 			model.RelativeTimeframe = core.StringPtr("month")
-			model.CardinalityFields = []string{"testString"}
+			model.CardinalityFields = []string{"message.severity"}
 			model.RelatedExtendedData = nil
 
 			b, err := json.Marshal(model)
@@ -17596,9 +17224,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV2ImmediateCondition successfully`, func() {
+		It(`Invoke UnmarshalAlertsV2ImmediateConditionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.AlertsV2ImmediateCondition)
+			model := new(logsv0.AlertsV2ImmediateConditionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17607,8 +17235,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.AlertsV2ImmediateCondition
-			err = logsv0.UnmarshalAlertsV2ImmediateCondition(raw, &result)
+			var result *logsv0.AlertsV2ImmediateConditionEmpty
+			err = logsv0.UnmarshalAlertsV2ImmediateConditionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -17707,7 +17335,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2Recipients successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2Recipients)
-			model.Emails = []string{"testString"}
+			model.Emails = []string{"example@gmail.com"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17880,9 +17508,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
+			model := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17891,8 +17519,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-			err = logsv0.UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -17934,9 +17562,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17945,15 +17573,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshOff)
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshOffEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17962,15 +17590,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshOff
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17979,8 +17607,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18042,9 +17670,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
+			model := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18053,8 +17681,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-			err = logsv0.UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18337,9 +17965,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18348,8 +17976,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection
-			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18706,9 +18334,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18717,8 +18345,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18743,9 +18371,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18754,15 +18382,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18771,15 +18399,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18788,8 +18416,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19285,9 +18913,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19296,15 +18924,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19313,8 +18941,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19717,23 +19345,6 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCount successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCount
-			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCount(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCountDistinct successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountDistinct)
@@ -19748,6 +19359,23 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCountDistinct
 			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCountDistinct(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty
+			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19941,7 +19569,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2Aggregation)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Samples = nil
 			model.Histogram = nil
 
@@ -19961,7 +19589,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2E2mAggHistogram successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2E2mAggHistogram)
-			model.Buckets = []float32{float32(36.0)}
+			model.Buckets = []float32{2}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19997,8 +19625,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2MetricField successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2MetricField)
-			model.TargetBaseMetricName = core.StringPtr("testString")
-			model.SourceField = core.StringPtr("testString")
+			model.TargetBaseMetricName = core.StringPtr("alias_field_name")
+			model.SourceField = core.StringPtr("log_obj.numeric_field")
 			model.Aggregations = nil
 
 			b, err := json.Marshal(model)
@@ -20017,8 +19645,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2MetricLabel successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2MetricLabel)
-			model.TargetLabel = core.StringPtr("testString")
-			model.SourceField = core.StringPtr("testString")
+			model.TargetLabel = core.StringPtr("alias_label_name")
+			model.SourceField = core.StringPtr("log_obj.string_value")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20036,10 +19664,10 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisLogs2metricsV2LogsQuery successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisLogs2metricsV2LogsQuery)
-			model.Lucene = core.StringPtr("testString")
-			model.Alias = core.StringPtr("testString")
-			model.ApplicationnameFilters = []string{"testString"}
-			model.SubsystemnameFilters = []string{"testString"}
+			model.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+			model.Alias = core.StringPtr("new_query")
+			model.ApplicationnameFilters = []string{"app_name"}
+			model.SubsystemnameFilters = []string{"sub_name"}
 			model.SeverityFilters = []string{"critical"}
 
 			b, err := json.Marshal(model)
@@ -20224,7 +19852,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.Event2MetricPrototype)
 			model.Name = core.StringPtr("Service catalog latency")
 			model.Description = core.StringPtr("avg and max the latency of catalog service")
-			model.PermutationsLimit = core.Int64Ptr(int64(38))
+			model.PermutationsLimit = core.Int64Ptr(int64(30000))
 			model.MetricLabels = nil
 			model.MetricFields = nil
 			model.Type = core.StringPtr("logs2metrics")
@@ -20247,7 +19875,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototype)
 			model.Type = core.StringPtr("ibm_event_notifications")
-			model.Name = core.StringPtr("My Outbound Webhook")
+			model.Name = core.StringPtr("Event Notifications Integration")
 			model.URL = core.StringPtr("https://example.com")
 			model.IbmEventNotifications = nil
 
@@ -20268,7 +19896,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 			model.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-			model.RegionID = core.StringPtr("us-prod-1")
+			model.RegionID = core.StringPtr("eu-es")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20442,11 +20070,11 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 			model.Name = core.StringPtr("Extract Timestamp")
+			model.Description = core.StringPtr("Extract timestamp with ISO format for Mysql logs")
 			model.SourceField = core.StringPtr("log_obj.date_time")
 			model.Parameters = nil
 			model.Enabled = core.BoolPtr(true)
 			model.Order = core.Int64Ptr(int64(1))
-			model.Description = core.StringPtr("Extract timestamp with ISO format for Mysql logs")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20842,9 +20470,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationIntegrationTypeIntegrationID successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
-			model.IntegrationID = core.Int64Ptr(int64(0))
+			model.IntegrationID = core.Int64Ptr(int64(123))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20862,7 +20490,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationIntegrationTypeRecipients successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationIntegrationTypeRecipients)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
 			model.Recipients = nil
 
@@ -21892,7 +21520,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataHistogram)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Histogram = nil
 
 			b, err := json.Marshal(model)
@@ -21913,7 +21541,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Samples = nil
 
 			b, err := json.Marshal(model)
@@ -22152,7 +21780,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 			model.Name = core.StringPtr("Service catalog latency")
 			model.Description = core.StringPtr("avg and max the latency of catalog service")
-			model.PermutationsLimit = core.Int64Ptr(int64(38))
+			model.PermutationsLimit = core.Int64Ptr(int64(30000))
 			model.MetricLabels = nil
 			model.MetricFields = nil
 			model.Type = core.StringPtr("logs2metrics")
@@ -22175,7 +21803,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 			model.Type = core.StringPtr("ibm_event_notifications")
-			model.Name = core.StringPtr("My Outbound Webhook")
+			model.Name = core.StringPtr("Event Notifications Integration")
 			model.URL = core.StringPtr("https://example.com")
 			model.IbmEventNotifications = nil
 
