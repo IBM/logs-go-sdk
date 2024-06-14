@@ -255,8 +255,8 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 		It(`CreateOutgoingWebhook(createOutgoingWebhookOptions *CreateOutgoingWebhookOptions)`, func() {
 			outgoingWebhooksV1IbmEventNotificationsConfigModel := &logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig{
-				RegionID:                     core.StringPtr("us-south"),
-				EventNotificationsInstanceID: CreateMockUUID("6964e1e9-74a2-4c6c-980b-d806ff75175d"),
+				RegionID:                     core.StringPtr(config["IBM_EVENT_NOTIFICATIONS_INSTANCE_REGION"]),
+				EventNotificationsInstanceID: CreateMockUUID(config["IBM_EVENT_NOTIFICATIONS_INSTANCE_ID"]),
 			}
 
 			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
@@ -807,8 +807,8 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 		It(`UpdateOutgoingWebhook(updateOutgoingWebhookOptions *UpdateOutgoingWebhookOptions)`, func() {
 			outgoingWebhooksV1IbmEventNotificationsConfigModel := &logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig{
-				RegionID:                     core.StringPtr("us-south"),
-				EventNotificationsInstanceID: CreateMockUUID("6964e1e9-74a2-4c6c-980b-d806ff75175d"),
+				RegionID:                     core.StringPtr(config["IBM_EVENT_NOTIFICATIONS_INSTANCE_REGION"]),
+				EventNotificationsInstanceID: CreateMockUUID(config["IBM_EVENT_NOTIFICATIONS_INSTANCE_ID"]),
 			}
 
 			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{

@@ -41,9 +41,6 @@ type LogsV0 struct {
 	Service *core.BaseService
 }
 
-// DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://api.cxdev.eu-gb.logs.dev.appdomain.cloud"
-
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "logs"
 
@@ -90,7 +87,6 @@ func NewLogsV0UsingExternalConfig(options *LogsV0Options) (logs *LogsV0, err err
 // NewLogsV0 : constructs an instance of LogsV0 with passed in options.
 func NewLogsV0(options *LogsV0Options) (service *LogsV0, err error) {
 	serviceOptions := &core.ServiceOptions{
-		URL:           DefaultServiceURL,
 		Authenticator: options.Authenticator,
 	}
 
@@ -2914,11 +2910,11 @@ func (logs *LogsV0) CreateViewWithContext(ctx context.Context, createViewOptions
 	if createViewOptions.Name != nil {
 		body["name"] = createViewOptions.Name
 	}
-	if createViewOptions.SearchQuery != nil {
-		body["search_query"] = createViewOptions.SearchQuery
-	}
 	if createViewOptions.TimeSelection != nil {
 		body["time_selection"] = createViewOptions.TimeSelection
+	}
+	if createViewOptions.SearchQuery != nil {
+		body["search_query"] = createViewOptions.SearchQuery
 	}
 	if createViewOptions.Filters != nil {
 		body["filters"] = createViewOptions.Filters
@@ -3075,11 +3071,11 @@ func (logs *LogsV0) ReplaceViewWithContext(ctx context.Context, replaceViewOptio
 	if replaceViewOptions.Name != nil {
 		body["name"] = replaceViewOptions.Name
 	}
-	if replaceViewOptions.SearchQuery != nil {
-		body["search_query"] = replaceViewOptions.SearchQuery
-	}
 	if replaceViewOptions.TimeSelection != nil {
 		body["time_selection"] = replaceViewOptions.TimeSelection
+	}
+	if replaceViewOptions.SearchQuery != nil {
+		body["search_query"] = replaceViewOptions.SearchQuery
 	}
 	if replaceViewOptions.Filters != nil {
 		body["filters"] = replaceViewOptions.Filters
@@ -3516,6 +3512,443 @@ func (logs *LogsV0) DeleteViewFolderWithContext(ctx context.Context, deleteViewF
 		core.EnrichHTTPProblem(err, "delete_view_folder", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
+	}
+
+	return
+}
+
+// ListDataAccessRules : List service instance's Data Access Rules with provided ids
+// List service instance's Data Access Rules with provided ids.
+func (logs *LogsV0) ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListDataAccessRulesWithContext(context.Background(), listDataAccessRulesOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListDataAccessRulesWithContext is an alternate form of the ListDataAccessRules method which supports a Context parameter
+func (logs *LogsV0) ListDataAccessRulesWithContext(ctx context.Context, listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listDataAccessRulesOptions, "listDataAccessRulesOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listDataAccessRulesOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDataAccessRules")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if listDataAccessRulesOptions.ID != nil {
+		err = builder.AddQuerySlice("id", listDataAccessRulesOptions.ID)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "add-query-slice-error", common.GetComponentInfo())
+			return
+		}
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_data_access_rules", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRuleCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateDataAccessRule : Create a Data Access Rule
+// Create a Data Access Rule.
+func (logs *LogsV0) CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateDataAccessRuleWithContext(context.Background(), createDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateDataAccessRuleWithContext is an alternate form of the CreateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) CreateDataAccessRuleWithContext(ctx context.Context, createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createDataAccessRuleOptions, "createDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createDataAccessRuleOptions, "createDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = createDataAccessRuleOptions.DisplayName
+	}
+	if createDataAccessRuleOptions.Filters != nil {
+		body["filters"] = createDataAccessRuleOptions.Filters
+	}
+	if createDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = createDataAccessRuleOptions.DefaultExpression
+	}
+	if createDataAccessRuleOptions.Description != nil {
+		body["description"] = createDataAccessRuleOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataAccessRule : Update a Data Access Rule
+// Update a Data Access Rule.
+func (logs *LogsV0) UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataAccessRuleWithContext(context.Background(), updateDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataAccessRuleWithContext is an alternate form of the UpdateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) UpdateDataAccessRuleWithContext(ctx context.Context, updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataAccessRuleOptions, "updateDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataAccessRuleOptions, "updateDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*updateDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = updateDataAccessRuleOptions.DisplayName
+	}
+	if updateDataAccessRuleOptions.Filters != nil {
+		body["filters"] = updateDataAccessRuleOptions.Filters
+	}
+	if updateDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = updateDataAccessRuleOptions.DefaultExpression
+	}
+	if updateDataAccessRuleOptions.Description != nil {
+		body["description"] = updateDataAccessRuleOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteDataAccessRule : Delete a Data Access Rule
+// Delete a Data Access Rule.
+func (logs *LogsV0) DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteDataAccessRuleWithContext(context.Background(), deleteDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteDataAccessRuleWithContext is an alternate form of the DeleteDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) DeleteDataAccessRuleWithContext(ctx context.Context, deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// GetDataUsageMetricsExportStatus : Get data usage metrics export status
+// Get data usage metrics export status.
+func (logs *LogsV0) GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDataUsageMetricsExportStatusWithContext(context.Background(), getDataUsageMetricsExportStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDataUsageMetricsExportStatusWithContext is an alternate form of the GetDataUsageMetricsExportStatus method which supports a Context parameter
+func (logs *LogsV0) GetDataUsageMetricsExportStatusWithContext(ctx context.Context, getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getDataUsageMetricsExportStatusOptions, "getDataUsageMetricsExportStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDataUsageMetricsExportStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDataUsageMetricsExportStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_data_usage_metrics_export_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataUsageMetricsExportStatus : Update data usage metrics export status
+// Update data usage metrics export status.
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataUsageMetricsExportStatusWithContext(context.Background(), updateDataUsageMetricsExportStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataUsageMetricsExportStatusWithContext is an alternate form of the UpdateDataUsageMetricsExportStatus method which supports a Context parameter
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatusWithContext(ctx context.Context, updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataUsageMetricsExportStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataUsageMetricsExportStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataUsageMetricsExportStatusOptions.Enabled != nil {
+		body["enabled"] = updateDataUsageMetricsExportStatusOptions.Enabled
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_usage_metrics_export_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
 	}
 
 	return
@@ -11080,6 +11513,63 @@ func (options *CreateDashboardOptions) SetHeaders(param map[string]string) *Crea
 	return options
 }
 
+// CreateDataAccessRuleOptions : The CreateDataAccessRule options.
+type CreateDataAccessRuleOptions struct {
+	// Display Name for new Data Access Rule.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Filters for new Data Access Rule.
+	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
+
+	// Default Expression for new Data Access Rule.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+
+	// Description for new Data Access Rule.
+	Description *string `json:"description,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateDataAccessRuleOptions : Instantiate CreateDataAccessRuleOptions
+func (*LogsV0) NewCreateDataAccessRuleOptions(displayName string, filters []DataAccessRuleFilter, defaultExpression string) *CreateDataAccessRuleOptions {
+	return &CreateDataAccessRuleOptions{
+		DisplayName: core.StringPtr(displayName),
+		Filters: filters,
+		DefaultExpression: core.StringPtr(defaultExpression),
+	}
+}
+
+// SetDisplayName : Allow user to set DisplayName
+func (_options *CreateDataAccessRuleOptions) SetDisplayName(displayName string) *CreateDataAccessRuleOptions {
+	_options.DisplayName = core.StringPtr(displayName)
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *CreateDataAccessRuleOptions) SetFilters(filters []DataAccessRuleFilter) *CreateDataAccessRuleOptions {
+	_options.Filters = filters
+	return _options
+}
+
+// SetDefaultExpression : Allow user to set DefaultExpression
+func (_options *CreateDataAccessRuleOptions) SetDefaultExpression(defaultExpression string) *CreateDataAccessRuleOptions {
+	_options.DefaultExpression = core.StringPtr(defaultExpression)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *CreateDataAccessRuleOptions) SetDescription(description string) *CreateDataAccessRuleOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateDataAccessRuleOptions) SetHeaders(param map[string]string) *CreateDataAccessRuleOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateE2mOptions : The CreateE2m options.
 type CreateE2mOptions struct {
 	// E2M Create message.
@@ -11273,11 +11763,11 @@ type CreateViewOptions struct {
 	// View name.
 	Name *string `json:"name" validate:"required"`
 
-	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
-
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
+
+	// View search query.
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View selected filters.
 	Filters *ApisViewsV1SelectedFilters `json:"filters,omitempty"`
@@ -11290,10 +11780,9 @@ type CreateViewOptions struct {
 }
 
 // NewCreateViewOptions : Instantiate CreateViewOptions
-func (*LogsV0) NewCreateViewOptions(name string, searchQuery *ApisViewsV1SearchQuery, timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
+func (*LogsV0) NewCreateViewOptions(name string, timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
 	return &CreateViewOptions{
 		Name: core.StringPtr(name),
-		SearchQuery: searchQuery,
 		TimeSelection: timeSelection,
 	}
 }
@@ -11304,15 +11793,15 @@ func (_options *CreateViewOptions) SetName(name string) *CreateViewOptions {
 	return _options
 }
 
-// SetSearchQuery : Allow user to set SearchQuery
-func (_options *CreateViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *CreateViewOptions {
-	_options.SearchQuery = searchQuery
-	return _options
-}
-
 // SetTimeSelection : Allow user to set TimeSelection
 func (_options *CreateViewOptions) SetTimeSelection(timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
 	_options.TimeSelection = timeSelection
+	return _options
+}
+
+// SetSearchQuery : Allow user to set SearchQuery
+func (_options *CreateViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *CreateViewOptions {
+	_options.SearchQuery = searchQuery
 	return _options
 }
 
@@ -11545,6 +12034,150 @@ func UnmarshalDashboardFolderCollection(m map[string]json.RawMessage, result int
 	return
 }
 
+// DataAccessRule : Data Access Rule details.
+type DataAccessRule struct {
+	// Data Access Rule ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Data Access Rule Display Name.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Optional Data Access Rule Description.
+	Description *string `json:"description,omitempty"`
+
+	// List of filters that the Data Access Rule is composed of.
+	Filters []DataAccessRuleFilter `json:"filters,omitempty"`
+
+	// Default expression to use when no filter matches the query.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+}
+
+// UnmarshalDataAccessRule unmarshals an instance of DataAccessRule from the specified map of raw messages.
+func UnmarshalDataAccessRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRule)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "display_name", &obj.DisplayName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "display_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "filters", &obj.Filters, UnmarshalDataAccessRuleFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "filters-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "default_expression", &obj.DefaultExpression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "default_expression-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataAccessRuleCollection : Get Data Access Rules Response.
+type DataAccessRuleCollection struct {
+	// Data Access Rule details.
+	DataAccessRules []DataAccessRule `json:"data_access_rules" validate:"required"`
+}
+
+// UnmarshalDataAccessRuleCollection unmarshals an instance of DataAccessRuleCollection from the specified map of raw messages.
+func UnmarshalDataAccessRuleCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRuleCollection)
+	err = core.UnmarshalModel(m, "data_access_rules", &obj.DataAccessRules, UnmarshalDataAccessRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "data_access_rules-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataAccessRuleFilter : List of filters that the Data Access Rule is composed of.
+type DataAccessRuleFilter struct {
+	// Filter's Entity Type.
+	EntityType *string `json:"entity_type" validate:"required"`
+
+	// Filter's Expression.
+	Expression *string `json:"expression" validate:"required"`
+}
+
+// Constants associated with the DataAccessRuleFilter.EntityType property.
+// Filter's Entity Type.
+const (
+	DataAccessRuleFilter_EntityType_Logs = "logs"
+	DataAccessRuleFilter_EntityType_Unspecified = "unspecified"
+)
+
+// NewDataAccessRuleFilter : Instantiate DataAccessRuleFilter (Generic Model Constructor)
+func (*LogsV0) NewDataAccessRuleFilter(entityType string, expression string) (_model *DataAccessRuleFilter, err error) {
+	_model = &DataAccessRuleFilter{
+		EntityType: core.StringPtr(entityType),
+		Expression: core.StringPtr(expression),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalDataAccessRuleFilter unmarshals an instance of DataAccessRuleFilter from the specified map of raw messages.
+func UnmarshalDataAccessRuleFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRuleFilter)
+	err = core.UnmarshalPrimitive(m, "entity_type", &obj.EntityType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "expression", &obj.Expression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "expression-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataUsageMetricsExportStatus : The data usage metrics export status.
+type DataUsageMetricsExportStatus struct {
+	// The "enabled" parameter for metrics export.
+	Enabled *bool `json:"enabled" validate:"required"`
+}
+
+// NewDataUsageMetricsExportStatus : Instantiate DataUsageMetricsExportStatus (Generic Model Constructor)
+func (*LogsV0) NewDataUsageMetricsExportStatus(enabled bool) (_model *DataUsageMetricsExportStatus, err error) {
+	_model = &DataUsageMetricsExportStatus{
+		Enabled: core.BoolPtr(enabled),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalDataUsageMetricsExportStatus unmarshals an instance of DataUsageMetricsExportStatus from the specified map of raw messages.
+func UnmarshalDataUsageMetricsExportStatus(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataUsageMetricsExportStatus)
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // DeleteAlertOptions : The DeleteAlert options.
 type DeleteAlertOptions struct {
 	// Alert ID.
@@ -11625,6 +12258,34 @@ func (_options *DeleteDashboardOptions) SetDashboardID(dashboardID string) *Dele
 
 // SetHeaders : Allow user to set Headers
 func (options *DeleteDashboardOptions) SetHeaders(param map[string]string) *DeleteDashboardOptions {
+	options.Headers = param
+	return options
+}
+
+// DeleteDataAccessRuleOptions : The DeleteDataAccessRule options.
+type DeleteDataAccessRuleOptions struct {
+	// ID of Data Access Rule to be deleted.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeleteDataAccessRuleOptions : Instantiate DeleteDataAccessRuleOptions
+func (*LogsV0) NewDeleteDataAccessRuleOptions(id *strfmt.UUID) *DeleteDataAccessRuleOptions {
+	return &DeleteDataAccessRuleOptions{
+		ID: id,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteDataAccessRuleOptions) SetID(id *strfmt.UUID) *DeleteDataAccessRuleOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteDataAccessRuleOptions) SetHeaders(param map[string]string) *DeleteDataAccessRuleOptions {
 	options.Headers = param
 	return options
 }
@@ -12127,6 +12788,24 @@ func (options *GetDashboardOptions) SetHeaders(param map[string]string) *GetDash
 	return options
 }
 
+// GetDataUsageMetricsExportStatusOptions : The GetDataUsageMetricsExportStatus options.
+type GetDataUsageMetricsExportStatusOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetDataUsageMetricsExportStatusOptions : Instantiate GetDataUsageMetricsExportStatusOptions
+func (*LogsV0) NewGetDataUsageMetricsExportStatusOptions() *GetDataUsageMetricsExportStatusOptions {
+	return &GetDataUsageMetricsExportStatusOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetDataUsageMetricsExportStatusOptions) SetHeaders(param map[string]string) *GetDataUsageMetricsExportStatusOptions {
+	options.Headers = param
+	return options
+}
+
 // GetE2mOptions : The GetE2m options.
 type GetE2mOptions struct {
 	// ID of e2m to be deleted.
@@ -12309,6 +12988,32 @@ func (*LogsV0) NewListDashboardFoldersOptions() *ListDashboardFoldersOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *ListDashboardFoldersOptions) SetHeaders(param map[string]string) *ListDashboardFoldersOptions {
+	options.Headers = param
+	return options
+}
+
+// ListDataAccessRulesOptions : The ListDataAccessRules options.
+type ListDataAccessRulesOptions struct {
+	// Array of data access rule IDs.
+	ID []strfmt.UUID `json:"id,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewListDataAccessRulesOptions : Instantiate ListDataAccessRulesOptions
+func (*LogsV0) NewListDataAccessRulesOptions() *ListDataAccessRulesOptions {
+	return &ListDataAccessRulesOptions{}
+}
+
+// SetID : Allow user to set ID
+func (_options *ListDataAccessRulesOptions) SetID(id []strfmt.UUID) *ListDataAccessRulesOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListDataAccessRulesOptions) SetHeaders(param map[string]string) *ListDataAccessRulesOptions {
 	options.Headers = param
 	return options
 }
@@ -12646,6 +13351,14 @@ type OutgoingWebhooksV1IbmEventNotificationsConfig struct {
 
 	// The region ID of the selected IBM Event Notifications instance.
 	RegionID *string `json:"region_id" validate:"required"`
+
+	// The ID of the created source in the IBM Event Notifications instance. Corresponds to the Cloud Logs instance crn.
+	// Not required when creating an Outbound Integration.
+	SourceID *string `json:"source_id,omitempty"`
+
+	// The name of the created source in the IBM Event Notifications instance. Not required when creating an Outbound
+	// Integration.
+	SourceName *string `json:"source_name,omitempty"`
 }
 
 // NewOutgoingWebhooksV1IbmEventNotificationsConfig : Instantiate OutgoingWebhooksV1IbmEventNotificationsConfig (Generic Model Constructor)
@@ -12672,6 +13385,16 @@ func UnmarshalOutgoingWebhooksV1IbmEventNotificationsConfig(m map[string]json.Ra
 	err = core.UnmarshalPrimitive(m, "region_id", &obj.RegionID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "region_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "source_id", &obj.SourceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "source_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "source_name", &obj.SourceName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "source_name-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -13395,11 +14118,11 @@ type ReplaceViewOptions struct {
 	// View name.
 	Name *string `json:"name" validate:"required"`
 
-	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
-
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
+
+	// View search query.
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View selected filters.
 	Filters *ApisViewsV1SelectedFilters `json:"filters,omitempty"`
@@ -13412,11 +14135,10 @@ type ReplaceViewOptions struct {
 }
 
 // NewReplaceViewOptions : Instantiate ReplaceViewOptions
-func (*LogsV0) NewReplaceViewOptions(id int64, name string, searchQuery *ApisViewsV1SearchQuery, timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
+func (*LogsV0) NewReplaceViewOptions(id int64, name string, timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
 	return &ReplaceViewOptions{
 		ID: core.Int64Ptr(id),
 		Name: core.StringPtr(name),
-		SearchQuery: searchQuery,
 		TimeSelection: timeSelection,
 	}
 }
@@ -13433,15 +14155,15 @@ func (_options *ReplaceViewOptions) SetName(name string) *ReplaceViewOptions {
 	return _options
 }
 
-// SetSearchQuery : Allow user to set SearchQuery
-func (_options *ReplaceViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *ReplaceViewOptions {
-	_options.SearchQuery = searchQuery
-	return _options
-}
-
 // SetTimeSelection : Allow user to set TimeSelection
 func (_options *ReplaceViewOptions) SetTimeSelection(timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
 	_options.TimeSelection = timeSelection
+	return _options
+}
+
+// SetSearchQuery : Allow user to set SearchQuery
+func (_options *ReplaceViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *ReplaceViewOptions {
+	_options.SearchQuery = searchQuery
 	return _options
 }
 
@@ -14610,6 +15332,101 @@ func (options *UpdateAlertOptions) SetHeaders(param map[string]string) *UpdateAl
 	return options
 }
 
+// UpdateDataAccessRuleOptions : The UpdateDataAccessRule options.
+type UpdateDataAccessRuleOptions struct {
+	// ID of Data Access Rule to be deleted.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Display Name for new Data Access Rule.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Filters for new Data Access Rule.
+	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
+
+	// Default Expression for new Data Access Rule.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+
+	// Description for new Data Access Rule.
+	Description *string `json:"description,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateDataAccessRuleOptions : Instantiate UpdateDataAccessRuleOptions
+func (*LogsV0) NewUpdateDataAccessRuleOptions(id *strfmt.UUID, displayName string, filters []DataAccessRuleFilter, defaultExpression string) *UpdateDataAccessRuleOptions {
+	return &UpdateDataAccessRuleOptions{
+		ID: id,
+		DisplayName: core.StringPtr(displayName),
+		Filters: filters,
+		DefaultExpression: core.StringPtr(defaultExpression),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateDataAccessRuleOptions) SetID(id *strfmt.UUID) *UpdateDataAccessRuleOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetDisplayName : Allow user to set DisplayName
+func (_options *UpdateDataAccessRuleOptions) SetDisplayName(displayName string) *UpdateDataAccessRuleOptions {
+	_options.DisplayName = core.StringPtr(displayName)
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *UpdateDataAccessRuleOptions) SetFilters(filters []DataAccessRuleFilter) *UpdateDataAccessRuleOptions {
+	_options.Filters = filters
+	return _options
+}
+
+// SetDefaultExpression : Allow user to set DefaultExpression
+func (_options *UpdateDataAccessRuleOptions) SetDefaultExpression(defaultExpression string) *UpdateDataAccessRuleOptions {
+	_options.DefaultExpression = core.StringPtr(defaultExpression)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *UpdateDataAccessRuleOptions) SetDescription(description string) *UpdateDataAccessRuleOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateDataAccessRuleOptions) SetHeaders(param map[string]string) *UpdateDataAccessRuleOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateDataUsageMetricsExportStatusOptions : The UpdateDataUsageMetricsExportStatus options.
+type UpdateDataUsageMetricsExportStatusOptions struct {
+	// The "enabled" parameter for metrics export.
+	Enabled *bool `json:"enabled" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateDataUsageMetricsExportStatusOptions : Instantiate UpdateDataUsageMetricsExportStatusOptions
+func (*LogsV0) NewUpdateDataUsageMetricsExportStatusOptions(enabled bool) *UpdateDataUsageMetricsExportStatusOptions {
+	return &UpdateDataUsageMetricsExportStatusOptions{
+		Enabled: core.BoolPtr(enabled),
+	}
+}
+
+// SetEnabled : Allow user to set Enabled
+func (_options *UpdateDataUsageMetricsExportStatusOptions) SetEnabled(enabled bool) *UpdateDataUsageMetricsExportStatusOptions {
+	_options.Enabled = core.BoolPtr(enabled)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateDataUsageMetricsExportStatusOptions) SetHeaders(param map[string]string) *UpdateDataUsageMetricsExportStatusOptions {
+	options.Headers = param
+	return options
+}
+
 // UpdateOutgoingWebhookOptions : The UpdateOutgoingWebhook options.
 type UpdateOutgoingWebhookOptions struct {
 	// The ID of the Outbound Integration to delete.
@@ -14781,7 +15598,7 @@ type View struct {
 	Name *string `json:"name" validate:"required"`
 
 	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
