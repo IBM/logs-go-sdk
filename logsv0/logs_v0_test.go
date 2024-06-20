@@ -14868,6 +14868,563 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) - Operation response error`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetEnrichments with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions)`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetEnrichments with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) - Operation response error`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateEnrichment with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions)`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateEnrichment(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateEnrichment with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateEnrichmentOptions model with no property values
+				createEnrichmentOptionsModelNew := new(logsv0.CreateEnrichmentOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions)`, func() {
+		removeEnrichmentsPath := "/v1/enrichments/1"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(removeEnrichmentsPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke RemoveEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.RemoveEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke RemoveEnrichments with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the RemoveEnrichmentsOptions model with no property values
+				removeEnrichmentsOptionsModelNew := new(logsv0.RemoveEnrichmentsOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) - Operation response error`, func() {
 		getDataUsageMetricsExportStatusPath := "/v1/data_usage"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -16459,6 +17016,41 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createE2mOptionsModel.Event2MetricPrototype).To(Equal(event2MetricPrototypeModel))
 				Expect(createE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateEnrichmentOptions successfully`, func() {
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				Expect(enrichmentV1GeoIpTypeEmptyModel).ToNot(BeNil())
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(nil)
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).To(BeEmpty())
+
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap := make(map[string]interface{})
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap["foo"] = "testString"
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(enrichmentV1GeoIpTypeEmptyModelExpectedMap)
+				enrichmentV1GeoIpTypeEmptyModelActualMap := enrichmentV1GeoIpTypeEmptyModel.GetProperties()
+				Expect(enrichmentV1GeoIpTypeEmptyModelActualMap).To(Equal(enrichmentV1GeoIpTypeEmptyModelExpectedMap))
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				Expect(enrichmentV1EnrichmentTypeModel).ToNot(BeNil())
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+				Expect(enrichmentV1EnrichmentTypeModel.GeoIp).To(Equal(enrichmentV1GeoIpTypeEmptyModel))
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsFieldName := "ip"
+				var createEnrichmentOptionsEnrichmentType logsv0.EnrichmentV1EnrichmentTypeIntf = nil
+				createEnrichmentOptionsModel := logsService.NewCreateEnrichmentOptions(createEnrichmentOptionsFieldName, createEnrichmentOptionsEnrichmentType)
+				createEnrichmentOptionsModel.SetFieldName("ip")
+				createEnrichmentOptionsModel.SetEnrichmentType(enrichmentV1EnrichmentTypeModel)
+				createEnrichmentOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createEnrichmentOptionsModel).ToNot(BeNil())
+				Expect(createEnrichmentOptionsModel.FieldName).To(Equal(core.StringPtr("ip")))
+				Expect(createEnrichmentOptionsModel.EnrichmentType).To(Equal(enrichmentV1EnrichmentTypeModel))
+				Expect(createEnrichmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
@@ -16851,6 +17443,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(getE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := logsService.NewGetEnrichmentsOptions()
+				getEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(getEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the GetOutgoingWebhookOptions model
 				id := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
@@ -16983,6 +17582,16 @@ var _ = Describe(`LogsV0`, func() {
 				_model, err := logsService.NewQuotaV1Rule(ruleTypeID, name)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewRemoveEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				id := int64(1)
+				removeEnrichmentsOptionsModel := logsService.NewRemoveEnrichmentsOptions(id)
+				removeEnrichmentsOptionsModel.SetID(int64(1))
+				removeEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(removeEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(removeEnrichmentsOptionsModel.ID).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(removeEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewReplaceDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the ReplaceDashboardFolderOptions model
@@ -21304,6 +21913,78 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalEnrichmentV1CustomEnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1CustomEnrichmentType)
+			model.ID = core.Int64Ptr(int64(1))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1CustomEnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1CustomEnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentType)
+			model.GeoIp = nil
+			model.SuspiciousIp = nil
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1GeoIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1GeoIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1GeoIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1SuspiciousIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1SuspiciousIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1SuspiciousIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalEvent2MetricPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.Event2MetricPrototype)
@@ -23230,6 +23911,60 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame
 			err = logsv0.UnmarshalDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment)
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+			model.GeoIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp)
+			model.SuspiciousIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))

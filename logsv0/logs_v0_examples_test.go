@@ -1550,6 +1550,54 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(dataAccessRule).ToNot(BeNil())
 		})
+		It(`GetEnrichments request example`, func() {
+			fmt.Println("\nGetEnrichments() result:")
+			// begin-get_enrichments
+
+			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
+
+			entrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(entrichmentCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(entrichmentCollection).ToNot(BeNil())
+		})
+		It(`CreateEnrichment request example`, func() {
+			fmt.Println("\nCreateEnrichment() result:")
+			// begin-create_enrichment
+
+			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{
+			}
+
+			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
+				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
+			}
+
+			createEnrichmentOptions := logsService.NewCreateEnrichmentOptions(
+				"ip",
+				enrichmentV1EnrichmentTypeModel,
+			)
+
+			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_enrichment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(enrichment).ToNot(BeNil())
+		})
 		It(`GetDataUsageMetricsExportStatus request example`, func() {
 			fmt.Println("\nGetDataUsageMetricsExportStatus() result:")
 			// begin-get_data_usage_metrics_export_status
@@ -1806,6 +1854,26 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-delete_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`RemoveEnrichments request example`, func() {
+			// begin-remove_enrichments
+
+			removeEnrichmentsOptions := logsService.NewRemoveEnrichmentsOptions(
+				int64(1),
+			)
+
+			response, err := logsService.RemoveEnrichments(removeEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from RemoveEnrichments(): %d\n", response.StatusCode)
+			}
+
+			// end-remove_enrichments
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))

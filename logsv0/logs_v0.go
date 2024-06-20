@@ -3818,6 +3818,204 @@ func (logs *LogsV0) DeleteDataAccessRuleWithContext(ctx context.Context, deleteD
 	return
 }
 
+// GetEnrichments : List all enrichments
+// List all enrichments.
+func (logs *LogsV0) GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) (result *EntrichmentCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetEnrichmentsWithContext(context.Background(), getEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetEnrichmentsWithContext is an alternate form of the GetEnrichments method which supports a Context parameter
+func (logs *LogsV0) GetEnrichmentsWithContext(ctx context.Context, getEnrichmentsOptions *GetEnrichmentsOptions) (result *EntrichmentCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getEnrichmentsOptions, "getEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEntrichmentCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateEnrichment : Create an enrichment
+// Create an enrichment.
+func (logs *LogsV0) CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateEnrichmentWithContext(context.Background(), createEnrichmentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateEnrichmentWithContext is an alternate form of the CreateEnrichment method which supports a Context parameter
+func (logs *LogsV0) CreateEnrichmentWithContext(ctx context.Context, createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createEnrichmentOptions, "createEnrichmentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createEnrichmentOptions, "createEnrichmentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createEnrichmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEnrichment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createEnrichmentOptions.FieldName != nil {
+		body["field_name"] = createEnrichmentOptions.FieldName
+	}
+	if createEnrichmentOptions.EnrichmentType != nil {
+		body["enrichment_type"] = createEnrichmentOptions.EnrichmentType
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_enrichment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichment)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// RemoveEnrichments : Delete enrichments
+// Delete enrichments.
+func (logs *LogsV0) RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.RemoveEnrichmentsWithContext(context.Background(), removeEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// RemoveEnrichmentsWithContext is an alternate form of the RemoveEnrichments method which supports a Context parameter
+func (logs *LogsV0) RemoveEnrichmentsWithContext(ctx context.Context, removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(removeEnrichmentsOptions, "removeEnrichmentsOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(removeEnrichmentsOptions, "removeEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*removeEnrichmentsOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range removeEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "RemoveEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "remove_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
 // GetDataUsageMetricsExportStatus : Get data usage metrics export status
 // Get data usage metrics export status.
 func (logs *LogsV0) GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
@@ -11598,6 +11796,44 @@ func (options *CreateE2mOptions) SetHeaders(param map[string]string) *CreateE2mO
 	return options
 }
 
+// CreateEnrichmentOptions : The CreateEnrichment options.
+type CreateEnrichmentOptions struct {
+	// The name of the field to enrich.
+	FieldName *string `json:"field_name" validate:"required"`
+
+	// The enrichment type.
+	EnrichmentType EnrichmentV1EnrichmentTypeIntf `json:"enrichment_type" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateEnrichmentOptions : Instantiate CreateEnrichmentOptions
+func (*LogsV0) NewCreateEnrichmentOptions(fieldName string, enrichmentType EnrichmentV1EnrichmentTypeIntf) *CreateEnrichmentOptions {
+	return &CreateEnrichmentOptions{
+		FieldName: core.StringPtr(fieldName),
+		EnrichmentType: enrichmentType,
+	}
+}
+
+// SetFieldName : Allow user to set FieldName
+func (_options *CreateEnrichmentOptions) SetFieldName(fieldName string) *CreateEnrichmentOptions {
+	_options.FieldName = core.StringPtr(fieldName)
+	return _options
+}
+
+// SetEnrichmentType : Allow user to set EnrichmentType
+func (_options *CreateEnrichmentOptions) SetEnrichmentType(enrichmentType EnrichmentV1EnrichmentTypeIntf) *CreateEnrichmentOptions {
+	_options.EnrichmentType = enrichmentType
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateEnrichmentOptions) SetHeaders(param map[string]string) *CreateEnrichmentOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateOutgoingWebhookOptions : The CreateOutgoingWebhook options.
 type CreateOutgoingWebhookOptions struct {
 	// The input data of the Outbound Integration.
@@ -12458,6 +12694,249 @@ func (options *DeleteViewOptions) SetHeaders(param map[string]string) *DeleteVie
 	return options
 }
 
+// Enrichment : The enrichments.
+type Enrichment struct {
+	// The enrichment ID.
+	ID *int64 `json:"id" validate:"required"`
+
+	// The enrichment field name.
+	FieldName *string `json:"field_name" validate:"required"`
+
+	// The enrichment type.
+	EnrichmentType EnrichmentV1EnrichmentTypeIntf `json:"enrichment_type" validate:"required"`
+}
+
+// UnmarshalEnrichment unmarshals an instance of Enrichment from the specified map of raw messages.
+func UnmarshalEnrichment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Enrichment)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "field_name", &obj.FieldName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "enrichment_type", &obj.EnrichmentType, UnmarshalEnrichmentV1EnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enrichment_type-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1CustomEnrichmentType : The custom enrichment.
+type EnrichmentV1CustomEnrichmentType struct {
+	// The ID of the custom enrichment.
+	ID *int64 `json:"id,omitempty"`
+}
+
+// UnmarshalEnrichmentV1CustomEnrichmentType unmarshals an instance of EnrichmentV1CustomEnrichmentType from the specified map of raw messages.
+func UnmarshalEnrichmentV1CustomEnrichmentType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1CustomEnrichmentType)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentType : The enrichment type.
+// Models which "extend" this model:
+// - EnrichmentV1EnrichmentTypeTypeGeoIp
+// - EnrichmentV1EnrichmentTypeTypeSuspiciousIp
+// - EnrichmentV1EnrichmentTypeTypeCustomEnrichment
+type EnrichmentV1EnrichmentType struct {
+	// The geo ip enrichment.
+	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
+
+	// The suspicious ip enrichment.
+	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
+
+	// The custom enrichment.
+	CustomEnrichment *EnrichmentV1CustomEnrichmentType `json:"custom_enrichment,omitempty"`
+}
+func (*EnrichmentV1EnrichmentType) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+type EnrichmentV1EnrichmentTypeIntf interface {
+	isaEnrichmentV1EnrichmentType() bool
+}
+
+// UnmarshalEnrichmentV1EnrichmentType unmarshals an instance of EnrichmentV1EnrichmentType from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentType)
+	err = core.UnmarshalModel(m, "geo_ip", &obj.GeoIp, UnmarshalEnrichmentV1GeoIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "geo_ip-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "suspicious_ip", &obj.SuspiciousIp, UnmarshalEnrichmentV1SuspiciousIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "suspicious_ip-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "custom_enrichment", &obj.CustomEnrichment, UnmarshalEnrichmentV1CustomEnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom_enrichment-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1GeoIpTypeEmpty : The geo ip enrichment.
+type EnrichmentV1GeoIpTypeEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalEnrichmentV1GeoIpTypeEmpty unmarshals an instance of EnrichmentV1GeoIpTypeEmpty from the specified map of raw messages.
+func UnmarshalEnrichmentV1GeoIpTypeEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1GeoIpTypeEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1SuspiciousIpTypeEmpty : The suspicious ip enrichment.
+type EnrichmentV1SuspiciousIpTypeEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalEnrichmentV1SuspiciousIpTypeEmpty unmarshals an instance of EnrichmentV1SuspiciousIpTypeEmpty from the specified map of raw messages.
+func UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1SuspiciousIpTypeEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EntrichmentCollection : The enrichments collection.
+type EntrichmentCollection struct {
+	// The enrichments.
+	Enrichments []Enrichment `json:"enrichments" validate:"required"`
+}
+
+// UnmarshalEntrichmentCollection unmarshals an instance of EntrichmentCollection from the specified map of raw messages.
+func UnmarshalEntrichmentCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EntrichmentCollection)
+	err = core.UnmarshalModel(m, "enrichments", &obj.Enrichments, UnmarshalEnrichment)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enrichments-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // Event2Metric : E2M represents the Event to metrics base model.
 // Models which "extend" this model:
 // - Event2MetricApisEvents2metricsV2E2mQueryLogsQuery
@@ -12830,6 +13309,24 @@ func (_options *GetE2mOptions) SetID(id string) *GetE2mOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *GetE2mOptions) SetHeaders(param map[string]string) *GetE2mOptions {
+	options.Headers = param
+	return options
+}
+
+// GetEnrichmentsOptions : The GetEnrichments options.
+type GetEnrichmentsOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetEnrichmentsOptions : Instantiate GetEnrichmentsOptions
+func (*LogsV0) NewGetEnrichmentsOptions() *GetEnrichmentsOptions {
+	return &GetEnrichmentsOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetEnrichmentsOptions) SetHeaders(param map[string]string) *GetEnrichmentsOptions {
 	options.Headers = param
 	return options
 }
@@ -13844,6 +14341,34 @@ func UnmarshalQuotaV1Rule(m map[string]json.RawMessage, result interface{}) (err
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// RemoveEnrichmentsOptions : The RemoveEnrichments options.
+type RemoveEnrichmentsOptions struct {
+	// The enrichment ID.
+	ID *int64 `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewRemoveEnrichmentsOptions : Instantiate RemoveEnrichmentsOptions
+func (*LogsV0) NewRemoveEnrichmentsOptions(id int64) *RemoveEnrichmentsOptions {
+	return &RemoveEnrichmentsOptions{
+		ID: core.Int64Ptr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *RemoveEnrichmentsOptions) SetID(id int64) *RemoveEnrichmentsOptions {
+	_options.ID = core.Int64Ptr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *RemoveEnrichmentsOptions) SetHeaders(param map[string]string) *RemoveEnrichmentsOptions {
+	options.Headers = param
+	return options
 }
 
 // ReplaceDashboardFolderOptions : The ReplaceDashboardFolder options.
@@ -18126,6 +18651,75 @@ func UnmarshalDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(m 
 	err = core.UnmarshalPrimitive(m, "relative_time_frame", &obj.RelativeTimeFrame)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "relative_time_frame-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentTypeTypeCustomEnrichment : EnrichmentV1EnrichmentTypeTypeCustomEnrichment struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeCustomEnrichment struct {
+	// The custom enrichment.
+	CustomEnrichment *EnrichmentV1CustomEnrichmentType `json:"custom_enrichment,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeCustomEnrichment) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment unmarshals an instance of EnrichmentV1EnrichmentTypeTypeCustomEnrichment from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeCustomEnrichment)
+	err = core.UnmarshalModel(m, "custom_enrichment", &obj.CustomEnrichment, UnmarshalEnrichmentV1CustomEnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom_enrichment-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentTypeTypeGeoIp : EnrichmentV1EnrichmentTypeTypeGeoIp struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeGeoIp struct {
+	// The geo ip enrichment.
+	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeGeoIp) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp unmarshals an instance of EnrichmentV1EnrichmentTypeTypeGeoIp from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeGeoIp)
+	err = core.UnmarshalModel(m, "geo_ip", &obj.GeoIp, UnmarshalEnrichmentV1GeoIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "geo_ip-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentTypeTypeSuspiciousIp : EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct {
+	// The suspicious ip enrichment.
+	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeSuspiciousIp) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp unmarshals an instance of EnrichmentV1EnrichmentTypeTypeSuspiciousIp from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeSuspiciousIp)
+	err = core.UnmarshalModel(m, "suspicious_ip", &obj.SuspiciousIp, UnmarshalEnrichmentV1SuspiciousIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "suspicious_ip-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

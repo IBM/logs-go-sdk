@@ -48,6 +48,7 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 
 		// Variables to hold link values
 		alertIdLink           strfmt.UUID
+		dataAccessRuleIdLink  strfmt.UUID
 		dashboardIdLink       string
 		events2MetricsIdLink  strfmt.UUID
 		folderIdLink          strfmt.UUID
@@ -562,6 +563,33 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 
 			viewFolderIdLink = *viewFolder.ID
 			fmt.Fprintf(GinkgoWriter, "Saved viewFolderIdLink value: %v\n", viewFolderIdLink)
+		})
+	})
+
+	Describe(`CreateDataAccessRule - Create a Data Access Rule`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions)`, func() {
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			createDataAccessRuleOptions := &logsv0.CreateDataAccessRuleOptions{
+				DisplayName:       core.StringPtr("Test Data Access Rule"),
+				Filters:           []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				DefaultExpression: core.StringPtr("<v1>true"),
+				Description:       core.StringPtr("Data Access Rule intended for testing"),
+			}
+
+			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(dataAccessRule).ToNot(BeNil())
+
+			dataAccessRuleIdLink = *dataAccessRule.ID
+			fmt.Fprintf(GinkgoWriter, "Saved dataAccessRuleIdLink value: %v\n", dataAccessRuleIdLink)
 		})
 	})
 
@@ -1305,6 +1333,77 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`GetDataUsageMetricsExportStatus - Get data usage metrics export status`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions)`, func() {
+			getDataUsageMetricsExportStatusOptions := &logsv0.GetDataUsageMetricsExportStatusOptions{}
+
+			dataUsageMetricsExportStatus, response, err := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateDataUsageMetricsExportStatus - Update data usage metrics export status`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions)`, func() {
+			updateDataUsageMetricsExportStatusOptions := &logsv0.UpdateDataUsageMetricsExportStatusOptions{
+				Enabled: core.BoolPtr(true),
+			}
+
+			dataUsageMetricsExportStatus, response, err := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+	})
+
+	Describe(`UpdateDataAccessRule - Update a Data Access Rule`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions)`, func() {
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			updateDataAccessRuleOptions := &logsv0.UpdateDataAccessRuleOptions{
+				ID:                &dataAccessRuleIdLink,
+				DisplayName:       core.StringPtr("Test Data Access Rule"),
+				Filters:           []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				DefaultExpression: core.StringPtr("<v1>true"),
+				Description:       core.StringPtr("Data Access Rule intended for testing"),
+			}
+
+			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRule).ToNot(BeNil())
+		})
+	})
+
+	Describe(`ListDataAccessRules - List service instance's Data Access Rules with provided ids`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions)`, func() {
+			listDataAccessRulesOptions := &logsv0.ListDataAccessRulesOptions{
+				ID: []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"},
+			}
+
+			dataAccessRuleCollection, response, err := logsService.ListDataAccessRules(listDataAccessRulesOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRuleCollection).ToNot(BeNil())
+		})
+	})
+
 	Describe(`DeleteAlert - Delete an alert`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -1450,6 +1549,21 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			}
 
 			response, err := logsService.DeleteViewFolder(deleteViewFolderOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+	})
+
+	Describe(`DeleteDataAccessRule - Delete a Data Access Rule`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions)`, func() {
+			deleteDataAccessRuleOptions := &logsv0.DeleteDataAccessRuleOptions{
+				ID: &dataAccessRuleIdLink,
+			}
+
+			response, err := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
