@@ -3985,6 +3985,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4048,7 +4050,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully with retries`, func() {
@@ -4064,6 +4066,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4130,7 +4134,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully`, func() {
@@ -4151,6 +4155,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4183,6 +4189,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4236,6 +4244,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4324,7 +4334,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully with retries`, func() {
@@ -4378,7 +4388,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully`, func() {
@@ -4501,6 +4511,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4565,7 +4577,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully with retries`, func() {
@@ -4581,6 +4593,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4648,7 +4662,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully`, func() {
@@ -4669,6 +4683,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4702,6 +4718,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -4756,6 +4774,8 @@ var _ = Describe(`LogsV0`, func() {
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -12019,10 +12039,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12031,6 +12047,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12044,8 +12064,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12112,10 +12132,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12124,6 +12140,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12137,8 +12157,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12213,10 +12233,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12225,6 +12241,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12238,8 +12258,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12259,10 +12279,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12271,6 +12287,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12284,8 +12304,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12326,10 +12346,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12338,6 +12354,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12351,8 +12371,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12605,10 +12625,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12617,6 +12633,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12631,8 +12651,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12699,10 +12719,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12711,6 +12727,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12725,8 +12745,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12801,10 +12821,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12813,6 +12829,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12827,8 +12847,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12848,10 +12868,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12860,6 +12876,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12874,8 +12894,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12916,10 +12936,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12928,6 +12944,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12942,8 +12962,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -14002,6 +14022,1853 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) - Operation response error`, func() {
+		listDataAccessRulesPath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions)`, func() {
+		listDataAccessRulesPath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.ListDataAccessRulesWithContext(ctx, listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.ListDataAccessRulesWithContext(ctx, listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.ListDataAccessRules(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListDataAccessRules with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) - Operation response error`, func() {
+		createDataAccessRulePath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions)`, func() {
+		createDataAccessRulePath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateDataAccessRuleWithContext(ctx, createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateDataAccessRuleWithContext(ctx, createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateDataAccessRuleOptions model with no property values
+				createDataAccessRuleOptionsModelNew := new(logsv0.CreateDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) - Operation response error`, func() {
+		updateDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions)`, func() {
+		updateDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateDataAccessRuleWithContext(ctx, updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateDataAccessRuleWithContext(ctx, updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateDataAccessRuleOptions model with no property values
+				updateDataAccessRuleOptionsModelNew := new(logsv0.UpdateDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions)`, func() {
+		deleteDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteDataAccessRulePath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.DeleteDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				deleteDataAccessRuleOptionsModel := new(logsv0.DeleteDataAccessRuleOptions)
+				deleteDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				deleteDataAccessRuleOptionsModel := new(logsv0.DeleteDataAccessRuleOptions)
+				deleteDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteDataAccessRuleOptions model with no property values
+				deleteDataAccessRuleOptionsModelNew := new(logsv0.DeleteDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) - Operation response error`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetEnrichments with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions)`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetEnrichments with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) - Operation response error`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateEnrichment with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions)`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateEnrichment(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateEnrichment with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateEnrichmentOptions model with no property values
+				createEnrichmentOptionsModelNew := new(logsv0.CreateEnrichmentOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions)`, func() {
+		removeEnrichmentsPath := "/v1/enrichments/1"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(removeEnrichmentsPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke RemoveEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.RemoveEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke RemoveEnrichments with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the RemoveEnrichmentsOptions model with no property values
+				removeEnrichmentsOptionsModelNew := new(logsv0.RemoveEnrichmentsOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) - Operation response error`, func() {
+		getDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions)`, func() {
+		getDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDataUsageMetricsExportStatusWithContext(ctx, getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDataUsageMetricsExportStatusWithContext(ctx, getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) - Operation response error`, func() {
+		updateDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions)`, func() {
+		updateDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateDataUsageMetricsExportStatusWithContext(ctx, updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateDataUsageMetricsExportStatusWithContext(ctx, updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateDataUsageMetricsExportStatusOptions model with no property values
+				updateDataUsageMetricsExportStatusOptionsModelNew := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			logsService, _ := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -15045,6 +16912,32 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createDashboardOptionsModel.Dashboard).To(Equal(dashboardModel))
 				Expect(createDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				Expect(dataAccessRuleFilterModel).ToNot(BeNil())
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+				Expect(dataAccessRuleFilterModel.EntityType).To(Equal(core.StringPtr("logs")))
+				Expect(dataAccessRuleFilterModel.Expression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				createDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
+				createDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				createDataAccessRuleOptionsModel := logsService.NewCreateDataAccessRuleOptions(createDataAccessRuleOptionsDisplayName, createDataAccessRuleOptionsFilters, createDataAccessRuleOptionsDefaultExpression)
+				createDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
+				createDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(createDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(createDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
+				Expect(createDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+				Expect(createDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(createDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateE2mOptions successfully`, func() {
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
@@ -15123,14 +17016,53 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createE2mOptionsModel.Event2MetricPrototype).To(Equal(event2MetricPrototypeModel))
 				Expect(createE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateEnrichmentOptions successfully`, func() {
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				Expect(enrichmentV1GeoIpTypeEmptyModel).ToNot(BeNil())
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(nil)
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).To(BeEmpty())
+
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap := make(map[string]interface{})
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap["foo"] = "testString"
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(enrichmentV1GeoIpTypeEmptyModelExpectedMap)
+				enrichmentV1GeoIpTypeEmptyModelActualMap := enrichmentV1GeoIpTypeEmptyModel.GetProperties()
+				Expect(enrichmentV1GeoIpTypeEmptyModelActualMap).To(Equal(enrichmentV1GeoIpTypeEmptyModelExpectedMap))
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				Expect(enrichmentV1EnrichmentTypeModel).ToNot(BeNil())
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+				Expect(enrichmentV1EnrichmentTypeModel.GeoIp).To(Equal(enrichmentV1GeoIpTypeEmptyModel))
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsFieldName := "ip"
+				var createEnrichmentOptionsEnrichmentType logsv0.EnrichmentV1EnrichmentTypeIntf = nil
+				createEnrichmentOptionsModel := logsService.NewCreateEnrichmentOptions(createEnrichmentOptionsFieldName, createEnrichmentOptionsEnrichmentType)
+				createEnrichmentOptionsModel.SetFieldName("ip")
+				createEnrichmentOptionsModel.SetEnrichmentType(enrichmentV1EnrichmentTypeModel)
+				createEnrichmentOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createEnrichmentOptionsModel).ToNot(BeNil())
+				Expect(createEnrichmentOptionsModel.FieldName).To(Equal(core.StringPtr("ip")))
+				Expect(createEnrichmentOptionsModel.EnrichmentType).To(Equal(enrichmentV1EnrichmentTypeModel))
+				Expect(createEnrichmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID).To(Equal(core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName).To(Equal(core.StringPtr("IBM Cloud Event Notifications")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -15285,12 +17217,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createViewFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateViewOptions successfully`, func() {
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs")))
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				Expect(apisViewsV1CustomTimeSelectionModel).ToNot(BeNil())
@@ -15304,6 +17230,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisViewsV1TimeSelectionModel).ToNot(BeNil())
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
 				Expect(apisViewsV1TimeSelectionModel.CustomSelection).To(Equal(apisViewsV1CustomTimeSelectionModel))
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
+				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs")))
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -15321,19 +17253,18 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsName := "Logs view"
-				var createViewOptionsSearchQuery *logsv0.ApisViewsV1SearchQuery = nil
 				var createViewOptionsTimeSelection logsv0.ApisViewsV1TimeSelectionIntf = nil
-				createViewOptionsModel := logsService.NewCreateViewOptions(createViewOptionsName, createViewOptionsSearchQuery, createViewOptionsTimeSelection)
+				createViewOptionsModel := logsService.NewCreateViewOptions(createViewOptionsName, createViewOptionsTimeSelection)
 				createViewOptionsModel.SetName("Logs view")
-				createViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				createViewOptionsModel.SetTimeSelection(apisViewsV1TimeSelectionModel)
+				createViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				createViewOptionsModel.SetFilters(apisViewsV1SelectedFiltersModel)
 				createViewOptionsModel.SetFolderID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				createViewOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createViewOptionsModel).ToNot(BeNil())
 				Expect(createViewOptionsModel.Name).To(Equal(core.StringPtr("Logs view")))
-				Expect(createViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(createViewOptionsModel.TimeSelection).To(Equal(apisViewsV1TimeSelectionModel))
+				Expect(createViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(createViewOptionsModel.Filters).To(Equal(apisViewsV1SelectedFiltersModel))
 				Expect(createViewOptionsModel.FolderID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(createViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -15341,6 +17272,19 @@ var _ = Describe(`LogsV0`, func() {
 			It(`Invoke NewDashboardFolder successfully`, func() {
 				name := "My Folder"
 				_model, err := logsService.NewDashboardFolder(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewDataAccessRuleFilter successfully`, func() {
+				entityType := "logs"
+				expression := "true"
+				_model, err := logsService.NewDataAccessRuleFilter(entityType, expression)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewDataUsageMetricsExportStatus successfully`, func() {
+				enabled := true
+				_model, err := logsService.NewDataUsageMetricsExportStatus(enabled)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -15373,6 +17317,16 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(deleteDashboardOptionsModel).ToNot(BeNil())
 				Expect(deleteDashboardOptionsModel.DashboardID).To(Equal(core.StringPtr("testString")))
 				Expect(deleteDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewDeleteDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel := logsService.NewDeleteDataAccessRuleOptions(id)
+				deleteDataAccessRuleOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				deleteDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(deleteDataAccessRuleOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(deleteDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteE2mOptions successfully`, func() {
 				// Construct an instance of the DeleteE2mOptions model
@@ -15472,6 +17426,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getDashboardOptionsModel.DashboardID).To(Equal(core.StringPtr("testString")))
 				Expect(getDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetDataUsageMetricsExportStatusOptions successfully`, func() {
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := logsService.NewGetDataUsageMetricsExportStatusOptions()
+				getDataUsageMetricsExportStatusOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDataUsageMetricsExportStatusOptionsModel).ToNot(BeNil())
+				Expect(getDataUsageMetricsExportStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetE2mOptions successfully`, func() {
 				// Construct an instance of the GetE2mOptions model
 				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
@@ -15481,6 +17442,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getE2mOptionsModel).ToNot(BeNil())
 				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(getE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := logsService.NewGetEnrichmentsOptions()
+				getEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(getEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the GetOutgoingWebhookOptions model
@@ -15538,6 +17506,15 @@ var _ = Describe(`LogsV0`, func() {
 				listDashboardFoldersOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listDashboardFoldersOptionsModel).ToNot(BeNil())
 				Expect(listDashboardFoldersOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewListDataAccessRulesOptions successfully`, func() {
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := logsService.NewListDataAccessRulesOptions()
+				listDataAccessRulesOptionsModel.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
+				listDataAccessRulesOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listDataAccessRulesOptionsModel).ToNot(BeNil())
+				Expect(listDataAccessRulesOptionsModel.ID).To(Equal([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}))
+				Expect(listDataAccessRulesOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListE2mOptions successfully`, func() {
 				// Construct an instance of the ListE2mOptions model
@@ -15605,6 +17582,16 @@ var _ = Describe(`LogsV0`, func() {
 				_model, err := logsService.NewQuotaV1Rule(ruleTypeID, name)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewRemoveEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				id := int64(1)
+				removeEnrichmentsOptionsModel := logsService.NewRemoveEnrichmentsOptions(id)
+				removeEnrichmentsOptionsModel.SetID(int64(1))
+				removeEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(removeEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(removeEnrichmentsOptionsModel.ID).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(removeEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewReplaceDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the ReplaceDashboardFolderOptions model
@@ -16133,12 +18120,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(replaceViewFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewReplaceViewOptions successfully`, func() {
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs new")))
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				Expect(apisViewsV1CustomTimeSelectionModel).ToNot(BeNil())
@@ -16152,6 +18133,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisViewsV1TimeSelectionModel).ToNot(BeNil())
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
 				Expect(apisViewsV1TimeSelectionModel.CustomSelection).To(Equal(apisViewsV1CustomTimeSelectionModel))
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
+				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs new")))
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -16170,21 +18157,20 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ReplaceViewOptions model
 				id := int64(52)
 				replaceViewOptionsName := "Logs view"
-				var replaceViewOptionsSearchQuery *logsv0.ApisViewsV1SearchQuery = nil
 				var replaceViewOptionsTimeSelection logsv0.ApisViewsV1TimeSelectionIntf = nil
-				replaceViewOptionsModel := logsService.NewReplaceViewOptions(id, replaceViewOptionsName, replaceViewOptionsSearchQuery, replaceViewOptionsTimeSelection)
+				replaceViewOptionsModel := logsService.NewReplaceViewOptions(id, replaceViewOptionsName, replaceViewOptionsTimeSelection)
 				replaceViewOptionsModel.SetID(int64(52))
 				replaceViewOptionsModel.SetName("Logs view")
-				replaceViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				replaceViewOptionsModel.SetTimeSelection(apisViewsV1TimeSelectionModel)
+				replaceViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				replaceViewOptionsModel.SetFilters(apisViewsV1SelectedFiltersModel)
 				replaceViewOptionsModel.SetFolderID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				replaceViewOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceViewOptionsModel).ToNot(BeNil())
 				Expect(replaceViewOptionsModel.ID).To(Equal(core.Int64Ptr(int64(52))))
 				Expect(replaceViewOptionsModel.Name).To(Equal(core.StringPtr("Logs view")))
-				Expect(replaceViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(replaceViewOptionsModel.TimeSelection).To(Equal(apisViewsV1TimeSelectionModel))
+				Expect(replaceViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(replaceViewOptionsModel.Filters).To(Equal(apisViewsV1SelectedFiltersModel))
 				Expect(replaceViewOptionsModel.FolderID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(replaceViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -16252,7 +18238,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewRulesV1ParseParameters successfully`, func() {
 				destinationField := "text.message"
-				rule := "^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)$"
+				rule := "^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)_"
 				_model, err := logsService.NewRulesV1ParseParameters(destinationField, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -16529,14 +18515,57 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateAlertOptionsModel.IncidentSettings).To(Equal(alertsV2AlertIncidentSettingsModel))
 				Expect(updateAlertOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewUpdateDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				Expect(dataAccessRuleFilterModel).ToNot(BeNil())
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+				Expect(dataAccessRuleFilterModel.EntityType).To(Equal(core.StringPtr("logs")))
+				Expect(dataAccessRuleFilterModel.Expression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				updateDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
+				updateDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				updateDataAccessRuleOptionsModel := logsService.NewUpdateDataAccessRuleOptions(id, updateDataAccessRuleOptionsDisplayName, updateDataAccessRuleOptionsFilters, updateDataAccessRuleOptionsDefaultExpression)
+				updateDataAccessRuleOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				updateDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
+				updateDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(updateDataAccessRuleOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(updateDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(updateDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
+				Expect(updateDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+				Expect(updateDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(updateDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateDataUsageMetricsExportStatusOptions successfully`, func() {
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsEnabled := true
+				updateDataUsageMetricsExportStatusOptionsModel := logsService.NewUpdateDataUsageMetricsExportStatusOptions(updateDataUsageMetricsExportStatusOptionsEnabled)
+				updateDataUsageMetricsExportStatusOptionsModel.SetEnabled(true)
+				updateDataUsageMetricsExportStatusOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateDataUsageMetricsExportStatusOptionsModel).ToNot(BeNil())
+				Expect(updateDataUsageMetricsExportStatusOptionsModel.Enabled).To(Equal(core.BoolPtr(true)))
+				Expect(updateDataUsageMetricsExportStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewUpdateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID).To(Equal(core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName).To(Equal(core.StringPtr("IBM Cloud Event Notifications")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
@@ -19847,6 +21876,115 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalDataAccessRuleFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.DataAccessRuleFilter)
+			model.EntityType = core.StringPtr("logs")
+			model.Expression = core.StringPtr("true")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.DataAccessRuleFilter
+			err = logsv0.UnmarshalDataAccessRuleFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalDataUsageMetricsExportStatus successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.DataUsageMetricsExportStatus)
+			model.Enabled = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.DataUsageMetricsExportStatus
+			err = logsv0.UnmarshalDataUsageMetricsExportStatus(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1CustomEnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1CustomEnrichmentType)
+			model.ID = core.Int64Ptr(int64(1))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1CustomEnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1CustomEnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentType)
+			model.GeoIp = nil
+			model.SuspiciousIp = nil
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1GeoIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1GeoIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1GeoIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1SuspiciousIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1SuspiciousIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1SuspiciousIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalEvent2MetricPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.Event2MetricPrototype)
@@ -19897,6 +22035,8 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 			model.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 			model.RegionID = core.StringPtr("eu-es")
+			model.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+			model.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20187,7 +22327,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1ParseParameters)
 			model.DestinationField = core.StringPtr("text.message")
-			model.Rule = core.StringPtr("^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)$")
+			model.Rule = core.StringPtr("^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)_")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -21771,6 +23911,60 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame
 			err = logsv0.UnmarshalDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment)
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+			model.GeoIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp)
+			model.SuspiciousIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))

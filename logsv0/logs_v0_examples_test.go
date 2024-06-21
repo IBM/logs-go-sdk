@@ -30,6 +30,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
+//
 // This file provides an example of how to use the logs service.
 //
 // The following configuration properties are assumed to be defined:
@@ -41,24 +42,14 @@ import (
 // These configuration properties can be exported as environment variables, or stored
 // in a configuration file and then:
 // export IBM_CREDENTIALS_FILE=<name of configuration file>
+//
 var _ = Describe(`LogsV0 Examples Tests`, func() {
 
-	const externalConfigFile = "../logs.env"
+	const externalConfigFile = "../logs_v0.env"
 
 	var (
 		logsService *logsv0.LogsV0
-		config      map[string]string
-
-		// Variables to hold link values
-		alertIdLink           strfmt.UUID
-		dashboardIdLink       string
-		events2MetricsIdLink  strfmt.UUID
-		folderIdLink          strfmt.UUID
-		outgoingWebhookIdLink strfmt.UUID
-		policyIdLink          strfmt.UUID
-		ruleGroupIdLink       strfmt.UUID
-		viewFolderIdLink      strfmt.UUID
-		viewIdLink            int64
+		config       map[string]string
 	)
 
 	var shouldSkipTest = func() {
@@ -112,521 +103,12 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`CreateAlert request example`, func() {
-			// Skip("External configuration is not available, skipping examples...")
-			fmt.Println("\nCreateAlert() result:")
-			// begin-create_alert
-
-			alertsV2ConditionParametersModel := &logsv0.AlertsV2ConditionParameters{
-				Threshold:         core.Float64Ptr(float64(1)),
-				Timeframe:         core.StringPtr("timeframe_10_min"),
-				GroupBy:           []string{"coralogix.metadata.applicationName"},
-				IgnoreInfinity:    core.BoolPtr(true),
-				RelativeTimeframe: core.StringPtr("hour_or_unspecified"),
-				CardinalityFields: []string{},
-			}
-
-			alertsV2MoreThanConditionModel := &logsv0.AlertsV2MoreThanCondition{
-				Parameters:       alertsV2ConditionParametersModel,
-				EvaluationWindow: core.StringPtr("rolling_or_unspecified"),
-			}
-
-			alertsV2AlertConditionModel := &logsv0.AlertsV2AlertConditionConditionMoreThan{
-				MoreThan: alertsV2MoreThanConditionModel,
-			}
-
-			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
-				GroupByFields: []string{"coralogix.metadata.applicationName"},
-			}
-
-			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{}
-
-			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
-				Severities: []string{"info"},
-				Metadata:   alertsV1AlertFiltersMetadataFiltersModel,
-				Text:       core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
-				FilterType: core.StringPtr("text_or_unspecified"),
-			}
-
-			alertsV1TimeModel := &logsv0.AlertsV1Time{
-				Hours:   core.Int64Ptr(int64(18)),
-				Minutes: core.Int64Ptr(int64(30)),
-				Seconds: core.Int64Ptr(int64(0)),
-			}
-
-			alertsV1TimeRangeModel := &logsv0.AlertsV1TimeRange{
-				Start: alertsV1TimeModel,
-				End:   alertsV1TimeModel,
-			}
-
-			alertsV1AlertActiveTimeframeModel := &logsv0.AlertsV1AlertActiveTimeframe{
-				DaysOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				Range:      alertsV1TimeRangeModel,
-			}
-
-			alertsV1AlertActiveWhenModel := &logsv0.AlertsV1AlertActiveWhen{
-				Timeframes: []logsv0.AlertsV1AlertActiveTimeframe{*alertsV1AlertActiveTimeframeModel},
-			}
-
-			alertsV1MetaLabelModel := &logsv0.AlertsV1MetaLabel{
-				Key:   core.StringPtr("env"),
-				Value: core.StringPtr("dev"),
-			}
-
-			alertsV2AlertIncidentSettingsModel := &logsv0.AlertsV2AlertIncidentSettings{
-				RetriggeringPeriodSeconds: core.Int64Ptr(int64(300)),
-				NotifyOn:                  core.StringPtr("triggered_only"),
-				UseAsNotificationSettings: core.BoolPtr(true),
-			}
-
-			createAlertOptions := logsService.NewCreateAlertOptions(
-				"Test alert",
-				true,
-				"info_or_unspecified",
-				alertsV2AlertConditionModel,
-				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
-				alertsV1AlertFiltersModel,
-			)
-			createAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
-			createAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
-			createAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
-			createAlertOptions.SetMetaLabelsStrings([]string{})
-			createAlertOptions.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
-
-			alert, response, err := logsService.CreateAlert(createAlertOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(alert, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_alert
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(alert).ToNot(BeNil())
-
-			alertIdLink = *alert.ID
-			fmt.Fprintf(GinkgoWriter, "Saved alertIdLink value: %v\n", alertIdLink)
-		})
-		It(`CreateRuleGroup request example`, func() {
-			fmt.Println("\nCreateRuleGroup() result:")
-			// begin-create_rule_group
-
-			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
-				DestinationField: core.StringPtr("text"),
-				Rule:             core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
-			}
-
-			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
-				ParseParameters: rulesV1ParseParametersModel,
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name:        core.StringPtr("mysql-parse"),
-				Description: core.StringPtr("mysql-parse"),
-				SourceField: core.StringPtr("text"),
-				Parameters:  rulesV1RuleParametersModel,
-				Enabled:     core.BoolPtr(true),
-				Order:       core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules:   []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
-				Enabled: core.BoolPtr(true),
-				Order:   core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
-				Value: core.StringPtr("mysql"),
-			}
-
-			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
-				SubsystemName: rulesV1SubsystemNameConstraintModel,
-			}
-
-			createRuleGroupOptions := logsService.NewCreateRuleGroupOptions(
-				"mysql-extractrule",
-				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
-			)
-			createRuleGroupOptions.SetDescription("mysql audit logs  parser")
-			createRuleGroupOptions.SetEnabled(true)
-			createRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
-			createRuleGroupOptions.SetOrder(int64(39))
-
-			ruleGroup, response, err := logsService.CreateRuleGroup(createRuleGroupOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_rule_group
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(ruleGroup).ToNot(BeNil())
-
-			ruleGroupIdLink = *ruleGroup.ID
-			fmt.Fprintf(GinkgoWriter, "Saved ruleGroupIdLink value: %v\n", ruleGroupIdLink)
-		})
-		It(`CreateOutgoingWebhook request example`, func() {
-			fmt.Println("\nCreateOutgoingWebhook() result:")
-			// begin-create_outgoing_webhook
-
-			outgoingWebhooksV1IbmEventNotificationsConfigModel := &logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig{
-				RegionID:                     core.StringPtr("us-south"),
-				EventNotificationsInstanceID: CreateMockUUID("6964e1e9-74a2-4c6c-980b-d806ff75175d"),
-			}
-
-			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
-				Type:                  core.StringPtr("ibm_event_notifications"),
-				Name:                  core.StringPtr("Event Notifications Integration"),
-				IbmEventNotifications: outgoingWebhooksV1IbmEventNotificationsConfigModel,
-			}
-
-			createOutgoingWebhookOptions := logsService.NewCreateOutgoingWebhookOptions(
-				outgoingWebhookPrototypeModel,
-			)
-
-			outgoingWebhook, response, err := logsService.CreateOutgoingWebhook(createOutgoingWebhookOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_outgoing_webhook
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(outgoingWebhook).ToNot(BeNil())
-
-			outgoingWebhookIdLink = *outgoingWebhook.(*logsv0.OutgoingWebhook).ID
-			fmt.Fprintf(GinkgoWriter, "Saved outgoingWebhookIdLink value: %v\n", outgoingWebhookIdLink)
-		})
-		It(`CreatePolicy request example`, func() {
-			fmt.Println("\nCreatePolicy() result:")
-			// begin-create_policy
-
-			quotaV1RuleModel := &logsv0.QuotaV1Rule{
-				RuleTypeID: core.StringPtr("is"),
-				Name:       core.StringPtr("policy-test"),
-			}
-
-			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
-				Severities: []string{"debug", "verbose", "info", "warning", "error"},
-			}
-
-			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name:            core.StringPtr("Med_policy"),
-				Description:     core.StringPtr("Medium Policy"),
-				Priority:        core.StringPtr("type_high"),
-				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule:   quotaV1RuleModel,
-				LogRules:        quotaV1LogRulesModel,
-			}
-
-			createPolicyOptions := logsService.NewCreatePolicyOptions(
-				policyPrototypeModel,
-			)
-
-			policy, response, err := logsService.CreatePolicy(createPolicyOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(policy, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_policy
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(policy).ToNot(BeNil())
-
-			policyIdLink = *policy.(*logsv0.Policy).ID
-			fmt.Fprintf(GinkgoWriter, "Saved policyIdLink value: %v\n", policyIdLink)
-		})
-		It(`CreateDashboard request example`, func() {
-			fmt.Println("\nCreateDashboard() result:")
-			// begin-create_dashboard
-
-			apisDashboardsV1UUIDModel := &logsv0.ApisDashboardsV1UUID{
-				Value: CreateMockUUID("10c27980-3532-21b0-8069-0c9110f03c90"),
-			}
-
-			apisDashboardsV1AstRowAppearanceModel := &logsv0.ApisDashboardsV1AstRowAppearance{
-				Height: core.Int64Ptr(int64(19)),
-			}
-
-			apisDashboardsV1AstWidgetsCommonLegendModel := &logsv0.ApisDashboardsV1AstWidgetsCommonLegend{
-				IsVisible:    core.BoolPtr(true),
-				GroupByQuery: core.BoolPtr(true),
-			}
-
-			apisDashboardsV1AstWidgetsLineChartTooltipModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartTooltip{
-				ShowLabels: core.BoolPtr(false),
-				Type:       core.StringPtr("all"),
-			}
-
-			apisDashboardsV1AstWidgetsCommonPromQlQueryModel := &logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery{
-				Value: core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)"),
-			}
-
-			apisDashboardsV1AstWidgetsLineChartMetricsQueryModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartMetricsQuery{
-				PromqlQuery: apisDashboardsV1AstWidgetsCommonPromQlQueryModel,
-			}
-
-			apisDashboardsV1AstWidgetsLineChartQueryModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryValueMetrics{
-				Metrics: apisDashboardsV1AstWidgetsLineChartMetricsQueryModel,
-			}
-
-			apisDashboardsV1AstWidgetsLineChartResolutionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartResolution{
-				BucketsPresented: core.Int64Ptr(int64(96)),
-			}
-
-			apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{
-				ID:               CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
-				Query:            apisDashboardsV1AstWidgetsLineChartQueryModel,
-				SeriesCountLimit: core.StringPtr("20"),
-				ScaleType:        core.StringPtr("linear"),
-				Name:             core.StringPtr("Query1"),
-				IsVisible:        core.BoolPtr(true),
-				ColorScheme:      core.StringPtr("classic"),
-				Resolution:       apisDashboardsV1AstWidgetsLineChartResolutionModel,
-			}
-
-			apisDashboardsV1AstWidgetsLineChartModel := &logsv0.ApisDashboardsV1AstWidgetsLineChart{
-				Legend:           apisDashboardsV1AstWidgetsCommonLegendModel,
-				Tooltip:          apisDashboardsV1AstWidgetsLineChartTooltipModel,
-				QueryDefinitions: []logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{*apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel},
-			}
-
-			apisDashboardsV1AstWidgetDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetDefinitionValueLineChart{
-				LineChart: apisDashboardsV1AstWidgetsLineChartModel,
-			}
-
-			apisDashboardsV1AstWidgetModel := &logsv0.ApisDashboardsV1AstWidget{
-				ID:         apisDashboardsV1UUIDModel,
-				Title:      core.StringPtr("Size"),
-				Definition: apisDashboardsV1AstWidgetDefinitionModel,
-			}
-
-			apisDashboardsV1AstRowModel := &logsv0.ApisDashboardsV1AstRow{
-				ID:         apisDashboardsV1UUIDModel,
-				Appearance: apisDashboardsV1AstRowAppearanceModel,
-				Widgets:    []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
-			}
-
-			apisDashboardsV1AstSectionModel := &logsv0.ApisDashboardsV1AstSection{
-				ID:   apisDashboardsV1UUIDModel,
-				Rows: []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel},
-			}
-
-			apisDashboardsV1AstLayoutModel := &logsv0.ApisDashboardsV1AstLayout{
-				Sections: []logsv0.ApisDashboardsV1AstSection{*apisDashboardsV1AstSectionModel},
-			}
-
-			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{}
-
-			apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueList{
-				List: apisDashboardsV1AstFilterEqualsSelectionListSelectionModel,
-			}
-
-			apisDashboardsV1AstFilterEqualsModel := &logsv0.ApisDashboardsV1AstFilterEquals{
-				Selection: apisDashboardsV1AstFilterEqualsSelectionModel,
-			}
-
-			apisDashboardsV1AstFilterOperatorModel := &logsv0.ApisDashboardsV1AstFilterOperatorValueEquals{
-				Equals: apisDashboardsV1AstFilterEqualsModel,
-			}
-
-			apisDashboardsV1CommonObservationFieldModel := &logsv0.ApisDashboardsV1CommonObservationField{
-				Keypath: []string{"applicationname"},
-				Scope:   core.StringPtr("label"),
-			}
-
-			apisDashboardsV1AstFilterLogsFilterModel := &logsv0.ApisDashboardsV1AstFilterLogsFilter{
-				Operator:         apisDashboardsV1AstFilterOperatorModel,
-				ObservationField: apisDashboardsV1CommonObservationFieldModel,
-			}
-
-			apisDashboardsV1AstFilterSourceModel := &logsv0.ApisDashboardsV1AstFilterSourceValueLogs{
-				Logs: apisDashboardsV1AstFilterLogsFilterModel,
-			}
-
-			apisDashboardsV1AstFilterModel := &logsv0.ApisDashboardsV1AstFilter{
-				Source:    apisDashboardsV1AstFilterSourceModel,
-				Enabled:   core.BoolPtr(true),
-				Collapsed: core.BoolPtr(false),
-			}
-
-			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				Name:              core.StringPtr("DataUsageToMetrics Dashboard"),
-				Layout:            apisDashboardsV1AstLayoutModel,
-				Filters:           []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
-				RelativeTimeFrame: core.StringPtr("86400s"),
-			}
-
-			createDashboardOptions := logsService.NewCreateDashboardOptions(
-				dashboardModel,
-			)
-
-			dashboard, response, err := logsService.CreateDashboard(createDashboardOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(dashboard, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_dashboard
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(dashboard).ToNot(BeNil())
-
-			dashboardIdLink = *dashboard.(*logsv0.Dashboard).ID
-			fmt.Fprintf(GinkgoWriter, "Saved dashboardIdLink value: %v\n", dashboardIdLink)
-		})
-		It(`CreateDashboardFolder request example`, func() {
-			fmt.Println("\nCreateDashboardFolder() result:")
-			// begin-create_dashboard_folder
-
-			createDashboardFolderOptions := logsService.NewCreateDashboardFolderOptions(
-				"My Folder",
-			)
-
-			dashboardFolder, response, err := logsService.CreateDashboardFolder(createDashboardFolderOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_dashboard_folder
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(dashboardFolder).ToNot(BeNil())
-
-			folderIdLink = *dashboardFolder.ID
-			fmt.Fprintf(GinkgoWriter, "Saved folderIdLink value: %v\n", folderIdLink)
-		})
-		It(`CreateE2m request example`, func() {
-			fmt.Println("\nCreateE2m() result:")
-			// begin-create_e2m
-
-			apisLogs2metricsV2LogsQueryModel := &logsv0.ApisLogs2metricsV2LogsQuery{
-				Lucene: core.StringPtr("logs"),
-			}
-
-			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
-				Name:              core.StringPtr("test em2"),
-				Description:       core.StringPtr("Test e2m"),
-				PermutationsLimit: core.Int64Ptr(int64(1)),
-				Type:              core.StringPtr("logs2metrics"),
-				LogsQuery:         apisLogs2metricsV2LogsQueryModel,
-			}
-
-			createE2mOptions := logsService.NewCreateE2mOptions(
-				event2MetricPrototypeModel,
-			)
-
-			event2Metric, response, err := logsService.CreateE2m(createE2mOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(event2Metric, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_e2m
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(event2Metric).ToNot(BeNil())
-
-			events2MetricsIdLink = *event2Metric.(*logsv0.Event2Metric).ID
-			fmt.Fprintf(GinkgoWriter, "Saved events2MetricsIdLink value: %v\n", events2MetricsIdLink)
-		})
-		It(`CreateView request example`, func() {
-			fmt.Println("\nCreateView() result:")
-			// begin-create_view
-
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs"),
-			}
-
-			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
-				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
-			}
-
-			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
-				CustomSelection: apisViewsV1CustomTimeSelectionModel,
-			}
-
-			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name:           core.StringPtr("applicationName"),
-				SelectedValues: map[string]bool{"key1": true},
-			}
-
-			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
-				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
-			}
-
-			createViewOptions := logsService.NewCreateViewOptions(
-				"Logs view",
-				apisViewsV1SearchQueryModel,
-				apisViewsV1TimeSelectionModel,
-			)
-			createViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
-
-			view, response, err := logsService.CreateView(createViewOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(view, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_view
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(view).ToNot(BeNil())
-
-			viewIdLink = *view.ID
-			fmt.Fprintf(GinkgoWriter, "Saved viewIdLink value: %v\n", viewIdLink)
-		})
-		It(`CreateViewFolder request example`, func() {
-			fmt.Println("\nCreateViewFolder() result:")
-			// begin-create_view_folder
-
-			createViewFolderOptions := logsService.NewCreateViewFolderOptions(
-				"My Folder",
-			)
-
-			viewFolder, response, err := logsService.CreateViewFolder(createViewFolderOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(viewFolder, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_view_folder
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(viewFolder).ToNot(BeNil())
-
-			viewFolderIdLink = *viewFolder.ID
-			fmt.Fprintf(GinkgoWriter, "Saved viewFolderIdLink value: %v\n", viewFolderIdLink)
-		})
 		It(`GetAlert request example`, func() {
 			fmt.Println("\nGetAlert() result:")
 			// begin-get_alert
 
 			getAlertOptions := logsService.NewGetAlertOptions(
-				&alertIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			alert, response, err := logsService.GetAlert(getAlertOptions)
@@ -647,16 +129,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-update_alert
 
 			alertsV2ConditionParametersModel := &logsv0.AlertsV2ConditionParameters{
-				Threshold:         core.Float64Ptr(float64(1)),
-				Timeframe:         core.StringPtr("timeframe_10_min"),
-				GroupBy:           []string{"coralogix.metadata.applicationName"},
-				IgnoreInfinity:    core.BoolPtr(true),
+				Threshold: core.Float64Ptr(float64(1)),
+				Timeframe: core.StringPtr("timeframe_10_min"),
+				GroupBy: []string{"coralogix.metadata.applicationName"},
+				IgnoreInfinity: core.BoolPtr(true),
 				RelativeTimeframe: core.StringPtr("hour_or_unspecified"),
 				CardinalityFields: []string{},
 			}
 
 			alertsV2MoreThanConditionModel := &logsv0.AlertsV2MoreThanCondition{
-				Parameters:       alertsV2ConditionParametersModel,
+				Parameters: alertsV2ConditionParametersModel,
 				EvaluationWindow: core.StringPtr("rolling_or_unspecified"),
 			}
 
@@ -664,33 +146,43 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				MoreThan: alertsV2MoreThanConditionModel,
 			}
 
-			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
-				GroupByFields: []string{"coralogix.metadata.applicationName"},
+			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{
 			}
 
-			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{}
+			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
+				GroupByFields: []string{"coralogix.metadata.applicationName"},
+				Notifications: []logsv0.AlertsV2AlertNotificationIntf{alertsV2AlertNotificationModel},
+			}
+
+			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{
+			}
+
+			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
+				Alias: core.StringPtr("TopLevelAlert"),
+			}
 
 			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
 				Severities: []string{"info"},
-				Metadata:   alertsV1AlertFiltersMetadataFiltersModel,
-				Text:       core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
+				Metadata: alertsV1AlertFiltersMetadataFiltersModel,
+				Text: core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
+				RatioAlerts: []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel},
 				FilterType: core.StringPtr("text_or_unspecified"),
 			}
 
 			alertsV1TimeModel := &logsv0.AlertsV1Time{
-				Hours:   core.Int64Ptr(int64(18)),
+				Hours: core.Int64Ptr(int64(18)),
 				Minutes: core.Int64Ptr(int64(30)),
 				Seconds: core.Int64Ptr(int64(0)),
 			}
 
 			alertsV1TimeRangeModel := &logsv0.AlertsV1TimeRange{
 				Start: alertsV1TimeModel,
-				End:   alertsV1TimeModel,
+				End: alertsV1TimeModel,
 			}
 
 			alertsV1AlertActiveTimeframeModel := &logsv0.AlertsV1AlertActiveTimeframe{
 				DaysOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				Range:      alertsV1TimeRangeModel,
+				Range: alertsV1TimeRangeModel,
 			}
 
 			alertsV1AlertActiveWhenModel := &logsv0.AlertsV1AlertActiveWhen{
@@ -698,18 +190,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			alertsV1MetaLabelModel := &logsv0.AlertsV1MetaLabel{
-				Key:   core.StringPtr("env"),
+				Key: core.StringPtr("env"),
 				Value: core.StringPtr("dev"),
 			}
 
 			alertsV2AlertIncidentSettingsModel := &logsv0.AlertsV2AlertIncidentSettings{
 				RetriggeringPeriodSeconds: core.Int64Ptr(int64(300)),
-				NotifyOn:                  core.StringPtr("triggered_only"),
+				NotifyOn: core.StringPtr("triggered_only"),
 				UseAsNotificationSettings: core.BoolPtr(true),
 			}
 
 			updateAlertOptions := logsService.NewUpdateAlertOptions(
-				&alertIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				"Test alert",
 				true,
 				"info_or_unspecified",
@@ -755,12 +247,115 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(alertCollection).ToNot(BeNil())
 		})
+		It(`CreateAlert request example`, func() {
+			fmt.Println("\nCreateAlert() result:")
+			// begin-create_alert
+
+			alertsV2ConditionParametersModel := &logsv0.AlertsV2ConditionParameters{
+				Threshold: core.Float64Ptr(float64(1)),
+				Timeframe: core.StringPtr("timeframe_10_min"),
+				GroupBy: []string{"coralogix.metadata.applicationName"},
+				IgnoreInfinity: core.BoolPtr(true),
+				RelativeTimeframe: core.StringPtr("hour_or_unspecified"),
+				CardinalityFields: []string{},
+			}
+
+			alertsV2MoreThanConditionModel := &logsv0.AlertsV2MoreThanCondition{
+				Parameters: alertsV2ConditionParametersModel,
+				EvaluationWindow: core.StringPtr("rolling_or_unspecified"),
+			}
+
+			alertsV2AlertConditionModel := &logsv0.AlertsV2AlertConditionConditionMoreThan{
+				MoreThan: alertsV2MoreThanConditionModel,
+			}
+
+			alertsV2AlertNotificationModel := &logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID{
+			}
+
+			alertsV2AlertNotificationGroupsModel := &logsv0.AlertsV2AlertNotificationGroups{
+				GroupByFields: []string{"coralogix.metadata.applicationName"},
+				Notifications: []logsv0.AlertsV2AlertNotificationIntf{alertsV2AlertNotificationModel},
+			}
+
+			alertsV1AlertFiltersMetadataFiltersModel := &logsv0.AlertsV1AlertFiltersMetadataFilters{
+			}
+
+			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
+				Alias: core.StringPtr("TopLevelAlert"),
+			}
+
+			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
+				Severities: []string{"info"},
+				Metadata: alertsV1AlertFiltersMetadataFiltersModel,
+				Text: core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create"),
+				RatioAlerts: []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel},
+				FilterType: core.StringPtr("text_or_unspecified"),
+			}
+
+			alertsV1TimeModel := &logsv0.AlertsV1Time{
+				Hours: core.Int64Ptr(int64(18)),
+				Minutes: core.Int64Ptr(int64(30)),
+				Seconds: core.Int64Ptr(int64(0)),
+			}
+
+			alertsV1TimeRangeModel := &logsv0.AlertsV1TimeRange{
+				Start: alertsV1TimeModel,
+				End: alertsV1TimeModel,
+			}
+
+			alertsV1AlertActiveTimeframeModel := &logsv0.AlertsV1AlertActiveTimeframe{
+				DaysOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
+				Range: alertsV1TimeRangeModel,
+			}
+
+			alertsV1AlertActiveWhenModel := &logsv0.AlertsV1AlertActiveWhen{
+				Timeframes: []logsv0.AlertsV1AlertActiveTimeframe{*alertsV1AlertActiveTimeframeModel},
+			}
+
+			alertsV1MetaLabelModel := &logsv0.AlertsV1MetaLabel{
+				Key: core.StringPtr("env"),
+				Value: core.StringPtr("dev"),
+			}
+
+			alertsV2AlertIncidentSettingsModel := &logsv0.AlertsV2AlertIncidentSettings{
+				RetriggeringPeriodSeconds: core.Int64Ptr(int64(300)),
+				NotifyOn: core.StringPtr("triggered_only"),
+				UseAsNotificationSettings: core.BoolPtr(true),
+			}
+
+			createAlertOptions := logsService.NewCreateAlertOptions(
+				"Test alert",
+				true,
+				"info_or_unspecified",
+				alertsV2AlertConditionModel,
+				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
+				alertsV1AlertFiltersModel,
+			)
+			createAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			createAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
+			createAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
+			createAlertOptions.SetMetaLabelsStrings([]string{})
+			createAlertOptions.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
+
+			alert, response, err := logsService.CreateAlert(createAlertOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alert, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_alert
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(alert).ToNot(BeNil())
+		})
 		It(`GetRuleGroup request example`, func() {
 			fmt.Println("\nGetRuleGroup() result:")
 			// begin-get_rule_group
 
 			getRuleGroupOptions := logsService.NewGetRuleGroupOptions(
-				&ruleGroupIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			ruleGroup, response, err := logsService.GetRuleGroup(getRuleGroupOptions)
@@ -782,7 +377,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
 				DestinationField: core.StringPtr("text"),
-				Rule:             core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
 			}
 
 			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
@@ -790,18 +385,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name:        core.StringPtr("mysql-parse"),
+				Name: core.StringPtr("mysql-parse"),
 				Description: core.StringPtr("mysql-parse"),
 				SourceField: core.StringPtr("text"),
-				Parameters:  rulesV1RuleParametersModel,
-				Enabled:     core.BoolPtr(true),
-				Order:       core.Int64Ptr(int64(1)),
+				Parameters: rulesV1RuleParametersModel,
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules:   []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
 				Enabled: core.BoolPtr(true),
-				Order:   core.Int64Ptr(int64(1)),
+				Order: core.Int64Ptr(int64(1)),
 			}
 
 			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
@@ -813,7 +408,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			updateRuleGroupOptions := logsService.NewUpdateRuleGroupOptions(
-				&ruleGroupIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				"mysql-extractrule",
 				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
 			)
@@ -840,6 +435,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-list_rule_groups
 
 			listRuleGroupsOptions := logsService.NewListRuleGroupsOptions()
+
 			ruleGroupCollection, response, err := logsService.ListRuleGroups(listRuleGroupsOptions)
 			if err != nil {
 				panic(err)
@@ -852,6 +448,64 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(ruleGroupCollection).ToNot(BeNil())
+		})
+		It(`CreateRuleGroup request example`, func() {
+			fmt.Println("\nCreateRuleGroup() result:")
+			// begin-create_rule_group
+
+			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
+				DestinationField: core.StringPtr("text"),
+				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+			}
+
+			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
+				ParseParameters: rulesV1ParseParametersModel,
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
+				Name: core.StringPtr("mysql-parse"),
+				Description: core.StringPtr("mysql-parse"),
+				SourceField: core.StringPtr("text"),
+				Parameters: rulesV1RuleParametersModel,
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
+				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
+				Value: core.StringPtr("mysql"),
+			}
+
+			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
+				SubsystemName: rulesV1SubsystemNameConstraintModel,
+			}
+
+			createRuleGroupOptions := logsService.NewCreateRuleGroupOptions(
+				"mysql-extractrule",
+				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
+			)
+			createRuleGroupOptions.SetDescription("mysql audit logs  parser")
+			createRuleGroupOptions.SetEnabled(true)
+			createRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
+			createRuleGroupOptions.SetOrder(int64(39))
+
+			ruleGroup, response, err := logsService.CreateRuleGroup(createRuleGroupOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_rule_group
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(ruleGroup).ToNot(BeNil())
 		})
 		It(`ListOutgoingWebhooks request example`, func() {
 			fmt.Println("\nListOutgoingWebhooks() result:")
@@ -873,12 +527,38 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(outgoingWebhookCollection).ToNot(BeNil())
 		})
+		It(`CreateOutgoingWebhook request example`, func() {
+			fmt.Println("\nCreateOutgoingWebhook() result:")
+			// begin-create_outgoing_webhook
+
+			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
+				Type: core.StringPtr("ibm_event_notifications"),
+				Name: core.StringPtr("Event Notifications Integration"),
+			}
+
+			createOutgoingWebhookOptions := logsService.NewCreateOutgoingWebhookOptions(
+				outgoingWebhookPrototypeModel,
+			)
+
+			outgoingWebhook, response, err := logsService.CreateOutgoingWebhook(createOutgoingWebhookOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_outgoing_webhook
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(outgoingWebhook).ToNot(BeNil())
+		})
 		It(`GetOutgoingWebhook request example`, func() {
 			fmt.Println("\nGetOutgoingWebhook() result:")
 			// begin-get_outgoing_webhook
 
 			getOutgoingWebhookOptions := logsService.NewGetOutgoingWebhookOptions(
-				&outgoingWebhookIdLink,
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
 			)
 
 			outgoingWebhook, response, err := logsService.GetOutgoingWebhook(getOutgoingWebhookOptions)
@@ -898,19 +578,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			fmt.Println("\nUpdateOutgoingWebhook() result:")
 			// begin-update_outgoing_webhook
 
-			outgoingWebhooksV1IbmEventNotificationsConfigModel := &logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig{
-				RegionID:                     core.StringPtr("us-south"),
-				EventNotificationsInstanceID: CreateMockUUID("6964e1e9-74a2-4c6c-980b-d806ff75175d"),
-			}
-
 			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
-				Type:                  core.StringPtr("ibm_event_notifications"),
-				Name:                  core.StringPtr("Event Notifications Integration"),
-				IbmEventNotifications: outgoingWebhooksV1IbmEventNotificationsConfigModel,
+				Type: core.StringPtr("ibm_event_notifications"),
+				Name: core.StringPtr("Event Notifications Integration"),
 			}
 
 			updateOutgoingWebhookOptions := logsService.NewUpdateOutgoingWebhookOptions(
-				&outgoingWebhookIdLink,
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
 				outgoingWebhookPrototypeModel,
 			)
 
@@ -932,7 +606,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-get_policy
 
 			getPolicyOptions := logsService.NewGetPolicyOptions(
-				&policyIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			policy, response, err := logsService.GetPolicy(getPolicyOptions)
@@ -954,7 +628,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			quotaV1RuleModel := &logsv0.QuotaV1Rule{
 				RuleTypeID: core.StringPtr("is"),
-				Name:       core.StringPtr("policy-test"),
+				Name: core.StringPtr("policy-test"),
 			}
 
 			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
@@ -962,16 +636,16 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name:            core.StringPtr("Med_policy"),
-				Description:     core.StringPtr("Medium policy"),
-				Priority:        core.StringPtr("type_high"),
+				Name: core.StringPtr("Med_policy"),
+				Description: core.StringPtr("Medium policy"),
+				Priority: core.StringPtr("type_high"),
 				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule:   quotaV1RuleModel,
-				LogRules:        quotaV1LogRulesModel,
+				SubsystemRule: quotaV1RuleModel,
+				LogRules: quotaV1LogRulesModel,
 			}
 
 			updatePolicyOptions := logsService.NewUpdatePolicyOptions(
-				&policyIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				policyPrototypeModel,
 			)
 
@@ -1009,12 +683,190 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(policyCollection).ToNot(BeNil())
 		})
+		It(`CreatePolicy request example`, func() {
+			fmt.Println("\nCreatePolicy() result:")
+			// begin-create_policy
+
+			quotaV1RuleModel := &logsv0.QuotaV1Rule{
+				RuleTypeID: core.StringPtr("is"),
+				Name: core.StringPtr("policy-test"),
+			}
+
+			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
+				Severities: []string{"debug", "verbose", "info", "warning", "error"},
+			}
+
+			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
+				Name: core.StringPtr("Med_policy"),
+				Description: core.StringPtr("Medium Policy"),
+				Priority: core.StringPtr("type_high"),
+				ApplicationRule: quotaV1RuleModel,
+				SubsystemRule: quotaV1RuleModel,
+				LogRules: quotaV1LogRulesModel,
+			}
+
+			createPolicyOptions := logsService.NewCreatePolicyOptions(
+				policyPrototypeModel,
+			)
+
+			policy, response, err := logsService.CreatePolicy(createPolicyOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(policy, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_policy
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(policy).ToNot(BeNil())
+		})
+		It(`CreateDashboard request example`, func() {
+			fmt.Println("\nCreateDashboard() result:")
+			// begin-create_dashboard
+
+			apisDashboardsV1UUIDModel := &logsv0.ApisDashboardsV1UUID{
+				Value: CreateMockUUID("10c27980-3532-21b0-8069-0c9110f03c90"),
+			}
+
+			apisDashboardsV1AstRowAppearanceModel := &logsv0.ApisDashboardsV1AstRowAppearance{
+				Height: core.Int64Ptr(int64(19)),
+			}
+
+			apisDashboardsV1AstWidgetsCommonLegendModel := &logsv0.ApisDashboardsV1AstWidgetsCommonLegend{
+				IsVisible: core.BoolPtr(true),
+				GroupByQuery: core.BoolPtr(true),
+			}
+
+			apisDashboardsV1AstWidgetsLineChartTooltipModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartTooltip{
+				ShowLabels: core.BoolPtr(false),
+				Type: core.StringPtr("all"),
+			}
+
+			apisDashboardsV1AstWidgetsCommonPromQlQueryModel := &logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery{
+				Value: core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)"),
+			}
+
+			apisDashboardsV1AstWidgetsLineChartMetricsQueryModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartMetricsQuery{
+				PromqlQuery: apisDashboardsV1AstWidgetsCommonPromQlQueryModel,
+			}
+
+			apisDashboardsV1AstWidgetsLineChartQueryModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryValueMetrics{
+				Metrics: apisDashboardsV1AstWidgetsLineChartMetricsQueryModel,
+			}
+
+			apisDashboardsV1AstWidgetsLineChartResolutionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartResolution{
+				BucketsPresented: core.Int64Ptr(int64(96)),
+			}
+
+			apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{
+				ID: CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
+				Query: apisDashboardsV1AstWidgetsLineChartQueryModel,
+				SeriesCountLimit: core.StringPtr("20"),
+				ScaleType: core.StringPtr("linear"),
+				Name: core.StringPtr("Query1"),
+				IsVisible: core.BoolPtr(true),
+				ColorScheme: core.StringPtr("classic"),
+				Resolution: apisDashboardsV1AstWidgetsLineChartResolutionModel,
+			}
+
+			apisDashboardsV1AstWidgetsLineChartModel := &logsv0.ApisDashboardsV1AstWidgetsLineChart{
+				Legend: apisDashboardsV1AstWidgetsCommonLegendModel,
+				Tooltip: apisDashboardsV1AstWidgetsLineChartTooltipModel,
+				QueryDefinitions: []logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{*apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel},
+			}
+
+			apisDashboardsV1AstWidgetDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetDefinitionValueLineChart{
+				LineChart: apisDashboardsV1AstWidgetsLineChartModel,
+			}
+
+			apisDashboardsV1AstWidgetModel := &logsv0.ApisDashboardsV1AstWidget{
+				ID: apisDashboardsV1UUIDModel,
+				Title: core.StringPtr("Size"),
+				Definition: apisDashboardsV1AstWidgetDefinitionModel,
+			}
+
+			apisDashboardsV1AstRowModel := &logsv0.ApisDashboardsV1AstRow{
+				ID: apisDashboardsV1UUIDModel,
+				Appearance: apisDashboardsV1AstRowAppearanceModel,
+				Widgets: []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
+			}
+
+			apisDashboardsV1AstSectionModel := &logsv0.ApisDashboardsV1AstSection{
+				ID: apisDashboardsV1UUIDModel,
+				Rows: []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel},
+			}
+
+			apisDashboardsV1AstLayoutModel := &logsv0.ApisDashboardsV1AstLayout{
+				Sections: []logsv0.ApisDashboardsV1AstSection{*apisDashboardsV1AstSectionModel},
+			}
+
+			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{
+			}
+
+			apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueList{
+				List: apisDashboardsV1AstFilterEqualsSelectionListSelectionModel,
+			}
+
+			apisDashboardsV1AstFilterEqualsModel := &logsv0.ApisDashboardsV1AstFilterEquals{
+				Selection: apisDashboardsV1AstFilterEqualsSelectionModel,
+			}
+
+			apisDashboardsV1AstFilterOperatorModel := &logsv0.ApisDashboardsV1AstFilterOperatorValueEquals{
+				Equals: apisDashboardsV1AstFilterEqualsModel,
+			}
+
+			apisDashboardsV1CommonObservationFieldModel := &logsv0.ApisDashboardsV1CommonObservationField{
+				Keypath: []string{"applicationname"},
+				Scope: core.StringPtr("label"),
+			}
+
+			apisDashboardsV1AstFilterLogsFilterModel := &logsv0.ApisDashboardsV1AstFilterLogsFilter{
+				Operator: apisDashboardsV1AstFilterOperatorModel,
+				ObservationField: apisDashboardsV1CommonObservationFieldModel,
+			}
+
+			apisDashboardsV1AstFilterSourceModel := &logsv0.ApisDashboardsV1AstFilterSourceValueLogs{
+				Logs: apisDashboardsV1AstFilterLogsFilterModel,
+			}
+
+			apisDashboardsV1AstFilterModel := &logsv0.ApisDashboardsV1AstFilter{
+				Source: apisDashboardsV1AstFilterSourceModel,
+				Enabled: core.BoolPtr(true),
+				Collapsed: core.BoolPtr(false),
+			}
+
+			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
+				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
+				Layout: apisDashboardsV1AstLayoutModel,
+				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
+				RelativeTimeFrame: core.StringPtr("86400s"),
+			}
+
+			createDashboardOptions := logsService.NewCreateDashboardOptions(
+				dashboardModel,
+			)
+
+			dashboard, response, err := logsService.CreateDashboard(createDashboardOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboard, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_dashboard
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(dashboard).ToNot(BeNil())
+		})
 		It(`GetDashboard request example`, func() {
 			fmt.Println("\nGetDashboard() result:")
 			// begin-get_dashboard
 
 			getDashboardOptions := logsService.NewGetDashboardOptions(
-				dashboardIdLink,
+				"testString",
 			)
 
 			dashboard, response, err := logsService.GetDashboard(getDashboardOptions)
@@ -1043,13 +895,13 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsCommonLegendModel := &logsv0.ApisDashboardsV1AstWidgetsCommonLegend{
-				IsVisible:    core.BoolPtr(true),
+				IsVisible: core.BoolPtr(true),
 				GroupByQuery: core.BoolPtr(true),
 			}
 
 			apisDashboardsV1AstWidgetsLineChartTooltipModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartTooltip{
 				ShowLabels: core.BoolPtr(false),
-				Type:       core.StringPtr("all"),
+				Type: core.StringPtr("all"),
 			}
 
 			apisDashboardsV1AstWidgetsCommonPromQlQueryModel := &logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery{
@@ -1069,19 +921,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel := &logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{
-				ID:               CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
-				Query:            apisDashboardsV1AstWidgetsLineChartQueryModel,
+				ID: CreateMockUUID("e4560525-521c-49e7-a7de-a2925626c304"),
+				Query: apisDashboardsV1AstWidgetsLineChartQueryModel,
 				SeriesCountLimit: core.StringPtr("20"),
-				ScaleType:        core.StringPtr("linear"),
-				Name:             core.StringPtr("Query1"),
-				IsVisible:        core.BoolPtr(true),
-				ColorScheme:      core.StringPtr("classic"),
-				Resolution:       apisDashboardsV1AstWidgetsLineChartResolutionModel,
+				ScaleType: core.StringPtr("linear"),
+				Name: core.StringPtr("Query1"),
+				IsVisible: core.BoolPtr(true),
+				ColorScheme: core.StringPtr("classic"),
+				Resolution: apisDashboardsV1AstWidgetsLineChartResolutionModel,
 			}
 
 			apisDashboardsV1AstWidgetsLineChartModel := &logsv0.ApisDashboardsV1AstWidgetsLineChart{
-				Legend:           apisDashboardsV1AstWidgetsCommonLegendModel,
-				Tooltip:          apisDashboardsV1AstWidgetsLineChartTooltipModel,
+				Legend: apisDashboardsV1AstWidgetsCommonLegendModel,
+				Tooltip: apisDashboardsV1AstWidgetsLineChartTooltipModel,
 				QueryDefinitions: []logsv0.ApisDashboardsV1AstWidgetsLineChartQueryDefinition{*apisDashboardsV1AstWidgetsLineChartQueryDefinitionModel},
 			}
 
@@ -1090,19 +942,19 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstWidgetModel := &logsv0.ApisDashboardsV1AstWidget{
-				ID:         apisDashboardsV1UUIDModel,
-				Title:      core.StringPtr("Size"),
+				ID: apisDashboardsV1UUIDModel,
+				Title: core.StringPtr("Size"),
 				Definition: apisDashboardsV1AstWidgetDefinitionModel,
 			}
 
 			apisDashboardsV1AstRowModel := &logsv0.ApisDashboardsV1AstRow{
-				ID:         apisDashboardsV1UUIDModel,
+				ID: apisDashboardsV1UUIDModel,
 				Appearance: apisDashboardsV1AstRowAppearanceModel,
-				Widgets:    []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
+				Widgets: []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel},
 			}
 
 			apisDashboardsV1AstSectionModel := &logsv0.ApisDashboardsV1AstSection{
-				ID:   apisDashboardsV1UUIDModel,
+				ID: apisDashboardsV1UUIDModel,
 				Rows: []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel},
 			}
 
@@ -1110,7 +962,8 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				Sections: []logsv0.ApisDashboardsV1AstSection{*apisDashboardsV1AstSectionModel},
 			}
 
-			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{}
+			apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection{
+			}
 
 			apisDashboardsV1AstFilterEqualsSelectionModel := &logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueList{
 				List: apisDashboardsV1AstFilterEqualsSelectionListSelectionModel,
@@ -1126,11 +979,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisDashboardsV1CommonObservationFieldModel := &logsv0.ApisDashboardsV1CommonObservationField{
 				Keypath: []string{"applicationname"},
-				Scope:   core.StringPtr("label"),
+				Scope: core.StringPtr("label"),
 			}
 
 			apisDashboardsV1AstFilterLogsFilterModel := &logsv0.ApisDashboardsV1AstFilterLogsFilter{
-				Operator:         apisDashboardsV1AstFilterOperatorModel,
+				Operator: apisDashboardsV1AstFilterOperatorModel,
 				ObservationField: apisDashboardsV1CommonObservationFieldModel,
 			}
 
@@ -1139,20 +992,20 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			apisDashboardsV1AstFilterModel := &logsv0.ApisDashboardsV1AstFilter{
-				Source:    apisDashboardsV1AstFilterSourceModel,
-				Enabled:   core.BoolPtr(true),
+				Source: apisDashboardsV1AstFilterSourceModel,
+				Enabled: core.BoolPtr(true),
 				Collapsed: core.BoolPtr(false),
 			}
 
 			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				Name:              core.StringPtr("DataUsageToMetrics Dashboard"),
-				Layout:            apisDashboardsV1AstLayoutModel,
-				Filters:           []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
+				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
+				Layout: apisDashboardsV1AstLayoutModel,
+				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
 				RelativeTimeFrame: core.StringPtr("86400s"),
 			}
 
 			replaceDashboardOptions := logsService.NewReplaceDashboardOptions(
-				dashboardIdLink,
+				"testString",
 				dashboardModel,
 			)
 
@@ -1174,7 +1027,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-pin_dashboard
 
 			pinDashboardOptions := logsService.NewPinDashboardOptions(
-				dashboardIdLink,
+				"testString",
 			)
 
 			pinDashboardResponse, response, err := logsService.PinDashboard(pinDashboardOptions)
@@ -1195,7 +1048,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-replace_default_dashboard
 
 			replaceDefaultDashboardOptions := logsService.NewReplaceDefaultDashboardOptions(
-				dashboardIdLink,
+				"testString",
 			)
 
 			replaceDefaultDashboardResponse, response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
@@ -1216,8 +1069,8 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-assign_dashboard_folder
 
 			assignDashboardFolderOptions := logsService.NewAssignDashboardFolderOptions(
-				dashboardIdLink,
-				folderIdLink.String(),
+				"testString",
+				"testString",
 			)
 
 			assignDashboardFolderResponse, response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
@@ -1252,12 +1105,33 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(dashboardFolderCollection).ToNot(BeNil())
 		})
+		It(`CreateDashboardFolder request example`, func() {
+			fmt.Println("\nCreateDashboardFolder() result:")
+			// begin-create_dashboard_folder
+
+			createDashboardFolderOptions := logsService.NewCreateDashboardFolderOptions(
+				"My Folder",
+			)
+
+			dashboardFolder, response, err := logsService.CreateDashboardFolder(createDashboardFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_dashboard_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(dashboardFolder).ToNot(BeNil())
+		})
 		It(`ReplaceDashboardFolder request example`, func() {
 			fmt.Println("\nReplaceDashboardFolder() result:")
 			// begin-replace_dashboard_folder
 
 			replaceDashboardFolderOptions := logsService.NewReplaceDashboardFolderOptions(
-				&folderIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				"My Folder",
 			)
 
@@ -1293,12 +1167,45 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(event2MetricCollection).ToNot(BeNil())
 		})
+		It(`CreateE2m request example`, func() {
+			fmt.Println("\nCreateE2m() result:")
+			// begin-create_e2m
+
+			apisLogs2metricsV2LogsQueryModel := &logsv0.ApisLogs2metricsV2LogsQuery{
+				Lucene: core.StringPtr("logs"),
+			}
+
+			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
+				Name: core.StringPtr("test em2"),
+				Description: core.StringPtr("Test e2m"),
+				PermutationsLimit: core.Int64Ptr(int64(1)),
+				Type: core.StringPtr("logs2metrics"),
+				LogsQuery: apisLogs2metricsV2LogsQueryModel,
+			}
+
+			createE2mOptions := logsService.NewCreateE2mOptions(
+				event2MetricPrototypeModel,
+			)
+
+			event2Metric, response, err := logsService.CreateE2m(createE2mOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(event2Metric, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_e2m
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(event2Metric).ToNot(BeNil())
+		})
 		It(`GetE2m request example`, func() {
 			fmt.Println("\nGetE2m() result:")
 			// begin-get_e2m
 
 			getE2mOptions := logsService.NewGetE2mOptions(
-				events2MetricsIdLink.String(),
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 			)
 
 			event2Metric, response, err := logsService.GetE2m(getE2mOptions)
@@ -1323,15 +1230,15 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
-				Name:              core.StringPtr("test em2"),
-				Description:       core.StringPtr("Test e2m updated"),
+				Name: core.StringPtr("test em2"),
+				Description: core.StringPtr("Test e2m updated"),
 				PermutationsLimit: core.Int64Ptr(int64(1)),
-				Type:              core.StringPtr("logs2metrics"),
-				LogsQuery:         apisLogs2metricsV2LogsQueryModel,
+				Type: core.StringPtr("logs2metrics"),
+				LogsQuery: apisLogs2metricsV2LogsQueryModel,
 			}
 
 			replaceE2mOptions := logsService.NewReplaceE2mOptions(
-				events2MetricsIdLink.String(),
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 				event2MetricPrototypeModel,
 			)
 
@@ -1367,12 +1274,58 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewCollection).ToNot(BeNil())
 		})
+		It(`CreateView request example`, func() {
+			fmt.Println("\nCreateView() result:")
+			// begin-create_view
+
+			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
+				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
+				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+			}
+
+			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
+				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs"),
+			}
+
+			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
+				Name: core.StringPtr("applicationName"),
+				SelectedValues: map[string]bool{"key1": true},
+			}
+
+			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
+				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
+			}
+
+			createViewOptions := logsService.NewCreateViewOptions(
+				"Logs view",
+				apisViewsV1TimeSelectionModel,
+			)
+			createViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
+			createViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
+
+			view, response, err := logsService.CreateView(createViewOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(view, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_view
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(view).ToNot(BeNil())
+		})
 		It(`GetView request example`, func() {
 			fmt.Println("\nGetView() result:")
 			// begin-get_view
 
 			getViewOptions := logsService.NewGetViewOptions(
-				viewIdLink,
+				int64(52),
 			)
 
 			view, response, err := logsService.GetView(getViewOptions)
@@ -1392,21 +1345,21 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			fmt.Println("\nReplaceView() result:")
 			// begin-replace_view
 
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs new"),
-			}
-
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
 			}
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
 				CustomSelection: apisViewsV1CustomTimeSelectionModel,
 			}
 
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs new"),
+			}
+
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name:           core.StringPtr("applicationName"),
+				Name: core.StringPtr("applicationName"),
 				SelectedValues: map[string]bool{"key1": true},
 			}
 
@@ -1415,11 +1368,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			replaceViewOptions := logsService.NewReplaceViewOptions(
-				viewIdLink,
+				int64(52),
 				"Logs view",
-				apisViewsV1SearchQueryModel,
 				apisViewsV1TimeSelectionModel,
 			)
+			replaceViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
 			replaceViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
 
 			view, response, err := logsService.ReplaceView(replaceViewOptions)
@@ -1454,12 +1407,33 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewFolderCollection).ToNot(BeNil())
 		})
+		It(`CreateViewFolder request example`, func() {
+			fmt.Println("\nCreateViewFolder() result:")
+			// begin-create_view_folder
+
+			createViewFolderOptions := logsService.NewCreateViewFolderOptions(
+				"My Folder",
+			)
+
+			viewFolder, response, err := logsService.CreateViewFolder(createViewFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(viewFolder, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_view_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(viewFolder).ToNot(BeNil())
+		})
 		It(`GetViewFolder request example`, func() {
 			fmt.Println("\nGetViewFolder() result:")
 			// begin-get_view_folder
 
 			getViewFolderOptions := logsService.NewGetViewFolderOptions(
-				&viewFolderIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			viewFolder, response, err := logsService.GetViewFolder(getViewFolderOptions)
@@ -1480,7 +1454,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-replace_view_folder
 
 			replaceViewFolderOptions := logsService.NewReplaceViewFolderOptions(
-				&viewFolderIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				"My Folder",
 			)
 
@@ -1497,11 +1471,178 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewFolder).ToNot(BeNil())
 		})
+		It(`ListDataAccessRules request example`, func() {
+			fmt.Println("\nListDataAccessRules() result:")
+			// begin-list_data_access_rules
+
+			listDataAccessRulesOptions := logsService.NewListDataAccessRulesOptions()
+			listDataAccessRulesOptions.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
+
+			dataAccessRuleCollection, response, err := logsService.ListDataAccessRules(listDataAccessRulesOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRuleCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_data_access_rules
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRuleCollection).ToNot(BeNil())
+		})
+		It(`CreateDataAccessRule request example`, func() {
+			fmt.Println("\nCreateDataAccessRule() result:")
+			// begin-create_data_access_rule
+
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			createDataAccessRuleOptions := logsService.NewCreateDataAccessRuleOptions(
+				"Test Data Access Rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1> foo == 'bar'",
+			)
+			createDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+
+			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(dataAccessRule).ToNot(BeNil())
+		})
+		It(`UpdateDataAccessRule request example`, func() {
+			fmt.Println("\nUpdateDataAccessRule() result:")
+			// begin-update_data_access_rule
+
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			updateDataAccessRuleOptions := logsService.NewUpdateDataAccessRuleOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				"Test Data Access Rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1> foo == 'bar'",
+			)
+			updateDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+
+			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRule).ToNot(BeNil())
+		})
+		It(`GetEnrichments request example`, func() {
+			fmt.Println("\nGetEnrichments() result:")
+			// begin-get_enrichments
+
+			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
+
+			entrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(entrichmentCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(entrichmentCollection).ToNot(BeNil())
+		})
+		It(`CreateEnrichment request example`, func() {
+			fmt.Println("\nCreateEnrichment() result:")
+			// begin-create_enrichment
+
+			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{
+			}
+
+			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
+				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
+			}
+
+			createEnrichmentOptions := logsService.NewCreateEnrichmentOptions(
+				"ip",
+				enrichmentV1EnrichmentTypeModel,
+			)
+
+			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_enrichment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(enrichment).ToNot(BeNil())
+		})
+		It(`GetDataUsageMetricsExportStatus request example`, func() {
+			fmt.Println("\nGetDataUsageMetricsExportStatus() result:")
+			// begin-get_data_usage_metrics_export_status
+
+			getDataUsageMetricsExportStatusOptions := logsService.NewGetDataUsageMetricsExportStatusOptions()
+
+			dataUsageMetricsExportStatus, response, err := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_data_usage_metrics_export_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+		It(`UpdateDataUsageMetricsExportStatus request example`, func() {
+			fmt.Println("\nUpdateDataUsageMetricsExportStatus() result:")
+			// begin-update_data_usage_metrics_export_status
+
+			updateDataUsageMetricsExportStatusOptions := logsService.NewUpdateDataUsageMetricsExportStatusOptions(
+				true,
+			)
+
+			dataUsageMetricsExportStatus, response, err := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_data_usage_metrics_export_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
 		It(`DeleteAlert request example`, func() {
 			// begin-delete_alert
 
 			deleteAlertOptions := logsService.NewDeleteAlertOptions(
-				&alertIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeleteAlert(deleteAlertOptions)
@@ -1521,7 +1662,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_rule_group
 
 			deleteRuleGroupOptions := logsService.NewDeleteRuleGroupOptions(
-				&ruleGroupIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeleteRuleGroup(deleteRuleGroupOptions)
@@ -1541,7 +1682,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_outgoing_webhook
 
 			deleteOutgoingWebhookOptions := logsService.NewDeleteOutgoingWebhookOptions(
-				&outgoingWebhookIdLink,
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
 			)
 
 			response, err := logsService.DeleteOutgoingWebhook(deleteOutgoingWebhookOptions)
@@ -1561,7 +1702,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_policy
 
 			deletePolicyOptions := logsService.NewDeletePolicyOptions(
-				&policyIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeletePolicy(deletePolicyOptions)
@@ -1577,31 +1718,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-		It(`UnpinDashboard request example`, func() {
-			// begin-unpin_dashboard
-
-			unpinDashboardOptions := logsService.NewUnpinDashboardOptions(
-				dashboardIdLink,
-			)
-
-			response, err := logsService.UnpinDashboard(unpinDashboardOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from UnpinDashboard(): %d\n", response.StatusCode)
-			}
-
-			// end-unpin_dashboard
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
 		It(`DeleteDashboard request example`, func() {
 			// begin-delete_dashboard
 
 			deleteDashboardOptions := logsService.NewDeleteDashboardOptions(
-				dashboardIdLink,
+				"testString",
 			)
 
 			response, err := logsService.DeleteDashboard(deleteDashboardOptions)
@@ -1617,11 +1738,31 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
+		It(`UnpinDashboard request example`, func() {
+			// begin-unpin_dashboard
+
+			unpinDashboardOptions := logsService.NewUnpinDashboardOptions(
+				"testString",
+			)
+
+			response, err := logsService.UnpinDashboard(unpinDashboardOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from UnpinDashboard(): %d\n", response.StatusCode)
+			}
+
+			// end-unpin_dashboard
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
 		It(`DeleteDashboardFolder request example`, func() {
 			// begin-delete_dashboard_folder
 
 			deleteDashboardFolderOptions := logsService.NewDeleteDashboardFolderOptions(
-				&folderIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeleteDashboardFolder(deleteDashboardFolderOptions)
@@ -1641,7 +1782,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_e2m
 
 			deleteE2mOptions := logsService.NewDeleteE2mOptions(
-				events2MetricsIdLink.String(),
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 			)
 
 			response, err := logsService.DeleteE2m(deleteE2mOptions)
@@ -1661,7 +1802,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_view
 
 			deleteViewOptions := logsService.NewDeleteViewOptions(
-				viewIdLink,
+				int64(52),
 			)
 
 			response, err := logsService.DeleteView(deleteViewOptions)
@@ -1681,7 +1822,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_view_folder
 
 			deleteViewFolderOptions := logsService.NewDeleteViewFolderOptions(
-				&viewFolderIdLink,
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeleteViewFolder(deleteViewFolderOptions)
@@ -1693,6 +1834,46 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-delete_view_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteDataAccessRule request example`, func() {
+			// begin-delete_data_access_rule
+
+			deleteDataAccessRuleOptions := logsService.NewDeleteDataAccessRuleOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteDataAccessRule(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`RemoveEnrichments request example`, func() {
+			// begin-remove_enrichments
+
+			removeEnrichmentsOptions := logsService.NewRemoveEnrichmentsOptions(
+				int64(1),
+			)
+
+			response, err := logsService.RemoveEnrichments(removeEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from RemoveEnrichments(): %d\n", response.StatusCode)
+			}
+
+			// end-remove_enrichments
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
