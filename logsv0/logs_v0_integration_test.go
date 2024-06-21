@@ -50,6 +50,7 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		alertIdLink           strfmt.UUID
 		dataAccessRuleIdLink  strfmt.UUID
 		dashboardIdLink       string
+		encrichmentsIdLink    int64
 		events2MetricsIdLink  strfmt.UUID
 		folderIdLink          strfmt.UUID
 		outgoingWebhookIdLink strfmt.UUID
@@ -563,6 +564,32 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 
 			viewFolderIdLink = *viewFolder.ID
 			fmt.Fprintf(GinkgoWriter, "Saved viewFolderIdLink value: %v\n", viewFolderIdLink)
+		})
+	})
+
+	Describe(`CreateEnrichment - Create an enrichment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions)`, func() {
+			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{}
+
+			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
+				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
+			}
+
+			createEnrichmentOptions := &logsv0.CreateEnrichmentOptions{
+				FieldName:      core.StringPtr("ip"),
+				EnrichmentType: enrichmentV1EnrichmentTypeModel,
+			}
+
+			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(enrichment).ToNot(BeNil())
+
+			encrichmentsIdLink = *enrichment.ID
+			fmt.Fprintf(GinkgoWriter, "Saved encrichmentsIdLink value: %v\n", encrichmentsIdLink)
 		})
 	})
 
@@ -1333,6 +1360,20 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`GetEnrichments - List all enrichments`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions)`, func() {
+			getEnrichmentsOptions := &logsv0.GetEnrichmentsOptions{}
+
+			entrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(entrichmentCollection).ToNot(BeNil())
+		})
+	})
+
 	Describe(`GetDataUsageMetricsExportStatus - Get data usage metrics export status`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -1564,6 +1605,21 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			}
 
 			response, err := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+	})
+
+	Describe(`RemoveEnrichments - Delete enrichments`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions)`, func() {
+			removeEnrichmentsOptions := &logsv0.RemoveEnrichmentsOptions{
+				ID: &encrichmentsIdLink,
+			}
+
+			response, err := logsService.RemoveEnrichments(removeEnrichmentsOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
