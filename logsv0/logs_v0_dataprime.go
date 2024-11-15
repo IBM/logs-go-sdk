@@ -69,7 +69,7 @@ func (logs *LogsV0) QueryWithContext(ctx context.Context, queryOptions *QueryOpt
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dataprime/query/run`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/query`, nil)
 	if err != nil {
 		callBack.OnError(err)
 		return
