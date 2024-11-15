@@ -51,7 +51,7 @@ func (cb callBack) OnData(detailedResponse *core.DetailedResponse) {
 var _ = Describe(`LogsV1`, func() {
 	var testServer *httptest.Server
 	Describe(`Query(queryOptions *QueryOptions) - Operation response error`, func() {
-		queryPath := "/v1/dataprime/query/run"
+		queryPath := "/v1/query"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -98,7 +98,7 @@ var _ = Describe(`LogsV1`, func() {
 		})
 	})
 	Describe(`Query(queryOptions *QueryOptions)`, func() {
-		queryPath := "/v1/dataprime/query/run"
+		queryPath := "/v1/query"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
