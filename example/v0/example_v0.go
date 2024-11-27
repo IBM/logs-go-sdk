@@ -10,8 +10,8 @@ import (
 	"sync"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/go-openapi/strfmt"
 	"github.com/IBM/logs-go-sdk/logsv0"
+	"github.com/go-openapi/strfmt"
 )
 
 func getRandomName() string {
@@ -1365,6 +1365,10 @@ type callBack struct{}
 
 func (cb callBack) OnClose() {
 	fmt.Println("closing callback")
+}
+
+func (cb callBack) OnKeepAlive() {
+	fmt.Println("keepalive")
 }
 
 func (cb callBack) OnError(err error) {
