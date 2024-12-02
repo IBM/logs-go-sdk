@@ -443,6 +443,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -476,12 +482,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -521,10 +521,10 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -638,6 +638,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -671,12 +677,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -716,10 +716,10 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -841,6 +841,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -874,12 +880,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -919,10 +919,10 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -989,6 +989,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -1022,12 +1028,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1067,10 +1067,10 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -1158,6 +1158,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -1191,12 +1197,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1236,10 +1236,10 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -1595,6 +1595,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -1628,12 +1634,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1672,10 +1672,10 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -1789,6 +1789,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -1822,12 +1828,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1866,10 +1866,10 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -1991,6 +1991,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -2024,12 +2030,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2068,10 +2068,10 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -2138,6 +2138,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -2171,12 +2177,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2215,10 +2215,10 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -2306,6 +2306,12 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
@@ -2339,12 +2345,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2383,10 +2383,10 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
@@ -6090,6 +6090,206 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions) - Operation response error`, func() {
+		getDashboardCatalogPath := "/v1/dashboards"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions)`, func() {
+		getDashboardCatalogPath := "/v1/dashboards"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"dashboards": [{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "Production metrics", "description": "Response time, error rate and traffic volume", "is_default": true, "is_pinned": true, "create_time": "2021-01-01T00:00:00.000Z", "update_time": "2021-01-01T00:00:00.000Z", "folder": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}}]}`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDashboardCatalogWithContext(ctx, getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDashboardCatalogWithContext(ctx, getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"dashboards": [{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "Production metrics", "description": "Response time, error rate and traffic volume", "is_default": true, "is_pinned": true, "create_time": "2021-01-01T00:00:00.000Z", "update_time": "2021-01-01T00:00:00.000Z", "folder": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}}]}`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDashboardCatalog(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDashboardCatalog with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`CreateDashboard(createDashboardOptions *CreateDashboardOptions) - Operation response error`, func() {
 		createDashboardPath := "/v1/dashboards"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -6213,11 +6413,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6244,11 +6453,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -6259,6 +6473,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -6377,7 +6593,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke CreateDashboard successfully with retries`, func() {
@@ -6489,11 +6705,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6520,11 +6745,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -6535,6 +6765,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -6656,7 +6888,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke CreateDashboard successfully`, func() {
@@ -6773,11 +7005,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6804,11 +7045,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -6819,6 +7065,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7002,11 +7250,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7033,11 +7290,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7048,6 +7310,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7252,11 +7516,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7283,11 +7556,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7298,6 +7576,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7441,7 +7721,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetDashboard successfully with retries`, func() {
@@ -7495,7 +7775,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetDashboard successfully`, func() {
@@ -7714,11 +7994,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7745,11 +8034,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7760,6 +8054,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7879,7 +8175,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke ReplaceDashboard successfully with retries`, func() {
@@ -7991,11 +8287,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8022,11 +8327,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8037,6 +8347,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8159,7 +8471,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke ReplaceDashboard successfully`, func() {
@@ -8276,11 +8588,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8307,11 +8628,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8322,6 +8648,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8506,11 +8834,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8537,11 +8874,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8552,6 +8894,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8757,11 +9101,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8788,11 +9141,16 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8803,6 +9161,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8953,110 +9313,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`PinDashboard(pinDashboardOptions *PinDashboardOptions) - Operation response error`, func() {
-		pinDashboardPath := "/v1/dashboards/testString/pinned"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PinDashboard with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`PinDashboard(pinDashboardOptions *PinDashboardOptions)`, func() {
 		pinDashboardPath := "/v1/dashboards/testString/pinned"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke PinDashboard successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.PinDashboardWithContext(ctx, pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.PinDashboardWithContext(ctx, pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9066,10 +9324,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke PinDashboard successfully`, func() {
@@ -9081,10 +9336,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.PinDashboard(nil)
+				response, operationErr := logsService.PinDashboard(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the PinDashboardOptions model
 				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
@@ -9092,11 +9346,9 @@ var _ = Describe(`LogsV0`, func() {
 				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
+				response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke PinDashboard with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9113,52 +9365,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
+				response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the PinDashboardOptions model with no property values
 				pinDashboardOptionsModelNew := new(logsv0.PinDashboardOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModelNew)
+				response, operationErr = logsService.PinDashboard(pinDashboardOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PinDashboard successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -9233,110 +9449,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) - Operation response error`, func() {
-		replaceDefaultDashboardPath := "/v1/dashboards/testString/default"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions)`, func() {
 		replaceDefaultDashboardPath := "/v1/dashboards/testString/default"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.ReplaceDefaultDashboardWithContext(ctx, replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.ReplaceDefaultDashboardWithContext(ctx, replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9346,10 +9460,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke ReplaceDefaultDashboard successfully`, func() {
@@ -9361,10 +9472,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(nil)
+				response, operationErr := logsService.ReplaceDefaultDashboard(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the ReplaceDefaultDashboardOptions model
 				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
@@ -9372,11 +9482,9 @@ var _ = Describe(`LogsV0`, func() {
 				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
+				response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke ReplaceDefaultDashboard with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9393,98 +9501,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
+				response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the ReplaceDefaultDashboardOptions model with no property values
 				replaceDefaultDashboardOptionsModelNew := new(logsv0.ReplaceDefaultDashboardOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModelNew)
+				response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) - Operation response error`, func() {
-		assignDashboardFolderPath := "/v1/dashboards/testString/folder/testString"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -9493,64 +9519,6 @@ var _ = Describe(`LogsV0`, func() {
 	})
 	Describe(`AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions)`, func() {
 		assignDashboardFolderPath := "/v1/dashboards/testString/folder/testString"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.AssignDashboardFolderWithContext(ctx, assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.AssignDashboardFolderWithContext(ctx, assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9560,10 +9528,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke AssignDashboardFolder successfully`, func() {
@@ -9575,10 +9540,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.AssignDashboardFolder(nil)
+				response, operationErr := logsService.AssignDashboardFolder(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the AssignDashboardFolderOptions model
 				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
@@ -9587,11 +9551,9 @@ var _ = Describe(`LogsV0`, func() {
 				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
+				response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke AssignDashboardFolder with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9609,53 +9571,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
+				response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the AssignDashboardFolderOptions model with no property values
 				assignDashboardFolderOptionsModelNew := new(logsv0.AssignDashboardFolderOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModelNew)
+				response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -10105,6 +10030,218 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Invoke operation
 				result, response, operationErr := logsService.CreateDashboardFolder(createDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions) - Operation response error`, func() {
+		getDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions)`, func() {
+		getDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDashboardFolderWithContext(ctx, getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDashboardFolderWithContext(ctx, getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDashboardFolder(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDashboardFolder with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetDashboardFolderOptions model with no property values
+				getDashboardFolderOptionsModelNew := new(logsv0.GetDashboardFolderOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -15869,6 +16006,857 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions) - Operation response error`, func() {
+		getEventStreamTargetsPath := "/v1/streams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions)`, func() {
+		getEventStreamTargetsPath := "/v1/streams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"streams": [{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}]}`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetEventStreamTargetsWithContext(ctx, getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetEventStreamTargetsWithContext(ctx, getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"streams": [{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}]}`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetEventStreamTargets(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetEventStreamTargets with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) - Operation response error`, func() {
+		upsertEventStreamTargetPath := "/v1/streams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions)`, func() {
+		upsertEventStreamTargetPath := "/v1/streams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpsertEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpsertEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpsertEventStreamTargetOptions model with no property values
+				upsertEventStreamTargetOptionsModelNew := new(logsv0.UpsertEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions)`, func() {
+		deleteEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteEventStreamTargetPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.DeleteEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				deleteEventStreamTargetOptionsModel := new(logsv0.DeleteEventStreamTargetOptions)
+				deleteEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				deleteEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				deleteEventStreamTargetOptionsModel := new(logsv0.DeleteEventStreamTargetOptions)
+				deleteEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				deleteEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteEventStreamTargetOptions model with no property values
+				deleteEventStreamTargetOptionsModelNew := new(logsv0.DeleteEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) - Operation response error`, func() {
+		updateEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions)`, func() {
+		updateEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateEventStreamTargetWithContext(ctx, updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateEventStreamTargetWithContext(ctx, updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateEventStreamTargetOptions model with no property values
+				updateEventStreamTargetOptionsModelNew := new(logsv0.UpdateEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			logsService, _ := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -15915,9 +16903,8 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewAlertsV2ConditionParameters successfully`, func() {
-				threshold := float64(0.4)
 				timeframe := "timeframe_36_h"
-				_model, err := logsService.NewAlertsV2ConditionParameters(threshold, timeframe)
+				_model, err := logsService.NewAlertsV2ConditionParameters(timeframe)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -16340,6 +17327,16 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 				Expect(alertsV2AlertConditionModel.MoreThan).To(Equal(alertsV2MoreThanConditionModel))
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				Expect(alertsV1DateModel).ToNot(BeNil())
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
@@ -16398,16 +17395,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
 
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
-
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
 				Expect(alertsV1TimeModel).ToNot(BeNil())
@@ -16463,17 +17450,15 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsIsActive := true
 				createAlertOptionsSeverity := "info_or_unspecified"
 				var createAlertOptionsCondition logsv0.AlertsV2AlertConditionIntf = nil
-				createAlertOptionsNotificationGroups := []logsv0.AlertsV2AlertNotificationGroups{}
-				var createAlertOptionsFilters *logsv0.AlertsV1AlertFilters = nil
-				createAlertOptionsModel := logsService.NewCreateAlertOptions(createAlertOptionsName, createAlertOptionsIsActive, createAlertOptionsSeverity, createAlertOptionsCondition, createAlertOptionsNotificationGroups, createAlertOptionsFilters)
+				createAlertOptionsModel := logsService.NewCreateAlertOptions(createAlertOptionsName, createAlertOptionsIsActive, createAlertOptionsSeverity, createAlertOptionsCondition)
 				createAlertOptionsModel.SetName("Test alert")
 				createAlertOptionsModel.SetIsActive(true)
 				createAlertOptionsModel.SetSeverity("info_or_unspecified")
 				createAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				createAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
-				createAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				createAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.SetExpiration(alertsV1DateModel)
+				createAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+				createAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				createAlertOptionsModel.SetActiveWhen(alertsV1AlertActiveWhenModel)
 				createAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				createAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
@@ -16485,10 +17470,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(createAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(createAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(createAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
-				Expect(createAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(createAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
 				Expect(createAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
+				Expect(createAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
+				Expect(createAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(createAlertOptionsModel.ActiveWhen).To(Equal(alertsV1AlertActiveWhenModel))
 				Expect(createAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(createAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
@@ -16721,15 +17706,39 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisDashboardsV1AstRowModel.Appearance).To(Equal(apisDashboardsV1AstRowAppearanceModel))
 				Expect(apisDashboardsV1AstRowModel.Widgets).To(Equal([]logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}))
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).To(BeEmpty())
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap := apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap))
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				Expect(apisDashboardsV1AstSectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+				Expect(apisDashboardsV1AstSectionOptionsModel.Internal).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModel))
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				Expect(apisDashboardsV1AstSectionModel).ToNot(BeNil())
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 				Expect(apisDashboardsV1AstSectionModel.Href).To(Equal(core.StringPtr("testString")))
 				Expect(apisDashboardsV1AstSectionModel.ID).To(Equal(apisDashboardsV1UUIDModel))
 				Expect(apisDashboardsV1AstSectionModel.Rows).To(Equal([]logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}))
+				Expect(apisDashboardsV1AstSectionModel.Options).To(Equal(apisDashboardsV1AstSectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -16771,15 +17780,23 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType).To(Equal(core.StringPtr("single")))
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				Expect(apisDashboardsV1AstMultiSelectModel).ToNot(BeNil())
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 				Expect(apisDashboardsV1AstMultiSelectModel.Source).To(Equal(apisDashboardsV1AstMultiSelectSourceModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.Selection).To(Equal(apisDashboardsV1AstMultiSelectSelectionModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection).To(Equal(core.StringPtr("desc")))
+				Expect(apisDashboardsV1AstMultiSelectModel.SelectionOptions).To(Equal(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -16793,9 +17810,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 				Expect(apisDashboardsV1AstVariableModel.Name).To(Equal(core.StringPtr("service_name")))
 				Expect(apisDashboardsV1AstVariableModel.Definition).To(Equal(apisDashboardsV1AstVariableDefinitionModel))
 				Expect(apisDashboardsV1AstVariableModel.DisplayName).To(Equal(core.StringPtr("Service Name")))
+				Expect(apisDashboardsV1AstVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(apisDashboardsV1AstVariableModel.DisplayType).To(Equal(core.StringPtr("nothing")))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterSourceValueLogs model
 				apisDashboardsV1AstFilterSourceModel := new(logsv0.ApisDashboardsV1AstFilterSourceValueLogs)
@@ -17338,6 +18359,16 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(deleteE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(deleteE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewDeleteEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				id := int64(0)
+				deleteEventStreamTargetOptionsModel := logsService.NewDeleteEventStreamTargetOptions(id)
+				deleteEventStreamTargetOptionsModel.SetID(int64(0))
+				deleteEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(deleteEventStreamTargetOptionsModel.ID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(deleteEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDeleteOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the DeleteOutgoingWebhookOptions model
 				id := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
@@ -17416,6 +18447,23 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getCompanyPoliciesOptionsModel.SourceType).To(Equal(core.StringPtr("logs")))
 				Expect(getCompanyPoliciesOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetDashboardCatalogOptions successfully`, func() {
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := logsService.NewGetDashboardCatalogOptions()
+				getDashboardCatalogOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDashboardCatalogOptionsModel).ToNot(BeNil())
+				Expect(getDashboardCatalogOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetDashboardFolderOptions successfully`, func() {
+				// Construct an instance of the GetDashboardFolderOptions model
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel := logsService.NewGetDashboardFolderOptions(folderID)
+				getDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				getDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDashboardFolderOptionsModel).ToNot(BeNil())
+				Expect(getDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(getDashboardFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetDashboardOptions successfully`, func() {
 				// Construct an instance of the GetDashboardOptions model
 				dashboardID := "testString"
@@ -17449,6 +18497,13 @@ var _ = Describe(`LogsV0`, func() {
 				getEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getEnrichmentsOptionsModel).ToNot(BeNil())
 				Expect(getEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetEventStreamTargetsOptions successfully`, func() {
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := logsService.NewGetEventStreamTargetsOptions()
+				getEventStreamTargetsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getEventStreamTargetsOptionsModel).ToNot(BeNil())
+				Expect(getEventStreamTargetsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the GetOutgoingWebhookOptions model
@@ -17499,6 +18554,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getViewOptionsModel).ToNot(BeNil())
 				Expect(getViewOptionsModel.ID).To(Equal(core.Int64Ptr(int64(52))))
 				Expect(getViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewIbmEventStreams successfully`, func() {
+				brokers := "kafka01.example.com:9093"
+				topic := "live.screen"
+				_model, err := logsService.NewIbmEventStreams(brokers, topic)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewListDashboardFoldersOptions successfully`, func() {
 				// Construct an instance of the ListDashboardFoldersOptions model
@@ -17821,15 +18883,39 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisDashboardsV1AstRowModel.Appearance).To(Equal(apisDashboardsV1AstRowAppearanceModel))
 				Expect(apisDashboardsV1AstRowModel.Widgets).To(Equal([]logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}))
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).To(BeEmpty())
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap := apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap))
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				Expect(apisDashboardsV1AstSectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+				Expect(apisDashboardsV1AstSectionOptionsModel.Internal).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModel))
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				Expect(apisDashboardsV1AstSectionModel).ToNot(BeNil())
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 				Expect(apisDashboardsV1AstSectionModel.Href).To(Equal(core.StringPtr("testString")))
 				Expect(apisDashboardsV1AstSectionModel.ID).To(Equal(apisDashboardsV1UUIDModel))
 				Expect(apisDashboardsV1AstSectionModel.Rows).To(Equal([]logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}))
+				Expect(apisDashboardsV1AstSectionModel.Options).To(Equal(apisDashboardsV1AstSectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -17871,15 +18957,23 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
 
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType).To(Equal(core.StringPtr("single")))
+
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				Expect(apisDashboardsV1AstMultiSelectModel).ToNot(BeNil())
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 				Expect(apisDashboardsV1AstMultiSelectModel.Source).To(Equal(apisDashboardsV1AstMultiSelectSourceModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.Selection).To(Equal(apisDashboardsV1AstMultiSelectSelectionModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection).To(Equal(core.StringPtr("desc")))
+				Expect(apisDashboardsV1AstMultiSelectModel.SelectionOptions).To(Equal(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -17893,9 +18987,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 				Expect(apisDashboardsV1AstVariableModel.Name).To(Equal(core.StringPtr("service_name")))
 				Expect(apisDashboardsV1AstVariableModel.Definition).To(Equal(apisDashboardsV1AstVariableDefinitionModel))
 				Expect(apisDashboardsV1AstVariableModel.DisplayName).To(Equal(core.StringPtr("Service Name")))
+				Expect(apisDashboardsV1AstVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(apisDashboardsV1AstVariableModel.DisplayType).To(Equal(core.StringPtr("nothing")))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterSourceValueLogs model
 				apisDashboardsV1AstFilterSourceModel := new(logsv0.ApisDashboardsV1AstFilterSourceValueLogs)
@@ -18252,7 +19350,7 @@ var _ = Describe(`LogsV0`, func() {
 			It(`Invoke NewRulesV1ReplaceParameters successfully`, func() {
 				destinationField := "text.message"
 				replaceNewVal := "***"
-				rule := "the password is (?P<password>[A-Za-z0-9!@#$].)"
+				rule := "the password is (?P<password>[\\p{L}0-9!@#$].)"
 				_model, err := logsService.NewRulesV1ReplaceParameters(destinationField, replaceNewVal, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -18356,6 +19454,16 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 				Expect(alertsV2AlertConditionModel.MoreThan).To(Equal(alertsV2MoreThanConditionModel))
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				Expect(alertsV1DateModel).ToNot(BeNil())
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
@@ -18414,16 +19522,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
 
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
-
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
 				Expect(alertsV1TimeModel).ToNot(BeNil())
@@ -18480,18 +19578,16 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsIsActive := true
 				updateAlertOptionsSeverity := "info_or_unspecified"
 				var updateAlertOptionsCondition logsv0.AlertsV2AlertConditionIntf = nil
-				updateAlertOptionsNotificationGroups := []logsv0.AlertsV2AlertNotificationGroups{}
-				var updateAlertOptionsFilters *logsv0.AlertsV1AlertFilters = nil
-				updateAlertOptionsModel := logsService.NewUpdateAlertOptions(id, updateAlertOptionsName, updateAlertOptionsIsActive, updateAlertOptionsSeverity, updateAlertOptionsCondition, updateAlertOptionsNotificationGroups, updateAlertOptionsFilters)
+				updateAlertOptionsModel := logsService.NewUpdateAlertOptions(id, updateAlertOptionsName, updateAlertOptionsIsActive, updateAlertOptionsSeverity, updateAlertOptionsCondition)
 				updateAlertOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				updateAlertOptionsModel.SetName("Test alert")
 				updateAlertOptionsModel.SetIsActive(true)
 				updateAlertOptionsModel.SetSeverity("info_or_unspecified")
 				updateAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				updateAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
-				updateAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				updateAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.SetExpiration(alertsV1DateModel)
+				updateAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+				updateAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				updateAlertOptionsModel.SetActiveWhen(alertsV1AlertActiveWhenModel)
 				updateAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				updateAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
@@ -18504,10 +19600,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(updateAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(updateAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(updateAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
-				Expect(updateAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(updateAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
 				Expect(updateAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
+				Expect(updateAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
+				Expect(updateAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(updateAlertOptionsModel.ActiveWhen).To(Equal(alertsV1AlertActiveWhenModel))
 				Expect(updateAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(updateAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
@@ -18553,6 +19649,36 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateDataUsageMetricsExportStatusOptionsModel).ToNot(BeNil())
 				Expect(updateDataUsageMetricsExportStatusOptionsModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(updateDataUsageMetricsExportStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				Expect(ibmEventStreamsModel).ToNot(BeNil())
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
+				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				id := int64(0)
+				updateEventStreamTargetOptionsName := "Live Screen"
+				updateEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
+				updateEventStreamTargetOptionsModel := logsService.NewUpdateEventStreamTargetOptions(id, updateEventStreamTargetOptionsName, updateEventStreamTargetOptionsDpxlExpression)
+				updateEventStreamTargetOptionsModel.SetID(int64(0))
+				updateEventStreamTargetOptionsModel.SetName("Live Screen")
+				updateEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.SetIsActive(true)
+				updateEventStreamTargetOptionsModel.SetCompressionType("gzip")
+				updateEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
+				updateEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(updateEventStreamTargetOptionsModel.ID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(updateEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
+				Expect(updateEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
+				Expect(updateEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
+				Expect(updateEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
+				Expect(updateEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
+				Expect(updateEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
@@ -18717,6 +19843,33 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateRuleGroupOptionsModel.RuleMatchers).To(Equal([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel}))
 				Expect(updateRuleGroupOptionsModel.Order).To(Equal(core.Int64Ptr(int64(39))))
 				Expect(updateRuleGroupOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpsertEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				Expect(ibmEventStreamsModel).ToNot(BeNil())
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
+				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsName := "Live Screen"
+				upsertEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
+				upsertEventStreamTargetOptionsModel := logsService.NewUpsertEventStreamTargetOptions(upsertEventStreamTargetOptionsName, upsertEventStreamTargetOptionsDpxlExpression)
+				upsertEventStreamTargetOptionsModel.SetName("Live Screen")
+				upsertEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.SetIsActive(true)
+				upsertEventStreamTargetOptionsModel.SetCompressionType("gzip")
+				upsertEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
+				upsertEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(upsertEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(upsertEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
+				Expect(upsertEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
+				Expect(upsertEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
+				Expect(upsertEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
+				Expect(upsertEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
+				Expect(upsertEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
 				name := "My Dashboard"
@@ -19591,6 +20744,27 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstCustomSectionOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstCustomSectionOptions)
+			model.Name = core.StringPtr("testString")
+			model.Description = core.StringPtr("testString")
+			model.Collapsed = core.BoolPtr(true)
+			model.Color = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstCustomSectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstCustomSectionOptions(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
@@ -19882,6 +21056,23 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstLayout successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstLayout)
@@ -19906,6 +21097,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Source = nil
 			model.Selection = nil
 			model.ValuesOrderDirection = core.StringPtr("desc")
+			model.SelectionOptions = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19975,6 +21167,342 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQuery)
+			model.LogsQuery = nil
+			model.MetricsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQuery)
+			model.Type = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryType)
+			model.FieldName = nil
+			model.FieldValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryType
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName)
+			model.LogRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue)
+			model.ObservationField = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuery)
+			model.Type = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals)
+			model.Selection = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter)
+			model.Metric = nil
+			model.Label = nil
+			model.Operator = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals)
+			model.Selection = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator)
+			model.Equals = nil
+			model.NotEquals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection)
+			model.List = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection)
+			model.Values = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+			model.StringValue = core.StringPtr("testString")
+			model.VariableName = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryType)
+			model.MetricName = nil
+			model.LabelName = nil
+			model.LabelValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryType
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName)
+			model.MetricRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue)
+			model.MetricName = nil
+			model.LabelName = nil
+			model.LabelFilters = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName)
+			model.MetricRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQuerySource successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQuerySource)
+			model.Query = nil
+			model.RefreshStrategy = core.StringPtr("on_time_frame_change")
+			model.ValueDisplayOptions = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQuerySource
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQuerySource(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelection successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelection)
@@ -20015,6 +21543,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionListSelection)
 			model.Values = []string{"production", "staging"}
+			model.Labels = []string{"testString"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20035,6 +21564,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.LogsPath = nil
 			model.MetricLabel = nil
 			model.ConstantList = nil
+			model.Query = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20045,6 +21575,43 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1AstMultiSelectSource
 			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSource(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectValueDisplayOptions)
+			model.ValueRegex = core.StringPtr("testString")
+			model.LabelRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectValueDisplayOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+			model.SelectionType = core.StringPtr("single")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -20094,6 +21661,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Href = core.StringPtr("testString")
 			model.ID = nil
 			model.Rows = nil
+			model.Options = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20108,12 +21676,51 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionColor successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionColor)
+			model.Predefined = core.StringPtr("orange")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionColor
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionColor(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptions)
+			model.Internal = nil
+			model.Custom = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptions(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstVariable successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstVariable)
 			model.Name = core.StringPtr("service_name")
 			model.Definition = nil
 			model.DisplayName = core.StringPtr("Service Name")
+			model.Description = core.StringPtr("testString")
+			model.DisplayType = core.StringPtr("nothing")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -22009,6 +23616,25 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalIbmEventStreams successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.IbmEventStreams)
+			model.Brokers = core.StringPtr("kafka01.example.com:9093")
+			model.Topic = core.StringPtr("live.screen")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.IbmEventStreams
+			err = logsv0.UnmarshalIbmEventStreams(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalOutgoingWebhookPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototype)
@@ -22365,7 +23991,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.RulesV1ReplaceParameters)
 			model.DestinationField = core.StringPtr("text.message")
 			model.ReplaceNewVal = core.StringPtr("***")
-			model.Rule = core.StringPtr("the password is (?P<password>[A-Za-z0-9!@#$].)")
+			model.Rule = core.StringPtr("the password is (?P<password>[\\p{L}0-9!@#$].)")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -22845,6 +24471,204 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName)
+			model.FieldName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue)
+			model.FieldValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals)
+			model.Equals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals)
+			model.NotEquals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue)
+			model.StringValue = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName)
+			model.VariableName = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName)
+			model.LabelName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue)
+			model.LabelValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName)
+			model.MetricName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryValueLogsQuery)
+			model.LogsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryValueLogsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery)
+			model.MetricsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionValueAll successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
@@ -22931,6 +24755,60 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1AstMultiSelectSourceValueMetricLabel
 			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSourceValueMetricLabel(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueQuery)
+			model.Query = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectSourceValueQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptionsValueCustom successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptionsValueCustom)
+			model.Custom = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptionsValueCustom
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptionsValueCustom(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptionsValueInternal successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+			model.Internal = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptionsValueInternal
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptionsValueInternal(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))

@@ -1111,10 +1111,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				DashboardID: &dashboardIdLink,
 			}
 
-			pinDashboardResponse, response, err := logsService.PinDashboard(pinDashboardOptions)
+			response, err := logsService.PinDashboard(pinDashboardOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(pinDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -1127,10 +1126,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				DashboardID: &dashboardIdLink,
 			}
 
-			replaceDefaultDashboardResponse, response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
+			response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(replaceDefaultDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -1144,10 +1142,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				FolderID:    core.StringPtr(folderIdLink.String()),
 			}
 
-			assignDashboardFolderResponse, response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
+			response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(assignDashboardFolderResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
