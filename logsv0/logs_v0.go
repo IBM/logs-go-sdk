@@ -41,9 +41,6 @@ type LogsV0 struct {
 	Service *core.BaseService
 }
 
-// DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://api.cxdev.eu-gb.logs.dev.appdomain.cloud"
-
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "logs"
 
@@ -90,7 +87,6 @@ func NewLogsV0UsingExternalConfig(options *LogsV0Options) (logs *LogsV0, err err
 // NewLogsV0 : constructs an instance of LogsV0 with passed in options.
 func NewLogsV0(options *LogsV0Options) (service *LogsV0, err error) {
 	serviceOptions := &core.ServiceOptions{
-		URL:           DefaultServiceURL,
 		Authenticator: options.Authenticator,
 	}
 
@@ -170,8 +166,8 @@ func (logs *LogsV0) DisableRetries() {
 	logs.Service.DisableRetries()
 }
 
-// GetAlert : Get Alert
-// Gets alert by id.
+// GetAlert : Get an alert by ID
+// Get an alert by ID.
 func (logs *LogsV0) GetAlert(getAlertOptions *GetAlertOptions) (result *Alert, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetAlertWithContext(context.Background(), getAlertOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -239,8 +235,8 @@ func (logs *LogsV0) GetAlertWithContext(ctx context.Context, getAlertOptions *Ge
 	return
 }
 
-// UpdateAlert : Update Alert
-// Updates alert.
+// UpdateAlert : Update an alert
+// Update an alert.
 func (logs *LogsV0) UpdateAlert(updateAlertOptions *UpdateAlertOptions) (result *Alert, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdateAlertWithContext(context.Background(), updateAlertOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -297,17 +293,17 @@ func (logs *LogsV0) UpdateAlertWithContext(ctx context.Context, updateAlertOptio
 	if updateAlertOptions.Condition != nil {
 		body["condition"] = updateAlertOptions.Condition
 	}
-	if updateAlertOptions.NotificationGroups != nil {
-		body["notification_groups"] = updateAlertOptions.NotificationGroups
-	}
-	if updateAlertOptions.Filters != nil {
-		body["filters"] = updateAlertOptions.Filters
-	}
 	if updateAlertOptions.Description != nil {
 		body["description"] = updateAlertOptions.Description
 	}
 	if updateAlertOptions.Expiration != nil {
 		body["expiration"] = updateAlertOptions.Expiration
+	}
+	if updateAlertOptions.NotificationGroups != nil {
+		body["notification_groups"] = updateAlertOptions.NotificationGroups
+	}
+	if updateAlertOptions.Filters != nil {
+		body["filters"] = updateAlertOptions.Filters
 	}
 	if updateAlertOptions.ActiveWhen != nil {
 		body["active_when"] = updateAlertOptions.ActiveWhen
@@ -320,9 +316,6 @@ func (logs *LogsV0) UpdateAlertWithContext(ctx context.Context, updateAlertOptio
 	}
 	if updateAlertOptions.MetaLabelsStrings != nil {
 		body["meta_labels_strings"] = updateAlertOptions.MetaLabelsStrings
-	}
-	if updateAlertOptions.TracingAlert != nil {
-		body["tracing_alert"] = updateAlertOptions.TracingAlert
 	}
 	if updateAlertOptions.IncidentSettings != nil {
 		body["incident_settings"] = updateAlertOptions.IncidentSettings
@@ -358,8 +351,8 @@ func (logs *LogsV0) UpdateAlertWithContext(ctx context.Context, updateAlertOptio
 	return
 }
 
-// DeleteAlert : Delete Alert
-// Deletes alert.
+// DeleteAlert : Delete an alert
+// Delete an alert.
 func (logs *LogsV0) DeleteAlert(deleteAlertOptions *DeleteAlertOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteAlertWithContext(context.Background(), deleteAlertOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -417,8 +410,8 @@ func (logs *LogsV0) DeleteAlertWithContext(ctx context.Context, deleteAlertOptio
 	return
 }
 
-// GetAlerts : Get Alerts
-// Lists alerts.
+// GetAlerts : List alerts
+// List alerts.
 func (logs *LogsV0) GetAlerts(getAlertsOptions *GetAlertsOptions) (result *AlertCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetAlertsWithContext(context.Background(), getAlertsOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -477,8 +470,8 @@ func (logs *LogsV0) GetAlertsWithContext(ctx context.Context, getAlertsOptions *
 	return
 }
 
-// CreateAlert : Create Alert
-// Creates alert.
+// CreateAlert : Create an alert
+// Create an alert.
 func (logs *LogsV0) CreateAlert(createAlertOptions *CreateAlertOptions) (result *Alert, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateAlertWithContext(context.Background(), createAlertOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -531,17 +524,17 @@ func (logs *LogsV0) CreateAlertWithContext(ctx context.Context, createAlertOptio
 	if createAlertOptions.Condition != nil {
 		body["condition"] = createAlertOptions.Condition
 	}
-	if createAlertOptions.NotificationGroups != nil {
-		body["notification_groups"] = createAlertOptions.NotificationGroups
-	}
-	if createAlertOptions.Filters != nil {
-		body["filters"] = createAlertOptions.Filters
-	}
 	if createAlertOptions.Description != nil {
 		body["description"] = createAlertOptions.Description
 	}
 	if createAlertOptions.Expiration != nil {
 		body["expiration"] = createAlertOptions.Expiration
+	}
+	if createAlertOptions.NotificationGroups != nil {
+		body["notification_groups"] = createAlertOptions.NotificationGroups
+	}
+	if createAlertOptions.Filters != nil {
+		body["filters"] = createAlertOptions.Filters
 	}
 	if createAlertOptions.ActiveWhen != nil {
 		body["active_when"] = createAlertOptions.ActiveWhen
@@ -554,9 +547,6 @@ func (logs *LogsV0) CreateAlertWithContext(ctx context.Context, createAlertOptio
 	}
 	if createAlertOptions.MetaLabelsStrings != nil {
 		body["meta_labels_strings"] = createAlertOptions.MetaLabelsStrings
-	}
-	if createAlertOptions.TracingAlert != nil {
-		body["tracing_alert"] = createAlertOptions.TracingAlert
 	}
 	if createAlertOptions.IncidentSettings != nil {
 		body["incident_settings"] = createAlertOptions.IncidentSettings
@@ -592,7 +582,7 @@ func (logs *LogsV0) CreateAlertWithContext(ctx context.Context, createAlertOptio
 	return
 }
 
-// GetRuleGroup : Get Rule Group
+// GetRuleGroup : Gets rule group by groupid
 // Gets rule group by groupid.
 func (logs *LogsV0) GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetRuleGroupWithContext(context.Background(), getRuleGroupOptions)
@@ -620,7 +610,7 @@ func (logs *LogsV0) GetRuleGroupWithContext(ctx context.Context, getRuleGroupOpt
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rulegroups/{group_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -661,7 +651,7 @@ func (logs *LogsV0) GetRuleGroupWithContext(ctx context.Context, getRuleGroupOpt
 	return
 }
 
-// UpdateRuleGroup : Update Rule Group
+// UpdateRuleGroup : Updates rule group by groupid
 // Updates rule group by groupid.
 func (logs *LogsV0) UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdateRuleGroupWithContext(context.Background(), updateRuleGroupOptions)
@@ -689,7 +679,7 @@ func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGr
 	builder := core.NewRequestBuilder(core.PUT)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rulegroups/{group_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -756,7 +746,7 @@ func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGr
 	return
 }
 
-// DeleteRuleGroup : Delete Rule Group
+// DeleteRuleGroup : Deletes rule group by groupid
 // Deletes rule group by groupid.
 func (logs *LogsV0) DeleteRuleGroup(deleteRuleGroupOptions *DeleteRuleGroupOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteRuleGroupWithContext(context.Background(), deleteRuleGroupOptions)
@@ -784,7 +774,7 @@ func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGr
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rulegroups/{group_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -815,7 +805,7 @@ func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGr
 	return
 }
 
-// ListRuleGroups : List Rule Groups
+// ListRuleGroups : Gets all rule groups
 // Gets all rule groups.
 func (logs *LogsV0) ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions) (result *RuleGroupCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListRuleGroupsWithContext(context.Background(), listRuleGroupsOptions)
@@ -834,7 +824,7 @@ func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroup
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rulegroups`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -875,7 +865,7 @@ func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroup
 	return
 }
 
-// CreateRuleGroup : Create Rule Group
+// CreateRuleGroup : Creates rule group
 // Creates rule group.
 func (logs *LogsV0) CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateRuleGroupWithContext(context.Background(), createRuleGroupOptions)
@@ -899,7 +889,7 @@ func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGr
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rulegroups`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
@@ -966,8 +956,8 @@ func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGr
 	return
 }
 
-// ListOutgoingWebhooks : List Outgoing Webhooks
-// List outbound webhooks.
+// ListOutgoingWebhooks : List Outbound Integrations
+// List Outbound Integrations.
 func (logs *LogsV0) ListOutgoingWebhooks(listOutgoingWebhooksOptions *ListOutgoingWebhooksOptions) (result *OutgoingWebhookCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListOutgoingWebhooksWithContext(context.Background(), listOutgoingWebhooksOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1030,8 +1020,8 @@ func (logs *LogsV0) ListOutgoingWebhooksWithContext(ctx context.Context, listOut
 	return
 }
 
-// CreateOutgoingWebhook : Create Outgoing Webhook
-// Create outbound webhook.
+// CreateOutgoingWebhook : Create an Outbound Integration
+// Create an Outbound Integration.
 func (logs *LogsV0) CreateOutgoingWebhook(createOutgoingWebhookOptions *CreateOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateOutgoingWebhookWithContext(context.Background(), createOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1102,8 +1092,8 @@ func (logs *LogsV0) CreateOutgoingWebhookWithContext(ctx context.Context, create
 	return
 }
 
-// GetOutgoingWebhook : Get Outgoing Webhook
-// Gets outbound webhook by id.
+// GetOutgoingWebhook : Gets an Outbound Integration by ID
+// Gets an Outbound Integration by ID.
 func (logs *LogsV0) GetOutgoingWebhook(getOutgoingWebhookOptions *GetOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetOutgoingWebhookWithContext(context.Background(), getOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1171,8 +1161,8 @@ func (logs *LogsV0) GetOutgoingWebhookWithContext(ctx context.Context, getOutgoi
 	return
 }
 
-// UpdateOutgoingWebhook : Update Outgoing Webhook
-// Update outbound webhook.
+// UpdateOutgoingWebhook : Update an Outbound Integration
+// Update an Outbound Integration.
 func (logs *LogsV0) UpdateOutgoingWebhook(updateOutgoingWebhookOptions *UpdateOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdateOutgoingWebhookWithContext(context.Background(), updateOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1247,8 +1237,8 @@ func (logs *LogsV0) UpdateOutgoingWebhookWithContext(ctx context.Context, update
 	return
 }
 
-// DeleteOutgoingWebhook : Delete Outgoing Webhook
-// Delete outbound webhook.
+// DeleteOutgoingWebhook : Delete an Outbound Integration
+// Delete an Outbound Integration.
 func (logs *LogsV0) DeleteOutgoingWebhook(deleteOutgoingWebhookOptions *DeleteOutgoingWebhookOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteOutgoingWebhookWithContext(context.Background(), deleteOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1306,8 +1296,8 @@ func (logs *LogsV0) DeleteOutgoingWebhookWithContext(ctx context.Context, delete
 	return
 }
 
-// GetPolicy : Get Policy
-// Gets policy by id.
+// GetPolicy : Gets policy by ID
+// Gets policy by ID.
 func (logs *LogsV0) GetPolicy(getPolicyOptions *GetPolicyOptions) (result PolicyIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetPolicyWithContext(context.Background(), getPolicyOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1375,7 +1365,7 @@ func (logs *LogsV0) GetPolicyWithContext(ctx context.Context, getPolicyOptions *
 	return
 }
 
-// UpdatePolicy : Update Policy
+// UpdatePolicy : Updates an existing policy
 // Updates an existing policy.
 func (logs *LogsV0) UpdatePolicy(updatePolicyOptions *UpdatePolicyOptions) (result PolicyIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdatePolicyWithContext(context.Background(), updatePolicyOptions)
@@ -1451,7 +1441,7 @@ func (logs *LogsV0) UpdatePolicyWithContext(ctx context.Context, updatePolicyOpt
 	return
 }
 
-// DeletePolicy : Delete Policy
+// DeletePolicy : Deletes an existing policy
 // Deletes an existing policy.
 func (logs *LogsV0) DeletePolicy(deletePolicyOptions *DeletePolicyOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeletePolicyWithContext(context.Background(), deletePolicyOptions)
@@ -1510,7 +1500,7 @@ func (logs *LogsV0) DeletePolicyWithContext(ctx context.Context, deletePolicyOpt
 	return
 }
 
-// GetCompanyPolicies : Get Company Policies
+// GetCompanyPolicies : Gets policies
 // Gets policies.
 func (logs *LogsV0) GetCompanyPolicies(getCompanyPoliciesOptions *GetCompanyPoliciesOptions) (result *PolicyCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetCompanyPoliciesWithContext(context.Background(), getCompanyPoliciesOptions)
@@ -1577,7 +1567,7 @@ func (logs *LogsV0) GetCompanyPoliciesWithContext(ctx context.Context, getCompan
 	return
 }
 
-// CreatePolicy : Create Policy
+// CreatePolicy : Creates a new policy
 // Creates a new policy.
 func (logs *LogsV0) CreatePolicy(createPolicyOptions *CreatePolicyOptions) (result PolicyIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreatePolicyWithContext(context.Background(), createPolicyOptions)
@@ -1649,7 +1639,67 @@ func (logs *LogsV0) CreatePolicyWithContext(ctx context.Context, createPolicyOpt
 	return
 }
 
-// CreateDashboard : Create Dashboard
+// GetDashboardCatalog : Get dashboard catalog
+// Get dashboard catalog.
+func (logs *LogsV0) GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDashboardCatalogWithContext(context.Background(), getDashboardCatalogOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDashboardCatalogWithContext is an alternate form of the GetDashboardCatalog method which supports a Context parameter
+func (logs *LogsV0) GetDashboardCatalogWithContext(ctx context.Context, getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getDashboardCatalogOptions, "getDashboardCatalogOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDashboardCatalogOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardCatalog")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_dashboard_catalog", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateDashboard : Creates a new dashboard
 // Creates a new dashboard.
 func (logs *LogsV0) CreateDashboard(createDashboardOptions *CreateDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateDashboardWithContext(context.Background(), createDashboardOptions)
@@ -1721,7 +1771,7 @@ func (logs *LogsV0) CreateDashboardWithContext(ctx context.Context, createDashbo
 	return
 }
 
-// GetDashboard : Get Dashboard
+// GetDashboard : Gets an existing dashboard
 // Gets an existing dashboard.
 func (logs *LogsV0) GetDashboard(getDashboardOptions *GetDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetDashboardWithContext(context.Background(), getDashboardOptions)
@@ -1790,7 +1840,7 @@ func (logs *LogsV0) GetDashboardWithContext(ctx context.Context, getDashboardOpt
 	return
 }
 
-// ReplaceDashboard : Replace Dashboard
+// ReplaceDashboard : Replaces an existing dashboard
 // Replaces an existing dashboard.
 func (logs *LogsV0) ReplaceDashboard(replaceDashboardOptions *ReplaceDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ReplaceDashboardWithContext(context.Background(), replaceDashboardOptions)
@@ -1866,7 +1916,7 @@ func (logs *LogsV0) ReplaceDashboardWithContext(ctx context.Context, replaceDash
 	return
 }
 
-// DeleteDashboard : Delete Dashboard
+// DeleteDashboard : Deletes an existing dashboard
 // Deletes an existing dashboard.
 func (logs *LogsV0) DeleteDashboard(deleteDashboardOptions *DeleteDashboardOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteDashboardWithContext(context.Background(), deleteDashboardOptions)
@@ -1925,16 +1975,16 @@ func (logs *LogsV0) DeleteDashboardWithContext(ctx context.Context, deleteDashbo
 	return
 }
 
-// PinDashboard : Pin Dashboard
+// PinDashboard : Add dashboard to the favorite folder
 // Add dashboard to the favorite folder.
-func (logs *LogsV0) PinDashboard(pinDashboardOptions *PinDashboardOptions) (result *PinDashboardResponse, response *core.DetailedResponse, err error) {
-	result, response, err = logs.PinDashboardWithContext(context.Background(), pinDashboardOptions)
+func (logs *LogsV0) PinDashboard(pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.PinDashboardWithContext(context.Background(), pinDashboardOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // PinDashboardWithContext is an alternate form of the PinDashboard method which supports a Context parameter
-func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOptions *PinDashboardOptions) (result *PinDashboardResponse, response *core.DetailedResponse, err error) {
+func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(pinDashboardOptions, "pinDashboardOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -1967,7 +2017,6 @@ func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOpt
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	builder.AddHeader("Accept", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -1975,26 +2024,17 @@ func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOpt
 		return
 	}
 
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
+	response, err = logs.Service.Request(request, nil)
 	if err != nil {
 		core.EnrichHTTPProblem(err, "pin_dashboard", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalPinDashboardResponse)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
 
 	return
 }
 
-// UnpinDashboard : Unpin Dashboard
+// UnpinDashboard : Remove dashboard to the favorite folder
 // Remove dashboard to the favorite folder.
 func (logs *LogsV0) UnpinDashboard(unpinDashboardOptions *UnpinDashboardOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.UnpinDashboardWithContext(context.Background(), unpinDashboardOptions)
@@ -2053,16 +2093,16 @@ func (logs *LogsV0) UnpinDashboardWithContext(ctx context.Context, unpinDashboar
 	return
 }
 
-// ReplaceDefaultDashboard : Replace Default Dashboard
+// ReplaceDefaultDashboard : Set dashboard as the default dashboard for the user
 // Set dashboard as the default dashboard for the user.
-func (logs *LogsV0) ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (result *ReplaceDefaultDashboardResponse, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceDefaultDashboardWithContext(context.Background(), replaceDefaultDashboardOptions)
+func (logs *LogsV0) ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.ReplaceDefaultDashboardWithContext(context.Background(), replaceDefaultDashboardOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // ReplaceDefaultDashboardWithContext is an alternate form of the ReplaceDefaultDashboard method which supports a Context parameter
-func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (result *ReplaceDefaultDashboardResponse, response *core.DetailedResponse, err error) {
+func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(replaceDefaultDashboardOptions, "replaceDefaultDashboardOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -2095,7 +2135,6 @@ func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, repl
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	builder.AddHeader("Accept", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -2103,35 +2142,26 @@ func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, repl
 		return
 	}
 
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
+	response, err = logs.Service.Request(request, nil)
 	if err != nil {
 		core.EnrichHTTPProblem(err, "replace_default_dashboard", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalReplaceDefaultDashboardResponse)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
 
 	return
 }
 
-// AssignDashboardFolder : Assign Dashboard Folder
+// AssignDashboardFolder : Assign a dashboard to a folder
 // Assign a dashboard to a folder.
-func (logs *LogsV0) AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) (result *AssignDashboardFolderResponse, response *core.DetailedResponse, err error) {
-	result, response, err = logs.AssignDashboardFolderWithContext(context.Background(), assignDashboardFolderOptions)
+func (logs *LogsV0) AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.AssignDashboardFolderWithContext(context.Background(), assignDashboardFolderOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
 // AssignDashboardFolderWithContext is an alternate form of the AssignDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assignDashboardFolderOptions *AssignDashboardFolderOptions) (result *AssignDashboardFolderResponse, response *core.DetailedResponse, err error) {
+func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
 	err = core.ValidateNotNil(assignDashboardFolderOptions, "assignDashboardFolderOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
@@ -2165,7 +2195,6 @@ func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assign
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	builder.AddHeader("Accept", "application/json")
 
 	request, err := builder.Build()
 	if err != nil {
@@ -2173,26 +2202,17 @@ func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assign
 		return
 	}
 
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
+	response, err = logs.Service.Request(request, nil)
 	if err != nil {
 		core.EnrichHTTPProblem(err, "assign_dashboard_folder", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAssignDashboardFolderResponse)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
 
 	return
 }
 
-// ListDashboardFolders : List Dashboard Folders
+// ListDashboardFolders : List all dashboard folders
 // List all dashboard folders.
 func (logs *LogsV0) ListDashboardFolders(listDashboardFoldersOptions *ListDashboardFoldersOptions) (result *DashboardFolderCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListDashboardFoldersWithContext(context.Background(), listDashboardFoldersOptions)
@@ -2252,7 +2272,7 @@ func (logs *LogsV0) ListDashboardFoldersWithContext(ctx context.Context, listDas
 	return
 }
 
-// CreateDashboardFolder : Create Dashboard Folder
+// CreateDashboardFolder : Create a dashboard folder
 // Create a dashboard folder.
 func (logs *LogsV0) CreateDashboardFolder(createDashboardFolderOptions *CreateDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateDashboardFolderWithContext(context.Background(), createDashboardFolderOptions)
@@ -2334,7 +2354,76 @@ func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, create
 	return
 }
 
-// ReplaceDashboardFolder : Replace Dashboard Folder
+// GetDashboardFolder : Get a dashboard folder by ID
+// Get a dashboard folder by ID.
+func (logs *LogsV0) GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDashboardFolderWithContext(context.Background(), getDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDashboardFolderWithContext is an alternate form of the GetDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) GetDashboardFolderWithContext(ctx context.Context, getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getDashboardFolderOptions, "getDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getDashboardFolderOptions, "getDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"folder_id": fmt.Sprint(*getDashboardFolderOptions.FolderID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceDashboardFolder : Update a dashboard folder
 // Update a dashboard folder.
 func (logs *LogsV0) ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ReplaceDashboardFolderWithContext(context.Background(), replaceDashboardFolderOptions)
@@ -2356,7 +2445,7 @@ func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, repla
 	}
 
 	pathParamsMap := map[string]string{
-		"folder_id": *replaceDashboardFolderOptions.FolderID,
+		"folder_id": fmt.Sprint(*replaceDashboardFolderOptions.FolderID),
 	}
 
 	builder := core.NewRequestBuilder(core.PUT)
@@ -2420,7 +2509,7 @@ func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, repla
 	return
 }
 
-// DeleteDashboardFolder : Delete Dashboard Folder
+// DeleteDashboardFolder : Delete a dashboard folder
 // Delete a dashboard folder.
 func (logs *LogsV0) DeleteDashboardFolder(deleteDashboardFolderOptions *DeleteDashboardFolderOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteDashboardFolderWithContext(context.Background(), deleteDashboardFolderOptions)
@@ -2442,7 +2531,7 @@ func (logs *LogsV0) DeleteDashboardFolderWithContext(ctx context.Context, delete
 	}
 
 	pathParamsMap := map[string]string{
-		"folder_id": *deleteDashboardFolderOptions.FolderID,
+		"folder_id": fmt.Sprint(*deleteDashboardFolderOptions.FolderID),
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -2479,8 +2568,8 @@ func (logs *LogsV0) DeleteDashboardFolderWithContext(ctx context.Context, delete
 	return
 }
 
-// ListE2m : List E2m
-// Lists event to metrics definitions.
+// ListE2m : Lists events to metrics definitions
+// Lists events to metrics definitions.
 func (logs *LogsV0) ListE2m(listE2mOptions *ListE2mOptions) (result *Event2MetricCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListE2mWithContext(context.Background(), listE2mOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2539,8 +2628,8 @@ func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *List
 	return
 }
 
-// CreateE2m : Create E2m
-// Creates event to metrics definitions.
+// CreateE2m : Creates events to metrics definitions
+// Creates events to metrics definitions.
 func (logs *LogsV0) CreateE2m(createE2mOptions *CreateE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateE2mWithContext(context.Background(), createE2mOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2611,8 +2700,8 @@ func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *
 	return
 }
 
-// GetE2m : Get E2m
-// Gets event to metrics definitions by id.
+// GetE2m : Gets events to metrics definitions by ID
+// Gets events to metrics definitions by ID.
 func (logs *LogsV0) GetE2m(getE2mOptions *GetE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetE2mWithContext(context.Background(), getE2mOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2680,8 +2769,8 @@ func (logs *LogsV0) GetE2mWithContext(ctx context.Context, getE2mOptions *GetE2m
 	return
 }
 
-// ReplaceE2m : Replace E2m
-// Updates event to metrics definitions.
+// ReplaceE2m : Updates events to metrics definitions
+// Updates events to metrics definitions.
 func (logs *LogsV0) ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ReplaceE2mWithContext(context.Background(), replaceE2mOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2756,8 +2845,8 @@ func (logs *LogsV0) ReplaceE2mWithContext(ctx context.Context, replaceE2mOptions
 	return
 }
 
-// DeleteE2m : Delete E2m
-// Deletes event to metrics definitions by id.
+// DeleteE2m : Deletes events to metrics definitions by ID
+// Deletes events to metrics definitions by ID.
 func (logs *LogsV0) DeleteE2m(deleteE2mOptions *DeleteE2mOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteE2mWithContext(context.Background(), deleteE2mOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -2815,7 +2904,7 @@ func (logs *LogsV0) DeleteE2mWithContext(ctx context.Context, deleteE2mOptions *
 	return
 }
 
-// ListViews : List Views
+// ListViews : Lists all company public views
 // Lists all company public views.
 func (logs *LogsV0) ListViews(listViewsOptions *ListViewsOptions) (result *ViewCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListViewsWithContext(context.Background(), listViewsOptions)
@@ -2875,7 +2964,7 @@ func (logs *LogsV0) ListViewsWithContext(ctx context.Context, listViewsOptions *
 	return
 }
 
-// CreateView : Create View
+// CreateView : Creates a new view
 // Creates a new view.
 func (logs *LogsV0) CreateView(createViewOptions *CreateViewOptions) (result *View, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateViewWithContext(context.Background(), createViewOptions)
@@ -2920,11 +3009,11 @@ func (logs *LogsV0) CreateViewWithContext(ctx context.Context, createViewOptions
 	if createViewOptions.Name != nil {
 		body["name"] = createViewOptions.Name
 	}
-	if createViewOptions.SearchQuery != nil {
-		body["search_query"] = createViewOptions.SearchQuery
-	}
 	if createViewOptions.TimeSelection != nil {
 		body["time_selection"] = createViewOptions.TimeSelection
+	}
+	if createViewOptions.SearchQuery != nil {
+		body["search_query"] = createViewOptions.SearchQuery
 	}
 	if createViewOptions.Filters != nil {
 		body["filters"] = createViewOptions.Filters
@@ -2963,7 +3052,7 @@ func (logs *LogsV0) CreateViewWithContext(ctx context.Context, createViewOptions
 	return
 }
 
-// GetView : Get View
+// GetView : Gets a view by ID
 // Gets a view by ID.
 func (logs *LogsV0) GetView(getViewOptions *GetViewOptions) (result *View, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetViewWithContext(context.Background(), getViewOptions)
@@ -3032,7 +3121,7 @@ func (logs *LogsV0) GetViewWithContext(ctx context.Context, getViewOptions *GetV
 	return
 }
 
-// ReplaceView : Replace View
+// ReplaceView : Replaces an existing view
 // Replaces an existing view.
 func (logs *LogsV0) ReplaceView(replaceViewOptions *ReplaceViewOptions) (result *View, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ReplaceViewWithContext(context.Background(), replaceViewOptions)
@@ -3081,11 +3170,11 @@ func (logs *LogsV0) ReplaceViewWithContext(ctx context.Context, replaceViewOptio
 	if replaceViewOptions.Name != nil {
 		body["name"] = replaceViewOptions.Name
 	}
-	if replaceViewOptions.SearchQuery != nil {
-		body["search_query"] = replaceViewOptions.SearchQuery
-	}
 	if replaceViewOptions.TimeSelection != nil {
 		body["time_selection"] = replaceViewOptions.TimeSelection
+	}
+	if replaceViewOptions.SearchQuery != nil {
+		body["search_query"] = replaceViewOptions.SearchQuery
 	}
 	if replaceViewOptions.Filters != nil {
 		body["filters"] = replaceViewOptions.Filters
@@ -3124,7 +3213,7 @@ func (logs *LogsV0) ReplaceViewWithContext(ctx context.Context, replaceViewOptio
 	return
 }
 
-// DeleteView : Delete View
+// DeleteView : Deletes a view by ID
 // Deletes a view by ID.
 func (logs *LogsV0) DeleteView(deleteViewOptions *DeleteViewOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteViewWithContext(context.Background(), deleteViewOptions)
@@ -3183,7 +3272,7 @@ func (logs *LogsV0) DeleteViewWithContext(ctx context.Context, deleteViewOptions
 	return
 }
 
-// ListViewFolders : List View Folders
+// ListViewFolders : List view's folders
 // List view's folders.
 func (logs *LogsV0) ListViewFolders(listViewFoldersOptions *ListViewFoldersOptions) (result *ViewFolderCollection, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ListViewFoldersWithContext(context.Background(), listViewFoldersOptions)
@@ -3243,7 +3332,7 @@ func (logs *LogsV0) ListViewFoldersWithContext(ctx context.Context, listViewFold
 	return
 }
 
-// CreateViewFolder : Create View Folder
+// CreateViewFolder : Create view folder
 // Create view folder.
 func (logs *LogsV0) CreateViewFolder(createViewFolderOptions *CreateViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateViewFolderWithContext(context.Background(), createViewFolderOptions)
@@ -3319,7 +3408,7 @@ func (logs *LogsV0) CreateViewFolderWithContext(ctx context.Context, createViewF
 	return
 }
 
-// GetViewFolder : Get View Folder
+// GetViewFolder : Get view folder
 // Get view folder.
 func (logs *LogsV0) GetViewFolder(getViewFolderOptions *GetViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetViewFolderWithContext(context.Background(), getViewFolderOptions)
@@ -3388,7 +3477,7 @@ func (logs *LogsV0) GetViewFolderWithContext(ctx context.Context, getViewFolderO
 	return
 }
 
-// ReplaceViewFolder : Replace View Folder
+// ReplaceViewFolder : Replaces an existing view folder
 // Replaces an existing view folder.
 func (logs *LogsV0) ReplaceViewFolder(replaceViewFolderOptions *ReplaceViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ReplaceViewFolderWithContext(context.Background(), replaceViewFolderOptions)
@@ -3468,7 +3557,7 @@ func (logs *LogsV0) ReplaceViewFolderWithContext(ctx context.Context, replaceVie
 	return
 }
 
-// DeleteViewFolder : Delete View Folder
+// DeleteViewFolder : Deletes a view folder by ID
 // Deletes a view folder by ID.
 func (logs *LogsV0) DeleteViewFolder(deleteViewFolderOptions *DeleteViewFolderOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteViewFolderWithContext(context.Background(), deleteViewFolderOptions)
@@ -3526,13 +3615,947 @@ func (logs *LogsV0) DeleteViewFolderWithContext(ctx context.Context, deleteViewF
 
 	return
 }
+
+// ListDataAccessRules : Get service instance's Data Access Rules by ids
+// Get service instance's Data Access Rules by ids.
+func (logs *LogsV0) ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListDataAccessRulesWithContext(context.Background(), listDataAccessRulesOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListDataAccessRulesWithContext is an alternate form of the ListDataAccessRules method which supports a Context parameter
+func (logs *LogsV0) ListDataAccessRulesWithContext(ctx context.Context, listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listDataAccessRulesOptions, "listDataAccessRulesOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listDataAccessRulesOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDataAccessRules")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if listDataAccessRulesOptions.ID != nil {
+		err = builder.AddQuerySlice("id", listDataAccessRulesOptions.ID)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "add-query-slice-error", common.GetComponentInfo())
+			return
+		}
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_data_access_rules", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRuleCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateDataAccessRule : Create a Data Access Rule
+// Create a Data Access Rule.
+func (logs *LogsV0) CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateDataAccessRuleWithContext(context.Background(), createDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateDataAccessRuleWithContext is an alternate form of the CreateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) CreateDataAccessRuleWithContext(ctx context.Context, createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createDataAccessRuleOptions, "createDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createDataAccessRuleOptions, "createDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = createDataAccessRuleOptions.DisplayName
+	}
+	if createDataAccessRuleOptions.Filters != nil {
+		body["filters"] = createDataAccessRuleOptions.Filters
+	}
+	if createDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = createDataAccessRuleOptions.DefaultExpression
+	}
+	if createDataAccessRuleOptions.Description != nil {
+		body["description"] = createDataAccessRuleOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataAccessRule : Update a Data Access Rule
+// Update a Data Access Rule.
+func (logs *LogsV0) UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataAccessRuleWithContext(context.Background(), updateDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataAccessRuleWithContext is an alternate form of the UpdateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) UpdateDataAccessRuleWithContext(ctx context.Context, updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataAccessRuleOptions, "updateDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataAccessRuleOptions, "updateDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*updateDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = updateDataAccessRuleOptions.DisplayName
+	}
+	if updateDataAccessRuleOptions.Filters != nil {
+		body["filters"] = updateDataAccessRuleOptions.Filters
+	}
+	if updateDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = updateDataAccessRuleOptions.DefaultExpression
+	}
+	if updateDataAccessRuleOptions.Description != nil {
+		body["description"] = updateDataAccessRuleOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteDataAccessRule : Delete a Data Access Rule
+// Delete a Data Access Rule.
+func (logs *LogsV0) DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteDataAccessRuleWithContext(context.Background(), deleteDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteDataAccessRuleWithContext is an alternate form of the DeleteDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) DeleteDataAccessRuleWithContext(ctx context.Context, deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// GetEnrichments : List all enrichments
+// List all enrichments.
+func (logs *LogsV0) GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetEnrichmentsWithContext(context.Background(), getEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetEnrichmentsWithContext is an alternate form of the GetEnrichments method which supports a Context parameter
+func (logs *LogsV0) GetEnrichmentsWithContext(ctx context.Context, getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getEnrichmentsOptions, "getEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichmentCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateEnrichment : Create an enrichment
+// Create an enrichment.
+func (logs *LogsV0) CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateEnrichmentWithContext(context.Background(), createEnrichmentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateEnrichmentWithContext is an alternate form of the CreateEnrichment method which supports a Context parameter
+func (logs *LogsV0) CreateEnrichmentWithContext(ctx context.Context, createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createEnrichmentOptions, "createEnrichmentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createEnrichmentOptions, "createEnrichmentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createEnrichmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEnrichment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createEnrichmentOptions.FieldName != nil {
+		body["field_name"] = createEnrichmentOptions.FieldName
+	}
+	if createEnrichmentOptions.EnrichmentType != nil {
+		body["enrichment_type"] = createEnrichmentOptions.EnrichmentType
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_enrichment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichment)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// RemoveEnrichments : Delete enrichments
+// Delete enrichments.
+func (logs *LogsV0) RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.RemoveEnrichmentsWithContext(context.Background(), removeEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// RemoveEnrichmentsWithContext is an alternate form of the RemoveEnrichments method which supports a Context parameter
+func (logs *LogsV0) RemoveEnrichmentsWithContext(ctx context.Context, removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(removeEnrichmentsOptions, "removeEnrichmentsOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(removeEnrichmentsOptions, "removeEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*removeEnrichmentsOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range removeEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "RemoveEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "remove_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// GetDataUsageMetricsExportStatus : Get data usage metrics export status
+// Get data usage metrics export status.
+func (logs *LogsV0) GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDataUsageMetricsExportStatusWithContext(context.Background(), getDataUsageMetricsExportStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDataUsageMetricsExportStatusWithContext is an alternate form of the GetDataUsageMetricsExportStatus method which supports a Context parameter
+func (logs *LogsV0) GetDataUsageMetricsExportStatusWithContext(ctx context.Context, getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getDataUsageMetricsExportStatusOptions, "getDataUsageMetricsExportStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDataUsageMetricsExportStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDataUsageMetricsExportStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_data_usage_metrics_export_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataUsageMetricsExportStatus : Update data usage metrics export status
+// Update data usage metrics export status.
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataUsageMetricsExportStatusWithContext(context.Background(), updateDataUsageMetricsExportStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataUsageMetricsExportStatusWithContext is an alternate form of the UpdateDataUsageMetricsExportStatus method which supports a Context parameter
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatusWithContext(ctx context.Context, updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataUsageMetricsExportStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataUsageMetricsExportStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataUsageMetricsExportStatusOptions.Enabled != nil {
+		body["enabled"] = updateDataUsageMetricsExportStatusOptions.Enabled
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_usage_metrics_export_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetEventStreamTargets : List all Event Streams
+// List all Event Streams.
+func (logs *LogsV0) GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetEventStreamTargetsWithContext(context.Background(), getEventStreamTargetsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetEventStreamTargetsWithContext is an alternate form of the GetEventStreamTargets method which supports a Context parameter
+func (logs *LogsV0) GetEventStreamTargetsWithContext(ctx context.Context, getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getEventStreamTargetsOptions, "getEventStreamTargetsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getEventStreamTargetsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEventStreamTargets")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_event_stream_targets", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStreamCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpsertEventStreamTarget : Create an Event Stream Integration
+// Create an Event Stream Integration.
+func (logs *LogsV0) UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpsertEventStreamTargetWithContext(context.Background(), upsertEventStreamTargetOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpsertEventStreamTargetWithContext is an alternate form of the UpsertEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) UpsertEventStreamTargetWithContext(ctx context.Context, upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(upsertEventStreamTargetOptions, "upsertEventStreamTargetOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(upsertEventStreamTargetOptions, "upsertEventStreamTargetOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range upsertEventStreamTargetOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpsertEventStreamTarget")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if upsertEventStreamTargetOptions.Name != nil {
+		body["name"] = upsertEventStreamTargetOptions.Name
+	}
+	if upsertEventStreamTargetOptions.DpxlExpression != nil {
+		body["dpxl_expression"] = upsertEventStreamTargetOptions.DpxlExpression
+	}
+	if upsertEventStreamTargetOptions.IsActive != nil {
+		body["is_active"] = upsertEventStreamTargetOptions.IsActive
+	}
+	if upsertEventStreamTargetOptions.CompressionType != nil {
+		body["compression_type"] = upsertEventStreamTargetOptions.CompressionType
+	}
+	if upsertEventStreamTargetOptions.IbmEventStreams != nil {
+		body["ibm_event_streams"] = upsertEventStreamTargetOptions.IbmEventStreams
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "upsert_event_stream_target", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteEventStreamTarget : Delete an Event Stream integration by ID
+// Delete an Event Stream integration by ID.
+func (logs *LogsV0) DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteEventStreamTargetWithContext(context.Background(), deleteEventStreamTargetOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteEventStreamTargetWithContext is an alternate form of the DeleteEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) DeleteEventStreamTargetWithContext(ctx context.Context, deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteEventStreamTargetOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteEventStreamTargetOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteEventStreamTarget")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_event_stream_target", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// UpdateEventStreamTarget : Update an Event Stream
+// Update an Event Stream.
+func (logs *LogsV0) UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateEventStreamTargetWithContext(context.Background(), updateEventStreamTargetOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateEventStreamTargetWithContext is an alternate form of the UpdateEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) UpdateEventStreamTargetWithContext(ctx context.Context, updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateEventStreamTargetOptions, "updateEventStreamTargetOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateEventStreamTargetOptions, "updateEventStreamTargetOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*updateEventStreamTargetOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateEventStreamTargetOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateEventStreamTarget")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateEventStreamTargetOptions.Name != nil {
+		body["name"] = updateEventStreamTargetOptions.Name
+	}
+	if updateEventStreamTargetOptions.DpxlExpression != nil {
+		body["dpxl_expression"] = updateEventStreamTargetOptions.DpxlExpression
+	}
+	if updateEventStreamTargetOptions.IsActive != nil {
+		body["is_active"] = updateEventStreamTargetOptions.IsActive
+	}
+	if updateEventStreamTargetOptions.CompressionType != nil {
+		body["compression_type"] = updateEventStreamTargetOptions.CompressionType
+	}
+	if updateEventStreamTargetOptions.IbmEventStreams != nil {
+		body["ibm_event_streams"] = updateEventStreamTargetOptions.IbmEventStreams
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_event_stream_target", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
 func getServiceComponentInfo() *core.ProblemComponent {
 	return core.NewProblemComponent(DefaultServiceName, "0.1.0")
 }
 
 // Alert : Alert resource model.
 type Alert struct {
-	// Alert id.
+	// Alert ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Alert name.
@@ -3554,10 +4577,10 @@ type Alert struct {
 	Condition AlertsV2AlertConditionIntf `json:"condition" validate:"required"`
 
 	// Alert notification groups.
-	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups" validate:"required"`
+	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups,omitempty"`
 
 	// Alert filters.
-	Filters *AlertsV1AlertFilters `json:"filters" validate:"required"`
+	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
 	// When should the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
@@ -3570,9 +4593,6 @@ type Alert struct {
 
 	// The Meta labels to add to the alert as string with ':' separator.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
-
-	// The definition for tracing alert.
-	TracingAlert *AlertsV1TracingAlert `json:"tracing_alert,omitempty"`
 
 	// Alert unique identifier.
 	UniqueIdentifier *strfmt.UUID `json:"unique_identifier,omitempty"`
@@ -3656,11 +4676,6 @@ func UnmarshalAlert(m map[string]json.RawMessage, result interface{}) (err error
 	err = core.UnmarshalPrimitive(m, "meta_labels_strings", &obj.MetaLabelsStrings)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "meta_labels_strings-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "tracing_alert", &obj.TracingAlert, UnmarshalAlertsV1TracingAlert)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "tracing_alert-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "unique_identifier", &obj.UniqueIdentifier)
@@ -3817,7 +4832,6 @@ const (
 	AlertsV1AlertFilters_FilterType_Template = "template"
 	AlertsV1AlertFilters_FilterType_TextOrUnspecified = "text_or_unspecified"
 	AlertsV1AlertFilters_FilterType_TimeRelative = "time_relative"
-	AlertsV1AlertFilters_FilterType_Tracing = "tracing"
 	AlertsV1AlertFilters_FilterType_UniqueCount = "unique_count"
 )
 
@@ -3860,36 +4874,16 @@ func UnmarshalAlertsV1AlertFilters(m map[string]json.RawMessage, result interfac
 
 // AlertsV1AlertFiltersMetadataFilters : The metadata filters.
 type AlertsV1AlertFiltersMetadataFilters struct {
-	// The categories to filter.
-	Categories []string `json:"categories,omitempty"`
-
 	// The applications to filter.
 	Applications []string `json:"applications,omitempty"`
 
 	// The subsystems to filter.
 	Subsystems []string `json:"subsystems,omitempty"`
-
-	// The computers to filter.
-	Computers []string `json:"computers,omitempty"`
-
-	// The classes to filter.
-	Classes []string `json:"classes,omitempty"`
-
-	// The methods to filter.
-	Methods []string `json:"methods,omitempty"`
-
-	// The IP addresses to filter.
-	IpAddresses []string `json:"ip_addresses,omitempty"`
 }
 
 // UnmarshalAlertsV1AlertFiltersMetadataFilters unmarshals an instance of AlertsV1AlertFiltersMetadataFilters from the specified map of raw messages.
 func UnmarshalAlertsV1AlertFiltersMetadataFilters(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(AlertsV1AlertFiltersMetadataFilters)
-	err = core.UnmarshalPrimitive(m, "categories", &obj.Categories)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "categories-error", common.GetComponentInfo())
-		return
-	}
 	err = core.UnmarshalPrimitive(m, "applications", &obj.Applications)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "applications-error", common.GetComponentInfo())
@@ -3900,26 +4894,6 @@ func UnmarshalAlertsV1AlertFiltersMetadataFilters(m map[string]json.RawMessage, 
 		err = core.SDKErrorf(err, "", "subsystems-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalPrimitive(m, "computers", &obj.Computers)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "computers-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "classes", &obj.Classes)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "classes-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "methods", &obj.Methods)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "methods-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "ip_addresses", &obj.IpAddresses)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "ip_addresses-error", common.GetComponentInfo())
-		return
-	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
@@ -3927,7 +4901,7 @@ func UnmarshalAlertsV1AlertFiltersMetadataFilters(m map[string]json.RawMessage, 
 // AlertsV1AlertFiltersRatioAlert : The ratio alerts.
 type AlertsV1AlertFiltersRatioAlert struct {
 	// The alias of the filter.
-	Alias *string `json:"alias,omitempty"`
+	Alias *string `json:"alias" validate:"required"`
 
 	// The text to filter.
 	Text *string `json:"text,omitempty"`
@@ -3955,6 +4929,18 @@ const (
 	AlertsV1AlertFiltersRatioAlert_Severities_Verbose = "verbose"
 	AlertsV1AlertFiltersRatioAlert_Severities_Warning = "warning"
 )
+
+// NewAlertsV1AlertFiltersRatioAlert : Instantiate AlertsV1AlertFiltersRatioAlert (Generic Model Constructor)
+func (*LogsV0) NewAlertsV1AlertFiltersRatioAlert(alias string) (_model *AlertsV1AlertFiltersRatioAlert, err error) {
+	_model = &AlertsV1AlertFiltersRatioAlert{
+		Alias: core.StringPtr(alias),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
 
 // UnmarshalAlertsV1AlertFiltersRatioAlert unmarshals an instance of AlertsV1AlertFiltersRatioAlert from the specified map of raw messages.
 func UnmarshalAlertsV1AlertFiltersRatioAlert(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -4027,76 +5013,12 @@ func UnmarshalAlertsV1Date(m map[string]json.RawMessage, result interface{}) (er
 	return
 }
 
-// AlertsV1FilterData : The tracing field filters.
-type AlertsV1FilterData struct {
-	// The field name.
-	Field *string `json:"field" validate:"required"`
-
-	// The field filters.
-	Filters []AlertsV1Filters `json:"filters,omitempty"`
-}
-
-// NewAlertsV1FilterData : Instantiate AlertsV1FilterData (Generic Model Constructor)
-func (*LogsV0) NewAlertsV1FilterData(field string) (_model *AlertsV1FilterData, err error) {
-	_model = &AlertsV1FilterData{
-		Field: core.StringPtr(field),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalAlertsV1FilterData unmarshals an instance of AlertsV1FilterData from the specified map of raw messages.
-func UnmarshalAlertsV1FilterData(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(AlertsV1FilterData)
-	err = core.UnmarshalPrimitive(m, "field", &obj.Field)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "field-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "filters", &obj.Filters, UnmarshalAlertsV1Filters)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "filters-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// AlertsV1Filters : The field filters.
-type AlertsV1Filters struct {
-	// The filter values.
-	Values []string `json:"values,omitempty"`
-
-	// The filter operator.
-	Operator *string `json:"operator,omitempty"`
-}
-
-// UnmarshalAlertsV1Filters unmarshals an instance of AlertsV1Filters from the specified map of raw messages.
-func UnmarshalAlertsV1Filters(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(AlertsV1Filters)
-	err = core.UnmarshalPrimitive(m, "values", &obj.Values)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "values-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "operator", &obj.Operator)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "operator-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// AlertsV1FlowAlert : list of alerts.
+// AlertsV1FlowAlert : List of alerts.
 type AlertsV1FlowAlert struct {
-	// alert id.
+	// The alert ID.
 	ID *string `json:"id,omitempty"`
 
-	// alert not.
+	// The alert not.
 	Not *bool `json:"not,omitempty"`
 }
 
@@ -4117,17 +5039,17 @@ func UnmarshalAlertsV1FlowAlert(m map[string]json.RawMessage, result interface{}
 	return
 }
 
-// AlertsV1FlowAlerts : list of alerts.
+// AlertsV1FlowAlerts : List of alerts.
 type AlertsV1FlowAlerts struct {
-	// operator for the alerts.
+	// Operator for the alerts.
 	Op *string `json:"op,omitempty"`
 
-	// list of alerts.
+	// List of alerts.
 	Values []AlertsV1FlowAlert `json:"values,omitempty"`
 }
 
 // Constants associated with the AlertsV1FlowAlerts.Op property.
-// operator for the alerts.
+// Operator for the alerts.
 const (
 	AlertsV1FlowAlerts_Op_And = "and"
 	AlertsV1FlowAlerts_Op_Or = "or"
@@ -4150,17 +5072,17 @@ func UnmarshalAlertsV1FlowAlerts(m map[string]json.RawMessage, result interface{
 	return
 }
 
-// AlertsV1FlowGroup : list of groups of alerts.
+// AlertsV1FlowGroup : List of groups of alerts.
 type AlertsV1FlowGroup struct {
-	// list of alerts.
+	// List of alerts.
 	Alerts *AlertsV1FlowAlerts `json:"alerts,omitempty"`
 
-	// operator for the alerts.
+	// Operator for the alerts.
 	NextOp *string `json:"next_op,omitempty"`
 }
 
 // Constants associated with the AlertsV1FlowGroup.NextOp property.
-// operator for the alerts.
+// Operator for the alerts.
 const (
 	AlertsV1FlowGroup_NextOp_And = "and"
 	AlertsV1FlowGroup_NextOp_Or = "or"
@@ -4185,10 +5107,10 @@ func UnmarshalAlertsV1FlowGroup(m map[string]json.RawMessage, result interface{}
 
 // AlertsV1FlowStage : The Flow alert condition parameters.
 type AlertsV1FlowStage struct {
-	// list of groups of alerts.
+	// List of groups of alerts.
 	Groups []AlertsV1FlowGroup `json:"groups,omitempty"`
 
-	// timeframe for the flow.
+	// Timeframe for the flow.
 	Timeframe *AlertsV1FlowTimeframe `json:"timeframe,omitempty"`
 }
 
@@ -4209,9 +5131,9 @@ func UnmarshalAlertsV1FlowStage(m map[string]json.RawMessage, result interface{}
 	return
 }
 
-// AlertsV1FlowTimeframe : timeframe for the flow.
+// AlertsV1FlowTimeframe : Timeframe for the flow.
 type AlertsV1FlowTimeframe struct {
-	// timeframe in milliseconds.
+	// Timeframe in milliseconds.
 	Ms *int64 `json:"ms,omitempty"`
 }
 
@@ -4268,10 +5190,10 @@ type AlertsV1MetricAlertConditionParameters struct {
 	ArithmeticOperatorModifier *int64 `json:"arithmetic_operator_modifier,omitempty"`
 
 	// The threshold percentage.
-	SampleThresholdPercentage *int64 `json:"sample_threshold_percentage" validate:"required"`
+	SampleThresholdPercentage *int64 `json:"sample_threshold_percentage,omitempty"`
 
 	// Non null percentage of the evaluation.
-	NonNullPercentage *int64 `json:"non_null_percentage" validate:"required"`
+	NonNullPercentage *int64 `json:"non_null_percentage,omitempty"`
 
 	// Should we swap null values with zero.
 	SwapNullValues *bool `json:"swap_null_values,omitempty"`
@@ -4296,13 +5218,11 @@ const (
 )
 
 // NewAlertsV1MetricAlertConditionParameters : Instantiate AlertsV1MetricAlertConditionParameters (Generic Model Constructor)
-func (*LogsV0) NewAlertsV1MetricAlertConditionParameters(metricField string, metricSource string, arithmeticOperator string, sampleThresholdPercentage int64, nonNullPercentage int64) (_model *AlertsV1MetricAlertConditionParameters, err error) {
+func (*LogsV0) NewAlertsV1MetricAlertConditionParameters(metricField string, metricSource string, arithmeticOperator string) (_model *AlertsV1MetricAlertConditionParameters, err error) {
 	_model = &AlertsV1MetricAlertConditionParameters{
 		MetricField: core.StringPtr(metricField),
 		MetricSource: core.StringPtr(metricSource),
 		ArithmeticOperator: core.StringPtr(arithmeticOperator),
-		SampleThresholdPercentage: core.Int64Ptr(sampleThresholdPercentage),
-		NonNullPercentage: core.Int64Ptr(nonNullPercentage),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	if err != nil {
@@ -4365,18 +5285,17 @@ type AlertsV1MetricAlertPromqlConditionParameters struct {
 	SampleThresholdPercentage *int64 `json:"sample_threshold_percentage" validate:"required"`
 
 	// Non null percentage of the evaluation.
-	NonNullPercentage *int64 `json:"non_null_percentage" validate:"required"`
+	NonNullPercentage *int64 `json:"non_null_percentage,omitempty"`
 
 	// Should we swap null values with zero.
 	SwapNullValues *bool `json:"swap_null_values,omitempty"`
 }
 
 // NewAlertsV1MetricAlertPromqlConditionParameters : Instantiate AlertsV1MetricAlertPromqlConditionParameters (Generic Model Constructor)
-func (*LogsV0) NewAlertsV1MetricAlertPromqlConditionParameters(promqlText string, sampleThresholdPercentage int64, nonNullPercentage int64) (_model *AlertsV1MetricAlertPromqlConditionParameters, err error) {
+func (*LogsV0) NewAlertsV1MetricAlertPromqlConditionParameters(promqlText string, sampleThresholdPercentage int64) (_model *AlertsV1MetricAlertPromqlConditionParameters, err error) {
 	_model = &AlertsV1MetricAlertPromqlConditionParameters{
 		PromqlText: core.StringPtr(promqlText),
 		SampleThresholdPercentage: core.Int64Ptr(sampleThresholdPercentage),
-		NonNullPercentage: core.Int64Ptr(nonNullPercentage),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	if err != nil {
@@ -4529,52 +5448,6 @@ func UnmarshalAlertsV1TimeRange(m map[string]json.RawMessage, result interface{}
 	return
 }
 
-// AlertsV1TracingAlert : The definition for tracing alert.
-type AlertsV1TracingAlert struct {
-	// The latency condition in milliseconds.
-	ConditionLatency *int64 `json:"condition_latency" validate:"required"`
-
-	// The tracing field filters.
-	FieldFilters []AlertsV1FilterData `json:"field_filters,omitempty"`
-
-	// The tracing tag filters.
-	TagFilters []AlertsV1FilterData `json:"tag_filters,omitempty"`
-}
-
-// NewAlertsV1TracingAlert : Instantiate AlertsV1TracingAlert (Generic Model Constructor)
-func (*LogsV0) NewAlertsV1TracingAlert(conditionLatency int64) (_model *AlertsV1TracingAlert, err error) {
-	_model = &AlertsV1TracingAlert{
-		ConditionLatency: core.Int64Ptr(conditionLatency),
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalAlertsV1TracingAlert unmarshals an instance of AlertsV1TracingAlert from the specified map of raw messages.
-func UnmarshalAlertsV1TracingAlert(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(AlertsV1TracingAlert)
-	err = core.UnmarshalPrimitive(m, "condition_latency", &obj.ConditionLatency)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "condition_latency-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "field_filters", &obj.FieldFilters, UnmarshalAlertsV1FilterData)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "field_filters-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalModel(m, "tag_filters", &obj.TagFilters, UnmarshalAlertsV1FilterData)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "tag_filters-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // AlertsV2AlertCondition : Alert condition.
 // Models which "extend" this model:
 // - AlertsV2AlertConditionConditionImmediate
@@ -4587,7 +5460,7 @@ func UnmarshalAlertsV1TracingAlert(m map[string]json.RawMessage, result interfac
 // - AlertsV2AlertConditionConditionLessThanUsual
 type AlertsV2AlertCondition struct {
 	// Condition for immediate standard alert.
-	Immediate *AlertsV2ImmediateCondition `json:"immediate,omitempty"`
+	Immediate *AlertsV2ImmediateConditionEmpty `json:"immediate,omitempty"`
 
 	// Condition for less than alert.
 	LessThan *AlertsV2LessThanCondition `json:"less_than,omitempty"`
@@ -4621,7 +5494,7 @@ type AlertsV2AlertConditionIntf interface {
 // UnmarshalAlertsV2AlertCondition unmarshals an instance of AlertsV2AlertCondition from the specified map of raw messages.
 func UnmarshalAlertsV2AlertCondition(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(AlertsV2AlertCondition)
-	err = core.UnmarshalModel(m, "immediate", &obj.Immediate, UnmarshalAlertsV2ImmediateCondition)
+	err = core.UnmarshalModel(m, "immediate", &obj.Immediate, UnmarshalAlertsV2ImmediateConditionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "immediate-error", common.GetComponentInfo())
 		return
@@ -4717,7 +5590,7 @@ type AlertsV2AlertNotification struct {
 	// Notify on setting.
 	NotifyOn *string `json:"notify_on,omitempty"`
 
-	// Integration id.
+	// Integration ID.
 	IntegrationID *int64 `json:"integration_id,omitempty"`
 
 	// Recipients.
@@ -4794,7 +5667,7 @@ func UnmarshalAlertsV2AlertNotificationGroups(m map[string]json.RawMessage, resu
 // AlertsV2ConditionParameters : The Less than alert condition parameters.
 type AlertsV2ConditionParameters struct {
 	// The threshold for the alert condition.
-	Threshold *float64 `json:"threshold" validate:"required"`
+	Threshold *float64 `json:"threshold,omitempty"`
 
 	// The timeframe for the alert condition.
 	Timeframe *string `json:"timeframe" validate:"required"`
@@ -4857,9 +5730,8 @@ const (
 )
 
 // NewAlertsV2ConditionParameters : Instantiate AlertsV2ConditionParameters (Generic Model Constructor)
-func (*LogsV0) NewAlertsV2ConditionParameters(threshold float64, timeframe string) (_model *AlertsV2ConditionParameters, err error) {
+func (*LogsV0) NewAlertsV2ConditionParameters(timeframe string) (_model *AlertsV2ConditionParameters, err error) {
 	_model = &AlertsV2ConditionParameters{
-		Threshold: core.Float64Ptr(threshold),
 		Timeframe: core.StringPtr(timeframe),
 	}
 	err = core.ValidateStruct(_model, "required parameters")
@@ -4955,41 +5827,41 @@ func UnmarshalAlertsV2FlowCondition(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// AlertsV2ImmediateCondition : Condition for immediate standard alert.
-type AlertsV2ImmediateCondition struct {
+// AlertsV2ImmediateConditionEmpty : Condition for immediate standard alert.
+type AlertsV2ImmediateConditionEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of AlertsV2ImmediateCondition
-func (o *AlertsV2ImmediateCondition) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of AlertsV2ImmediateConditionEmpty
+func (o *AlertsV2ImmediateConditionEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of AlertsV2ImmediateCondition
-func (o *AlertsV2ImmediateCondition) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of AlertsV2ImmediateConditionEmpty
+func (o *AlertsV2ImmediateConditionEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of AlertsV2ImmediateCondition
-func (o *AlertsV2ImmediateCondition) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of AlertsV2ImmediateConditionEmpty
+func (o *AlertsV2ImmediateConditionEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of AlertsV2ImmediateCondition
-func (o *AlertsV2ImmediateCondition) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of AlertsV2ImmediateConditionEmpty
+func (o *AlertsV2ImmediateConditionEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of AlertsV2ImmediateCondition
-func (o *AlertsV2ImmediateCondition) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of AlertsV2ImmediateConditionEmpty
+func (o *AlertsV2ImmediateConditionEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -5003,9 +5875,9 @@ func (o *AlertsV2ImmediateCondition) MarshalJSON() (buffer []byte, err error) {
 	return
 }
 
-// UnmarshalAlertsV2ImmediateCondition unmarshals an instance of AlertsV2ImmediateCondition from the specified map of raw messages.
-func UnmarshalAlertsV2ImmediateCondition(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(AlertsV2ImmediateCondition)
+// UnmarshalAlertsV2ImmediateConditionEmpty unmarshals an instance of AlertsV2ImmediateConditionEmpty from the specified map of raw messages.
+func UnmarshalAlertsV2ImmediateConditionEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertsV2ImmediateConditionEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -5547,41 +6419,41 @@ func UnmarshalApisDashboardsV1AstAnnotationMetricsSource(m map[string]json.RawMe
 	return
 }
 
-// ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric : Take first data point and use its value as annotation timestamp (instead of point own timestamp).
-type ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric struct {
+// ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty : Take first data point and use its value as annotation timestamp (instead of point own timestamp).
+type ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -5595,9 +6467,9 @@ func (o *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric) MarshalJSON(
 	return
 }
 
-// UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric unmarshals an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
+// UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty unmarshals an instance of ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -5614,13 +6486,13 @@ func UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric(m map[st
 // ApisDashboardsV1AstAnnotationMetricsSourceStrategy : Strategy for turning metrics data into annotations.
 type ApisDashboardsV1AstAnnotationMetricsSourceStrategy struct {
 	// Take first data point and use its value as annotation timestamp (instead of point own timestamp).
-	StartTimeMetric *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric `json:"start_time_metric,omitempty"`
+	StartTimeMetric *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty `json:"start_time_metric,omitempty"`
 }
 
 // UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStrategy unmarshals an instance of ApisDashboardsV1AstAnnotationMetricsSourceStrategy from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStrategy(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-	err = core.UnmarshalModel(m, "start_time_metric", &obj.StartTimeMetric, UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
+	err = core.UnmarshalModel(m, "start_time_metric", &obj.StartTimeMetric, UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "start_time_metric-error", common.GetComponentInfo())
 		return
@@ -5665,52 +6537,231 @@ func UnmarshalApisDashboardsV1AstAnnotationSource(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes : ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes struct
-type ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes struct {
-	FiveMinutes *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes `json:"five_minutes,omitempty"`
+// ApisDashboardsV1AstCustomSectionOptions : ApisDashboardsV1AstCustomSectionOptions struct
+type ApisDashboardsV1AstCustomSectionOptions struct {
+	Name *string `json:"name,omitempty"`
+
+	Description *string `json:"description,omitempty"`
+
+	Collapsed *bool `json:"collapsed,omitempty"`
+
+	Color *ApisDashboardsV1AstSectionColor `json:"color,omitempty"`
 }
 
-// UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
-	err = core.UnmarshalModel(m, "five_minutes", &obj.FiveMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
+// UnmarshalApisDashboardsV1AstCustomSectionOptions unmarshals an instance of ApisDashboardsV1AstCustomSectionOptions from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstCustomSectionOptions(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstCustomSectionOptions)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "five_minutes-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "collapsed", &obj.Collapsed)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "collapsed-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "color", &obj.Color, UnmarshalApisDashboardsV1AstSectionColor)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "color-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// ApisDashboardsV1AstDashboardAutoRefreshOff : ApisDashboardsV1AstDashboardAutoRefreshOff struct
-type ApisDashboardsV1AstDashboardAutoRefreshOff struct {
-	False *ApisDashboardsV1AstDashboardAutoRefreshOff `json:"false,omitempty"`
+// ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty : Auto refresh interval is set to five minutes.
+type ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
 }
 
-// UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshOff from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstDashboardAutoRefreshOff)
-	err = core.UnmarshalModel(m, "false", &obj.False, UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff)
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "false-error", common.GetComponentInfo())
-		return
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes : ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes struct
-type ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes struct {
-	TwoMinutes *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes `json:"two_minutes,omitempty"`
+// ApisDashboardsV1AstDashboardAutoRefreshOffEmpty : Auto refresh interval is set to off.
+type ApisDashboardsV1AstDashboardAutoRefreshOffEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
 }
 
-// UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
-	err = core.UnmarshalModel(m, "two_minutes", &obj.TwoMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "two_minutes-error", common.GetComponentInfo())
-		return
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshOffEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstDashboardAutoRefreshOffEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty : Auto refresh interval is set to two minutes.
+type ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+func (o *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty unmarshals an instance of ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -5774,7 +6825,7 @@ func UnmarshalApisDashboardsV1AstFilterEquals(m map[string]json.RawMessage, resu
 // - ApisDashboardsV1AstFilterEqualsSelectionValueList
 type ApisDashboardsV1AstFilterEqualsSelection struct {
 	// Represents a selection of all values.
-	All *ApisDashboardsV1AstFilterEqualsSelectionAllSelection `json:"all,omitempty"`
+	All *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty `json:"all,omitempty"`
 
 	// Represents a selection from a list of values.
 	List *ApisDashboardsV1AstFilterEqualsSelectionListSelection `json:"list,omitempty"`
@@ -5790,7 +6841,7 @@ type ApisDashboardsV1AstFilterEqualsSelectionIntf interface {
 // UnmarshalApisDashboardsV1AstFilterEqualsSelection unmarshals an instance of ApisDashboardsV1AstFilterEqualsSelection from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstFilterEqualsSelection(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstFilterEqualsSelection)
-	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection)
+	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "all-error", common.GetComponentInfo())
 		return
@@ -5804,41 +6855,41 @@ func UnmarshalApisDashboardsV1AstFilterEqualsSelection(m map[string]json.RawMess
 	return
 }
 
-// ApisDashboardsV1AstFilterEqualsSelectionAllSelection : Represents a selection of all values.
-type ApisDashboardsV1AstFilterEqualsSelectionAllSelection struct {
+// ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty : Represents a selection of all values.
+type ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -5852,9 +6903,9 @@ func (o *ApisDashboardsV1AstFilterEqualsSelectionAllSelection) MarshalJSON() (bu
 	return
 }
 
-// UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection unmarshals an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelection from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
+// UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty unmarshals an instance of ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -6082,6 +7133,70 @@ func UnmarshalApisDashboardsV1AstFolderPath(m map[string]json.RawMessage, result
 	return
 }
 
+// ApisDashboardsV1AstInternalSectionOptionsEmpty : ApisDashboardsV1AstInternalSectionOptionsEmpty struct
+type ApisDashboardsV1AstInternalSectionOptionsEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstInternalSectionOptionsEmpty
+func (o *ApisDashboardsV1AstInternalSectionOptionsEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstInternalSectionOptionsEmpty
+func (o *ApisDashboardsV1AstInternalSectionOptionsEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstInternalSectionOptionsEmpty
+func (o *ApisDashboardsV1AstInternalSectionOptionsEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstInternalSectionOptionsEmpty
+func (o *ApisDashboardsV1AstInternalSectionOptionsEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstInternalSectionOptionsEmpty
+func (o *ApisDashboardsV1AstInternalSectionOptionsEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty unmarshals an instance of ApisDashboardsV1AstInternalSectionOptionsEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstInternalSectionOptionsEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisDashboardsV1AstLayout : Layout configuration for the dashboard's visual elements.
 type ApisDashboardsV1AstLayout struct {
 	// The sections of the layout.
@@ -6110,6 +7225,9 @@ type ApisDashboardsV1AstMultiSelect struct {
 
 	// The direction of the order: ascending or descending.
 	ValuesOrderDirection *string `json:"values_order_direction" validate:"required"`
+
+	// The options to configure variable.
+	SelectionOptions *ApisDashboardsV1AstMultiSelectVariableSelectionOptions `json:"selection_options,omitempty"`
 }
 
 // Constants associated with the ApisDashboardsV1AstMultiSelect.ValuesOrderDirection property.
@@ -6150,6 +7268,11 @@ func UnmarshalApisDashboardsV1AstMultiSelect(m map[string]json.RawMessage, resul
 	err = core.UnmarshalPrimitive(m, "values_order_direction", &obj.ValuesOrderDirection)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "values_order_direction-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "selection_options", &obj.SelectionOptions, UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "selection_options-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6255,13 +7378,461 @@ func UnmarshalApisDashboardsV1AstMultiSelectMetricLabelSource(m map[string]json.
 	return
 }
 
+// ApisDashboardsV1AstMultiSelectQuery : ApisDashboardsV1AstMultiSelectQuery struct
+// Models which "extend" this model:
+// - ApisDashboardsV1AstMultiSelectQueryValueLogsQuery
+// - ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery
+type ApisDashboardsV1AstMultiSelectQuery struct {
+	LogsQuery *ApisDashboardsV1AstMultiSelectQueryLogsQuery `json:"logs_query,omitempty"`
+
+	MetricsQuery *ApisDashboardsV1AstMultiSelectQueryMetricsQuery `json:"metrics_query,omitempty"`
+}
+func (*ApisDashboardsV1AstMultiSelectQuery) isaApisDashboardsV1AstMultiSelectQuery() bool {
+	return true
+}
+
+type ApisDashboardsV1AstMultiSelectQueryIntf interface {
+	isaApisDashboardsV1AstMultiSelectQuery() bool
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQuery)
+	err = core.UnmarshalModel(m, "logs_query", &obj.LogsQuery, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_query-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metrics_query", &obj.MetricsQuery, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metrics_query-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryLogsQuery : ApisDashboardsV1AstMultiSelectQueryLogsQuery struct
+type ApisDashboardsV1AstMultiSelectQueryLogsQuery struct {
+	Type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeIntf `json:"type,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQuery)
+	err = core.UnmarshalModel(m, "type", &obj.Type, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryLogsQueryType : ApisDashboardsV1AstMultiSelectQueryLogsQueryType struct
+// Models which "extend" this model:
+// - ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName
+// - ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryType struct {
+	FieldName *ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName `json:"field_name,omitempty"`
+
+	FieldValue *ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue `json:"field_value,omitempty"`
+}
+func (*ApisDashboardsV1AstMultiSelectQueryLogsQueryType) isaApisDashboardsV1AstMultiSelectQueryLogsQueryType() bool {
+	return true
+}
+
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeIntf interface {
+	isaApisDashboardsV1AstMultiSelectQueryLogsQueryType() bool
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQueryType from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQueryType)
+	err = core.UnmarshalModel(m, "field_name", &obj.FieldName, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "field_value", &obj.FieldValue, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName : ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName struct
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName struct {
+	LogRegex *string `json:"log_regex,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName)
+	err = core.UnmarshalPrimitive(m, "log_regex", &obj.LogRegex)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "log_regex-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue : ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue struct
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue struct {
+	// Field to count distinct values of.
+	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue)
+	err = core.UnmarshalModel(m, "observation_field", &obj.ObservationField, UnmarshalApisDashboardsV1CommonObservationField)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "observation_field-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQuery : ApisDashboardsV1AstMultiSelectQueryMetricsQuery struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQuery struct {
+	Type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeIntf `json:"type,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQuery)
+	err = core.UnmarshalModel(m, "type", &obj.Type, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals : ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals struct {
+	Selection *ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection `json:"selection,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals)
+	err = core.UnmarshalModel(m, "selection", &obj.Selection, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "selection-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter : ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter struct {
+	Metric ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf `json:"metric,omitempty"`
+
+	Label ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf `json:"label,omitempty"`
+
+	Operator ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorIntf `json:"operator,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter)
+	err = core.UnmarshalModel(m, "metric", &obj.Metric, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label", &obj.Label, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "operator", &obj.Operator, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "operator-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals : ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals struct {
+	Selection *ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection `json:"selection,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals)
+	err = core.UnmarshalModel(m, "selection", &obj.Selection, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "selection-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator : ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator struct
+// Models which "extend" this model:
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator struct {
+	Equals *ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals `json:"equals,omitempty"`
+
+	NotEquals *ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals `json:"not_equals,omitempty"`
+}
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator() bool {
+	return true
+}
+
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorIntf interface {
+	isaApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator() bool
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator)
+	err = core.UnmarshalModel(m, "equals", &obj.Equals, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "equals-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "not_equals", &obj.NotEquals, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "not_equals-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection : ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection struct {
+	List *ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection `json:"list,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection)
+	err = core.UnmarshalModel(m, "list", &obj.List, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "list-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection : ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection struct {
+	Values []ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf `json:"values,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection)
+	err = core.UnmarshalModel(m, "values", &obj.Values, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "values-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable : ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable struct
+// Models which "extend" this model:
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable struct {
+	StringValue *string `json:"string_value,omitempty"`
+
+	VariableName *string `json:"variable_name,omitempty"`
+}
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable() bool {
+	return true
+}
+
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf interface {
+	isaApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable() bool
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	err = core.UnmarshalPrimitive(m, "string_value", &obj.StringValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "string_value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "variable_name", &obj.VariableName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variable_name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryType : ApisDashboardsV1AstMultiSelectQueryMetricsQueryType struct
+// Models which "extend" this model:
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName
+// - ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryType struct {
+	MetricName *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName `json:"metric_name,omitempty"`
+
+	LabelName *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName `json:"label_name,omitempty"`
+
+	LabelValue *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue `json:"label_value,omitempty"`
+}
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryType) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryType() bool {
+	return true
+}
+
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeIntf interface {
+	isaApisDashboardsV1AstMultiSelectQueryMetricsQueryType() bool
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryType from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryType)
+	err = core.UnmarshalModel(m, "metric_name", &obj.MetricName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label_name", &obj.LabelName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label_value", &obj.LabelValue, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName struct {
+	MetricRegex *string `json:"metric_regex,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName)
+	err = core.UnmarshalPrimitive(m, "metric_regex", &obj.MetricRegex)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_regex-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue struct {
+	MetricName ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf `json:"metric_name,omitempty"`
+
+	LabelName ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableIntf `json:"label_name,omitempty"`
+
+	LabelFilters []ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter `json:"label_filters,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue)
+	err = core.UnmarshalModel(m, "metric_name", &obj.MetricName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label_name", &obj.LabelName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label_filters", &obj.LabelFilters, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_filters-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName struct
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName struct {
+	MetricRegex *string `json:"metric_regex,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName)
+	err = core.UnmarshalPrimitive(m, "metric_regex", &obj.MetricRegex)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_regex-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQuerySource : The query of the source.
+type ApisDashboardsV1AstMultiSelectQuerySource struct {
+	Query ApisDashboardsV1AstMultiSelectQueryIntf `json:"query,omitempty"`
+
+	RefreshStrategy *string `json:"refresh_strategy,omitempty"`
+
+	ValueDisplayOptions *ApisDashboardsV1AstMultiSelectValueDisplayOptions `json:"value_display_options,omitempty"`
+}
+
+// Constants associated with the ApisDashboardsV1AstMultiSelectQuerySource.RefreshStrategy property.
+const (
+	ApisDashboardsV1AstMultiSelectQuerySource_RefreshStrategy_OnDashboardLoad = "on_dashboard_load"
+	ApisDashboardsV1AstMultiSelectQuerySource_RefreshStrategy_OnTimeFrameChange = "on_time_frame_change"
+)
+
+// UnmarshalApisDashboardsV1AstMultiSelectQuerySource unmarshals an instance of ApisDashboardsV1AstMultiSelectQuerySource from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQuerySource(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQuerySource)
+	err = core.UnmarshalModel(m, "query", &obj.Query, UnmarshalApisDashboardsV1AstMultiSelectQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "query-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "refresh_strategy", &obj.RefreshStrategy)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "refresh_strategy-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "value_display_options", &obj.ValueDisplayOptions, UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "value_display_options-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisDashboardsV1AstMultiSelectSelection : State of what is currently selected.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstMultiSelectSelectionValueAll
 // - ApisDashboardsV1AstMultiSelectSelectionValueList
 type ApisDashboardsV1AstMultiSelectSelection struct {
 	// All values are selected, usually translated to wildcard (*).
-	All *ApisDashboardsV1AstMultiSelectSelectionAllSelection `json:"all,omitempty"`
+	All *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty `json:"all,omitempty"`
 
 	// Specific values are selected.
 	List *ApisDashboardsV1AstMultiSelectSelectionListSelection `json:"list,omitempty"`
@@ -6277,7 +7848,7 @@ type ApisDashboardsV1AstMultiSelectSelectionIntf interface {
 // UnmarshalApisDashboardsV1AstMultiSelectSelection unmarshals an instance of ApisDashboardsV1AstMultiSelectSelection from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstMultiSelectSelection(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstMultiSelectSelection)
-	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection)
+	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "all-error", common.GetComponentInfo())
 		return
@@ -6291,41 +7862,41 @@ func UnmarshalApisDashboardsV1AstMultiSelectSelection(m map[string]json.RawMessa
 	return
 }
 
-// ApisDashboardsV1AstMultiSelectSelectionAllSelection : All values are selected, usually translated to wildcard (*).
-type ApisDashboardsV1AstMultiSelectSelectionAllSelection struct {
+// ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty : All values are selected, usually translated to wildcard (*).
+type ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelection
-func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelection
-func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelection
-func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelection
-func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstMultiSelectSelectionAllSelection
-func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -6339,9 +7910,9 @@ func (o *ApisDashboardsV1AstMultiSelectSelectionAllSelection) MarshalJSON() (buf
 	return
 }
 
-// UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection unmarshals an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelection from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstMultiSelectSelectionAllSelection)
+// UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty unmarshals an instance of ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -6359,6 +7930,9 @@ func UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection(m map[string]j
 type ApisDashboardsV1AstMultiSelectSelectionListSelection struct {
 	// Selected values.
 	Values []string `json:"values,omitempty"`
+
+	// Selected labels.
+	Labels []string `json:"labels,omitempty"`
 }
 
 // UnmarshalApisDashboardsV1AstMultiSelectSelectionListSelection unmarshals an instance of ApisDashboardsV1AstMultiSelectSelectionListSelection from the specified map of raw messages.
@@ -6367,6 +7941,11 @@ func UnmarshalApisDashboardsV1AstMultiSelectSelectionListSelection(m map[string]
 	err = core.UnmarshalPrimitive(m, "values", &obj.Values)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "values-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "labels-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6378,6 +7957,7 @@ func UnmarshalApisDashboardsV1AstMultiSelectSelectionListSelection(m map[string]
 // - ApisDashboardsV1AstMultiSelectSourceValueLogsPath
 // - ApisDashboardsV1AstMultiSelectSourceValueMetricLabel
 // - ApisDashboardsV1AstMultiSelectSourceValueConstantList
+// - ApisDashboardsV1AstMultiSelectSourceValueQuery
 type ApisDashboardsV1AstMultiSelectSource struct {
 	// Unique values for a given logs path.
 	LogsPath *ApisDashboardsV1AstMultiSelectLogsPathSource `json:"logs_path,omitempty"`
@@ -6387,6 +7967,9 @@ type ApisDashboardsV1AstMultiSelectSource struct {
 
 	// List of constant values.
 	ConstantList *ApisDashboardsV1AstMultiSelectConstantListSource `json:"constant_list,omitempty"`
+
+	// The query of the source.
+	Query *ApisDashboardsV1AstMultiSelectQuerySource `json:"query,omitempty"`
 }
 func (*ApisDashboardsV1AstMultiSelectSource) isaApisDashboardsV1AstMultiSelectSource() bool {
 	return true
@@ -6412,6 +7995,59 @@ func UnmarshalApisDashboardsV1AstMultiSelectSource(m map[string]json.RawMessage,
 	err = core.UnmarshalModel(m, "constant_list", &obj.ConstantList, UnmarshalApisDashboardsV1AstMultiSelectConstantListSource)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "constant_list-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "query", &obj.Query, UnmarshalApisDashboardsV1AstMultiSelectQuerySource)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "query-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectValueDisplayOptions : ApisDashboardsV1AstMultiSelectValueDisplayOptions struct
+type ApisDashboardsV1AstMultiSelectValueDisplayOptions struct {
+	ValueRegex *string `json:"value_regex,omitempty"`
+
+	LabelRegex *string `json:"label_regex,omitempty"`
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions unmarshals an instance of ApisDashboardsV1AstMultiSelectValueDisplayOptions from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectValueDisplayOptions)
+	err = core.UnmarshalPrimitive(m, "value_regex", &obj.ValueRegex)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "value_regex-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "label_regex", &obj.LabelRegex)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_regex-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectVariableSelectionOptions : The options to configure variable.
+type ApisDashboardsV1AstMultiSelectVariableSelectionOptions struct {
+	SelectionType *string `json:"selection_type,omitempty"`
+}
+
+// Constants associated with the ApisDashboardsV1AstMultiSelectVariableSelectionOptions.SelectionType property.
+const (
+	ApisDashboardsV1AstMultiSelectVariableSelectionOptions_SelectionType_Multi = "multi"
+	ApisDashboardsV1AstMultiSelectVariableSelectionOptions_SelectionType_MultiAll = "multi_all"
+	ApisDashboardsV1AstMultiSelectVariableSelectionOptions_SelectionType_Single = "single"
+)
+
+// UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions unmarshals an instance of ApisDashboardsV1AstMultiSelectVariableSelectionOptions from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+	err = core.UnmarshalPrimitive(m, "selection_type", &obj.SelectionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "selection_type-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -6513,6 +8149,9 @@ type ApisDashboardsV1AstSection struct {
 
 	// The rows of the section.
 	Rows []ApisDashboardsV1AstRow `json:"rows,omitempty"`
+
+	// The options for configuring this section.
+	Options ApisDashboardsV1AstSectionOptionsIntf `json:"options,omitempty"`
 }
 
 // NewApisDashboardsV1AstSection : Instantiate ApisDashboardsV1AstSection (Generic Model Constructor)
@@ -6545,6 +8184,73 @@ func UnmarshalApisDashboardsV1AstSection(m map[string]json.RawMessage, result in
 		err = core.SDKErrorf(err, "", "rows-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "options", &obj.Options, UnmarshalApisDashboardsV1AstSectionOptions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "options-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstSectionColor : ApisDashboardsV1AstSectionColor struct
+type ApisDashboardsV1AstSectionColor struct {
+	Predefined *string `json:"predefined,omitempty"`
+}
+
+// Constants associated with the ApisDashboardsV1AstSectionColor.Predefined property.
+const (
+	ApisDashboardsV1AstSectionColor_Predefined_Blue = "blue"
+	ApisDashboardsV1AstSectionColor_Predefined_Cyan = "cyan"
+	ApisDashboardsV1AstSectionColor_Predefined_Green = "green"
+	ApisDashboardsV1AstSectionColor_Predefined_Magenta = "magenta"
+	ApisDashboardsV1AstSectionColor_Predefined_Orange = "orange"
+	ApisDashboardsV1AstSectionColor_Predefined_Pink = "pink"
+	ApisDashboardsV1AstSectionColor_Predefined_Purple = "purple"
+)
+
+// UnmarshalApisDashboardsV1AstSectionColor unmarshals an instance of ApisDashboardsV1AstSectionColor from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstSectionColor(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstSectionColor)
+	err = core.UnmarshalPrimitive(m, "predefined", &obj.Predefined)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "predefined-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstSectionOptions : The options for configuring this section.
+// Models which "extend" this model:
+// - ApisDashboardsV1AstSectionOptionsValueInternal
+// - ApisDashboardsV1AstSectionOptionsValueCustom
+type ApisDashboardsV1AstSectionOptions struct {
+	Internal *ApisDashboardsV1AstInternalSectionOptionsEmpty `json:"internal,omitempty"`
+
+	Custom *ApisDashboardsV1AstCustomSectionOptions `json:"custom,omitempty"`
+}
+func (*ApisDashboardsV1AstSectionOptions) isaApisDashboardsV1AstSectionOptions() bool {
+	return true
+}
+
+type ApisDashboardsV1AstSectionOptionsIntf interface {
+	isaApisDashboardsV1AstSectionOptions() bool
+}
+
+// UnmarshalApisDashboardsV1AstSectionOptions unmarshals an instance of ApisDashboardsV1AstSectionOptions from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstSectionOptions(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstSectionOptions)
+	err = core.UnmarshalModel(m, "internal", &obj.Internal, UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "internal-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "custom", &obj.Custom, UnmarshalApisDashboardsV1AstCustomSectionOptions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom-error", common.GetComponentInfo())
+		return
+	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
@@ -6557,9 +8263,23 @@ type ApisDashboardsV1AstVariable struct {
 	// Definition.
 	Definition ApisDashboardsV1AstVariableDefinitionIntf `json:"definition" validate:"required"`
 
-	// Name used in variable UI.
+	// The name of variable.
 	DisplayName *string `json:"display_name" validate:"required"`
+
+	// The description of variable.
+	Description *string `json:"description,omitempty"`
+
+	// The display type of variable.
+	DisplayType *string `json:"display_type,omitempty"`
 }
+
+// Constants associated with the ApisDashboardsV1AstVariable.DisplayType property.
+// The display type of variable.
+const (
+	ApisDashboardsV1AstVariable_DisplayType_LabelValue = "label_value"
+	ApisDashboardsV1AstVariable_DisplayType_Nothing = "nothing"
+	ApisDashboardsV1AstVariable_DisplayType_Value = "value"
+)
 
 // NewApisDashboardsV1AstVariable : Instantiate ApisDashboardsV1AstVariable (Generic Model Constructor)
 func (*LogsV0) NewApisDashboardsV1AstVariable(name string, definition ApisDashboardsV1AstVariableDefinitionIntf, displayName string) (_model *ApisDashboardsV1AstVariable, err error) {
@@ -6591,6 +8311,16 @@ func UnmarshalApisDashboardsV1AstVariable(m map[string]json.RawMessage, result i
 	err = core.UnmarshalPrimitive(m, "display_name", &obj.DisplayName)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "display_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "display_type", &obj.DisplayType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "display_type-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -7183,7 +8913,7 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartStackDefinition(m map[string]jso
 // - ApisDashboardsV1AstWidgetsBarChartXAxisTypeTime
 type ApisDashboardsV1AstWidgetsBarChartXAxis struct {
 	// Categorical axis.
-	Value *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue `json:"value,omitempty"`
+	Value *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty `json:"value,omitempty"`
 
 	// Time based axis.
 	Time *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByTime `json:"time,omitempty"`
@@ -7199,7 +8929,7 @@ type ApisDashboardsV1AstWidgetsBarChartXAxisIntf interface {
 // UnmarshalApisDashboardsV1AstWidgetsBarChartXAxis unmarshals an instance of ApisDashboardsV1AstWidgetsBarChartXAxis from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxis(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsBarChartXAxis)
-	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue)
+	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
 		return
@@ -7239,41 +8969,41 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByTime(m map[string]js
 	return
 }
 
-// ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue : Categorical axis.
-type ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue struct {
+// ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty : Categorical axis.
+type ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -7287,9 +9017,9 @@ func (o *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue) MarshalJSON() (buf
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue unmarshals an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue)
+// UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -7310,13 +9040,13 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue(m map[string]j
 // - ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation
 type ApisDashboardsV1AstWidgetsCommonColorsBy struct {
 	// Each stack will have the same color across all groups.
-	Stack *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack `json:"stack,omitempty"`
+	Stack *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty `json:"stack,omitempty"`
 
 	// Each group will have different color and stack color will be derived from group color.
-	GroupBy *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy `json:"group_by,omitempty"`
+	GroupBy *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty `json:"group_by,omitempty"`
 
 	// Each aggregation will have different color and stack color will be derived from aggregation color.
-	Aggregation *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation `json:"aggregation,omitempty"`
+	Aggregation *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty `json:"aggregation,omitempty"`
 }
 func (*ApisDashboardsV1AstWidgetsCommonColorsBy) isaApisDashboardsV1AstWidgetsCommonColorsBy() bool {
 	return true
@@ -7329,17 +9059,17 @@ type ApisDashboardsV1AstWidgetsCommonColorsByIntf interface {
 // UnmarshalApisDashboardsV1AstWidgetsCommonColorsBy unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsBy from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsCommonColorsBy(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsCommonColorsBy)
-	err = core.UnmarshalModel(m, "stack", &obj.Stack, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack)
+	err = core.UnmarshalModel(m, "stack", &obj.Stack, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "stack-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "group_by", &obj.GroupBy, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy)
+	err = core.UnmarshalModel(m, "group_by", &obj.GroupBy, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "group_by-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "aggregation", &obj.Aggregation, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation)
+	err = core.UnmarshalModel(m, "aggregation", &obj.Aggregation, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "aggregation-error", common.GetComponentInfo())
 		return
@@ -7348,41 +9078,41 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonColorsBy(m map[string]json.RawMess
 	return
 }
 
-// ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation : Each aggregation will have different color and stack color will be derived from aggregation color.
-type ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation struct {
+// ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty : Each aggregation will have different color and stack color will be derived from aggregation color.
+type ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -7396,9 +9126,9 @@ func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation) MarshalJSO
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation)
+// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -7412,41 +9142,41 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation(m map[
 	return
 }
 
-// ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy : Each group will have different color and stack color will be derived from group color.
-type ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy struct {
+// ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty : Each group will have different color and stack color will be derived from group color.
+type ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -7460,9 +9190,9 @@ func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy) MarshalJSON() 
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy)
+// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -7476,41 +9206,41 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy(m map[stri
 	return
 }
 
-// ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack : Each stack will have the same color across all groups.
-type ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack struct {
+// ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty : Each stack will have the same color across all groups.
+type ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -7524,9 +9254,9 @@ func (o *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack) MarshalJSON() (b
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack)
+// UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -8726,10 +10456,10 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartStackDefinition(m map[
 // - ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue
 type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy struct {
 	// View by category.
-	Category *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory `json:"category,omitempty"`
+	Category *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty `json:"category,omitempty"`
 
 	// View by value.
-	Value *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue `json:"value,omitempty"`
+	Value *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty `json:"value,omitempty"`
 }
 func (*ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy) isaApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy() bool {
 	return true
@@ -8742,12 +10472,12 @@ type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByIntf interface {
 // UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy)
-	err = core.UnmarshalModel(m, "category", &obj.Category, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory)
+	err = core.UnmarshalModel(m, "category", &obj.Category, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "category-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue)
+	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
 		return
@@ -8756,41 +10486,41 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy(m map[stri
 	return
 }
 
-// ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory : View by category.
-type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory struct {
+// ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty : View by category.
+type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -8804,9 +10534,9 @@ func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCateg
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory)
+// UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -8820,41 +10550,41 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewBy
 	return
 }
 
-// ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue : View by value.
-type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue struct {
+// ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty : View by value.
+type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty struct {
 
 	// Allows users to set arbitrary properties
 	additionalProperties map[string]interface{}
 }
 
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue) SetProperty(key string, value interface{}) {
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty) SetProperty(key string, value interface{}) {
 	if o.additionalProperties == nil {
 		o.additionalProperties = make(map[string]interface{})
 	}
 	o.additionalProperties[key] = value
 }
 
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue) SetProperties(m map[string]interface{}) {
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty) SetProperties(m map[string]interface{}) {
 	o.additionalProperties = make(map[string]interface{})
 	for k, v := range m {
 		o.additionalProperties[k] = v
 	}
 }
 
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue) GetProperty(key string) interface{} {
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty) GetProperty(key string) interface{} {
 	return o.additionalProperties[key]
 }
 
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue) GetProperties() map[string]interface{} {
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty) GetProperties() map[string]interface{} {
 	return o.additionalProperties
 }
 
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue) MarshalJSON() (buffer []byte, err error) {
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty) MarshalJSON() (buffer []byte, err error) {
 	m := make(map[string]interface{})
 	if len(o.additionalProperties) > 0 {
 		for k, v := range o.additionalProperties {
@@ -8868,9 +10598,9 @@ func (o *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
 	return
 }
 
-// UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue from the specified map of raw messages.
-func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue)
+// UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty)
 	for k := range m {
 		var v interface{}
 		e := core.UnmarshalPrimitive(m, k, &v)
@@ -9817,7 +11547,7 @@ func UnmarshalApisDashboardsV1CommonDataprimeQuery(m map[string]json.RawMessage,
 // - ApisDashboardsV1CommonLogsAggregationValuePercentile
 type ApisDashboardsV1CommonLogsAggregation struct {
 	// Count the number of entries.
-	Count *ApisDashboardsV1CommonLogsAggregationCount `json:"count,omitempty"`
+	Count *ApisDashboardsV1CommonLogsAggregationCountEmpty `json:"count,omitempty"`
 
 	// Count the number of distinct values of log field.
 	CountDistinct *ApisDashboardsV1CommonLogsAggregationCountDistinct `json:"count_distinct,omitempty"`
@@ -9848,7 +11578,7 @@ type ApisDashboardsV1CommonLogsAggregationIntf interface {
 // UnmarshalApisDashboardsV1CommonLogsAggregation unmarshals an instance of ApisDashboardsV1CommonLogsAggregation from the specified map of raw messages.
 func UnmarshalApisDashboardsV1CommonLogsAggregation(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1CommonLogsAggregation)
-	err = core.UnmarshalModel(m, "count", &obj.Count, UnmarshalApisDashboardsV1CommonLogsAggregationCount)
+	err = core.UnmarshalModel(m, "count", &obj.Count, UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "count-error", common.GetComponentInfo())
 		return
@@ -9917,70 +11647,6 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationAverage(m map[string]json.Raw
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationCount : Count the number of entries.
-type ApisDashboardsV1CommonLogsAggregationCount struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1CommonLogsAggregationCount
-func (o *ApisDashboardsV1CommonLogsAggregationCount) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1CommonLogsAggregationCount
-func (o *ApisDashboardsV1CommonLogsAggregationCount) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1CommonLogsAggregationCount
-func (o *ApisDashboardsV1CommonLogsAggregationCount) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1CommonLogsAggregationCount
-func (o *ApisDashboardsV1CommonLogsAggregationCount) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ApisDashboardsV1CommonLogsAggregationCount
-func (o *ApisDashboardsV1CommonLogsAggregationCount) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalApisDashboardsV1CommonLogsAggregationCount unmarshals an instance of ApisDashboardsV1CommonLogsAggregationCount from the specified map of raw messages.
-func UnmarshalApisDashboardsV1CommonLogsAggregationCount(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDashboardsV1CommonLogsAggregationCount)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ApisDashboardsV1CommonLogsAggregationCountDistinct : Count the number of distinct values of log field.
 type ApisDashboardsV1CommonLogsAggregationCountDistinct struct {
 	// Field to count distinct values of.
@@ -10006,6 +11672,70 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationCountDistinct(m map[string]js
 	if err != nil {
 		err = core.SDKErrorf(err, "", "observation_field-error", common.GetComponentInfo())
 		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1CommonLogsAggregationCountEmpty : Count the number of entries.
+type ApisDashboardsV1CommonLogsAggregationCountEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDashboardsV1CommonLogsAggregationCountEmpty
+func (o *ApisDashboardsV1CommonLogsAggregationCountEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDashboardsV1CommonLogsAggregationCountEmpty
+func (o *ApisDashboardsV1CommonLogsAggregationCountEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDashboardsV1CommonLogsAggregationCountEmpty
+func (o *ApisDashboardsV1CommonLogsAggregationCountEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDashboardsV1CommonLogsAggregationCountEmpty
+func (o *ApisDashboardsV1CommonLogsAggregationCountEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDashboardsV1CommonLogsAggregationCountEmpty
+func (o *ApisDashboardsV1CommonLogsAggregationCountEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty unmarshals an instance of ApisDashboardsV1CommonLogsAggregationCountEmpty from the specified map of raw messages.
+func UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1CommonLogsAggregationCountEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
@@ -10247,10 +11977,10 @@ func UnmarshalApisDashboardsV1CommonPromQlQuery(m map[string]json.RawMessage, re
 
 // ApisDashboardsV1CommonTimeFrame : Absolute time frame specifying a fixed start and end time.
 type ApisDashboardsV1CommonTimeFrame struct {
-	// from is the start of the time frame.
+	// From is the start of the time frame.
 	From *strfmt.DateTime `json:"from,omitempty"`
 
-	// to is the end of the time frame.
+	// To is the end of the time frame.
 	To *strfmt.DateTime `json:"to,omitempty"`
 }
 
@@ -10301,29 +12031,29 @@ func UnmarshalApisDashboardsV1UUID(m map[string]json.RawMessage, result interfac
 	return
 }
 
-// ApisEvents2metricsV2Aggregation : represents Aggregation type list.
+// ApisEvents2metricsV2Aggregation : Represents Aggregation type list.
 // Models which "extend" this model:
 // - ApisEvents2metricsV2AggregationAggMetadataSamples
 // - ApisEvents2metricsV2AggregationAggMetadataHistogram
 type ApisEvents2metricsV2Aggregation struct {
-	// is enabled.
+	// Is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// aggregation type.
+	// Aggregation type.
 	AggType *string `json:"agg_type,omitempty"`
 
-	// target metric field.
+	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// e2m sample type metadata.
+	// E2M sample type metadata.
 	Samples *ApisEvents2metricsV2E2mAggSamples `json:"samples,omitempty"`
 
-	// e2m aggregate histogram type metadata.
+	// E2M aggregate histogram type metadata.
 	Histogram *ApisEvents2metricsV2E2mAggHistogram `json:"histogram,omitempty"`
 }
 
 // Constants associated with the ApisEvents2metricsV2Aggregation.AggType property.
-// aggregation type.
+// Aggregation type.
 const (
 	ApisEvents2metricsV2Aggregation_AggType_Avg = "avg"
 	ApisEvents2metricsV2Aggregation_AggType_Count = "count"
@@ -10374,9 +12104,9 @@ func UnmarshalApisEvents2metricsV2Aggregation(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisEvents2metricsV2E2mAggHistogram : e2m aggregate histogram type metadata.
+// ApisEvents2metricsV2E2mAggHistogram : E2M aggregate histogram type metadata.
 type ApisEvents2metricsV2E2mAggHistogram struct {
-	// buckets that describe the e2m.
+	// Buckets of the E2M.
 	Buckets []float32 `json:"buckets,omitempty"`
 }
 
@@ -10392,14 +12122,14 @@ func UnmarshalApisEvents2metricsV2E2mAggHistogram(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisEvents2metricsV2E2mAggSamples : e2m sample type metadata.
+// ApisEvents2metricsV2E2mAggSamples : E2M sample type metadata.
 type ApisEvents2metricsV2E2mAggSamples struct {
-	// sample type min/max.
+	// Sample type min/max.
 	SampleType *string `json:"sample_type,omitempty"`
 }
 
 // Constants associated with the ApisEvents2metricsV2E2mAggSamples.SampleType property.
-// sample type min/max.
+// Sample type min/max.
 const (
 	ApisEvents2metricsV2E2mAggSamples_SampleType_Max = "max"
 	ApisEvents2metricsV2E2mAggSamples_SampleType_Min = "min"
@@ -10418,12 +12148,12 @@ func UnmarshalApisEvents2metricsV2E2mAggSamples(m map[string]json.RawMessage, re
 	return
 }
 
-// ApisEvents2metricsV2E2mPermutations : represents E2M permutations limit.
+// ApisEvents2metricsV2E2mPermutations : Represents the limit of the permutations and if the limit was exceeded.
 type ApisEvents2metricsV2E2mPermutations struct {
-	// e2m permutation limit.
+	// E2M permutation limit.
 	Limit *int64 `json:"limit,omitempty"`
 
-	// flag to indicate if limit was exceeded.
+	// Flag to indicate if limit was exceeded.
 	HasExceededLimit *bool `json:"has_exceeded_limit,omitempty"`
 }
 
@@ -10444,15 +12174,15 @@ func UnmarshalApisEvents2metricsV2E2mPermutations(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisEvents2metricsV2MetricField : e2m metric fields.
+// ApisEvents2metricsV2MetricField : E2M metric fields.
 type ApisEvents2metricsV2MetricField struct {
-	// target metric field.
+	// Target metric field alias name.
 	TargetBaseMetricName *string `json:"target_base_metric_name,omitempty"`
 
-	// source field.
+	// Source field.
 	SourceField *string `json:"source_field,omitempty"`
 
-	// represents Aggregation type list.
+	// Represents Aggregation type list.
 	Aggregations []ApisEvents2metricsV2AggregationIntf `json:"aggregations,omitempty"`
 }
 
@@ -10478,12 +12208,12 @@ func UnmarshalApisEvents2metricsV2MetricField(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisEvents2metricsV2MetricLabel : e2m metric labels.
+// ApisEvents2metricsV2MetricLabel : E2M metric labels.
 type ApisEvents2metricsV2MetricLabel struct {
-	// metric label target label.
+	// Metric label target alias name.
 	TargetLabel *string `json:"target_label,omitempty"`
 
-	// metric label source field.
+	// Metric label source field.
 	SourceField *string `json:"source_field,omitempty"`
 }
 
@@ -10504,26 +12234,26 @@ func UnmarshalApisEvents2metricsV2MetricLabel(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisLogs2metricsV2LogsQuery : logs query.
+// ApisLogs2metricsV2LogsQuery : E2M logs query.
 type ApisLogs2metricsV2LogsQuery struct {
-	// lucene query.
+	// Lucene query.
 	Lucene *string `json:"lucene,omitempty"`
 
-	// alias.
+	// Alias.
 	Alias *string `json:"alias,omitempty"`
 
-	// application name filters.
+	// Application name filters.
 	ApplicationnameFilters []string `json:"applicationname_filters,omitempty"`
 
-	// subsystem names filters.
+	// Subsystem names filters.
 	SubsystemnameFilters []string `json:"subsystemname_filters,omitempty"`
 
-	// severity type filters.
+	// Severity type filters.
 	SeverityFilters []string `json:"severity_filters,omitempty"`
 }
 
 // Constants associated with the ApisLogs2metricsV2LogsQuery.SeverityFilters property.
-// severity type filters.
+// Severity type filters.
 const (
 	ApisLogs2metricsV2LogsQuery_SeverityFilters_Critical = "critical"
 	ApisLogs2metricsV2LogsQuery_SeverityFilters_Debug = "debug"
@@ -10772,7 +12502,7 @@ type AssignDashboardFolderOptions struct {
 	// The ID of the dashboard.
 	DashboardID *string `json:"dashboard_id" validate:"required,ne="`
 
-	// could be null to assign the dashboard to root.
+	// The folder ID could be null to assign the dashboard to root.
 	FolderID *string `json:"folder_id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -10805,70 +12535,6 @@ func (options *AssignDashboardFolderOptions) SetHeaders(param map[string]string)
 	return options
 }
 
-// AssignDashboardFolderResponse : Response for AssignDashboardFolder.
-type AssignDashboardFolderResponse struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of AssignDashboardFolderResponse
-func (o *AssignDashboardFolderResponse) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of AssignDashboardFolderResponse
-func (o *AssignDashboardFolderResponse) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of AssignDashboardFolderResponse
-func (o *AssignDashboardFolderResponse) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of AssignDashboardFolderResponse
-func (o *AssignDashboardFolderResponse) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of AssignDashboardFolderResponse
-func (o *AssignDashboardFolderResponse) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalAssignDashboardFolderResponse unmarshals an instance of AssignDashboardFolderResponse from the specified map of raw messages.
-func UnmarshalAssignDashboardFolderResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(AssignDashboardFolderResponse)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // CreateAlertOptions : The CreateAlert options.
 type CreateAlertOptions struct {
 	// Alert name.
@@ -10883,17 +12549,17 @@ type CreateAlertOptions struct {
 	// Alert condition.
 	Condition AlertsV2AlertConditionIntf `json:"condition" validate:"required"`
 
-	// Alert notification groups.
-	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups" validate:"required"`
-
-	// Alert filters.
-	Filters *AlertsV1AlertFilters `json:"filters" validate:"required"`
-
 	// Alert description.
 	Description *string `json:"description,omitempty"`
 
 	// Alert expiration date.
 	Expiration *AlertsV1Date `json:"expiration,omitempty"`
+
+	// Alert notification groups.
+	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups,omitempty"`
+
+	// Alert filters.
+	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
 	// When should the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
@@ -10906,9 +12572,6 @@ type CreateAlertOptions struct {
 
 	// The Meta labels to add to the alert as string with ':' separator.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
-
-	// The definition for tracing alert.
-	TracingAlert *AlertsV1TracingAlert `json:"tracing_alert,omitempty"`
 
 	// Incident settings, will create the incident based on this configuration.
 	IncidentSettings *AlertsV2AlertIncidentSettings `json:"incident_settings,omitempty"`
@@ -10927,14 +12590,12 @@ const (
 )
 
 // NewCreateAlertOptions : Instantiate CreateAlertOptions
-func (*LogsV0) NewCreateAlertOptions(name string, isActive bool, severity string, condition AlertsV2AlertConditionIntf, notificationGroups []AlertsV2AlertNotificationGroups, filters *AlertsV1AlertFilters) *CreateAlertOptions {
+func (*LogsV0) NewCreateAlertOptions(name string, isActive bool, severity string, condition AlertsV2AlertConditionIntf) *CreateAlertOptions {
 	return &CreateAlertOptions{
 		Name: core.StringPtr(name),
 		IsActive: core.BoolPtr(isActive),
 		Severity: core.StringPtr(severity),
 		Condition: condition,
-		NotificationGroups: notificationGroups,
-		Filters: filters,
 	}
 }
 
@@ -10962,18 +12623,6 @@ func (_options *CreateAlertOptions) SetCondition(condition AlertsV2AlertConditio
 	return _options
 }
 
-// SetNotificationGroups : Allow user to set NotificationGroups
-func (_options *CreateAlertOptions) SetNotificationGroups(notificationGroups []AlertsV2AlertNotificationGroups) *CreateAlertOptions {
-	_options.NotificationGroups = notificationGroups
-	return _options
-}
-
-// SetFilters : Allow user to set Filters
-func (_options *CreateAlertOptions) SetFilters(filters *AlertsV1AlertFilters) *CreateAlertOptions {
-	_options.Filters = filters
-	return _options
-}
-
 // SetDescription : Allow user to set Description
 func (_options *CreateAlertOptions) SetDescription(description string) *CreateAlertOptions {
 	_options.Description = core.StringPtr(description)
@@ -10983,6 +12632,18 @@ func (_options *CreateAlertOptions) SetDescription(description string) *CreateAl
 // SetExpiration : Allow user to set Expiration
 func (_options *CreateAlertOptions) SetExpiration(expiration *AlertsV1Date) *CreateAlertOptions {
 	_options.Expiration = expiration
+	return _options
+}
+
+// SetNotificationGroups : Allow user to set NotificationGroups
+func (_options *CreateAlertOptions) SetNotificationGroups(notificationGroups []AlertsV2AlertNotificationGroups) *CreateAlertOptions {
+	_options.NotificationGroups = notificationGroups
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *CreateAlertOptions) SetFilters(filters *AlertsV1AlertFilters) *CreateAlertOptions {
+	_options.Filters = filters
 	return _options
 }
 
@@ -11010,12 +12671,6 @@ func (_options *CreateAlertOptions) SetMetaLabelsStrings(metaLabelsStrings []str
 	return _options
 }
 
-// SetTracingAlert : Allow user to set TracingAlert
-func (_options *CreateAlertOptions) SetTracingAlert(tracingAlert *AlertsV1TracingAlert) *CreateAlertOptions {
-	_options.TracingAlert = tracingAlert
-	return _options
-}
-
 // SetIncidentSettings : Allow user to set IncidentSettings
 func (_options *CreateAlertOptions) SetIncidentSettings(incidentSettings *AlertsV2AlertIncidentSettings) *CreateAlertOptions {
 	_options.IncidentSettings = incidentSettings
@@ -11030,13 +12685,13 @@ func (options *CreateAlertOptions) SetHeaders(param map[string]string) *CreateAl
 
 // CreateDashboardFolderOptions : The CreateDashboardFolder options.
 type CreateDashboardFolderOptions struct {
-	// dashboard folder name, required.
+	// The dashboard folder name, required.
 	Name *string `json:"name" validate:"required"`
 
-	// dashboard folder id, uuid.
+	// The dashboard folder ID, uuid.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// dashboard folder parent id, optional. If not set, the folder is a root
+	// The dashboard folder parent ID, optional. If not set, the folder is a root
 	//  folder, if set, the folder is a subfolder of the parent folder and needs to
 	//  be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
@@ -11104,6 +12759,63 @@ func (options *CreateDashboardOptions) SetHeaders(param map[string]string) *Crea
 	return options
 }
 
+// CreateDataAccessRuleOptions : The CreateDataAccessRule options.
+type CreateDataAccessRuleOptions struct {
+	// Display Name for new Data Access Rule.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Filters for new Data Access Rule.
+	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
+
+	// Default Expression for new Data Access Rule.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+
+	// Description for new Data Access Rule.
+	Description *string `json:"description,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateDataAccessRuleOptions : Instantiate CreateDataAccessRuleOptions
+func (*LogsV0) NewCreateDataAccessRuleOptions(displayName string, filters []DataAccessRuleFilter, defaultExpression string) *CreateDataAccessRuleOptions {
+	return &CreateDataAccessRuleOptions{
+		DisplayName: core.StringPtr(displayName),
+		Filters: filters,
+		DefaultExpression: core.StringPtr(defaultExpression),
+	}
+}
+
+// SetDisplayName : Allow user to set DisplayName
+func (_options *CreateDataAccessRuleOptions) SetDisplayName(displayName string) *CreateDataAccessRuleOptions {
+	_options.DisplayName = core.StringPtr(displayName)
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *CreateDataAccessRuleOptions) SetFilters(filters []DataAccessRuleFilter) *CreateDataAccessRuleOptions {
+	_options.Filters = filters
+	return _options
+}
+
+// SetDefaultExpression : Allow user to set DefaultExpression
+func (_options *CreateDataAccessRuleOptions) SetDefaultExpression(defaultExpression string) *CreateDataAccessRuleOptions {
+	_options.DefaultExpression = core.StringPtr(defaultExpression)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *CreateDataAccessRuleOptions) SetDescription(description string) *CreateDataAccessRuleOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateDataAccessRuleOptions) SetHeaders(param map[string]string) *CreateDataAccessRuleOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateE2mOptions : The CreateE2m options.
 type CreateE2mOptions struct {
 	// E2M Create message.
@@ -11132,9 +12844,47 @@ func (options *CreateE2mOptions) SetHeaders(param map[string]string) *CreateE2mO
 	return options
 }
 
+// CreateEnrichmentOptions : The CreateEnrichment options.
+type CreateEnrichmentOptions struct {
+	// The name of the field to enrich.
+	FieldName *string `json:"field_name" validate:"required"`
+
+	// The enrichment type.
+	EnrichmentType EnrichmentV1EnrichmentTypeIntf `json:"enrichment_type" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewCreateEnrichmentOptions : Instantiate CreateEnrichmentOptions
+func (*LogsV0) NewCreateEnrichmentOptions(fieldName string, enrichmentType EnrichmentV1EnrichmentTypeIntf) *CreateEnrichmentOptions {
+	return &CreateEnrichmentOptions{
+		FieldName: core.StringPtr(fieldName),
+		EnrichmentType: enrichmentType,
+	}
+}
+
+// SetFieldName : Allow user to set FieldName
+func (_options *CreateEnrichmentOptions) SetFieldName(fieldName string) *CreateEnrichmentOptions {
+	_options.FieldName = core.StringPtr(fieldName)
+	return _options
+}
+
+// SetEnrichmentType : Allow user to set EnrichmentType
+func (_options *CreateEnrichmentOptions) SetEnrichmentType(enrichmentType EnrichmentV1EnrichmentTypeIntf) *CreateEnrichmentOptions {
+	_options.EnrichmentType = enrichmentType
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateEnrichmentOptions) SetHeaders(param map[string]string) *CreateEnrichmentOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateOutgoingWebhookOptions : The CreateOutgoingWebhook options.
 type CreateOutgoingWebhookOptions struct {
-	// The input data of the outbound webhook.
+	// The input data of the Outbound Integration.
 	OutgoingWebhookPrototype OutgoingWebhookPrototypeIntf `json:"OutgoingWebhookPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11297,16 +13047,16 @@ type CreateViewOptions struct {
 	// View name.
 	Name *string `json:"name" validate:"required"`
 
-	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
-
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
+
+	// View search query.
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View selected filters.
 	Filters *ApisViewsV1SelectedFilters `json:"filters,omitempty"`
 
-	// View folder id.
+	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -11314,10 +13064,9 @@ type CreateViewOptions struct {
 }
 
 // NewCreateViewOptions : Instantiate CreateViewOptions
-func (*LogsV0) NewCreateViewOptions(name string, searchQuery *ApisViewsV1SearchQuery, timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
+func (*LogsV0) NewCreateViewOptions(name string, timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
 	return &CreateViewOptions{
 		Name: core.StringPtr(name),
-		SearchQuery: searchQuery,
 		TimeSelection: timeSelection,
 	}
 }
@@ -11328,15 +13077,15 @@ func (_options *CreateViewOptions) SetName(name string) *CreateViewOptions {
 	return _options
 }
 
-// SetSearchQuery : Allow user to set SearchQuery
-func (_options *CreateViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *CreateViewOptions {
-	_options.SearchQuery = searchQuery
-	return _options
-}
-
 // SetTimeSelection : Allow user to set TimeSelection
 func (_options *CreateViewOptions) SetTimeSelection(timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
 	_options.TimeSelection = timeSelection
+	return _options
+}
+
+// SetSearchQuery : Allow user to set SearchQuery
+func (_options *CreateViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *CreateViewOptions {
+	_options.SearchQuery = searchQuery
 	return _options
 }
 
@@ -11372,7 +13121,7 @@ type Dashboard struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -11404,11 +13153,14 @@ type Dashboard struct {
 	// Path of the folder containing the dashboard.
 	FolderPath *ApisDashboardsV1AstFolderPath `json:"folder_path,omitempty"`
 
-	False *ApisDashboardsV1AstDashboardAutoRefreshOff `json:"false,omitempty"`
+	// Auto refresh interval is set to off.
+	False *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty `json:"false,omitempty"`
 
-	TwoMinutes *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes `json:"two_minutes,omitempty"`
+	// Auto refresh interval is set to two minutes.
+	TwoMinutes *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty `json:"two_minutes,omitempty"`
 
-	FiveMinutes *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes `json:"five_minutes,omitempty"`
+	// Auto refresh interval is set to five minutes.
+	FiveMinutes *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty `json:"five_minutes,omitempty"`
 }
 func (*Dashboard) isaDashboard() bool {
 	return true
@@ -11481,17 +13233,17 @@ func UnmarshalDashboard(m map[string]json.RawMessage, result interface{}) (err e
 		err = core.SDKErrorf(err, "", "folder_path-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "false", &obj.False, UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff)
+	err = core.UnmarshalModel(m, "false", &obj.False, UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "false-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "two_minutes", &obj.TwoMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
+	err = core.UnmarshalModel(m, "two_minutes", &obj.TwoMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "two_minutes-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "five_minutes", &obj.FiveMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
+	err = core.UnmarshalModel(m, "five_minutes", &obj.FiveMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "five_minutes-error", common.GetComponentInfo())
 		return
@@ -11500,15 +13252,33 @@ func UnmarshalDashboard(m map[string]json.RawMessage, result interface{}) (err e
 	return
 }
 
+// DashboardCollection : List of dashboards.
+type DashboardCollection struct {
+	// List of dashboards.
+	Dashboards []DashboardSummary `json:"dashboards,omitempty"`
+}
+
+// UnmarshalDashboardCollection unmarshals an instance of DashboardCollection from the specified map of raw messages.
+func UnmarshalDashboardCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DashboardCollection)
+	err = core.UnmarshalModel(m, "dashboards", &obj.Dashboards, UnmarshalDashboardSummary)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "dashboards-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // DashboardFolder : Dashboard folder.
 type DashboardFolder struct {
-	// dashboard folder id, uuid.
+	// The dashboard folder ID, uuid.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// dashboard folder name, required.
+	// The dashboard folder name, required.
 	Name *string `json:"name" validate:"required"`
 
-	// dashboard folder parent id, optional. If not set, the folder is a root
+	// The dashboard folder parent ID, optional. If not set, the folder is a root
 	//  folder, if set, the folder is a subfolder of the parent folder and needs to
 	//  be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
@@ -11548,9 +13318,9 @@ func UnmarshalDashboardFolder(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// DashboardFolderCollection : list of folders.
+// DashboardFolderCollection : The list of folders.
 type DashboardFolderCollection struct {
-	// list of folders.
+	// The list of folders.
 	Folders []DashboardFolder `json:"folders,omitempty"`
 }
 
@@ -11566,9 +13336,235 @@ func UnmarshalDashboardFolderCollection(m map[string]json.RawMessage, result int
 	return
 }
 
+// DashboardSummary : List of dashboards.
+type DashboardSummary struct {
+	// Unique identifier for the dashboard.
+	Href *string `json:"href,omitempty"`
+
+	// Unique identifier for the dashboard.
+	ID *string `json:"id" validate:"required"`
+
+	// Display name of the dashboard.
+	Name *string `json:"name" validate:"required"`
+
+	// Brief description or summary of the dashboard's purpose or content.
+	Description *string `json:"description,omitempty"`
+
+	// Indicates whether the dashboard is the default dashboard for the user.
+	IsDefault *bool `json:"is_default,omitempty"`
+
+	// Indicates whether the dashboard is pinned.
+	IsPinned *bool `json:"is_pinned,omitempty"`
+
+	// Timestamp when the dashboard was created.
+	CreateTime *strfmt.DateTime `json:"create_time,omitempty"`
+
+	// Timestamp when the dashboard was last updated.
+	UpdateTime *strfmt.DateTime `json:"update_time,omitempty"`
+
+	// Dashboard folder.
+	Folder *DashboardFolder `json:"folder" validate:"required"`
+}
+
+// UnmarshalDashboardSummary unmarshals an instance of DashboardSummary from the specified map of raw messages.
+func UnmarshalDashboardSummary(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DashboardSummary)
+	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "href-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_default", &obj.IsDefault)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "is_default-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_pinned", &obj.IsPinned)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "is_pinned-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "create_time", &obj.CreateTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "create_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "update_time", &obj.UpdateTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "update_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "folder", &obj.Folder, UnmarshalDashboardFolder)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "folder-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataAccessRule : Data Access Rule details.
+type DataAccessRule struct {
+	// Data Access Rule ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Data Access Rule Display Name.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Optional Data Access Rule Description.
+	Description *string `json:"description,omitempty"`
+
+	// List of filters that the Data Access Rule is composed of.
+	Filters []DataAccessRuleFilter `json:"filters,omitempty"`
+
+	// Default expression to use when no filter matches the query.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+}
+
+// UnmarshalDataAccessRule unmarshals an instance of DataAccessRule from the specified map of raw messages.
+func UnmarshalDataAccessRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRule)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "display_name", &obj.DisplayName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "display_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "filters", &obj.Filters, UnmarshalDataAccessRuleFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "filters-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "default_expression", &obj.DefaultExpression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "default_expression-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataAccessRuleCollection : Get Data Access Rules Response.
+type DataAccessRuleCollection struct {
+	// Data Access Rule details.
+	DataAccessRules []DataAccessRule `json:"data_access_rules" validate:"required"`
+}
+
+// UnmarshalDataAccessRuleCollection unmarshals an instance of DataAccessRuleCollection from the specified map of raw messages.
+func UnmarshalDataAccessRuleCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRuleCollection)
+	err = core.UnmarshalModel(m, "data_access_rules", &obj.DataAccessRules, UnmarshalDataAccessRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "data_access_rules-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataAccessRuleFilter : List of filters that the Data Access Rule is composed of.
+type DataAccessRuleFilter struct {
+	// Filter's Entity Type.
+	EntityType *string `json:"entity_type" validate:"required"`
+
+	// Filter's Expression.
+	Expression *string `json:"expression" validate:"required"`
+}
+
+// Constants associated with the DataAccessRuleFilter.EntityType property.
+// Filter's Entity Type.
+const (
+	DataAccessRuleFilter_EntityType_Logs = "logs"
+	DataAccessRuleFilter_EntityType_Unspecified = "unspecified"
+)
+
+// NewDataAccessRuleFilter : Instantiate DataAccessRuleFilter (Generic Model Constructor)
+func (*LogsV0) NewDataAccessRuleFilter(entityType string, expression string) (_model *DataAccessRuleFilter, err error) {
+	_model = &DataAccessRuleFilter{
+		EntityType: core.StringPtr(entityType),
+		Expression: core.StringPtr(expression),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalDataAccessRuleFilter unmarshals an instance of DataAccessRuleFilter from the specified map of raw messages.
+func UnmarshalDataAccessRuleFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataAccessRuleFilter)
+	err = core.UnmarshalPrimitive(m, "entity_type", &obj.EntityType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "expression", &obj.Expression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "expression-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// DataUsageMetricsExportStatus : The data usage metrics export status.
+type DataUsageMetricsExportStatus struct {
+	// The "enabled" parameter for metrics export.
+	Enabled *bool `json:"enabled" validate:"required"`
+}
+
+// NewDataUsageMetricsExportStatus : Instantiate DataUsageMetricsExportStatus (Generic Model Constructor)
+func (*LogsV0) NewDataUsageMetricsExportStatus(enabled bool) (_model *DataUsageMetricsExportStatus, err error) {
+	_model = &DataUsageMetricsExportStatus{
+		Enabled: core.BoolPtr(enabled),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalDataUsageMetricsExportStatus unmarshals an instance of DataUsageMetricsExportStatus from the specified map of raw messages.
+func UnmarshalDataUsageMetricsExportStatus(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(DataUsageMetricsExportStatus)
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // DeleteAlertOptions : The DeleteAlert options.
 type DeleteAlertOptions struct {
-	// Alert id.
+	// Alert ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11596,23 +13592,23 @@ func (options *DeleteAlertOptions) SetHeaders(param map[string]string) *DeleteAl
 
 // DeleteDashboardFolderOptions : The DeleteDashboardFolder options.
 type DeleteDashboardFolderOptions struct {
-	// folder id.
-	FolderID *string `json:"folder_id" validate:"required,ne="`
+	// The folder ID.
+	FolderID *strfmt.UUID `json:"folder_id" validate:"required"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
 
 // NewDeleteDashboardFolderOptions : Instantiate DeleteDashboardFolderOptions
-func (*LogsV0) NewDeleteDashboardFolderOptions(folderID string) *DeleteDashboardFolderOptions {
+func (*LogsV0) NewDeleteDashboardFolderOptions(folderID *strfmt.UUID) *DeleteDashboardFolderOptions {
 	return &DeleteDashboardFolderOptions{
-		FolderID: core.StringPtr(folderID),
+		FolderID: folderID,
 	}
 }
 
 // SetFolderID : Allow user to set FolderID
-func (_options *DeleteDashboardFolderOptions) SetFolderID(folderID string) *DeleteDashboardFolderOptions {
-	_options.FolderID = core.StringPtr(folderID)
+func (_options *DeleteDashboardFolderOptions) SetFolderID(folderID *strfmt.UUID) *DeleteDashboardFolderOptions {
+	_options.FolderID = folderID
 	return _options
 }
 
@@ -11650,9 +13646,37 @@ func (options *DeleteDashboardOptions) SetHeaders(param map[string]string) *Dele
 	return options
 }
 
+// DeleteDataAccessRuleOptions : The DeleteDataAccessRule options.
+type DeleteDataAccessRuleOptions struct {
+	// ID of Data Access Rule to be deleted.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeleteDataAccessRuleOptions : Instantiate DeleteDataAccessRuleOptions
+func (*LogsV0) NewDeleteDataAccessRuleOptions(id *strfmt.UUID) *DeleteDataAccessRuleOptions {
+	return &DeleteDataAccessRuleOptions{
+		ID: id,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteDataAccessRuleOptions) SetID(id *strfmt.UUID) *DeleteDataAccessRuleOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteDataAccessRuleOptions) SetHeaders(param map[string]string) *DeleteDataAccessRuleOptions {
+	options.Headers = param
+	return options
+}
+
 // DeleteE2mOptions : The DeleteE2m options.
 type DeleteE2mOptions struct {
-	// id of e2m to be deleted.
+	// ID of e2m to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -11678,9 +13702,37 @@ func (options *DeleteE2mOptions) SetHeaders(param map[string]string) *DeleteE2mO
 	return options
 }
 
+// DeleteEventStreamTargetOptions : The DeleteEventStreamTarget options.
+type DeleteEventStreamTargetOptions struct {
+	// The ID of the Event Stream.
+	ID *int64 `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewDeleteEventStreamTargetOptions : Instantiate DeleteEventStreamTargetOptions
+func (*LogsV0) NewDeleteEventStreamTargetOptions(id int64) *DeleteEventStreamTargetOptions {
+	return &DeleteEventStreamTargetOptions{
+		ID: core.Int64Ptr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteEventStreamTargetOptions) SetID(id int64) *DeleteEventStreamTargetOptions {
+	_options.ID = core.Int64Ptr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteEventStreamTargetOptions) SetHeaders(param map[string]string) *DeleteEventStreamTargetOptions {
+	options.Headers = param
+	return options
+}
+
 // DeleteOutgoingWebhookOptions : The DeleteOutgoingWebhook options.
 type DeleteOutgoingWebhookOptions struct {
-	// Outbound webhook ID.
+	// The ID of the Outbound Integration to delete.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11708,7 +13760,7 @@ func (options *DeleteOutgoingWebhookOptions) SetHeaders(param map[string]string)
 
 // DeletePolicyOptions : The DeletePolicy options.
 type DeletePolicyOptions struct {
-	// id of policy.
+	// ID of policy.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11736,7 +13788,7 @@ func (options *DeletePolicyOptions) SetHeaders(param map[string]string) *DeleteP
 
 // DeleteRuleGroupOptions : The DeleteRuleGroup options.
 type DeleteRuleGroupOptions struct {
-	// The group id.
+	// The group ID.
 	GroupID *strfmt.UUID `json:"group_id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11764,7 +13816,7 @@ func (options *DeleteRuleGroupOptions) SetHeaders(param map[string]string) *Dele
 
 // DeleteViewFolderOptions : The DeleteViewFolder options.
 type DeleteViewFolderOptions struct {
-	// Folder id.
+	// Folder ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11792,7 +13844,7 @@ func (options *DeleteViewFolderOptions) SetHeaders(param map[string]string) *Del
 
 // DeleteViewOptions : The DeleteView options.
 type DeleteViewOptions struct {
-	// View id.
+	// View ID.
 	ID *int64 `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -11818,17 +13870,260 @@ func (options *DeleteViewOptions) SetHeaders(param map[string]string) *DeleteVie
 	return options
 }
 
+// Enrichment : The enrichments.
+type Enrichment struct {
+	// The enrichment ID.
+	ID *int64 `json:"id" validate:"required"`
+
+	// The enrichment field name.
+	FieldName *string `json:"field_name" validate:"required"`
+
+	// The enrichment type.
+	EnrichmentType EnrichmentV1EnrichmentTypeIntf `json:"enrichment_type" validate:"required"`
+}
+
+// UnmarshalEnrichment unmarshals an instance of Enrichment from the specified map of raw messages.
+func UnmarshalEnrichment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Enrichment)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "field_name", &obj.FieldName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "enrichment_type", &obj.EnrichmentType, UnmarshalEnrichmentV1EnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enrichment_type-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentCollection : The enrichments collection.
+type EnrichmentCollection struct {
+	// The enrichments.
+	Enrichments []Enrichment `json:"enrichments" validate:"required"`
+}
+
+// UnmarshalEnrichmentCollection unmarshals an instance of EnrichmentCollection from the specified map of raw messages.
+func UnmarshalEnrichmentCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentCollection)
+	err = core.UnmarshalModel(m, "enrichments", &obj.Enrichments, UnmarshalEnrichment)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enrichments-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1CustomEnrichmentType : The custom enrichment.
+type EnrichmentV1CustomEnrichmentType struct {
+	// The ID of the custom enrichment.
+	ID *int64 `json:"id,omitempty"`
+}
+
+// UnmarshalEnrichmentV1CustomEnrichmentType unmarshals an instance of EnrichmentV1CustomEnrichmentType from the specified map of raw messages.
+func UnmarshalEnrichmentV1CustomEnrichmentType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1CustomEnrichmentType)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentType : The enrichment type.
+// Models which "extend" this model:
+// - EnrichmentV1EnrichmentTypeTypeGeoIp
+// - EnrichmentV1EnrichmentTypeTypeSuspiciousIp
+// - EnrichmentV1EnrichmentTypeTypeCustomEnrichment
+type EnrichmentV1EnrichmentType struct {
+	// The geo ip enrichment.
+	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
+
+	// The suspicious ip enrichment.
+	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
+
+	// The custom enrichment.
+	CustomEnrichment *EnrichmentV1CustomEnrichmentType `json:"custom_enrichment,omitempty"`
+}
+func (*EnrichmentV1EnrichmentType) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+type EnrichmentV1EnrichmentTypeIntf interface {
+	isaEnrichmentV1EnrichmentType() bool
+}
+
+// UnmarshalEnrichmentV1EnrichmentType unmarshals an instance of EnrichmentV1EnrichmentType from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentType)
+	err = core.UnmarshalModel(m, "geo_ip", &obj.GeoIp, UnmarshalEnrichmentV1GeoIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "geo_ip-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "suspicious_ip", &obj.SuspiciousIp, UnmarshalEnrichmentV1SuspiciousIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "suspicious_ip-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "custom_enrichment", &obj.CustomEnrichment, UnmarshalEnrichmentV1CustomEnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom_enrichment-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1GeoIpTypeEmpty : The geo ip enrichment.
+type EnrichmentV1GeoIpTypeEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of EnrichmentV1GeoIpTypeEmpty
+func (o *EnrichmentV1GeoIpTypeEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalEnrichmentV1GeoIpTypeEmpty unmarshals an instance of EnrichmentV1GeoIpTypeEmpty from the specified map of raw messages.
+func UnmarshalEnrichmentV1GeoIpTypeEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1GeoIpTypeEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1SuspiciousIpTypeEmpty : The suspicious ip enrichment.
+type EnrichmentV1SuspiciousIpTypeEmpty struct {
+
+	// Allows users to set arbitrary properties
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of EnrichmentV1SuspiciousIpTypeEmpty
+func (o *EnrichmentV1SuspiciousIpTypeEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalEnrichmentV1SuspiciousIpTypeEmpty unmarshals an instance of EnrichmentV1SuspiciousIpTypeEmpty from the specified map of raw messages.
+func UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1SuspiciousIpTypeEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // Event2Metric : E2M represents the Event to metrics base model.
 // Models which "extend" this model:
 // - Event2MetricApisEvents2metricsV2E2mQueryLogsQuery
 type Event2Metric struct {
-	// E2M id, required on update requests.
+	// E2M unique ID, required on update requests.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// E2M name.
+	// Name of the E2M.
 	Name *string `json:"name" validate:"required"`
 
-	// E2m description.
+	// Description of the E2M.
 	Description *string `json:"description,omitempty"`
 
 	// E2M create time.
@@ -11837,7 +14132,7 @@ type Event2Metric struct {
 	// E2M update time.
 	UpdateTime *string `json:"update_time,omitempty"`
 
-	// represents E2M permutations limit.
+	// Represents the limit of the permutations and if the limit was exceeded.
 	Permutations *ApisEvents2metricsV2E2mPermutations `json:"permutations,omitempty"`
 
 	// E2M metric labels.
@@ -11846,18 +14141,18 @@ type Event2Metric struct {
 	// E2M metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// e2m type.
+	// E2M type.
 	Type *string `json:"type" validate:"required"`
 
-	// a flag that represents if the e2m is for internal usage.
+	// A flag that represents if the e2m is for internal usage.
 	IsInternal *bool `json:"is_internal,omitempty"`
 
-	// logs query.
+	// E2M logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2Metric.Type property.
-// e2m type.
+// E2M type.
 const (
 	Event2Metric_Type_Logs2metrics = "logs2metrics"
 	Event2Metric_Type_Unspecified = "unspecified"
@@ -11932,7 +14227,7 @@ func UnmarshalEvent2Metric(m map[string]json.RawMessage, result interface{}) (er
 	return
 }
 
-// Event2MetricCollection : represents response of.
+// Event2MetricCollection : Represents response of.
 type Event2MetricCollection struct {
 	// List of event to metrics definitions.
 	Events2metrics []Event2MetricIntf `json:"events2metrics,omitempty"`
@@ -11954,30 +14249,30 @@ func UnmarshalEvent2MetricCollection(m map[string]json.RawMessage, result interf
 // Models which "extend" this model:
 // - Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery
 type Event2MetricPrototype struct {
-	// e2m create name.
+	// Name of E2M to create.
 	Name *string `json:"name" validate:"required"`
 
-	// e2m description.
+	// Description of E2M to create.
 	Description *string `json:"description,omitempty"`
 
-	// permutation limit.
+	// The permutation limit of the E2M.
 	PermutationsLimit *int64 `json:"permutations_limit,omitempty"`
 
-	// e2m metric labels.
+	// E2M metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// e2m metric fields.
+	// E2M metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// e2m type.
+	// E2M type.
 	Type *string `json:"type,omitempty"`
 
-	// logs query.
+	// E2M logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricPrototype.Type property.
-// e2m type.
+// E2M type.
 const (
 	Event2MetricPrototype_Type_Logs2metrics = "logs2metrics"
 	Event2MetricPrototype_Type_Unspecified = "unspecified"
@@ -12034,7 +14329,7 @@ func UnmarshalEvent2MetricPrototype(m map[string]json.RawMessage, result interfa
 
 // GetAlertOptions : The GetAlert options.
 type GetAlertOptions struct {
-	// Alert id.
+	// Alert ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12080,7 +14375,7 @@ func (options *GetAlertsOptions) SetHeaders(param map[string]string) *GetAlertsO
 
 // GetCompanyPoliciesOptions : The GetCompanyPolicies options.
 type GetCompanyPoliciesOptions struct {
-	// optionally filter only enabled policies.
+	// Optionally filter only enabled policies.
 	EnabledOnly *bool `json:"enabled_only,omitempty"`
 
 	// Source type to filter policies by.
@@ -12120,6 +14415,52 @@ func (options *GetCompanyPoliciesOptions) SetHeaders(param map[string]string) *G
 	return options
 }
 
+// GetDashboardCatalogOptions : The GetDashboardCatalog options.
+type GetDashboardCatalogOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetDashboardCatalogOptions : Instantiate GetDashboardCatalogOptions
+func (*LogsV0) NewGetDashboardCatalogOptions() *GetDashboardCatalogOptions {
+	return &GetDashboardCatalogOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetDashboardCatalogOptions) SetHeaders(param map[string]string) *GetDashboardCatalogOptions {
+	options.Headers = param
+	return options
+}
+
+// GetDashboardFolderOptions : The GetDashboardFolder options.
+type GetDashboardFolderOptions struct {
+	// The folder ID.
+	FolderID *strfmt.UUID `json:"folder_id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetDashboardFolderOptions : Instantiate GetDashboardFolderOptions
+func (*LogsV0) NewGetDashboardFolderOptions(folderID *strfmt.UUID) *GetDashboardFolderOptions {
+	return &GetDashboardFolderOptions{
+		FolderID: folderID,
+	}
+}
+
+// SetFolderID : Allow user to set FolderID
+func (_options *GetDashboardFolderOptions) SetFolderID(folderID *strfmt.UUID) *GetDashboardFolderOptions {
+	_options.FolderID = folderID
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetDashboardFolderOptions) SetHeaders(param map[string]string) *GetDashboardFolderOptions {
+	options.Headers = param
+	return options
+}
+
 // GetDashboardOptions : The GetDashboard options.
 type GetDashboardOptions struct {
 	// The ID of the dashboard.
@@ -12148,9 +14489,27 @@ func (options *GetDashboardOptions) SetHeaders(param map[string]string) *GetDash
 	return options
 }
 
+// GetDataUsageMetricsExportStatusOptions : The GetDataUsageMetricsExportStatus options.
+type GetDataUsageMetricsExportStatusOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetDataUsageMetricsExportStatusOptions : Instantiate GetDataUsageMetricsExportStatusOptions
+func (*LogsV0) NewGetDataUsageMetricsExportStatusOptions() *GetDataUsageMetricsExportStatusOptions {
+	return &GetDataUsageMetricsExportStatusOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetDataUsageMetricsExportStatusOptions) SetHeaders(param map[string]string) *GetDataUsageMetricsExportStatusOptions {
+	options.Headers = param
+	return options
+}
+
 // GetE2mOptions : The GetE2m options.
 type GetE2mOptions struct {
-	// id of e2m to be deleted.
+	// ID of e2m to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests
@@ -12176,9 +14535,45 @@ func (options *GetE2mOptions) SetHeaders(param map[string]string) *GetE2mOptions
 	return options
 }
 
+// GetEnrichmentsOptions : The GetEnrichments options.
+type GetEnrichmentsOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetEnrichmentsOptions : Instantiate GetEnrichmentsOptions
+func (*LogsV0) NewGetEnrichmentsOptions() *GetEnrichmentsOptions {
+	return &GetEnrichmentsOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetEnrichmentsOptions) SetHeaders(param map[string]string) *GetEnrichmentsOptions {
+	options.Headers = param
+	return options
+}
+
+// GetEventStreamTargetsOptions : The GetEventStreamTargets options.
+type GetEventStreamTargetsOptions struct {
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewGetEventStreamTargetsOptions : Instantiate GetEventStreamTargetsOptions
+func (*LogsV0) NewGetEventStreamTargetsOptions() *GetEventStreamTargetsOptions {
+	return &GetEventStreamTargetsOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetEventStreamTargetsOptions) SetHeaders(param map[string]string) *GetEventStreamTargetsOptions {
+	options.Headers = param
+	return options
+}
+
 // GetOutgoingWebhookOptions : The GetOutgoingWebhook options.
 type GetOutgoingWebhookOptions struct {
-	// Outbound webhook ID.
+	// The ID of the Outbound Integration to delete.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12206,7 +14601,7 @@ func (options *GetOutgoingWebhookOptions) SetHeaders(param map[string]string) *G
 
 // GetPolicyOptions : The GetPolicy options.
 type GetPolicyOptions struct {
-	// id of policy.
+	// ID of policy.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12234,7 +14629,7 @@ func (options *GetPolicyOptions) SetHeaders(param map[string]string) *GetPolicyO
 
 // GetRuleGroupOptions : The GetRuleGroup options.
 type GetRuleGroupOptions struct {
-	// The group id.
+	// The group ID.
 	GroupID *strfmt.UUID `json:"group_id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12262,7 +14657,7 @@ func (options *GetRuleGroupOptions) SetHeaders(param map[string]string) *GetRule
 
 // GetViewFolderOptions : The GetViewFolder options.
 type GetViewFolderOptions struct {
-	// Folder id.
+	// Folder ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12290,7 +14685,7 @@ func (options *GetViewFolderOptions) SetHeaders(param map[string]string) *GetVie
 
 // GetViewOptions : The GetView options.
 type GetViewOptions struct {
-	// View id.
+	// View ID.
 	ID *int64 `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -12316,6 +14711,45 @@ func (options *GetViewOptions) SetHeaders(param map[string]string) *GetViewOptio
 	return options
 }
 
+// IbmEventStreams : Configuration for IBM Event Streams.
+type IbmEventStreams struct {
+	// The brokers of the IBM Event Streams.
+	Brokers *string `json:"brokers" validate:"required"`
+
+	// The topic of the IBM Event Streams.
+	Topic *string `json:"topic" validate:"required"`
+}
+
+// NewIbmEventStreams : Instantiate IbmEventStreams (Generic Model Constructor)
+func (*LogsV0) NewIbmEventStreams(brokers string, topic string) (_model *IbmEventStreams, err error) {
+	_model = &IbmEventStreams{
+		Brokers: core.StringPtr(brokers),
+		Topic: core.StringPtr(topic),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalIbmEventStreams unmarshals an instance of IbmEventStreams from the specified map of raw messages.
+func UnmarshalIbmEventStreams(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(IbmEventStreams)
+	err = core.UnmarshalPrimitive(m, "brokers", &obj.Brokers)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "brokers-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "topic", &obj.Topic)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "topic-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ListDashboardFoldersOptions : The ListDashboardFolders options.
 type ListDashboardFoldersOptions struct {
 
@@ -12330,6 +14764,32 @@ func (*LogsV0) NewListDashboardFoldersOptions() *ListDashboardFoldersOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *ListDashboardFoldersOptions) SetHeaders(param map[string]string) *ListDashboardFoldersOptions {
+	options.Headers = param
+	return options
+}
+
+// ListDataAccessRulesOptions : The ListDataAccessRules options.
+type ListDataAccessRulesOptions struct {
+	// Array of data access rule IDs.
+	ID []strfmt.UUID `json:"id,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewListDataAccessRulesOptions : Instantiate ListDataAccessRulesOptions
+func (*LogsV0) NewListDataAccessRulesOptions() *ListDataAccessRulesOptions {
+	return &ListDataAccessRulesOptions{}
+}
+
+// SetID : Allow user to set ID
+func (_options *ListDataAccessRulesOptions) SetID(id []strfmt.UUID) *ListDataAccessRulesOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListDataAccessRulesOptions) SetHeaders(param map[string]string) *ListDataAccessRulesOptions {
 	options.Headers = param
 	return options
 }
@@ -12354,7 +14814,7 @@ func (options *ListE2mOptions) SetHeaders(param map[string]string) *ListE2mOptio
 
 // ListOutgoingWebhooksOptions : The ListOutgoingWebhooks options.
 type ListOutgoingWebhooksOptions struct {
-	// Outbound webhook type.
+	// The type of the deployed Outbound Integrations to list.
 	Type *string `json:"type,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -12362,7 +14822,7 @@ type ListOutgoingWebhooksOptions struct {
 }
 
 // Constants associated with the ListOutgoingWebhooksOptions.Type property.
-// Outbound webhook type.
+// The type of the deployed Outbound Integrations to list.
 const (
 	ListOutgoingWebhooksOptions_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -12438,37 +14898,37 @@ func (options *ListViewsOptions) SetHeaders(param map[string]string) *ListViewsO
 	return options
 }
 
-// OutgoingWebhook : The outbound webhook.
+// OutgoingWebhook : The Outbound Integration.
 // Models which "extend" this model:
 // - OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications
 type OutgoingWebhook struct {
-	// The ID of the outbound webhook.
+	// The ID of the Outbound Integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Outbound webhook type.
+	// The type of the deployed Outbound Integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the outbound webhook.
+	// The name of the Outbound Integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the outbound webhook.
+	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the outbound webhook.
+	// The creation time of the Outbound Integration.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the outbound webhook.
+	// The update time of the Outbound Integration.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the outbound webhook.
+	// The external ID of the Outbound Integration, for connecting with other parts of the system.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 
-	// The configuration of an IBM Event Notifications outbound webhook.
+	// The configuration of the IBM Event Notifications Outbound Integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhook.Type property.
-// Outbound webhook type.
+// The type of the deployed Outbound Integrations to list.
 const (
 	OutgoingWebhook_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -12527,9 +14987,9 @@ func UnmarshalOutgoingWebhook(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// OutgoingWebhookCollection : List of outbound webhooks.
+// OutgoingWebhookCollection : Response for listing Outbound Integrations of a specified type.
 type OutgoingWebhookCollection struct {
-	// List of deployed outbound webhooks.
+	// The list of deployed Outbound Integrations.
 	OutgoingWebhooks []OutgoingWebhookSummary `json:"outgoing_webhooks,omitempty"`
 }
 
@@ -12545,25 +15005,25 @@ func UnmarshalOutgoingWebhookCollection(m map[string]json.RawMessage, result int
 	return
 }
 
-// OutgoingWebhookPrototype : The input data of the outbound webhook.
+// OutgoingWebhookPrototype : The input data of the Outbound Integration.
 // Models which "extend" this model:
 // - OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications
 type OutgoingWebhookPrototype struct {
-	// Outbound webhook type.
+	// The type of the deployed Outbound Integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the outbound webhook.
+	// The name of the Outbound Integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the outbound webhook.
+	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The configuration of an IBM Event Notifications outbound webhook.
+	// The configuration of the IBM Event Notifications Outbound Integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhookPrototype.Type property.
-// Outbound webhook type.
+// The type of the deployed Outbound Integrations to list.
 const (
 	OutgoingWebhookPrototype_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -12602,24 +15062,24 @@ func UnmarshalOutgoingWebhookPrototype(m map[string]json.RawMessage, result inte
 	return
 }
 
-// OutgoingWebhookSummary : List of deployed outbound webhooks.
+// OutgoingWebhookSummary : The list of deployed Outbound Integrations.
 type OutgoingWebhookSummary struct {
-	// The ID of the outbound webhook.
+	// The ID of the Outbound Integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The name of the outbound webhook.
+	// The name of the Outbound Integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the outbound webhook.
+	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the outbound webhook.
+	// The creation time of the Outbound Integration.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the outbound webhook.
+	// The update time of the Outbound Integration.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the outbound webhook.
+	// The external ID of the Outbound Integration, for connecting with other parts of the system.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 }
 
@@ -12660,13 +15120,21 @@ func UnmarshalOutgoingWebhookSummary(m map[string]json.RawMessage, result interf
 	return
 }
 
-// OutgoingWebhooksV1IbmEventNotificationsConfig : The configuration of an IBM Event Notifications outbound webhook.
+// OutgoingWebhooksV1IbmEventNotificationsConfig : The configuration of the IBM Event Notifications Outbound Integration.
 type OutgoingWebhooksV1IbmEventNotificationsConfig struct {
-	// The instance ID of the IBM Event Notifications configuration.
+	// The ID of the selected IBM Event Notifications instance.
 	EventNotificationsInstanceID *strfmt.UUID `json:"event_notifications_instance_id" validate:"required"`
 
-	// The region ID of the IBM Event Notifications configuration.
+	// The region ID of the selected IBM Event Notifications instance.
 	RegionID *string `json:"region_id" validate:"required"`
+
+	// The ID of the created source in the IBM Event Notifications instance. Corresponds to the Cloud Logs instance crn.
+	// Not required when creating an Outbound Integration.
+	SourceID *string `json:"source_id,omitempty"`
+
+	// The name of the created source in the IBM Event Notifications instance. Not required when creating an Outbound
+	// Integration.
+	SourceName *string `json:"source_name,omitempty"`
 }
 
 // NewOutgoingWebhooksV1IbmEventNotificationsConfig : Instantiate OutgoingWebhooksV1IbmEventNotificationsConfig (Generic Model Constructor)
@@ -12693,6 +15161,16 @@ func UnmarshalOutgoingWebhooksV1IbmEventNotificationsConfig(m map[string]json.Ra
 	err = core.UnmarshalPrimitive(m, "region_id", &obj.RegionID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "region_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "source_id", &obj.SourceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "source_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "source_name", &obj.SourceName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "source_name-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -12727,119 +15205,55 @@ func (options *PinDashboardOptions) SetHeaders(param map[string]string) *PinDash
 	return options
 }
 
-// PinDashboardResponse : Response for PinDashboard.
-type PinDashboardResponse struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of PinDashboardResponse
-func (o *PinDashboardResponse) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of PinDashboardResponse
-func (o *PinDashboardResponse) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of PinDashboardResponse
-func (o *PinDashboardResponse) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of PinDashboardResponse
-func (o *PinDashboardResponse) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of PinDashboardResponse
-func (o *PinDashboardResponse) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalPinDashboardResponse unmarshals an instance of PinDashboardResponse from the specified map of raw messages.
-func UnmarshalPinDashboardResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(PinDashboardResponse)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // Policy : Policy resource model.
 // Models which "extend" this model:
 // - PolicyQuotaV1PolicySourceTypeRulesLogRules
 type Policy struct {
-	// policy id.
+	// Policy ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// company id.
+	// Company ID.
 	CompanyID *int64 `json:"company_id" validate:"required"`
 
-	// name of policy.
+	// Name of policy.
 	Name *string `json:"name" validate:"required"`
 
-	// description of policy.
+	// Description of policy.
 	Description *string `json:"description" validate:"required"`
 
-	// the data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will go through.
 	Priority *string `json:"priority,omitempty"`
 
-	// soft deletion flag.
+	// Soft deletion flag.
 	Deleted *bool `json:"deleted,omitempty"`
 
-	// enabled flag.
+	// Enabled flag.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// order of policy in relation to other policies.
+	// Order of policy in relation to other policies.
 	Order *int64 `json:"order" validate:"required"`
 
-	// rule for matching with application.
+	// Rule for matching with application.
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
 
-	// rule for matching with application.
+	// Rule for matching with application.
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
-	// created at date at utc+0.
+	// Created at date at utc+0.
 	CreatedAt *string `json:"created_at" validate:"required"`
 
-	// updated at date at utc+0.
+	// Updated at date at utc+0.
 	UpdatedAt *string `json:"updated_at" validate:"required"`
 
-	// archive retention definition.
+	// Archive retention definition.
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
 
-	// log rules.
+	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the Policy.Priority property.
-// the data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will go through.
 const (
 	Policy_Priority_TypeBlock = "type_block"
 	Policy_Priority_TypeHigh = "type_high"
@@ -12932,9 +15346,9 @@ func UnmarshalPolicy(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
-// PolicyCollection : response to get company policies request.
+// PolicyCollection : Response to get company policies request.
 type PolicyCollection struct {
-	// company policies.
+	// Company policies.
 	Policies []PolicyIntf `json:"policies,omitempty"`
 }
 
@@ -12954,30 +15368,30 @@ func UnmarshalPolicyCollection(m map[string]json.RawMessage, result interface{})
 // Models which "extend" this model:
 // - PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules
 type PolicyPrototype struct {
-	// policy name.
+	// Policy name.
 	Name *string `json:"name" validate:"required"`
 
-	// policy description.
+	// Policy description.
 	Description *string `json:"description,omitempty"`
 
-	// the data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will go through.
 	Priority *string `json:"priority" validate:"required"`
 
-	// rule for matching with application.
+	// Rule for matching with application.
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
 
-	// rule for matching with application.
+	// Rule for matching with application.
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
-	// archive retention definition.
+	// Archive retention definition.
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
 
-	// log rules.
+	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the PolicyPrototype.Priority property.
-// the data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will go through.
 const (
 	PolicyPrototype_Priority_TypeBlock = "type_block"
 	PolicyPrototype_Priority_TypeHigh = "type_high"
@@ -13035,9 +15449,9 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// QuotaV1ArchiveRetention : archive retention definition.
+// QuotaV1ArchiveRetention : Archive retention definition.
 type QuotaV1ArchiveRetention struct {
-	// references archive retention definition.
+	// References archive retention definition.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 }
 
@@ -13065,14 +15479,14 @@ func UnmarshalQuotaV1ArchiveRetention(m map[string]json.RawMessage, result inter
 	return
 }
 
-// QuotaV1LogRules : log rules.
+// QuotaV1LogRules : Log rules.
 type QuotaV1LogRules struct {
-	// source severities to match with.
+	// Source severities to match with.
 	Severities []string `json:"severities,omitempty"`
 }
 
 // Constants associated with the QuotaV1LogRules.Severities property.
-// source severities to match with.
+// Source severities to match with.
 const (
 	QuotaV1LogRules_Severities_Critical = "critical"
 	QuotaV1LogRules_Severities_Debug = "debug"
@@ -13095,17 +15509,17 @@ func UnmarshalQuotaV1LogRules(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// QuotaV1Rule : rule for matching with application.
+// QuotaV1Rule : Rule for matching with application.
 type QuotaV1Rule struct {
-	// identifier of the rule.
+	// Identifier of the rule.
 	RuleTypeID *string `json:"rule_type_id" validate:"required"`
 
-	// value of the rule.
+	// Value of the rule.
 	Name *string `json:"name" validate:"required"`
 }
 
 // Constants associated with the QuotaV1Rule.RuleTypeID property.
-// identifier of the rule.
+// Identifier of the rule.
 const (
 	QuotaV1Rule_RuleTypeID_Includes = "includes"
 	QuotaV1Rule_RuleTypeID_Is = "is"
@@ -13144,18 +15558,46 @@ func UnmarshalQuotaV1Rule(m map[string]json.RawMessage, result interface{}) (err
 	return
 }
 
+// RemoveEnrichmentsOptions : The RemoveEnrichments options.
+type RemoveEnrichmentsOptions struct {
+	// The enrichment ID.
+	ID *int64 `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewRemoveEnrichmentsOptions : Instantiate RemoveEnrichmentsOptions
+func (*LogsV0) NewRemoveEnrichmentsOptions(id int64) *RemoveEnrichmentsOptions {
+	return &RemoveEnrichmentsOptions{
+		ID: core.Int64Ptr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *RemoveEnrichmentsOptions) SetID(id int64) *RemoveEnrichmentsOptions {
+	_options.ID = core.Int64Ptr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *RemoveEnrichmentsOptions) SetHeaders(param map[string]string) *RemoveEnrichmentsOptions {
+	options.Headers = param
+	return options
+}
+
 // ReplaceDashboardFolderOptions : The ReplaceDashboardFolder options.
 type ReplaceDashboardFolderOptions struct {
-	// folder id.
-	FolderID *string `json:"folder_id" validate:"required,ne="`
+	// The folder ID.
+	FolderID *strfmt.UUID `json:"folder_id" validate:"required"`
 
-	// dashboard folder name, required.
+	// The dashboard folder name, required.
 	Name *string `json:"name" validate:"required"`
 
-	// dashboard folder id, uuid.
+	// The dashboard folder ID, uuid.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// dashboard folder parent id, optional. If not set, the folder is a root
+	// The dashboard folder parent ID, optional. If not set, the folder is a root
 	//  folder, if set, the folder is a subfolder of the parent folder and needs to
 	//  be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
@@ -13165,16 +15607,16 @@ type ReplaceDashboardFolderOptions struct {
 }
 
 // NewReplaceDashboardFolderOptions : Instantiate ReplaceDashboardFolderOptions
-func (*LogsV0) NewReplaceDashboardFolderOptions(folderID string, name string) *ReplaceDashboardFolderOptions {
+func (*LogsV0) NewReplaceDashboardFolderOptions(folderID *strfmt.UUID, name string) *ReplaceDashboardFolderOptions {
 	return &ReplaceDashboardFolderOptions{
-		FolderID: core.StringPtr(folderID),
+		FolderID: folderID,
 		Name: core.StringPtr(name),
 	}
 }
 
 // SetFolderID : Allow user to set FolderID
-func (_options *ReplaceDashboardFolderOptions) SetFolderID(folderID string) *ReplaceDashboardFolderOptions {
-	_options.FolderID = core.StringPtr(folderID)
+func (_options *ReplaceDashboardFolderOptions) SetFolderID(folderID *strfmt.UUID) *ReplaceDashboardFolderOptions {
+	_options.FolderID = folderID
 	return _options
 }
 
@@ -13268,73 +15710,9 @@ func (options *ReplaceDefaultDashboardOptions) SetHeaders(param map[string]strin
 	return options
 }
 
-// ReplaceDefaultDashboardResponse : Response for ReplaceDefaultDashboard.
-type ReplaceDefaultDashboardResponse struct {
-
-	// Allows users to set arbitrary properties
-	additionalProperties map[string]interface{}
-}
-
-// SetProperty allows the user to set an arbitrary property on an instance of ReplaceDefaultDashboardResponse
-func (o *ReplaceDefaultDashboardResponse) SetProperty(key string, value interface{}) {
-	if o.additionalProperties == nil {
-		o.additionalProperties = make(map[string]interface{})
-	}
-	o.additionalProperties[key] = value
-}
-
-// SetProperties allows the user to set a map of arbitrary properties on an instance of ReplaceDefaultDashboardResponse
-func (o *ReplaceDefaultDashboardResponse) SetProperties(m map[string]interface{}) {
-	o.additionalProperties = make(map[string]interface{})
-	for k, v := range m {
-		o.additionalProperties[k] = v
-	}
-}
-
-// GetProperty allows the user to retrieve an arbitrary property from an instance of ReplaceDefaultDashboardResponse
-func (o *ReplaceDefaultDashboardResponse) GetProperty(key string) interface{} {
-	return o.additionalProperties[key]
-}
-
-// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ReplaceDefaultDashboardResponse
-func (o *ReplaceDefaultDashboardResponse) GetProperties() map[string]interface{} {
-	return o.additionalProperties
-}
-
-// MarshalJSON performs custom serialization for instances of ReplaceDefaultDashboardResponse
-func (o *ReplaceDefaultDashboardResponse) MarshalJSON() (buffer []byte, err error) {
-	m := make(map[string]interface{})
-	if len(o.additionalProperties) > 0 {
-		for k, v := range o.additionalProperties {
-			m[k] = v
-		}
-	}
-	buffer, err = json.Marshal(m)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalReplaceDefaultDashboardResponse unmarshals an instance of ReplaceDefaultDashboardResponse from the specified map of raw messages.
-func UnmarshalReplaceDefaultDashboardResponse(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ReplaceDefaultDashboardResponse)
-	for k := range m {
-		var v interface{}
-		e := core.UnmarshalPrimitive(m, k, &v)
-		if e != nil {
-			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
-			return
-		}
-		obj.SetProperty(k, v)
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ReplaceE2mOptions : The ReplaceE2m options.
 type ReplaceE2mOptions struct {
-	// id of e2m to be deleted.
+	// ID of e2m to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// E2M Create message.
@@ -13372,7 +15750,7 @@ func (options *ReplaceE2mOptions) SetHeaders(param map[string]string) *ReplaceE2
 
 // ReplaceViewFolderOptions : The ReplaceViewFolder options.
 type ReplaceViewFolderOptions struct {
-	// Folder id.
+	// Folder ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// View folder name.
@@ -13410,22 +15788,22 @@ func (options *ReplaceViewFolderOptions) SetHeaders(param map[string]string) *Re
 
 // ReplaceViewOptions : The ReplaceView options.
 type ReplaceViewOptions struct {
-	// View id.
+	// View ID.
 	ID *int64 `json:"id" validate:"required"`
 
 	// View name.
 	Name *string `json:"name" validate:"required"`
 
-	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
-
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
+
+	// View search query.
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View selected filters.
 	Filters *ApisViewsV1SelectedFilters `json:"filters,omitempty"`
 
-	// View folder id.
+	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
 
 	// Allows users to set headers on API requests
@@ -13433,11 +15811,10 @@ type ReplaceViewOptions struct {
 }
 
 // NewReplaceViewOptions : Instantiate ReplaceViewOptions
-func (*LogsV0) NewReplaceViewOptions(id int64, name string, searchQuery *ApisViewsV1SearchQuery, timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
+func (*LogsV0) NewReplaceViewOptions(id int64, name string, timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
 	return &ReplaceViewOptions{
 		ID: core.Int64Ptr(id),
 		Name: core.StringPtr(name),
-		SearchQuery: searchQuery,
 		TimeSelection: timeSelection,
 	}
 }
@@ -13454,15 +15831,15 @@ func (_options *ReplaceViewOptions) SetName(name string) *ReplaceViewOptions {
 	return _options
 }
 
-// SetSearchQuery : Allow user to set SearchQuery
-func (_options *ReplaceViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *ReplaceViewOptions {
-	_options.SearchQuery = searchQuery
-	return _options
-}
-
 // SetTimeSelection : Allow user to set TimeSelection
 func (_options *ReplaceViewOptions) SetTimeSelection(timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
 	_options.TimeSelection = timeSelection
+	return _options
+}
+
+// SetSearchQuery : Allow user to set SearchQuery
+func (_options *ReplaceViewOptions) SetSearchQuery(searchQuery *ApisViewsV1SearchQuery) *ReplaceViewOptions {
+	_options.SearchQuery = searchQuery
 	return _options
 }
 
@@ -13486,7 +15863,7 @@ func (options *ReplaceViewOptions) SetHeaders(param map[string]string) *ReplaceV
 
 // RuleGroup : Parsing rule group.
 type RuleGroup struct {
-	// The id of the rule group.
+	// The ID of the rule group.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// The name of the rule group.
@@ -13731,6 +16108,9 @@ type RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule struct {
 	// Optional rule name.
 	Name *string `json:"name,omitempty"`
 
+	// Optional description for the rule.
+	Description *string `json:"description,omitempty"`
+
 	// The field on which to execute the rule.
 	SourceField *string `json:"source_field" validate:"required"`
 
@@ -13742,9 +16122,6 @@ type RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule struct {
 
 	// The order in which the rule will execute inside the rule subgroup.
 	Order *int64 `json:"order" validate:"required"`
-
-	// Optional description for the rule.
-	Description *string `json:"description,omitempty"`
 }
 
 // NewRulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule : Instantiate RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule (Generic Model Constructor)
@@ -13770,6 +16147,11 @@ func UnmarshalRulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule(m map[st
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "source_field", &obj.SourceField)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "source_field-error", common.GetComponentInfo())
@@ -13788,11 +16170,6 @@ func UnmarshalRulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule(m map[st
 	err = core.UnmarshalPrimitive(m, "order", &obj.Order)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "order-error", common.GetComponentInfo())
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -14332,7 +16709,7 @@ func UnmarshalRulesV1RuleParameters(m map[string]json.RawMessage, result interfa
 // RulesV1RuleSubgroup : Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
 // order.
 type RulesV1RuleSubgroup struct {
-	// The id of the rule subgroup.
+	// The ID of the rule subgroup.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Rules to run on the log.
@@ -14443,6 +16820,105 @@ func UnmarshalRulesV1SubsystemNameConstraint(m map[string]json.RawMessage, resul
 	return
 }
 
+// Stream : The Event Stream.
+type Stream struct {
+	// The ID of the Event stream.
+	ID *int64 `json:"id,omitempty"`
+
+	// The name of the Event stream.
+	Name *string `json:"name" validate:"required"`
+
+	// Whether the Event stream is active.
+	IsActive *bool `json:"is_active,omitempty"`
+
+	// The DPXL expression of the Event stream.
+	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
+
+	// The creation time of the Event stream.
+	CreatedAt *strfmt.DateTime `json:"created_at,omitempty"`
+
+	// The update time of the Event stream.
+	UpdatedAt *strfmt.DateTime `json:"updated_at,omitempty"`
+
+	// The compression type of the stream.
+	CompressionType *string `json:"compression_type,omitempty"`
+
+	// Configuration for IBM Event Streams.
+	IbmEventStreams *IbmEventStreams `json:"ibm_event_streams,omitempty"`
+}
+
+// Constants associated with the Stream.CompressionType property.
+// The compression type of the stream.
+const (
+	Stream_CompressionType_Gzip = "gzip"
+	Stream_CompressionType_Unspecified = "unspecified"
+)
+
+// UnmarshalStream unmarshals an instance of Stream from the specified map of raw messages.
+func UnmarshalStream(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Stream)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_active", &obj.IsActive)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "is_active-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "dpxl_expression", &obj.DpxlExpression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "dpxl_expression-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_at", &obj.CreatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_at", &obj.UpdatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "compression_type", &obj.CompressionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "compression_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "ibm_event_streams", &obj.IbmEventStreams, UnmarshalIbmEventStreams)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "ibm_event_streams-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// StreamCollection : Collection of Event Streams.
+type StreamCollection struct {
+	// Collection of Event Streams.
+	Streams []Stream `json:"streams" validate:"required"`
+}
+
+// UnmarshalStreamCollection unmarshals an instance of StreamCollection from the specified map of raw messages.
+func UnmarshalStreamCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(StreamCollection)
+	err = core.UnmarshalModel(m, "streams", &obj.Streams, UnmarshalStream)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "streams-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // UnpinDashboardOptions : The UnpinDashboard options.
 type UnpinDashboardOptions struct {
 	// The ID of the dashboard.
@@ -14473,7 +16949,7 @@ func (options *UnpinDashboardOptions) SetHeaders(param map[string]string) *Unpin
 
 // UpdateAlertOptions : The UpdateAlert options.
 type UpdateAlertOptions struct {
-	// Alert id.
+	// Alert ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Alert name.
@@ -14488,17 +16964,17 @@ type UpdateAlertOptions struct {
 	// Alert condition.
 	Condition AlertsV2AlertConditionIntf `json:"condition" validate:"required"`
 
-	// Alert notification groups.
-	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups" validate:"required"`
-
-	// Alert filters.
-	Filters *AlertsV1AlertFilters `json:"filters" validate:"required"`
-
 	// Alert description.
 	Description *string `json:"description,omitempty"`
 
 	// Alert expiration date.
 	Expiration *AlertsV1Date `json:"expiration,omitempty"`
+
+	// Alert notification groups.
+	NotificationGroups []AlertsV2AlertNotificationGroups `json:"notification_groups,omitempty"`
+
+	// Alert filters.
+	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
 	// When should the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
@@ -14511,9 +16987,6 @@ type UpdateAlertOptions struct {
 
 	// The Meta labels to add to the alert as string with ':' separator.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
-
-	// The definition for tracing alert.
-	TracingAlert *AlertsV1TracingAlert `json:"tracing_alert,omitempty"`
 
 	// Incident settings, will create the incident based on this configuration.
 	IncidentSettings *AlertsV2AlertIncidentSettings `json:"incident_settings,omitempty"`
@@ -14532,15 +17005,13 @@ const (
 )
 
 // NewUpdateAlertOptions : Instantiate UpdateAlertOptions
-func (*LogsV0) NewUpdateAlertOptions(id *strfmt.UUID, name string, isActive bool, severity string, condition AlertsV2AlertConditionIntf, notificationGroups []AlertsV2AlertNotificationGroups, filters *AlertsV1AlertFilters) *UpdateAlertOptions {
+func (*LogsV0) NewUpdateAlertOptions(id *strfmt.UUID, name string, isActive bool, severity string, condition AlertsV2AlertConditionIntf) *UpdateAlertOptions {
 	return &UpdateAlertOptions{
 		ID: id,
 		Name: core.StringPtr(name),
 		IsActive: core.BoolPtr(isActive),
 		Severity: core.StringPtr(severity),
 		Condition: condition,
-		NotificationGroups: notificationGroups,
-		Filters: filters,
 	}
 }
 
@@ -14574,18 +17045,6 @@ func (_options *UpdateAlertOptions) SetCondition(condition AlertsV2AlertConditio
 	return _options
 }
 
-// SetNotificationGroups : Allow user to set NotificationGroups
-func (_options *UpdateAlertOptions) SetNotificationGroups(notificationGroups []AlertsV2AlertNotificationGroups) *UpdateAlertOptions {
-	_options.NotificationGroups = notificationGroups
-	return _options
-}
-
-// SetFilters : Allow user to set Filters
-func (_options *UpdateAlertOptions) SetFilters(filters *AlertsV1AlertFilters) *UpdateAlertOptions {
-	_options.Filters = filters
-	return _options
-}
-
 // SetDescription : Allow user to set Description
 func (_options *UpdateAlertOptions) SetDescription(description string) *UpdateAlertOptions {
 	_options.Description = core.StringPtr(description)
@@ -14595,6 +17054,18 @@ func (_options *UpdateAlertOptions) SetDescription(description string) *UpdateAl
 // SetExpiration : Allow user to set Expiration
 func (_options *UpdateAlertOptions) SetExpiration(expiration *AlertsV1Date) *UpdateAlertOptions {
 	_options.Expiration = expiration
+	return _options
+}
+
+// SetNotificationGroups : Allow user to set NotificationGroups
+func (_options *UpdateAlertOptions) SetNotificationGroups(notificationGroups []AlertsV2AlertNotificationGroups) *UpdateAlertOptions {
+	_options.NotificationGroups = notificationGroups
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *UpdateAlertOptions) SetFilters(filters *AlertsV1AlertFilters) *UpdateAlertOptions {
+	_options.Filters = filters
 	return _options
 }
 
@@ -14622,12 +17093,6 @@ func (_options *UpdateAlertOptions) SetMetaLabelsStrings(metaLabelsStrings []str
 	return _options
 }
 
-// SetTracingAlert : Allow user to set TracingAlert
-func (_options *UpdateAlertOptions) SetTracingAlert(tracingAlert *AlertsV1TracingAlert) *UpdateAlertOptions {
-	_options.TracingAlert = tracingAlert
-	return _options
-}
-
 // SetIncidentSettings : Allow user to set IncidentSettings
 func (_options *UpdateAlertOptions) SetIncidentSettings(incidentSettings *AlertsV2AlertIncidentSettings) *UpdateAlertOptions {
 	_options.IncidentSettings = incidentSettings
@@ -14640,12 +17105,189 @@ func (options *UpdateAlertOptions) SetHeaders(param map[string]string) *UpdateAl
 	return options
 }
 
-// UpdateOutgoingWebhookOptions : The UpdateOutgoingWebhook options.
-type UpdateOutgoingWebhookOptions struct {
-	// Outbound webhook ID.
+// UpdateDataAccessRuleOptions : The UpdateDataAccessRule options.
+type UpdateDataAccessRuleOptions struct {
+	// ID of Data Access Rule to be deleted.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The input data of the outbound webhook.
+	// Display Name for new Data Access Rule.
+	DisplayName *string `json:"display_name" validate:"required"`
+
+	// Filters for new Data Access Rule.
+	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
+
+	// Default Expression for new Data Access Rule.
+	DefaultExpression *string `json:"default_expression" validate:"required"`
+
+	// Description for new Data Access Rule.
+	Description *string `json:"description,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateDataAccessRuleOptions : Instantiate UpdateDataAccessRuleOptions
+func (*LogsV0) NewUpdateDataAccessRuleOptions(id *strfmt.UUID, displayName string, filters []DataAccessRuleFilter, defaultExpression string) *UpdateDataAccessRuleOptions {
+	return &UpdateDataAccessRuleOptions{
+		ID: id,
+		DisplayName: core.StringPtr(displayName),
+		Filters: filters,
+		DefaultExpression: core.StringPtr(defaultExpression),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateDataAccessRuleOptions) SetID(id *strfmt.UUID) *UpdateDataAccessRuleOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetDisplayName : Allow user to set DisplayName
+func (_options *UpdateDataAccessRuleOptions) SetDisplayName(displayName string) *UpdateDataAccessRuleOptions {
+	_options.DisplayName = core.StringPtr(displayName)
+	return _options
+}
+
+// SetFilters : Allow user to set Filters
+func (_options *UpdateDataAccessRuleOptions) SetFilters(filters []DataAccessRuleFilter) *UpdateDataAccessRuleOptions {
+	_options.Filters = filters
+	return _options
+}
+
+// SetDefaultExpression : Allow user to set DefaultExpression
+func (_options *UpdateDataAccessRuleOptions) SetDefaultExpression(defaultExpression string) *UpdateDataAccessRuleOptions {
+	_options.DefaultExpression = core.StringPtr(defaultExpression)
+	return _options
+}
+
+// SetDescription : Allow user to set Description
+func (_options *UpdateDataAccessRuleOptions) SetDescription(description string) *UpdateDataAccessRuleOptions {
+	_options.Description = core.StringPtr(description)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateDataAccessRuleOptions) SetHeaders(param map[string]string) *UpdateDataAccessRuleOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateDataUsageMetricsExportStatusOptions : The UpdateDataUsageMetricsExportStatus options.
+type UpdateDataUsageMetricsExportStatusOptions struct {
+	// The "enabled" parameter for metrics export.
+	Enabled *bool `json:"enabled" validate:"required"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// NewUpdateDataUsageMetricsExportStatusOptions : Instantiate UpdateDataUsageMetricsExportStatusOptions
+func (*LogsV0) NewUpdateDataUsageMetricsExportStatusOptions(enabled bool) *UpdateDataUsageMetricsExportStatusOptions {
+	return &UpdateDataUsageMetricsExportStatusOptions{
+		Enabled: core.BoolPtr(enabled),
+	}
+}
+
+// SetEnabled : Allow user to set Enabled
+func (_options *UpdateDataUsageMetricsExportStatusOptions) SetEnabled(enabled bool) *UpdateDataUsageMetricsExportStatusOptions {
+	_options.Enabled = core.BoolPtr(enabled)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateDataUsageMetricsExportStatusOptions) SetHeaders(param map[string]string) *UpdateDataUsageMetricsExportStatusOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateEventStreamTargetOptions : The UpdateEventStreamTarget options.
+type UpdateEventStreamTargetOptions struct {
+	// The ID of the Event Stream.
+	ID *int64 `json:"id" validate:"required"`
+
+	// The name of the Event stream.
+	Name *string `json:"name" validate:"required"`
+
+	// The DPXL expression of the Event stream.
+	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
+
+	// Whether the Event stream is active.
+	IsActive *bool `json:"is_active,omitempty"`
+
+	// The compression type of the stream.
+	CompressionType *string `json:"compression_type,omitempty"`
+
+	// Configuration for IBM Event Streams.
+	IbmEventStreams *IbmEventStreams `json:"ibm_event_streams,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// Constants associated with the UpdateEventStreamTargetOptions.CompressionType property.
+// The compression type of the stream.
+const (
+	UpdateEventStreamTargetOptions_CompressionType_Gzip = "gzip"
+	UpdateEventStreamTargetOptions_CompressionType_Unspecified = "unspecified"
+)
+
+// NewUpdateEventStreamTargetOptions : Instantiate UpdateEventStreamTargetOptions
+func (*LogsV0) NewUpdateEventStreamTargetOptions(id int64, name string, dpxlExpression string) *UpdateEventStreamTargetOptions {
+	return &UpdateEventStreamTargetOptions{
+		ID: core.Int64Ptr(id),
+		Name: core.StringPtr(name),
+		DpxlExpression: core.StringPtr(dpxlExpression),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateEventStreamTargetOptions) SetID(id int64) *UpdateEventStreamTargetOptions {
+	_options.ID = core.Int64Ptr(id)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *UpdateEventStreamTargetOptions) SetName(name string) *UpdateEventStreamTargetOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDpxlExpression : Allow user to set DpxlExpression
+func (_options *UpdateEventStreamTargetOptions) SetDpxlExpression(dpxlExpression string) *UpdateEventStreamTargetOptions {
+	_options.DpxlExpression = core.StringPtr(dpxlExpression)
+	return _options
+}
+
+// SetIsActive : Allow user to set IsActive
+func (_options *UpdateEventStreamTargetOptions) SetIsActive(isActive bool) *UpdateEventStreamTargetOptions {
+	_options.IsActive = core.BoolPtr(isActive)
+	return _options
+}
+
+// SetCompressionType : Allow user to set CompressionType
+func (_options *UpdateEventStreamTargetOptions) SetCompressionType(compressionType string) *UpdateEventStreamTargetOptions {
+	_options.CompressionType = core.StringPtr(compressionType)
+	return _options
+}
+
+// SetIbmEventStreams : Allow user to set IbmEventStreams
+func (_options *UpdateEventStreamTargetOptions) SetIbmEventStreams(ibmEventStreams *IbmEventStreams) *UpdateEventStreamTargetOptions {
+	_options.IbmEventStreams = ibmEventStreams
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateEventStreamTargetOptions) SetHeaders(param map[string]string) *UpdateEventStreamTargetOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateOutgoingWebhookOptions : The UpdateOutgoingWebhook options.
+type UpdateOutgoingWebhookOptions struct {
+	// The ID of the Outbound Integration to delete.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The input data of the Outbound Integration.
 	OutgoingWebhookPrototype OutgoingWebhookPrototypeIntf `json:"OutgoingWebhookPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests
@@ -14680,7 +17322,7 @@ func (options *UpdateOutgoingWebhookOptions) SetHeaders(param map[string]string)
 
 // UpdatePolicyOptions : The UpdatePolicy options.
 type UpdatePolicyOptions struct {
-	// id of policy.
+	// ID of policy.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Create policy request.
@@ -14718,7 +17360,7 @@ func (options *UpdatePolicyOptions) SetHeaders(param map[string]string) *UpdateP
 
 // UpdateRuleGroupOptions : The UpdateRuleGroup options.
 type UpdateRuleGroupOptions struct {
-	// The group id.
+	// The group ID.
 	GroupID *strfmt.UUID `json:"group_id" validate:"required"`
 
 	// The name of the rule group.
@@ -14802,16 +17444,88 @@ func (options *UpdateRuleGroupOptions) SetHeaders(param map[string]string) *Upda
 	return options
 }
 
+// UpsertEventStreamTargetOptions : The UpsertEventStreamTarget options.
+type UpsertEventStreamTargetOptions struct {
+	// The name of the Event stream.
+	Name *string `json:"name" validate:"required"`
+
+	// The DPXL expression of the Event stream.
+	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
+
+	// Whether the Event stream is active.
+	IsActive *bool `json:"is_active,omitempty"`
+
+	// The compression type of the stream.
+	CompressionType *string `json:"compression_type,omitempty"`
+
+	// Configuration for IBM Event Streams.
+	IbmEventStreams *IbmEventStreams `json:"ibm_event_streams,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// Constants associated with the UpsertEventStreamTargetOptions.CompressionType property.
+// The compression type of the stream.
+const (
+	UpsertEventStreamTargetOptions_CompressionType_Gzip = "gzip"
+	UpsertEventStreamTargetOptions_CompressionType_Unspecified = "unspecified"
+)
+
+// NewUpsertEventStreamTargetOptions : Instantiate UpsertEventStreamTargetOptions
+func (*LogsV0) NewUpsertEventStreamTargetOptions(name string, dpxlExpression string) *UpsertEventStreamTargetOptions {
+	return &UpsertEventStreamTargetOptions{
+		Name: core.StringPtr(name),
+		DpxlExpression: core.StringPtr(dpxlExpression),
+	}
+}
+
+// SetName : Allow user to set Name
+func (_options *UpsertEventStreamTargetOptions) SetName(name string) *UpsertEventStreamTargetOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDpxlExpression : Allow user to set DpxlExpression
+func (_options *UpsertEventStreamTargetOptions) SetDpxlExpression(dpxlExpression string) *UpsertEventStreamTargetOptions {
+	_options.DpxlExpression = core.StringPtr(dpxlExpression)
+	return _options
+}
+
+// SetIsActive : Allow user to set IsActive
+func (_options *UpsertEventStreamTargetOptions) SetIsActive(isActive bool) *UpsertEventStreamTargetOptions {
+	_options.IsActive = core.BoolPtr(isActive)
+	return _options
+}
+
+// SetCompressionType : Allow user to set CompressionType
+func (_options *UpsertEventStreamTargetOptions) SetCompressionType(compressionType string) *UpsertEventStreamTargetOptions {
+	_options.CompressionType = core.StringPtr(compressionType)
+	return _options
+}
+
+// SetIbmEventStreams : Allow user to set IbmEventStreams
+func (_options *UpsertEventStreamTargetOptions) SetIbmEventStreams(ibmEventStreams *IbmEventStreams) *UpsertEventStreamTargetOptions {
+	_options.IbmEventStreams = ibmEventStreams
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpsertEventStreamTargetOptions) SetHeaders(param map[string]string) *UpsertEventStreamTargetOptions {
+	options.Headers = param
+	return options
+}
+
 // View : View.
 type View struct {
-	// View id.
+	// View ID.
 	ID *int64 `json:"id" validate:"required"`
 
 	// View name.
 	Name *string `json:"name" validate:"required"`
 
 	// View search query.
-	SearchQuery *ApisViewsV1SearchQuery `json:"search_query" validate:"required"`
+	SearchQuery *ApisViewsV1SearchQuery `json:"search_query,omitempty"`
 
 	// View time selection.
 	TimeSelection ApisViewsV1TimeSelectionIntf `json:"time_selection" validate:"required"`
@@ -14819,7 +17533,7 @@ type View struct {
 	// View selected filters.
 	Filters *ApisViewsV1SelectedFilters `json:"filters,omitempty"`
 
-	// View folder id.
+	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
 }
 
@@ -14880,7 +17594,7 @@ func UnmarshalViewCollection(m map[string]json.RawMessage, result interface{}) (
 
 // ViewFolder : View folder.
 type ViewFolder struct {
-	// Folder id.
+	// Folder ID.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
 	// Folder name.
@@ -14949,7 +17663,7 @@ func UnmarshalAlertsV2AlertConditionConditionFlow(m map[string]json.RawMessage, 
 // This model "extends" AlertsV2AlertCondition
 type AlertsV2AlertConditionConditionImmediate struct {
 	// Condition for immediate standard alert.
-	Immediate *AlertsV2ImmediateCondition `json:"immediate,omitempty"`
+	Immediate *AlertsV2ImmediateConditionEmpty `json:"immediate,omitempty"`
 }
 
 func (*AlertsV2AlertConditionConditionImmediate) isaAlertsV2AlertCondition() bool {
@@ -14959,7 +17673,7 @@ func (*AlertsV2AlertConditionConditionImmediate) isaAlertsV2AlertCondition() boo
 // UnmarshalAlertsV2AlertConditionConditionImmediate unmarshals an instance of AlertsV2AlertConditionConditionImmediate from the specified map of raw messages.
 func UnmarshalAlertsV2AlertConditionConditionImmediate(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(AlertsV2AlertConditionConditionImmediate)
-	err = core.UnmarshalModel(m, "immediate", &obj.Immediate, UnmarshalAlertsV2ImmediateCondition)
+	err = core.UnmarshalModel(m, "immediate", &obj.Immediate, UnmarshalAlertsV2ImmediateConditionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "immediate-error", common.GetComponentInfo())
 		return
@@ -15115,7 +17829,7 @@ type AlertsV2AlertNotificationIntegrationTypeIntegrationID struct {
 	// Notify on setting.
 	NotifyOn *string `json:"notify_on,omitempty"`
 
-	// Integration id.
+	// Integration ID.
 	IntegrationID *int64 `json:"integration_id,omitempty"`
 }
 
@@ -15317,7 +18031,7 @@ func UnmarshalApisDashboardsV1AstAnnotationSourceValueMetrics(m map[string]json.
 // This model "extends" ApisDashboardsV1AstFilterEqualsSelection
 type ApisDashboardsV1AstFilterEqualsSelectionValueAll struct {
 	// Represents a selection of all values.
-	All *ApisDashboardsV1AstFilterEqualsSelectionAllSelection `json:"all,omitempty"`
+	All *ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty `json:"all,omitempty"`
 }
 
 func (*ApisDashboardsV1AstFilterEqualsSelectionValueAll) isaApisDashboardsV1AstFilterEqualsSelection() bool {
@@ -15327,7 +18041,7 @@ func (*ApisDashboardsV1AstFilterEqualsSelectionValueAll) isaApisDashboardsV1AstF
 // UnmarshalApisDashboardsV1AstFilterEqualsSelectionValueAll unmarshals an instance of ApisDashboardsV1AstFilterEqualsSelectionValueAll from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstFilterEqualsSelectionValueAll(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection)
+	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "all-error", common.GetComponentInfo())
 		return
@@ -15451,11 +18165,253 @@ func UnmarshalApisDashboardsV1AstFilterSourceValueMetrics(m map[string]json.RawM
 	return
 }
 
+// ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName : ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryLogsQueryType
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName struct {
+	FieldName *ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName `json:"field_name,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName) isaApisDashboardsV1AstMultiSelectQueryLogsQueryType() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName)
+	err = core.UnmarshalModel(m, "field_name", &obj.FieldName, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue : ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryLogsQueryType
+type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue struct {
+	FieldValue *ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue `json:"field_value,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue) isaApisDashboardsV1AstMultiSelectQueryLogsQueryType() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue)
+	err = core.UnmarshalModel(m, "field_value", &obj.FieldValue, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals : ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals struct {
+	Equals *ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals `json:"equals,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals)
+	err = core.UnmarshalModel(m, "equals", &obj.Equals, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "equals-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals : ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals struct {
+	NotEquals *ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals `json:"not_equals,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals)
+	err = core.UnmarshalModel(m, "not_equals", &obj.NotEquals, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "not_equals-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue : ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue struct {
+	StringValue *string `json:"string_value,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue)
+	err = core.UnmarshalPrimitive(m, "string_value", &obj.StringValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "string_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName : ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName struct {
+	VariableName *string `json:"variable_name,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName)
+	err = core.UnmarshalPrimitive(m, "variable_name", &obj.VariableName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "variable_name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryType
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName struct {
+	LabelName *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName `json:"label_name,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryType() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName)
+	err = core.UnmarshalModel(m, "label_name", &obj.LabelName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryType
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue struct {
+	LabelValue *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue `json:"label_value,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryType() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue)
+	err = core.UnmarshalModel(m, "label_value", &obj.LabelValue, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName : ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQueryMetricsQueryType
+type ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName struct {
+	MetricName *ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName `json:"metric_name,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName) isaApisDashboardsV1AstMultiSelectQueryMetricsQueryType() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName)
+	err = core.UnmarshalModel(m, "metric_name", &obj.MetricName, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryValueLogsQuery : ApisDashboardsV1AstMultiSelectQueryValueLogsQuery struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQuery
+type ApisDashboardsV1AstMultiSelectQueryValueLogsQuery struct {
+	LogsQuery *ApisDashboardsV1AstMultiSelectQueryLogsQuery `json:"logs_query,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryValueLogsQuery) isaApisDashboardsV1AstMultiSelectQuery() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryValueLogsQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryValueLogsQuery)
+	err = core.UnmarshalModel(m, "logs_query", &obj.LogsQuery, UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_query-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery : ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery struct
+// This model "extends" ApisDashboardsV1AstMultiSelectQuery
+type ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery struct {
+	MetricsQuery *ApisDashboardsV1AstMultiSelectQueryMetricsQuery `json:"metrics_query,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery) isaApisDashboardsV1AstMultiSelectQuery() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery)
+	err = core.UnmarshalModel(m, "metrics_query", &obj.MetricsQuery, UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metrics_query-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisDashboardsV1AstMultiSelectSelectionValueAll : ApisDashboardsV1AstMultiSelectSelectionValueAll struct
 // This model "extends" ApisDashboardsV1AstMultiSelectSelection
 type ApisDashboardsV1AstMultiSelectSelectionValueAll struct {
 	// All values are selected, usually translated to wildcard (*).
-	All *ApisDashboardsV1AstMultiSelectSelectionAllSelection `json:"all,omitempty"`
+	All *ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty `json:"all,omitempty"`
 }
 
 func (*ApisDashboardsV1AstMultiSelectSelectionValueAll) isaApisDashboardsV1AstMultiSelectSelection() bool {
@@ -15465,7 +18421,7 @@ func (*ApisDashboardsV1AstMultiSelectSelectionValueAll) isaApisDashboardsV1AstMu
 // UnmarshalApisDashboardsV1AstMultiSelectSelectionValueAll unmarshals an instance of ApisDashboardsV1AstMultiSelectSelectionValueAll from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstMultiSelectSelectionValueAll(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstMultiSelectSelectionValueAll)
-	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection)
+	err = core.UnmarshalModel(m, "all", &obj.All, UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "all-error", common.GetComponentInfo())
 		return
@@ -15560,6 +18516,73 @@ func UnmarshalApisDashboardsV1AstMultiSelectSourceValueMetricLabel(m map[string]
 	err = core.UnmarshalModel(m, "metric_label", &obj.MetricLabel, UnmarshalApisDashboardsV1AstMultiSelectMetricLabelSource)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "metric_label-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstMultiSelectSourceValueQuery : ApisDashboardsV1AstMultiSelectSourceValueQuery struct
+// This model "extends" ApisDashboardsV1AstMultiSelectSource
+type ApisDashboardsV1AstMultiSelectSourceValueQuery struct {
+	// The query of the source.
+	Query *ApisDashboardsV1AstMultiSelectQuerySource `json:"query,omitempty"`
+}
+
+func (*ApisDashboardsV1AstMultiSelectSourceValueQuery) isaApisDashboardsV1AstMultiSelectSource() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery unmarshals an instance of ApisDashboardsV1AstMultiSelectSourceValueQuery from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstMultiSelectSourceValueQuery)
+	err = core.UnmarshalModel(m, "query", &obj.Query, UnmarshalApisDashboardsV1AstMultiSelectQuerySource)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "query-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstSectionOptionsValueCustom : ApisDashboardsV1AstSectionOptionsValueCustom struct
+// This model "extends" ApisDashboardsV1AstSectionOptions
+type ApisDashboardsV1AstSectionOptionsValueCustom struct {
+	Custom *ApisDashboardsV1AstCustomSectionOptions `json:"custom,omitempty"`
+}
+
+func (*ApisDashboardsV1AstSectionOptionsValueCustom) isaApisDashboardsV1AstSectionOptions() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstSectionOptionsValueCustom unmarshals an instance of ApisDashboardsV1AstSectionOptionsValueCustom from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstSectionOptionsValueCustom(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstSectionOptionsValueCustom)
+	err = core.UnmarshalModel(m, "custom", &obj.Custom, UnmarshalApisDashboardsV1AstCustomSectionOptions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDashboardsV1AstSectionOptionsValueInternal : ApisDashboardsV1AstSectionOptionsValueInternal struct
+// This model "extends" ApisDashboardsV1AstSectionOptions
+type ApisDashboardsV1AstSectionOptionsValueInternal struct {
+	Internal *ApisDashboardsV1AstInternalSectionOptionsEmpty `json:"internal,omitempty"`
+}
+
+func (*ApisDashboardsV1AstSectionOptionsValueInternal) isaApisDashboardsV1AstSectionOptions() bool {
+	return true
+}
+
+// UnmarshalApisDashboardsV1AstSectionOptionsValueInternal unmarshals an instance of ApisDashboardsV1AstSectionOptionsValueInternal from the specified map of raw messages.
+func UnmarshalApisDashboardsV1AstSectionOptionsValueInternal(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDashboardsV1AstSectionOptionsValueInternal)
+	err = core.UnmarshalModel(m, "internal", &obj.Internal, UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "internal-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -15846,7 +18869,7 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisTypeTime(m map[string]json.
 // This model "extends" ApisDashboardsV1AstWidgetsBarChartXAxis
 type ApisDashboardsV1AstWidgetsBarChartXAxisTypeValue struct {
 	// Categorical axis.
-	Value *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue `json:"value,omitempty"`
+	Value *ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty `json:"value,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsBarChartXAxisTypeValue) isaApisDashboardsV1AstWidgetsBarChartXAxis() bool {
@@ -15856,7 +18879,7 @@ func (*ApisDashboardsV1AstWidgetsBarChartXAxisTypeValue) isaApisDashboardsV1AstW
 // UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisTypeValue unmarshals an instance of ApisDashboardsV1AstWidgetsBarChartXAxisTypeValue from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisTypeValue(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsBarChartXAxisTypeValue)
-	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue)
+	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
 		return
@@ -15869,7 +18892,7 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisTypeValue(m map[string]json
 // This model "extends" ApisDashboardsV1AstWidgetsCommonColorsBy
 type ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation struct {
 	// Each aggregation will have different color and stack color will be derived from aggregation color.
-	Aggregation *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation `json:"aggregation,omitempty"`
+	Aggregation *ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty `json:"aggregation,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation) isaApisDashboardsV1AstWidgetsCommonColorsBy() bool {
@@ -15879,7 +18902,7 @@ func (*ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation) isaApisDashboar
 // UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueAggregation unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueAggregation(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByValueAggregation)
-	err = core.UnmarshalModel(m, "aggregation", &obj.Aggregation, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation)
+	err = core.UnmarshalModel(m, "aggregation", &obj.Aggregation, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "aggregation-error", common.GetComponentInfo())
 		return
@@ -15892,7 +18915,7 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueAggregation(m map[str
 // This model "extends" ApisDashboardsV1AstWidgetsCommonColorsBy
 type ApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy struct {
 	// Each group will have different color and stack color will be derived from group color.
-	GroupBy *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy `json:"group_by,omitempty"`
+	GroupBy *ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty `json:"group_by,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy) isaApisDashboardsV1AstWidgetsCommonColorsBy() bool {
@@ -15902,7 +18925,7 @@ func (*ApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy) isaApisDashboardsV1
 // UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy)
-	err = core.UnmarshalModel(m, "group_by", &obj.GroupBy, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy)
+	err = core.UnmarshalModel(m, "group_by", &obj.GroupBy, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "group_by-error", common.GetComponentInfo())
 		return
@@ -15915,7 +18938,7 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueGroupBy(m map[string]
 // This model "extends" ApisDashboardsV1AstWidgetsCommonColorsBy
 type ApisDashboardsV1AstWidgetsCommonColorsByValueStack struct {
 	// Each stack will have the same color across all groups.
-	Stack *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack `json:"stack,omitempty"`
+	Stack *ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty `json:"stack,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsCommonColorsByValueStack) isaApisDashboardsV1AstWidgetsCommonColorsBy() bool {
@@ -15925,7 +18948,7 @@ func (*ApisDashboardsV1AstWidgetsCommonColorsByValueStack) isaApisDashboardsV1As
 // UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueStack unmarshals an instance of ApisDashboardsV1AstWidgetsCommonColorsByValueStack from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsCommonColorsByValueStack(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsCommonColorsByValueStack)
-	err = core.UnmarshalModel(m, "stack", &obj.Stack, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack)
+	err = core.UnmarshalModel(m, "stack", &obj.Stack, UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "stack-error", common.GetComponentInfo())
 		return
@@ -16145,7 +19168,7 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartQueryValueMetrics(m ma
 // This model "extends" ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy
 type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory struct {
 	// View by category.
-	Category *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory `json:"category,omitempty"`
+	Category *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty `json:"category,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory) isaApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy() bool {
@@ -16155,7 +19178,7 @@ func (*ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory)
 // UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCategory)
-	err = core.UnmarshalModel(m, "category", &obj.Category, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory)
+	err = core.UnmarshalModel(m, "category", &obj.Category, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "category-error", common.GetComponentInfo())
 		return
@@ -16168,7 +19191,7 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewCa
 // This model "extends" ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy
 type ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue struct {
 	// View by value.
-	Value *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue `json:"value,omitempty"`
+	Value *ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty `json:"value,omitempty"`
 }
 
 func (*ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue) isaApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewBy() bool {
@@ -16178,7 +19201,7 @@ func (*ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue) is
 // UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue unmarshals an instance of ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue from the specified map of raw messages.
 func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewValue)
-	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue)
+	err = core.UnmarshalModel(m, "value", &obj.Value, UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
 		return
@@ -16352,7 +19375,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueAverage(m map[string]jso
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueCount struct {
 	// Count the number of entries.
-	Count *ApisDashboardsV1CommonLogsAggregationCount `json:"count,omitempty"`
+	Count *ApisDashboardsV1CommonLogsAggregationCountEmpty `json:"count,omitempty"`
 }
 
 func (*ApisDashboardsV1CommonLogsAggregationValueCount) isaApisDashboardsV1CommonLogsAggregation() bool {
@@ -16362,7 +19385,7 @@ func (*ApisDashboardsV1CommonLogsAggregationValueCount) isaApisDashboardsV1Commo
 // UnmarshalApisDashboardsV1CommonLogsAggregationValueCount unmarshals an instance of ApisDashboardsV1CommonLogsAggregationValueCount from the specified map of raw messages.
 func UnmarshalApisDashboardsV1CommonLogsAggregationValueCount(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDashboardsV1CommonLogsAggregationValueCount)
-	err = core.UnmarshalModel(m, "count", &obj.Count, UnmarshalApisDashboardsV1CommonLogsAggregationCount)
+	err = core.UnmarshalModel(m, "count", &obj.Count, UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "count-error", common.GetComponentInfo())
 		return
@@ -16489,21 +19512,21 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueSum(m map[string]json.Ra
 // ApisEvents2metricsV2AggregationAggMetadataHistogram : ApisEvents2metricsV2AggregationAggMetadataHistogram struct
 // This model "extends" ApisEvents2metricsV2Aggregation
 type ApisEvents2metricsV2AggregationAggMetadataHistogram struct {
-	// is enabled.
+	// Is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// aggregation type.
+	// Aggregation type.
 	AggType *string `json:"agg_type,omitempty"`
 
-	// target metric field.
+	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// e2m aggregate histogram type metadata.
+	// E2M aggregate histogram type metadata.
 	Histogram *ApisEvents2metricsV2E2mAggHistogram `json:"histogram,omitempty"`
 }
 
 // Constants associated with the ApisEvents2metricsV2AggregationAggMetadataHistogram.AggType property.
-// aggregation type.
+// Aggregation type.
 const (
 	ApisEvents2metricsV2AggregationAggMetadataHistogram_AggType_Avg = "avg"
 	ApisEvents2metricsV2AggregationAggMetadataHistogram_AggType_Count = "count"
@@ -16549,21 +19572,21 @@ func UnmarshalApisEvents2metricsV2AggregationAggMetadataHistogram(m map[string]j
 // ApisEvents2metricsV2AggregationAggMetadataSamples : ApisEvents2metricsV2AggregationAggMetadataSamples struct
 // This model "extends" ApisEvents2metricsV2Aggregation
 type ApisEvents2metricsV2AggregationAggMetadataSamples struct {
-	// is enabled.
+	// Is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// aggregation type.
+	// Aggregation type.
 	AggType *string `json:"agg_type,omitempty"`
 
-	// target metric field.
+	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// e2m sample type metadata.
+	// E2M sample type metadata.
 	Samples *ApisEvents2metricsV2E2mAggSamples `json:"samples,omitempty"`
 }
 
 // Constants associated with the ApisEvents2metricsV2AggregationAggMetadataSamples.AggType property.
-// aggregation type.
+// Aggregation type.
 const (
 	ApisEvents2metricsV2AggregationAggMetadataSamples_AggType_Avg = "avg"
 	ApisEvents2metricsV2AggregationAggMetadataSamples_AggType_Count = "count"
@@ -16659,7 +19682,7 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -16678,13 +19701,13 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes struct {
 	// List of annotations that can be applied to the dashboard's visual elements.
 	Annotations []ApisDashboardsV1AstAnnotation `json:"annotations,omitempty"`
 
-	FiveMinutes *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes `json:"five_minutes,omitempty"`
+	// Auto refresh interval is set to five minutes.
+	FiveMinutes *ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty `json:"five_minutes,omitempty"`
 }
 
 // NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes : Instantiate DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -16742,7 +19765,7 @@ func UnmarshalDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(m map[
 		err = core.SDKErrorf(err, "", "annotations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "five_minutes", &obj.FiveMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
+	err = core.UnmarshalModel(m, "five_minutes", &obj.FiveMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "five_minutes-error", common.GetComponentInfo())
 		return
@@ -16758,7 +19781,7 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshOff struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -16777,13 +19800,13 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshOff struct {
 	// List of annotations that can be applied to the dashboard's visual elements.
 	Annotations []ApisDashboardsV1AstAnnotation `json:"annotations,omitempty"`
 
-	False *ApisDashboardsV1AstDashboardAutoRefreshOff `json:"false,omitempty"`
+	// Auto refresh interval is set to off.
+	False *ApisDashboardsV1AstDashboardAutoRefreshOffEmpty `json:"false,omitempty"`
 }
 
 // NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff : Instantiate DashboardApisDashboardsV1AstDashboardAutoRefreshOff (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshOff, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshOff, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardAutoRefreshOff{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -16841,7 +19864,7 @@ func UnmarshalDashboardApisDashboardsV1AstDashboardAutoRefreshOff(m map[string]j
 		err = core.SDKErrorf(err, "", "annotations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "false", &obj.False, UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff)
+	err = core.UnmarshalModel(m, "false", &obj.False, UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "false-error", common.GetComponentInfo())
 		return
@@ -16857,7 +19880,7 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -16876,13 +19899,13 @@ type DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes struct {
 	// List of annotations that can be applied to the dashboard's visual elements.
 	Annotations []ApisDashboardsV1AstAnnotation `json:"annotations,omitempty"`
 
-	TwoMinutes *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes `json:"two_minutes,omitempty"`
+	// Auto refresh interval is set to two minutes.
+	TwoMinutes *ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty `json:"two_minutes,omitempty"`
 }
 
 // NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes : Instantiate DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -16940,7 +19963,7 @@ func UnmarshalDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(m map[s
 		err = core.SDKErrorf(err, "", "annotations-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "two_minutes", &obj.TwoMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
+	err = core.UnmarshalModel(m, "two_minutes", &obj.TwoMinutes, UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "two_minutes-error", common.GetComponentInfo())
 		return
@@ -16956,7 +19979,7 @@ type DashboardApisDashboardsV1AstDashboardFolderFolderID struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -16980,9 +20003,8 @@ type DashboardApisDashboardsV1AstDashboardFolderFolderID struct {
 }
 
 // NewDashboardApisDashboardsV1AstDashboardFolderFolderID : Instantiate DashboardApisDashboardsV1AstDashboardFolderFolderID (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardFolderFolderID(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardFolderFolderID, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardFolderFolderID(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardFolderFolderID, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardFolderFolderID{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -17056,7 +20078,7 @@ type DashboardApisDashboardsV1AstDashboardFolderFolderPath struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -17080,9 +20102,8 @@ type DashboardApisDashboardsV1AstDashboardFolderFolderPath struct {
 }
 
 // NewDashboardApisDashboardsV1AstDashboardFolderFolderPath : Instantiate DashboardApisDashboardsV1AstDashboardFolderFolderPath (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardFolderFolderPath, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardFolderFolderPath, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardFolderFolderPath{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -17156,7 +20177,7 @@ type DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -17180,9 +20201,8 @@ type DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame struct {
 }
 
 // NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame : Instantiate DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -17256,7 +20276,7 @@ type DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame struct {
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier for the dashboard.
-	ID *string `json:"id" validate:"required"`
+	ID *string `json:"id,omitempty"`
 
 	// Display name of the dashboard.
 	Name *string `json:"name" validate:"required"`
@@ -17280,9 +20300,8 @@ type DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame struct {
 }
 
 // NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame : Instantiate DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame (Generic Model Constructor)
-func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(id string, name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame, err error) {
+func (*LogsV0) NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(name string, layout *ApisDashboardsV1AstLayout) (_model *DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame, err error) {
 	_model = &DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-		ID: core.StringPtr(id),
 		Name: core.StringPtr(name),
 		Layout: layout,
 	}
@@ -17349,33 +20368,102 @@ func UnmarshalDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(m 
 	return
 }
 
+// EnrichmentV1EnrichmentTypeTypeCustomEnrichment : EnrichmentV1EnrichmentTypeTypeCustomEnrichment struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeCustomEnrichment struct {
+	// The custom enrichment.
+	CustomEnrichment *EnrichmentV1CustomEnrichmentType `json:"custom_enrichment,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeCustomEnrichment) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment unmarshals an instance of EnrichmentV1EnrichmentTypeTypeCustomEnrichment from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeCustomEnrichment)
+	err = core.UnmarshalModel(m, "custom_enrichment", &obj.CustomEnrichment, UnmarshalEnrichmentV1CustomEnrichmentType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "custom_enrichment-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentTypeTypeGeoIp : EnrichmentV1EnrichmentTypeTypeGeoIp struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeGeoIp struct {
+	// The geo ip enrichment.
+	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeGeoIp) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp unmarshals an instance of EnrichmentV1EnrichmentTypeTypeGeoIp from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeGeoIp)
+	err = core.UnmarshalModel(m, "geo_ip", &obj.GeoIp, UnmarshalEnrichmentV1GeoIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "geo_ip-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// EnrichmentV1EnrichmentTypeTypeSuspiciousIp : EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct
+// This model "extends" EnrichmentV1EnrichmentType
+type EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct {
+	// The suspicious ip enrichment.
+	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
+}
+
+func (*EnrichmentV1EnrichmentTypeTypeSuspiciousIp) isaEnrichmentV1EnrichmentType() bool {
+	return true
+}
+
+// UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp unmarshals an instance of EnrichmentV1EnrichmentTypeTypeSuspiciousIp from the specified map of raw messages.
+func UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(EnrichmentV1EnrichmentTypeTypeSuspiciousIp)
+	err = core.UnmarshalModel(m, "suspicious_ip", &obj.SuspiciousIp, UnmarshalEnrichmentV1SuspiciousIpTypeEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "suspicious_ip-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery : Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery struct
 // This model "extends" Event2MetricPrototype
 type Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery struct {
-	// e2m create name.
+	// Name of E2M to create.
 	Name *string `json:"name" validate:"required"`
 
-	// e2m description.
+	// Description of E2M to create.
 	Description *string `json:"description,omitempty"`
 
-	// permutation limit.
+	// The permutation limit of the E2M.
 	PermutationsLimit *int64 `json:"permutations_limit,omitempty"`
 
-	// e2m metric labels.
+	// E2M metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// e2m metric fields.
+	// E2M metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// e2m type.
+	// E2M type.
 	Type *string `json:"type,omitempty"`
 
-	// logs query.
+	// E2M logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery.Type property.
-// e2m type.
+// E2M type.
 const (
 	Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery_Type_Logs2metrics = "logs2metrics"
 	Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery_Type_Unspecified = "unspecified"
@@ -17442,13 +20530,13 @@ func UnmarshalEvent2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQ
 // Event2MetricApisEvents2metricsV2E2mQueryLogsQuery : Event2MetricApisEvents2metricsV2E2mQueryLogsQuery struct
 // This model "extends" Event2Metric
 type Event2MetricApisEvents2metricsV2E2mQueryLogsQuery struct {
-	// E2M id, required on update requests.
+	// E2M unique ID, required on update requests.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// E2M name.
+	// Name of the E2M.
 	Name *string `json:"name" validate:"required"`
 
-	// E2m description.
+	// Description of the E2M.
 	Description *string `json:"description,omitempty"`
 
 	// E2M create time.
@@ -17465,18 +20553,18 @@ type Event2MetricApisEvents2metricsV2E2mQueryLogsQuery struct {
 	// E2M metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// e2m type.
+	// E2M type.
 	Type *string `json:"type" validate:"required"`
 
-	// a flag that represents if the e2m is for internal usage.
+	// A flag that represents if the e2m is for internal usage.
 	IsInternal *bool `json:"is_internal,omitempty"`
 
-	// logs query.
+	// E2M logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricApisEvents2metricsV2E2mQueryLogsQuery.Type property.
-// e2m type.
+// E2M type.
 const (
 	Event2MetricApisEvents2metricsV2E2mQueryLogsQuery_Type_Logs2metrics = "logs2metrics"
 	Event2MetricApisEvents2metricsV2E2mQueryLogsQuery_Type_Unspecified = "unspecified"
@@ -17551,21 +20639,21 @@ func UnmarshalEvent2MetricApisEvents2metricsV2E2mQueryLogsQuery(m map[string]jso
 // OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications : OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications struct
 // This model "extends" OutgoingWebhookPrototype
 type OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications struct {
-	// Outbound webhook type.
+	// The type of the deployed Outbound Integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the outbound webhook.
+	// The name of the Outbound Integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the outbound webhook.
+	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The configuration of an IBM Event Notifications outbound webhook.
+	// The configuration of the IBM Event Notifications Outbound Integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications.Type property.
-// Outbound webhook type.
+// The type of the deployed Outbound Integrations to list.
 const (
 	OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -17617,33 +20705,33 @@ func UnmarshalOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputData
 // OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications : OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications struct
 // This model "extends" OutgoingWebhook
 type OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications struct {
-	// The ID of the outbound webhook.
+	// The ID of the Outbound Integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Outbound webhook type.
+	// The type of the deployed Outbound Integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the outbound webhook.
+	// The name of the Outbound Integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the outbound webhook.
+	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the outbound webhook.
+	// The creation time of the Outbound Integration.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the outbound webhook.
+	// The update time of the Outbound Integration.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the outbound webhook.
+	// The external ID of the Outbound Integration, for connecting with other parts of the system.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 
-	// The configuration of an IBM Event Notifications outbound webhook.
+	// The configuration of the IBM Event Notifications Outbound Integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications.Type property.
-// Outbound webhook type.
+// The type of the deployed Outbound Integrations to list.
 const (
 	OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -17702,13 +20790,13 @@ func UnmarshalOutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications(m map
 // PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules : PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct
 // This model "extends" PolicyPrototype
 type PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct {
-	// policy name.
+	// Policy name.
 	Name *string `json:"name" validate:"required"`
 
-	// policy description.
+	// Policy description.
 	Description *string `json:"description,omitempty"`
 
-	// the data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will go through.
 	Priority *string `json:"priority" validate:"required"`
 
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
@@ -17717,12 +20805,12 @@ type PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct {
 
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
 
-	// log rules.
+	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules.Priority property.
-// the data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will go through.
 const (
 	PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules_Priority_TypeBlock = "type_block"
 	PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules_Priority_TypeHigh = "type_high"
@@ -17793,48 +20881,48 @@ func UnmarshalPolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules(m
 // PolicyQuotaV1PolicySourceTypeRulesLogRules : PolicyQuotaV1PolicySourceTypeRulesLogRules struct
 // This model "extends" Policy
 type PolicyQuotaV1PolicySourceTypeRulesLogRules struct {
-	// policy id.
+	// Policy ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// company id.
+	// Company ID.
 	CompanyID *int64 `json:"company_id" validate:"required"`
 
-	// name of policy.
+	// Name of policy.
 	Name *string `json:"name" validate:"required"`
 
-	// description of policy.
+	// Description of policy.
 	Description *string `json:"description" validate:"required"`
 
-	// the data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will go through.
 	Priority *string `json:"priority,omitempty"`
 
-	// soft deletion flag.
+	// Soft deletion flag.
 	Deleted *bool `json:"deleted,omitempty"`
 
-	// enabled flag.
+	// Enabled flag.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// order of policy in relation to other policies.
+	// Order of policy in relation to other policies.
 	Order *int64 `json:"order" validate:"required"`
 
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
 
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
-	// created at date at utc+0.
+	// Created at date at utc+0.
 	CreatedAt *string `json:"created_at" validate:"required"`
 
-	// updated at date at utc+0.
+	// Updated at date at utc+0.
 	UpdatedAt *string `json:"updated_at" validate:"required"`
 
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
 
-	// log rules.
+	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the PolicyQuotaV1PolicySourceTypeRulesLogRules.Priority property.
-// the data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will go through.
 const (
 	PolicyQuotaV1PolicySourceTypeRulesLogRules_Priority_TypeBlock = "type_block"
 	PolicyQuotaV1PolicySourceTypeRulesLogRules_Priority_TypeHigh = "type_high"

@@ -226,7 +226,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke GetAlert successfully with retries`, func() {
@@ -280,7 +280,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke GetAlert successfully`, func() {
@@ -401,20 +401,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -443,11 +443,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -456,37 +462,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -513,22 +508,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -542,15 +521,14 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -604,7 +582,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke UpdateAlert successfully with retries`, func() {
@@ -618,20 +596,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -660,11 +638,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -673,37 +657,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -730,22 +703,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -759,15 +716,14 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -824,7 +780,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke UpdateAlert successfully`, func() {
@@ -843,20 +799,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -885,11 +841,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -898,37 +860,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -955,22 +906,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -984,15 +919,14 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1013,20 +947,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1055,11 +989,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1068,37 +1008,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1125,22 +1054,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1154,15 +1067,14 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -1204,20 +1116,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1246,11 +1158,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1259,37 +1177,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1316,22 +1223,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1345,15 +1236,14 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
+				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				updateAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				updateAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				updateAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				updateAlertOptionsModel.MetaLabelsStrings = []string{}
-				updateAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				updateAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				updateAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -1499,7 +1389,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
 				}))
 			})
 			It(`Invoke GetAlerts successfully with retries`, func() {
@@ -1552,7 +1442,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
+					fmt.Fprintf(res, "%s", `{"alerts": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}]}`)
 				}))
 			})
 			It(`Invoke GetAlerts successfully`, func() {
@@ -1663,20 +1553,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1705,11 +1595,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1718,37 +1614,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1775,22 +1660,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -1803,15 +1672,14 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -1865,7 +1733,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke CreateAlert successfully with retries`, func() {
@@ -1879,20 +1747,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -1921,11 +1789,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -1934,37 +1808,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -1991,22 +1854,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2019,15 +1866,14 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2084,7 +1930,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 4, "month": 5, "day": 3}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "integration_id": 0}]}], "filters": {"severities": ["critical"], "metadata": {"categories": ["Categories"], "applications": ["Applications"], "subsystems": ["Subsystems"], "computers": ["Computers"], "classes": ["Classes"], "methods": ["Methods"], "ip_addresses": ["IpAddresses"]}, "alias": "Alias", "text": "Text", "ratio_alerts": [{"alias": "Alias", "text": "Text", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 5, "minutes": 7, "seconds": 7}, "end": {"hours": 5, "minutes": 7, "seconds": 7}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "Key", "value": "Value"}], "meta_labels_strings": ["MetaLabelsStrings"], "tracing_alert": {"condition_latency": 0, "field_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}], "tag_filters": [{"field": "Field", "filters": [{"values": ["Values"], "operator": "Operator"}]}]}, "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 0, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "is_active": true, "severity": "error", "expiration": {"year": 2012, "month": 12, "day": 24}, "condition": {"immediate": {}}, "notification_groups": [{"group_by_fields": ["GroupByFields"], "notifications": [{"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "integration_id": 123}]}], "filters": {"severities": ["critical"], "metadata": {"applications": ["Applications"], "subsystems": ["Subsystems"]}, "alias": "monitorQuery", "text": "_exists_:\"container_name\"", "ratio_alerts": [{"alias": "TopLevelAlert", "text": "_exists_:\"container_name\"", "severities": ["critical"], "applications": ["Applications"], "subsystems": ["Subsystems"], "group_by": ["GroupBy"]}], "filter_type": "flow"}, "active_when": {"timeframes": [{"days_of_week": ["sunday"], "range": {"start": {"hours": 22, "minutes": 22, "seconds": 22}, "end": {"hours": 22, "minutes": 22, "seconds": 22}}}]}, "notification_payload_filters": ["NotificationPayloadFilters"], "meta_labels": [{"key": "ColorLabel", "value": "Red"}], "meta_labels_strings": ["MetaLabelsStrings"], "unique_identifier": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "incident_settings": {"retriggering_period_seconds": 60, "notify_on": "triggered_and_resolved", "use_as_notification_settings": true}}`)
 				}))
 			})
 			It(`Invoke CreateAlert successfully`, func() {
@@ -2103,20 +1949,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2145,11 +1991,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2158,37 +2010,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2215,22 +2056,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2243,15 +2068,14 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2272,20 +2096,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2314,11 +2138,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2327,37 +2157,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2384,22 +2203,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2412,15 +2215,14 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -2462,20 +2264,20 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -2504,11 +2306,17 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel := new(logsv0.AlertsV2AlertConditionConditionMoreThan)
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -2517,37 +2325,26 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -2574,22 +2371,6 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV1MetaLabelModel.Key = core.StringPtr("env")
 				alertsV1MetaLabelModel.Value = core.StringPtr("dev")
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				alertsV2AlertIncidentSettingsModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(300))
@@ -2602,15 +2383,14 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
-				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
+				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
+				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
 				createAlertOptionsModel.ActiveWhen = alertsV1AlertActiveWhenModel
 				createAlertOptionsModel.NotificationPayloadFilters = []string{"testString"}
 				createAlertOptionsModel.MetaLabels = []logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}
 				createAlertOptionsModel.MetaLabelsStrings = []string{}
-				createAlertOptionsModel.TracingAlert = alertsV1TracingAlertModel
 				createAlertOptionsModel.IncidentSettings = alertsV2AlertIncidentSettingsModel
 				createAlertOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -2628,7 +2408,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions) - Operation response error`, func() {
-		getRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		getRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2673,7 +2453,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions)`, func() {
-		getRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		getRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2840,7 +2620,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions) - Operation response error`, func() {
-		updateRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		updateRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2874,11 +2654,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -2923,7 +2703,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions)`, func() {
-		updateRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		updateRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -2979,11 +2759,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3092,11 +2872,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3150,11 +2930,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3229,11 +3009,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3274,7 +3054,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteRuleGroup(deleteRuleGroupOptions *DeleteRuleGroupOptions)`, func() {
-		deleteRuleGroupPath := "/v1/rulegroups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		deleteRuleGroupPath := "/v1/rule_groups/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3342,7 +3122,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions) - Operation response error`, func() {
-		listRuleGroupsPath := "/v1/rulegroups"
+		listRuleGroupsPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3386,7 +3166,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions)`, func() {
-		listRuleGroupsPath := "/v1/rulegroups"
+		listRuleGroupsPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3542,7 +3322,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions) - Operation response error`, func() {
-		createRuleGroupPath := "/v1/rulegroups"
+		createRuleGroupPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3576,11 +3356,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3624,7 +3404,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions)`, func() {
-		createRuleGroupPath := "/v1/rulegroups"
+		createRuleGroupPath := "/v1/rule_groups"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -3680,11 +3460,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3792,11 +3572,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3849,11 +3629,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -3927,11 +3707,11 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -4034,7 +3814,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
+					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
 				}))
 			})
 			It(`Invoke ListOutgoingWebhooks successfully with retries`, func() {
@@ -4089,7 +3869,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
+					fmt.Fprintf(res, "%s", `{"outgoing_webhooks": [{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123}]}`)
 				}))
 			})
 			It(`Invoke ListOutgoingWebhooks successfully`, func() {
@@ -4204,12 +3984,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4268,7 +4050,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully with retries`, func() {
@@ -4283,12 +4065,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4350,7 +4134,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke CreateOutgoingWebhook successfully`, func() {
@@ -4370,12 +4154,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4402,12 +4188,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4455,12 +4243,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4544,7 +4334,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully with retries`, func() {
@@ -4598,7 +4388,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke GetOutgoingWebhook successfully`, func() {
@@ -4720,12 +4510,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4785,7 +4577,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully with retries`, func() {
@@ -4800,12 +4592,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4868,7 +4662,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "My Outbound Webhook", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "us-prod-1"}}`)
+					fmt.Fprintf(res, "%s", `{"id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "type": "ibm_event_notifications", "name": "Event Notifications Integration", "url": "https://example.com", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "external_id": 123, "ibm_event_notifications": {"event_notifications_instance_id": "585bea36-bdd1-4bfb-9a26-51f1f8a12660", "region_id": "eu-es", "source_id": "crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::", "source_name": "IBM Cloud Event Notifications"}}`)
 				}))
 			})
 			It(`Invoke UpdateOutgoingWebhook successfully`, func() {
@@ -4888,12 +4682,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4921,12 +4717,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -4975,12 +4773,14 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 
@@ -6290,6 +6090,206 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions) - Operation response error`, func() {
+		getDashboardCatalogPath := "/v1/dashboards"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions)`, func() {
+		getDashboardCatalogPath := "/v1/dashboards"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"dashboards": [{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "Production metrics", "description": "Response time, error rate and traffic volume", "is_default": true, "is_pinned": true, "create_time": "2021-01-01T00:00:00.000Z", "update_time": "2021-01-01T00:00:00.000Z", "folder": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}}]}`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDashboardCatalogWithContext(ctx, getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDashboardCatalogWithContext(ctx, getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardCatalogPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"dashboards": [{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "Production metrics", "description": "Response time, error rate and traffic volume", "is_default": true, "is_pinned": true, "create_time": "2021-01-01T00:00:00.000Z", "update_time": "2021-01-01T00:00:00.000Z", "folder": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}}]}`)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDashboardCatalog(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDashboardCatalog with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDashboardCatalog successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := new(logsv0.GetDashboardCatalogOptions)
+				getDashboardCatalogOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDashboardCatalog(getDashboardCatalogOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`CreateDashboard(createDashboardOptions *CreateDashboardOptions) - Operation response error`, func() {
 		createDashboardPath := "/v1/dashboards"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -6336,13 +6336,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6413,11 +6413,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6436,19 +6445,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -6459,6 +6473,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -6483,13 +6499,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -6577,7 +6593,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke CreateDashboard successfully with retries`, func() {
@@ -6612,13 +6628,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6689,11 +6705,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6712,19 +6737,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -6735,6 +6765,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -6759,13 +6791,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -6856,7 +6888,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke CreateDashboard successfully`, func() {
@@ -6896,13 +6928,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -6973,11 +7005,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -6996,19 +7037,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7019,6 +7065,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7043,13 +7091,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7125,13 +7173,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7202,11 +7250,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7225,19 +7282,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7248,6 +7310,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7272,13 +7336,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7375,13 +7439,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7452,11 +7516,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7475,19 +7548,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7498,6 +7576,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7522,13 +7602,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -7641,7 +7721,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetDashboard successfully with retries`, func() {
@@ -7695,7 +7775,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke GetDashboard successfully`, func() {
@@ -7837,13 +7917,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -7914,11 +7994,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -7937,19 +8026,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -7960,6 +8054,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -7984,13 +8080,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8079,7 +8175,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke ReplaceDashboard successfully with retries`, func() {
@@ -8114,13 +8210,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8191,11 +8287,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8214,19 +8319,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8237,6 +8347,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8261,13 +8373,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8359,7 +8471,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}]}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc"}}, "display_name": "Service Name"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
+					fmt.Fprintf(res, "%s", `{"href": "6U1Q8Hpa263Se8PkRKaiE", "id": "6U1Q8Hpa263Se8PkRKaiE", "name": "My Dashboard", "description": "This dashboard shows the performance of our production environment.", "layout": {"sections": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "rows": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "appearance": {"height": 5}, "widgets": [{"href": "Href", "id": {"value": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "title": "Response time", "description": "The average response time of the system", "definition": {"line_chart": {"legend": {"is_visible": true, "columns": ["name"], "group_by_query": true}, "tooltip": {"show_labels": true, "type": "single"}, "query_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "query": {"logs": {"lucene_query": {"value": "coralogix.metadata.applicationName:\"production\""}, "group_by": ["GroupBy"], "aggregations": [{"count": {}}], "filters": [{"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}], "group_bys": [{"keypath": ["Keypath"], "scope": "metadata"}]}}, "series_name_template": "{{severity}}", "series_count_limit": "10", "unit": "usd", "scale_type": "logarithmic", "name": "CPU usage", "is_visible": true, "color_scheme": "classic", "resolution": {"interval": "1m", "buckets_presented": 100}, "data_mode_type": "archive"}], "stacked_line": "relative"}}, "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z"}]}], "options": {"internal": {}}}]}, "variables": [{"name": "service_name", "definition": {"multi_select": {"source": {"logs_path": {"observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "selection": {"all": {}}, "values_order_direction": "desc", "selection_options": {"selection_type": "single"}}}, "display_name": "Service Name", "description": "Description", "display_type": "nothing"}], "filters": [{"source": {"logs": {"operator": {"equals": {"selection": {"all": {}}}}, "observation_field": {"keypath": ["Keypath"], "scope": "metadata"}}}, "enabled": true, "collapsed": true}], "annotations": [{"href": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Deployments", "enabled": true, "source": {"metrics": {"promql_query": {"value": "sum(up)"}, "strategy": {"start_time_metric": {}}, "message_template": "MessageTemplate", "labels": ["Labels"]}}}], "absolute_time_frame": {"from": "2021-01-01T00:00:00.000Z", "to": "2021-01-01T00:00:00.000Z"}}`)
 				}))
 			})
 			It(`Invoke ReplaceDashboard successfully`, func() {
@@ -8399,13 +8511,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8476,11 +8588,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8499,19 +8620,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8522,6 +8648,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8546,13 +8674,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8629,13 +8757,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8706,11 +8834,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8729,19 +8866,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -8752,6 +8894,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -8776,13 +8920,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -8880,13 +9024,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel := new(logsv0.ApisDashboardsV1AstWidgetsCommonPromQlQuery)
 				apisDashboardsV1AstWidgetsCommonPromQlQueryModel.Value = core.StringPtr("sum(rate(cx_data_usage_bytes_total[20m]))by(pillar,tier)")
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -8957,11 +9101,20 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstRowModel.Appearance = apisDashboardsV1AstRowAppearanceModel
 				apisDashboardsV1AstRowModel.Widgets = []logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -8980,19 +9133,24 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueLogsPath)
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -9003,6 +9161,8 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionListSelection model
 				apisDashboardsV1AstFilterEqualsSelectionListSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionListSelection)
@@ -9027,13 +9187,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel := new(logsv0.ApisDashboardsV1CommonPromQlQuery)
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -9153,110 +9313,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`PinDashboard(pinDashboardOptions *PinDashboardOptions) - Operation response error`, func() {
-		pinDashboardPath := "/v1/dashboards/testString/pinned"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke PinDashboard with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`PinDashboard(pinDashboardOptions *PinDashboardOptions)`, func() {
 		pinDashboardPath := "/v1/dashboards/testString/pinned"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke PinDashboard successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.PinDashboardWithContext(ctx, pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.PinDashboardWithContext(ctx, pinDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9266,10 +9324,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(pinDashboardPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke PinDashboard successfully`, func() {
@@ -9281,10 +9336,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.PinDashboard(nil)
+				response, operationErr := logsService.PinDashboard(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the PinDashboardOptions model
 				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
@@ -9292,11 +9346,9 @@ var _ = Describe(`LogsV0`, func() {
 				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
+				response, operationErr = logsService.PinDashboard(pinDashboardOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke PinDashboard with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9313,52 +9365,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
+				response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the PinDashboardOptions model with no property values
 				pinDashboardOptionsModelNew := new(logsv0.PinDashboardOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.PinDashboard(pinDashboardOptionsModelNew)
+				response, operationErr = logsService.PinDashboard(pinDashboardOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke PinDashboard successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the PinDashboardOptions model
-				pinDashboardOptionsModel := new(logsv0.PinDashboardOptions)
-				pinDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				pinDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.PinDashboard(pinDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -9433,110 +9449,8 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) - Operation response error`, func() {
-		replaceDefaultDashboardPath := "/v1/dashboards/testString/default"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions)`, func() {
 		replaceDefaultDashboardPath := "/v1/dashboards/testString/default"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.ReplaceDefaultDashboardWithContext(ctx, replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.ReplaceDefaultDashboardWithContext(ctx, replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9546,10 +9460,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(replaceDefaultDashboardPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke ReplaceDefaultDashboard successfully`, func() {
@@ -9561,10 +9472,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(nil)
+				response, operationErr := logsService.ReplaceDefaultDashboard(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the ReplaceDefaultDashboardOptions model
 				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
@@ -9572,11 +9482,9 @@ var _ = Describe(`LogsV0`, func() {
 				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
+				response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke ReplaceDefaultDashboard with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9593,98 +9501,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
+				response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the ReplaceDefaultDashboardOptions model with no property values
 				replaceDefaultDashboardOptionsModelNew := new(logsv0.ReplaceDefaultDashboardOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModelNew)
+				response, operationErr = logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke ReplaceDefaultDashboard successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the ReplaceDefaultDashboardOptions model
-				replaceDefaultDashboardOptionsModel := new(logsv0.ReplaceDefaultDashboardOptions)
-				replaceDefaultDashboardOptionsModel.DashboardID = core.StringPtr("testString")
-				replaceDefaultDashboardOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) - Operation response error`, func() {
-		assignDashboardFolderPath := "/v1/dashboards/testString/folder/testString"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
-					Expect(req.Method).To(Equal("PUT"))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder with error: Operation response processing error`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -9693,64 +9519,6 @@ var _ = Describe(`LogsV0`, func() {
 	})
 	Describe(`AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions)`, func() {
 		assignDashboardFolderPath := "/v1/dashboards/testString/folder/testString"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder successfully with retries`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-				logsService.EnableRetries(0, 0)
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := logsService.AssignDashboardFolderWithContext(ctx, assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				logsService.DisableRetries()
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = logsService.AssignDashboardFolderWithContext(ctx, assignDashboardFolderOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -9760,10 +9528,7 @@ var _ = Describe(`LogsV0`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(assignDashboardFolderPath))
 					Expect(req.Method).To(Equal("PUT"))
 
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{}`)
+					res.WriteHeader(204)
 				}))
 			})
 			It(`Invoke AssignDashboardFolder successfully`, func() {
@@ -9775,10 +9540,9 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.AssignDashboardFolder(nil)
+				response, operationErr := logsService.AssignDashboardFolder(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 
 				// Construct an instance of the AssignDashboardFolderOptions model
 				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
@@ -9787,11 +9551,9 @@ var _ = Describe(`LogsV0`, func() {
 				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
+				response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
 			})
 			It(`Invoke AssignDashboardFolder with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -9809,53 +9571,16 @@ var _ = Describe(`LogsV0`, func() {
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
+				response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
 				// Construct a second instance of the AssignDashboardFolderOptions model with no property values
 				assignDashboardFolderOptionsModelNew := new(logsv0.AssignDashboardFolderOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModelNew)
+				response, operationErr = logsService.AssignDashboardFolder(assignDashboardFolderOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke AssignDashboardFolder successfully`, func() {
-				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(logsService).ToNot(BeNil())
-
-				// Construct an instance of the AssignDashboardFolderOptions model
-				assignDashboardFolderOptionsModel := new(logsv0.AssignDashboardFolderOptions)
-				assignDashboardFolderOptionsModel.DashboardID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
-				assignDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := logsService.AssignDashboardFolder(assignDashboardFolderOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -10316,8 +10041,220 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions) - Operation response error`, func() {
+		getDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions)`, func() {
+		getDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDashboardFolderWithContext(ctx, getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDashboardFolderWithContext(ctx, getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDashboardFolderPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Folder", "parent_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}`)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDashboardFolder(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDashboardFolder with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetDashboardFolderOptions model with no property values
+				getDashboardFolderOptionsModelNew := new(logsv0.GetDashboardFolderOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.GetDashboardFolder(getDashboardFolderOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDashboardFolder successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDashboardFolderOptions model
+				getDashboardFolderOptionsModel := new(logsv0.GetDashboardFolderOptions)
+				getDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDashboardFolder(getDashboardFolderOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) - Operation response error`, func() {
-		replaceDashboardFolderPath := "/v1/folders/testString"
+		replaceDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10341,7 +10278,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10365,7 +10302,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions)`, func() {
-		replaceDashboardFolderPath := "/v1/folders/testString"
+		replaceDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10411,7 +10348,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10489,7 +10426,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10512,7 +10449,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10556,7 +10493,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceDashboardFolderOptions model
 				replaceDashboardFolderOptionsModel := new(logsv0.ReplaceDashboardFolderOptions)
-				replaceDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				replaceDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.Name = core.StringPtr("My Folder")
 				replaceDashboardFolderOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsModel.ParentID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -10576,7 +10513,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteDashboardFolder(deleteDashboardFolderOptions *DeleteDashboardFolderOptions)`, func() {
-		deleteDashboardFolderPath := "/v1/folders/testString"
+		deleteDashboardFolderPath := "/v1/folders/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -10604,7 +10541,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteDashboardFolderOptions model
 				deleteDashboardFolderOptionsModel := new(logsv0.DeleteDashboardFolderOptions)
-				deleteDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				deleteDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -10622,7 +10559,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteDashboardFolderOptions model
 				deleteDashboardFolderOptionsModel := new(logsv0.DeleteDashboardFolderOptions)
-				deleteDashboardFolderOptionsModel.FolderID = core.StringPtr("testString")
+				deleteDashboardFolderOptionsModel.FolderID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -10704,7 +10641,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke ListE2m successfully with retries`, func() {
@@ -10757,7 +10694,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"events2metrics": [{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke ListE2m successfully`, func() {
@@ -10868,8 +10805,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -10879,21 +10816,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -10961,7 +10898,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreateE2m successfully with retries`, func() {
@@ -10975,8 +10912,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -10986,21 +10923,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11071,7 +11008,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreateE2m successfully`, func() {
@@ -11090,8 +11027,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11101,21 +11038,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11150,8 +11087,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11161,21 +11098,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11231,8 +11168,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11242,21 +11179,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11288,7 +11225,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetE2m(getE2mOptions *GetE2mOptions) - Operation response error`, func() {
-		getE2mPath := "/v1/events2metrics/testString"
+		getE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11312,7 +11249,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := logsService.GetE2m(getE2mOptionsModel)
@@ -11333,7 +11270,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`GetE2m(getE2mOptions *GetE2mOptions)`, func() {
-		getE2mPath := "/v1/events2metrics/testString"
+		getE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11349,7 +11286,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetE2m successfully with retries`, func() {
@@ -11363,7 +11300,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -11403,7 +11340,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetE2m successfully`, func() {
@@ -11422,7 +11359,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -11442,7 +11379,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -11483,7 +11420,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the GetE2mOptions model
 				getE2mOptionsModel := new(logsv0.GetE2mOptions)
-				getE2mOptionsModel.ID = core.StringPtr("testString")
+				getE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -11500,7 +11437,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions) - Operation response error`, func() {
-		replaceE2mPath := "/v1/events2metrics/testString"
+		replaceE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11524,8 +11461,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11535,21 +11472,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11564,7 +11501,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -11586,7 +11523,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions)`, func() {
-		replaceE2mPath := "/v1/events2metrics/testString"
+		replaceE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11618,7 +11555,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke ReplaceE2m successfully with retries`, func() {
@@ -11632,8 +11569,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11643,21 +11580,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11672,7 +11609,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11729,7 +11666,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 5, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "TargetLabel", "source_field": "SourceField"}], "metric_fields": [{"target_base_metric_name": "TargetBaseMetricName", "source_field": "SourceField", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "TargetMetricName", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "Lucene", "alias": "Alias", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "d6a3658e-78d2-47d0-9b81-b2c551f01b09", "name": "Service_catalog_latency", "description": "avg and max the latency of catalog service", "create_time": "2022-06-30T12:30:00Z'", "update_time": "2022-06-30T12:30:00Z'", "permutations": {"limit": 30000, "has_exceeded_limit": true}, "metric_labels": [{"target_label": "alias_label_name", "source_field": "log_obj.string_value"}], "metric_fields": [{"target_base_metric_name": "alias_field_name", "source_field": "log_obj.numeric_field", "aggregations": [{"enabled": true, "agg_type": "samples", "target_metric_name": "alias_field_name_agg_func", "samples": {"sample_type": "max"}}]}], "type": "logs2metrics", "is_internal": true, "logs_query": {"lucene": "log_obj.numeric_field: [50 TO 100]", "alias": "new_query", "applicationname_filters": ["ApplicationnameFilters"], "subsystemname_filters": ["SubsystemnameFilters"], "severity_filters": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke ReplaceE2m successfully`, func() {
@@ -11748,8 +11685,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11759,21 +11696,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11788,7 +11725,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11809,8 +11746,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11820,21 +11757,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11849,7 +11786,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -11891,8 +11828,8 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -11902,21 +11839,21 @@ var _ = Describe(`LogsV0`, func() {
 				apisEvents2metricsV2AggregationModel := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("logs")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -11931,7 +11868,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the ReplaceE2mOptions model
 				replaceE2mOptionsModel := new(logsv0.ReplaceE2mOptions)
-				replaceE2mOptionsModel.ID = core.StringPtr("testString")
+				replaceE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.Event2MetricPrototype = event2MetricPrototypeModel
 				replaceE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -11949,7 +11886,7 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`DeleteE2m(deleteE2mOptions *DeleteE2mOptions)`, func() {
-		deleteE2mPath := "/v1/events2metrics/testString"
+		deleteE2mPath := "/v1/events2metrics/d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -11977,7 +11914,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteE2mOptions model
 				deleteE2mOptionsModel := new(logsv0.DeleteE2mOptions)
-				deleteE2mOptionsModel.ID = core.StringPtr("testString")
+				deleteE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -11995,7 +11932,7 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the DeleteE2mOptions model
 				deleteE2mOptionsModel := new(logsv0.DeleteE2mOptions)
-				deleteE2mOptionsModel.ID = core.StringPtr("testString")
+				deleteE2mOptionsModel.ID = core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -12239,10 +12176,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12251,6 +12184,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12264,8 +12201,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12332,10 +12269,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12344,6 +12277,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12357,8 +12294,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12433,10 +12370,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12445,6 +12378,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12458,8 +12395,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12479,10 +12416,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12491,6 +12424,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12504,8 +12441,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12546,10 +12483,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12558,6 +12491,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12571,8 +12508,8 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsModel := new(logsv0.CreateViewOptions)
 				createViewOptionsModel.Name = core.StringPtr("Logs view")
-				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				createViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				createViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				createViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				createViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12825,10 +12762,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12837,6 +12770,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12851,8 +12788,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -12919,10 +12856,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -12931,6 +12864,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -12945,8 +12882,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -13021,10 +12958,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -13033,6 +12966,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -13047,8 +12984,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -13068,10 +13005,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -13080,6 +13013,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -13094,8 +13031,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -13136,10 +13073,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				apisViewsV1CustomTimeSelectionModel.FromTime = CreateMockDateTime("2024-01-25T11:31:43.152Z")
@@ -13148,6 +13081,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisViewsV1TimeSelectionSelectionTypeCustomSelection model
 				apisViewsV1TimeSelectionModel := new(logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection)
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -13162,8 +13099,8 @@ var _ = Describe(`LogsV0`, func() {
 				replaceViewOptionsModel := new(logsv0.ReplaceViewOptions)
 				replaceViewOptionsModel.ID = core.Int64Ptr(int64(52))
 				replaceViewOptionsModel.Name = core.StringPtr("Logs view")
-				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.TimeSelection = apisViewsV1TimeSelectionModel
+				replaceViewOptionsModel.SearchQuery = apisViewsV1SearchQueryModel
 				replaceViewOptionsModel.Filters = apisViewsV1SelectedFiltersModel
 				replaceViewOptionsModel.FolderID = CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")
 				replaceViewOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -14222,6 +14159,2704 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) - Operation response error`, func() {
+		listDataAccessRulesPath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions)`, func() {
+		listDataAccessRulesPath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.ListDataAccessRulesWithContext(ctx, listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.ListDataAccessRulesWithContext(ctx, listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listDataAccessRulesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.ListDataAccessRules(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListDataAccessRules with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListDataAccessRules successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := new(logsv0.ListDataAccessRulesOptions)
+				listDataAccessRulesOptionsModel.ID = []strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}
+				listDataAccessRulesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.ListDataAccessRules(listDataAccessRulesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) - Operation response error`, func() {
+		createDataAccessRulePath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions)`, func() {
+		createDataAccessRulePath := "/v1/data_access_rules"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateDataAccessRuleWithContext(ctx, createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateDataAccessRuleWithContext(ctx, createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createDataAccessRulePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateDataAccessRuleOptions model with no property values
+				createDataAccessRuleOptionsModelNew := new(logsv0.CreateDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateDataAccessRule(createDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) - Operation response error`, func() {
+		updateDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions)`, func() {
+		updateDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateDataAccessRuleWithContext(ctx, updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateDataAccessRuleWithContext(ctx, updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataAccessRulePath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateDataAccessRuleOptions model with no property values
+				updateDataAccessRuleOptionsModelNew := new(logsv0.UpdateDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
+				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions)`, func() {
+		deleteDataAccessRulePath := "/v1/data_access_rules/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteDataAccessRulePath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteDataAccessRule successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.DeleteDataAccessRule(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				deleteDataAccessRuleOptionsModel := new(logsv0.DeleteDataAccessRuleOptions)
+				deleteDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteDataAccessRule with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				deleteDataAccessRuleOptionsModel := new(logsv0.DeleteDataAccessRuleOptions)
+				deleteDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteDataAccessRuleOptions model with no property values
+				deleteDataAccessRuleOptionsModelNew := new(logsv0.DeleteDataAccessRuleOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.DeleteDataAccessRule(deleteDataAccessRuleOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) - Operation response error`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetEnrichments with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions)`, func() {
+		getEnrichmentsPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetEnrichmentsWithContext(ctx, getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEnrichmentsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enrichments": [{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}]}`)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetEnrichments with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := new(logsv0.GetEnrichmentsOptions)
+				getEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetEnrichments(getEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) - Operation response error`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateEnrichment with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions)`, func() {
+		createEnrichmentPath := "/v1/enrichments"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateEnrichmentWithContext(ctx, createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createEnrichmentPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 1, "field_name": "sourceIPs", "enrichment_type": {"geo_ip": {}}}`)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateEnrichment(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateEnrichment with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateEnrichmentOptions model with no property values
+				createEnrichmentOptionsModelNew := new(logsv0.CreateEnrichmentOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateEnrichment(createEnrichmentOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateEnrichment successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsModel := new(logsv0.CreateEnrichmentOptions)
+				createEnrichmentOptionsModel.FieldName = core.StringPtr("ip")
+				createEnrichmentOptionsModel.EnrichmentType = enrichmentV1EnrichmentTypeModel
+				createEnrichmentOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateEnrichment(createEnrichmentOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions)`, func() {
+		removeEnrichmentsPath := "/v1/enrichments/1"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(removeEnrichmentsPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke RemoveEnrichments successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.RemoveEnrichments(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke RemoveEnrichments with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				removeEnrichmentsOptionsModel := new(logsv0.RemoveEnrichmentsOptions)
+				removeEnrichmentsOptionsModel.ID = core.Int64Ptr(int64(1))
+				removeEnrichmentsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.RemoveEnrichments(removeEnrichmentsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the RemoveEnrichmentsOptions model with no property values
+				removeEnrichmentsOptionsModelNew := new(logsv0.RemoveEnrichmentsOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.RemoveEnrichments(removeEnrichmentsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions) - Operation response error`, func() {
+		getDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions *GetDataUsageMetricsExportStatusOptions)`, func() {
+		getDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetDataUsageMetricsExportStatusWithContext(ctx, getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetDataUsageMetricsExportStatusWithContext(ctx, getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := new(logsv0.GetDataUsageMetricsExportStatusOptions)
+				getDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) - Operation response error`, func() {
+		updateDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions)`, func() {
+		updateDataUsageMetricsExportStatusPath := "/v1/data_usage"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateDataUsageMetricsExportStatusWithContext(ctx, updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateDataUsageMetricsExportStatusWithContext(ctx, updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateDataUsageMetricsExportStatusPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"enabled": true}`)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateDataUsageMetricsExportStatusOptions model with no property values
+				updateDataUsageMetricsExportStatusOptionsModelNew := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateDataUsageMetricsExportStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsModel := new(logsv0.UpdateDataUsageMetricsExportStatusOptions)
+				updateDataUsageMetricsExportStatusOptionsModel.Enabled = core.BoolPtr(true)
+				updateDataUsageMetricsExportStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions) - Operation response error`, func() {
+		getEventStreamTargetsPath := "/v1/streams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions)`, func() {
+		getEventStreamTargetsPath := "/v1/streams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"streams": [{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}]}`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetEventStreamTargetsWithContext(ctx, getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetEventStreamTargetsWithContext(ctx, getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getEventStreamTargetsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"streams": [{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}]}`)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetEventStreamTargets(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetEventStreamTargets with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetEventStreamTargets successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := new(logsv0.GetEventStreamTargetsOptions)
+				getEventStreamTargetsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetEventStreamTargets(getEventStreamTargetsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) - Operation response error`, func() {
+		upsertEventStreamTargetPath := "/v1/streams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions)`, func() {
+		upsertEventStreamTargetPath := "/v1/streams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpsertEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpsertEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpsertEventStreamTargetOptions model with no property values
+				upsertEventStreamTargetOptionsModelNew := new(logsv0.UpsertEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
+				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions)`, func() {
+		deleteEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteEventStreamTargetPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.DeleteEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				deleteEventStreamTargetOptionsModel := new(logsv0.DeleteEventStreamTargetOptions)
+				deleteEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				deleteEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				deleteEventStreamTargetOptionsModel := new(logsv0.DeleteEventStreamTargetOptions)
+				deleteEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				deleteEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteEventStreamTargetOptions model with no property values
+				deleteEventStreamTargetOptionsModelNew := new(logsv0.DeleteEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) - Operation response error`, func() {
+		updateEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions)`, func() {
+		updateEventStreamTargetPath := "/v1/streams/0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.UpdateEventStreamTargetWithContext(ctx, updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.UpdateEventStreamTargetWithContext(ctx, updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateEventStreamTargetPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.UpdateEventStreamTarget(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke UpdateEventStreamTarget with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the UpdateEventStreamTargetOptions model with no property values
+				updateEventStreamTargetOptionsModelNew := new(logsv0.UpdateEventStreamTargetOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke UpdateEventStreamTarget successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				updateEventStreamTargetOptionsModel := new(logsv0.UpdateEventStreamTargetOptions)
+				updateEventStreamTargetOptionsModel.ID = core.Int64Ptr(int64(0))
+				updateEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				updateEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				updateEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				updateEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				updateEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			logsService, _ := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -14240,27 +16875,24 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
-			It(`Invoke NewAlertsV1FilterData successfully`, func() {
-				field := "testString"
-				_model, err := logsService.NewAlertsV1FilterData(field)
+			It(`Invoke NewAlertsV1AlertFiltersRatioAlert successfully`, func() {
+				alias := "TopLevelAlert"
+				_model, err := logsService.NewAlertsV1AlertFiltersRatioAlert(alias)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewAlertsV1MetricAlertConditionParameters successfully`, func() {
-				metricField := "testString"
+				metricField := "cpu_usage"
 				metricSource := "prometheus"
 				arithmeticOperator := "percentile"
-				sampleThresholdPercentage := int64(0)
-				nonNullPercentage := int64(0)
-				_model, err := logsService.NewAlertsV1MetricAlertConditionParameters(metricField, metricSource, arithmeticOperator, sampleThresholdPercentage, nonNullPercentage)
+				_model, err := logsService.NewAlertsV1MetricAlertConditionParameters(metricField, metricSource, arithmeticOperator)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewAlertsV1MetricAlertPromqlConditionParameters successfully`, func() {
-				promqlText := "testString"
-				sampleThresholdPercentage := int64(0)
-				nonNullPercentage := int64(0)
-				_model, err := logsService.NewAlertsV1MetricAlertPromqlConditionParameters(promqlText, sampleThresholdPercentage, nonNullPercentage)
+				promqlText := "sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)"
+				sampleThresholdPercentage := int64(100)
+				_model, err := logsService.NewAlertsV1MetricAlertPromqlConditionParameters(promqlText, sampleThresholdPercentage)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -14270,16 +16902,9 @@ var _ = Describe(`LogsV0`, func() {
 				_, err := logsService.NewAlertsV1TimeRange(start, end)
 				Expect(err).ToNot(BeNil())
 			})
-			It(`Invoke NewAlertsV1TracingAlert successfully`, func() {
-				conditionLatency := int64(0)
-				_model, err := logsService.NewAlertsV1TracingAlert(conditionLatency)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
 			It(`Invoke NewAlertsV2ConditionParameters successfully`, func() {
-				threshold := float64(72.5)
 				timeframe := "timeframe_36_h"
-				_model, err := logsService.NewAlertsV2ConditionParameters(threshold, timeframe)
+				_model, err := logsService.NewAlertsV2ConditionParameters(timeframe)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -14629,33 +17254,33 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
 				Expect(alertsV1MetricAlertConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("cpu_usage")))
 				Expect(alertsV1MetricAlertConditionParametersModel.MetricSource).To(Equal(core.StringPtr("prometheus")))
 				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperator).To(Equal(core.StringPtr("percentile")))
-				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -14702,15 +17327,25 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 				Expect(alertsV2AlertConditionModel.MoreThan).To(Equal(alertsV2MoreThanConditionModel))
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				Expect(alertsV1DateModel).ToNot(BeNil())
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
-				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(0))))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(60))))
 				Expect(alertsV2AlertNotificationModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
-				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -14723,62 +17358,42 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
 				Expect(alertsV1AlertFiltersMetadataFiltersModel).ToNot(BeNil())
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Categories).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Computers).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Classes).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Methods).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.IpAddresses).To(Equal([]string{"testString"}))
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
 				Expect(alertsV1AlertFiltersRatioAlertModel).ToNot(BeNil())
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
-				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("testString")))
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
+				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("TopLevelAlert")))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("_exists_:\"container_name\"")))
 				Expect(alertsV1AlertFiltersRatioAlertModel.Severities).To(Equal([]string{"critical"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"testString"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"Host", "Thread"}))
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				Expect(alertsV1AlertFiltersModel).ToNot(BeNil())
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 				Expect(alertsV1AlertFiltersModel.Severities).To(Equal([]string{"info"}))
 				Expect(alertsV1AlertFiltersModel.Metadata).To(Equal(alertsV1AlertFiltersMetadataFiltersModel))
-				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("monitorQuery")))
 				Expect(alertsV1AlertFiltersModel.Text).To(Equal(core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")))
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(38))))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -14820,32 +17435,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1MetaLabelModel.Key).To(Equal(core.StringPtr("env")))
 				Expect(alertsV1MetaLabelModel.Value).To(Equal(core.StringPtr("dev")))
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				Expect(alertsV1FiltersModel).ToNot(BeNil())
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-				Expect(alertsV1FiltersModel.Values).To(Equal([]string{"testString"}))
-				Expect(alertsV1FiltersModel.Operator).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				Expect(alertsV1FilterDataModel).ToNot(BeNil())
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-				Expect(alertsV1FilterDataModel.Field).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1FilterDataModel.Filters).To(Equal([]logsv0.AlertsV1Filters{*alertsV1FiltersModel}))
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				Expect(alertsV1TracingAlertModel).ToNot(BeNil())
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				Expect(alertsV1TracingAlertModel.ConditionLatency).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1TracingAlertModel.FieldFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-				Expect(alertsV1TracingAlertModel.TagFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				Expect(alertsV2AlertIncidentSettingsModel).ToNot(BeNil())
@@ -14861,22 +17450,19 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsIsActive := true
 				createAlertOptionsSeverity := "info_or_unspecified"
 				var createAlertOptionsCondition logsv0.AlertsV2AlertConditionIntf = nil
-				createAlertOptionsNotificationGroups := []logsv0.AlertsV2AlertNotificationGroups{}
-				var createAlertOptionsFilters *logsv0.AlertsV1AlertFilters = nil
-				createAlertOptionsModel := logsService.NewCreateAlertOptions(createAlertOptionsName, createAlertOptionsIsActive, createAlertOptionsSeverity, createAlertOptionsCondition, createAlertOptionsNotificationGroups, createAlertOptionsFilters)
+				createAlertOptionsModel := logsService.NewCreateAlertOptions(createAlertOptionsName, createAlertOptionsIsActive, createAlertOptionsSeverity, createAlertOptionsCondition)
 				createAlertOptionsModel.SetName("Test alert")
 				createAlertOptionsModel.SetIsActive(true)
 				createAlertOptionsModel.SetSeverity("info_or_unspecified")
 				createAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				createAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
-				createAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				createAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
 				createAlertOptionsModel.SetExpiration(alertsV1DateModel)
+				createAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+				createAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				createAlertOptionsModel.SetActiveWhen(alertsV1AlertActiveWhenModel)
 				createAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				createAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 				createAlertOptionsModel.SetMetaLabelsStrings([]string{})
-				createAlertOptionsModel.SetTracingAlert(alertsV1TracingAlertModel)
 				createAlertOptionsModel.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
 				createAlertOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createAlertOptionsModel).ToNot(BeNil())
@@ -14884,15 +17470,14 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(createAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(createAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(createAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
-				Expect(createAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(createAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
 				Expect(createAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
+				Expect(createAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
+				Expect(createAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(createAlertOptionsModel.ActiveWhen).To(Equal(alertsV1AlertActiveWhenModel))
 				Expect(createAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(createAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
 				Expect(createAlertOptionsModel.MetaLabelsStrings).To(Equal([]string{}))
-				Expect(createAlertOptionsModel.TracingAlert).To(Equal(alertsV1TracingAlertModel))
 				Expect(createAlertOptionsModel.IncidentSettings).To(Equal(alertsV2AlertIncidentSettingsModel))
 				Expect(createAlertOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -14947,49 +17532,49 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value = core.StringPtr("coralogix.metadata.applicationName:\"production\"")
 				Expect(apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value).To(Equal(core.StringPtr("coralogix.metadata.applicationName:\"production\"")))
 
-				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCount model
-				apisDashboardsV1CommonLogsAggregationCountModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCountEmpty model
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel).ToNot(BeNil())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(nil)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap)
-				apisDashboardsV1CommonLogsAggregationCountModelActualMap := apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()
-				Expect(apisDashboardsV1CommonLogsAggregationCountModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap))
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap)
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap := apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationValueCount model
 				apisDashboardsV1CommonLogsAggregationModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationValueCount)
 				Expect(apisDashboardsV1CommonLogsAggregationModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountModel
-				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountModel))
+				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountEmptyModel
+				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModel))
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
 				Expect(apisDashboardsV1AstFilterEqualsSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel))
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -15121,15 +17706,39 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisDashboardsV1AstRowModel.Appearance).To(Equal(apisDashboardsV1AstRowAppearanceModel))
 				Expect(apisDashboardsV1AstRowModel.Widgets).To(Equal([]logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}))
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).To(BeEmpty())
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap := apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap))
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				Expect(apisDashboardsV1AstSectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+				Expect(apisDashboardsV1AstSectionOptionsModel.Internal).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModel))
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				Expect(apisDashboardsV1AstSectionModel).ToNot(BeNil())
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 				Expect(apisDashboardsV1AstSectionModel.Href).To(Equal(core.StringPtr("testString")))
 				Expect(apisDashboardsV1AstSectionModel.ID).To(Equal(apisDashboardsV1UUIDModel))
 				Expect(apisDashboardsV1AstSectionModel.Rows).To(Equal([]logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}))
+				Expect(apisDashboardsV1AstSectionModel.Options).To(Equal(apisDashboardsV1AstSectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -15149,27 +17758,33 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 				Expect(apisDashboardsV1AstMultiSelectSourceModel.LogsPath).To(Equal(apisDashboardsV1AstMultiSelectLogsPathSourceModel))
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel))
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType).To(Equal(core.StringPtr("single")))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -15177,9 +17792,11 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 				Expect(apisDashboardsV1AstMultiSelectModel.Source).To(Equal(apisDashboardsV1AstMultiSelectSourceModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.Selection).To(Equal(apisDashboardsV1AstMultiSelectSelectionModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection).To(Equal(core.StringPtr("desc")))
+				Expect(apisDashboardsV1AstMultiSelectModel.SelectionOptions).To(Equal(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -15193,9 +17810,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 				Expect(apisDashboardsV1AstVariableModel.Name).To(Equal(core.StringPtr("service_name")))
 				Expect(apisDashboardsV1AstVariableModel.Definition).To(Equal(apisDashboardsV1AstVariableDefinitionModel))
 				Expect(apisDashboardsV1AstVariableModel.DisplayName).To(Equal(core.StringPtr("Service Name")))
+				Expect(apisDashboardsV1AstVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(apisDashboardsV1AstVariableModel.DisplayType).To(Equal(core.StringPtr("nothing")))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterSourceValueLogs model
 				apisDashboardsV1AstFilterSourceModel := new(logsv0.ApisDashboardsV1AstFilterSourceValueLogs)
@@ -15219,27 +17840,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 				Expect(apisDashboardsV1CommonPromQlQueryModel.Value).To(Equal(core.StringPtr("sum(up)")))
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap))
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
 				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel))
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -15312,14 +17933,40 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createDashboardOptionsModel.Dashboard).To(Equal(dashboardModel))
 				Expect(createDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				Expect(dataAccessRuleFilterModel).ToNot(BeNil())
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+				Expect(dataAccessRuleFilterModel.EntityType).To(Equal(core.StringPtr("logs")))
+				Expect(dataAccessRuleFilterModel.Expression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+
+				// Construct an instance of the CreateDataAccessRuleOptions model
+				createDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				createDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
+				createDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				createDataAccessRuleOptionsModel := logsService.NewCreateDataAccessRuleOptions(createDataAccessRuleOptionsDisplayName, createDataAccessRuleOptionsFilters, createDataAccessRuleOptionsDefaultExpression)
+				createDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
+				createDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
+				createDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(createDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(createDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
+				Expect(createDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+				Expect(createDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(createDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateE2mOptions successfully`, func() {
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
 				Expect(apisEvents2metricsV2MetricLabelModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
-				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("testString")))
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
+				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("alias_label_name")))
+				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("log_obj.string_value")))
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -15332,35 +17979,35 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisEvents2metricsV2AggregationModel).ToNot(BeNil())
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 				Expect(apisEvents2metricsV2AggregationModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(apisEvents2metricsV2AggregationModel.AggType).To(Equal(core.StringPtr("samples")))
-				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("alias_field_name_agg_func")))
 				Expect(apisEvents2metricsV2AggregationModel.Samples).To(Equal(apisEvents2metricsV2E2mAggSamplesModel))
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
 				Expect(apisEvents2metricsV2MetricFieldModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
-				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("alias_field_name")))
+				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("log_obj.numeric_field")))
 				Expect(apisEvents2metricsV2MetricFieldModel.Aggregations).To(Equal([]logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}))
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				Expect(apisLogs2metricsV2LogsQueryModel).ToNot(BeNil())
-				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
-				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"testString"}))
-				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"testString"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("log_obj.numeric_field: [50 TO 100]")))
+				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("new_query")))
+				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"app_name"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"sub_name"}))
 				Expect(apisLogs2metricsV2LogsQueryModel.SeverityFilters).To(Equal([]string{"critical"}))
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -15368,14 +18015,14 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(event2MetricPrototypeModel).ToNot(BeNil())
 				event2MetricPrototypeModel.Name = core.StringPtr("Service catalog latency")
 				event2MetricPrototypeModel.Description = core.StringPtr("avg and max the latency of catalog service")
-				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(38))
+				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(30000))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
 				event2MetricPrototypeModel.Type = core.StringPtr("logs2metrics")
 				event2MetricPrototypeModel.LogsQuery = apisLogs2metricsV2LogsQueryModel
 				Expect(event2MetricPrototypeModel.Name).To(Equal(core.StringPtr("Service catalog latency")))
 				Expect(event2MetricPrototypeModel.Description).To(Equal(core.StringPtr("avg and max the latency of catalog service")))
-				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(38))))
+				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(30000))))
 				Expect(event2MetricPrototypeModel.MetricLabels).To(Equal([]logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}))
 				Expect(event2MetricPrototypeModel.MetricFields).To(Equal([]logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}))
 				Expect(event2MetricPrototypeModel.Type).To(Equal(core.StringPtr("logs2metrics")))
@@ -15390,24 +18037,63 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createE2mOptionsModel.Event2MetricPrototype).To(Equal(event2MetricPrototypeModel))
 				Expect(createE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateEnrichmentOptions successfully`, func() {
+				// Construct an instance of the EnrichmentV1GeoIpTypeEmpty model
+				enrichmentV1GeoIpTypeEmptyModel := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+				Expect(enrichmentV1GeoIpTypeEmptyModel).ToNot(BeNil())
+				enrichmentV1GeoIpTypeEmptyModel.SetProperty("foo", "testString")
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(nil)
+				Expect(enrichmentV1GeoIpTypeEmptyModel.GetProperties()).To(BeEmpty())
+
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap := make(map[string]interface{})
+				enrichmentV1GeoIpTypeEmptyModelExpectedMap["foo"] = "testString"
+				enrichmentV1GeoIpTypeEmptyModel.SetProperties(enrichmentV1GeoIpTypeEmptyModelExpectedMap)
+				enrichmentV1GeoIpTypeEmptyModelActualMap := enrichmentV1GeoIpTypeEmptyModel.GetProperties()
+				Expect(enrichmentV1GeoIpTypeEmptyModelActualMap).To(Equal(enrichmentV1GeoIpTypeEmptyModelExpectedMap))
+
+				// Construct an instance of the EnrichmentV1EnrichmentTypeTypeGeoIp model
+				enrichmentV1EnrichmentTypeModel := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+				Expect(enrichmentV1EnrichmentTypeModel).ToNot(BeNil())
+				enrichmentV1EnrichmentTypeModel.GeoIp = enrichmentV1GeoIpTypeEmptyModel
+				Expect(enrichmentV1EnrichmentTypeModel.GeoIp).To(Equal(enrichmentV1GeoIpTypeEmptyModel))
+
+				// Construct an instance of the CreateEnrichmentOptions model
+				createEnrichmentOptionsFieldName := "ip"
+				var createEnrichmentOptionsEnrichmentType logsv0.EnrichmentV1EnrichmentTypeIntf = nil
+				createEnrichmentOptionsModel := logsService.NewCreateEnrichmentOptions(createEnrichmentOptionsFieldName, createEnrichmentOptionsEnrichmentType)
+				createEnrichmentOptionsModel.SetFieldName("ip")
+				createEnrichmentOptionsModel.SetEnrichmentType(enrichmentV1EnrichmentTypeModel)
+				createEnrichmentOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createEnrichmentOptionsModel).ToNot(BeNil())
+				Expect(createEnrichmentOptionsModel.FieldName).To(Equal(core.StringPtr("ip")))
+				Expect(createEnrichmentOptionsModel.EnrichmentType).To(Equal(enrichmentV1EnrichmentTypeModel))
+				Expect(createEnrichmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
-				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("us-prod-1")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID).To(Equal(core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName).To(Equal(core.StringPtr("IBM Cloud Event Notifications")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				Expect(outgoingWebhookPrototypeModel).ToNot(BeNil())
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 				Expect(outgoingWebhookPrototypeModel.Type).To(Equal(core.StringPtr("ibm_event_notifications")))
-				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("My Outbound Webhook")))
+				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("Event Notifications Integration")))
 				Expect(outgoingWebhookPrototypeModel.URL).To(Equal(core.StringPtr("https://example.com")))
 				Expect(outgoingWebhookPrototypeModel.IbmEventNotifications).To(Equal(outgoingWebhooksV1IbmEventNotificationsConfigModel))
 
@@ -15487,17 +18173,17 @@ var _ = Describe(`LogsV0`, func() {
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel).ToNot(BeNil())
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name).To(Equal(core.StringPtr("mysql-parse")))
+				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField).To(Equal(core.StringPtr("text")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters).To(Equal(rulesV1RuleParametersModel))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -15552,12 +18238,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createViewFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateViewOptions successfully`, func() {
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
-				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs")))
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				Expect(apisViewsV1CustomTimeSelectionModel).ToNot(BeNil())
@@ -15571,6 +18251,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisViewsV1TimeSelectionModel).ToNot(BeNil())
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
 				Expect(apisViewsV1TimeSelectionModel.CustomSelection).To(Equal(apisViewsV1CustomTimeSelectionModel))
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs")
+				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs")))
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -15588,19 +18274,18 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateViewOptions model
 				createViewOptionsName := "Logs view"
-				var createViewOptionsSearchQuery *logsv0.ApisViewsV1SearchQuery = nil
 				var createViewOptionsTimeSelection logsv0.ApisViewsV1TimeSelectionIntf = nil
-				createViewOptionsModel := logsService.NewCreateViewOptions(createViewOptionsName, createViewOptionsSearchQuery, createViewOptionsTimeSelection)
+				createViewOptionsModel := logsService.NewCreateViewOptions(createViewOptionsName, createViewOptionsTimeSelection)
 				createViewOptionsModel.SetName("Logs view")
-				createViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				createViewOptionsModel.SetTimeSelection(apisViewsV1TimeSelectionModel)
+				createViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				createViewOptionsModel.SetFilters(apisViewsV1SelectedFiltersModel)
 				createViewOptionsModel.SetFolderID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				createViewOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createViewOptionsModel).ToNot(BeNil())
 				Expect(createViewOptionsModel.Name).To(Equal(core.StringPtr("Logs view")))
-				Expect(createViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(createViewOptionsModel.TimeSelection).To(Equal(apisViewsV1TimeSelectionModel))
+				Expect(createViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(createViewOptionsModel.Filters).To(Equal(apisViewsV1SelectedFiltersModel))
 				Expect(createViewOptionsModel.FolderID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(createViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -15608,6 +18293,19 @@ var _ = Describe(`LogsV0`, func() {
 			It(`Invoke NewDashboardFolder successfully`, func() {
 				name := "My Folder"
 				_model, err := logsService.NewDashboardFolder(name)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewDataAccessRuleFilter successfully`, func() {
+				entityType := "logs"
+				expression := "true"
+				_model, err := logsService.NewDataAccessRuleFilter(entityType, expression)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewDataUsageMetricsExportStatus successfully`, func() {
+				enabled := true
+				_model, err := logsService.NewDataUsageMetricsExportStatus(enabled)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -15623,12 +18321,12 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewDeleteDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the DeleteDashboardFolderOptions model
-				folderID := "testString"
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				deleteDashboardFolderOptionsModel := logsService.NewDeleteDashboardFolderOptions(folderID)
-				deleteDashboardFolderOptionsModel.SetFolderID("testString")
+				deleteDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				deleteDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteDashboardFolderOptionsModel).ToNot(BeNil())
-				Expect(deleteDashboardFolderOptionsModel.FolderID).To(Equal(core.StringPtr("testString")))
+				Expect(deleteDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(deleteDashboardFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteDashboardOptions successfully`, func() {
@@ -15641,15 +18339,35 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(deleteDashboardOptionsModel.DashboardID).To(Equal(core.StringPtr("testString")))
 				Expect(deleteDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewDeleteDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DeleteDataAccessRuleOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteDataAccessRuleOptionsModel := logsService.NewDeleteDataAccessRuleOptions(id)
+				deleteDataAccessRuleOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				deleteDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(deleteDataAccessRuleOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(deleteDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDeleteE2mOptions successfully`, func() {
 				// Construct an instance of the DeleteE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				deleteE2mOptionsModel := logsService.NewDeleteE2mOptions(id)
-				deleteE2mOptionsModel.SetID("testString")
+				deleteE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				deleteE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteE2mOptionsModel).ToNot(BeNil())
-				Expect(deleteE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(deleteE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(deleteE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewDeleteEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the DeleteEventStreamTargetOptions model
+				id := int64(0)
+				deleteEventStreamTargetOptionsModel := logsService.NewDeleteEventStreamTargetOptions(id)
+				deleteEventStreamTargetOptionsModel.SetID(int64(0))
+				deleteEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(deleteEventStreamTargetOptionsModel.ID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(deleteEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the DeleteOutgoingWebhookOptions model
@@ -15729,6 +18447,23 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getCompanyPoliciesOptionsModel.SourceType).To(Equal(core.StringPtr("logs")))
 				Expect(getCompanyPoliciesOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetDashboardCatalogOptions successfully`, func() {
+				// Construct an instance of the GetDashboardCatalogOptions model
+				getDashboardCatalogOptionsModel := logsService.NewGetDashboardCatalogOptions()
+				getDashboardCatalogOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDashboardCatalogOptionsModel).ToNot(BeNil())
+				Expect(getDashboardCatalogOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetDashboardFolderOptions successfully`, func() {
+				// Construct an instance of the GetDashboardFolderOptions model
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getDashboardFolderOptionsModel := logsService.NewGetDashboardFolderOptions(folderID)
+				getDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				getDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDashboardFolderOptionsModel).ToNot(BeNil())
+				Expect(getDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(getDashboardFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetDashboardOptions successfully`, func() {
 				// Construct an instance of the GetDashboardOptions model
 				dashboardID := "testString"
@@ -15739,15 +18474,36 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getDashboardOptionsModel.DashboardID).To(Equal(core.StringPtr("testString")))
 				Expect(getDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetDataUsageMetricsExportStatusOptions successfully`, func() {
+				// Construct an instance of the GetDataUsageMetricsExportStatusOptions model
+				getDataUsageMetricsExportStatusOptionsModel := logsService.NewGetDataUsageMetricsExportStatusOptions()
+				getDataUsageMetricsExportStatusOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getDataUsageMetricsExportStatusOptionsModel).ToNot(BeNil())
+				Expect(getDataUsageMetricsExportStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetE2mOptions successfully`, func() {
 				// Construct an instance of the GetE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				getE2mOptionsModel := logsService.NewGetE2mOptions(id)
-				getE2mOptionsModel.SetID("testString")
+				getE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				getE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getE2mOptionsModel).ToNot(BeNil())
-				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(getE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(getE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the GetEnrichmentsOptions model
+				getEnrichmentsOptionsModel := logsService.NewGetEnrichmentsOptions()
+				getEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(getEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetEventStreamTargetsOptions successfully`, func() {
+				// Construct an instance of the GetEventStreamTargetsOptions model
+				getEventStreamTargetsOptionsModel := logsService.NewGetEventStreamTargetsOptions()
+				getEventStreamTargetsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getEventStreamTargetsOptionsModel).ToNot(BeNil())
+				Expect(getEventStreamTargetsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the GetOutgoingWebhookOptions model
@@ -15799,12 +18555,28 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getViewOptionsModel.ID).To(Equal(core.Int64Ptr(int64(52))))
 				Expect(getViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewIbmEventStreams successfully`, func() {
+				brokers := "kafka01.example.com:9093"
+				topic := "live.screen"
+				_model, err := logsService.NewIbmEventStreams(brokers, topic)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewListDashboardFoldersOptions successfully`, func() {
 				// Construct an instance of the ListDashboardFoldersOptions model
 				listDashboardFoldersOptionsModel := logsService.NewListDashboardFoldersOptions()
 				listDashboardFoldersOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listDashboardFoldersOptionsModel).ToNot(BeNil())
 				Expect(listDashboardFoldersOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewListDataAccessRulesOptions successfully`, func() {
+				// Construct an instance of the ListDataAccessRulesOptions model
+				listDataAccessRulesOptionsModel := logsService.NewListDataAccessRulesOptions()
+				listDataAccessRulesOptionsModel.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
+				listDataAccessRulesOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listDataAccessRulesOptionsModel).ToNot(BeNil())
+				Expect(listDataAccessRulesOptionsModel.ID).To(Equal([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"}))
+				Expect(listDataAccessRulesOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListE2mOptions successfully`, func() {
 				// Construct an instance of the ListE2mOptions model
@@ -15845,7 +18617,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewOutgoingWebhooksV1IbmEventNotificationsConfig successfully`, func() {
 				eventNotificationsInstanceID := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				regionID := "us-prod-1"
+				regionID := "eu-es"
 				_model, err := logsService.NewOutgoingWebhooksV1IbmEventNotificationsConfig(eventNotificationsInstanceID, regionID)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -15873,18 +18645,28 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
+			It(`Invoke NewRemoveEnrichmentsOptions successfully`, func() {
+				// Construct an instance of the RemoveEnrichmentsOptions model
+				id := int64(1)
+				removeEnrichmentsOptionsModel := logsService.NewRemoveEnrichmentsOptions(id)
+				removeEnrichmentsOptionsModel.SetID(int64(1))
+				removeEnrichmentsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(removeEnrichmentsOptionsModel).ToNot(BeNil())
+				Expect(removeEnrichmentsOptionsModel.ID).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(removeEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewReplaceDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the ReplaceDashboardFolderOptions model
-				folderID := "testString"
+				folderID := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				replaceDashboardFolderOptionsName := "My Folder"
 				replaceDashboardFolderOptionsModel := logsService.NewReplaceDashboardFolderOptions(folderID, replaceDashboardFolderOptionsName)
-				replaceDashboardFolderOptionsModel.SetFolderID("testString")
+				replaceDashboardFolderOptionsModel.SetFolderID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetName("My Folder")
 				replaceDashboardFolderOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetParentID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				replaceDashboardFolderOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceDashboardFolderOptionsModel).ToNot(BeNil())
-				Expect(replaceDashboardFolderOptionsModel.FolderID).To(Equal(core.StringPtr("testString")))
+				Expect(replaceDashboardFolderOptionsModel.FolderID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(replaceDashboardFolderOptionsModel.Name).To(Equal(core.StringPtr("My Folder")))
 				Expect(replaceDashboardFolderOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
 				Expect(replaceDashboardFolderOptionsModel.ParentID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
@@ -15927,49 +18709,49 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value = core.StringPtr("coralogix.metadata.applicationName:\"production\"")
 				Expect(apisDashboardsV1AstWidgetsCommonLuceneQueryModel.Value).To(Equal(core.StringPtr("coralogix.metadata.applicationName:\"production\"")))
 
-				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCount model
-				apisDashboardsV1CommonLogsAggregationCountModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationCountEmpty model
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel).ToNot(BeNil())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(nil)
-				Expect(apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1CommonLogsAggregationCountModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1CommonLogsAggregationCountModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap)
-				apisDashboardsV1CommonLogsAggregationCountModelActualMap := apisDashboardsV1CommonLogsAggregationCountModel.GetProperties()
-				Expect(apisDashboardsV1CommonLogsAggregationCountModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountModelExpectedMap))
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1CommonLogsAggregationCountEmptyModel.SetProperties(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap)
+				apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap := apisDashboardsV1CommonLogsAggregationCountEmptyModel.GetProperties()
+				Expect(apisDashboardsV1CommonLogsAggregationCountEmptyModelActualMap).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1CommonLogsAggregationValueCount model
 				apisDashboardsV1CommonLogsAggregationModel := new(logsv0.ApisDashboardsV1CommonLogsAggregationValueCount)
 				Expect(apisDashboardsV1CommonLogsAggregationModel).ToNot(BeNil())
-				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountModel
-				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountModel))
+				apisDashboardsV1CommonLogsAggregationModel.Count = apisDashboardsV1CommonLogsAggregationCountEmptyModel
+				Expect(apisDashboardsV1CommonLogsAggregationModel.Count).To(Equal(apisDashboardsV1CommonLogsAggregationCountEmptyModel))
 
-				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelection model
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty model
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEqualsSelectionValueAll model
 				apisDashboardsV1AstFilterEqualsSelectionModel := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionValueAll)
 				Expect(apisDashboardsV1AstFilterEqualsSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionModel))
+				apisDashboardsV1AstFilterEqualsSelectionModel.All = apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstFilterEqualsSelectionModel.All).To(Equal(apisDashboardsV1AstFilterEqualsSelectionAllSelectionEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterEquals model
 				apisDashboardsV1AstFilterEqualsModel := new(logsv0.ApisDashboardsV1AstFilterEquals)
@@ -16101,15 +18883,39 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisDashboardsV1AstRowModel.Appearance).To(Equal(apisDashboardsV1AstRowAppearanceModel))
 				Expect(apisDashboardsV1AstRowModel.Widgets).To(Equal([]logsv0.ApisDashboardsV1AstWidget{*apisDashboardsV1AstWidgetModel}))
 
+				// Construct an instance of the ApisDashboardsV1AstInternalSectionOptionsEmpty model
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperty("foo")).To(Equal("testString"))
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()).To(BeEmpty())
+
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstInternalSectionOptionsEmptyModel.SetProperties(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap)
+				apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap := apisDashboardsV1AstInternalSectionOptionsEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstInternalSectionOptionsEmptyModelActualMap).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModelExpectedMap))
+
+				// Construct an instance of the ApisDashboardsV1AstSectionOptionsValueInternal model
+				apisDashboardsV1AstSectionOptionsModel := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+				Expect(apisDashboardsV1AstSectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstSectionOptionsModel.Internal = apisDashboardsV1AstInternalSectionOptionsEmptyModel
+				Expect(apisDashboardsV1AstSectionOptionsModel.Internal).To(Equal(apisDashboardsV1AstInternalSectionOptionsEmptyModel))
+
 				// Construct an instance of the ApisDashboardsV1AstSection model
 				apisDashboardsV1AstSectionModel := new(logsv0.ApisDashboardsV1AstSection)
 				Expect(apisDashboardsV1AstSectionModel).ToNot(BeNil())
 				apisDashboardsV1AstSectionModel.Href = core.StringPtr("testString")
 				apisDashboardsV1AstSectionModel.ID = apisDashboardsV1UUIDModel
 				apisDashboardsV1AstSectionModel.Rows = []logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}
+				apisDashboardsV1AstSectionModel.Options = apisDashboardsV1AstSectionOptionsModel
 				Expect(apisDashboardsV1AstSectionModel.Href).To(Equal(core.StringPtr("testString")))
 				Expect(apisDashboardsV1AstSectionModel.ID).To(Equal(apisDashboardsV1UUIDModel))
 				Expect(apisDashboardsV1AstSectionModel.Rows).To(Equal([]logsv0.ApisDashboardsV1AstRow{*apisDashboardsV1AstRowModel}))
+				Expect(apisDashboardsV1AstSectionModel.Options).To(Equal(apisDashboardsV1AstSectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstLayout model
 				apisDashboardsV1AstLayoutModel := new(logsv0.ApisDashboardsV1AstLayout)
@@ -16129,27 +18935,33 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectSourceModel.LogsPath = apisDashboardsV1AstMultiSelectLogsPathSourceModel
 				Expect(apisDashboardsV1AstMultiSelectSourceModel.LogsPath).To(Equal(apisDashboardsV1AstMultiSelectLogsPathSourceModel))
 
-				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelection model
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty model
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap)
-				apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionModel.GetProperties()
-				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModelExpectedMap))
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.SetProperties(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap)
+				apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap := apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelActualMap).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelectSelectionValueAll model
 				apisDashboardsV1AstMultiSelectSelectionModel := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
 				Expect(apisDashboardsV1AstMultiSelectSelectionModel).ToNot(BeNil())
-				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionModel
-				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionModel))
+				apisDashboardsV1AstMultiSelectSelectionModel.All = apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel
+				Expect(apisDashboardsV1AstMultiSelectSelectionModel.All).To(Equal(apisDashboardsV1AstMultiSelectSelectionAllSelectionEmptyModel))
+
+				// Construct an instance of the ApisDashboardsV1AstMultiSelectVariableSelectionOptions model
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel).ToNot(BeNil())
+				apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType = core.StringPtr("single")
+				Expect(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel.SelectionType).To(Equal(core.StringPtr("single")))
 
 				// Construct an instance of the ApisDashboardsV1AstMultiSelect model
 				apisDashboardsV1AstMultiSelectModel := new(logsv0.ApisDashboardsV1AstMultiSelect)
@@ -16157,9 +18969,11 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstMultiSelectModel.Source = apisDashboardsV1AstMultiSelectSourceModel
 				apisDashboardsV1AstMultiSelectModel.Selection = apisDashboardsV1AstMultiSelectSelectionModel
 				apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection = core.StringPtr("desc")
+				apisDashboardsV1AstMultiSelectModel.SelectionOptions = apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel
 				Expect(apisDashboardsV1AstMultiSelectModel.Source).To(Equal(apisDashboardsV1AstMultiSelectSourceModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.Selection).To(Equal(apisDashboardsV1AstMultiSelectSelectionModel))
 				Expect(apisDashboardsV1AstMultiSelectModel.ValuesOrderDirection).To(Equal(core.StringPtr("desc")))
+				Expect(apisDashboardsV1AstMultiSelectModel.SelectionOptions).To(Equal(apisDashboardsV1AstMultiSelectVariableSelectionOptionsModel))
 
 				// Construct an instance of the ApisDashboardsV1AstVariableDefinitionValueMultiSelect model
 				apisDashboardsV1AstVariableDefinitionModel := new(logsv0.ApisDashboardsV1AstVariableDefinitionValueMultiSelect)
@@ -16173,9 +18987,13 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1AstVariableModel.Name = core.StringPtr("service_name")
 				apisDashboardsV1AstVariableModel.Definition = apisDashboardsV1AstVariableDefinitionModel
 				apisDashboardsV1AstVariableModel.DisplayName = core.StringPtr("Service Name")
+				apisDashboardsV1AstVariableModel.Description = core.StringPtr("testString")
+				apisDashboardsV1AstVariableModel.DisplayType = core.StringPtr("nothing")
 				Expect(apisDashboardsV1AstVariableModel.Name).To(Equal(core.StringPtr("service_name")))
 				Expect(apisDashboardsV1AstVariableModel.Definition).To(Equal(apisDashboardsV1AstVariableDefinitionModel))
 				Expect(apisDashboardsV1AstVariableModel.DisplayName).To(Equal(core.StringPtr("Service Name")))
+				Expect(apisDashboardsV1AstVariableModel.Description).To(Equal(core.StringPtr("testString")))
+				Expect(apisDashboardsV1AstVariableModel.DisplayType).To(Equal(core.StringPtr("nothing")))
 
 				// Construct an instance of the ApisDashboardsV1AstFilterSourceValueLogs model
 				apisDashboardsV1AstFilterSourceModel := new(logsv0.ApisDashboardsV1AstFilterSourceValueLogs)
@@ -16199,27 +19017,27 @@ var _ = Describe(`LogsV0`, func() {
 				apisDashboardsV1CommonPromQlQueryModel.Value = core.StringPtr("sum(up)")
 				Expect(apisDashboardsV1CommonPromQlQueryModel.Value).To(Equal(core.StringPtr("sum(up)")))
 
-				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric model
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperty("foo", "testString")
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).ToNot(BeEmpty())
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperty("foo")).To(Equal("testString"))
+				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty model
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel).ToNot(BeNil())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperty("foo", "testString")
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).ToNot(BeEmpty())
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperty("foo")).To(Equal("testString"))
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(nil)
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()).To(BeEmpty())
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(nil)
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()).To(BeEmpty())
 
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap := make(map[string]interface{})
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap["foo"] = "testString"
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap)
-				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel.GetProperties()
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModelExpectedMap))
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap := make(map[string]interface{})
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap["foo"] = "testString"
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.SetProperties(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap)
+				apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap := apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel.GetProperties()
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelActualMap).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModelExpectedMap))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSourceStrategy model
 				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStrategy)
 				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel).ToNot(BeNil())
-				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel
-				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricModel))
+				apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric = apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel
+				Expect(apisDashboardsV1AstAnnotationMetricsSourceStrategyModel.StartTimeMetric).To(Equal(apisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmptyModel))
 
 				// Construct an instance of the ApisDashboardsV1AstAnnotationMetricsSource model
 				apisDashboardsV1AstAnnotationMetricsSourceModel := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSource)
@@ -16309,10 +19127,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ApisEvents2metricsV2MetricLabel model
 				apisEvents2metricsV2MetricLabelModel := new(logsv0.ApisEvents2metricsV2MetricLabel)
 				Expect(apisEvents2metricsV2MetricLabelModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("testString")
-				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("testString")
-				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("testString")))
+				apisEvents2metricsV2MetricLabelModel.TargetLabel = core.StringPtr("alias_label_name")
+				apisEvents2metricsV2MetricLabelModel.SourceField = core.StringPtr("log_obj.string_value")
+				Expect(apisEvents2metricsV2MetricLabelModel.TargetLabel).To(Equal(core.StringPtr("alias_label_name")))
+				Expect(apisEvents2metricsV2MetricLabelModel.SourceField).To(Equal(core.StringPtr("log_obj.string_value")))
 
 				// Construct an instance of the ApisEvents2metricsV2E2mAggSamples model
 				apisEvents2metricsV2E2mAggSamplesModel := new(logsv0.ApisEvents2metricsV2E2mAggSamples)
@@ -16325,35 +19143,35 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisEvents2metricsV2AggregationModel).ToNot(BeNil())
 				apisEvents2metricsV2AggregationModel.Enabled = core.BoolPtr(true)
 				apisEvents2metricsV2AggregationModel.AggType = core.StringPtr("samples")
-				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("testString")
+				apisEvents2metricsV2AggregationModel.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 				apisEvents2metricsV2AggregationModel.Samples = apisEvents2metricsV2E2mAggSamplesModel
 				Expect(apisEvents2metricsV2AggregationModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(apisEvents2metricsV2AggregationModel.AggType).To(Equal(core.StringPtr("samples")))
-				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2AggregationModel.TargetMetricName).To(Equal(core.StringPtr("alias_field_name_agg_func")))
 				Expect(apisEvents2metricsV2AggregationModel.Samples).To(Equal(apisEvents2metricsV2E2mAggSamplesModel))
 
 				// Construct an instance of the ApisEvents2metricsV2MetricField model
 				apisEvents2metricsV2MetricFieldModel := new(logsv0.ApisEvents2metricsV2MetricField)
 				Expect(apisEvents2metricsV2MetricFieldModel).ToNot(BeNil())
-				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("testString")
-				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("testString")
+				apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName = core.StringPtr("alias_field_name")
+				apisEvents2metricsV2MetricFieldModel.SourceField = core.StringPtr("log_obj.numeric_field")
 				apisEvents2metricsV2MetricFieldModel.Aggregations = []logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}
-				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("testString")))
-				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("testString")))
+				Expect(apisEvents2metricsV2MetricFieldModel.TargetBaseMetricName).To(Equal(core.StringPtr("alias_field_name")))
+				Expect(apisEvents2metricsV2MetricFieldModel.SourceField).To(Equal(core.StringPtr("log_obj.numeric_field")))
 				Expect(apisEvents2metricsV2MetricFieldModel.Aggregations).To(Equal([]logsv0.ApisEvents2metricsV2AggregationIntf{apisEvents2metricsV2AggregationModel}))
 
 				// Construct an instance of the ApisLogs2metricsV2LogsQuery model
 				apisLogs2metricsV2LogsQueryModel := new(logsv0.ApisLogs2metricsV2LogsQuery)
 				Expect(apisLogs2metricsV2LogsQueryModel).ToNot(BeNil())
-				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("testString")
-				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"testString"}
-				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"testString"}
+				apisLogs2metricsV2LogsQueryModel.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+				apisLogs2metricsV2LogsQueryModel.Alias = core.StringPtr("new_query")
+				apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters = []string{"app_name"}
+				apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters = []string{"sub_name"}
 				apisLogs2metricsV2LogsQueryModel.SeverityFilters = []string{"critical"}
-				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"testString"}))
-				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"testString"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.Lucene).To(Equal(core.StringPtr("log_obj.numeric_field: [50 TO 100]")))
+				Expect(apisLogs2metricsV2LogsQueryModel.Alias).To(Equal(core.StringPtr("new_query")))
+				Expect(apisLogs2metricsV2LogsQueryModel.ApplicationnameFilters).To(Equal([]string{"app_name"}))
+				Expect(apisLogs2metricsV2LogsQueryModel.SubsystemnameFilters).To(Equal([]string{"sub_name"}))
 				Expect(apisLogs2metricsV2LogsQueryModel.SeverityFilters).To(Equal([]string{"critical"}))
 
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
@@ -16361,28 +19179,28 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(event2MetricPrototypeModel).ToNot(BeNil())
 				event2MetricPrototypeModel.Name = core.StringPtr("Service catalog latency")
 				event2MetricPrototypeModel.Description = core.StringPtr("avg and max the latency of catalog service")
-				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(38))
+				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(30000))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
 				event2MetricPrototypeModel.Type = core.StringPtr("logs2metrics")
 				event2MetricPrototypeModel.LogsQuery = apisLogs2metricsV2LogsQueryModel
 				Expect(event2MetricPrototypeModel.Name).To(Equal(core.StringPtr("Service catalog latency")))
 				Expect(event2MetricPrototypeModel.Description).To(Equal(core.StringPtr("avg and max the latency of catalog service")))
-				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(38))))
+				Expect(event2MetricPrototypeModel.PermutationsLimit).To(Equal(core.Int64Ptr(int64(30000))))
 				Expect(event2MetricPrototypeModel.MetricLabels).To(Equal([]logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}))
 				Expect(event2MetricPrototypeModel.MetricFields).To(Equal([]logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}))
 				Expect(event2MetricPrototypeModel.Type).To(Equal(core.StringPtr("logs2metrics")))
 				Expect(event2MetricPrototypeModel.LogsQuery).To(Equal(apisLogs2metricsV2LogsQueryModel))
 
 				// Construct an instance of the ReplaceE2mOptions model
-				id := "testString"
+				id := "d6a3658e-78d2-47d0-9b81-b2c551f01b09"
 				var event2MetricPrototype logsv0.Event2MetricPrototypeIntf = nil
 				replaceE2mOptionsModel := logsService.NewReplaceE2mOptions(id, event2MetricPrototype)
-				replaceE2mOptionsModel.SetID("testString")
+				replaceE2mOptionsModel.SetID("d6a3658e-78d2-47d0-9b81-b2c551f01b09")
 				replaceE2mOptionsModel.SetEvent2MetricPrototype(event2MetricPrototypeModel)
 				replaceE2mOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceE2mOptionsModel).ToNot(BeNil())
-				Expect(replaceE2mOptionsModel.ID).To(Equal(core.StringPtr("testString")))
+				Expect(replaceE2mOptionsModel.ID).To(Equal(core.StringPtr("d6a3658e-78d2-47d0-9b81-b2c551f01b09")))
 				Expect(replaceE2mOptionsModel.Event2MetricPrototype).To(Equal(event2MetricPrototypeModel))
 				Expect(replaceE2mOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -16400,12 +19218,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(replaceViewFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewReplaceViewOptions successfully`, func() {
-				// Construct an instance of the ApisViewsV1SearchQuery model
-				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
-				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
-				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
-				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs new")))
-
 				// Construct an instance of the ApisViewsV1CustomTimeSelection model
 				apisViewsV1CustomTimeSelectionModel := new(logsv0.ApisViewsV1CustomTimeSelection)
 				Expect(apisViewsV1CustomTimeSelectionModel).ToNot(BeNil())
@@ -16419,6 +19231,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(apisViewsV1TimeSelectionModel).ToNot(BeNil())
 				apisViewsV1TimeSelectionModel.CustomSelection = apisViewsV1CustomTimeSelectionModel
 				Expect(apisViewsV1TimeSelectionModel.CustomSelection).To(Equal(apisViewsV1CustomTimeSelectionModel))
+
+				// Construct an instance of the ApisViewsV1SearchQuery model
+				apisViewsV1SearchQueryModel := new(logsv0.ApisViewsV1SearchQuery)
+				Expect(apisViewsV1SearchQueryModel).ToNot(BeNil())
+				apisViewsV1SearchQueryModel.Query = core.StringPtr("logs new")
+				Expect(apisViewsV1SearchQueryModel.Query).To(Equal(core.StringPtr("logs new")))
 
 				// Construct an instance of the ApisViewsV1Filter model
 				apisViewsV1FilterModel := new(logsv0.ApisViewsV1Filter)
@@ -16437,21 +19255,20 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the ReplaceViewOptions model
 				id := int64(52)
 				replaceViewOptionsName := "Logs view"
-				var replaceViewOptionsSearchQuery *logsv0.ApisViewsV1SearchQuery = nil
 				var replaceViewOptionsTimeSelection logsv0.ApisViewsV1TimeSelectionIntf = nil
-				replaceViewOptionsModel := logsService.NewReplaceViewOptions(id, replaceViewOptionsName, replaceViewOptionsSearchQuery, replaceViewOptionsTimeSelection)
+				replaceViewOptionsModel := logsService.NewReplaceViewOptions(id, replaceViewOptionsName, replaceViewOptionsTimeSelection)
 				replaceViewOptionsModel.SetID(int64(52))
 				replaceViewOptionsModel.SetName("Logs view")
-				replaceViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				replaceViewOptionsModel.SetTimeSelection(apisViewsV1TimeSelectionModel)
+				replaceViewOptionsModel.SetSearchQuery(apisViewsV1SearchQueryModel)
 				replaceViewOptionsModel.SetFilters(apisViewsV1SelectedFiltersModel)
 				replaceViewOptionsModel.SetFolderID(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673"))
 				replaceViewOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(replaceViewOptionsModel).ToNot(BeNil())
 				Expect(replaceViewOptionsModel.ID).To(Equal(core.Int64Ptr(int64(52))))
 				Expect(replaceViewOptionsModel.Name).To(Equal(core.StringPtr("Logs view")))
-				Expect(replaceViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(replaceViewOptionsModel.TimeSelection).To(Equal(apisViewsV1TimeSelectionModel))
+				Expect(replaceViewOptionsModel.SearchQuery).To(Equal(apisViewsV1SearchQueryModel))
 				Expect(replaceViewOptionsModel.Filters).To(Equal(apisViewsV1SelectedFiltersModel))
 				Expect(replaceViewOptionsModel.FolderID).To(Equal(CreateMockUUID("9fab83da-98cb-4f18-a7ba-b6f0435c9673")))
 				Expect(replaceViewOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -16519,7 +19336,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewRulesV1ParseParameters successfully`, func() {
 				destinationField := "text.message"
-				rule := "^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)$"
+				rule := "^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)_"
 				_model, err := logsService.NewRulesV1ParseParameters(destinationField, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -16533,7 +19350,7 @@ var _ = Describe(`LogsV0`, func() {
 			It(`Invoke NewRulesV1ReplaceParameters successfully`, func() {
 				destinationField := "text.message"
 				replaceNewVal := "***"
-				rule := "the password is (?P<password>[A-Za-z0-9!@#$].)"
+				rule := "the password is (?P<password>[\\p{L}0-9!@#$].)"
 				_model, err := logsService.NewRulesV1ReplaceParameters(destinationField, replaceNewVal, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -16564,33 +19381,33 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
 				Expect(alertsV1MetricAlertConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("testString")
+				alertsV1MetricAlertConditionParametersModel.MetricField = core.StringPtr("cpu_usage")
 				alertsV1MetricAlertConditionParametersModel.MetricSource = core.StringPtr("prometheus")
 				alertsV1MetricAlertConditionParametersModel.ArithmeticOperator = core.StringPtr("percentile")
-				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1MetricAlertConditionParametersModel.MetricField).To(Equal(core.StringPtr("cpu_usage")))
 				Expect(alertsV1MetricAlertConditionParametersModel.MetricSource).To(Equal(core.StringPtr("prometheus")))
 				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperator).To(Equal(core.StringPtr("percentile")))
-				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1MetricAlertPromqlConditionParameters model
 				alertsV1MetricAlertPromqlConditionParametersModel := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel).ToNot(BeNil())
-				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("testString")
-				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(0))
+				alertsV1MetricAlertPromqlConditionParametersModel.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+				alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+				alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+				alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage = core.Int64Ptr(int64(100))
 				alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues = core.BoolPtr(true)
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.PromqlText).To(Equal(core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.ArithmeticOperatorModifier).To(Equal(core.Int64Ptr(int64(1))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SampleThresholdPercentage).To(Equal(core.Int64Ptr(int64(100))))
+				Expect(alertsV1MetricAlertPromqlConditionParametersModel.NonNullPercentage).To(Equal(core.Int64Ptr(int64(100))))
 				Expect(alertsV1MetricAlertPromqlConditionParametersModel.SwapNullValues).To(Equal(core.BoolPtr(true)))
 
 				// Construct an instance of the AlertsV1RelatedExtendedData model
@@ -16637,15 +19454,25 @@ var _ = Describe(`LogsV0`, func() {
 				alertsV2AlertConditionModel.MoreThan = alertsV2MoreThanConditionModel
 				Expect(alertsV2AlertConditionModel.MoreThan).To(Equal(alertsV2MoreThanConditionModel))
 
+				// Construct an instance of the AlertsV1Date model
+				alertsV1DateModel := new(logsv0.AlertsV1Date)
+				Expect(alertsV1DateModel).ToNot(BeNil())
+				alertsV1DateModel.Year = core.Int64Ptr(int64(2012))
+				alertsV1DateModel.Month = core.Int64Ptr(int64(12))
+				alertsV1DateModel.Day = core.Int64Ptr(int64(24))
+				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(2012))))
+				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(12))))
+				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(24))))
+
 				// Construct an instance of the AlertsV2AlertNotificationIntegrationTypeIntegrationID model
 				alertsV2AlertNotificationModel := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
 				Expect(alertsV2AlertNotificationModel).ToNot(BeNil())
-				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+				alertsV2AlertNotificationModel.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 				alertsV2AlertNotificationModel.NotifyOn = core.StringPtr("triggered_and_resolved")
-				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(0))
-				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(0))))
+				alertsV2AlertNotificationModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(alertsV2AlertNotificationModel.RetriggeringPeriodSeconds).To(Equal(core.Int64Ptr(int64(60))))
 				Expect(alertsV2AlertNotificationModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
-				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(alertsV2AlertNotificationModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
 
 				// Construct an instance of the AlertsV2AlertNotificationGroups model
 				alertsV2AlertNotificationGroupsModel := new(logsv0.AlertsV2AlertNotificationGroups)
@@ -16658,62 +19485,42 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the AlertsV1AlertFiltersMetadataFilters model
 				alertsV1AlertFiltersMetadataFiltersModel := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
 				Expect(alertsV1AlertFiltersMetadataFiltersModel).ToNot(BeNil())
-				alertsV1AlertFiltersMetadataFiltersModel.Categories = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Computers = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Classes = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.Methods = []string{"testString"}
-				alertsV1AlertFiltersMetadataFiltersModel.IpAddresses = []string{"testString"}
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Categories).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Computers).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Classes).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.Methods).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersMetadataFiltersModel.IpAddresses).To(Equal([]string{"testString"}))
+				alertsV1AlertFiltersMetadataFiltersModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersMetadataFiltersModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersMetadataFiltersModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
 
 				// Construct an instance of the AlertsV1AlertFiltersRatioAlert model
 				alertsV1AlertFiltersRatioAlertModel := new(logsv0.AlertsV1AlertFiltersRatioAlert)
 				Expect(alertsV1AlertFiltersRatioAlertModel).ToNot(BeNil())
-				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("testString")
-				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("testString")
+				alertsV1AlertFiltersRatioAlertModel.Alias = core.StringPtr("TopLevelAlert")
+				alertsV1AlertFiltersRatioAlertModel.Text = core.StringPtr("_exists_:\"container_name\"")
 				alertsV1AlertFiltersRatioAlertModel.Severities = []string{"critical"}
-				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"testString"}
-				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"testString"}
-				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("testString")))
+				alertsV1AlertFiltersRatioAlertModel.Applications = []string{"CpuMonitoring", "WebApi"}
+				alertsV1AlertFiltersRatioAlertModel.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+				alertsV1AlertFiltersRatioAlertModel.GroupBy = []string{"Host", "Thread"}
+				Expect(alertsV1AlertFiltersRatioAlertModel.Alias).To(Equal(core.StringPtr("TopLevelAlert")))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Text).To(Equal(core.StringPtr("_exists_:\"container_name\"")))
 				Expect(alertsV1AlertFiltersRatioAlertModel.Severities).To(Equal([]string{"critical"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"testString"}))
-				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"testString"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Applications).To(Equal([]string{"CpuMonitoring", "WebApi"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.Subsystems).To(Equal([]string{"SnapshotGenerator", "PermissionControl"}))
+				Expect(alertsV1AlertFiltersRatioAlertModel.GroupBy).To(Equal([]string{"Host", "Thread"}))
 
 				// Construct an instance of the AlertsV1AlertFilters model
 				alertsV1AlertFiltersModel := new(logsv0.AlertsV1AlertFilters)
 				Expect(alertsV1AlertFiltersModel).ToNot(BeNil())
 				alertsV1AlertFiltersModel.Severities = []string{"info"}
 				alertsV1AlertFiltersModel.Metadata = alertsV1AlertFiltersMetadataFiltersModel
-				alertsV1AlertFiltersModel.Alias = core.StringPtr("testString")
+				alertsV1AlertFiltersModel.Alias = core.StringPtr("monitorQuery")
 				alertsV1AlertFiltersModel.Text = core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")
 				alertsV1AlertFiltersModel.RatioAlerts = []logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}
 				alertsV1AlertFiltersModel.FilterType = core.StringPtr("text_or_unspecified")
 				Expect(alertsV1AlertFiltersModel.Severities).To(Equal([]string{"info"}))
 				Expect(alertsV1AlertFiltersModel.Metadata).To(Equal(alertsV1AlertFiltersMetadataFiltersModel))
-				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("testString")))
+				Expect(alertsV1AlertFiltersModel.Alias).To(Equal(core.StringPtr("monitorQuery")))
 				Expect(alertsV1AlertFiltersModel.Text).To(Equal(core.StringPtr("initiator.id.keyword:iam-ServiceId-10820fd6-c3fe-414e-8fd5-44ce95f7d34d AND action.keyword:cloud-object-storage.object.create")))
 				Expect(alertsV1AlertFiltersModel.RatioAlerts).To(Equal([]logsv0.AlertsV1AlertFiltersRatioAlert{*alertsV1AlertFiltersRatioAlertModel}))
 				Expect(alertsV1AlertFiltersModel.FilterType).To(Equal(core.StringPtr("text_or_unspecified")))
-
-				// Construct an instance of the AlertsV1Date model
-				alertsV1DateModel := new(logsv0.AlertsV1Date)
-				Expect(alertsV1DateModel).ToNot(BeNil())
-				alertsV1DateModel.Year = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Month = core.Int64Ptr(int64(38))
-				alertsV1DateModel.Day = core.Int64Ptr(int64(38))
-				Expect(alertsV1DateModel.Year).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Month).To(Equal(core.Int64Ptr(int64(38))))
-				Expect(alertsV1DateModel.Day).To(Equal(core.Int64Ptr(int64(38))))
 
 				// Construct an instance of the AlertsV1Time model
 				alertsV1TimeModel := new(logsv0.AlertsV1Time)
@@ -16755,32 +19562,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(alertsV1MetaLabelModel.Key).To(Equal(core.StringPtr("env")))
 				Expect(alertsV1MetaLabelModel.Value).To(Equal(core.StringPtr("dev")))
 
-				// Construct an instance of the AlertsV1Filters model
-				alertsV1FiltersModel := new(logsv0.AlertsV1Filters)
-				Expect(alertsV1FiltersModel).ToNot(BeNil())
-				alertsV1FiltersModel.Values = []string{"testString"}
-				alertsV1FiltersModel.Operator = core.StringPtr("testString")
-				Expect(alertsV1FiltersModel.Values).To(Equal([]string{"testString"}))
-				Expect(alertsV1FiltersModel.Operator).To(Equal(core.StringPtr("testString")))
-
-				// Construct an instance of the AlertsV1FilterData model
-				alertsV1FilterDataModel := new(logsv0.AlertsV1FilterData)
-				Expect(alertsV1FilterDataModel).ToNot(BeNil())
-				alertsV1FilterDataModel.Field = core.StringPtr("testString")
-				alertsV1FilterDataModel.Filters = []logsv0.AlertsV1Filters{*alertsV1FiltersModel}
-				Expect(alertsV1FilterDataModel.Field).To(Equal(core.StringPtr("testString")))
-				Expect(alertsV1FilterDataModel.Filters).To(Equal([]logsv0.AlertsV1Filters{*alertsV1FiltersModel}))
-
-				// Construct an instance of the AlertsV1TracingAlert model
-				alertsV1TracingAlertModel := new(logsv0.AlertsV1TracingAlert)
-				Expect(alertsV1TracingAlertModel).ToNot(BeNil())
-				alertsV1TracingAlertModel.ConditionLatency = core.Int64Ptr(int64(0))
-				alertsV1TracingAlertModel.FieldFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				alertsV1TracingAlertModel.TagFilters = []logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}
-				Expect(alertsV1TracingAlertModel.ConditionLatency).To(Equal(core.Int64Ptr(int64(0))))
-				Expect(alertsV1TracingAlertModel.FieldFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-				Expect(alertsV1TracingAlertModel.TagFilters).To(Equal([]logsv0.AlertsV1FilterData{*alertsV1FilterDataModel}))
-
 				// Construct an instance of the AlertsV2AlertIncidentSettings model
 				alertsV2AlertIncidentSettingsModel := new(logsv0.AlertsV2AlertIncidentSettings)
 				Expect(alertsV2AlertIncidentSettingsModel).ToNot(BeNil())
@@ -16797,23 +19578,20 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsIsActive := true
 				updateAlertOptionsSeverity := "info_or_unspecified"
 				var updateAlertOptionsCondition logsv0.AlertsV2AlertConditionIntf = nil
-				updateAlertOptionsNotificationGroups := []logsv0.AlertsV2AlertNotificationGroups{}
-				var updateAlertOptionsFilters *logsv0.AlertsV1AlertFilters = nil
-				updateAlertOptionsModel := logsService.NewUpdateAlertOptions(id, updateAlertOptionsName, updateAlertOptionsIsActive, updateAlertOptionsSeverity, updateAlertOptionsCondition, updateAlertOptionsNotificationGroups, updateAlertOptionsFilters)
+				updateAlertOptionsModel := logsService.NewUpdateAlertOptions(id, updateAlertOptionsName, updateAlertOptionsIsActive, updateAlertOptionsSeverity, updateAlertOptionsCondition)
 				updateAlertOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
 				updateAlertOptionsModel.SetName("Test alert")
 				updateAlertOptionsModel.SetIsActive(true)
 				updateAlertOptionsModel.SetSeverity("info_or_unspecified")
 				updateAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				updateAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
-				updateAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				updateAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
 				updateAlertOptionsModel.SetExpiration(alertsV1DateModel)
+				updateAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+				updateAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
 				updateAlertOptionsModel.SetActiveWhen(alertsV1AlertActiveWhenModel)
 				updateAlertOptionsModel.SetNotificationPayloadFilters([]string{"testString"})
 				updateAlertOptionsModel.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 				updateAlertOptionsModel.SetMetaLabelsStrings([]string{})
-				updateAlertOptionsModel.SetTracingAlert(alertsV1TracingAlertModel)
 				updateAlertOptionsModel.SetIncidentSettings(alertsV2AlertIncidentSettingsModel)
 				updateAlertOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateAlertOptionsModel).ToNot(BeNil())
@@ -16822,36 +19600,108 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(updateAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(updateAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(updateAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
-				Expect(updateAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(updateAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
 				Expect(updateAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
+				Expect(updateAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
+				Expect(updateAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
 				Expect(updateAlertOptionsModel.ActiveWhen).To(Equal(alertsV1AlertActiveWhenModel))
 				Expect(updateAlertOptionsModel.NotificationPayloadFilters).To(Equal([]string{"testString"}))
 				Expect(updateAlertOptionsModel.MetaLabels).To(Equal([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel}))
 				Expect(updateAlertOptionsModel.MetaLabelsStrings).To(Equal([]string{}))
-				Expect(updateAlertOptionsModel.TracingAlert).To(Equal(alertsV1TracingAlertModel))
 				Expect(updateAlertOptionsModel.IncidentSettings).To(Equal(alertsV2AlertIncidentSettingsModel))
 				Expect(updateAlertOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateDataAccessRuleOptions successfully`, func() {
+				// Construct an instance of the DataAccessRuleFilter model
+				dataAccessRuleFilterModel := new(logsv0.DataAccessRuleFilter)
+				Expect(dataAccessRuleFilterModel).ToNot(BeNil())
+				dataAccessRuleFilterModel.EntityType = core.StringPtr("logs")
+				dataAccessRuleFilterModel.Expression = core.StringPtr("<v1> foo == 'bar'")
+				Expect(dataAccessRuleFilterModel.EntityType).To(Equal(core.StringPtr("logs")))
+				Expect(dataAccessRuleFilterModel.Expression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+
+				// Construct an instance of the UpdateDataAccessRuleOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				updateDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				updateDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
+				updateDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				updateDataAccessRuleOptionsModel := logsService.NewUpdateDataAccessRuleOptions(id, updateDataAccessRuleOptionsDisplayName, updateDataAccessRuleOptionsFilters, updateDataAccessRuleOptionsDefaultExpression)
+				updateDataAccessRuleOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				updateDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
+				updateDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
+				updateDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateDataAccessRuleOptionsModel).ToNot(BeNil())
+				Expect(updateDataAccessRuleOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(updateDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(updateDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
+				Expect(updateDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
+				Expect(updateDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(updateDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateDataUsageMetricsExportStatusOptions successfully`, func() {
+				// Construct an instance of the UpdateDataUsageMetricsExportStatusOptions model
+				updateDataUsageMetricsExportStatusOptionsEnabled := true
+				updateDataUsageMetricsExportStatusOptionsModel := logsService.NewUpdateDataUsageMetricsExportStatusOptions(updateDataUsageMetricsExportStatusOptionsEnabled)
+				updateDataUsageMetricsExportStatusOptionsModel.SetEnabled(true)
+				updateDataUsageMetricsExportStatusOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateDataUsageMetricsExportStatusOptionsModel).ToNot(BeNil())
+				Expect(updateDataUsageMetricsExportStatusOptionsModel.Enabled).To(Equal(core.BoolPtr(true)))
+				Expect(updateDataUsageMetricsExportStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewUpdateEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				Expect(ibmEventStreamsModel).ToNot(BeNil())
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
+				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
+
+				// Construct an instance of the UpdateEventStreamTargetOptions model
+				id := int64(0)
+				updateEventStreamTargetOptionsName := "Live Screen"
+				updateEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
+				updateEventStreamTargetOptionsModel := logsService.NewUpdateEventStreamTargetOptions(id, updateEventStreamTargetOptionsName, updateEventStreamTargetOptionsDpxlExpression)
+				updateEventStreamTargetOptionsModel.SetID(int64(0))
+				updateEventStreamTargetOptionsModel.SetName("Live Screen")
+				updateEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				updateEventStreamTargetOptionsModel.SetIsActive(true)
+				updateEventStreamTargetOptionsModel.SetCompressionType("gzip")
+				updateEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
+				updateEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(updateEventStreamTargetOptionsModel.ID).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(updateEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
+				Expect(updateEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
+				Expect(updateEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
+				Expect(updateEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
+				Expect(updateEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
+				Expect(updateEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel).ToNot(BeNil())
 				outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("us-prod-1")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID = core.StringPtr("eu-es")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+				outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.EventNotificationsInstanceID).To(Equal(CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")))
-				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("us-prod-1")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.RegionID).To(Equal(core.StringPtr("eu-es")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceID).To(Equal(core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")))
+				Expect(outgoingWebhooksV1IbmEventNotificationsConfigModel.SourceName).To(Equal(core.StringPtr("IBM Cloud Event Notifications")))
 
 				// Construct an instance of the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications model
 				outgoingWebhookPrototypeModel := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 				Expect(outgoingWebhookPrototypeModel).ToNot(BeNil())
 				outgoingWebhookPrototypeModel.Type = core.StringPtr("ibm_event_notifications")
-				outgoingWebhookPrototypeModel.Name = core.StringPtr("My Outbound Webhook")
+				outgoingWebhookPrototypeModel.Name = core.StringPtr("Event Notifications Integration")
 				outgoingWebhookPrototypeModel.URL = core.StringPtr("https://example.com")
 				outgoingWebhookPrototypeModel.IbmEventNotifications = outgoingWebhooksV1IbmEventNotificationsConfigModel
 				Expect(outgoingWebhookPrototypeModel.Type).To(Equal(core.StringPtr("ibm_event_notifications")))
-				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("My Outbound Webhook")))
+				Expect(outgoingWebhookPrototypeModel.Name).To(Equal(core.StringPtr("Event Notifications Integration")))
 				Expect(outgoingWebhookPrototypeModel.URL).To(Equal(core.StringPtr("https://example.com")))
 				Expect(outgoingWebhookPrototypeModel.IbmEventNotifications).To(Equal(outgoingWebhooksV1IbmEventNotificationsConfigModel))
 
@@ -16937,17 +19787,17 @@ var _ = Describe(`LogsV0`, func() {
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel).ToNot(BeNil())
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name = core.StringPtr("mysql-parse")
+				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField = core.StringPtr("text")
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters = rulesV1RuleParametersModel
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled = core.BoolPtr(true)
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order = core.Int64Ptr(int64(1))
-				rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description = core.StringPtr("mysql-parse")
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Name).To(Equal(core.StringPtr("mysql-parse")))
+				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.SourceField).To(Equal(core.StringPtr("text")))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Parameters).To(Equal(rulesV1RuleParametersModel))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Order).To(Equal(core.Int64Ptr(int64(1))))
-				Expect(rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel.Description).To(Equal(core.StringPtr("mysql-parse")))
 
 				// Construct an instance of the RulesV1CreateRuleGroupRequestCreateRuleSubgroup model
 				rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup)
@@ -16994,53 +19844,73 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateRuleGroupOptionsModel.Order).To(Equal(core.Int64Ptr(int64(39))))
 				Expect(updateRuleGroupOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewUpsertEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				Expect(ibmEventStreamsModel).ToNot(BeNil())
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
+				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
+
+				// Construct an instance of the UpsertEventStreamTargetOptions model
+				upsertEventStreamTargetOptionsName := "Live Screen"
+				upsertEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
+				upsertEventStreamTargetOptionsModel := logsService.NewUpsertEventStreamTargetOptions(upsertEventStreamTargetOptionsName, upsertEventStreamTargetOptionsDpxlExpression)
+				upsertEventStreamTargetOptionsModel.SetName("Live Screen")
+				upsertEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				upsertEventStreamTargetOptionsModel.SetIsActive(true)
+				upsertEventStreamTargetOptionsModel.SetCompressionType("gzip")
+				upsertEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
+				upsertEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(upsertEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(upsertEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
+				Expect(upsertEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
+				Expect(upsertEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
+				Expect(upsertEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
+				Expect(upsertEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
+				Expect(upsertEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshOff(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardFolderFolderID successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderID(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderID(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardFolderFolderPath successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardFolderFolderPath(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame successfully`, func() {
-				id := "6U1Q8Hpa263Se8PkRKaiE"
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
-				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(id, name, layout)
+				_, err := logsService.NewDashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame(name, layout)
 				Expect(err).ToNot(BeNil())
 			})
 			It(`Invoke NewEvent2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery successfully`, func() {
@@ -17051,7 +19921,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications successfully`, func() {
 				typeVar := "ibm_event_notifications"
-				name := "My Outbound Webhook"
+				name := "Event Notifications Integration"
 				_model, err := logsService.NewOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications(typeVar, name)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -17108,8 +19978,8 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.AlertsV1AlertFilters)
 			model.Severities = []string{"critical"}
 			model.Metadata = nil
-			model.Alias = core.StringPtr("testString")
-			model.Text = core.StringPtr("testString")
+			model.Alias = core.StringPtr("monitorQuery")
+			model.Text = core.StringPtr("_exists_:\"container_name\"")
 			model.RatioAlerts = nil
 			model.FilterType = core.StringPtr("flow")
 
@@ -17129,13 +19999,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1AlertFiltersMetadataFilters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1AlertFiltersMetadataFilters)
-			model.Categories = []string{"testString"}
-			model.Applications = []string{"testString"}
-			model.Subsystems = []string{"testString"}
-			model.Computers = []string{"testString"}
-			model.Classes = []string{"testString"}
-			model.Methods = []string{"testString"}
-			model.IpAddresses = []string{"testString"}
+			model.Applications = []string{"CpuMonitoring", "WebApi"}
+			model.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17153,12 +20018,12 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1AlertFiltersRatioAlert successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1AlertFiltersRatioAlert)
-			model.Alias = core.StringPtr("testString")
-			model.Text = core.StringPtr("testString")
+			model.Alias = core.StringPtr("TopLevelAlert")
+			model.Text = core.StringPtr("_exists_:\"container_name\"")
 			model.Severities = []string{"critical"}
-			model.Applications = []string{"testString"}
-			model.Subsystems = []string{"testString"}
-			model.GroupBy = []string{"testString"}
+			model.Applications = []string{"CpuMonitoring", "WebApi"}
+			model.Subsystems = []string{"SnapshotGenerator", "PermissionControl"}
+			model.GroupBy = []string{"Host", "Thread"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17176,9 +20041,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1Date successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1Date)
-			model.Year = core.Int64Ptr(int64(38))
-			model.Month = core.Int64Ptr(int64(38))
-			model.Day = core.Int64Ptr(int64(38))
+			model.Year = core.Int64Ptr(int64(2012))
+			model.Month = core.Int64Ptr(int64(12))
+			model.Day = core.Int64Ptr(int64(24))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17193,48 +20058,10 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV1FilterData successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1FilterData)
-			model.Field = core.StringPtr("testString")
-			model.Filters = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1FilterData
-			err = logsv0.UnmarshalAlertsV1FilterData(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalAlertsV1Filters successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1Filters)
-			model.Values = []string{"testString"}
-			model.Operator = core.StringPtr("testString")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1Filters
-			err = logsv0.UnmarshalAlertsV1Filters(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalAlertsV1FlowAlert successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1FlowAlert)
-			model.ID = core.StringPtr("testString")
+			model.ID = core.StringPtr("6ad87d32-1613-4cb1-b7e3-d97fee561913")
 			model.Not = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17310,7 +20137,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1FlowTimeframe successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1FlowTimeframe)
-			model.Ms = core.Int64Ptr(int64(0))
+			model.Ms = core.Int64Ptr(int64(1000))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17328,8 +20155,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetaLabel successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetaLabel)
-			model.Key = core.StringPtr("testString")
-			model.Value = core.StringPtr("testString")
+			model.Key = core.StringPtr("ColorLabel")
+			model.Value = core.StringPtr("Red")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17347,12 +20174,12 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetricAlertConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetricAlertConditionParameters)
-			model.MetricField = core.StringPtr("testString")
+			model.MetricField = core.StringPtr("cpu_usage")
 			model.MetricSource = core.StringPtr("prometheus")
 			model.ArithmeticOperator = core.StringPtr("percentile")
-			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-			model.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-			model.NonNullPercentage = core.Int64Ptr(int64(0))
+			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+			model.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+			model.NonNullPercentage = core.Int64Ptr(int64(100))
 			model.SwapNullValues = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17371,10 +20198,10 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1MetricAlertPromqlConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1MetricAlertPromqlConditionParameters)
-			model.PromqlText = core.StringPtr("testString")
-			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(0))
-			model.SampleThresholdPercentage = core.Int64Ptr(int64(0))
-			model.NonNullPercentage = core.Int64Ptr(int64(0))
+			model.PromqlText = core.StringPtr("sum(rate(container_cpu_usage_seconds_total{container_name=\"my-container\"}[5m])) by (pod_name)")
+			model.ArithmeticOperatorModifier = core.Int64Ptr(int64(1))
+			model.SampleThresholdPercentage = core.Int64Ptr(int64(100))
+			model.NonNullPercentage = core.Int64Ptr(int64(100))
 			model.SwapNullValues = core.BoolPtr(true)
 
 			b, err := json.Marshal(model)
@@ -17412,9 +20239,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV1Time successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1Time)
-			model.Hours = core.Int64Ptr(int64(38))
-			model.Minutes = core.Int64Ptr(int64(38))
-			model.Seconds = core.Int64Ptr(int64(38))
+			model.Hours = core.Int64Ptr(int64(22))
+			model.Minutes = core.Int64Ptr(int64(22))
+			model.Seconds = core.Int64Ptr(int64(22))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17448,26 +20275,6 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV1TracingAlert successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.AlertsV1TracingAlert)
-			model.ConditionLatency = core.Int64Ptr(int64(0))
-			model.FieldFilters = nil
-			model.TagFilters = nil
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.AlertsV1TracingAlert
-			err = logsv0.UnmarshalAlertsV1TracingAlert(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalAlertsV2AlertCondition successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertCondition)
@@ -17496,7 +20303,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertIncidentSettings successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertIncidentSettings)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
 			model.UseAsNotificationSettings = core.BoolPtr(true)
 
@@ -17516,9 +20323,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotification successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotification)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
-			model.IntegrationID = core.Int64Ptr(int64(0))
+			model.IntegrationID = core.Int64Ptr(int64(123))
 			model.Recipients = nil
 
 			b, err := json.Marshal(model)
@@ -17537,7 +20344,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationGroups successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationGroups)
-			model.GroupByFields = []string{"testString"}
+			model.GroupByFields = []string{"cpu"}
 			model.Notifications = nil
 
 			b, err := json.Marshal(model)
@@ -17556,14 +20363,14 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2ConditionParameters successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2ConditionParameters)
-			model.Threshold = core.Float64Ptr(float64(72.5))
+			model.Threshold = core.Float64Ptr(float64(0.4))
 			model.Timeframe = core.StringPtr("timeframe_36_h")
-			model.GroupBy = []string{"testString"}
+			model.GroupBy = []string{"message.severity"}
 			model.MetricAlertParameters = nil
 			model.MetricAlertPromqlParameters = nil
 			model.IgnoreInfinity = core.BoolPtr(true)
 			model.RelativeTimeframe = core.StringPtr("month")
-			model.CardinalityFields = []string{"testString"}
+			model.CardinalityFields = []string{"message.severity"}
 			model.RelatedExtendedData = nil
 
 			b, err := json.Marshal(model)
@@ -17599,9 +20406,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalAlertsV2ImmediateCondition successfully`, func() {
+		It(`Invoke UnmarshalAlertsV2ImmediateConditionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.AlertsV2ImmediateCondition)
+			model := new(logsv0.AlertsV2ImmediateConditionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17610,8 +20417,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.AlertsV2ImmediateCondition
-			err = logsv0.UnmarshalAlertsV2ImmediateCondition(raw, &result)
+			var result *logsv0.AlertsV2ImmediateConditionEmpty
+			err = logsv0.UnmarshalAlertsV2ImmediateConditionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -17710,7 +20517,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2Recipients successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2Recipients)
-			model.Emails = []string{"testString"}
+			model.Emails = []string{"example@gmail.com"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17883,9 +20690,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric)
+			model := new(logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17894,8 +20701,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric
-			err = logsv0.UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetric(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -17937,9 +20744,13 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstCustomSectionOptions successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes)
+			model := new(logsv0.ApisDashboardsV1AstCustomSectionOptions)
+			model.Name = core.StringPtr("testString")
+			model.Description = core.StringPtr("testString")
+			model.Collapsed = core.BoolPtr(true)
+			model.Color = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17948,15 +20759,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutes
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutes(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstCustomSectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstCustomSectionOptions(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshOff)
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17965,15 +20776,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshOff
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshOff(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshFiveMinutesEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes)
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshOffEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -17982,8 +20793,25 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutes
-			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutes(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshOffEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshOffEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18045,9 +20873,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection)
+			model := new(logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18056,8 +20884,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelection
-			err = logsv0.UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelection(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstFilterEqualsSelectionAllSelectionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18228,6 +21056,23 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstInternalSectionOptionsEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstInternalSectionOptionsEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstLayout successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstLayout)
@@ -18252,6 +21097,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Source = nil
 			model.Selection = nil
 			model.ValuesOrderDirection = core.StringPtr("desc")
+			model.SelectionOptions = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18321,6 +21167,342 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQuery)
+			model.LogsQuery = nil
+			model.MetricsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQuery)
+			model.Type = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryType)
+			model.FieldName = nil
+			model.FieldValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryType
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName)
+			model.LogRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue)
+			model.ObservationField = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuery)
+			model.Type = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals)
+			model.Selection = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter)
+			model.Metric = nil
+			model.Label = nil
+			model.Operator = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryMetricsLabelFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals)
+			model.Selection = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryNotEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator)
+			model.Equals = nil
+			model.NotEquals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperator(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection)
+			model.List = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelection(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection)
+			model.Values = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQuerySelectionListSelection(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable)
+			model.StringValue = core.StringPtr("testString")
+			model.VariableName = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariable(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryType)
+			model.MetricName = nil
+			model.LabelName = nil
+			model.LabelValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryType
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName)
+			model.MetricRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue)
+			model.MetricName = nil
+			model.LabelName = nil
+			model.LabelFilters = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeLabelValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName)
+			model.MetricRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeMetricName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQuerySource successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQuerySource)
+			model.Query = nil
+			model.RefreshStrategy = core.StringPtr("on_time_frame_change")
+			model.ValueDisplayOptions = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQuerySource
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQuerySource(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelection successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelection)
@@ -18340,9 +21522,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection)
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18351,8 +21533,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelection
-			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelection(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSelectionAllSelectionEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18361,6 +21543,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionListSelection)
 			model.Values = []string{"production", "staging"}
+			model.Labels = []string{"testString"}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18381,6 +21564,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.LogsPath = nil
 			model.MetricLabel = nil
 			model.ConstantList = nil
+			model.Query = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18391,6 +21575,43 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1AstMultiSelectSource
 			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSource(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectValueDisplayOptions)
+			model.ValueRegex = core.StringPtr("testString")
+			model.LabelRegex = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectValueDisplayOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions)
+			model.SelectionType = core.StringPtr("single")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectVariableSelectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectVariableSelectionOptions(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18440,6 +21661,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Href = core.StringPtr("testString")
 			model.ID = nil
 			model.Rows = nil
+			model.Options = nil
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18454,12 +21676,51 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionColor successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionColor)
+			model.Predefined = core.StringPtr("orange")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionColor
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionColor(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptions successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptions)
+			model.Internal = nil
+			model.Custom = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptions
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptions(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstVariable successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstVariable)
 			model.Name = core.StringPtr("service_name")
 			model.Definition = nil
 			model.DisplayName = core.StringPtr("Service Name")
+			model.Description = core.StringPtr("testString")
+			model.DisplayType = core.StringPtr("nothing")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18709,9 +21970,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18720,8 +21981,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValue(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsBarChartXAxisXAxisByValueEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -18746,9 +22007,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18757,15 +22018,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregation(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByAggregationEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18774,15 +22035,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupBy(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByGroupByEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -18791,8 +22052,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStack
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStack(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsCommonColorsByColorsByStackEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19288,9 +22549,9 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19299,15 +22560,15 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategory(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByCategoryEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue successfully`, func() {
+		It(`Invoke UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty successfully`, func() {
 			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue)
+			model := new(logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty)
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -19316,8 +22577,8 @@ var _ = Describe(`LogsV0`, func() {
 			err = json.Unmarshal(b, &raw)
 			Expect(err).To(BeNil())
 
-			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue
-			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValue(raw, &result)
+			var result *logsv0.ApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty
+			err = logsv0.UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartYAxisViewByYAxisViewByValueEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19720,23 +22981,6 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
-		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCount successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCount)
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCount
-			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCount(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
 		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCountDistinct successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountDistinct)
@@ -19751,6 +22995,23 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCountDistinct
 			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCountDistinct(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1CommonLogsAggregationCountEmpty
+			err = logsv0.UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -19944,7 +23205,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2Aggregation)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Samples = nil
 			model.Histogram = nil
 
@@ -19964,7 +23225,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2E2mAggHistogram successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2E2mAggHistogram)
-			model.Buckets = []float32{float32(36.0)}
+			model.Buckets = []float32{2}
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20000,8 +23261,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2MetricField successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2MetricField)
-			model.TargetBaseMetricName = core.StringPtr("testString")
-			model.SourceField = core.StringPtr("testString")
+			model.TargetBaseMetricName = core.StringPtr("alias_field_name")
+			model.SourceField = core.StringPtr("log_obj.numeric_field")
 			model.Aggregations = nil
 
 			b, err := json.Marshal(model)
@@ -20020,8 +23281,8 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisEvents2metricsV2MetricLabel successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisEvents2metricsV2MetricLabel)
-			model.TargetLabel = core.StringPtr("testString")
-			model.SourceField = core.StringPtr("testString")
+			model.TargetLabel = core.StringPtr("alias_label_name")
+			model.SourceField = core.StringPtr("log_obj.string_value")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20039,10 +23300,10 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalApisLogs2metricsV2LogsQuery successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisLogs2metricsV2LogsQuery)
-			model.Lucene = core.StringPtr("testString")
-			model.Alias = core.StringPtr("testString")
-			model.ApplicationnameFilters = []string{"testString"}
-			model.SubsystemnameFilters = []string{"testString"}
+			model.Lucene = core.StringPtr("log_obj.numeric_field: [50 TO 100]")
+			model.Alias = core.StringPtr("new_query")
+			model.ApplicationnameFilters = []string{"app_name"}
+			model.SubsystemnameFilters = []string{"sub_name"}
 			model.SeverityFilters = []string{"critical"}
 
 			b, err := json.Marshal(model)
@@ -20222,12 +23483,121 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalDataAccessRuleFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.DataAccessRuleFilter)
+			model.EntityType = core.StringPtr("logs")
+			model.Expression = core.StringPtr("true")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.DataAccessRuleFilter
+			err = logsv0.UnmarshalDataAccessRuleFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalDataUsageMetricsExportStatus successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.DataUsageMetricsExportStatus)
+			model.Enabled = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.DataUsageMetricsExportStatus
+			err = logsv0.UnmarshalDataUsageMetricsExportStatus(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1CustomEnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1CustomEnrichmentType)
+			model.ID = core.Int64Ptr(int64(1))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1CustomEnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1CustomEnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentType)
+			model.GeoIp = nil
+			model.SuspiciousIp = nil
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentType
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1GeoIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1GeoIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1GeoIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1GeoIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1SuspiciousIpTypeEmpty successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1SuspiciousIpTypeEmpty)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1SuspiciousIpTypeEmpty
+			err = logsv0.UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalEvent2MetricPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.Event2MetricPrototype)
 			model.Name = core.StringPtr("Service catalog latency")
 			model.Description = core.StringPtr("avg and max the latency of catalog service")
-			model.PermutationsLimit = core.Int64Ptr(int64(38))
+			model.PermutationsLimit = core.Int64Ptr(int64(30000))
 			model.MetricLabels = nil
 			model.MetricFields = nil
 			model.Type = core.StringPtr("logs2metrics")
@@ -20246,11 +23616,30 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalIbmEventStreams successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.IbmEventStreams)
+			model.Brokers = core.StringPtr("kafka01.example.com:9093")
+			model.Topic = core.StringPtr("live.screen")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.IbmEventStreams
+			err = logsv0.UnmarshalIbmEventStreams(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalOutgoingWebhookPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototype)
 			model.Type = core.StringPtr("ibm_event_notifications")
-			model.Name = core.StringPtr("My Outbound Webhook")
+			model.Name = core.StringPtr("Event Notifications Integration")
 			model.URL = core.StringPtr("https://example.com")
 			model.IbmEventNotifications = nil
 
@@ -20271,7 +23660,9 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
 			model.EventNotificationsInstanceID = CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
-			model.RegionID = core.StringPtr("us-prod-1")
+			model.RegionID = core.StringPtr("eu-es")
+			model.SourceID = core.StringPtr("crn:v1:staging:public:logs:eu-gb:a/223af6f4260f42ebe23e95fcddd33cb7:63a3e4be-cb73-4f52-898e-8e93484a70a5::")
+			model.SourceName = core.StringPtr("IBM Cloud Event Notifications")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20445,11 +23836,11 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule)
 			model.Name = core.StringPtr("Extract Timestamp")
+			model.Description = core.StringPtr("Extract timestamp with ISO format for Mysql logs")
 			model.SourceField = core.StringPtr("log_obj.date_time")
 			model.Parameters = nil
 			model.Enabled = core.BoolPtr(true)
 			model.Order = core.Int64Ptr(int64(1))
-			model.Description = core.StringPtr("Extract timestamp with ISO format for Mysql logs")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20562,7 +23953,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1ParseParameters)
 			model.DestinationField = core.StringPtr("text.message")
-			model.Rule = core.StringPtr("^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)$")
+			model.Rule = core.StringPtr("^http:\\\\/\\\\/my\\\\.service\\\\.com\\\\/#(?P<service>\\\\w+)\\\\-(?P<region>[^_]+)_")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20600,7 +23991,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.RulesV1ReplaceParameters)
 			model.DestinationField = core.StringPtr("text.message")
 			model.ReplaceNewVal = core.StringPtr("***")
-			model.Rule = core.StringPtr("the password is (?P<password>[A-Za-z0-9!@#$].)")
+			model.Rule = core.StringPtr("the password is (?P<password>[\\p{L}0-9!@#$].)")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20845,9 +24236,9 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationIntegrationTypeIntegrationID successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationIntegrationTypeIntegrationID)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
-			model.IntegrationID = core.Int64Ptr(int64(0))
+			model.IntegrationID = core.Int64Ptr(int64(123))
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -20865,7 +24256,7 @@ var _ = Describe(`LogsV0`, func() {
 		It(`Invoke UnmarshalAlertsV2AlertNotificationIntegrationTypeRecipients successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertNotificationIntegrationTypeRecipients)
-			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(0))
+			model.RetriggeringPeriodSeconds = core.Int64Ptr(int64(60))
 			model.NotifyOn = core.StringPtr("triggered_and_resolved")
 			model.Recipients = nil
 
@@ -21080,6 +24471,204 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName)
+			model.FieldName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue)
+			model.FieldValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeValueFieldValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals)
+			model.Equals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals)
+			model.NotEquals = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryOperatorValueNotEquals(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue)
+			model.StringValue = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueStringValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName)
+			model.VariableName = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryStringOrVariableValueVariableName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName)
+			model.LabelName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue)
+			model.LabelValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueLabelValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName)
+			model.MetricName = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryMetricsQueryTypeValueMetricName(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryValueLogsQuery)
+			model.LogsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryValueLogsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryValueLogsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery)
+			model.MetricsQuery = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectQueryValueMetricsQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectQueryValueMetricsQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSelectionValueAll successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.ApisDashboardsV1AstMultiSelectSelectionValueAll)
@@ -21166,6 +24755,60 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.ApisDashboardsV1AstMultiSelectSourceValueMetricLabel
 			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSourceValueMetricLabel(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstMultiSelectSourceValueQuery)
+			model.Query = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstMultiSelectSourceValueQuery
+			err = logsv0.UnmarshalApisDashboardsV1AstMultiSelectSourceValueQuery(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptionsValueCustom successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptionsValueCustom)
+			model.Custom = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptionsValueCustom
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptionsValueCustom(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisDashboardsV1AstSectionOptionsValueInternal successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisDashboardsV1AstSectionOptionsValueInternal)
+			model.Internal = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisDashboardsV1AstSectionOptionsValueInternal
+			err = logsv0.UnmarshalApisDashboardsV1AstSectionOptionsValueInternal(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -21895,7 +25538,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataHistogram)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Histogram = nil
 
 			b, err := json.Marshal(model)
@@ -21916,7 +25559,7 @@ var _ = Describe(`LogsV0`, func() {
 			model := new(logsv0.ApisEvents2metricsV2AggregationAggMetadataSamples)
 			model.Enabled = core.BoolPtr(true)
 			model.AggType = core.StringPtr("samples")
-			model.TargetMetricName = core.StringPtr("testString")
+			model.TargetMetricName = core.StringPtr("alias_field_name_agg_func")
 			model.Samples = nil
 
 			b, err := json.Marshal(model)
@@ -22150,12 +25793,66 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment)
+			model.CustomEnrichment = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeCustomEnrichment
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp)
+			model.GeoIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp)
+			model.SuspiciousIp = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.EnrichmentV1EnrichmentTypeTypeSuspiciousIp
+			err = logsv0.UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalEvent2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 			model.Name = core.StringPtr("Service catalog latency")
 			model.Description = core.StringPtr("avg and max the latency of catalog service")
-			model.PermutationsLimit = core.Int64Ptr(int64(38))
+			model.PermutationsLimit = core.Int64Ptr(int64(30000))
 			model.MetricLabels = nil
 			model.MetricFields = nil
 			model.Type = core.StringPtr("logs2metrics")
@@ -22178,7 +25875,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications)
 			model.Type = core.StringPtr("ibm_event_notifications")
-			model.Name = core.StringPtr("My Outbound Webhook")
+			model.Name = core.StringPtr("Event Notifications Integration")
 			model.URL = core.StringPtr("https://example.com")
 			model.IbmEventNotifications = nil
 

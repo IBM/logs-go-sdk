@@ -31,12 +31,17 @@ import (
 )
 
 var (
-	eventTestData = "data: {\"result\": {\"results\": []}}\n\n"
+	eventTestData         = "data: {\"result\": {\"results\": []}}\n\n"
+	funcOnKeepAliveCalled = false
 )
 
 type callBack struct{}
 
 func (cb callBack) OnClose() {
+}
+
+func (cb callBack) OnKeepAlive() {
+	funcOnKeepAliveCalled = true
 }
 
 func (cb callBack) OnError(err error) {
@@ -50,8 +55,56 @@ func (cb callBack) OnData(detailedResponse *core.DetailedResponse) {
 
 var _ = Describe(`LogsV1`, func() {
 	var testServer *httptest.Server
+	Describe(`Query(queryOptions *QueryOptions) - empty keep alive response`, func() {
+		queryPath := "/v1/query"
+		Context(`empty keep alive response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(queryPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "text/event-stream")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, ":\n\n")
+				}))
+			})
+			It(`Invoke Query with empty keep alive response`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisDataprimeV1Metadata model
+				apisDataprimeV1MetadataModel := new(logsv0.ApisDataprimeV1Metadata)
+				apisDataprimeV1MetadataModel.StartDate = CreateMockDateTime("2019-01-01T12:00:00.000Z")
+				apisDataprimeV1MetadataModel.EndDate = CreateMockDateTime("2019-01-01T12:00:00.000Z")
+				apisDataprimeV1MetadataModel.DefaultSource = core.StringPtr("testString")
+				apisDataprimeV1MetadataModel.Tier = core.StringPtr("unspecified")
+				apisDataprimeV1MetadataModel.Syntax = core.StringPtr("unspecified")
+				apisDataprimeV1MetadataModel.Limit = core.Int64Ptr(int64(38))
+				apisDataprimeV1MetadataModel.StrictFieldsValidation = core.BoolPtr(true)
+
+				// Construct an instance of the QueryOptions model
+				queryOptionsModel := new(logsv0.QueryOptions)
+				queryOptionsModel.Query = core.StringPtr("testString")
+				queryOptionsModel.Metadata = apisDataprimeV1MetadataModel
+				queryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				logsService.Query(queryOptionsModel, callBack{})
+				Expect(funcOnKeepAliveCalled).To(BeTrue())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+
 	Describe(`Query(queryOptions *QueryOptions) - Operation response error`, func() {
-		queryPath := "/v1/dataprime/query/run"
+		queryPath := "/v1/query"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
@@ -60,7 +113,7 @@ var _ = Describe(`LogsV1`, func() {
 					// Verify the contents of the request
 					Expect(req.URL.EscapedPath()).To(Equal(queryPath))
 					Expect(req.Method).To(Equal("POST"))
-					res.Header().Set("Content-type", "application/json")
+					res.Header().Set("Content-type", "text/event-stream")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
 				}))
@@ -98,7 +151,7 @@ var _ = Describe(`LogsV1`, func() {
 		})
 	})
 	Describe(`Query(queryOptions *QueryOptions)`, func() {
-		queryPath := "/v1/dataprime/query/run"
+		queryPath := "/v1/query"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {

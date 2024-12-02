@@ -24,6 +24,7 @@ import (
 	"os"
 
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/go-openapi/strfmt"
 	"github.com/IBM/logs-go-sdk/logsv0"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -157,6 +158,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
+				Alias: core.StringPtr("TopLevelAlert"),
 			}
 
 			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
@@ -204,10 +206,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				true,
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
-				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
-				alertsV1AlertFiltersModel,
 			)
 			updateAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			updateAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+			updateAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			updateAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
 			updateAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 			updateAlertOptions.SetMetaLabelsStrings([]string{})
@@ -279,6 +281,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			alertsV1AlertFiltersRatioAlertModel := &logsv0.AlertsV1AlertFiltersRatioAlert{
+				Alias: core.StringPtr("TopLevelAlert"),
 			}
 
 			alertsV1AlertFiltersModel := &logsv0.AlertsV1AlertFilters{
@@ -325,10 +328,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				true,
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
-				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
-				alertsV1AlertFiltersModel,
 			)
 			createAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			createAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+			createAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			createAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
 			createAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 			createAlertOptions.SetMetaLabelsStrings([]string{})
@@ -383,11 +386,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
 				Name: core.StringPtr("mysql-parse"),
+				Description: core.StringPtr("mysql-parse"),
 				SourceField: core.StringPtr("text"),
 				Parameters: rulesV1RuleParametersModel,
 				Enabled: core.BoolPtr(true),
 				Order: core.Int64Ptr(int64(1)),
-				Description: core.StringPtr("mysql-parse"),
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
@@ -461,11 +464,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
 				Name: core.StringPtr("mysql-parse"),
+				Description: core.StringPtr("mysql-parse"),
 				SourceField: core.StringPtr("text"),
 				Parameters: rulesV1RuleParametersModel,
 				Enabled: core.BoolPtr(true),
 				Order: core.Int64Ptr(int64(1)),
-				Description: core.StringPtr("mysql-parse"),
 			}
 
 			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
@@ -530,7 +533,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
 				Type: core.StringPtr("ibm_event_notifications"),
-				Name: core.StringPtr("My Outbound Webhook"),
+				Name: core.StringPtr("Event Notifications Integration"),
 			}
 
 			createOutgoingWebhookOptions := logsService.NewCreateOutgoingWebhookOptions(
@@ -577,7 +580,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
 				Type: core.StringPtr("ibm_event_notifications"),
-				Name: core.StringPtr("My Outbound Webhook"),
+				Name: core.StringPtr("Event Notifications Integration"),
 			}
 
 			updateOutgoingWebhookOptions := logsService.NewUpdateOutgoingWebhookOptions(
@@ -719,6 +722,25 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(policy).ToNot(BeNil())
 		})
+		It(`GetDashboardCatalog request example`, func() {
+			fmt.Println("\nGetDashboardCatalog() result:")
+			// begin-get_dashboard_catalog
+
+			getDashboardCatalogOptions := logsService.NewGetDashboardCatalogOptions()
+
+			dashboardCollection, response, err := logsService.GetDashboardCatalog(getDashboardCatalogOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_dashboard_catalog
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dashboardCollection).ToNot(BeNil())
+		})
 		It(`CreateDashboard request example`, func() {
 			fmt.Println("\nCreateDashboard() result:")
 			// begin-create_dashboard
@@ -835,7 +857,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				ID: core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
 				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
 				Layout: apisDashboardsV1AstLayoutModel,
 				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
@@ -996,7 +1017,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			dashboardModel := &logsv0.DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame{
-				ID: core.StringPtr("6U1Q8Hpa263Se8PkRKaiE"),
 				Name: core.StringPtr("DataUsageToMetrics Dashboard"),
 				Layout: apisDashboardsV1AstLayoutModel,
 				Filters: []logsv0.ApisDashboardsV1AstFilter{*apisDashboardsV1AstFilterModel},
@@ -1022,49 +1042,46 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(dashboard).ToNot(BeNil())
 		})
 		It(`PinDashboard request example`, func() {
-			fmt.Println("\nPinDashboard() result:")
 			// begin-pin_dashboard
 
 			pinDashboardOptions := logsService.NewPinDashboardOptions(
 				"testString",
 			)
 
-			pinDashboardResponse, response, err := logsService.PinDashboard(pinDashboardOptions)
+			response, err := logsService.PinDashboard(pinDashboardOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(pinDashboardResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from PinDashboard(): %d\n", response.StatusCode)
+			}
 
 			// end-pin_dashboard
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(pinDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`ReplaceDefaultDashboard request example`, func() {
-			fmt.Println("\nReplaceDefaultDashboard() result:")
 			// begin-replace_default_dashboard
 
 			replaceDefaultDashboardOptions := logsService.NewReplaceDefaultDashboardOptions(
 				"testString",
 			)
 
-			replaceDefaultDashboardResponse, response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
+			response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(replaceDefaultDashboardResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from ReplaceDefaultDashboard(): %d\n", response.StatusCode)
+			}
 
 			// end-replace_default_dashboard
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(replaceDefaultDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`AssignDashboardFolder request example`, func() {
-			fmt.Println("\nAssignDashboardFolder() result:")
 			// begin-assign_dashboard_folder
 
 			assignDashboardFolderOptions := logsService.NewAssignDashboardFolderOptions(
@@ -1072,18 +1089,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				"testString",
 			)
 
-			assignDashboardFolderResponse, response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
+			response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(assignDashboardFolderResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from AssignDashboardFolder(): %d\n", response.StatusCode)
+			}
 
 			// end-assign_dashboard_folder
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(assignDashboardFolderResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`ListDashboardFolders request example`, func() {
 			fmt.Println("\nListDashboardFolders() result:")
@@ -1125,12 +1142,33 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(dashboardFolder).ToNot(BeNil())
 		})
+		It(`GetDashboardFolder request example`, func() {
+			fmt.Println("\nGetDashboardFolder() result:")
+			// begin-get_dashboard_folder
+
+			getDashboardFolderOptions := logsService.NewGetDashboardFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			dashboardFolder, response, err := logsService.GetDashboardFolder(getDashboardFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_dashboard_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dashboardFolder).ToNot(BeNil())
+		})
 		It(`ReplaceDashboardFolder request example`, func() {
 			fmt.Println("\nReplaceDashboardFolder() result:")
 			// begin-replace_dashboard_folder
 
 			replaceDashboardFolderOptions := logsService.NewReplaceDashboardFolderOptions(
-				"testString",
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 				"My Folder",
 			)
 
@@ -1204,7 +1242,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-get_e2m
 
 			getE2mOptions := logsService.NewGetE2mOptions(
-				"testString",
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 			)
 
 			event2Metric, response, err := logsService.GetE2m(getE2mOptions)
@@ -1237,7 +1275,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			replaceE2mOptions := logsService.NewReplaceE2mOptions(
-				"testString",
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 				event2MetricPrototypeModel,
 			)
 
@@ -1277,10 +1315,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			fmt.Println("\nCreateView() result:")
 			// begin-create_view
 
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs"),
-			}
-
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
 				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
@@ -1288,6 +1322,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
 				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs"),
 			}
 
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
@@ -1301,9 +1339,9 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			createViewOptions := logsService.NewCreateViewOptions(
 				"Logs view",
-				apisViewsV1SearchQueryModel,
 				apisViewsV1TimeSelectionModel,
 			)
+			createViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
 			createViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
 
 			view, response, err := logsService.CreateView(createViewOptions)
@@ -1344,10 +1382,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			fmt.Println("\nReplaceView() result:")
 			// begin-replace_view
 
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs new"),
-			}
-
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
 				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
@@ -1355,6 +1389,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
 				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs new"),
 			}
 
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
@@ -1369,9 +1407,9 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			replaceViewOptions := logsService.NewReplaceViewOptions(
 				int64(52),
 				"Logs view",
-				apisViewsV1SearchQueryModel,
 				apisViewsV1TimeSelectionModel,
 			)
+			replaceViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
 			replaceViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
 
 			view, response, err := logsService.ReplaceView(replaceViewOptions)
@@ -1469,6 +1507,251 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewFolder).ToNot(BeNil())
+		})
+		It(`ListDataAccessRules request example`, func() {
+			fmt.Println("\nListDataAccessRules() result:")
+			// begin-list_data_access_rules
+
+			listDataAccessRulesOptions := logsService.NewListDataAccessRulesOptions()
+			listDataAccessRulesOptions.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
+
+			dataAccessRuleCollection, response, err := logsService.ListDataAccessRules(listDataAccessRulesOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRuleCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_data_access_rules
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRuleCollection).ToNot(BeNil())
+		})
+		It(`CreateDataAccessRule request example`, func() {
+			fmt.Println("\nCreateDataAccessRule() result:")
+			// begin-create_data_access_rule
+
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			createDataAccessRuleOptions := logsService.NewCreateDataAccessRuleOptions(
+				"Test Data Access Rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1> foo == 'bar'",
+			)
+			createDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+
+			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(dataAccessRule).ToNot(BeNil())
+		})
+		It(`UpdateDataAccessRule request example`, func() {
+			fmt.Println("\nUpdateDataAccessRule() result:")
+			// begin-update_data_access_rule
+
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			updateDataAccessRuleOptions := logsService.NewUpdateDataAccessRuleOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				"Test Data Access Rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1> foo == 'bar'",
+			)
+			updateDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+
+			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataAccessRule).ToNot(BeNil())
+		})
+		It(`GetEnrichments request example`, func() {
+			fmt.Println("\nGetEnrichments() result:")
+			// begin-get_enrichments
+
+			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
+
+			enrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichmentCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(enrichmentCollection).ToNot(BeNil())
+		})
+		It(`CreateEnrichment request example`, func() {
+			fmt.Println("\nCreateEnrichment() result:")
+			// begin-create_enrichment
+
+			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{
+			}
+
+			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
+				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
+			}
+
+			createEnrichmentOptions := logsService.NewCreateEnrichmentOptions(
+				"ip",
+				enrichmentV1EnrichmentTypeModel,
+			)
+
+			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_enrichment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(enrichment).ToNot(BeNil())
+		})
+		It(`GetDataUsageMetricsExportStatus request example`, func() {
+			fmt.Println("\nGetDataUsageMetricsExportStatus() result:")
+			// begin-get_data_usage_metrics_export_status
+
+			getDataUsageMetricsExportStatusOptions := logsService.NewGetDataUsageMetricsExportStatusOptions()
+
+			dataUsageMetricsExportStatus, response, err := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_data_usage_metrics_export_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+		It(`UpdateDataUsageMetricsExportStatus request example`, func() {
+			fmt.Println("\nUpdateDataUsageMetricsExportStatus() result:")
+			// begin-update_data_usage_metrics_export_status
+
+			updateDataUsageMetricsExportStatusOptions := logsService.NewUpdateDataUsageMetricsExportStatusOptions(
+				true,
+			)
+
+			dataUsageMetricsExportStatus, response, err := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_data_usage_metrics_export_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+		It(`GetEventStreamTargets request example`, func() {
+			fmt.Println("\nGetEventStreamTargets() result:")
+			// begin-get_event_stream_targets
+
+			getEventStreamTargetsOptions := logsService.NewGetEventStreamTargetsOptions()
+
+			streamCollection, response, err := logsService.GetEventStreamTargets(getEventStreamTargetsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(streamCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_event_stream_targets
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(streamCollection).ToNot(BeNil())
+		})
+		It(`UpsertEventStreamTarget request example`, func() {
+			fmt.Println("\nUpsertEventStreamTarget() result:")
+			// begin-upsert_event_stream_target
+
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic: core.StringPtr("live.screen"),
+			}
+
+			upsertEventStreamTargetOptions := logsService.NewUpsertEventStreamTargetOptions(
+				"Live Screen",
+				")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')",
+			)
+			upsertEventStreamTargetOptions.SetCompressionType("gzip")
+			upsertEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
+
+			stream, response, err := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stream, "", "  ")
+			fmt.Println(string(b))
+
+			// end-upsert_event_stream_target
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stream).ToNot(BeNil())
+		})
+		It(`UpdateEventStreamTarget request example`, func() {
+			fmt.Println("\nUpdateEventStreamTarget() result:")
+			// begin-update_event_stream_target
+
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic: core.StringPtr("live.screen"),
+			}
+
+			updateEventStreamTargetOptions := logsService.NewUpdateEventStreamTargetOptions(
+				int64(0),
+				"Live Screen",
+				")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')",
+			)
+			updateEventStreamTargetOptions.SetCompressionType("gzip")
+			updateEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
+
+			stream, response, err := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stream, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_event_stream_target
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stream).ToNot(BeNil())
 		})
 		It(`DeleteAlert request example`, func() {
 			// begin-delete_alert
@@ -1594,7 +1877,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_dashboard_folder
 
 			deleteDashboardFolderOptions := logsService.NewDeleteDashboardFolderOptions(
-				"testString",
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
 			response, err := logsService.DeleteDashboardFolder(deleteDashboardFolderOptions)
@@ -1614,7 +1897,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			// begin-delete_e2m
 
 			deleteE2mOptions := logsService.NewDeleteE2mOptions(
-				"testString",
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
 			)
 
 			response, err := logsService.DeleteE2m(deleteE2mOptions)
@@ -1666,6 +1949,66 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-delete_view_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteDataAccessRule request example`, func() {
+			// begin-delete_data_access_rule
+
+			deleteDataAccessRuleOptions := logsService.NewDeleteDataAccessRuleOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteDataAccessRule(deleteDataAccessRuleOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteDataAccessRule(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_data_access_rule
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`RemoveEnrichments request example`, func() {
+			// begin-remove_enrichments
+
+			removeEnrichmentsOptions := logsService.NewRemoveEnrichmentsOptions(
+				int64(1),
+			)
+
+			response, err := logsService.RemoveEnrichments(removeEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from RemoveEnrichments(): %d\n", response.StatusCode)
+			}
+
+			// end-remove_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteEventStreamTarget request example`, func() {
+			// begin-delete_event_stream_target
+
+			deleteEventStreamTargetOptions := logsService.NewDeleteEventStreamTargetOptions(
+				int64(0),
+			)
+
+			response, err := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteEventStreamTarget(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_event_stream_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))

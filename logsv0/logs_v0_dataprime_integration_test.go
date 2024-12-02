@@ -157,6 +157,9 @@ type callBackIntegrationTest struct{}
 func (cb callBackIntegrationTest) OnClose() {
 }
 
+func (cb callBackIntegrationTest) OnKeepAlive() {
+}
+
 func (cb callBackIntegrationTest) OnError(err error) {
 }
 
