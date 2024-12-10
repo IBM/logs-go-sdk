@@ -16206,22 +16206,22 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) - Operation response error`, func() {
-		upsertEventStreamTargetPath := "/v1/streams"
+	Describe(`CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions) - Operation response error`, func() {
+		createEventStreamTargetPath := "/v1/streams"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.URL.EscapedPath()).To(Equal(createEventStreamTargetPath))
 					Expect(req.Method).To(Equal("POST"))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
-			It(`Invoke UpsertEventStreamTarget with error: Operation response processing error`, func() {
+			It(`Invoke CreateEventStreamTarget with error: Operation response processing error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -16234,23 +16234,23 @@ var _ = Describe(`LogsV0`, func() {
 				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
 				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
 
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
-				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
-				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
-				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
-				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
-				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsModel := new(logsv0.CreateEventStreamTargetOptions)
+				createEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				createEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				createEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				createEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				createEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr := logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
 				logsService.EnableRetries(0, 0)
-				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr = logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -16260,15 +16260,15 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
-	Describe(`UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions)`, func() {
-		upsertEventStreamTargetPath := "/v1/streams"
+	Describe(`CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions)`, func() {
+		createEventStreamTargetPath := "/v1/streams"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.URL.EscapedPath()).To(Equal(createEventStreamTargetPath))
 					Expect(req.Method).To(Equal("POST"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -16296,7 +16296,7 @@ var _ = Describe(`LogsV0`, func() {
 					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
 				}))
 			})
-			It(`Invoke UpsertEventStreamTarget successfully with retries`, func() {
+			It(`Invoke CreateEventStreamTarget successfully with retries`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -16310,25 +16310,25 @@ var _ = Describe(`LogsV0`, func() {
 				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
 				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
 
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
-				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
-				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
-				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
-				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
-				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsModel := new(logsv0.CreateEventStreamTargetOptions)
+				createEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				createEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				createEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				createEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				createEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				_, _, operationErr := logsService.CreateEventStreamTargetWithContext(ctx, createEventStreamTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
 				logsService.DisableRetries()
-				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr := logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -16336,7 +16336,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = logsService.UpsertEventStreamTargetWithContext(ctx, upsertEventStreamTargetOptionsModel)
+				_, _, operationErr = logsService.CreateEventStreamTargetWithContext(ctx, createEventStreamTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -16350,7 +16350,7 @@ var _ = Describe(`LogsV0`, func() {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(upsertEventStreamTargetPath))
+					Expect(req.URL.EscapedPath()).To(Equal(createEventStreamTargetPath))
 					Expect(req.Method).To(Equal("POST"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -16375,7 +16375,7 @@ var _ = Describe(`LogsV0`, func() {
 					fmt.Fprintf(res, "%s", `{"id": 0, "name": "Live Screen", "is_active": true, "dpxl_expression": ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')", "created_at": "2021-01-01T00:00:00.000Z", "updated_at": "2021-01-01T00:00:00.000Z", "compression_type": "gzip", "ibm_event_streams": {"brokers": "kafka01.example.com:9093", "topic": "live.screen"}}`)
 				}))
 			})
-			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+			It(`Invoke CreateEventStreamTarget successfully`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -16384,7 +16384,7 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(logsService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := logsService.UpsertEventStreamTarget(nil)
+				result, response, operationErr := logsService.CreateEventStreamTarget(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -16394,23 +16394,23 @@ var _ = Describe(`LogsV0`, func() {
 				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
 				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
 
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
-				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
-				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
-				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
-				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
-				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsModel := new(logsv0.CreateEventStreamTargetOptions)
+				createEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				createEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				createEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				createEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				createEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr = logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
-			It(`Invoke UpsertEventStreamTarget with error: Operation validation and request error`, func() {
+			It(`Invoke CreateEventStreamTarget with error: Operation validation and request error`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -16423,26 +16423,26 @@ var _ = Describe(`LogsV0`, func() {
 				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
 				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
 
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
-				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
-				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
-				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
-				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
-				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsModel := new(logsv0.CreateEventStreamTargetOptions)
+				createEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				createEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				createEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				createEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				createEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr := logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
-				// Construct a second instance of the UpsertEventStreamTargetOptions model with no property values
-				upsertEventStreamTargetOptionsModelNew := new(logsv0.UpsertEventStreamTargetOptions)
+				// Construct a second instance of the CreateEventStreamTargetOptions model with no property values
+				createEventStreamTargetOptionsModelNew := new(logsv0.CreateEventStreamTargetOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModelNew)
+				result, response, operationErr = logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -16460,7 +16460,7 @@ var _ = Describe(`LogsV0`, func() {
 					res.WriteHeader(201)
 				}))
 			})
-			It(`Invoke UpsertEventStreamTarget successfully`, func() {
+			It(`Invoke CreateEventStreamTarget successfully`, func() {
 				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
 					URL:           testServer.URL,
 					Authenticator: &core.NoAuthAuthenticator{},
@@ -16473,17 +16473,17 @@ var _ = Describe(`LogsV0`, func() {
 				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
 				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
 
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsModel := new(logsv0.UpsertEventStreamTargetOptions)
-				upsertEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
-				upsertEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
-				upsertEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
-				upsertEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
-				upsertEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsModel := new(logsv0.CreateEventStreamTargetOptions)
+				createEventStreamTargetOptionsModel.Name = core.StringPtr("Live Screen")
+				createEventStreamTargetOptionsModel.DpxlExpression = core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.IsActive = core.BoolPtr(true)
+				createEventStreamTargetOptionsModel.CompressionType = core.StringPtr("gzip")
+				createEventStreamTargetOptionsModel.IbmEventStreams = ibmEventStreamsModel
+				createEventStreamTargetOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptionsModel)
+				result, response, operationErr := logsService.CreateEventStreamTarget(createEventStreamTargetOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -18071,6 +18071,33 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createEnrichmentOptionsModel.FieldName).To(Equal(core.StringPtr("ip")))
 				Expect(createEnrichmentOptionsModel.EnrichmentType).To(Equal(enrichmentV1EnrichmentTypeModel))
 				Expect(createEnrichmentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewCreateEventStreamTargetOptions successfully`, func() {
+				// Construct an instance of the IbmEventStreams model
+				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
+				Expect(ibmEventStreamsModel).ToNot(BeNil())
+				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
+				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
+				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
+				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
+
+				// Construct an instance of the CreateEventStreamTargetOptions model
+				createEventStreamTargetOptionsName := "Live Screen"
+				createEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
+				createEventStreamTargetOptionsModel := logsService.NewCreateEventStreamTargetOptions(createEventStreamTargetOptionsName, createEventStreamTargetOptionsDpxlExpression)
+				createEventStreamTargetOptionsModel.SetName("Live Screen")
+				createEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
+				createEventStreamTargetOptionsModel.SetIsActive(true)
+				createEventStreamTargetOptionsModel.SetCompressionType("gzip")
+				createEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
+				createEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createEventStreamTargetOptionsModel).ToNot(BeNil())
+				Expect(createEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
+				Expect(createEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
+				Expect(createEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
+				Expect(createEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
+				Expect(createEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
+				Expect(createEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
@@ -19843,33 +19870,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateRuleGroupOptionsModel.RuleMatchers).To(Equal([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel}))
 				Expect(updateRuleGroupOptionsModel.Order).To(Equal(core.Int64Ptr(int64(39))))
 				Expect(updateRuleGroupOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
-			})
-			It(`Invoke NewUpsertEventStreamTargetOptions successfully`, func() {
-				// Construct an instance of the IbmEventStreams model
-				ibmEventStreamsModel := new(logsv0.IbmEventStreams)
-				Expect(ibmEventStreamsModel).ToNot(BeNil())
-				ibmEventStreamsModel.Brokers = core.StringPtr("kafka01.example.com:9093")
-				ibmEventStreamsModel.Topic = core.StringPtr("live.screen")
-				Expect(ibmEventStreamsModel.Brokers).To(Equal(core.StringPtr("kafka01.example.com:9093")))
-				Expect(ibmEventStreamsModel.Topic).To(Equal(core.StringPtr("live.screen")))
-
-				// Construct an instance of the UpsertEventStreamTargetOptions model
-				upsertEventStreamTargetOptionsName := "Live Screen"
-				upsertEventStreamTargetOptionsDpxlExpression := ")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"
-				upsertEventStreamTargetOptionsModel := logsService.NewUpsertEventStreamTargetOptions(upsertEventStreamTargetOptionsName, upsertEventStreamTargetOptionsDpxlExpression)
-				upsertEventStreamTargetOptionsModel.SetName("Live Screen")
-				upsertEventStreamTargetOptionsModel.SetDpxlExpression(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")
-				upsertEventStreamTargetOptionsModel.SetIsActive(true)
-				upsertEventStreamTargetOptionsModel.SetCompressionType("gzip")
-				upsertEventStreamTargetOptionsModel.SetIbmEventStreams(ibmEventStreamsModel)
-				upsertEventStreamTargetOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(upsertEventStreamTargetOptionsModel).ToNot(BeNil())
-				Expect(upsertEventStreamTargetOptionsModel.Name).To(Equal(core.StringPtr("Live Screen")))
-				Expect(upsertEventStreamTargetOptionsModel.DpxlExpression).To(Equal(core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')")))
-				Expect(upsertEventStreamTargetOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
-				Expect(upsertEventStreamTargetOptionsModel.CompressionType).To(Equal(core.StringPtr("gzip")))
-				Expect(upsertEventStreamTargetOptionsModel.IbmEventStreams).To(Equal(ibmEventStreamsModel))
-				Expect(upsertEventStreamTargetOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
 				name := "My Dashboard"

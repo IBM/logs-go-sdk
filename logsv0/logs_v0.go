@@ -4311,22 +4311,22 @@ func (logs *LogsV0) GetEventStreamTargetsWithContext(ctx context.Context, getEve
 	return
 }
 
-// UpsertEventStreamTarget : Create an Event Stream Integration
+// CreateEventStreamTarget : Create an Event Stream Integration
 // Create an Event Stream Integration.
-func (logs *LogsV0) UpsertEventStreamTarget(upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	result, response, err = logs.UpsertEventStreamTargetWithContext(context.Background(), upsertEventStreamTargetOptions)
+func (logs *LogsV0) CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateEventStreamTargetWithContext(context.Background(), createEventStreamTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// UpsertEventStreamTargetWithContext is an alternate form of the UpsertEventStreamTarget method which supports a Context parameter
-func (logs *LogsV0) UpsertEventStreamTargetWithContext(ctx context.Context, upsertEventStreamTargetOptions *UpsertEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(upsertEventStreamTargetOptions, "upsertEventStreamTargetOptions cannot be nil")
+// CreateEventStreamTargetWithContext is an alternate form of the CreateEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) CreateEventStreamTargetWithContext(ctx context.Context, createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createEventStreamTargetOptions, "createEventStreamTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(upsertEventStreamTargetOptions, "upsertEventStreamTargetOptions")
+	err = core.ValidateStruct(createEventStreamTargetOptions, "createEventStreamTargetOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
@@ -4341,11 +4341,11 @@ func (logs *LogsV0) UpsertEventStreamTargetWithContext(ctx context.Context, upse
 		return
 	}
 
-	for headerName, headerValue := range upsertEventStreamTargetOptions.Headers {
+	for headerName, headerValue := range createEventStreamTargetOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpsertEventStreamTarget")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEventStreamTarget")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -4353,20 +4353,20 @@ func (logs *LogsV0) UpsertEventStreamTargetWithContext(ctx context.Context, upse
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if upsertEventStreamTargetOptions.Name != nil {
-		body["name"] = upsertEventStreamTargetOptions.Name
+	if createEventStreamTargetOptions.Name != nil {
+		body["name"] = createEventStreamTargetOptions.Name
 	}
-	if upsertEventStreamTargetOptions.DpxlExpression != nil {
-		body["dpxl_expression"] = upsertEventStreamTargetOptions.DpxlExpression
+	if createEventStreamTargetOptions.DpxlExpression != nil {
+		body["dpxl_expression"] = createEventStreamTargetOptions.DpxlExpression
 	}
-	if upsertEventStreamTargetOptions.IsActive != nil {
-		body["is_active"] = upsertEventStreamTargetOptions.IsActive
+	if createEventStreamTargetOptions.IsActive != nil {
+		body["is_active"] = createEventStreamTargetOptions.IsActive
 	}
-	if upsertEventStreamTargetOptions.CompressionType != nil {
-		body["compression_type"] = upsertEventStreamTargetOptions.CompressionType
+	if createEventStreamTargetOptions.CompressionType != nil {
+		body["compression_type"] = createEventStreamTargetOptions.CompressionType
 	}
-	if upsertEventStreamTargetOptions.IbmEventStreams != nil {
-		body["ibm_event_streams"] = upsertEventStreamTargetOptions.IbmEventStreams
+	if createEventStreamTargetOptions.IbmEventStreams != nil {
+		body["ibm_event_streams"] = createEventStreamTargetOptions.IbmEventStreams
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -4383,7 +4383,7 @@ func (logs *LogsV0) UpsertEventStreamTargetWithContext(ctx context.Context, upse
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "upsert_event_stream_target", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "create_event_stream_target", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
@@ -12882,6 +12882,78 @@ func (options *CreateEnrichmentOptions) SetHeaders(param map[string]string) *Cre
 	return options
 }
 
+// CreateEventStreamTargetOptions : The CreateEventStreamTarget options.
+type CreateEventStreamTargetOptions struct {
+	// The name of the Event stream.
+	Name *string `json:"name" validate:"required"`
+
+	// The DPXL expression of the Event stream.
+	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
+
+	// Whether the Event stream is active.
+	IsActive *bool `json:"is_active,omitempty"`
+
+	// The compression type of the stream.
+	CompressionType *string `json:"compression_type,omitempty"`
+
+	// Configuration for IBM Event Streams.
+	IbmEventStreams *IbmEventStreams `json:"ibm_event_streams,omitempty"`
+
+	// Allows users to set headers on API requests
+	Headers map[string]string
+}
+
+// Constants associated with the CreateEventStreamTargetOptions.CompressionType property.
+// The compression type of the stream.
+const (
+	CreateEventStreamTargetOptions_CompressionType_Gzip = "gzip"
+	CreateEventStreamTargetOptions_CompressionType_Unspecified = "unspecified"
+)
+
+// NewCreateEventStreamTargetOptions : Instantiate CreateEventStreamTargetOptions
+func (*LogsV0) NewCreateEventStreamTargetOptions(name string, dpxlExpression string) *CreateEventStreamTargetOptions {
+	return &CreateEventStreamTargetOptions{
+		Name: core.StringPtr(name),
+		DpxlExpression: core.StringPtr(dpxlExpression),
+	}
+}
+
+// SetName : Allow user to set Name
+func (_options *CreateEventStreamTargetOptions) SetName(name string) *CreateEventStreamTargetOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetDpxlExpression : Allow user to set DpxlExpression
+func (_options *CreateEventStreamTargetOptions) SetDpxlExpression(dpxlExpression string) *CreateEventStreamTargetOptions {
+	_options.DpxlExpression = core.StringPtr(dpxlExpression)
+	return _options
+}
+
+// SetIsActive : Allow user to set IsActive
+func (_options *CreateEventStreamTargetOptions) SetIsActive(isActive bool) *CreateEventStreamTargetOptions {
+	_options.IsActive = core.BoolPtr(isActive)
+	return _options
+}
+
+// SetCompressionType : Allow user to set CompressionType
+func (_options *CreateEventStreamTargetOptions) SetCompressionType(compressionType string) *CreateEventStreamTargetOptions {
+	_options.CompressionType = core.StringPtr(compressionType)
+	return _options
+}
+
+// SetIbmEventStreams : Allow user to set IbmEventStreams
+func (_options *CreateEventStreamTargetOptions) SetIbmEventStreams(ibmEventStreams *IbmEventStreams) *CreateEventStreamTargetOptions {
+	_options.IbmEventStreams = ibmEventStreams
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateEventStreamTargetOptions) SetHeaders(param map[string]string) *CreateEventStreamTargetOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateOutgoingWebhookOptions : The CreateOutgoingWebhook options.
 type CreateOutgoingWebhookOptions struct {
 	// The input data of the Outbound Integration.
@@ -17440,78 +17512,6 @@ func (_options *UpdateRuleGroupOptions) SetOrder(order int64) *UpdateRuleGroupOp
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateRuleGroupOptions) SetHeaders(param map[string]string) *UpdateRuleGroupOptions {
-	options.Headers = param
-	return options
-}
-
-// UpsertEventStreamTargetOptions : The UpsertEventStreamTarget options.
-type UpsertEventStreamTargetOptions struct {
-	// The name of the Event stream.
-	Name *string `json:"name" validate:"required"`
-
-	// The DPXL expression of the Event stream.
-	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
-
-	// Whether the Event stream is active.
-	IsActive *bool `json:"is_active,omitempty"`
-
-	// The compression type of the stream.
-	CompressionType *string `json:"compression_type,omitempty"`
-
-	// Configuration for IBM Event Streams.
-	IbmEventStreams *IbmEventStreams `json:"ibm_event_streams,omitempty"`
-
-	// Allows users to set headers on API requests
-	Headers map[string]string
-}
-
-// Constants associated with the UpsertEventStreamTargetOptions.CompressionType property.
-// The compression type of the stream.
-const (
-	UpsertEventStreamTargetOptions_CompressionType_Gzip = "gzip"
-	UpsertEventStreamTargetOptions_CompressionType_Unspecified = "unspecified"
-)
-
-// NewUpsertEventStreamTargetOptions : Instantiate UpsertEventStreamTargetOptions
-func (*LogsV0) NewUpsertEventStreamTargetOptions(name string, dpxlExpression string) *UpsertEventStreamTargetOptions {
-	return &UpsertEventStreamTargetOptions{
-		Name: core.StringPtr(name),
-		DpxlExpression: core.StringPtr(dpxlExpression),
-	}
-}
-
-// SetName : Allow user to set Name
-func (_options *UpsertEventStreamTargetOptions) SetName(name string) *UpsertEventStreamTargetOptions {
-	_options.Name = core.StringPtr(name)
-	return _options
-}
-
-// SetDpxlExpression : Allow user to set DpxlExpression
-func (_options *UpsertEventStreamTargetOptions) SetDpxlExpression(dpxlExpression string) *UpsertEventStreamTargetOptions {
-	_options.DpxlExpression = core.StringPtr(dpxlExpression)
-	return _options
-}
-
-// SetIsActive : Allow user to set IsActive
-func (_options *UpsertEventStreamTargetOptions) SetIsActive(isActive bool) *UpsertEventStreamTargetOptions {
-	_options.IsActive = core.BoolPtr(isActive)
-	return _options
-}
-
-// SetCompressionType : Allow user to set CompressionType
-func (_options *UpsertEventStreamTargetOptions) SetCompressionType(compressionType string) *UpsertEventStreamTargetOptions {
-	_options.CompressionType = core.StringPtr(compressionType)
-	return _options
-}
-
-// SetIbmEventStreams : Allow user to set IbmEventStreams
-func (_options *UpsertEventStreamTargetOptions) SetIbmEventStreams(ibmEventStreams *IbmEventStreams) *UpsertEventStreamTargetOptions {
-	_options.IbmEventStreams = ibmEventStreams
-	return _options
-}
-
-// SetHeaders : Allow user to set Headers
-func (options *UpsertEventStreamTargetOptions) SetHeaders(param map[string]string) *UpsertEventStreamTargetOptions {
 	options.Headers = param
 	return options
 }

@@ -1694,30 +1694,30 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(streamCollection).ToNot(BeNil())
 		})
-		It(`UpsertEventStreamTarget request example`, func() {
-			fmt.Println("\nUpsertEventStreamTarget() result:")
-			// begin-upsert_event_stream_target
+		It(`CreateEventStreamTarget request example`, func() {
+			fmt.Println("\nCreateEventStreamTarget() result:")
+			// begin-create_event_stream_target
 
 			ibmEventStreamsModel := &logsv0.IbmEventStreams{
 				Brokers: core.StringPtr("kafka01.example.com:9093"),
 				Topic: core.StringPtr("live.screen"),
 			}
 
-			upsertEventStreamTargetOptions := logsService.NewUpsertEventStreamTargetOptions(
+			createEventStreamTargetOptions := logsService.NewCreateEventStreamTargetOptions(
 				"Live Screen",
 				")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')",
 			)
-			upsertEventStreamTargetOptions.SetCompressionType("gzip")
-			upsertEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
+			createEventStreamTargetOptions.SetCompressionType("gzip")
+			createEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
 
-			stream, response, err := logsService.UpsertEventStreamTarget(upsertEventStreamTargetOptions)
+			stream, response, err := logsService.CreateEventStreamTarget(createEventStreamTargetOptions)
 			if err != nil {
 				panic(err)
 			}
 			b, _ := json.MarshalIndent(stream, "", "  ")
 			fmt.Println(string(b))
 
-			// end-upsert_event_stream_target
+			// end-create_event_stream_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
