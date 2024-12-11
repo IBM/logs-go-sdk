@@ -58,6 +58,7 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		ruleGroupIdLink       strfmt.UUID
 		viewFolderIdLink      strfmt.UUID
 		viewIdLink            int64
+		streamIdLink          int64
 	)
 
 	var shouldSkipTest = func() {
@@ -620,6 +621,34 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateEventStreamTarget - Create an Event Stream Integration`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions)`, func() {
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic:   core.StringPtr("live.screen"),
+			}
+
+			createEventStreamTargetOptions := &logsv0.CreateEventStreamTargetOptions{
+				Name:            core.StringPtr("Live Screen"),
+				DpxlExpression:  core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"),
+				IsActive:        core.BoolPtr(true),
+				CompressionType: core.StringPtr("gzip"),
+				IbmEventStreams: ibmEventStreamsModel,
+			}
+
+			stream, response, err := logsService.CreateEventStreamTarget(createEventStreamTargetOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stream).ToNot(BeNil())
+
+			streamIdLink = *stream.ID
+			fmt.Fprintf(GinkgoWriter, "Saved streamIdLink value: %v\n", streamIdLink)
+		})
+	})
+
 	Describe(`GetAlert - Get an alert by ID`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -1111,10 +1140,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				DashboardID: &dashboardIdLink,
 			}
 
-			pinDashboardResponse, response, err := logsService.PinDashboard(pinDashboardOptions)
+			response, err := logsService.PinDashboard(pinDashboardOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(pinDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -1127,10 +1155,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				DashboardID: &dashboardIdLink,
 			}
 
-			replaceDefaultDashboardResponse, response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
+			response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(replaceDefaultDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -1144,10 +1171,9 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				FolderID:    core.StringPtr(folderIdLink.String()),
 			}
 
-			assignDashboardFolderResponse, response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
+			response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(assignDashboardFolderResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 	})
 
@@ -1475,6 +1501,46 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`UpdateEventStreamTarget - Update an Event Stream`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions)`, func() {
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic:   core.StringPtr("live.screen"),
+			}
+
+			updateEventStreamTargetOptions := &logsv0.UpdateEventStreamTargetOptions{
+				ID:              &streamIdLink,
+				Name:            core.StringPtr("Live Screen"),
+				DpxlExpression:  core.StringPtr(")DPXL/1:version:1/50:payload:<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')"),
+				IsActive:        core.BoolPtr(true),
+				CompressionType: core.StringPtr("gzip"),
+				IbmEventStreams: ibmEventStreamsModel,
+			}
+
+			stream, response, err := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stream).ToNot(BeNil())
+		})
+	})
+
+	Describe(`GetEventStreamTargets - List all Event Streams`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions)`, func() {
+			getEventStreamTargetsOptions := &logsv0.GetEventStreamTargetsOptions{}
+
+			streamCollection, response, err := logsService.GetEventStreamTargets(getEventStreamTargetsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(streamCollection).ToNot(BeNil())
+		})
+	})
+
 	Describe(`DeleteOutgoingWebhook - Delete an Outbound Integration`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -1620,6 +1686,21 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			}
 
 			response, err := logsService.RemoveEnrichments(removeEnrichmentsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+	})
+
+	Describe(`DeleteEventStreamTarget - Delete an Event Stream integration by ID`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions)`, func() {
+			deleteEventStreamTargetOptions := &logsv0.DeleteEventStreamTargetOptions{
+				ID: &streamIdLink,
+			}
+
+			response, err := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})

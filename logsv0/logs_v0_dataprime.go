@@ -31,8 +31,8 @@ import (
 	"reflect"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	common "github.com/IBM/logs-go-sdk/common"
 	"github.com/go-openapi/strfmt"
+	common "github.com/IBM/logs-go-sdk/common"
 )
 
 const (
