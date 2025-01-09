@@ -1,7 +1,7 @@
 //go:build examples
 
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -206,10 +206,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				true,
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
-				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
-				alertsV1AlertFiltersModel,
 			)
 			updateAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			updateAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+			updateAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			updateAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
 			updateAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 			updateAlertOptions.SetMetaLabelsStrings([]string{})
@@ -328,10 +328,10 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				true,
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
-				[]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel},
-				alertsV1AlertFiltersModel,
 			)
 			createAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			createAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
+			createAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			createAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
 			createAlertOptions.SetMetaLabels([]logsv0.AlertsV1MetaLabel{*alertsV1MetaLabelModel})
 			createAlertOptions.SetMetaLabelsStrings([]string{})
@@ -722,6 +722,25 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(policy).ToNot(BeNil())
 		})
+		It(`GetDashboardCatalog request example`, func() {
+			fmt.Println("\nGetDashboardCatalog() result:")
+			// begin-get_dashboard_catalog
+
+			getDashboardCatalogOptions := logsService.NewGetDashboardCatalogOptions()
+
+			dashboardCollection, response, err := logsService.GetDashboardCatalog(getDashboardCatalogOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_dashboard_catalog
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dashboardCollection).ToNot(BeNil())
+		})
 		It(`CreateDashboard request example`, func() {
 			fmt.Println("\nCreateDashboard() result:")
 			// begin-create_dashboard
@@ -1023,49 +1042,46 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(dashboard).ToNot(BeNil())
 		})
 		It(`PinDashboard request example`, func() {
-			fmt.Println("\nPinDashboard() result:")
 			// begin-pin_dashboard
 
 			pinDashboardOptions := logsService.NewPinDashboardOptions(
 				"testString",
 			)
 
-			pinDashboardResponse, response, err := logsService.PinDashboard(pinDashboardOptions)
+			response, err := logsService.PinDashboard(pinDashboardOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(pinDashboardResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from PinDashboard(): %d\n", response.StatusCode)
+			}
 
 			// end-pin_dashboard
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(pinDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`ReplaceDefaultDashboard request example`, func() {
-			fmt.Println("\nReplaceDefaultDashboard() result:")
 			// begin-replace_default_dashboard
 
 			replaceDefaultDashboardOptions := logsService.NewReplaceDefaultDashboardOptions(
 				"testString",
 			)
 
-			replaceDefaultDashboardResponse, response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
+			response, err := logsService.ReplaceDefaultDashboard(replaceDefaultDashboardOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(replaceDefaultDashboardResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from ReplaceDefaultDashboard(): %d\n", response.StatusCode)
+			}
 
 			// end-replace_default_dashboard
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(replaceDefaultDashboardResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`AssignDashboardFolder request example`, func() {
-			fmt.Println("\nAssignDashboardFolder() result:")
 			// begin-assign_dashboard_folder
 
 			assignDashboardFolderOptions := logsService.NewAssignDashboardFolderOptions(
@@ -1073,18 +1089,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				"testString",
 			)
 
-			assignDashboardFolderResponse, response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
+			response, err := logsService.AssignDashboardFolder(assignDashboardFolderOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(assignDashboardFolderResponse, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from AssignDashboardFolder(): %d\n", response.StatusCode)
+			}
 
 			// end-assign_dashboard_folder
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(assignDashboardFolderResponse).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`ListDashboardFolders request example`, func() {
 			fmt.Println("\nListDashboardFolders() result:")
@@ -1124,6 +1140,27 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
+			Expect(dashboardFolder).ToNot(BeNil())
+		})
+		It(`GetDashboardFolder request example`, func() {
+			fmt.Println("\nGetDashboardFolder() result:")
+			// begin-get_dashboard_folder
+
+			getDashboardFolderOptions := logsService.NewGetDashboardFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			dashboardFolder, response, err := logsService.GetDashboardFolder(getDashboardFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_dashboard_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
 			Expect(dashboardFolder).ToNot(BeNil())
 		})
 		It(`ReplaceDashboardFolder request example`, func() {
@@ -1556,18 +1593,18 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
 
-			entrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			enrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(entrichmentCollection, "", "  ")
+			b, _ := json.MarshalIndent(enrichmentCollection, "", "  ")
 			fmt.Println(string(b))
 
 			// end-get_enrichments
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(entrichmentCollection).ToNot(BeNil())
+			Expect(enrichmentCollection).ToNot(BeNil())
 		})
 		It(`CreateEnrichment request example`, func() {
 			fmt.Println("\nCreateEnrichment() result:")
@@ -1598,24 +1635,26 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(enrichment).ToNot(BeNil())
 		})
-		It(`GetDataUsageMetricsExportStatus request example`, func() {
-			fmt.Println("\nGetDataUsageMetricsExportStatus() result:")
-			// begin-get_data_usage_metrics_export_status
+		It(`ExportDataUsage request example`, func() {
+			fmt.Println("\nExportDataUsage() result:")
+			// begin-export_data_usage
 
-			getDataUsageMetricsExportStatusOptions := logsService.NewGetDataUsageMetricsExportStatusOptions()
+			exportDataUsageOptions := logsService.NewExportDataUsageOptions()
+			exportDataUsageOptions.SetRange("last_week")
+			exportDataUsageOptions.SetQuery("daily")
 
-			dataUsageMetricsExportStatus, response, err := logsService.GetDataUsageMetricsExportStatus(getDataUsageMetricsExportStatusOptions)
+			exportDataUsageResponse, response, err := logsService.ExportDataUsage(exportDataUsageOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			b, _ := json.MarshalIndent(exportDataUsageResponse, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_data_usage_metrics_export_status
+			// end-export_data_usage
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+			Expect(exportDataUsageResponse).ToNot(BeNil())
 		})
 		It(`UpdateDataUsageMetricsExportStatus request example`, func() {
 			fmt.Println("\nUpdateDataUsageMetricsExportStatus() result:")
@@ -1637,6 +1676,84 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+		It(`GetEventStreamTargets request example`, func() {
+			fmt.Println("\nGetEventStreamTargets() result:")
+			// begin-get_event_stream_targets
+
+			getEventStreamTargetsOptions := logsService.NewGetEventStreamTargetsOptions()
+
+			streamCollection, response, err := logsService.GetEventStreamTargets(getEventStreamTargetsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(streamCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_event_stream_targets
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(streamCollection).ToNot(BeNil())
+		})
+		It(`CreateEventStreamTarget request example`, func() {
+			fmt.Println("\nCreateEventStreamTarget() result:")
+			// begin-create_event_stream_target
+
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic: core.StringPtr("live.screen"),
+			}
+
+			createEventStreamTargetOptions := logsService.NewCreateEventStreamTargetOptions(
+				"Live Screen",
+				"<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')",
+			)
+			createEventStreamTargetOptions.SetCompressionType("gzip")
+			createEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
+
+			stream, response, err := logsService.CreateEventStreamTarget(createEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stream, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_event_stream_target
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(stream).ToNot(BeNil())
+		})
+		It(`UpdateEventStreamTarget request example`, func() {
+			fmt.Println("\nUpdateEventStreamTarget() result:")
+			// begin-update_event_stream_target
+
+			ibmEventStreamsModel := &logsv0.IbmEventStreams{
+				Brokers: core.StringPtr("kafka01.example.com:9093"),
+				Topic: core.StringPtr("live.screen"),
+			}
+
+			updateEventStreamTargetOptions := logsService.NewUpdateEventStreamTargetOptions(
+				int64(0),
+				"Live Screen",
+				"<v1>contains(kubernetes.labels.CX_AZ, 'eu-west-1')",
+			)
+			updateEventStreamTargetOptions.SetCompressionType("gzip")
+			updateEventStreamTargetOptions.SetIbmEventStreams(ibmEventStreamsModel)
+
+			stream, response, err := logsService.UpdateEventStreamTarget(updateEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(stream, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_event_stream_target
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(stream).ToNot(BeNil())
 		})
 		It(`DeleteAlert request example`, func() {
 			// begin-delete_alert
@@ -1874,6 +1991,26 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-remove_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteEventStreamTarget request example`, func() {
+			// begin-delete_event_stream_target
+
+			deleteEventStreamTargetOptions := logsService.NewDeleteEventStreamTargetOptions(
+				int64(0),
+			)
+
+			response, err := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteEventStreamTarget(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_event_stream_target
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
