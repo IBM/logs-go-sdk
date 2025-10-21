@@ -522,7 +522,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
 				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -717,7 +717,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
 				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -920,7 +920,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
 				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -1068,7 +1068,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
 				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -1237,7 +1237,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.IsActive = core.BoolPtr(true)
 				updateAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				updateAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				updateAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.Expiration = alertsV1DateModel
 				updateAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				updateAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -1673,7 +1673,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
 				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -1867,7 +1867,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
 				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -2069,7 +2069,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
 				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -2216,7 +2216,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
 				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -2384,7 +2384,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.IsActive = core.BoolPtr(true)
 				createAlertOptionsModel.Severity = core.StringPtr("info_or_unspecified")
 				createAlertOptionsModel.Condition = alertsV2AlertConditionModel
-				createAlertOptionsModel.Description = core.StringPtr("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.Description = core.StringPtr("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.Expiration = alertsV1DateModel
 				createAlertOptionsModel.NotificationGroups = []logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}
 				createAlertOptionsModel.Filters = alertsV1AlertFiltersModel
@@ -4944,7 +4944,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetPolicy successfully with retries`, func() {
@@ -4998,7 +4998,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetPolicy successfully`, func() {
@@ -5117,6 +5117,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -5133,11 +5137,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -5196,7 +5202,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke UpdatePolicy successfully with retries`, func() {
@@ -5207,6 +5213,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
@@ -5224,11 +5234,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -5290,7 +5302,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke UpdatePolicy successfully`, func() {
@@ -5306,6 +5318,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
+
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
@@ -5323,11 +5339,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -5351,6 +5369,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -5367,11 +5389,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -5416,6 +5440,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -5432,11 +5460,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -5593,7 +5623,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke GetCompanyPolicies successfully with retries`, func() {
@@ -5650,7 +5680,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke GetCompanyPolicies successfully`, func() {
@@ -5765,6 +5795,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -5781,11 +5815,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium Policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -5843,7 +5879,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreatePolicy successfully with retries`, func() {
@@ -5854,6 +5890,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
@@ -5871,11 +5911,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium Policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -5936,7 +5978,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "company_id": 1234, "name": "Policy Name", "description": "Policy Description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreatePolicy successfully`, func() {
@@ -5952,6 +5994,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
+
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
@@ -5969,11 +6015,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium Policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -5996,6 +6044,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -6012,11 +6064,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium Policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -6060,6 +6114,10 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(logsService).ToNot(BeNil())
 
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
@@ -6076,11 +6134,13 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules model
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				policyPrototypeModel.Name = core.StringPtr("Med_policy")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
 				policyPrototypeModel.Description = core.StringPtr("Medium Policy")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -10847,7 +10907,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -10954,7 +11014,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11069,7 +11129,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11129,7 +11189,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11210,7 +11270,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11503,7 +11563,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m updated")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics updated")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11611,7 +11671,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m updated")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics updated")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11727,7 +11787,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m updated")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics updated")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11788,7 +11848,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m updated")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics updated")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -11870,7 +11930,7 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery model
 				event2MetricPrototypeModel := new(logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery)
 				event2MetricPrototypeModel.Name = core.StringPtr("test em2")
-				event2MetricPrototypeModel.Description = core.StringPtr("Test e2m updated")
+				event2MetricPrototypeModel.Description = core.StringPtr("Test Events to Metrics updated")
 				event2MetricPrototypeModel.PermutationsLimit = core.Int64Ptr(int64(1))
 				event2MetricPrototypeModel.MetricLabels = []logsv0.ApisEvents2metricsV2MetricLabel{*apisEvents2metricsV2MetricLabelModel}
 				event2MetricPrototypeModel.MetricFields = []logsv0.ApisEvents2metricsV2MetricField{*apisEvents2metricsV2MetricFieldModel}
@@ -14232,7 +14292,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
 				}))
 			})
 			It(`Invoke ListDataAccessRules successfully with retries`, func() {
@@ -14286,7 +14346,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
+					fmt.Fprintf(res, "%s", `{"data_access_rules": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}]}`)
 				}))
 			})
 			It(`Invoke ListDataAccessRules successfully`, func() {
@@ -14405,10 +14465,10 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
 				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
-				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := logsService.CreateDataAccessRule(createDataAccessRuleOptionsModel)
@@ -14461,7 +14521,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
 				}))
 			})
 			It(`Invoke CreateDataAccessRule successfully with retries`, func() {
@@ -14480,10 +14540,10 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
 				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
-				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -14539,7 +14599,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
 				}))
 			})
 			It(`Invoke CreateDataAccessRule successfully`, func() {
@@ -14563,10 +14623,10 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
 				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
-				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -14591,10 +14651,10 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
 				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
-				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -14640,10 +14700,10 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
 				createDataAccessRuleOptionsModel := new(logsv0.CreateDataAccessRuleOptions)
-				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				createDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				createDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -14690,10 +14750,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
 				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := logsService.UpdateDataAccessRule(updateDataAccessRuleOptionsModel)
@@ -14746,7 +14806,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
 				}))
 			})
 			It(`Invoke UpdateDataAccessRule successfully with retries`, func() {
@@ -14766,10 +14826,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
 				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -14825,7 +14885,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data Access Rule for group 'users'", "description": "Data Access Rule that defines restriction on 'users' group", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "display_name": "Data access rule for the 'users' group", "description": "The data access rule that defines the restriction on the users' group.", "filters": [{"entity_type": "logs", "expression": "true"}], "default_expression": "true"}`)
 				}))
 			})
 			It(`Invoke UpdateDataAccessRule successfully`, func() {
@@ -14850,10 +14910,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
 				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -14879,10 +14939,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
 				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := logsService.SetServiceURL("")
@@ -14929,10 +14989,10 @@ var _ = Describe(`LogsV0`, func() {
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				updateDataAccessRuleOptionsModel := new(logsv0.UpdateDataAccessRuleOptions)
 				updateDataAccessRuleOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.DisplayName = core.StringPtr("Test data access rule")
 				updateDataAccessRuleOptionsModel.Filters = []logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}
-				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.DefaultExpression = core.StringPtr("<v1>true")
+				updateDataAccessRuleOptionsModel.Description = core.StringPtr("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -16884,6 +16944,2513 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`SubmitBackgroundQuery(submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) - Operation response error`, func() {
+		submitBackgroundQueryPath := "/v1/background_query"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(submitBackgroundQueryPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke SubmitBackgroundQuery with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsModel := new(logsv0.SubmitBackgroundQueryOptions)
+				submitBackgroundQueryOptionsModel.Query = core.StringPtr("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.Syntax = core.StringPtr("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.StartDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.EndDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.NowDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SubmitBackgroundQuery(submitBackgroundQueryOptions *SubmitBackgroundQueryOptions)`, func() {
+		submitBackgroundQueryPath := "/v1/background_query"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(submitBackgroundQueryPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					fmt.Fprintf(res, "%s", `{"query_id": "412036c3-04be-431a-b1e2-9ebf971be6c6", "warnings": [{"compile_warning": {"warning_message": "keypath does not exist '$d.foo' in line 0 at column 21"}}]}`)
+				}))
+			})
+			It(`Invoke SubmitBackgroundQuery successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsModel := new(logsv0.SubmitBackgroundQueryOptions)
+				submitBackgroundQueryOptionsModel.Query = core.StringPtr("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.Syntax = core.StringPtr("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.StartDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.EndDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.NowDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.SubmitBackgroundQueryWithContext(ctx, submitBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.SubmitBackgroundQueryWithContext(ctx, submitBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(submitBackgroundQueryPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					fmt.Fprintf(res, "%s", `{"query_id": "412036c3-04be-431a-b1e2-9ebf971be6c6", "warnings": [{"compile_warning": {"warning_message": "keypath does not exist '$d.foo' in line 0 at column 21"}}]}`)
+				}))
+			})
+			It(`Invoke SubmitBackgroundQuery successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.SubmitBackgroundQuery(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsModel := new(logsv0.SubmitBackgroundQueryOptions)
+				submitBackgroundQueryOptionsModel.Query = core.StringPtr("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.Syntax = core.StringPtr("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.StartDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.EndDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.NowDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke SubmitBackgroundQuery with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsModel := new(logsv0.SubmitBackgroundQueryOptions)
+				submitBackgroundQueryOptionsModel.Query = core.StringPtr("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.Syntax = core.StringPtr("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.StartDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.EndDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.NowDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the SubmitBackgroundQueryOptions model with no property values
+				submitBackgroundQueryOptionsModelNew := new(logsv0.SubmitBackgroundQueryOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke SubmitBackgroundQuery successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsModel := new(logsv0.SubmitBackgroundQueryOptions)
+				submitBackgroundQueryOptionsModel.Query = core.StringPtr("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.Syntax = core.StringPtr("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.StartDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.EndDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.NowDate = CreateMockDateTime("2023-11-05T13:15:30.000Z")
+				submitBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetBackgroundQueryStatus(getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) - Operation response error`, func() {
+		getBackgroundQueryStatusPath := "/v1/background_query/412036c3-04be-431a-b1e2-9ebf971be6c6/status"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getBackgroundQueryStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetBackgroundQueryStatus with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				getBackgroundQueryStatusOptionsModel := new(logsv0.GetBackgroundQueryStatusOptions)
+				getBackgroundQueryStatusOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetBackgroundQueryStatus(getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions)`, func() {
+		getBackgroundQueryStatusPath := "/v1/background_query/412036c3-04be-431a-b1e2-9ebf971be6c6/status"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getBackgroundQueryStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"submitted_at": "2021-01-01T00:00:00.000Z", "metadata": [{"statistics": {"bytes_scanned": "1000000"}}], "warnings": [{"compile_warning": {"warning_message": "keypath does not exist '$d.foo' in line 0 at column 21"}}], "running": {"running_since": "2021-01-01T00:00:00.000Z"}}`)
+				}))
+			})
+			It(`Invoke GetBackgroundQueryStatus successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				getBackgroundQueryStatusOptionsModel := new(logsv0.GetBackgroundQueryStatusOptions)
+				getBackgroundQueryStatusOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetBackgroundQueryStatusWithContext(ctx, getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetBackgroundQueryStatusWithContext(ctx, getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getBackgroundQueryStatusPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"submitted_at": "2021-01-01T00:00:00.000Z", "metadata": [{"statistics": {"bytes_scanned": "1000000"}}], "warnings": [{"compile_warning": {"warning_message": "keypath does not exist '$d.foo' in line 0 at column 21"}}], "running": {"running_since": "2021-01-01T00:00:00.000Z"}}`)
+				}))
+			})
+			It(`Invoke GetBackgroundQueryStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetBackgroundQueryStatus(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				getBackgroundQueryStatusOptionsModel := new(logsv0.GetBackgroundQueryStatusOptions)
+				getBackgroundQueryStatusOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetBackgroundQueryStatus with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				getBackgroundQueryStatusOptionsModel := new(logsv0.GetBackgroundQueryStatusOptions)
+				getBackgroundQueryStatusOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetBackgroundQueryStatusOptions model with no property values
+				getBackgroundQueryStatusOptionsModelNew := new(logsv0.GetBackgroundQueryStatusOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetBackgroundQueryStatus successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				getBackgroundQueryStatusOptionsModel := new(logsv0.GetBackgroundQueryStatusOptions)
+				getBackgroundQueryStatusOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CancelBackgroundQuery(cancelBackgroundQueryOptions *CancelBackgroundQueryOptions)`, func() {
+		cancelBackgroundQueryPath := "/v1/background_query/412036c3-04be-431a-b1e2-9ebf971be6c6/cancel"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(cancelBackgroundQueryPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke CancelBackgroundQuery successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.CancelBackgroundQuery(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the CancelBackgroundQueryOptions model
+				cancelBackgroundQueryOptionsModel := new(logsv0.CancelBackgroundQueryOptions)
+				cancelBackgroundQueryOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				cancelBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.CancelBackgroundQuery(cancelBackgroundQueryOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke CancelBackgroundQuery with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the CancelBackgroundQueryOptions model
+				cancelBackgroundQueryOptionsModel := new(logsv0.CancelBackgroundQueryOptions)
+				cancelBackgroundQueryOptionsModel.QueryID = CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				cancelBackgroundQueryOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.CancelBackgroundQuery(cancelBackgroundQueryOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the CancelBackgroundQueryOptions model with no property values
+				cancelBackgroundQueryOptionsModelNew := new(logsv0.CancelBackgroundQueryOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.CancelBackgroundQuery(cancelBackgroundQueryOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetAlertDef(getAlertDefOptions *GetAlertDefOptions) - Operation response error`, func() {
+		getAlertDefPath := "/v1/alert_definitions/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getAlertDefPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetAlertDef with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetAlertDefOptions model
+				getAlertDefOptionsModel := new(logsv0.GetAlertDefOptions)
+				getAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetAlertDef(getAlertDefOptions *GetAlertDefOptions)`, func() {
+		getAlertDefPath := "/v1/alert_definitions/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getAlertDefPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke GetAlertDef successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetAlertDefOptions model
+				getAlertDefOptionsModel := new(logsv0.GetAlertDefOptions)
+				getAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetAlertDefWithContext(ctx, getAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetAlertDefWithContext(ctx, getAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getAlertDefPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke GetAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetAlertDef(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetAlertDefOptions model
+				getAlertDefOptionsModel := new(logsv0.GetAlertDefOptions)
+				getAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetAlertDef with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetAlertDefOptions model
+				getAlertDefOptionsModel := new(logsv0.GetAlertDefOptions)
+				getAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetAlertDefOptions model with no property values
+				getAlertDefOptionsModelNew := new(logsv0.GetAlertDefOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.GetAlertDef(getAlertDefOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetAlertDefOptions model
+				getAlertDefOptionsModel := new(logsv0.GetAlertDefOptions)
+				getAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetAlertDef(getAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceAlertDef(replaceAlertDefOptions *ReplaceAlertDefOptions) - Operation response error`, func() {
+		replaceAlertDefPath := "/v1/alert_definitions/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceAlertDefPath))
+					Expect(req.Method).To(Equal("PUT"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ReplaceAlertDef with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				replaceAlertDefOptionsModel := new(logsv0.ReplaceAlertDefOptions)
+				replaceAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				replaceAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				replaceAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceAlertDef(replaceAlertDefOptions *ReplaceAlertDefOptions)`, func() {
+		replaceAlertDefPath := "/v1/alert_definitions/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceAlertDefPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke ReplaceAlertDef successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				replaceAlertDefOptionsModel := new(logsv0.ReplaceAlertDefOptions)
+				replaceAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				replaceAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				replaceAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.ReplaceAlertDefWithContext(ctx, replaceAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.ReplaceAlertDefWithContext(ctx, replaceAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceAlertDefPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke ReplaceAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.ReplaceAlertDef(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				replaceAlertDefOptionsModel := new(logsv0.ReplaceAlertDefOptions)
+				replaceAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				replaceAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				replaceAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ReplaceAlertDef with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				replaceAlertDefOptionsModel := new(logsv0.ReplaceAlertDefOptions)
+				replaceAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				replaceAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				replaceAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ReplaceAlertDefOptions model with no property values
+				replaceAlertDefOptionsModelNew := new(logsv0.ReplaceAlertDefOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.ReplaceAlertDef(replaceAlertDefOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ReplaceAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				replaceAlertDefOptionsModel := new(logsv0.ReplaceAlertDefOptions)
+				replaceAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				replaceAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				replaceAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.ReplaceAlertDef(replaceAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteAlertDef(deleteAlertDefOptions *DeleteAlertDefOptions)`, func() {
+		deleteAlertDefPath := "/v1/alert_definitions/3dc02998-0b50-4ea8-b68a-4779d716fa1f"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteAlertDefPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.DeleteAlertDef(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteAlertDefOptions model
+				deleteAlertDefOptionsModel := new(logsv0.DeleteAlertDefOptions)
+				deleteAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.DeleteAlertDef(deleteAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteAlertDef with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteAlertDefOptions model
+				deleteAlertDefOptionsModel := new(logsv0.DeleteAlertDefOptions)
+				deleteAlertDefOptionsModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.DeleteAlertDef(deleteAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteAlertDefOptions model with no property values
+				deleteAlertDefOptionsModelNew := new(logsv0.DeleteAlertDefOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.DeleteAlertDef(deleteAlertDefOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListAlertDefs(listAlertDefsOptions *ListAlertDefsOptions) - Operation response error`, func() {
+		listAlertDefsPath := "/v1/alert_definitions"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listAlertDefsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListAlertDefs with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := new(logsv0.ListAlertDefsOptions)
+				listAlertDefsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListAlertDefs(listAlertDefsOptions *ListAlertDefsOptions)`, func() {
+		listAlertDefsPath := "/v1/alert_definitions"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listAlertDefsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"alert_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}]}`)
+				}))
+			})
+			It(`Invoke ListAlertDefs successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := new(logsv0.ListAlertDefsOptions)
+				listAlertDefsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.ListAlertDefsWithContext(ctx, listAlertDefsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.ListAlertDefsWithContext(ctx, listAlertDefsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listAlertDefsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"alert_definitions": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}]}`)
+				}))
+			})
+			It(`Invoke ListAlertDefs successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.ListAlertDefs(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := new(logsv0.ListAlertDefsOptions)
+				listAlertDefsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListAlertDefs with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := new(logsv0.ListAlertDefsOptions)
+				listAlertDefsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListAlertDefs successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := new(logsv0.ListAlertDefsOptions)
+				listAlertDefsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.ListAlertDefs(listAlertDefsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateAlertDef(createAlertDefOptions *CreateAlertDefOptions) - Operation response error`, func() {
+		createAlertDefPath := "/v1/alert_definitions"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createAlertDefPath))
+					Expect(req.Method).To(Equal("POST"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateAlertDef with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the CreateAlertDefOptions model
+				createAlertDefOptionsModel := new(logsv0.CreateAlertDefOptions)
+				createAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				createAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateAlertDef(createAlertDefOptions *CreateAlertDefOptions)`, func() {
+		createAlertDefPath := "/v1/alert_definitions"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createAlertDefPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke CreateAlertDef successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the CreateAlertDefOptions model
+				createAlertDefOptionsModel := new(logsv0.CreateAlertDefOptions)
+				createAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				createAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.CreateAlertDefWithContext(ctx, createAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.CreateAlertDefWithContext(ctx, createAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createAlertDefPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "created_time": "2021-01-01T00:00:00.000Z", "updated_time": "2021-01-01T00:00:00.000Z", "alert_version_id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "Unique count alert", "description": "Example of unique count alert from terraform", "enabled": true, "priority": "p1", "active_on": {"day_of_week": ["sunday"], "start_time": {"hours": 14, "minutes": 30}, "end_time": {"hours": 14, "minutes": 30}}, "type": "flow", "group_by_keys": ["GroupByKeys"], "incidents_settings": {"notify_on": "triggered_and_resolved", "minutes": 30}, "notification_group": {"group_by_keys": ["GroupByKeys"], "webhooks": [{"notify_on": "triggered_and_resolved", "integration": {"integration_id": 123}, "minutes": 15}]}, "entity_labels": {"mapKey": "Inner"}, "phantom_mode": false, "deleted": false, "logs_immediate": {"logs_filter": {"simple_filter": {"lucene_query": "text:\"error\"", "label_filters": {"application_name": [{"value": "my-app", "operation": "starts_with"}], "subsystem_name": [{"value": "my-app", "operation": "starts_with"}], "severities": ["critical"]}}}, "notification_payload_filter": ["NotificationPayloadFilter"]}}`)
+				}))
+			})
+			It(`Invoke CreateAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.CreateAlertDef(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the CreateAlertDefOptions model
+				createAlertDefOptionsModel := new(logsv0.CreateAlertDefOptions)
+				createAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				createAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateAlertDef with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the CreateAlertDefOptions model
+				createAlertDefOptionsModel := new(logsv0.CreateAlertDefOptions)
+				createAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				createAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateAlertDefOptions model with no property values
+				createAlertDefOptionsModelNew := new(logsv0.CreateAlertDefOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = logsService.CreateAlertDef(createAlertDefOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateAlertDef successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(22))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_only_unspecified")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(10))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{}
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+
+				// Construct an instance of the ApisAlertDefinitionUndetectedValuesManagement model
+				apisAlertDefinitionUndetectedValuesManagementModel := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+				apisAlertDefinitionUndetectedValuesManagementModel.TriggerUndetectedValues = core.BoolPtr(true)
+				apisAlertDefinitionUndetectedValuesManagementModel.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+				// Construct an instance of the ApisAlertDefinitionLogsTimeWindow model
+				apisAlertDefinitionLogsTimeWindowModel := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+				apisAlertDefinitionLogsTimeWindowModel.LogsTimeWindowSpecificValue = core.StringPtr("minutes_10")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdCondition model
+				apisAlertDefinitionLogsThresholdConditionModel := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+				apisAlertDefinitionLogsThresholdConditionModel.Threshold = core.Float64Ptr(float64(1))
+				apisAlertDefinitionLogsThresholdConditionModel.TimeWindow = apisAlertDefinitionLogsTimeWindowModel
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefOverride model
+				apisAlertDefinitionAlertDefOverrideModel := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+				apisAlertDefinitionAlertDefOverrideModel.Priority = core.StringPtr("p5_or_unspecified")
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdRule model
+				apisAlertDefinitionLogsThresholdRuleModel := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+				apisAlertDefinitionLogsThresholdRuleModel.Condition = apisAlertDefinitionLogsThresholdConditionModel
+				apisAlertDefinitionLogsThresholdRuleModel.Override = apisAlertDefinitionAlertDefOverrideModel
+
+				// Construct an instance of the ApisAlertDefinitionLogsThresholdType model
+				apisAlertDefinitionLogsThresholdTypeModel := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+				apisAlertDefinitionLogsThresholdTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsThresholdTypeModel.UndetectedValuesManagement = apisAlertDefinitionUndetectedValuesManagementModel
+				apisAlertDefinitionLogsThresholdTypeModel.Rules = []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel}
+				apisAlertDefinitionLogsThresholdTypeModel.ConditionType = core.StringPtr("more_than_or_unspecified")
+				apisAlertDefinitionLogsThresholdTypeModel.NotificationPayloadFilter = []string{}
+				apisAlertDefinitionLogsThresholdTypeModel.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Alert 1738141279354")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example Alert definition")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p5_or_unspecified")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("logs_threshold")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsThreshold = apisAlertDefinitionLogsThresholdTypeModel
+
+				// Construct an instance of the CreateAlertDefOptions model
+				createAlertDefOptionsModel := new(logsv0.CreateAlertDefOptions)
+				createAlertDefOptionsModel.AlertDefinitionPrototype = alertDefinitionPrototypeModel
+				createAlertDefOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.CreateAlertDef(createAlertDefOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			logsService, _ := logsv0.NewLogsV0(&logsv0.LogsV0Options{
@@ -16964,6 +19531,253 @@ var _ = Describe(`LogsV0`, func() {
 				var parameters *logsv0.AlertsV2ConditionParameters = nil
 				_, err := logsService.NewAlertsV2UniqueCountCondition(parameters)
 				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionActivitySchedule successfully`, func() {
+				dayOfWeek := []string{"sunday"}
+				var startTime *logsv0.ApisAlertDefinitionTimeOfDay = nil
+				var endTime *logsv0.ApisAlertDefinitionTimeOfDay = nil
+				_, err := logsService.NewApisAlertDefinitionActivitySchedule(dayOfWeek, startTime, endTime)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionAlertDefOverride successfully`, func() {
+				priority := "p1"
+				_model, err := logsService.NewApisAlertDefinitionAlertDefOverride(priority)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionAlertDefWebhooksSettings successfully`, func() {
+				var integration logsv0.ApisAlertDefinitionIntegrationTypeIntf = nil
+				_, err := logsService.NewApisAlertDefinitionAlertDefWebhooksSettings(integration)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionFlowStages successfully`, func() {
+				timeframeMs := "60000"
+				timeframeType := "up_to"
+				var flowStagesGroups *logsv0.ApisAlertDefinitionFlowStagesGroups = nil
+				_, err := logsService.NewApisAlertDefinitionFlowStages(timeframeMs, timeframeType, flowStagesGroups)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionFlowStagesGroup successfully`, func() {
+				alertDefs := []logsv0.ApisAlertDefinitionFlowStagesGroupsAlertDefs{}
+				nextOp := "or"
+				alertsOp := "or"
+				_model, err := logsService.NewApisAlertDefinitionFlowStagesGroup(alertDefs, nextOp, alertsOp)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionFlowStagesGroups successfully`, func() {
+				groups := []logsv0.ApisAlertDefinitionFlowStagesGroup{}
+				_model, err := logsService.NewApisAlertDefinitionFlowStagesGroups(groups)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionFlowStagesGroupsAlertDefs successfully`, func() {
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				_model, err := logsService.NewApisAlertDefinitionFlowStagesGroupsAlertDefs(id)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionFlowType successfully`, func() {
+				stages := []logsv0.ApisAlertDefinitionFlowStages{}
+				_model, err := logsService.NewApisAlertDefinitionFlowType(stages)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLabelFilterType successfully`, func() {
+				operation := "starts_with"
+				_model, err := logsService.NewApisAlertDefinitionLabelFilterType(operation)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsAnomalyCondition successfully`, func() {
+				minimumThreshold := float64(10.0)
+				var timeWindow *logsv0.ApisAlertDefinitionLogsTimeWindow = nil
+				_, err := logsService.NewApisAlertDefinitionLogsAnomalyCondition(minimumThreshold, timeWindow)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsAnomalyRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsAnomalyCondition = nil
+				_, err := logsService.NewApisAlertDefinitionLogsAnomalyRule(condition)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsAnomalyType successfully`, func() {
+				rules := []logsv0.ApisAlertDefinitionLogsAnomalyRule{}
+				conditionType := "more_than_usual_or_unspecified"
+				_model, err := logsService.NewApisAlertDefinitionLogsAnomalyType(rules, conditionType)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsNewValueCondition successfully`, func() {
+				keypathToTrack := "metadata.field"
+				var timeWindow *logsv0.ApisAlertDefinitionLogsNewValueTimeWindow = nil
+				_, err := logsService.NewApisAlertDefinitionLogsNewValueCondition(keypathToTrack, timeWindow)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsNewValueRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsNewValueCondition = nil
+				_, err := logsService.NewApisAlertDefinitionLogsNewValueRule(condition)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsNewValueTimeWindow successfully`, func() {
+				logsNewValueTimeWindowSpecificValue := "months_3"
+				_model, err := logsService.NewApisAlertDefinitionLogsNewValueTimeWindow(logsNewValueTimeWindowSpecificValue)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsNewValueType successfully`, func() {
+				rules := []logsv0.ApisAlertDefinitionLogsNewValueRule{}
+				_model, err := logsService.NewApisAlertDefinitionLogsNewValueType(rules)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsRatioCondition successfully`, func() {
+				threshold := float64(10.0)
+				var timeWindow *logsv0.ApisAlertDefinitionLogsRatioTimeWindow = nil
+				_, err := logsService.NewApisAlertDefinitionLogsRatioCondition(threshold, timeWindow)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsRatioRules successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsRatioCondition = nil
+				var override *logsv0.ApisAlertDefinitionAlertDefOverride = nil
+				_, err := logsService.NewApisAlertDefinitionLogsRatioRules(condition, override)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsRatioThresholdType successfully`, func() {
+				var numerator *logsv0.ApisAlertDefinitionLogsFilter = nil
+				var denominator *logsv0.ApisAlertDefinitionLogsFilter = nil
+				rules := []logsv0.ApisAlertDefinitionLogsRatioRules{}
+				conditionType := "less_than"
+				groupByFor := "denumerator_only"
+				_, err := logsService.NewApisAlertDefinitionLogsRatioThresholdType(numerator, denominator, rules, conditionType, groupByFor)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsRatioTimeWindow successfully`, func() {
+				logsRatioTimeWindowSpecificValue := "hours_36"
+				_model, err := logsService.NewApisAlertDefinitionLogsRatioTimeWindow(logsRatioTimeWindowSpecificValue)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsThresholdCondition successfully`, func() {
+				threshold := float64(100.0)
+				var timeWindow *logsv0.ApisAlertDefinitionLogsTimeWindow = nil
+				_, err := logsService.NewApisAlertDefinitionLogsThresholdCondition(threshold, timeWindow)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsThresholdRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsThresholdCondition = nil
+				var override *logsv0.ApisAlertDefinitionAlertDefOverride = nil
+				_, err := logsService.NewApisAlertDefinitionLogsThresholdRule(condition, override)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsThresholdType successfully`, func() {
+				rules := []logsv0.ApisAlertDefinitionLogsThresholdRule{}
+				conditionType := "less_than"
+				_model, err := logsService.NewApisAlertDefinitionLogsThresholdType(rules, conditionType)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsTimeRelativeCondition successfully`, func() {
+				threshold := float64(100.0)
+				comparedTo := "same_day_last_month"
+				_model, err := logsService.NewApisAlertDefinitionLogsTimeRelativeCondition(threshold, comparedTo)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsTimeRelativeRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsTimeRelativeCondition = nil
+				var override *logsv0.ApisAlertDefinitionAlertDefOverride = nil
+				_, err := logsService.NewApisAlertDefinitionLogsTimeRelativeRule(condition, override)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsTimeRelativeThresholdType successfully`, func() {
+				rules := []logsv0.ApisAlertDefinitionLogsTimeRelativeRule{}
+				conditionType := "less_than"
+				_model, err := logsService.NewApisAlertDefinitionLogsTimeRelativeThresholdType(rules, conditionType)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsTimeWindow successfully`, func() {
+				logsTimeWindowSpecificValue := "hours_36"
+				_model, err := logsService.NewApisAlertDefinitionLogsTimeWindow(logsTimeWindowSpecificValue)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsUniqueCountCondition successfully`, func() {
+				maxUniqueCount := "100"
+				var timeWindow *logsv0.ApisAlertDefinitionLogsUniqueValueTimeWindow = nil
+				_, err := logsService.NewApisAlertDefinitionLogsUniqueCountCondition(maxUniqueCount, timeWindow)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsUniqueCountRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionLogsUniqueCountCondition = nil
+				_, err := logsService.NewApisAlertDefinitionLogsUniqueCountRule(condition)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsUniqueCountType successfully`, func() {
+				rules := []logsv0.ApisAlertDefinitionLogsUniqueCountRule{}
+				uniqueCountKeypath := "obj.field"
+				_model, err := logsService.NewApisAlertDefinitionLogsUniqueCountType(rules, uniqueCountKeypath)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionLogsUniqueValueTimeWindow successfully`, func() {
+				logsUniqueValueTimeWindowSpecificValue := "hours_36"
+				_model, err := logsService.NewApisAlertDefinitionLogsUniqueValueTimeWindow(logsUniqueValueTimeWindowSpecificValue)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricAnomalyCondition successfully`, func() {
+				threshold := float64(10.0)
+				var ofTheLast logsv0.ApisAlertDefinitionMetricTimeWindowIntf = nil
+				minNonNullValuesPct := int64(10)
+				_, err := logsService.NewApisAlertDefinitionMetricAnomalyCondition(threshold, ofTheLast, minNonNullValuesPct)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricAnomalyRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionMetricAnomalyCondition = nil
+				_, err := logsService.NewApisAlertDefinitionMetricAnomalyRule(condition)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricAnomalyType successfully`, func() {
+				var metricFilter *logsv0.ApisAlertDefinitionMetricFilter = nil
+				rules := []logsv0.ApisAlertDefinitionMetricAnomalyRule{}
+				conditionType := "less_than_usual"
+				_, err := logsService.NewApisAlertDefinitionMetricAnomalyType(metricFilter, rules, conditionType)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricFilter successfully`, func() {
+				promql := "avg_over_time(metric_name[5m]) > 10"
+				_model, err := logsService.NewApisAlertDefinitionMetricFilter(promql)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricThresholdCondition successfully`, func() {
+				threshold := float64(100.0)
+				forOverPct := int64(80)
+				var ofTheLast logsv0.ApisAlertDefinitionMetricTimeWindowIntf = nil
+				_, err := logsService.NewApisAlertDefinitionMetricThresholdCondition(threshold, forOverPct, ofTheLast)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricThresholdRule successfully`, func() {
+				var condition *logsv0.ApisAlertDefinitionMetricThresholdCondition = nil
+				var override *logsv0.ApisAlertDefinitionAlertDefOverride = nil
+				_, err := logsService.NewApisAlertDefinitionMetricThresholdRule(condition, override)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionMetricThresholdType successfully`, func() {
+				var metricFilter *logsv0.ApisAlertDefinitionMetricFilter = nil
+				rules := []logsv0.ApisAlertDefinitionMetricThresholdRule{}
+				conditionType := "less_than_or_equals"
+				var missingValues logsv0.ApisAlertDefinitionMetricMissingValuesIntf = nil
+				_, err := logsService.NewApisAlertDefinitionMetricThresholdType(metricFilter, rules, conditionType, missingValues)
+				Expect(err).ToNot(BeNil())
+			})
+			It(`Invoke NewApisAlertDefinitionUndetectedValuesManagement successfully`, func() {
+				triggerUndetectedValues := true
+				autoRetireTimeframe := "hours_24"
+				_model, err := logsService.NewApisAlertDefinitionUndetectedValuesManagement(triggerUndetectedValues, autoRetireTimeframe)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
 			})
 			It(`Invoke NewApisDashboardsV1AstAnnotation successfully`, func() {
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -17277,6 +20091,146 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(assignDashboardFolderOptionsModel.FolderID).To(Equal(core.StringPtr("testString")))
 				Expect(assignDashboardFolderOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCancelBackgroundQueryOptions successfully`, func() {
+				// Construct an instance of the CancelBackgroundQueryOptions model
+				queryID := CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				cancelBackgroundQueryOptionsModel := logsService.NewCancelBackgroundQueryOptions(queryID)
+				cancelBackgroundQueryOptionsModel.SetQueryID(CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"))
+				cancelBackgroundQueryOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(cancelBackgroundQueryOptionsModel).ToNot(BeNil())
+				Expect(cancelBackgroundQueryOptionsModel.QueryID).To(Equal(CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")))
+				Expect(cancelBackgroundQueryOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewCreateAlertDefOptions successfully`, func() {
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				Expect(apisAlertDefinitionTimeOfDayModel).ToNot(BeNil())
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(14))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+				Expect(apisAlertDefinitionTimeOfDayModel.Hours).To(Equal(core.Int64Ptr(int64(14))))
+				Expect(apisAlertDefinitionTimeOfDayModel.Minutes).To(Equal(core.Int64Ptr(int64(30))))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				Expect(apisAlertDefinitionActivityScheduleModel).ToNot(BeNil())
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+				Expect(apisAlertDefinitionActivityScheduleModel.DayOfWeek).To(Equal([]string{"sunday"}))
+				Expect(apisAlertDefinitionActivityScheduleModel.StartTime).To(Equal(apisAlertDefinitionTimeOfDayModel))
+				Expect(apisAlertDefinitionActivityScheduleModel.EndTime).To(Equal(apisAlertDefinitionTimeOfDayModel))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(30))
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes).To(Equal(core.Int64Ptr(int64(30))))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				Expect(apisAlertDefinitionIntegrationTypeModel).ToNot(BeNil())
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(apisAlertDefinitionIntegrationTypeModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration).To(Equal(apisAlertDefinitionIntegrationTypeModel))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes).To(Equal(core.Int64Ptr(int64(15))))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{"key1", "key2"}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys).To(Equal([]string{"key1", "key2"}))
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks).To(Equal([]logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}))
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				Expect(apisAlertDefinitionLabelFilterTypeModel).ToNot(BeNil())
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+				Expect(apisAlertDefinitionLabelFilterTypeModel.Value).To(Equal(core.StringPtr("my-app")))
+				Expect(apisAlertDefinitionLabelFilterTypeModel.Operation).To(Equal(core.StringPtr("starts_with")))
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				Expect(apisAlertDefinitionLabelFiltersModel).ToNot(BeNil())
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{"critical"}
+				Expect(apisAlertDefinitionLabelFiltersModel.ApplicationName).To(Equal([]logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}))
+				Expect(apisAlertDefinitionLabelFiltersModel.SubsystemName).To(Equal([]logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}))
+				Expect(apisAlertDefinitionLabelFiltersModel.Severities).To(Equal([]string{"critical"}))
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				Expect(apisAlertDefinitionLogsSimpleFilterModel).ToNot(BeNil())
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+				Expect(apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery).To(Equal(core.StringPtr("text:\"error\"")))
+				Expect(apisAlertDefinitionLogsSimpleFilterModel.LabelFilters).To(Equal(apisAlertDefinitionLabelFiltersModel))
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				Expect(apisAlertDefinitionLogsFilterModel).ToNot(BeNil())
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+				Expect(apisAlertDefinitionLogsFilterModel.SimpleFilter).To(Equal(apisAlertDefinitionLogsSimpleFilterModel))
+
+				// Construct an instance of the ApisAlertDefinitionLogsImmediateType model
+				apisAlertDefinitionLogsImmediateTypeModel := new(logsv0.ApisAlertDefinitionLogsImmediateType)
+				Expect(apisAlertDefinitionLogsImmediateTypeModel).ToNot(BeNil())
+				apisAlertDefinitionLogsImmediateTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsImmediateTypeModel.NotificationPayloadFilter = []string{"obj.field"}
+				Expect(apisAlertDefinitionLogsImmediateTypeModel.LogsFilter).To(Equal(apisAlertDefinitionLogsFilterModel))
+				Expect(apisAlertDefinitionLogsImmediateTypeModel.NotificationPayloadFilter).To(Equal([]string{"obj.field"}))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate)
+				Expect(alertDefinitionPrototypeModel).ToNot(BeNil())
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Unique count alert")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example of unique count alert from terraform")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p1")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("flow")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{"key1", "key2"}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsImmediate = apisAlertDefinitionLogsImmediateTypeModel
+				Expect(alertDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("Unique count alert")))
+				Expect(alertDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("Example of unique count alert from terraform")))
+				Expect(alertDefinitionPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
+				Expect(alertDefinitionPrototypeModel.Priority).To(Equal(core.StringPtr("p1")))
+				Expect(alertDefinitionPrototypeModel.ActiveOn).To(Equal(apisAlertDefinitionActivityScheduleModel))
+				Expect(alertDefinitionPrototypeModel.Type).To(Equal(core.StringPtr("flow")))
+				Expect(alertDefinitionPrototypeModel.GroupByKeys).To(Equal([]string{"key1", "key2"}))
+				Expect(alertDefinitionPrototypeModel.IncidentsSettings).To(Equal(apisAlertDefinitionAlertDefIncidentSettingsModel))
+				Expect(alertDefinitionPrototypeModel.NotificationGroup).To(Equal(apisAlertDefinitionAlertDefNotificationGroupModel))
+				Expect(alertDefinitionPrototypeModel.EntityLabels).To(Equal(map[string]string{"key1": "testString"}))
+				Expect(alertDefinitionPrototypeModel.PhantomMode).To(Equal(core.BoolPtr(false)))
+				Expect(alertDefinitionPrototypeModel.Deleted).To(Equal(core.BoolPtr(false)))
+				Expect(alertDefinitionPrototypeModel.LogsImmediate).To(Equal(apisAlertDefinitionLogsImmediateTypeModel))
+
+				// Construct an instance of the CreateAlertDefOptions model
+				var alertDefinitionPrototype logsv0.AlertDefinitionPrototypeIntf = nil
+				createAlertDefOptionsModel := logsService.NewCreateAlertDefOptions(alertDefinitionPrototype)
+				createAlertDefOptionsModel.SetAlertDefinitionPrototype(alertDefinitionPrototypeModel)
+				createAlertDefOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createAlertDefOptionsModel).ToNot(BeNil())
+				Expect(createAlertDefOptionsModel.AlertDefinitionPrototype).To(Equal(alertDefinitionPrototypeModel))
+				Expect(createAlertDefOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateAlertOptions successfully`, func() {
 				// Construct an instance of the AlertsV1MetricAlertConditionParameters model
 				alertsV1MetricAlertConditionParametersModel := new(logsv0.AlertsV1MetricAlertConditionParameters)
@@ -17482,7 +20436,7 @@ var _ = Describe(`LogsV0`, func() {
 				createAlertOptionsModel.SetIsActive(true)
 				createAlertOptionsModel.SetSeverity("info_or_unspecified")
 				createAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				createAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
+				createAlertOptionsModel.SetDescription("Alert when the number of logs reaches a threshold")
 				createAlertOptionsModel.SetExpiration(alertsV1DateModel)
 				createAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
 				createAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
@@ -17497,7 +20451,7 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(createAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(createAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(createAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
+				Expect(createAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert when the number of logs reaches a threshold")))
 				Expect(createAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
 				Expect(createAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
 				Expect(createAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
@@ -17970,20 +20924,20 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(dataAccessRuleFilterModel.Expression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
 
 				// Construct an instance of the CreateDataAccessRuleOptions model
-				createDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				createDataAccessRuleOptionsDisplayName := "Test data access rule"
 				createDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
-				createDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				createDataAccessRuleOptionsDefaultExpression := "<v1>true"
 				createDataAccessRuleOptionsModel := logsService.NewCreateDataAccessRuleOptions(createDataAccessRuleOptionsDisplayName, createDataAccessRuleOptionsFilters, createDataAccessRuleOptionsDefaultExpression)
-				createDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				createDataAccessRuleOptionsModel.SetDisplayName("Test data access rule")
 				createDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
-				createDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
-				createDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				createDataAccessRuleOptionsModel.SetDefaultExpression("<v1>true")
+				createDataAccessRuleOptionsModel.SetDescription("Data access rule intended for testing")
 				createDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createDataAccessRuleOptionsModel).ToNot(BeNil())
-				Expect(createDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(createDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test data access rule")))
 				Expect(createDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
-				Expect(createDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
-				Expect(createDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(createDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1>true")))
+				Expect(createDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data access rule intended for testing")))
 				Expect(createDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateE2mOptions successfully`, func() {
@@ -18163,6 +21117,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(createOutgoingWebhookOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreatePolicyOptions successfully`, func() {
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				Expect(policyBeforePrototypeModel).ToNot(BeNil())
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				Expect(policyBeforePrototypeModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				Expect(quotaV1RuleModel).ToNot(BeNil())
@@ -18187,18 +21147,22 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				Expect(policyPrototypeModel).ToNot(BeNil())
 				policyPrototypeModel.Name = core.StringPtr("My Policy")
-				policyPrototypeModel.Description = core.StringPtr("My Policy Description")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
+				policyPrototypeModel.Description = core.StringPtr("My Policy description")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 				Expect(policyPrototypeModel.Name).To(Equal(core.StringPtr("My Policy")))
-				Expect(policyPrototypeModel.Description).To(Equal(core.StringPtr("My Policy Description")))
+				Expect(policyPrototypeModel.Before).To(Equal(policyBeforePrototypeModel))
+				Expect(policyPrototypeModel.Description).To(Equal(core.StringPtr("My Policy description")))
 				Expect(policyPrototypeModel.Priority).To(Equal(core.StringPtr("type_high")))
 				Expect(policyPrototypeModel.ApplicationRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.SubsystemRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.ArchiveRetention).To(Equal(quotaV1ArchiveRetentionModel))
+				Expect(policyPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(policyPrototypeModel.LogRules).To(Equal(quotaV1LogRulesModel))
 
 				// Construct an instance of the CreatePolicyOptions model
@@ -18365,6 +21329,16 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
+			It(`Invoke NewDeleteAlertDefOptions successfully`, func() {
+				// Construct an instance of the DeleteAlertDefOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				deleteAlertDefOptionsModel := logsService.NewDeleteAlertDefOptions(id)
+				deleteAlertDefOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				deleteAlertDefOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteAlertDefOptionsModel).ToNot(BeNil())
+				Expect(deleteAlertDefOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(deleteAlertDefOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDeleteAlertOptions successfully`, func() {
 				// Construct an instance of the DeleteAlertOptions model
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -18486,6 +21460,16 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(exportDataUsageOptionsModel.Query).To(Equal(core.StringPtr("daily")))
 				Expect(exportDataUsageOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetAlertDefOptions successfully`, func() {
+				// Construct an instance of the GetAlertDefOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				getAlertDefOptionsModel := logsService.NewGetAlertDefOptions(id)
+				getAlertDefOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				getAlertDefOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getAlertDefOptionsModel).ToNot(BeNil())
+				Expect(getAlertDefOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(getAlertDefOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetAlertOptions successfully`, func() {
 				// Construct an instance of the GetAlertOptions model
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
@@ -18502,6 +21486,16 @@ var _ = Describe(`LogsV0`, func() {
 				getAlertsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getAlertsOptionsModel).ToNot(BeNil())
 				Expect(getAlertsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetBackgroundQueryStatusOptions successfully`, func() {
+				// Construct an instance of the GetBackgroundQueryStatusOptions model
+				queryID := CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")
+				getBackgroundQueryStatusOptionsModel := logsService.NewGetBackgroundQueryStatusOptions(queryID)
+				getBackgroundQueryStatusOptionsModel.SetQueryID(CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"))
+				getBackgroundQueryStatusOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getBackgroundQueryStatusOptionsModel).ToNot(BeNil())
+				Expect(getBackgroundQueryStatusOptionsModel.QueryID).To(Equal(CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6")))
+				Expect(getBackgroundQueryStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetCompanyPoliciesOptions successfully`, func() {
 				// Construct an instance of the GetCompanyPoliciesOptions model
@@ -18622,6 +21616,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
+			It(`Invoke NewListAlertDefsOptions successfully`, func() {
+				// Construct an instance of the ListAlertDefsOptions model
+				listAlertDefsOptionsModel := logsService.NewListAlertDefsOptions()
+				listAlertDefsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listAlertDefsOptionsModel).ToNot(BeNil())
+				Expect(listAlertDefsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewListDashboardFoldersOptions successfully`, func() {
 				// Construct an instance of the ListDashboardFoldersOptions model
 				listDashboardFoldersOptionsModel := logsService.NewListDashboardFoldersOptions()
@@ -18692,6 +21693,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(pinDashboardOptionsModel.DashboardID).To(Equal(core.StringPtr("testString")))
 				Expect(pinDashboardOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewPolicyBeforePrototype successfully`, func() {
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				_model, err := logsService.NewPolicyBeforePrototype(id)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewQuotaV1ArchiveRetention successfully`, func() {
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				_model, err := logsService.NewQuotaV1ArchiveRetention(id)
@@ -18714,6 +21721,139 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(removeEnrichmentsOptionsModel).ToNot(BeNil())
 				Expect(removeEnrichmentsOptionsModel.ID).To(Equal(core.Int64Ptr(int64(1))))
 				Expect(removeEnrichmentsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewReplaceAlertDefOptions successfully`, func() {
+				// Construct an instance of the ApisAlertDefinitionTimeOfDay model
+				apisAlertDefinitionTimeOfDayModel := new(logsv0.ApisAlertDefinitionTimeOfDay)
+				Expect(apisAlertDefinitionTimeOfDayModel).ToNot(BeNil())
+				apisAlertDefinitionTimeOfDayModel.Hours = core.Int64Ptr(int64(14))
+				apisAlertDefinitionTimeOfDayModel.Minutes = core.Int64Ptr(int64(30))
+				Expect(apisAlertDefinitionTimeOfDayModel.Hours).To(Equal(core.Int64Ptr(int64(14))))
+				Expect(apisAlertDefinitionTimeOfDayModel.Minutes).To(Equal(core.Int64Ptr(int64(30))))
+
+				// Construct an instance of the ApisAlertDefinitionActivitySchedule model
+				apisAlertDefinitionActivityScheduleModel := new(logsv0.ApisAlertDefinitionActivitySchedule)
+				Expect(apisAlertDefinitionActivityScheduleModel).ToNot(BeNil())
+				apisAlertDefinitionActivityScheduleModel.DayOfWeek = []string{"sunday"}
+				apisAlertDefinitionActivityScheduleModel.StartTime = apisAlertDefinitionTimeOfDayModel
+				apisAlertDefinitionActivityScheduleModel.EndTime = apisAlertDefinitionTimeOfDayModel
+				Expect(apisAlertDefinitionActivityScheduleModel.DayOfWeek).To(Equal([]string{"sunday"}))
+				Expect(apisAlertDefinitionActivityScheduleModel.StartTime).To(Equal(apisAlertDefinitionTimeOfDayModel))
+				Expect(apisAlertDefinitionActivityScheduleModel.EndTime).To(Equal(apisAlertDefinitionTimeOfDayModel))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefIncidentSettings model
+				apisAlertDefinitionAlertDefIncidentSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes = core.Int64Ptr(int64(30))
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
+				Expect(apisAlertDefinitionAlertDefIncidentSettingsModel.Minutes).To(Equal(core.Int64Ptr(int64(30))))
+
+				// Construct an instance of the ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID model
+				apisAlertDefinitionIntegrationTypeModel := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+				Expect(apisAlertDefinitionIntegrationTypeModel).ToNot(BeNil())
+				apisAlertDefinitionIntegrationTypeModel.IntegrationID = core.Int64Ptr(int64(123))
+				Expect(apisAlertDefinitionIntegrationTypeModel.IntegrationID).To(Equal(core.Int64Ptr(int64(123))))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefWebhooksSettings model
+				apisAlertDefinitionAlertDefWebhooksSettingsModel := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn = core.StringPtr("triggered_and_resolved")
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration = apisAlertDefinitionIntegrationTypeModel
+				apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes = core.Int64Ptr(int64(15))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.NotifyOn).To(Equal(core.StringPtr("triggered_and_resolved")))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.Integration).To(Equal(apisAlertDefinitionIntegrationTypeModel))
+				Expect(apisAlertDefinitionAlertDefWebhooksSettingsModel.Minutes).To(Equal(core.Int64Ptr(int64(15))))
+
+				// Construct an instance of the ApisAlertDefinitionAlertDefNotificationGroup model
+				apisAlertDefinitionAlertDefNotificationGroupModel := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel).ToNot(BeNil())
+				apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys = []string{"key1", "key2"}
+				apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks = []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel.GroupByKeys).To(Equal([]string{"key1", "key2"}))
+				Expect(apisAlertDefinitionAlertDefNotificationGroupModel.Webhooks).To(Equal([]logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel}))
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilterType model
+				apisAlertDefinitionLabelFilterTypeModel := new(logsv0.ApisAlertDefinitionLabelFilterType)
+				Expect(apisAlertDefinitionLabelFilterTypeModel).ToNot(BeNil())
+				apisAlertDefinitionLabelFilterTypeModel.Value = core.StringPtr("my-app")
+				apisAlertDefinitionLabelFilterTypeModel.Operation = core.StringPtr("starts_with")
+				Expect(apisAlertDefinitionLabelFilterTypeModel.Value).To(Equal(core.StringPtr("my-app")))
+				Expect(apisAlertDefinitionLabelFilterTypeModel.Operation).To(Equal(core.StringPtr("starts_with")))
+
+				// Construct an instance of the ApisAlertDefinitionLabelFilters model
+				apisAlertDefinitionLabelFiltersModel := new(logsv0.ApisAlertDefinitionLabelFilters)
+				Expect(apisAlertDefinitionLabelFiltersModel).ToNot(BeNil())
+				apisAlertDefinitionLabelFiltersModel.ApplicationName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.SubsystemName = []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}
+				apisAlertDefinitionLabelFiltersModel.Severities = []string{"critical"}
+				Expect(apisAlertDefinitionLabelFiltersModel.ApplicationName).To(Equal([]logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}))
+				Expect(apisAlertDefinitionLabelFiltersModel.SubsystemName).To(Equal([]logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel}))
+				Expect(apisAlertDefinitionLabelFiltersModel.Severities).To(Equal([]string{"critical"}))
+
+				// Construct an instance of the ApisAlertDefinitionLogsSimpleFilter model
+				apisAlertDefinitionLogsSimpleFilterModel := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+				Expect(apisAlertDefinitionLogsSimpleFilterModel).ToNot(BeNil())
+				apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery = core.StringPtr("text:\"error\"")
+				apisAlertDefinitionLogsSimpleFilterModel.LabelFilters = apisAlertDefinitionLabelFiltersModel
+				Expect(apisAlertDefinitionLogsSimpleFilterModel.LuceneQuery).To(Equal(core.StringPtr("text:\"error\"")))
+				Expect(apisAlertDefinitionLogsSimpleFilterModel.LabelFilters).To(Equal(apisAlertDefinitionLabelFiltersModel))
+
+				// Construct an instance of the ApisAlertDefinitionLogsFilter model
+				apisAlertDefinitionLogsFilterModel := new(logsv0.ApisAlertDefinitionLogsFilter)
+				Expect(apisAlertDefinitionLogsFilterModel).ToNot(BeNil())
+				apisAlertDefinitionLogsFilterModel.SimpleFilter = apisAlertDefinitionLogsSimpleFilterModel
+				Expect(apisAlertDefinitionLogsFilterModel.SimpleFilter).To(Equal(apisAlertDefinitionLogsSimpleFilterModel))
+
+				// Construct an instance of the ApisAlertDefinitionLogsImmediateType model
+				apisAlertDefinitionLogsImmediateTypeModel := new(logsv0.ApisAlertDefinitionLogsImmediateType)
+				Expect(apisAlertDefinitionLogsImmediateTypeModel).ToNot(BeNil())
+				apisAlertDefinitionLogsImmediateTypeModel.LogsFilter = apisAlertDefinitionLogsFilterModel
+				apisAlertDefinitionLogsImmediateTypeModel.NotificationPayloadFilter = []string{"obj.field"}
+				Expect(apisAlertDefinitionLogsImmediateTypeModel.LogsFilter).To(Equal(apisAlertDefinitionLogsFilterModel))
+				Expect(apisAlertDefinitionLogsImmediateTypeModel.NotificationPayloadFilter).To(Equal([]string{"obj.field"}))
+
+				// Construct an instance of the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate model
+				alertDefinitionPrototypeModel := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate)
+				Expect(alertDefinitionPrototypeModel).ToNot(BeNil())
+				alertDefinitionPrototypeModel.Name = core.StringPtr("Unique count alert")
+				alertDefinitionPrototypeModel.Description = core.StringPtr("Example of unique count alert from terraform")
+				alertDefinitionPrototypeModel.Enabled = core.BoolPtr(true)
+				alertDefinitionPrototypeModel.Priority = core.StringPtr("p1")
+				alertDefinitionPrototypeModel.ActiveOn = apisAlertDefinitionActivityScheduleModel
+				alertDefinitionPrototypeModel.Type = core.StringPtr("flow")
+				alertDefinitionPrototypeModel.GroupByKeys = []string{"key1", "key2"}
+				alertDefinitionPrototypeModel.IncidentsSettings = apisAlertDefinitionAlertDefIncidentSettingsModel
+				alertDefinitionPrototypeModel.NotificationGroup = apisAlertDefinitionAlertDefNotificationGroupModel
+				alertDefinitionPrototypeModel.EntityLabels = map[string]string{"key1": "testString"}
+				alertDefinitionPrototypeModel.PhantomMode = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.Deleted = core.BoolPtr(false)
+				alertDefinitionPrototypeModel.LogsImmediate = apisAlertDefinitionLogsImmediateTypeModel
+				Expect(alertDefinitionPrototypeModel.Name).To(Equal(core.StringPtr("Unique count alert")))
+				Expect(alertDefinitionPrototypeModel.Description).To(Equal(core.StringPtr("Example of unique count alert from terraform")))
+				Expect(alertDefinitionPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
+				Expect(alertDefinitionPrototypeModel.Priority).To(Equal(core.StringPtr("p1")))
+				Expect(alertDefinitionPrototypeModel.ActiveOn).To(Equal(apisAlertDefinitionActivityScheduleModel))
+				Expect(alertDefinitionPrototypeModel.Type).To(Equal(core.StringPtr("flow")))
+				Expect(alertDefinitionPrototypeModel.GroupByKeys).To(Equal([]string{"key1", "key2"}))
+				Expect(alertDefinitionPrototypeModel.IncidentsSettings).To(Equal(apisAlertDefinitionAlertDefIncidentSettingsModel))
+				Expect(alertDefinitionPrototypeModel.NotificationGroup).To(Equal(apisAlertDefinitionAlertDefNotificationGroupModel))
+				Expect(alertDefinitionPrototypeModel.EntityLabels).To(Equal(map[string]string{"key1": "testString"}))
+				Expect(alertDefinitionPrototypeModel.PhantomMode).To(Equal(core.BoolPtr(false)))
+				Expect(alertDefinitionPrototypeModel.Deleted).To(Equal(core.BoolPtr(false)))
+				Expect(alertDefinitionPrototypeModel.LogsImmediate).To(Equal(apisAlertDefinitionLogsImmediateTypeModel))
+
+				// Construct an instance of the ReplaceAlertDefOptions model
+				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				var alertDefinitionPrototype logsv0.AlertDefinitionPrototypeIntf = nil
+				replaceAlertDefOptionsModel := logsService.NewReplaceAlertDefOptions(id, alertDefinitionPrototype)
+				replaceAlertDefOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
+				replaceAlertDefOptionsModel.SetAlertDefinitionPrototype(alertDefinitionPrototypeModel)
+				replaceAlertDefOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(replaceAlertDefOptionsModel).ToNot(BeNil())
+				Expect(replaceAlertDefOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+				Expect(replaceAlertDefOptionsModel.AlertDefinitionPrototype).To(Equal(alertDefinitionPrototypeModel))
+				Expect(replaceAlertDefOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewReplaceDashboardFolderOptions successfully`, func() {
 				// Construct an instance of the ReplaceDashboardFolderOptions model
@@ -19335,7 +22475,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewRulesV1AllowParameters successfully`, func() {
 				keepBlockedLogs := true
-				rule := "^this log should be kept!!!.*$"
+				rule := "^this log will be kept!!!.*$"
 				_model, err := logsService.NewRulesV1AllowParameters(keepBlockedLogs, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -19348,7 +22488,7 @@ var _ = Describe(`LogsV0`, func() {
 			})
 			It(`Invoke NewRulesV1BlockParameters successfully`, func() {
 				keepBlockedLogs := true
-				rule := "^this log should be blocked!!!.*$"
+				rule := "^this log will be blocked!!!.*$"
 				_model, err := logsService.NewRulesV1BlockParameters(keepBlockedLogs, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
@@ -19378,6 +22518,13 @@ var _ = Describe(`LogsV0`, func() {
 				standard := "nanots"
 				format := "%Y-%m-%ddT%H:%M:%S.%f%z"
 				_model, err := logsService.NewRulesV1ExtractTimestampParameters(standard, format)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewRulesV1JSONExtractParameters successfully`, func() {
+				destinationField := "severity"
+				rule := "log.elb_status_code"
+				_model, err := logsService.NewRulesV1JSONExtractParameters(destinationField, rule)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -19426,6 +22573,25 @@ var _ = Describe(`LogsV0`, func() {
 				_model, err := logsService.NewRulesV1SubsystemNameConstraint(value)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewSubmitBackgroundQueryOptions successfully`, func() {
+				// Construct an instance of the SubmitBackgroundQueryOptions model
+				submitBackgroundQueryOptionsQuery := "source logs | filter $d.apiVersion == 42"
+				submitBackgroundQueryOptionsSyntax := "dataprime_utf8_base64"
+				submitBackgroundQueryOptionsModel := logsService.NewSubmitBackgroundQueryOptions(submitBackgroundQueryOptionsQuery, submitBackgroundQueryOptionsSyntax)
+				submitBackgroundQueryOptionsModel.SetQuery("source logs | filter $d.apiVersion == 42")
+				submitBackgroundQueryOptionsModel.SetSyntax("dataprime_utf8_base64")
+				submitBackgroundQueryOptionsModel.SetStartDate(CreateMockDateTime("2023-11-05T13:15:30.000Z"))
+				submitBackgroundQueryOptionsModel.SetEndDate(CreateMockDateTime("2023-11-05T13:15:30.000Z"))
+				submitBackgroundQueryOptionsModel.SetNowDate(CreateMockDateTime("2023-11-05T13:15:30.000Z"))
+				submitBackgroundQueryOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(submitBackgroundQueryOptionsModel).ToNot(BeNil())
+				Expect(submitBackgroundQueryOptionsModel.Query).To(Equal(core.StringPtr("source logs | filter $d.apiVersion == 42")))
+				Expect(submitBackgroundQueryOptionsModel.Syntax).To(Equal(core.StringPtr("dataprime_utf8_base64")))
+				Expect(submitBackgroundQueryOptionsModel.StartDate).To(Equal(CreateMockDateTime("2023-11-05T13:15:30.000Z")))
+				Expect(submitBackgroundQueryOptionsModel.EndDate).To(Equal(CreateMockDateTime("2023-11-05T13:15:30.000Z")))
+				Expect(submitBackgroundQueryOptionsModel.NowDate).To(Equal(CreateMockDateTime("2023-11-05T13:15:30.000Z")))
+				Expect(submitBackgroundQueryOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUnpinDashboardOptions successfully`, func() {
 				// Construct an instance of the UnpinDashboardOptions model
@@ -19644,7 +22810,7 @@ var _ = Describe(`LogsV0`, func() {
 				updateAlertOptionsModel.SetIsActive(true)
 				updateAlertOptionsModel.SetSeverity("info_or_unspecified")
 				updateAlertOptionsModel.SetCondition(alertsV2AlertConditionModel)
-				updateAlertOptionsModel.SetDescription("Alert if the number of logs reaches a threshold")
+				updateAlertOptionsModel.SetDescription("Alert when the number of logs reaches a threshold.")
 				updateAlertOptionsModel.SetExpiration(alertsV1DateModel)
 				updateAlertOptionsModel.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
 				updateAlertOptionsModel.SetFilters(alertsV1AlertFiltersModel)
@@ -19660,7 +22826,7 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateAlertOptionsModel.IsActive).To(Equal(core.BoolPtr(true)))
 				Expect(updateAlertOptionsModel.Severity).To(Equal(core.StringPtr("info_or_unspecified")))
 				Expect(updateAlertOptionsModel.Condition).To(Equal(alertsV2AlertConditionModel))
-				Expect(updateAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert if the number of logs reaches a threshold")))
+				Expect(updateAlertOptionsModel.Description).To(Equal(core.StringPtr("Alert when the number of logs reaches a threshold.")))
 				Expect(updateAlertOptionsModel.Expiration).To(Equal(alertsV1DateModel))
 				Expect(updateAlertOptionsModel.NotificationGroups).To(Equal([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel}))
 				Expect(updateAlertOptionsModel.Filters).To(Equal(alertsV1AlertFiltersModel))
@@ -19682,22 +22848,22 @@ var _ = Describe(`LogsV0`, func() {
 
 				// Construct an instance of the UpdateDataAccessRuleOptions model
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				updateDataAccessRuleOptionsDisplayName := "Test Data Access Rule"
+				updateDataAccessRuleOptionsDisplayName := "Test data access rule"
 				updateDataAccessRuleOptionsFilters := []logsv0.DataAccessRuleFilter{}
-				updateDataAccessRuleOptionsDefaultExpression := "<v1> foo == 'bar'"
+				updateDataAccessRuleOptionsDefaultExpression := "<v1>true"
 				updateDataAccessRuleOptionsModel := logsService.NewUpdateDataAccessRuleOptions(id, updateDataAccessRuleOptionsDisplayName, updateDataAccessRuleOptionsFilters, updateDataAccessRuleOptionsDefaultExpression)
 				updateDataAccessRuleOptionsModel.SetID(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"))
-				updateDataAccessRuleOptionsModel.SetDisplayName("Test Data Access Rule")
+				updateDataAccessRuleOptionsModel.SetDisplayName("Test data access rule")
 				updateDataAccessRuleOptionsModel.SetFilters([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel})
-				updateDataAccessRuleOptionsModel.SetDefaultExpression("<v1> foo == 'bar'")
-				updateDataAccessRuleOptionsModel.SetDescription("Data Access Rule intended for testing")
+				updateDataAccessRuleOptionsModel.SetDefaultExpression("<v1>true")
+				updateDataAccessRuleOptionsModel.SetDescription("Data access rule intended for testing")
 				updateDataAccessRuleOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(updateDataAccessRuleOptionsModel).ToNot(BeNil())
 				Expect(updateDataAccessRuleOptionsModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
-				Expect(updateDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test Data Access Rule")))
+				Expect(updateDataAccessRuleOptionsModel.DisplayName).To(Equal(core.StringPtr("Test data access rule")))
 				Expect(updateDataAccessRuleOptionsModel.Filters).To(Equal([]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel}))
-				Expect(updateDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1> foo == 'bar'")))
-				Expect(updateDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data Access Rule intended for testing")))
+				Expect(updateDataAccessRuleOptionsModel.DefaultExpression).To(Equal(core.StringPtr("<v1>true")))
+				Expect(updateDataAccessRuleOptionsModel.Description).To(Equal(core.StringPtr("Data access rule intended for testing")))
 				Expect(updateDataAccessRuleOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdateDataUsageMetricsExportStatusOptions successfully`, func() {
@@ -19780,6 +22946,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateOutgoingWebhookOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewUpdatePolicyOptions successfully`, func() {
+				// Construct an instance of the PolicyBeforePrototype model
+				policyBeforePrototypeModel := new(logsv0.PolicyBeforePrototype)
+				Expect(policyBeforePrototypeModel).ToNot(BeNil())
+				policyBeforePrototypeModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+				Expect(policyBeforePrototypeModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
+
 				// Construct an instance of the QuotaV1Rule model
 				quotaV1RuleModel := new(logsv0.QuotaV1Rule)
 				Expect(quotaV1RuleModel).ToNot(BeNil())
@@ -19804,18 +22976,22 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 				Expect(policyPrototypeModel).ToNot(BeNil())
 				policyPrototypeModel.Name = core.StringPtr("My Policy")
-				policyPrototypeModel.Description = core.StringPtr("My Policy Description")
+				policyPrototypeModel.Before = policyBeforePrototypeModel
+				policyPrototypeModel.Description = core.StringPtr("My Policy description")
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
 				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 				Expect(policyPrototypeModel.Name).To(Equal(core.StringPtr("My Policy")))
-				Expect(policyPrototypeModel.Description).To(Equal(core.StringPtr("My Policy Description")))
+				Expect(policyPrototypeModel.Before).To(Equal(policyBeforePrototypeModel))
+				Expect(policyPrototypeModel.Description).To(Equal(core.StringPtr("My Policy description")))
 				Expect(policyPrototypeModel.Priority).To(Equal(core.StringPtr("type_high")))
 				Expect(policyPrototypeModel.ApplicationRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.SubsystemRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.ArchiveRetention).To(Equal(quotaV1ArchiveRetentionModel))
+				Expect(policyPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(policyPrototypeModel.LogRules).To(Equal(quotaV1LogRulesModel))
 
 				// Construct an instance of the UpdatePolicyOptions model
@@ -19906,6 +23082,76 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateRuleGroupOptionsModel.Order).To(Equal(core.Int64Ptr(int64(39))))
 				Expect(updateRuleGroupOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
+			It(`Invoke NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold successfully`, func() {
+				name := "Unique count alert"
+				typeVar := "flow"
+				_model, err := logsService.NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold(name, typeVar)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewDashboardApisDashboardsV1AstDashboardAutoRefreshFiveMinutes successfully`, func() {
 				name := "My Dashboard"
 				var layout *logsv0.ApisDashboardsV1AstLayout = nil
@@ -19971,6 +23217,45 @@ var _ = Describe(`LogsV0`, func() {
 		})
 	})
 	Describe(`Model unmarshaling tests`, func() {
+		It(`Invoke UnmarshalAlertDefinitionPrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototype)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsImmediate = nil
+			model.LogsThreshold = nil
+			model.LogsRatioThreshold = nil
+			model.LogsTimeRelativeThreshold = nil
+			model.MetricThreshold = nil
+			model.Flow = nil
+			model.LogsAnomaly = nil
+			model.MetricAnomaly = nil
+			model.LogsNewValue = nil
+			model.LogsUniqueCount = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototype
+			err = logsv0.UnmarshalAlertDefinitionPrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalAlertsV1AlertActiveTimeframe successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV1AlertActiveTimeframe)
@@ -20581,6 +23866,983 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.AlertsV2UniqueCountCondition
 			err = logsv0.UnmarshalAlertsV2UniqueCountCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionActivitySchedule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionActivitySchedule)
+			model.DayOfWeek = []string{"sunday"}
+			model.StartTime = nil
+			model.EndTime = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionActivitySchedule
+			err = logsv0.UnmarshalApisAlertDefinitionActivitySchedule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionAlertDefIncidentSettings successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionAlertDefIncidentSettings)
+			model.NotifyOn = core.StringPtr("triggered_and_resolved")
+			model.Minutes = core.Int64Ptr(int64(30))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionAlertDefIncidentSettings
+			err = logsv0.UnmarshalApisAlertDefinitionAlertDefIncidentSettings(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionAlertDefNotificationGroup successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionAlertDefNotificationGroup)
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.Webhooks = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionAlertDefNotificationGroup
+			err = logsv0.UnmarshalApisAlertDefinitionAlertDefNotificationGroup(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionAlertDefOverride successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionAlertDefOverride)
+			model.Priority = core.StringPtr("p1")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionAlertDefOverride
+			err = logsv0.UnmarshalApisAlertDefinitionAlertDefOverride(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionAlertDefWebhooksSettings successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionAlertDefWebhooksSettings)
+			model.NotifyOn = core.StringPtr("triggered_and_resolved")
+			model.Integration = nil
+			model.Minutes = core.Int64Ptr(int64(15))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionAlertDefWebhooksSettings
+			err = logsv0.UnmarshalApisAlertDefinitionAlertDefWebhooksSettings(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionAnomalyAlertSettings successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionAnomalyAlertSettings)
+			model.PercentageOfDeviation = core.Float32Ptr(float32(10.0))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionAnomalyAlertSettings
+			err = logsv0.UnmarshalApisAlertDefinitionAnomalyAlertSettings(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionFlowStages successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionFlowStages)
+			model.TimeframeMs = core.StringPtr("60000")
+			model.TimeframeType = core.StringPtr("up_to")
+			model.FlowStagesGroups = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionFlowStages
+			err = logsv0.UnmarshalApisAlertDefinitionFlowStages(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionFlowStagesGroup successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionFlowStagesGroup)
+			model.AlertDefs = nil
+			model.NextOp = core.StringPtr("or")
+			model.AlertsOp = core.StringPtr("or")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionFlowStagesGroup
+			err = logsv0.UnmarshalApisAlertDefinitionFlowStagesGroup(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionFlowStagesGroups successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionFlowStagesGroups)
+			model.Groups = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionFlowStagesGroups
+			err = logsv0.UnmarshalApisAlertDefinitionFlowStagesGroups(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionFlowStagesGroupsAlertDefs successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionFlowStagesGroupsAlertDefs)
+			model.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+			model.Not = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionFlowStagesGroupsAlertDefs
+			err = logsv0.UnmarshalApisAlertDefinitionFlowStagesGroupsAlertDefs(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionFlowType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionFlowType)
+			model.Stages = nil
+			model.EnforceSuppression = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionFlowType
+			err = logsv0.UnmarshalApisAlertDefinitionFlowType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionIntegrationType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionIntegrationType)
+			model.IntegrationID = core.Int64Ptr(int64(123))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionIntegrationType
+			err = logsv0.UnmarshalApisAlertDefinitionIntegrationType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLabelFilterType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLabelFilterType)
+			model.Value = core.StringPtr("my-app")
+			model.Operation = core.StringPtr("starts_with")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLabelFilterType
+			err = logsv0.UnmarshalApisAlertDefinitionLabelFilterType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLabelFilters successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLabelFilters)
+			model.ApplicationName = nil
+			model.SubsystemName = nil
+			model.Severities = []string{"critical"}
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLabelFilters
+			err = logsv0.UnmarshalApisAlertDefinitionLabelFilters(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsAnomalyCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsAnomalyCondition)
+			model.MinimumThreshold = core.Float64Ptr(float64(10.0))
+			model.TimeWindow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsAnomalyCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsAnomalyCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsAnomalyRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsAnomalyRule)
+			model.Condition = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsAnomalyRule
+			err = logsv0.UnmarshalApisAlertDefinitionLogsAnomalyRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsAnomalyType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsAnomalyType)
+			model.LogsFilter = nil
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("more_than_usual_or_unspecified")
+			model.NotificationPayloadFilter = []string{"obj.field"}
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+			model.AnomalyAlertSettings = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsAnomalyType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsAnomalyType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsFilter)
+			model.SimpleFilter = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsFilter
+			err = logsv0.UnmarshalApisAlertDefinitionLogsFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsImmediateType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsImmediateType)
+			model.LogsFilter = nil
+			model.NotificationPayloadFilter = []string{"obj.field"}
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsImmediateType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsImmediateType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsNewValueCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsNewValueCondition)
+			model.KeypathToTrack = core.StringPtr("metadata.field")
+			model.TimeWindow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsNewValueCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsNewValueCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsNewValueRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsNewValueRule)
+			model.Condition = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsNewValueRule
+			err = logsv0.UnmarshalApisAlertDefinitionLogsNewValueRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsNewValueTimeWindow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsNewValueTimeWindow)
+			model.LogsNewValueTimeWindowSpecificValue = core.StringPtr("months_3")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsNewValueTimeWindow
+			err = logsv0.UnmarshalApisAlertDefinitionLogsNewValueTimeWindow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsNewValueType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsNewValueType)
+			model.LogsFilter = nil
+			model.Rules = nil
+			model.NotificationPayloadFilter = []string{"obj.field"}
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsNewValueType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsNewValueType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsRatioCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsRatioCondition)
+			model.Threshold = core.Float64Ptr(float64(10.0))
+			model.TimeWindow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsRatioCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsRatioCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsRatioRules successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsRatioRules)
+			model.Condition = nil
+			model.Override = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsRatioRules
+			err = logsv0.UnmarshalApisAlertDefinitionLogsRatioRules(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsRatioThresholdType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsRatioThresholdType)
+			model.Numerator = nil
+			model.NumeratorAlias = core.StringPtr("numerator_alias")
+			model.Denominator = nil
+			model.DenominatorAlias = core.StringPtr("denominator_alias")
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("less_than")
+			model.NotificationPayloadFilter = []string{"obj.field"}
+			model.GroupByFor = core.StringPtr("denumerator_only")
+			model.UndetectedValuesManagement = nil
+			model.IgnoreInfinity = core.BoolPtr(true)
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsRatioThresholdType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsRatioThresholdType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsRatioTimeWindow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsRatioTimeWindow)
+			model.LogsRatioTimeWindowSpecificValue = core.StringPtr("hours_36")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsRatioTimeWindow
+			err = logsv0.UnmarshalApisAlertDefinitionLogsRatioTimeWindow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsSimpleFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsSimpleFilter)
+			model.LuceneQuery = core.StringPtr("text:\"error\"")
+			model.LabelFilters = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsSimpleFilter
+			err = logsv0.UnmarshalApisAlertDefinitionLogsSimpleFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsThresholdCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsThresholdCondition)
+			model.Threshold = core.Float64Ptr(float64(100.0))
+			model.TimeWindow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsThresholdCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsThresholdCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsThresholdRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsThresholdRule)
+			model.Condition = nil
+			model.Override = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsThresholdRule
+			err = logsv0.UnmarshalApisAlertDefinitionLogsThresholdRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsThresholdType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsThresholdType)
+			model.LogsFilter = nil
+			model.UndetectedValuesManagement = nil
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("less_than")
+			model.NotificationPayloadFilter = []string{"obj.field"}
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsThresholdType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsThresholdType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsTimeRelativeCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsTimeRelativeCondition)
+			model.Threshold = core.Float64Ptr(float64(100.0))
+			model.ComparedTo = core.StringPtr("same_day_last_month")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsTimeRelativeCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsTimeRelativeCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsTimeRelativeRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsTimeRelativeRule)
+			model.Condition = nil
+			model.Override = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsTimeRelativeRule
+			err = logsv0.UnmarshalApisAlertDefinitionLogsTimeRelativeRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsTimeRelativeThresholdType)
+			model.LogsFilter = nil
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("less_than")
+			model.IgnoreInfinity = core.BoolPtr(true)
+			model.NotificationPayloadFilter = []string{"obj.field"}
+			model.UndetectedValuesManagement = nil
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsTimeRelativeThresholdType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsTimeWindow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsTimeWindow)
+			model.LogsTimeWindowSpecificValue = core.StringPtr("hours_36")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsTimeWindow
+			err = logsv0.UnmarshalApisAlertDefinitionLogsTimeWindow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsUniqueCountCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsUniqueCountCondition)
+			model.MaxUniqueCount = core.StringPtr("100")
+			model.TimeWindow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsUniqueCountCondition
+			err = logsv0.UnmarshalApisAlertDefinitionLogsUniqueCountCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsUniqueCountRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsUniqueCountRule)
+			model.Condition = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsUniqueCountRule
+			err = logsv0.UnmarshalApisAlertDefinitionLogsUniqueCountRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsUniqueCountType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsUniqueCountType)
+			model.LogsFilter = nil
+			model.Rules = nil
+			model.NotificationPayloadFilter = []string{"obj.field"}
+			model.MaxUniqueCountPerGroupByKey = core.StringPtr("100")
+			model.UniqueCountKeypath = core.StringPtr("obj.field")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsUniqueCountType
+			err = logsv0.UnmarshalApisAlertDefinitionLogsUniqueCountType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionLogsUniqueValueTimeWindow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionLogsUniqueValueTimeWindow)
+			model.LogsUniqueValueTimeWindowSpecificValue = core.StringPtr("hours_36")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionLogsUniqueValueTimeWindow
+			err = logsv0.UnmarshalApisAlertDefinitionLogsUniqueValueTimeWindow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricAnomalyCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricAnomalyCondition)
+			model.Threshold = core.Float64Ptr(float64(10.0))
+			model.ForOverPct = core.Int64Ptr(int64(20))
+			model.OfTheLast = nil
+			model.MinNonNullValuesPct = core.Int64Ptr(int64(10))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricAnomalyCondition
+			err = logsv0.UnmarshalApisAlertDefinitionMetricAnomalyCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricAnomalyRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricAnomalyRule)
+			model.Condition = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricAnomalyRule
+			err = logsv0.UnmarshalApisAlertDefinitionMetricAnomalyRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricAnomalyType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricAnomalyType)
+			model.MetricFilter = nil
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("less_than_usual")
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+			model.AnomalyAlertSettings = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricAnomalyType
+			err = logsv0.UnmarshalApisAlertDefinitionMetricAnomalyType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricFilter successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricFilter)
+			model.Promql = core.StringPtr("avg_over_time(metric_name[5m]) > 10")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricFilter
+			err = logsv0.UnmarshalApisAlertDefinitionMetricFilter(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricMissingValues successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricMissingValues)
+			model.ReplaceWithZero = core.BoolPtr(true)
+			model.MinNonNullValuesPct = core.Int64Ptr(int64(80))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricMissingValues
+			err = logsv0.UnmarshalApisAlertDefinitionMetricMissingValues(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricThresholdCondition successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricThresholdCondition)
+			model.Threshold = core.Float64Ptr(float64(100.0))
+			model.ForOverPct = core.Int64Ptr(int64(80))
+			model.OfTheLast = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricThresholdCondition
+			err = logsv0.UnmarshalApisAlertDefinitionMetricThresholdCondition(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricThresholdRule successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricThresholdRule)
+			model.Condition = nil
+			model.Override = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricThresholdRule
+			err = logsv0.UnmarshalApisAlertDefinitionMetricThresholdRule(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricThresholdType successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricThresholdType)
+			model.MetricFilter = nil
+			model.Rules = nil
+			model.ConditionType = core.StringPtr("less_than_or_equals")
+			model.UndetectedValuesManagement = nil
+			model.MissingValues = nil
+			model.EvaluationDelayMs = core.Int64Ptr(int64(60000))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricThresholdType
+			err = logsv0.UnmarshalApisAlertDefinitionMetricThresholdType(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricTimeWindow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricTimeWindow)
+			model.MetricTimeWindowSpecificValue = core.StringPtr("hours_36")
+			model.MetricTimeWindowDynamicDuration = core.StringPtr("1h30m")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricTimeWindow
+			err = logsv0.UnmarshalApisAlertDefinitionMetricTimeWindow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionTimeOfDay successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionTimeOfDay)
+			model.Hours = core.Int64Ptr(int64(14))
+			model.Minutes = core.Int64Ptr(int64(30))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionTimeOfDay
+			err = logsv0.UnmarshalApisAlertDefinitionTimeOfDay(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionUndetectedValuesManagement successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionUndetectedValuesManagement)
+			model.TriggerUndetectedValues = core.BoolPtr(true)
+			model.AutoRetireTimeframe = core.StringPtr("hours_24")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionUndetectedValuesManagement
+			err = logsv0.UnmarshalApisAlertDefinitionUndetectedValuesManagement(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -23713,15 +27975,35 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalPolicyBeforePrototype successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.PolicyBeforePrototype)
+			model.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.PolicyBeforePrototype
+			err = logsv0.UnmarshalPolicyBeforePrototype(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalPolicyPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.PolicyPrototype)
 			model.Name = core.StringPtr("My Policy")
-			model.Description = core.StringPtr("My Policy Description")
+			model.Before = nil
+			model.Description = core.StringPtr("My Policy description")
 			model.Priority = core.StringPtr("type_high")
 			model.ApplicationRule = nil
 			model.SubsystemRule = nil
 			model.ArchiveRetention = nil
+			model.Enabled = core.BoolPtr(true)
 			model.LogRules = nil
 
 			b, err := json.Marshal(model)
@@ -23796,7 +28078,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1AllowParameters)
 			model.KeepBlockedLogs = core.BoolPtr(true)
-			model.Rule = core.StringPtr("^this log should be kept!!!.*$")
+			model.Rule = core.StringPtr("^this log will be kept!!!.*$")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -23833,7 +28115,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1BlockParameters)
 			model.KeepBlockedLogs = core.BoolPtr(true)
-			model.Rule = core.StringPtr("^this log should be blocked!!!.*$")
+			model.Rule = core.StringPtr("^this log will be blocked!!!.*$")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -23932,6 +28214,7 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.RulesV1JSONExtractParameters)
 			model.DestinationField = core.StringPtr("severity")
+			model.Rule = core.StringPtr("log.elb_status_code")
 
 			b, err := json.Marshal(model)
 			Expect(err).To(BeNil())
@@ -24125,6 +28408,306 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.Flow = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsAnomaly = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsImmediate = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsNewValue = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsRatioThreshold = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsThreshold = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsTimeRelativeThreshold = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.LogsUniqueCount = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.MetricAnomaly = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold)
+			model.Name = core.StringPtr("Unique count alert")
+			model.Description = core.StringPtr("Example of unique count alert from terraform")
+			model.Enabled = core.BoolPtr(true)
+			model.Priority = core.StringPtr("p1")
+			model.ActiveOn = nil
+			model.Type = core.StringPtr("flow")
+			model.GroupByKeys = []string{"key1", "key2"}
+			model.IncidentsSettings = nil
+			model.NotificationGroup = nil
+			model.EntityLabels = map[string]string{"key1": "testString"}
+			model.PhantomMode = core.BoolPtr(false)
+			model.Deleted = core.BoolPtr(false)
+			model.MetricThreshold = nil
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold
+			err = logsv0.UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalAlertsV2AlertConditionConditionFlow successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.AlertsV2AlertConditionConditionFlow)
@@ -24305,6 +28888,96 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.AlertsV2AlertNotificationIntegrationTypeRecipients
 			err = logsv0.UnmarshalAlertsV2AlertNotificationIntegrationTypeRecipients(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+			model.IntegrationID = core.Int64Ptr(int64(123))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID
+			err = logsv0.UnmarshalApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct)
+			model.MinNonNullValuesPct = core.Int64Ptr(int64(80))
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct
+			err = logsv0.UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero)
+			model.ReplaceWithZero = core.BoolPtr(true)
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero
+			err = logsv0.UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration)
+			model.MetricTimeWindowDynamicDuration = core.StringPtr("1h30m")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration
+			err = logsv0.UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue)
+			model.MetricTimeWindowSpecificValue = core.StringPtr("hours_36")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue
+			err = logsv0.UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -25932,11 +30605,13 @@ var _ = Describe(`LogsV0`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules)
 			model.Name = core.StringPtr("My Policy")
-			model.Description = core.StringPtr("My Policy Description")
+			model.Before = nil
+			model.Description = core.StringPtr("My Policy description")
 			model.Priority = core.StringPtr("type_high")
 			model.ApplicationRule = nil
 			model.SubsystemRule = nil
 			model.ArchiveRetention = nil
+			model.Enabled = core.BoolPtr(true)
 			model.LogRules = nil
 
 			b, err := json.Marshal(model)
