@@ -1020,8 +1020,8 @@ func (logs *LogsV0) ListOutgoingWebhooksWithContext(ctx context.Context, listOut
 	return
 }
 
-// CreateOutgoingWebhook : Create an Outbound Integration
-// Create an Outbound Integration.
+// CreateOutgoingWebhook : Create an outbound integration
+// Create an outbound integration.
 func (logs *LogsV0) CreateOutgoingWebhook(createOutgoingWebhookOptions *CreateOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateOutgoingWebhookWithContext(context.Background(), createOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1092,8 +1092,8 @@ func (logs *LogsV0) CreateOutgoingWebhookWithContext(ctx context.Context, create
 	return
 }
 
-// GetOutgoingWebhook : Gets an Outbound Integration by ID
-// Gets an Outbound Integration by ID.
+// GetOutgoingWebhook : Gets an outbound integration by ID
+// Gets an outbound integration by ID.
 func (logs *LogsV0) GetOutgoingWebhook(getOutgoingWebhookOptions *GetOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.GetOutgoingWebhookWithContext(context.Background(), getOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1161,8 +1161,8 @@ func (logs *LogsV0) GetOutgoingWebhookWithContext(ctx context.Context, getOutgoi
 	return
 }
 
-// UpdateOutgoingWebhook : Update an Outbound Integration
-// Update an Outbound Integration.
+// UpdateOutgoingWebhook : Update an outbound integration
+// Update an outbound integration.
 func (logs *LogsV0) UpdateOutgoingWebhook(updateOutgoingWebhookOptions *UpdateOutgoingWebhookOptions) (result OutgoingWebhookIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdateOutgoingWebhookWithContext(context.Background(), updateOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -1237,8 +1237,8 @@ func (logs *LogsV0) UpdateOutgoingWebhookWithContext(ctx context.Context, update
 	return
 }
 
-// DeleteOutgoingWebhook : Delete an Outbound Integration
-// Delete an Outbound Integration.
+// DeleteOutgoingWebhook : Delete an outbound integration
+// Delete an outbound integration.
 func (logs *LogsV0) DeleteOutgoingWebhook(deleteOutgoingWebhookOptions *DeleteOutgoingWebhookOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteOutgoingWebhookWithContext(context.Background(), deleteOutgoingWebhookOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -3684,8 +3684,8 @@ func (logs *LogsV0) ListDataAccessRulesWithContext(ctx context.Context, listData
 	return
 }
 
-// CreateDataAccessRule : Create a Data Access Rule
-// Create a Data Access Rule.
+// CreateDataAccessRule : Create a data access rule
+// Create a data access rule.
 func (logs *LogsV0) CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
 	result, response, err = logs.CreateDataAccessRuleWithContext(context.Background(), createDataAccessRuleOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -3769,8 +3769,8 @@ func (logs *LogsV0) CreateDataAccessRuleWithContext(ctx context.Context, createD
 	return
 }
 
-// UpdateDataAccessRule : Update a Data Access Rule
-// Update a Data Access Rule.
+// UpdateDataAccessRule : Update a data access rule
+// Update a data access rule.
 func (logs *LogsV0) UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
 	result, response, err = logs.UpdateDataAccessRuleWithContext(context.Background(), updateDataAccessRuleOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -3858,8 +3858,8 @@ func (logs *LogsV0) UpdateDataAccessRuleWithContext(ctx context.Context, updateD
 	return
 }
 
-// DeleteDataAccessRule : Delete a Data Access Rule
-// Delete a Data Access Rule.
+// DeleteDataAccessRule : Delete a data access rule
+// Delete a data access rule.
 func (logs *LogsV0) DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
 	response, err = logs.DeleteDataAccessRuleWithContext(context.Background(), deleteDataAccessRuleOptions)
 	err = core.RepurposeSDKProblem(err, "")
@@ -4115,7 +4115,7 @@ func (logs *LogsV0) RemoveEnrichmentsWithContext(ctx context.Context, removeEnri
 	return
 }
 
-// ExportDataUsage : Get Data usage and metrics export Status
+// ExportDataUsage : Get data usage metrics export status or return data usage report
 // Get Data usage and metrics export Status.
 func (logs *LogsV0) ExportDataUsage(exportDataUsageOptions *ExportDataUsageOptions) (result ExportDataUsageResponseIntf, response *core.DetailedResponse, err error) {
 	result, response, err = logs.ExportDataUsageWithContext(context.Background(), exportDataUsageOptions)
@@ -4556,6 +4556,559 @@ func (logs *LogsV0) UpdateEventStreamTargetWithContext(ctx context.Context, upda
 
 	return
 }
+
+// SubmitBackgroundQuery : Submit a background query to be processed asynchronously
+// Submits a query that runs in the background, allowing the client to continue without waiting for the results
+// immediately.
+func (logs *LogsV0) SubmitBackgroundQuery(submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
+	result, response, err = logs.SubmitBackgroundQueryWithContext(context.Background(), submitBackgroundQueryOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// SubmitBackgroundQueryWithContext is an alternate form of the SubmitBackgroundQuery method which supports a Context parameter
+func (logs *LogsV0) SubmitBackgroundQueryWithContext(ctx context.Context, submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(submitBackgroundQueryOptions, "submitBackgroundQueryOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(submitBackgroundQueryOptions, "submitBackgroundQueryOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range submitBackgroundQueryOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "SubmitBackgroundQuery")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if submitBackgroundQueryOptions.Query != nil {
+		body["query"] = submitBackgroundQueryOptions.Query
+	}
+	if submitBackgroundQueryOptions.Syntax != nil {
+		body["syntax"] = submitBackgroundQueryOptions.Syntax
+	}
+	if submitBackgroundQueryOptions.StartDate != nil {
+		body["start_date"] = submitBackgroundQueryOptions.StartDate
+	}
+	if submitBackgroundQueryOptions.EndDate != nil {
+		body["end_date"] = submitBackgroundQueryOptions.EndDate
+	}
+	if submitBackgroundQueryOptions.NowDate != nil {
+		body["now_date"] = submitBackgroundQueryOptions.NowDate
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "submit_background_query", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQuery)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetBackgroundQueryStatus : Get the status of a background query
+// Get the status of a background query.
+func (logs *LogsV0) GetBackgroundQueryStatus(getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetBackgroundQueryStatusWithContext(context.Background(), getBackgroundQueryStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetBackgroundQueryStatusWithContext is an alternate form of the GetBackgroundQueryStatus method which supports a Context parameter
+func (logs *LogsV0) GetBackgroundQueryStatusWithContext(ctx context.Context, getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"query_id": fmt.Sprint(*getBackgroundQueryStatusOptions.QueryID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/status`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getBackgroundQueryStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetBackgroundQueryStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_background_query_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQueryStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CancelBackgroundQuery : Cancel a background query
+// Cancel a background query.
+func (logs *LogsV0) CancelBackgroundQuery(cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.CancelBackgroundQueryWithContext(context.Background(), cancelBackgroundQueryOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CancelBackgroundQueryWithContext is an alternate form of the CancelBackgroundQuery method which supports a Context parameter
+func (logs *LogsV0) CancelBackgroundQueryWithContext(ctx context.Context, cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"query_id": fmt.Sprint(*cancelBackgroundQueryOptions.QueryID),
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/cancel`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range cancelBackgroundQueryOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CancelBackgroundQuery")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "cancel_background_query", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// GetAlertDef : Get an alert definition by ID
+// Get details of an existing alert by using the alert ID.
+func (logs *LogsV0) GetAlertDef(getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetAlertDefWithContext(context.Background(), getAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetAlertDefWithContext is an alternate form of the GetAlertDef method which supports a Context parameter
+func (logs *LogsV0) GetAlertDefWithContext(ctx context.Context, getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getAlertDefOptions, "getAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getAlertDefOptions, "getAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*getAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceAlertDef : Update an alert definition by ID
+// Update an alert definition.
+func (logs *LogsV0) ReplaceAlertDef(replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceAlertDefWithContext(context.Background(), replaceAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceAlertDefWithContext is an alternate form of the ReplaceAlertDef method which supports a Context parameter
+func (logs *LogsV0) ReplaceAlertDefWithContext(ctx context.Context, replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceAlertDefOptions, "replaceAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceAlertDefOptions, "replaceAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*replaceAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(replaceAlertDefOptions.AlertDefinitionPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteAlertDef : Delete an alert definition by ID
+// Delete an alert definition.
+func (logs *LogsV0) DeleteAlertDef(deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteAlertDefWithContext(context.Background(), deleteAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteAlertDefWithContext is an alternate form of the DeleteAlertDef method which supports a Context parameter
+func (logs *LogsV0) DeleteAlertDefWithContext(ctx context.Context, deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteAlertDefOptions, "deleteAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteAlertDefOptions, "deleteAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListAlertDefs : List alert definitions
+// List alert definitions.
+func (logs *LogsV0) ListAlertDefs(listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListAlertDefsWithContext(context.Background(), listAlertDefsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListAlertDefsWithContext is an alternate form of the ListAlertDefs method which supports a Context parameter
+func (logs *LogsV0) ListAlertDefsWithContext(ctx context.Context, listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listAlertDefsOptions, "listAlertDefsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listAlertDefsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListAlertDefs")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_alert_defs", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinitionCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateAlertDef : Create an alert definition
+// Create an alert definition.
+func (logs *LogsV0) CreateAlertDef(createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateAlertDefWithContext(context.Background(), createAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateAlertDefWithContext is an alternate form of the CreateAlertDef method which supports a Context parameter
+func (logs *LogsV0) CreateAlertDefWithContext(ctx context.Context, createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createAlertDefOptions, "createAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createAlertDefOptions, "createAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(createAlertDefOptions.AlertDefinitionPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
 func getServiceComponentInfo() *core.ProblemComponent {
 	return core.NewProblemComponent(DefaultServiceName, "0.1.0")
 }
@@ -4589,16 +5142,17 @@ type Alert struct {
 	// Alert filters.
 	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
-	// When should the alert be active.
+	// When will the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
 
-	// JSON keys to include in the alert notification, if left empty get the full log text in the alert notification.
+	// The JSON keys to be included in the alert notification. If unspecified, the full log text will be included in the
+	// alert notification.
 	NotificationPayloadFilters []string `json:"notification_payload_filters,omitempty"`
 
 	// The Meta labels to add to the alert.
 	MetaLabels []AlertsV1MetaLabel `json:"meta_labels,omitempty"`
 
-	// The Meta labels to add to the alert as string with ':' separator.
+	// The meta data added to the alert as a string separated by a ":" character.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
 
 	// Alert unique identifier.
@@ -4717,6 +5271,517 @@ func UnmarshalAlertCollection(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
+// AlertDefinition : Response model for a given alert definition.
+// Models which "extend" this model:
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue
+// - AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount
+type AlertDefinition struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	// Defining when the alert is active.
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	// Incident creation and management settings.
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	// Primary notification group for alert events.
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for immediate log-based alerts.
+	LogsImmediate *ApisAlertDefinitionLogsImmediateType `json:"logs_immediate,omitempty"`
+
+	// Configuration for the log-based threshold alerts.
+	LogsThreshold *ApisAlertDefinitionLogsThresholdType `json:"logs_threshold,omitempty"`
+
+	// Configuration for the log-based ratio threshold alerts.
+	LogsRatioThreshold *ApisAlertDefinitionLogsRatioThresholdType `json:"logs_ratio_threshold,omitempty"`
+
+	// Configuration for time-relative log threshold alerts.
+	LogsTimeRelativeThreshold *ApisAlertDefinitionLogsTimeRelativeThresholdType `json:"logs_time_relative_threshold,omitempty"`
+
+	// Configuration for metric-based threshold alerts.
+	MetricThreshold *ApisAlertDefinitionMetricThresholdType `json:"metric_threshold,omitempty"`
+
+	// Configuration for flow alerts.
+	Flow *ApisAlertDefinitionFlowType `json:"flow,omitempty"`
+
+	// Configuration for the log-based anomaly detection alerts.
+	LogsAnomaly *ApisAlertDefinitionLogsAnomalyType `json:"logs_anomaly,omitempty"`
+
+	// Configuration for metric-based anomaly detection alerts.
+	MetricAnomaly *ApisAlertDefinitionMetricAnomalyType `json:"metric_anomaly,omitempty"`
+
+	// Configuration for alerts triggered by new log values.
+	LogsNewValue *ApisAlertDefinitionLogsNewValueType `json:"logs_new_value,omitempty"`
+
+	// Configuration for alerts based on unique log value counts.
+	LogsUniqueCount *ApisAlertDefinitionLogsUniqueCountType `json:"logs_unique_count,omitempty"`
+}
+
+// Constants associated with the AlertDefinition.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinition_Priority_P1 = "p1"
+	AlertDefinition_Priority_P2 = "p2"
+	AlertDefinition_Priority_P3 = "p3"
+	AlertDefinition_Priority_P4 = "p4"
+	AlertDefinition_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinition.Type property.
+// Alert type.
+const (
+	AlertDefinition_Type_Flow = "flow"
+	AlertDefinition_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinition_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinition_Type_LogsNewValue = "logs_new_value"
+	AlertDefinition_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinition_Type_LogsThreshold = "logs_threshold"
+	AlertDefinition_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinition_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinition_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinition_Type_MetricThreshold = "metric_threshold"
+)
+func (*AlertDefinition) isaAlertDefinition() bool {
+	return true
+}
+
+type AlertDefinitionIntf interface {
+	isaAlertDefinition() bool
+}
+
+// UnmarshalAlertDefinition unmarshals an instance of AlertDefinition from the specified map of raw messages.
+func UnmarshalAlertDefinition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinition)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_immediate", &obj.LogsImmediate, UnmarshalApisAlertDefinitionLogsImmediateType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_immediate-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_threshold", &obj.LogsThreshold, UnmarshalApisAlertDefinitionLogsThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_ratio_threshold", &obj.LogsRatioThreshold, UnmarshalApisAlertDefinitionLogsRatioThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_ratio_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_time_relative_threshold", &obj.LogsTimeRelativeThreshold, UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_time_relative_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_threshold", &obj.MetricThreshold, UnmarshalApisAlertDefinitionMetricThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "flow", &obj.Flow, UnmarshalApisAlertDefinitionFlowType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "flow-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_anomaly", &obj.LogsAnomaly, UnmarshalApisAlertDefinitionLogsAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_anomaly", &obj.MetricAnomaly, UnmarshalApisAlertDefinitionMetricAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_new_value", &obj.LogsNewValue, UnmarshalApisAlertDefinitionLogsNewValueType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_new_value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_unique_count", &obj.LogsUniqueCount, UnmarshalApisAlertDefinitionLogsUniqueCountType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_unique_count-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionCollection : Response model for list of alert definitions.
+type AlertDefinitionCollection struct {
+	// List of alert definitions.
+	AlertDefinitions []AlertDefinitionIntf `json:"alert_definitions" validate:"required"`
+}
+
+// UnmarshalAlertDefinitionCollection unmarshals an instance of AlertDefinitionCollection from the specified map of raw messages.
+func UnmarshalAlertDefinitionCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionCollection)
+	err = core.UnmarshalModel(m, "alert_definitions", &obj.AlertDefinitions, UnmarshalAlertDefinition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_definitions-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototype : Request model to create or update an alert. Only one alert type configuration is allowed and must be the same as in
+// `type` field.
+// Models which "extend" this model:
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue
+// - AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount
+type AlertDefinitionPrototype struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	// Defining when the alert is active.
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	// Incident creation and management settings.
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	// Primary notification group for alert events.
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for immediate log-based alerts.
+	LogsImmediate *ApisAlertDefinitionLogsImmediateType `json:"logs_immediate,omitempty"`
+
+	// Configuration for the log-based threshold alerts.
+	LogsThreshold *ApisAlertDefinitionLogsThresholdType `json:"logs_threshold,omitempty"`
+
+	// Configuration for the log-based ratio threshold alerts.
+	LogsRatioThreshold *ApisAlertDefinitionLogsRatioThresholdType `json:"logs_ratio_threshold,omitempty"`
+
+	// Configuration for time-relative log threshold alerts.
+	LogsTimeRelativeThreshold *ApisAlertDefinitionLogsTimeRelativeThresholdType `json:"logs_time_relative_threshold,omitempty"`
+
+	// Configuration for metric-based threshold alerts.
+	MetricThreshold *ApisAlertDefinitionMetricThresholdType `json:"metric_threshold,omitempty"`
+
+	// Configuration for flow alerts.
+	Flow *ApisAlertDefinitionFlowType `json:"flow,omitempty"`
+
+	// Configuration for the log-based anomaly detection alerts.
+	LogsAnomaly *ApisAlertDefinitionLogsAnomalyType `json:"logs_anomaly,omitempty"`
+
+	// Configuration for metric-based anomaly detection alerts.
+	MetricAnomaly *ApisAlertDefinitionMetricAnomalyType `json:"metric_anomaly,omitempty"`
+
+	// Configuration for alerts triggered by new log values.
+	LogsNewValue *ApisAlertDefinitionLogsNewValueType `json:"logs_new_value,omitempty"`
+
+	// Configuration for alerts based on unique log value counts.
+	LogsUniqueCount *ApisAlertDefinitionLogsUniqueCountType `json:"logs_unique_count,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototype.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototype_Priority_P1 = "p1"
+	AlertDefinitionPrototype_Priority_P2 = "p2"
+	AlertDefinitionPrototype_Priority_P3 = "p3"
+	AlertDefinitionPrototype_Priority_P4 = "p4"
+	AlertDefinitionPrototype_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototype.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototype_Type_Flow = "flow"
+	AlertDefinitionPrototype_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototype_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototype_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototype_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototype_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototype_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototype_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototype_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototype_Type_MetricThreshold = "metric_threshold"
+)
+func (*AlertDefinitionPrototype) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+type AlertDefinitionPrototypeIntf interface {
+	isaAlertDefinitionPrototype() bool
+}
+
+// UnmarshalAlertDefinitionPrototype unmarshals an instance of AlertDefinitionPrototype from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototype)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_immediate", &obj.LogsImmediate, UnmarshalApisAlertDefinitionLogsImmediateType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_immediate-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_threshold", &obj.LogsThreshold, UnmarshalApisAlertDefinitionLogsThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_ratio_threshold", &obj.LogsRatioThreshold, UnmarshalApisAlertDefinitionLogsRatioThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_ratio_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_time_relative_threshold", &obj.LogsTimeRelativeThreshold, UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_time_relative_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_threshold", &obj.MetricThreshold, UnmarshalApisAlertDefinitionMetricThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "flow", &obj.Flow, UnmarshalApisAlertDefinitionFlowType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "flow-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_anomaly", &obj.LogsAnomaly, UnmarshalApisAlertDefinitionLogsAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_anomaly", &obj.MetricAnomaly, UnmarshalApisAlertDefinitionMetricAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_new_value", &obj.LogsNewValue, UnmarshalApisAlertDefinitionLogsNewValueType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_new_value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_unique_count", &obj.LogsUniqueCount, UnmarshalApisAlertDefinitionLogsUniqueCountType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_unique_count-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // AlertsV1AlertActiveTimeframe : Activity timeframes of the alert.
 type AlertsV1AlertActiveTimeframe struct {
 	// Days of the week for activity.
@@ -4768,7 +5833,7 @@ func UnmarshalAlertsV1AlertActiveTimeframe(m map[string]json.RawMessage, result 
 	return
 }
 
-// AlertsV1AlertActiveWhen : When should the alert be active.
+// AlertsV1AlertActiveWhen : When will the alert be active.
 type AlertsV1AlertActiveWhen struct {
 	// Activity timeframes of the alert.
 	Timeframes []AlertsV1AlertActiveTimeframe `json:"timeframes" validate:"required"`
@@ -5182,7 +6247,7 @@ func UnmarshalAlertsV1MetaLabel(m map[string]json.RawMessage, result interface{}
 	return
 }
 
-// AlertsV1MetricAlertConditionParameters : The lucene metric alert parameters if it is a lucene metric alert.
+// AlertsV1MetricAlertConditionParameters : The Lucene metric alert parameters if it is a lucene metric alert.
 type AlertsV1MetricAlertConditionParameters struct {
 	// The metric field of the metric alert.
 	MetricField *string `json:"metric_field" validate:"required"`
@@ -5190,19 +6255,19 @@ type AlertsV1MetricAlertConditionParameters struct {
 	// The metric source of the metric alert.
 	MetricSource *string `json:"metric_source" validate:"required"`
 
-	// The arithmetic operator of the metric promql alert.
+	// The arithmetic operator of the metric PromQL alert.
 	ArithmeticOperator *string `json:"arithmetic_operator" validate:"required"`
 
-	// The arithmetic operator modifier of the metric promql alert.
+	// The arithmetic operator modifier of the metric PromQL alert.
 	ArithmeticOperatorModifier *int64 `json:"arithmetic_operator_modifier,omitempty"`
 
 	// The threshold percentage.
 	SampleThresholdPercentage *int64 `json:"sample_threshold_percentage,omitempty"`
 
-	// Non null percentage of the evaluation.
+	// The percentage of the evaluation as a value between 0 and 100.
 	NonNullPercentage *int64 `json:"non_null_percentage,omitempty"`
 
-	// Should we swap null values with zero.
+	// Indicates whether null values are replaced with zero values.
 	SwapNullValues *bool `json:"swap_null_values,omitempty"`
 }
 
@@ -5214,7 +6279,7 @@ const (
 )
 
 // Constants associated with the AlertsV1MetricAlertConditionParameters.ArithmeticOperator property.
-// The arithmetic operator of the metric promql alert.
+// The arithmetic operator of the metric PromQL alert.
 const (
 	AlertsV1MetricAlertConditionParameters_ArithmeticOperator_AvgOrUnspecified = "avg_or_unspecified"
 	AlertsV1MetricAlertConditionParameters_ArithmeticOperator_Count = "count"
@@ -5280,21 +6345,21 @@ func UnmarshalAlertsV1MetricAlertConditionParameters(m map[string]json.RawMessag
 	return
 }
 
-// AlertsV1MetricAlertPromqlConditionParameters : The promql metric alert parameters if is is a promql metric alert.
+// AlertsV1MetricAlertPromqlConditionParameters : The parameters for a PromQL metric alert.
 type AlertsV1MetricAlertPromqlConditionParameters struct {
-	// The promql text of the metric alert by fields for the alert condition.
+	// The PromQL text of the metric alert by fields for the alert condition.
 	PromqlText *string `json:"promql_text" validate:"required"`
 
-	// The arithmetic operator of the metric promql alert.
+	// The arithmetic operator of the metric PromQL alert.
 	ArithmeticOperatorModifier *int64 `json:"arithmetic_operator_modifier,omitempty"`
 
 	// The threshold percentage.
 	SampleThresholdPercentage *int64 `json:"sample_threshold_percentage" validate:"required"`
 
-	// Non null percentage of the evaluation.
+	// The percentage of the evaluation as a value between 0 and 100.
 	NonNullPercentage *int64 `json:"non_null_percentage,omitempty"`
 
-	// Should we swap null values with zero.
+	// Indicates whether null values are replaced with zero values.
 	SwapNullValues *bool `json:"swap_null_values,omitempty"`
 }
 
@@ -5682,10 +6747,10 @@ type AlertsV2ConditionParameters struct {
 	// The group by fields for the alert condition.
 	GroupBy []string `json:"group_by,omitempty"`
 
-	// The lucene metric alert parameters if it is a lucene metric alert.
+	// The Lucene metric alert parameters if it is a lucene metric alert.
 	MetricAlertParameters *AlertsV1MetricAlertConditionParameters `json:"metric_alert_parameters,omitempty"`
 
-	// The promql metric alert parameters if is is a promql metric alert.
+	// The parameters for a PromQL metric alert.
 	MetricAlertPromqlParameters *AlertsV1MetricAlertPromqlConditionParameters `json:"metric_alert_promql_parameters,omitempty"`
 
 	// Should the evaluation ignore infinity value.
@@ -6112,6 +7177,2293 @@ func UnmarshalAlertsV2UniqueCountCondition(m map[string]json.RawMessage, result 
 	return
 }
 
+// ApisAlertDefinitionActivitySchedule : Defining when the alert is active.
+type ApisAlertDefinitionActivitySchedule struct {
+	// Days of the week when the alert is active.
+	DayOfWeek []string `json:"day_of_week" validate:"required"`
+
+	// Start time of the alert activity.
+	StartTime *ApisAlertDefinitionTimeOfDay `json:"start_time" validate:"required"`
+
+	// Start time of the alert activity.
+	EndTime *ApisAlertDefinitionTimeOfDay `json:"end_time" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionActivitySchedule.DayOfWeek property.
+// Days of the week when the alert is active.
+const (
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Friday = "friday"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_MondayOrUnspecified = "monday_or_unspecified"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Saturday = "saturday"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Sunday = "sunday"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Thursday = "thursday"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Tuesday = "tuesday"
+	ApisAlertDefinitionActivitySchedule_DayOfWeek_Wednesday = "wednesday"
+)
+
+// NewApisAlertDefinitionActivitySchedule : Instantiate ApisAlertDefinitionActivitySchedule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionActivitySchedule(dayOfWeek []string, startTime *ApisAlertDefinitionTimeOfDay, endTime *ApisAlertDefinitionTimeOfDay) (_model *ApisAlertDefinitionActivitySchedule, err error) {
+	_model = &ApisAlertDefinitionActivitySchedule{
+		DayOfWeek: dayOfWeek,
+		StartTime: startTime,
+		EndTime: endTime,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionActivitySchedule unmarshals an instance of ApisAlertDefinitionActivitySchedule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionActivitySchedule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionActivitySchedule)
+	err = core.UnmarshalPrimitive(m, "day_of_week", &obj.DayOfWeek)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "day_of_week-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "start_time", &obj.StartTime, UnmarshalApisAlertDefinitionTimeOfDay)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "start_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "end_time", &obj.EndTime, UnmarshalApisAlertDefinitionTimeOfDay)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "end_time-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionAlertDefIncidentSettings : Incident creation and management settings.
+type ApisAlertDefinitionAlertDefIncidentSettings struct {
+	// Indicate if the alert should be triggered or triggered and resolved.
+	NotifyOn *string `json:"notify_on,omitempty"`
+
+	// The time in minutes before the alert can be triggered again.
+	Minutes *int64 `json:"minutes,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionAlertDefIncidentSettings.NotifyOn property.
+// Indicate if the alert should be triggered or triggered and resolved.
+const (
+	ApisAlertDefinitionAlertDefIncidentSettings_NotifyOn_TriggeredAndResolved = "triggered_and_resolved"
+	ApisAlertDefinitionAlertDefIncidentSettings_NotifyOn_TriggeredOnlyUnspecified = "triggered_only_unspecified"
+)
+
+// UnmarshalApisAlertDefinitionAlertDefIncidentSettings unmarshals an instance of ApisAlertDefinitionAlertDefIncidentSettings from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionAlertDefIncidentSettings(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionAlertDefIncidentSettings)
+	err = core.UnmarshalPrimitive(m, "notify_on", &obj.NotifyOn)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notify_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "minutes", &obj.Minutes)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "minutes-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionAlertDefNotificationGroup : Primary notification group for alert events.
+type ApisAlertDefinitionAlertDefNotificationGroup struct {
+	// Group the alerts by these keys.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	// The settings for webhooks associated with the alert definition.
+	Webhooks []ApisAlertDefinitionAlertDefWebhooksSettings `json:"webhooks,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionAlertDefNotificationGroup unmarshals an instance of ApisAlertDefinitionAlertDefNotificationGroup from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionAlertDefNotificationGroup(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionAlertDefNotificationGroup)
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "webhooks", &obj.Webhooks, UnmarshalApisAlertDefinitionAlertDefWebhooksSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "webhooks-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionAlertDefOverride : The override settings for the alert.
+type ApisAlertDefinitionAlertDefOverride struct {
+	// The priority of the alert definition.
+	Priority *string `json:"priority" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionAlertDefOverride.Priority property.
+// The priority of the alert definition.
+const (
+	ApisAlertDefinitionAlertDefOverride_Priority_P1 = "p1"
+	ApisAlertDefinitionAlertDefOverride_Priority_P2 = "p2"
+	ApisAlertDefinitionAlertDefOverride_Priority_P3 = "p3"
+	ApisAlertDefinitionAlertDefOverride_Priority_P4 = "p4"
+	ApisAlertDefinitionAlertDefOverride_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// NewApisAlertDefinitionAlertDefOverride : Instantiate ApisAlertDefinitionAlertDefOverride (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionAlertDefOverride(priority string) (_model *ApisAlertDefinitionAlertDefOverride, err error) {
+	_model = &ApisAlertDefinitionAlertDefOverride{
+		Priority: core.StringPtr(priority),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionAlertDefOverride unmarshals an instance of ApisAlertDefinitionAlertDefOverride from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionAlertDefOverride(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionAlertDefOverride)
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionAlertDefWebhooksSettings : The settings for webhooks associated with the alert definition.
+type ApisAlertDefinitionAlertDefWebhooksSettings struct {
+	// Indicate if the alert should be triggered or triggered and resolved.
+	NotifyOn *string `json:"notify_on,omitempty"`
+
+	// The integration type for webhook notifications.
+	Integration ApisAlertDefinitionIntegrationTypeIntf `json:"integration" validate:"required"`
+
+	// The time in minutes before the notification is sent.
+	Minutes *int64 `json:"minutes,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionAlertDefWebhooksSettings.NotifyOn property.
+// Indicate if the alert should be triggered or triggered and resolved.
+const (
+	ApisAlertDefinitionAlertDefWebhooksSettings_NotifyOn_TriggeredAndResolved = "triggered_and_resolved"
+	ApisAlertDefinitionAlertDefWebhooksSettings_NotifyOn_TriggeredOnlyUnspecified = "triggered_only_unspecified"
+)
+
+// NewApisAlertDefinitionAlertDefWebhooksSettings : Instantiate ApisAlertDefinitionAlertDefWebhooksSettings (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionAlertDefWebhooksSettings(integration ApisAlertDefinitionIntegrationTypeIntf) (_model *ApisAlertDefinitionAlertDefWebhooksSettings, err error) {
+	_model = &ApisAlertDefinitionAlertDefWebhooksSettings{
+		Integration: integration,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionAlertDefWebhooksSettings unmarshals an instance of ApisAlertDefinitionAlertDefWebhooksSettings from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionAlertDefWebhooksSettings(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionAlertDefWebhooksSettings)
+	err = core.UnmarshalPrimitive(m, "notify_on", &obj.NotifyOn)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notify_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "integration", &obj.Integration, UnmarshalApisAlertDefinitionIntegrationType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "integration-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "minutes", &obj.Minutes)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "minutes-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionAnomalyAlertSettings : The anomaly alert settings configuration.
+type ApisAlertDefinitionAnomalyAlertSettings struct {
+	// The percentage of deviation from the baseline when the alert is triggered.
+	PercentageOfDeviation *float32 `json:"percentage_of_deviation,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionAnomalyAlertSettings unmarshals an instance of ApisAlertDefinitionAnomalyAlertSettings from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionAnomalyAlertSettings(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionAnomalyAlertSettings)
+	err = core.UnmarshalPrimitive(m, "percentage_of_deviation", &obj.PercentageOfDeviation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "percentage_of_deviation-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionFlowStages : The definition of stages of the flow alert.
+type ApisAlertDefinitionFlowStages struct {
+	// The timeframe for the flow alert in milliseconds.
+	TimeframeMs *string `json:"timeframe_ms" validate:"required"`
+
+	// The type of timeframe for the flow alert.
+	TimeframeType *string `json:"timeframe_type" validate:"required"`
+
+	// The definition of groups in the flow alert.
+	FlowStagesGroups *ApisAlertDefinitionFlowStagesGroups `json:"flow_stages_groups" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionFlowStages.TimeframeType property.
+// The type of timeframe for the flow alert.
+const (
+	ApisAlertDefinitionFlowStages_TimeframeType_Unspecified = "unspecified"
+	ApisAlertDefinitionFlowStages_TimeframeType_UpTo = "up_to"
+)
+
+// NewApisAlertDefinitionFlowStages : Instantiate ApisAlertDefinitionFlowStages (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionFlowStages(timeframeMs string, timeframeType string, flowStagesGroups *ApisAlertDefinitionFlowStagesGroups) (_model *ApisAlertDefinitionFlowStages, err error) {
+	_model = &ApisAlertDefinitionFlowStages{
+		TimeframeMs: core.StringPtr(timeframeMs),
+		TimeframeType: core.StringPtr(timeframeType),
+		FlowStagesGroups: flowStagesGroups,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionFlowStages unmarshals an instance of ApisAlertDefinitionFlowStages from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionFlowStages(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionFlowStages)
+	err = core.UnmarshalPrimitive(m, "timeframe_ms", &obj.TimeframeMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "timeframe_ms-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "timeframe_type", &obj.TimeframeType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "timeframe_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "flow_stages_groups", &obj.FlowStagesGroups, UnmarshalApisAlertDefinitionFlowStagesGroups)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "flow_stages_groups-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionFlowStagesGroup : Defines a group of alerts and the logical operations applied both among the alerts and to the group within the flow
+// alert.
+type ApisAlertDefinitionFlowStagesGroup struct {
+	// The alert definitions for the flow stage group.
+	AlertDefs []ApisAlertDefinitionFlowStagesGroupsAlertDefs `json:"alert_defs" validate:"required"`
+
+	// The logical operation to apply to the next stage.
+	NextOp *string `json:"next_op" validate:"required"`
+
+	// The logical operation to apply to the alerts in the group.
+	AlertsOp *string `json:"alerts_op" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionFlowStagesGroup.NextOp property.
+// The logical operation to apply to the next stage.
+const (
+	ApisAlertDefinitionFlowStagesGroup_NextOp_AndOrUnspecified = "and_or_unspecified"
+	ApisAlertDefinitionFlowStagesGroup_NextOp_Or = "or"
+)
+
+// Constants associated with the ApisAlertDefinitionFlowStagesGroup.AlertsOp property.
+// The logical operation to apply to the alerts in the group.
+const (
+	ApisAlertDefinitionFlowStagesGroup_AlertsOp_AndOrUnspecified = "and_or_unspecified"
+	ApisAlertDefinitionFlowStagesGroup_AlertsOp_Or = "or"
+)
+
+// NewApisAlertDefinitionFlowStagesGroup : Instantiate ApisAlertDefinitionFlowStagesGroup (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionFlowStagesGroup(alertDefs []ApisAlertDefinitionFlowStagesGroupsAlertDefs, nextOp string, alertsOp string) (_model *ApisAlertDefinitionFlowStagesGroup, err error) {
+	_model = &ApisAlertDefinitionFlowStagesGroup{
+		AlertDefs: alertDefs,
+		NextOp: core.StringPtr(nextOp),
+		AlertsOp: core.StringPtr(alertsOp),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionFlowStagesGroup unmarshals an instance of ApisAlertDefinitionFlowStagesGroup from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionFlowStagesGroup(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionFlowStagesGroup)
+	err = core.UnmarshalModel(m, "alert_defs", &obj.AlertDefs, UnmarshalApisAlertDefinitionFlowStagesGroupsAlertDefs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_defs-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "next_op", &obj.NextOp)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "next_op-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alerts_op", &obj.AlertsOp)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alerts_op-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionFlowStagesGroups : The definition of groups in the flow alert.
+type ApisAlertDefinitionFlowStagesGroups struct {
+	// The definition of an array of groups with alerts and logical operation among those alerts in the flow alert.
+	Groups []ApisAlertDefinitionFlowStagesGroup `json:"groups" validate:"required"`
+}
+
+// NewApisAlertDefinitionFlowStagesGroups : Instantiate ApisAlertDefinitionFlowStagesGroups (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionFlowStagesGroups(groups []ApisAlertDefinitionFlowStagesGroup) (_model *ApisAlertDefinitionFlowStagesGroups, err error) {
+	_model = &ApisAlertDefinitionFlowStagesGroups{
+		Groups: groups,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionFlowStagesGroups unmarshals an instance of ApisAlertDefinitionFlowStagesGroups from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionFlowStagesGroups(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionFlowStagesGroups)
+	err = core.UnmarshalModel(m, "groups", &obj.Groups, UnmarshalApisAlertDefinitionFlowStagesGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "groups-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionFlowStagesGroupsAlertDefs : The alert definitions for the flow stage group.
+type ApisAlertDefinitionFlowStagesGroupsAlertDefs struct {
+	// The alert definition ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Whether or not to negate the alert definition. If true, flow checks for the negate condition of the respective
+	// alert.
+	Not *bool `json:"not,omitempty"`
+}
+
+// NewApisAlertDefinitionFlowStagesGroupsAlertDefs : Instantiate ApisAlertDefinitionFlowStagesGroupsAlertDefs (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionFlowStagesGroupsAlertDefs(id *strfmt.UUID) (_model *ApisAlertDefinitionFlowStagesGroupsAlertDefs, err error) {
+	_model = &ApisAlertDefinitionFlowStagesGroupsAlertDefs{
+		ID: id,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionFlowStagesGroupsAlertDefs unmarshals an instance of ApisAlertDefinitionFlowStagesGroupsAlertDefs from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionFlowStagesGroupsAlertDefs(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionFlowStagesGroupsAlertDefs)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "not", &obj.Not)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "not-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionFlowType : Configuration for flow alerts.
+type ApisAlertDefinitionFlowType struct {
+	// The definition of stages of the flow alert.
+	Stages []ApisAlertDefinitionFlowStages `json:"stages" validate:"required"`
+
+	// Whether to enforce suppression for the flow alert.
+	EnforceSuppression *bool `json:"enforce_suppression,omitempty"`
+}
+
+// NewApisAlertDefinitionFlowType : Instantiate ApisAlertDefinitionFlowType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionFlowType(stages []ApisAlertDefinitionFlowStages) (_model *ApisAlertDefinitionFlowType, err error) {
+	_model = &ApisAlertDefinitionFlowType{
+		Stages: stages,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionFlowType unmarshals an instance of ApisAlertDefinitionFlowType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionFlowType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionFlowType)
+	err = core.UnmarshalModel(m, "stages", &obj.Stages, UnmarshalApisAlertDefinitionFlowStages)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "stages-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enforce_suppression", &obj.EnforceSuppression)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enforce_suppression-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionIntegrationType : The integration type for webhook notifications.
+// Models which "extend" this model:
+// - ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID
+type ApisAlertDefinitionIntegrationType struct {
+	// The integration ID for the notification.
+	IntegrationID *int64 `json:"integration_id,omitempty"`
+}
+func (*ApisAlertDefinitionIntegrationType) isaApisAlertDefinitionIntegrationType() bool {
+	return true
+}
+
+type ApisAlertDefinitionIntegrationTypeIntf interface {
+	isaApisAlertDefinitionIntegrationType() bool
+}
+
+// UnmarshalApisAlertDefinitionIntegrationType unmarshals an instance of ApisAlertDefinitionIntegrationType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionIntegrationType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionIntegrationType)
+	err = core.UnmarshalPrimitive(m, "integration_id", &obj.IntegrationID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "integration_id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLabelFilterType : Filter by application names.
+type ApisAlertDefinitionLabelFilterType struct {
+	// The value used to filter the label.
+	Value *string `json:"value,omitempty"`
+
+	// The operation to perform on the label value.
+	Operation *string `json:"operation" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLabelFilterType.Operation property.
+// The operation to perform on the label value.
+const (
+	ApisAlertDefinitionLabelFilterType_Operation_EndsWith = "ends_with"
+	ApisAlertDefinitionLabelFilterType_Operation_Includes = "includes"
+	ApisAlertDefinitionLabelFilterType_Operation_IsOrUnspecified = "is_or_unspecified"
+	ApisAlertDefinitionLabelFilterType_Operation_StartsWith = "starts_with"
+)
+
+// NewApisAlertDefinitionLabelFilterType : Instantiate ApisAlertDefinitionLabelFilterType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLabelFilterType(operation string) (_model *ApisAlertDefinitionLabelFilterType, err error) {
+	_model = &ApisAlertDefinitionLabelFilterType{
+		Operation: core.StringPtr(operation),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLabelFilterType unmarshals an instance of ApisAlertDefinitionLabelFilterType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLabelFilterType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLabelFilterType)
+	err = core.UnmarshalPrimitive(m, "value", &obj.Value)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "operation", &obj.Operation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "operation-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLabelFilters : The label filters to filter logs.
+type ApisAlertDefinitionLabelFilters struct {
+	// Filter by application names.
+	ApplicationName []ApisAlertDefinitionLabelFilterType `json:"application_name,omitempty"`
+
+	// Filter by subsystem names.
+	SubsystemName []ApisAlertDefinitionLabelFilterType `json:"subsystem_name,omitempty"`
+
+	// Filter by log severities.
+	Severities []string `json:"severities,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionLabelFilters.Severities property.
+// Filter by log severities.
+const (
+	ApisAlertDefinitionLabelFilters_Severities_Critical = "critical"
+	ApisAlertDefinitionLabelFilters_Severities_Debug = "debug"
+	ApisAlertDefinitionLabelFilters_Severities_Error = "error"
+	ApisAlertDefinitionLabelFilters_Severities_Info = "info"
+	ApisAlertDefinitionLabelFilters_Severities_VerboseUnspecified = "verbose_unspecified"
+	ApisAlertDefinitionLabelFilters_Severities_Warning = "warning"
+)
+
+// UnmarshalApisAlertDefinitionLabelFilters unmarshals an instance of ApisAlertDefinitionLabelFilters from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLabelFilters(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLabelFilters)
+	err = core.UnmarshalModel(m, "application_name", &obj.ApplicationName, UnmarshalApisAlertDefinitionLabelFilterType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "application_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "subsystem_name", &obj.SubsystemName, UnmarshalApisAlertDefinitionLabelFilterType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "subsystem_name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "severities", &obj.Severities)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "severities-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsAnomalyCondition : The condition for the anomaly alert.
+type ApisAlertDefinitionLogsAnomalyCondition struct {
+	// The threshold value for the alert condition.
+	MinimumThreshold *float64 `json:"minimum_threshold" validate:"required"`
+
+	// The time window for the alert condition.
+	TimeWindow *ApisAlertDefinitionLogsTimeWindow `json:"time_window" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsAnomalyCondition : Instantiate ApisAlertDefinitionLogsAnomalyCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsAnomalyCondition(minimumThreshold float64, timeWindow *ApisAlertDefinitionLogsTimeWindow) (_model *ApisAlertDefinitionLogsAnomalyCondition, err error) {
+	_model = &ApisAlertDefinitionLogsAnomalyCondition{
+		MinimumThreshold: core.Float64Ptr(minimumThreshold),
+		TimeWindow: timeWindow,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsAnomalyCondition unmarshals an instance of ApisAlertDefinitionLogsAnomalyCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsAnomalyCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsAnomalyCondition)
+	err = core.UnmarshalPrimitive(m, "minimum_threshold", &obj.MinimumThreshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "minimum_threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_window", &obj.TimeWindow, UnmarshalApisAlertDefinitionLogsTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_window-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsAnomalyRule : The condition rules for the log anomaly alert.
+type ApisAlertDefinitionLogsAnomalyRule struct {
+	// The condition for the anomaly alert.
+	Condition *ApisAlertDefinitionLogsAnomalyCondition `json:"condition" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsAnomalyRule : Instantiate ApisAlertDefinitionLogsAnomalyRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsAnomalyRule(condition *ApisAlertDefinitionLogsAnomalyCondition) (_model *ApisAlertDefinitionLogsAnomalyRule, err error) {
+	_model = &ApisAlertDefinitionLogsAnomalyRule{
+		Condition: condition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsAnomalyRule unmarshals an instance of ApisAlertDefinitionLogsAnomalyRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsAnomalyRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsAnomalyRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsAnomalyCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsAnomalyType : Configuration for the log-based anomaly detection alerts.
+type ApisAlertDefinitionLogsAnomalyType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// The condition rules for the log anomaly alert.
+	Rules []ApisAlertDefinitionLogsAnomalyRule `json:"rules" validate:"required"`
+
+	// The condition type for the alert.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// The notification payload filter to specify which fields are included in the notification.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+
+	// The anomaly alert settings configuration.
+	AnomalyAlertSettings *ApisAlertDefinitionAnomalyAlertSettings `json:"anomaly_alert_settings,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsAnomalyType.ConditionType property.
+// The condition type for the alert.
+const (
+	ApisAlertDefinitionLogsAnomalyType_ConditionType_MoreThanUsualOrUnspecified = "more_than_usual_or_unspecified"
+)
+
+// NewApisAlertDefinitionLogsAnomalyType : Instantiate ApisAlertDefinitionLogsAnomalyType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsAnomalyType(rules []ApisAlertDefinitionLogsAnomalyRule, conditionType string) (_model *ApisAlertDefinitionLogsAnomalyType, err error) {
+	_model = &ApisAlertDefinitionLogsAnomalyType{
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsAnomalyType unmarshals an instance of ApisAlertDefinitionLogsAnomalyType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsAnomalyType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsAnomalyType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsAnomalyRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "anomaly_alert_settings", &obj.AnomalyAlertSettings, UnmarshalApisAlertDefinitionAnomalyAlertSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "anomaly_alert_settings-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsFilter : The filter to match log entries for immediate alerts.
+type ApisAlertDefinitionLogsFilter struct {
+	// A simple filter that uses a Lucene query and label filters.
+	SimpleFilter *ApisAlertDefinitionLogsSimpleFilter `json:"simple_filter,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionLogsFilter unmarshals an instance of ApisAlertDefinitionLogsFilter from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsFilter)
+	err = core.UnmarshalModel(m, "simple_filter", &obj.SimpleFilter, UnmarshalApisAlertDefinitionLogsSimpleFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "simple_filter-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsImmediateType : Configuration for immediate log-based alerts.
+type ApisAlertDefinitionLogsImmediateType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionLogsImmediateType unmarshals an instance of ApisAlertDefinitionLogsImmediateType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsImmediateType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsImmediateType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsNewValueCondition : The condition for detecting new values in logs.
+type ApisAlertDefinitionLogsNewValueCondition struct {
+	// The keypath to track for new values.
+	KeypathToTrack *string `json:"keypath_to_track" validate:"required"`
+
+	// The time window for detecting new values.
+	TimeWindow *ApisAlertDefinitionLogsNewValueTimeWindow `json:"time_window" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsNewValueCondition : Instantiate ApisAlertDefinitionLogsNewValueCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsNewValueCondition(keypathToTrack string, timeWindow *ApisAlertDefinitionLogsNewValueTimeWindow) (_model *ApisAlertDefinitionLogsNewValueCondition, err error) {
+	_model = &ApisAlertDefinitionLogsNewValueCondition{
+		KeypathToTrack: core.StringPtr(keypathToTrack),
+		TimeWindow: timeWindow,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsNewValueCondition unmarshals an instance of ApisAlertDefinitionLogsNewValueCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsNewValueCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsNewValueCondition)
+	err = core.UnmarshalPrimitive(m, "keypath_to_track", &obj.KeypathToTrack)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "keypath_to_track-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_window", &obj.TimeWindow, UnmarshalApisAlertDefinitionLogsNewValueTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_window-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsNewValueRule : The condition rules for the log new value alert.
+type ApisAlertDefinitionLogsNewValueRule struct {
+	// The condition for detecting new values in logs.
+	Condition *ApisAlertDefinitionLogsNewValueCondition `json:"condition" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsNewValueRule : Instantiate ApisAlertDefinitionLogsNewValueRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsNewValueRule(condition *ApisAlertDefinitionLogsNewValueCondition) (_model *ApisAlertDefinitionLogsNewValueRule, err error) {
+	_model = &ApisAlertDefinitionLogsNewValueRule{
+		Condition: condition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsNewValueRule unmarshals an instance of ApisAlertDefinitionLogsNewValueRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsNewValueRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsNewValueRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsNewValueCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsNewValueTimeWindow : The time window for detecting new values.
+type ApisAlertDefinitionLogsNewValueTimeWindow struct {
+	// A time window defined by a specific value.
+	LogsNewValueTimeWindowSpecificValue *string `json:"logs_new_value_time_window_specific_value" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsNewValueTimeWindow.LogsNewValueTimeWindowSpecificValue property.
+// A time window defined by a specific value.
+const (
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Hours12OrUnspecified = "hours_12_or_unspecified"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Hours48 = "hours_48"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Hours72 = "hours_72"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Month1 = "month_1"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Months2 = "months_2"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Months3 = "months_3"
+	ApisAlertDefinitionLogsNewValueTimeWindow_LogsNewValueTimeWindowSpecificValue_Week1 = "week_1"
+)
+
+// NewApisAlertDefinitionLogsNewValueTimeWindow : Instantiate ApisAlertDefinitionLogsNewValueTimeWindow (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsNewValueTimeWindow(logsNewValueTimeWindowSpecificValue string) (_model *ApisAlertDefinitionLogsNewValueTimeWindow, err error) {
+	_model = &ApisAlertDefinitionLogsNewValueTimeWindow{
+		LogsNewValueTimeWindowSpecificValue: core.StringPtr(logsNewValueTimeWindowSpecificValue),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsNewValueTimeWindow unmarshals an instance of ApisAlertDefinitionLogsNewValueTimeWindow from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsNewValueTimeWindow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsNewValueTimeWindow)
+	err = core.UnmarshalPrimitive(m, "logs_new_value_time_window_specific_value", &obj.LogsNewValueTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_new_value_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsNewValueType : Configuration for alerts triggered by new log values.
+type ApisAlertDefinitionLogsNewValueType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// The condition rules for the log new value alert.
+	Rules []ApisAlertDefinitionLogsNewValueRule `json:"rules" validate:"required"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+}
+
+// NewApisAlertDefinitionLogsNewValueType : Instantiate ApisAlertDefinitionLogsNewValueType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsNewValueType(rules []ApisAlertDefinitionLogsNewValueRule) (_model *ApisAlertDefinitionLogsNewValueType, err error) {
+	_model = &ApisAlertDefinitionLogsNewValueType{
+		Rules: rules,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsNewValueType unmarshals an instance of ApisAlertDefinitionLogsNewValueType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsNewValueType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsNewValueType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsNewValueRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsRatioCondition : The condition for the ratio alert.
+type ApisAlertDefinitionLogsRatioCondition struct {
+	// The threshold value for the alert condition.
+	Threshold *float64 `json:"threshold" validate:"required"`
+
+	// The time window for the alert condition.
+	TimeWindow *ApisAlertDefinitionLogsRatioTimeWindow `json:"time_window" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsRatioCondition : Instantiate ApisAlertDefinitionLogsRatioCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsRatioCondition(threshold float64, timeWindow *ApisAlertDefinitionLogsRatioTimeWindow) (_model *ApisAlertDefinitionLogsRatioCondition, err error) {
+	_model = &ApisAlertDefinitionLogsRatioCondition{
+		Threshold: core.Float64Ptr(threshold),
+		TimeWindow: timeWindow,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsRatioCondition unmarshals an instance of ApisAlertDefinitionLogsRatioCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsRatioCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsRatioCondition)
+	err = core.UnmarshalPrimitive(m, "threshold", &obj.Threshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_window", &obj.TimeWindow, UnmarshalApisAlertDefinitionLogsRatioTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_window-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsRatioRules : The condition rules for the ratio alert.
+type ApisAlertDefinitionLogsRatioRules struct {
+	// The condition for the ratio alert.
+	Condition *ApisAlertDefinitionLogsRatioCondition `json:"condition" validate:"required"`
+
+	// The override settings for the alert.
+	Override *ApisAlertDefinitionAlertDefOverride `json:"override" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsRatioRules : Instantiate ApisAlertDefinitionLogsRatioRules (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsRatioRules(condition *ApisAlertDefinitionLogsRatioCondition, override *ApisAlertDefinitionAlertDefOverride) (_model *ApisAlertDefinitionLogsRatioRules, err error) {
+	_model = &ApisAlertDefinitionLogsRatioRules{
+		Condition: condition,
+		Override: override,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsRatioRules unmarshals an instance of ApisAlertDefinitionLogsRatioRules from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsRatioRules(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsRatioRules)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsRatioCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "override", &obj.Override, UnmarshalApisAlertDefinitionAlertDefOverride)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "override-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsRatioThresholdType : Configuration for the log-based ratio threshold alerts.
+type ApisAlertDefinitionLogsRatioThresholdType struct {
+	// The filter to match log entries for immediate alerts.
+	Numerator *ApisAlertDefinitionLogsFilter `json:"numerator" validate:"required"`
+
+	// The alias for the numerator filter, used for display purposes.
+	NumeratorAlias *string `json:"numerator_alias,omitempty"`
+
+	// The filter to match log entries for immediate alerts.
+	Denominator *ApisAlertDefinitionLogsFilter `json:"denominator" validate:"required"`
+
+	// The alias for the denominator filter, used for display purposes.
+	DenominatorAlias *string `json:"denominator_alias,omitempty"`
+
+	// The condition rules for the ratio alert.
+	Rules []ApisAlertDefinitionLogsRatioRules `json:"rules" validate:"required"`
+
+	// The condition type for the alert.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+
+	// The group by settings for the numerator and denominator filters.
+	GroupByFor *string `json:"group_by_for" validate:"required"`
+
+	// Configuration for handling the undetected values in the alert.
+	UndetectedValuesManagement *ApisAlertDefinitionUndetectedValuesManagement `json:"undetected_values_management,omitempty"`
+
+	// Determine whether to ignore an infinity result or not. If true, alert is not triggered. When the value of second
+	// query is 0, the result of the ratio will be infinity.
+	IgnoreInfinity *bool `json:"ignore_infinity,omitempty"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsRatioThresholdType.ConditionType property.
+// The condition type for the alert.
+const (
+	ApisAlertDefinitionLogsRatioThresholdType_ConditionType_LessThan = "less_than"
+	ApisAlertDefinitionLogsRatioThresholdType_ConditionType_MoreThanOrUnspecified = "more_than_or_unspecified"
+)
+
+// Constants associated with the ApisAlertDefinitionLogsRatioThresholdType.GroupByFor property.
+// The group by settings for the numerator and denominator filters.
+const (
+	ApisAlertDefinitionLogsRatioThresholdType_GroupByFor_BothOrUnspecified = "both_or_unspecified"
+	ApisAlertDefinitionLogsRatioThresholdType_GroupByFor_DenumeratorOnly = "denumerator_only"
+	ApisAlertDefinitionLogsRatioThresholdType_GroupByFor_NumeratorOnly = "numerator_only"
+)
+
+// NewApisAlertDefinitionLogsRatioThresholdType : Instantiate ApisAlertDefinitionLogsRatioThresholdType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsRatioThresholdType(numerator *ApisAlertDefinitionLogsFilter, denominator *ApisAlertDefinitionLogsFilter, rules []ApisAlertDefinitionLogsRatioRules, conditionType string, groupByFor string) (_model *ApisAlertDefinitionLogsRatioThresholdType, err error) {
+	_model = &ApisAlertDefinitionLogsRatioThresholdType{
+		Numerator: numerator,
+		Denominator: denominator,
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+		GroupByFor: core.StringPtr(groupByFor),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsRatioThresholdType unmarshals an instance of ApisAlertDefinitionLogsRatioThresholdType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsRatioThresholdType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsRatioThresholdType)
+	err = core.UnmarshalModel(m, "numerator", &obj.Numerator, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "numerator-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "numerator_alias", &obj.NumeratorAlias)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "numerator_alias-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "denominator", &obj.Denominator, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "denominator-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "denominator_alias", &obj.DenominatorAlias)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "denominator_alias-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsRatioRules)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_for", &obj.GroupByFor)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_for-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "undetected_values_management", &obj.UndetectedValuesManagement, UnmarshalApisAlertDefinitionUndetectedValuesManagement)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "undetected_values_management-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "ignore_infinity", &obj.IgnoreInfinity)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "ignore_infinity-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsRatioTimeWindow : The time window for the alert condition.
+type ApisAlertDefinitionLogsRatioTimeWindow struct {
+	// Specifies the time window for the ratio alert.
+	LogsRatioTimeWindowSpecificValue *string `json:"logs_ratio_time_window_specific_value" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsRatioTimeWindow.LogsRatioTimeWindowSpecificValue property.
+// Specifies the time window for the ratio alert.
+const (
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hour1 = "hour_1"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours12 = "hours_12"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours2 = "hours_2"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours36 = "hours_36"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours4 = "hours_4"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Hours6 = "hours_6"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Minutes10 = "minutes_10"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Minutes15 = "minutes_15"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Minutes30 = "minutes_30"
+	ApisAlertDefinitionLogsRatioTimeWindow_LogsRatioTimeWindowSpecificValue_Minutes5OrUnspecified = "minutes_5_or_unspecified"
+)
+
+// NewApisAlertDefinitionLogsRatioTimeWindow : Instantiate ApisAlertDefinitionLogsRatioTimeWindow (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsRatioTimeWindow(logsRatioTimeWindowSpecificValue string) (_model *ApisAlertDefinitionLogsRatioTimeWindow, err error) {
+	_model = &ApisAlertDefinitionLogsRatioTimeWindow{
+		LogsRatioTimeWindowSpecificValue: core.StringPtr(logsRatioTimeWindowSpecificValue),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsRatioTimeWindow unmarshals an instance of ApisAlertDefinitionLogsRatioTimeWindow from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsRatioTimeWindow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsRatioTimeWindow)
+	err = core.UnmarshalPrimitive(m, "logs_ratio_time_window_specific_value", &obj.LogsRatioTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_ratio_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsSimpleFilter : A simple filter that uses a Lucene query and label filters.
+type ApisAlertDefinitionLogsSimpleFilter struct {
+	// The Lucene query to filter logs.
+	LuceneQuery *string `json:"lucene_query,omitempty"`
+
+	// The label filters to filter logs.
+	LabelFilters *ApisAlertDefinitionLabelFilters `json:"label_filters,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionLogsSimpleFilter unmarshals an instance of ApisAlertDefinitionLogsSimpleFilter from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsSimpleFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsSimpleFilter)
+	err = core.UnmarshalPrimitive(m, "lucene_query", &obj.LuceneQuery)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "lucene_query-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "label_filters", &obj.LabelFilters, UnmarshalApisAlertDefinitionLabelFilters)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "label_filters-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsThresholdCondition : The condition for the threshold alert.
+type ApisAlertDefinitionLogsThresholdCondition struct {
+	// The threshold value for the alert condition.
+	Threshold *float64 `json:"threshold" validate:"required"`
+
+	// The time window for the alert condition.
+	TimeWindow *ApisAlertDefinitionLogsTimeWindow `json:"time_window" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsThresholdCondition : Instantiate ApisAlertDefinitionLogsThresholdCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsThresholdCondition(threshold float64, timeWindow *ApisAlertDefinitionLogsTimeWindow) (_model *ApisAlertDefinitionLogsThresholdCondition, err error) {
+	_model = &ApisAlertDefinitionLogsThresholdCondition{
+		Threshold: core.Float64Ptr(threshold),
+		TimeWindow: timeWindow,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsThresholdCondition unmarshals an instance of ApisAlertDefinitionLogsThresholdCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsThresholdCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsThresholdCondition)
+	err = core.UnmarshalPrimitive(m, "threshold", &obj.Threshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_window", &obj.TimeWindow, UnmarshalApisAlertDefinitionLogsTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_window-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsThresholdRule : The condition rules for the threshold alert.
+type ApisAlertDefinitionLogsThresholdRule struct {
+	// The condition for the threshold alert.
+	Condition *ApisAlertDefinitionLogsThresholdCondition `json:"condition" validate:"required"`
+
+	// The override settings for the alert.
+	Override *ApisAlertDefinitionAlertDefOverride `json:"override" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsThresholdRule : Instantiate ApisAlertDefinitionLogsThresholdRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsThresholdRule(condition *ApisAlertDefinitionLogsThresholdCondition, override *ApisAlertDefinitionAlertDefOverride) (_model *ApisAlertDefinitionLogsThresholdRule, err error) {
+	_model = &ApisAlertDefinitionLogsThresholdRule{
+		Condition: condition,
+		Override: override,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsThresholdRule unmarshals an instance of ApisAlertDefinitionLogsThresholdRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsThresholdRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsThresholdRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsThresholdCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "override", &obj.Override, UnmarshalApisAlertDefinitionAlertDefOverride)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "override-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsThresholdType : Configuration for the log-based threshold alerts.
+type ApisAlertDefinitionLogsThresholdType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// Configuration for handling the undetected values in the alert.
+	UndetectedValuesManagement *ApisAlertDefinitionUndetectedValuesManagement `json:"undetected_values_management,omitempty"`
+
+	// The condition rules for the threshold alert.
+	Rules []ApisAlertDefinitionLogsThresholdRule `json:"rules" validate:"required"`
+
+	// The condition type for the alert.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsThresholdType.ConditionType property.
+// The condition type for the alert.
+const (
+	ApisAlertDefinitionLogsThresholdType_ConditionType_LessThan = "less_than"
+	ApisAlertDefinitionLogsThresholdType_ConditionType_MoreThanOrUnspecified = "more_than_or_unspecified"
+)
+
+// NewApisAlertDefinitionLogsThresholdType : Instantiate ApisAlertDefinitionLogsThresholdType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsThresholdType(rules []ApisAlertDefinitionLogsThresholdRule, conditionType string) (_model *ApisAlertDefinitionLogsThresholdType, err error) {
+	_model = &ApisAlertDefinitionLogsThresholdType{
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsThresholdType unmarshals an instance of ApisAlertDefinitionLogsThresholdType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsThresholdType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsThresholdType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "undetected_values_management", &obj.UndetectedValuesManagement, UnmarshalApisAlertDefinitionUndetectedValuesManagement)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "undetected_values_management-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsThresholdRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsTimeRelativeCondition : The condition for the time-relative alert.
+type ApisAlertDefinitionLogsTimeRelativeCondition struct {
+	// The threshold value for the alert condition.
+	Threshold *float64 `json:"threshold" validate:"required"`
+
+	// The time frame to compare the current value against.
+	ComparedTo *string `json:"compared_to" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsTimeRelativeCondition.ComparedTo property.
+// The time frame to compare the current value against.
+const (
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_PreviousHourOrUnspecified = "previous_hour_or_unspecified"
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_SameDayLastMonth = "same_day_last_month"
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_SameDayLastWeek = "same_day_last_week"
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_SameHourLastWeek = "same_hour_last_week"
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_SameHourYesterday = "same_hour_yesterday"
+	ApisAlertDefinitionLogsTimeRelativeCondition_ComparedTo_Yesterday = "yesterday"
+)
+
+// NewApisAlertDefinitionLogsTimeRelativeCondition : Instantiate ApisAlertDefinitionLogsTimeRelativeCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsTimeRelativeCondition(threshold float64, comparedTo string) (_model *ApisAlertDefinitionLogsTimeRelativeCondition, err error) {
+	_model = &ApisAlertDefinitionLogsTimeRelativeCondition{
+		Threshold: core.Float64Ptr(threshold),
+		ComparedTo: core.StringPtr(comparedTo),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsTimeRelativeCondition unmarshals an instance of ApisAlertDefinitionLogsTimeRelativeCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsTimeRelativeCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsTimeRelativeCondition)
+	err = core.UnmarshalPrimitive(m, "threshold", &obj.Threshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "compared_to", &obj.ComparedTo)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "compared_to-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsTimeRelativeRule : The condition rules for the time-relative alert.
+type ApisAlertDefinitionLogsTimeRelativeRule struct {
+	// The condition for the time-relative alert.
+	Condition *ApisAlertDefinitionLogsTimeRelativeCondition `json:"condition" validate:"required"`
+
+	// The override settings for the alert.
+	Override *ApisAlertDefinitionAlertDefOverride `json:"override" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsTimeRelativeRule : Instantiate ApisAlertDefinitionLogsTimeRelativeRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsTimeRelativeRule(condition *ApisAlertDefinitionLogsTimeRelativeCondition, override *ApisAlertDefinitionAlertDefOverride) (_model *ApisAlertDefinitionLogsTimeRelativeRule, err error) {
+	_model = &ApisAlertDefinitionLogsTimeRelativeRule{
+		Condition: condition,
+		Override: override,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsTimeRelativeRule unmarshals an instance of ApisAlertDefinitionLogsTimeRelativeRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsTimeRelativeRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsTimeRelativeRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsTimeRelativeCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "override", &obj.Override, UnmarshalApisAlertDefinitionAlertDefOverride)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "override-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsTimeRelativeThresholdType : Configuration for time-relative log threshold alerts.
+type ApisAlertDefinitionLogsTimeRelativeThresholdType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// The condition rules for the time-relative alert.
+	Rules []ApisAlertDefinitionLogsTimeRelativeRule `json:"rules" validate:"required"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// Ignore infinity values in the alert.
+	IgnoreInfinity *bool `json:"ignore_infinity,omitempty"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+
+	// Configuration for handling the undetected values in the alert.
+	UndetectedValuesManagement *ApisAlertDefinitionUndetectedValuesManagement `json:"undetected_values_management,omitempty"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsTimeRelativeThresholdType.ConditionType property.
+// The delay in milliseconds before evaluating the alert condition.
+const (
+	ApisAlertDefinitionLogsTimeRelativeThresholdType_ConditionType_LessThan = "less_than"
+	ApisAlertDefinitionLogsTimeRelativeThresholdType_ConditionType_MoreThanOrUnspecified = "more_than_or_unspecified"
+)
+
+// NewApisAlertDefinitionLogsTimeRelativeThresholdType : Instantiate ApisAlertDefinitionLogsTimeRelativeThresholdType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsTimeRelativeThresholdType(rules []ApisAlertDefinitionLogsTimeRelativeRule, conditionType string) (_model *ApisAlertDefinitionLogsTimeRelativeThresholdType, err error) {
+	_model = &ApisAlertDefinitionLogsTimeRelativeThresholdType{
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType unmarshals an instance of ApisAlertDefinitionLogsTimeRelativeThresholdType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsTimeRelativeThresholdType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsTimeRelativeRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "ignore_infinity", &obj.IgnoreInfinity)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "ignore_infinity-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "undetected_values_management", &obj.UndetectedValuesManagement, UnmarshalApisAlertDefinitionUndetectedValuesManagement)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "undetected_values_management-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsTimeWindow : The time window for the alert condition.
+type ApisAlertDefinitionLogsTimeWindow struct {
+	// The time window defined for an alert to be triggered.
+	LogsTimeWindowSpecificValue *string `json:"logs_time_window_specific_value" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsTimeWindow.LogsTimeWindowSpecificValue property.
+// The time window defined for an alert to be triggered.
+const (
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hour1 = "hour_1"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours12 = "hours_12"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours2 = "hours_2"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours36 = "hours_36"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours4 = "hours_4"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Hours6 = "hours_6"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Minutes10 = "minutes_10"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Minutes15 = "minutes_15"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Minutes20 = "minutes_20"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Minutes30 = "minutes_30"
+	ApisAlertDefinitionLogsTimeWindow_LogsTimeWindowSpecificValue_Minutes5OrUnspecified = "minutes_5_or_unspecified"
+)
+
+// NewApisAlertDefinitionLogsTimeWindow : Instantiate ApisAlertDefinitionLogsTimeWindow (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsTimeWindow(logsTimeWindowSpecificValue string) (_model *ApisAlertDefinitionLogsTimeWindow, err error) {
+	_model = &ApisAlertDefinitionLogsTimeWindow{
+		LogsTimeWindowSpecificValue: core.StringPtr(logsTimeWindowSpecificValue),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsTimeWindow unmarshals an instance of ApisAlertDefinitionLogsTimeWindow from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsTimeWindow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsTimeWindow)
+	err = core.UnmarshalPrimitive(m, "logs_time_window_specific_value", &obj.LogsTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsUniqueCountCondition : The condition for detecting unique counts in logs.
+type ApisAlertDefinitionLogsUniqueCountCondition struct {
+	// The maximum unique count for the alert condition.
+	MaxUniqueCount *string `json:"max_unique_count" validate:"required"`
+
+	// The time window for the unique count alert.
+	TimeWindow *ApisAlertDefinitionLogsUniqueValueTimeWindow `json:"time_window" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsUniqueCountCondition : Instantiate ApisAlertDefinitionLogsUniqueCountCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsUniqueCountCondition(maxUniqueCount string, timeWindow *ApisAlertDefinitionLogsUniqueValueTimeWindow) (_model *ApisAlertDefinitionLogsUniqueCountCondition, err error) {
+	_model = &ApisAlertDefinitionLogsUniqueCountCondition{
+		MaxUniqueCount: core.StringPtr(maxUniqueCount),
+		TimeWindow: timeWindow,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsUniqueCountCondition unmarshals an instance of ApisAlertDefinitionLogsUniqueCountCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsUniqueCountCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsUniqueCountCondition)
+	err = core.UnmarshalPrimitive(m, "max_unique_count", &obj.MaxUniqueCount)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "max_unique_count-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_window", &obj.TimeWindow, UnmarshalApisAlertDefinitionLogsUniqueValueTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_window-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsUniqueCountRule : Rules defining the conditions for the unique count alert.
+type ApisAlertDefinitionLogsUniqueCountRule struct {
+	// The condition for detecting unique counts in logs.
+	Condition *ApisAlertDefinitionLogsUniqueCountCondition `json:"condition" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsUniqueCountRule : Instantiate ApisAlertDefinitionLogsUniqueCountRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsUniqueCountRule(condition *ApisAlertDefinitionLogsUniqueCountCondition) (_model *ApisAlertDefinitionLogsUniqueCountRule, err error) {
+	_model = &ApisAlertDefinitionLogsUniqueCountRule{
+		Condition: condition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsUniqueCountRule unmarshals an instance of ApisAlertDefinitionLogsUniqueCountRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsUniqueCountRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsUniqueCountRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionLogsUniqueCountCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsUniqueCountType : Configuration for alerts based on unique log value counts.
+type ApisAlertDefinitionLogsUniqueCountType struct {
+	// The filter to match log entries for immediate alerts.
+	LogsFilter *ApisAlertDefinitionLogsFilter `json:"logs_filter,omitempty"`
+
+	// Rules defining the conditions for the unique count alert.
+	Rules []ApisAlertDefinitionLogsUniqueCountRule `json:"rules" validate:"required"`
+
+	// The filter to specify which fields are included in the notification payload.
+	NotificationPayloadFilter []string `json:"notification_payload_filter,omitempty"`
+
+	// The maximum unique count per group by key.
+	MaxUniqueCountPerGroupByKey *string `json:"max_unique_count_per_group_by_key,omitempty"`
+
+	// The keypath in the logs to be used for unique count.
+	UniqueCountKeypath *string `json:"unique_count_keypath" validate:"required"`
+}
+
+// NewApisAlertDefinitionLogsUniqueCountType : Instantiate ApisAlertDefinitionLogsUniqueCountType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsUniqueCountType(rules []ApisAlertDefinitionLogsUniqueCountRule, uniqueCountKeypath string) (_model *ApisAlertDefinitionLogsUniqueCountType, err error) {
+	_model = &ApisAlertDefinitionLogsUniqueCountType{
+		Rules: rules,
+		UniqueCountKeypath: core.StringPtr(uniqueCountKeypath),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsUniqueCountType unmarshals an instance of ApisAlertDefinitionLogsUniqueCountType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsUniqueCountType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsUniqueCountType)
+	err = core.UnmarshalModel(m, "logs_filter", &obj.LogsFilter, UnmarshalApisAlertDefinitionLogsFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionLogsUniqueCountRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "notification_payload_filter", &obj.NotificationPayloadFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_payload_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "max_unique_count_per_group_by_key", &obj.MaxUniqueCountPerGroupByKey)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "max_unique_count_per_group_by_key-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "unique_count_keypath", &obj.UniqueCountKeypath)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unique_count_keypath-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionLogsUniqueValueTimeWindow : The time window for the unique count alert.
+type ApisAlertDefinitionLogsUniqueValueTimeWindow struct {
+	// A time window defined by a specific value.
+	LogsUniqueValueTimeWindowSpecificValue *string `json:"logs_unique_value_time_window_specific_value" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionLogsUniqueValueTimeWindow.LogsUniqueValueTimeWindowSpecificValue property.
+// A time window defined by a specific value.
+const (
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours1 = "hours_1"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours12 = "hours_12"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours2 = "hours_2"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours36 = "hours_36"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours4 = "hours_4"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Hours6 = "hours_6"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minute1OrUnspecified = "minute_1_or_unspecified"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minutes10 = "minutes_10"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minutes15 = "minutes_15"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minutes20 = "minutes_20"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minutes30 = "minutes_30"
+	ApisAlertDefinitionLogsUniqueValueTimeWindow_LogsUniqueValueTimeWindowSpecificValue_Minutes5 = "minutes_5"
+)
+
+// NewApisAlertDefinitionLogsUniqueValueTimeWindow : Instantiate ApisAlertDefinitionLogsUniqueValueTimeWindow (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionLogsUniqueValueTimeWindow(logsUniqueValueTimeWindowSpecificValue string) (_model *ApisAlertDefinitionLogsUniqueValueTimeWindow, err error) {
+	_model = &ApisAlertDefinitionLogsUniqueValueTimeWindow{
+		LogsUniqueValueTimeWindowSpecificValue: core.StringPtr(logsUniqueValueTimeWindowSpecificValue),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionLogsUniqueValueTimeWindow unmarshals an instance of ApisAlertDefinitionLogsUniqueValueTimeWindow from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionLogsUniqueValueTimeWindow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionLogsUniqueValueTimeWindow)
+	err = core.UnmarshalPrimitive(m, "logs_unique_value_time_window_specific_value", &obj.LogsUniqueValueTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_unique_value_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricAnomalyCondition : The condition for the metric anomaly alert.
+type ApisAlertDefinitionMetricAnomalyCondition struct {
+	// The threshold value for the alert condition.
+	Threshold *float64 `json:"threshold" validate:"required"`
+
+	// The percentage of the metric values that must exceed the threshold to trigger the alert.
+	ForOverPct *int64 `json:"for_over_pct,omitempty"`
+
+	// The time window for the alert condition.
+	OfTheLast ApisAlertDefinitionMetricTimeWindowIntf `json:"of_the_last" validate:"required"`
+
+	// The percentage of non-null values required to trigger the alert.
+	MinNonNullValuesPct *int64 `json:"min_non_null_values_pct" validate:"required"`
+}
+
+// NewApisAlertDefinitionMetricAnomalyCondition : Instantiate ApisAlertDefinitionMetricAnomalyCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricAnomalyCondition(threshold float64, ofTheLast ApisAlertDefinitionMetricTimeWindowIntf, minNonNullValuesPct int64) (_model *ApisAlertDefinitionMetricAnomalyCondition, err error) {
+	_model = &ApisAlertDefinitionMetricAnomalyCondition{
+		Threshold: core.Float64Ptr(threshold),
+		OfTheLast: ofTheLast,
+		MinNonNullValuesPct: core.Int64Ptr(minNonNullValuesPct),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricAnomalyCondition unmarshals an instance of ApisAlertDefinitionMetricAnomalyCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricAnomalyCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricAnomalyCondition)
+	err = core.UnmarshalPrimitive(m, "threshold", &obj.Threshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "for_over_pct", &obj.ForOverPct)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "for_over_pct-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "of_the_last", &obj.OfTheLast, UnmarshalApisAlertDefinitionMetricTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "of_the_last-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "min_non_null_values_pct", &obj.MinNonNullValuesPct)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "min_non_null_values_pct-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricAnomalyRule : The condition rules for the metric anomaly alert.
+type ApisAlertDefinitionMetricAnomalyRule struct {
+	// The condition for the metric anomaly alert.
+	Condition *ApisAlertDefinitionMetricAnomalyCondition `json:"condition" validate:"required"`
+}
+
+// NewApisAlertDefinitionMetricAnomalyRule : Instantiate ApisAlertDefinitionMetricAnomalyRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricAnomalyRule(condition *ApisAlertDefinitionMetricAnomalyCondition) (_model *ApisAlertDefinitionMetricAnomalyRule, err error) {
+	_model = &ApisAlertDefinitionMetricAnomalyRule{
+		Condition: condition,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricAnomalyRule unmarshals an instance of ApisAlertDefinitionMetricAnomalyRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricAnomalyRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricAnomalyRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionMetricAnomalyCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricAnomalyType : Configuration for metric-based anomaly detection alerts.
+type ApisAlertDefinitionMetricAnomalyType struct {
+	// The filter to match metric entries for the alert.
+	MetricFilter *ApisAlertDefinitionMetricFilter `json:"metric_filter" validate:"required"`
+
+	// The condition rules for the metric anomaly alert.
+	Rules []ApisAlertDefinitionMetricAnomalyRule `json:"rules" validate:"required"`
+
+	// The condition type for the alert.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+
+	// The anomaly alert settings configuration.
+	AnomalyAlertSettings *ApisAlertDefinitionAnomalyAlertSettings `json:"anomaly_alert_settings,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionMetricAnomalyType.ConditionType property.
+// The condition type for the alert.
+const (
+	ApisAlertDefinitionMetricAnomalyType_ConditionType_LessThanUsual = "less_than_usual"
+	ApisAlertDefinitionMetricAnomalyType_ConditionType_MoreThanUsualOrUnspecified = "more_than_usual_or_unspecified"
+)
+
+// NewApisAlertDefinitionMetricAnomalyType : Instantiate ApisAlertDefinitionMetricAnomalyType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricAnomalyType(metricFilter *ApisAlertDefinitionMetricFilter, rules []ApisAlertDefinitionMetricAnomalyRule, conditionType string) (_model *ApisAlertDefinitionMetricAnomalyType, err error) {
+	_model = &ApisAlertDefinitionMetricAnomalyType{
+		MetricFilter: metricFilter,
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricAnomalyType unmarshals an instance of ApisAlertDefinitionMetricAnomalyType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricAnomalyType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricAnomalyType)
+	err = core.UnmarshalModel(m, "metric_filter", &obj.MetricFilter, UnmarshalApisAlertDefinitionMetricFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionMetricAnomalyRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "anomaly_alert_settings", &obj.AnomalyAlertSettings, UnmarshalApisAlertDefinitionAnomalyAlertSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "anomaly_alert_settings-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricFilter : The filter to match metric entries for the alert.
+type ApisAlertDefinitionMetricFilter struct {
+	// The filter is a PromQL expression.
+	Promql *string `json:"promql" validate:"required"`
+}
+
+// NewApisAlertDefinitionMetricFilter : Instantiate ApisAlertDefinitionMetricFilter (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricFilter(promql string) (_model *ApisAlertDefinitionMetricFilter, err error) {
+	_model = &ApisAlertDefinitionMetricFilter{
+		Promql: core.StringPtr(promql),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricFilter unmarshals an instance of ApisAlertDefinitionMetricFilter from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricFilter(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricFilter)
+	err = core.UnmarshalPrimitive(m, "promql", &obj.Promql)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "promql-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricMissingValues : Configuration for handling missing values in the alert. Only one of `replace_with_zero` or `min_non_null_value_pct`
+// is supported.
+// Models which "extend" this model:
+// - ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero
+// - ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct
+type ApisAlertDefinitionMetricMissingValues struct {
+	// If set to true, missing values will be replaced with zero.
+	ReplaceWithZero *bool `json:"replace_with_zero,omitempty"`
+
+	// If set, specifies the minimum percentage of non-null values required for the alert to be triggered.
+	MinNonNullValuesPct *int64 `json:"min_non_null_values_pct,omitempty"`
+}
+func (*ApisAlertDefinitionMetricMissingValues) isaApisAlertDefinitionMetricMissingValues() bool {
+	return true
+}
+
+type ApisAlertDefinitionMetricMissingValuesIntf interface {
+	isaApisAlertDefinitionMetricMissingValues() bool
+}
+
+// UnmarshalApisAlertDefinitionMetricMissingValues unmarshals an instance of ApisAlertDefinitionMetricMissingValues from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricMissingValues(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricMissingValues)
+	err = core.UnmarshalPrimitive(m, "replace_with_zero", &obj.ReplaceWithZero)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replace_with_zero-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "min_non_null_values_pct", &obj.MinNonNullValuesPct)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "min_non_null_values_pct-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricThresholdCondition : The condition for the metric threshold alert.
+type ApisAlertDefinitionMetricThresholdCondition struct {
+	// The threshold value for the alert condition.
+	Threshold *float64 `json:"threshold" validate:"required"`
+
+	// The percentage of values that must exceed the threshold to trigger the
+	//  alert.
+	ForOverPct *int64 `json:"for_over_pct" validate:"required"`
+
+	// The time window for the alert condition.
+	OfTheLast ApisAlertDefinitionMetricTimeWindowIntf `json:"of_the_last" validate:"required"`
+}
+
+// NewApisAlertDefinitionMetricThresholdCondition : Instantiate ApisAlertDefinitionMetricThresholdCondition (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricThresholdCondition(threshold float64, forOverPct int64, ofTheLast ApisAlertDefinitionMetricTimeWindowIntf) (_model *ApisAlertDefinitionMetricThresholdCondition, err error) {
+	_model = &ApisAlertDefinitionMetricThresholdCondition{
+		Threshold: core.Float64Ptr(threshold),
+		ForOverPct: core.Int64Ptr(forOverPct),
+		OfTheLast: ofTheLast,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricThresholdCondition unmarshals an instance of ApisAlertDefinitionMetricThresholdCondition from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricThresholdCondition(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricThresholdCondition)
+	err = core.UnmarshalPrimitive(m, "threshold", &obj.Threshold)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "threshold-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "for_over_pct", &obj.ForOverPct)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "for_over_pct-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "of_the_last", &obj.OfTheLast, UnmarshalApisAlertDefinitionMetricTimeWindow)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "of_the_last-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricThresholdRule : The condition rules for the metric threshold alert.
+type ApisAlertDefinitionMetricThresholdRule struct {
+	// The condition for the metric threshold alert.
+	Condition *ApisAlertDefinitionMetricThresholdCondition `json:"condition" validate:"required"`
+
+	// The override settings for the alert.
+	Override *ApisAlertDefinitionAlertDefOverride `json:"override" validate:"required"`
+}
+
+// NewApisAlertDefinitionMetricThresholdRule : Instantiate ApisAlertDefinitionMetricThresholdRule (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricThresholdRule(condition *ApisAlertDefinitionMetricThresholdCondition, override *ApisAlertDefinitionAlertDefOverride) (_model *ApisAlertDefinitionMetricThresholdRule, err error) {
+	_model = &ApisAlertDefinitionMetricThresholdRule{
+		Condition: condition,
+		Override: override,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricThresholdRule unmarshals an instance of ApisAlertDefinitionMetricThresholdRule from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricThresholdRule(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricThresholdRule)
+	err = core.UnmarshalModel(m, "condition", &obj.Condition, UnmarshalApisAlertDefinitionMetricThresholdCondition)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "override", &obj.Override, UnmarshalApisAlertDefinitionAlertDefOverride)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "override-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricThresholdType : Configuration for metric-based threshold alerts.
+type ApisAlertDefinitionMetricThresholdType struct {
+	// The filter to match metric entries for the alert.
+	MetricFilter *ApisAlertDefinitionMetricFilter `json:"metric_filter" validate:"required"`
+
+	// The condition rules for the metric threshold alert.
+	Rules []ApisAlertDefinitionMetricThresholdRule `json:"rules" validate:"required"`
+
+	// The type of the alert condition.
+	ConditionType *string `json:"condition_type" validate:"required"`
+
+	// Configuration for handling the undetected values in the alert.
+	UndetectedValuesManagement *ApisAlertDefinitionUndetectedValuesManagement `json:"undetected_values_management,omitempty"`
+
+	// Configuration for handling missing values in the alert. Only one of `replace_with_zero` or `min_non_null_value_pct`
+	// is supported.
+	MissingValues ApisAlertDefinitionMetricMissingValuesIntf `json:"missing_values" validate:"required"`
+
+	// The delay in milliseconds before evaluating the alert condition.
+	EvaluationDelayMs *int64 `json:"evaluation_delay_ms,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionMetricThresholdType.ConditionType property.
+// The type of the alert condition.
+const (
+	ApisAlertDefinitionMetricThresholdType_ConditionType_LessThan = "less_than"
+	ApisAlertDefinitionMetricThresholdType_ConditionType_LessThanOrEquals = "less_than_or_equals"
+	ApisAlertDefinitionMetricThresholdType_ConditionType_MoreThanOrEquals = "more_than_or_equals"
+	ApisAlertDefinitionMetricThresholdType_ConditionType_MoreThanOrUnspecified = "more_than_or_unspecified"
+)
+
+// NewApisAlertDefinitionMetricThresholdType : Instantiate ApisAlertDefinitionMetricThresholdType (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionMetricThresholdType(metricFilter *ApisAlertDefinitionMetricFilter, rules []ApisAlertDefinitionMetricThresholdRule, conditionType string, missingValues ApisAlertDefinitionMetricMissingValuesIntf) (_model *ApisAlertDefinitionMetricThresholdType, err error) {
+	_model = &ApisAlertDefinitionMetricThresholdType{
+		MetricFilter: metricFilter,
+		Rules: rules,
+		ConditionType: core.StringPtr(conditionType),
+		MissingValues: missingValues,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionMetricThresholdType unmarshals an instance of ApisAlertDefinitionMetricThresholdType from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricThresholdType(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricThresholdType)
+	err = core.UnmarshalModel(m, "metric_filter", &obj.MetricFilter, UnmarshalApisAlertDefinitionMetricFilter)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_filter-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "rules", &obj.Rules, UnmarshalApisAlertDefinitionMetricThresholdRule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rules-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "condition_type", &obj.ConditionType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "condition_type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "undetected_values_management", &obj.UndetectedValuesManagement, UnmarshalApisAlertDefinitionUndetectedValuesManagement)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "undetected_values_management-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "missing_values", &obj.MissingValues, UnmarshalApisAlertDefinitionMetricMissingValues)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "missing_values-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "evaluation_delay_ms", &obj.EvaluationDelayMs)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "evaluation_delay_ms-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricTimeWindow : The time window for the alert condition.
+// Models which "extend" this model:
+// - ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue
+// - ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration
+type ApisAlertDefinitionMetricTimeWindow struct {
+	// The time window as a specific value.
+	MetricTimeWindowSpecificValue *string `json:"metric_time_window_specific_value,omitempty"`
+
+	// The time window as a dynamic value.
+	MetricTimeWindowDynamicDuration *string `json:"metric_time_window_dynamic_duration,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionMetricTimeWindow.MetricTimeWindowSpecificValue property.
+// The time window as a specific value.
+const (
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hour1 = "hour_1"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours12 = "hours_12"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours2 = "hours_2"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours36 = "hours_36"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours4 = "hours_4"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Hours6 = "hours_6"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes10 = "minutes_10"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes15 = "minutes_15"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes1OrUnspecified = "minutes_1_or_unspecified"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes20 = "minutes_20"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes30 = "minutes_30"
+	ApisAlertDefinitionMetricTimeWindow_MetricTimeWindowSpecificValue_Minutes5 = "minutes_5"
+)
+func (*ApisAlertDefinitionMetricTimeWindow) isaApisAlertDefinitionMetricTimeWindow() bool {
+	return true
+}
+
+type ApisAlertDefinitionMetricTimeWindowIntf interface {
+	isaApisAlertDefinitionMetricTimeWindow() bool
+}
+
+// UnmarshalApisAlertDefinitionMetricTimeWindow unmarshals an instance of ApisAlertDefinitionMetricTimeWindow from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricTimeWindow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricTimeWindow)
+	err = core.UnmarshalPrimitive(m, "metric_time_window_specific_value", &obj.MetricTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "metric_time_window_dynamic_duration", &obj.MetricTimeWindowDynamicDuration)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_time_window_dynamic_duration-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionTimeOfDay : Start time of the alert activity.
+type ApisAlertDefinitionTimeOfDay struct {
+	// The hour of the day in 24-hour format. Must be an integer between 0 and 23.
+	Hours *int64 `json:"hours,omitempty"`
+
+	// Minute of the hour of the day. Must be an integer between 0 and 59.
+	Minutes *int64 `json:"minutes,omitempty"`
+}
+
+// UnmarshalApisAlertDefinitionTimeOfDay unmarshals an instance of ApisAlertDefinitionTimeOfDay from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionTimeOfDay(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionTimeOfDay)
+	err = core.UnmarshalPrimitive(m, "hours", &obj.Hours)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "hours-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "minutes", &obj.Minutes)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "minutes-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionUndetectedValuesManagement : Configuration for handling the undetected values in the alert.
+type ApisAlertDefinitionUndetectedValuesManagement struct {
+	// Should trigger the alert when undetected values are detected. If true, alert is triggered.
+	TriggerUndetectedValues *bool `json:"trigger_undetected_values" validate:"required"`
+
+	// The timeframe for auto-retiring the alert when undetected values are detected.
+	AutoRetireTimeframe *string `json:"auto_retire_timeframe" validate:"required"`
+}
+
+// Constants associated with the ApisAlertDefinitionUndetectedValuesManagement.AutoRetireTimeframe property.
+// The timeframe for auto-retiring the alert when undetected values are detected.
+const (
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Hour1 = "hour_1"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Hours12 = "hours_12"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Hours2 = "hours_2"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Hours24 = "hours_24"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Hours6 = "hours_6"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Minutes10 = "minutes_10"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_Minutes5 = "minutes_5"
+	ApisAlertDefinitionUndetectedValuesManagement_AutoRetireTimeframe_NeverOrUnspecified = "never_or_unspecified"
+)
+
+// NewApisAlertDefinitionUndetectedValuesManagement : Instantiate ApisAlertDefinitionUndetectedValuesManagement (Generic Model Constructor)
+func (*LogsV0) NewApisAlertDefinitionUndetectedValuesManagement(triggerUndetectedValues bool, autoRetireTimeframe string) (_model *ApisAlertDefinitionUndetectedValuesManagement, err error) {
+	_model = &ApisAlertDefinitionUndetectedValuesManagement{
+		TriggerUndetectedValues: core.BoolPtr(triggerUndetectedValues),
+		AutoRetireTimeframe: core.StringPtr(autoRetireTimeframe),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisAlertDefinitionUndetectedValuesManagement unmarshals an instance of ApisAlertDefinitionUndetectedValuesManagement from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionUndetectedValuesManagement(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionUndetectedValuesManagement)
+	err = core.UnmarshalPrimitive(m, "trigger_undetected_values", &obj.TriggerUndetectedValues)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "trigger_undetected_values-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "auto_retire_timeframe", &obj.AutoRetireTimeframe)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "auto_retire_timeframe-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisDashboardsV1AstAnnotation : List of annotations that can be applied to the dashboard's visual elements.
 type ApisDashboardsV1AstAnnotation struct {
 	// Unique identifier within the dashboard.
@@ -6123,7 +9475,7 @@ type ApisDashboardsV1AstAnnotation struct {
 	// Name of the annotation.
 	Name *string `json:"name" validate:"required"`
 
-	// Whether the annotation is enabled.
+	// Whether the annotation is enabled. If enabled, annotations are applied.
 	Enabled *bool `json:"enabled" validate:"required"`
 
 	// Source of the annotation events.
@@ -6279,10 +9631,10 @@ func UnmarshalApisDashboardsV1AstAnnotationLogsSourceStrategy(m map[string]json.
 
 // ApisDashboardsV1AstAnnotationLogsSourceStrategyDuration : Event start timestamp and duration are extracted from the log entry.
 type ApisDashboardsV1AstAnnotationLogsSourceStrategyDuration struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	StartTimestampField *ApisDashboardsV1CommonObservationField `json:"start_timestamp_field" validate:"required"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	DurationField *ApisDashboardsV1CommonObservationField `json:"duration_field" validate:"required"`
 }
 
@@ -6318,7 +9670,7 @@ func UnmarshalApisDashboardsV1AstAnnotationLogsSourceStrategyDuration(m map[stri
 
 // ApisDashboardsV1AstAnnotationLogsSourceStrategyInstant : Event timestamp is extracted from the log entry.
 type ApisDashboardsV1AstAnnotationLogsSourceStrategyInstant struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	TimestampField *ApisDashboardsV1CommonObservationField `json:"timestamp_field" validate:"required"`
 }
 
@@ -6348,10 +9700,10 @@ func UnmarshalApisDashboardsV1AstAnnotationLogsSourceStrategyInstant(m map[strin
 
 // ApisDashboardsV1AstAnnotationLogsSourceStrategyRange : Event start and end timestamps are extracted from the log entry.
 type ApisDashboardsV1AstAnnotationLogsSourceStrategyRange struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	StartTimestampField *ApisDashboardsV1CommonObservationField `json:"start_timestamp_field" validate:"required"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	EndTimestampField *ApisDashboardsV1CommonObservationField `json:"end_timestamp_field" validate:"required"`
 }
 
@@ -6393,7 +9745,7 @@ type ApisDashboardsV1AstAnnotationMetricsSource struct {
 	// Strategy for turning metrics data into annotations.
 	Strategy *ApisDashboardsV1AstAnnotationMetricsSourceStrategy `json:"strategy,omitempty"`
 
-	// Template for the annotation message.
+	// Message template for the annotation message.
 	MessageTemplate *string `json:"message_template,omitempty"`
 
 	// Labels to display in the annotation.
@@ -6427,7 +9779,7 @@ func UnmarshalApisDashboardsV1AstAnnotationMetricsSource(m map[string]json.RawMe
 	return
 }
 
-// ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty : Take first data point and use its value as annotation timestamp (instead of point own timestamp).
+// ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty : Take first data point and use its value as annotation timestamp (instead of the point's own timestamp).
 // This type supports additional properties of type interface{}.
 type ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty struct {
 
@@ -6494,7 +9846,7 @@ func UnmarshalApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty(m m
 
 // ApisDashboardsV1AstAnnotationMetricsSourceStrategy : Strategy for turning metrics data into annotations.
 type ApisDashboardsV1AstAnnotationMetricsSourceStrategy struct {
-	// Take first data point and use its value as annotation timestamp (instead of point own timestamp).
+	// Take first data point and use its value as annotation timestamp (instead of the point's own timestamp).
 	StartTimeMetric *ApisDashboardsV1AstAnnotationMetricsSourceStartTimeMetricEmpty `json:"start_time_metric,omitempty"`
 }
 
@@ -6781,13 +10133,13 @@ func UnmarshalApisDashboardsV1AstDashboardAutoRefreshTwoMinutesEmpty(m map[strin
 
 // ApisDashboardsV1AstFilter : List of filters that can be applied to the dashboard's data.
 type ApisDashboardsV1AstFilter struct {
-	// Filters to be applied to query results.
+	// Filters to be applied to the query results.
 	Source ApisDashboardsV1AstFilterSourceIntf `json:"source,omitempty"`
 
 	// Indicates if the filter is currently enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// Indicates if the filter's UI representation should be collapsed or expanded.
+	// Indicates if the filter's UI representation will be collapsed or expanded.
 	Collapsed *bool `json:"collapsed,omitempty"`
 }
 
@@ -6950,12 +10302,12 @@ func UnmarshalApisDashboardsV1AstFilterEqualsSelectionListSelection(m map[string
 	return
 }
 
-// ApisDashboardsV1AstFilterLogsFilter : Extra filtering on top of the Lucene query.
+// ApisDashboardsV1AstFilterLogsFilter : Additional filtering done in addition to the Lucene query.
 type ApisDashboardsV1AstFilterLogsFilter struct {
 	// Operator to use for filtering the logs.
 	Operator ApisDashboardsV1AstFilterOperatorIntf `json:"operator,omitempty"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field,omitempty"`
 }
 
@@ -7092,12 +10444,12 @@ func UnmarshalApisDashboardsV1AstFilterOperator(m map[string]json.RawMessage, re
 	return
 }
 
-// ApisDashboardsV1AstFilterSource : Filters to be applied to query results.
+// ApisDashboardsV1AstFilterSource : Filters to be applied to the query results.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstFilterSourceValueLogs
 // - ApisDashboardsV1AstFilterSourceValueMetrics
 type ApisDashboardsV1AstFilterSource struct {
-	// Extra filtering on top of the Lucene query.
+	// Additional filtering done in addition to the Lucene query.
 	Logs *ApisDashboardsV1AstFilterLogsFilter `json:"logs,omitempty"`
 
 	// Filtering to be applied to query results.
@@ -7237,15 +10589,15 @@ type ApisDashboardsV1AstMultiSelect struct {
 	// State of what is currently selected.
 	Selection ApisDashboardsV1AstMultiSelectSelectionIntf `json:"selection" validate:"required"`
 
-	// The direction of the order: ascending or descending.
+	// Indicates if the order is ascending or descending.
 	ValuesOrderDirection *string `json:"values_order_direction" validate:"required"`
 
-	// The options to configure variable.
+	// The multi-select options to configure variable.
 	SelectionOptions *ApisDashboardsV1AstMultiSelectVariableSelectionOptions `json:"selection_options,omitempty"`
 }
 
 // Constants associated with the ApisDashboardsV1AstMultiSelect.ValuesOrderDirection property.
-// The direction of the order: ascending or descending.
+// Indicates if the order is ascending or descending.
 const (
 	ApisDashboardsV1AstMultiSelect_ValuesOrderDirection_Asc = "asc"
 	ApisDashboardsV1AstMultiSelect_ValuesOrderDirection_Desc = "desc"
@@ -7293,9 +10645,9 @@ func UnmarshalApisDashboardsV1AstMultiSelect(m map[string]json.RawMessage, resul
 	return
 }
 
-// ApisDashboardsV1AstMultiSelectConstantListSource : List of constant values.
+// ApisDashboardsV1AstMultiSelectConstantListSource : List of constant source values.
 type ApisDashboardsV1AstMultiSelectConstantListSource struct {
-	// List of constant values.
+	// List of constant source values.
 	Values []string `json:"values" validate:"required"`
 }
 
@@ -7325,7 +10677,7 @@ func UnmarshalApisDashboardsV1AstMultiSelectConstantListSource(m map[string]json
 
 // ApisDashboardsV1AstMultiSelectLogsPathSource : Unique values for a given logs path.
 type ApisDashboardsV1AstMultiSelectLogsPathSource struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -7355,10 +10707,10 @@ func UnmarshalApisDashboardsV1AstMultiSelectLogsPathSource(m map[string]json.Raw
 
 // ApisDashboardsV1AstMultiSelectMetricLabelSource : Unique values for a given metric label.
 type ApisDashboardsV1AstMultiSelectMetricLabelSource struct {
-	// Metric name to source unique values from.
+	// Metric name used to source unique values.
 	MetricName *string `json:"metric_name" validate:"required"`
 
-	// Metric label to source unique values from.
+	// Metric name used to source unique values.
 	Label *string `json:"label" validate:"required"`
 }
 
@@ -7496,7 +10848,7 @@ func UnmarshalApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldName(m map[st
 
 // ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue : ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue struct
 type ApisDashboardsV1AstMultiSelectQueryLogsQueryTypeFieldValue struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field,omitempty"`
 }
 
@@ -7980,7 +11332,7 @@ type ApisDashboardsV1AstMultiSelectSource struct {
 	// Unique values for a given metric label.
 	MetricLabel *ApisDashboardsV1AstMultiSelectMetricLabelSource `json:"metric_label,omitempty"`
 
-	// List of constant values.
+	// List of constant source values.
 	ConstantList *ApisDashboardsV1AstMultiSelectConstantListSource `json:"constant_list,omitempty"`
 
 	// The query of the source.
@@ -8045,7 +11397,7 @@ func UnmarshalApisDashboardsV1AstMultiSelectValueDisplayOptions(m map[string]jso
 	return
 }
 
-// ApisDashboardsV1AstMultiSelectVariableSelectionOptions : The options to configure variable.
+// ApisDashboardsV1AstMultiSelectVariableSelectionOptions : The multi-select options to configure variable.
 type ApisDashboardsV1AstMultiSelectVariableSelectionOptions struct {
 	SelectionType *string `json:"selection_type,omitempty"`
 }
@@ -8080,7 +11432,7 @@ type ApisDashboardsV1AstRow struct {
 	// The appearance of the row, such as height.
 	Appearance *ApisDashboardsV1AstRowAppearance `json:"appearance" validate:"required"`
 
-	// The widgets of the row.
+	// The widgets in the row.
 	Widgets []ApisDashboardsV1AstWidget `json:"widgets,omitempty"`
 }
 
@@ -8275,7 +11627,7 @@ type ApisDashboardsV1AstVariable struct {
 	// Name of the variable which can be used in templates.
 	Name *string `json:"name" validate:"required"`
 
-	// Definition.
+	// Definition of the dashboard variable.
 	Definition ApisDashboardsV1AstVariableDefinitionIntf `json:"definition" validate:"required"`
 
 	// The name of variable.
@@ -8342,7 +11694,7 @@ func UnmarshalApisDashboardsV1AstVariable(m map[string]json.RawMessage, result i
 	return
 }
 
-// ApisDashboardsV1AstVariableDefinition : Definition.
+// ApisDashboardsV1AstVariableDefinition : Definition of the dashboard variable.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstVariableDefinitionValueMultiSelect
 type ApisDashboardsV1AstVariableDefinition struct {
@@ -8369,9 +11721,9 @@ func UnmarshalApisDashboardsV1AstVariableDefinition(m map[string]json.RawMessage
 	return
 }
 
-// ApisDashboardsV1AstWidget : The widgets of the row.
+// ApisDashboardsV1AstWidget : The widgets in the row.
 type ApisDashboardsV1AstWidget struct {
-	// Widget identifier within the dashboard.
+	// The widget identifier within the dashboard. The identifier must be unique within the dahsboard.
 	Href *string `json:"href,omitempty"`
 
 	// Unique identifier of the folder containing the dashboard.
@@ -8383,7 +11735,7 @@ type ApisDashboardsV1AstWidget struct {
 	// Widget description.
 	Description *string `json:"description,omitempty"`
 
-	// Widget definition, contains the widget type and its configuration.
+	// Widget definition containing the widget type and its configuration.
 	Definition ApisDashboardsV1AstWidgetDefinitionIntf `json:"definition" validate:"required"`
 
 	// Creation timestamp.
@@ -8449,7 +11801,7 @@ func UnmarshalApisDashboardsV1AstWidget(m map[string]json.RawMessage, result int
 	return
 }
 
-// ApisDashboardsV1AstWidgetDefinition : Widget definition, contains the widget type and its configuration.
+// ApisDashboardsV1AstWidgetDefinition : Widget definition containing the widget type and its configuration.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetDefinitionValueLineChart
 // - ApisDashboardsV1AstWidgetDefinitionValueDataTable
@@ -8532,7 +11884,7 @@ func UnmarshalApisDashboardsV1AstWidgetDefinition(m map[string]json.RawMessage, 
 
 // ApisDashboardsV1AstWidgetsBarChart : Bar chart widget.
 type ApisDashboardsV1AstWidgetsBarChart struct {
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source specific query. This query defines from where and how to fetch the data.
 	Query ApisDashboardsV1AstWidgetsBarChartQueryIntf `json:"query" validate:"required"`
 
 	// Maximum number of bars to present in the chart.
@@ -8553,13 +11905,13 @@ type ApisDashboardsV1AstWidgetsBarChart struct {
 	// X axis mode.
 	XAxis ApisDashboardsV1AstWidgetsBarChartXAxisIntf `json:"x_axis" validate:"required"`
 
-	// Unit of the data.
+	// The unit type of the data.
 	Unit *string `json:"unit" validate:"required"`
 
 	// Sorting mode.
 	SortBy *string `json:"sort_by" validate:"required"`
 
-	// Supported vaues: classic, severity, cold, negative, green, red, blue.
+	// Supported values are classic, severity, cold, negative, green, red, blue.
 	ColorScheme *string `json:"color_scheme" validate:"required"`
 
 	// Data mode type.
@@ -8575,7 +11927,7 @@ const (
 )
 
 // Constants associated with the ApisDashboardsV1AstWidgetsBarChart.Unit property.
-// Unit of the data.
+// The unit type of the data.
 const (
 	ApisDashboardsV1AstWidgetsBarChart_Unit_Bytes = "bytes"
 	ApisDashboardsV1AstWidgetsBarChart_Unit_BytesIec = "bytes_iec"
@@ -8698,13 +12050,13 @@ type ApisDashboardsV1AstWidgetsBarChartDataprimeQuery struct {
 	// Dataprime query.
 	DataprimeQuery *ApisDashboardsV1CommonDataprimeQuery `json:"dataprime_query" validate:"required"`
 
-	// Extra filter on top of the Dataprime query.
+	// Filter to be applied after processing the Dataprime query.
 	Filters []ApisDashboardsV1AstFilterSourceIntf `json:"filters,omitempty"`
 
 	// Fields to group by.
 	GroupNames []string `json:"group_names,omitempty"`
 
-	// Field to stack by.
+	// Field to be used for stacking.
 	StackedGroupName *string `json:"stacked_group_name,omitempty"`
 }
 
@@ -8758,10 +12110,10 @@ type ApisDashboardsV1AstWidgetsBarChartLogsQuery struct {
 	// Extra filter on top of Lucene query.
 	Filters []ApisDashboardsV1AstFilterLogsFilter `json:"filters,omitempty"`
 
-	// Fiel to group by.
+	// Group by the specified field.
 	GroupNamesFields []ApisDashboardsV1CommonObservationField `json:"group_names_fields,omitempty"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	StackedGroupNameField *ApisDashboardsV1CommonObservationField `json:"stacked_group_name_field,omitempty"`
 }
 
@@ -8814,7 +12166,7 @@ type ApisDashboardsV1AstWidgetsBarChartMetricsQuery struct {
 	// PromQL query.
 	PromqlQuery *ApisDashboardsV1AstWidgetsCommonPromQlQuery `json:"promql_query,omitempty"`
 
-	// Extra filter on top of the PromQL query.
+	// Filter to be applied after PromQL query processing.
 	Filters []ApisDashboardsV1AstFilterMetricsFilter `json:"filters,omitempty"`
 
 	// Labels to group by.
@@ -8851,7 +12203,7 @@ func UnmarshalApisDashboardsV1AstWidgetsBarChartMetricsQuery(m map[string]json.R
 	return
 }
 
-// ApisDashboardsV1AstWidgetsBarChartQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsBarChartQuery : Data source specific query. This query defines from where and how to fetch the data.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsBarChartQueryValueLogs
 // - ApisDashboardsV1AstWidgetsBarChartQueryValueMetrics
@@ -9386,7 +12738,7 @@ func UnmarshalApisDashboardsV1AstWidgetsCommonPromQlQuery(m map[string]json.RawM
 
 // ApisDashboardsV1AstWidgetsDataTable : Data table widget.
 type ApisDashboardsV1AstWidgetsDataTable struct {
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source-specific query. This query defines where and how the data is fetched.
 	Query ApisDashboardsV1AstWidgetsDataTableQueryIntf `json:"query" validate:"required"`
 
 	// Number of results per page.
@@ -9395,7 +12747,7 @@ type ApisDashboardsV1AstWidgetsDataTable struct {
 	// Display style for table rows.
 	RowStyle *string `json:"row_style" validate:"required"`
 
-	// Columns to display, their order and width.
+	// Columns to display including the column order and width.
 	Columns []ApisDashboardsV1AstWidgetsDataTableColumn `json:"columns,omitempty"`
 
 	// Column used for ordering the results.
@@ -9474,7 +12826,7 @@ func UnmarshalApisDashboardsV1AstWidgetsDataTable(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisDashboardsV1AstWidgetsDataTableColumn : Columns to display, their order and width.
+// ApisDashboardsV1AstWidgetsDataTableColumn : Columns to display including the column order and width.
 type ApisDashboardsV1AstWidgetsDataTableColumn struct {
 	// References a field in result set. In case of aggregation, it references the aggregation identifier.
 	Field *string `json:"field" validate:"required"`
@@ -9555,7 +12907,7 @@ type ApisDashboardsV1AstWidgetsDataTableLogsQuery struct {
 	// Lucene query.
 	LuceneQuery *ApisDashboardsV1AstWidgetsCommonLuceneQuery `json:"lucene_query,omitempty"`
 
-	// Extra filtering on top of the Lucene query.
+	// Additional filtering done in addition to the Lucene query.
 	Filters []ApisDashboardsV1AstFilterLogsFilter `json:"filters,omitempty"`
 
 	// Grouping and aggregation.
@@ -9705,7 +13057,7 @@ func UnmarshalApisDashboardsV1AstWidgetsDataTableMetricsQuery(m map[string]json.
 	return
 }
 
-// ApisDashboardsV1AstWidgetsDataTableQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsDataTableQuery : Data source-specific query. This query defines where and how the data is fetched.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsDataTableQueryValueLogs
 // - ApisDashboardsV1AstWidgetsDataTableQueryValueMetrics
@@ -9752,7 +13104,7 @@ func UnmarshalApisDashboardsV1AstWidgetsDataTableQuery(m map[string]json.RawMess
 
 // ApisDashboardsV1AstWidgetsGauge : Gauge widget.
 type ApisDashboardsV1AstWidgetsGauge struct {
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source-specific query. This query defines where and how the data is fetched.
 	Query ApisDashboardsV1AstWidgetsGaugeQueryIntf `json:"query" validate:"required"`
 
 	// Minimum value of the gauge.
@@ -9761,22 +13113,23 @@ type ApisDashboardsV1AstWidgetsGauge struct {
 	// Maximum value of the gauge.
 	Max *float64 `json:"max" validate:"required"`
 
-	// Show inner arc (styling).
+	// Show styling for inner arc.
 	ShowInnerArc *bool `json:"show_inner_arc" validate:"required"`
 
-	// Show outer arc (styling).
+	// Show styling for outer arc.
 	ShowOuterArc *bool `json:"show_outer_arc" validate:"required"`
 
 	// Query result value interpretation.
 	Unit *string `json:"unit" validate:"required"`
 
-	// Thresholds for the gauge, values at which the gauge changes color.
+	// Specifies the thresholds for the gauge. These thresholds determine when the gauge changes color in the Cloud Logs
+	// UI.
 	Thresholds []ApisDashboardsV1AstWidgetsGaugeThreshold `json:"thresholds,omitempty"`
 
 	// Data mode type.
 	DataModeType *string `json:"data_mode_type,omitempty"`
 
-	// What threshold color should be applied to: value or background.
+	// What threshold color will be applied to: value or background.
 	ThresholdBy *string `json:"threshold_by" validate:"required"`
 }
 
@@ -9811,7 +13164,7 @@ const (
 )
 
 // Constants associated with the ApisDashboardsV1AstWidgetsGauge.ThresholdBy property.
-// What threshold color should be applied to: value or background.
+// What threshold color will be applied to: value or background.
 const (
 	ApisDashboardsV1AstWidgetsGauge_ThresholdBy_Background = "background"
 	ApisDashboardsV1AstWidgetsGauge_ThresholdBy_Unspecified = "unspecified"
@@ -9893,7 +13246,7 @@ type ApisDashboardsV1AstWidgetsGaugeDataprimeQuery struct {
 	// Dataprime query.
 	DataprimeQuery *ApisDashboardsV1CommonDataprimeQuery `json:"dataprime_query" validate:"required"`
 
-	// Extra filters applied on top of Dataprime query.
+	// Extra filters applied in addition to the Dataprime query.
 	Filters []ApisDashboardsV1AstFilterSourceIntf `json:"filters,omitempty"`
 }
 
@@ -9934,7 +13287,7 @@ type ApisDashboardsV1AstWidgetsGaugeLogsQuery struct {
 	// Aggregations.
 	LogsAggregation ApisDashboardsV1CommonLogsAggregationIntf `json:"logs_aggregation,omitempty"`
 
-	// Extra filters applied on top of Lucene query.
+	// Extra filters applied in addition to the Lucene query.
 	Filters []ApisDashboardsV1AstFilterLogsFilter `json:"filters,omitempty"`
 }
 
@@ -9965,15 +13318,15 @@ type ApisDashboardsV1AstWidgetsGaugeMetricsQuery struct {
 	// PromQL query.
 	PromqlQuery *ApisDashboardsV1AstWidgetsCommonPromQlQuery `json:"promql_query" validate:"required"`
 
-	// Aggregation. When AGGREGATION_UNSPECIFIED is selected, widget uses instant query. Otherwise, it uses range query.
+	// Specifies the aggregation processing.
 	Aggregation *string `json:"aggregation" validate:"required"`
 
-	// Extra filters applied on top of PromQL query.
+	// Extra filters applied in addition to the PromQL query.
 	Filters []ApisDashboardsV1AstFilterMetricsFilter `json:"filters,omitempty"`
 }
 
 // Constants associated with the ApisDashboardsV1AstWidgetsGaugeMetricsQuery.Aggregation property.
-// Aggregation. When AGGREGATION_UNSPECIFIED is selected, widget uses instant query. Otherwise, it uses range query.
+// Specifies the aggregation processing.
 const (
 	ApisDashboardsV1AstWidgetsGaugeMetricsQuery_Aggregation_Avg = "avg"
 	ApisDashboardsV1AstWidgetsGaugeMetricsQuery_Aggregation_Last = "last"
@@ -10018,7 +13371,7 @@ func UnmarshalApisDashboardsV1AstWidgetsGaugeMetricsQuery(m map[string]json.RawM
 	return
 }
 
-// ApisDashboardsV1AstWidgetsGaugeQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsGaugeQuery : Data source-specific query. This query defines where and how the data is fetched.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsGaugeQueryValueMetrics
 // - ApisDashboardsV1AstWidgetsGaugeQueryValueLogs
@@ -10063,9 +13416,9 @@ func UnmarshalApisDashboardsV1AstWidgetsGaugeQuery(m map[string]json.RawMessage,
 	return
 }
 
-// ApisDashboardsV1AstWidgetsGaugeThreshold : Thresholds for the gauge, values at which the gauge changes color.
+// ApisDashboardsV1AstWidgetsGaugeThreshold : Specifies the thresholds for the gauge. These thresholds determine when the gauge changes color in the Cloud Logs UI.
 type ApisDashboardsV1AstWidgetsGaugeThreshold struct {
-	// Value at which the color should change.
+	// Value when the color will change.
 	From *float64 `json:"from" validate:"required"`
 
 	// Color.
@@ -10104,7 +13457,7 @@ func UnmarshalApisDashboardsV1AstWidgetsGaugeThreshold(m map[string]json.RawMess
 
 // ApisDashboardsV1AstWidgetsHorizontalBarChart : Horizontal bar chart widget.
 type ApisDashboardsV1AstWidgetsHorizontalBarChart struct {
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source-specific query. This query defines where and how the data is fetched.
 	Query ApisDashboardsV1AstWidgetsHorizontalBarChartQueryIntf `json:"query,omitempty"`
 
 	// Maximum number of bars to display in the chart.
@@ -10122,7 +13475,7 @@ type ApisDashboardsV1AstWidgetsHorizontalBarChart struct {
 	// Coloring mode.
 	ColorsBy ApisDashboardsV1AstWidgetsCommonColorsByIntf `json:"colors_by,omitempty"`
 
-	// Unit of the data.
+	// The unit type of the data.
 	Unit *string `json:"unit,omitempty"`
 
 	// Whether to display values on the bars.
@@ -10150,7 +13503,7 @@ const (
 )
 
 // Constants associated with the ApisDashboardsV1AstWidgetsHorizontalBarChart.Unit property.
-// Unit of the data.
+// The unit type of the data.
 const (
 	ApisDashboardsV1AstWidgetsHorizontalBarChart_Unit_Bytes = "bytes"
 	ApisDashboardsV1AstWidgetsHorizontalBarChart_Unit_BytesIec = "bytes_iec"
@@ -10269,13 +13622,13 @@ type ApisDashboardsV1AstWidgetsHorizontalBarChartDataprimeQuery struct {
 	// Dataprime query.
 	DataprimeQuery *ApisDashboardsV1CommonDataprimeQuery `json:"dataprime_query,omitempty"`
 
-	// Extra filter on top of the Dataprime query.
+	// Filter to be applied after processing the Dataprime query.
 	Filters []ApisDashboardsV1AstFilterSourceIntf `json:"filters,omitempty"`
 
 	// Fields to group by.
 	GroupNames []string `json:"group_names,omitempty"`
 
-	// Field to stack by.
+	// Field to be used for stacking.
 	StackedGroupName *string `json:"stacked_group_name,omitempty"`
 }
 
@@ -10320,7 +13673,7 @@ type ApisDashboardsV1AstWidgetsHorizontalBarChartLogsQuery struct {
 	// Fields to group by.
 	GroupNamesFields []ApisDashboardsV1CommonObservationField `json:"group_names_fields,omitempty"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	StackedGroupNameField *ApisDashboardsV1CommonObservationField `json:"stacked_group_name_field,omitempty"`
 }
 
@@ -10361,7 +13714,7 @@ type ApisDashboardsV1AstWidgetsHorizontalBarChartMetricsQuery struct {
 	// PromQL query.
 	PromqlQuery *ApisDashboardsV1AstWidgetsCommonPromQlQuery `json:"promql_query,omitempty"`
 
-	// Extra filter on top of the PromQL query.
+	// Filter to be applied after PromQL query processing.
 	Filters []ApisDashboardsV1AstFilterMetricsFilter `json:"filters,omitempty"`
 
 	// Labels to group by.
@@ -10398,7 +13751,7 @@ func UnmarshalApisDashboardsV1AstWidgetsHorizontalBarChartMetricsQuery(m map[str
 	return
 }
 
-// ApisDashboardsV1AstWidgetsHorizontalBarChartQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsHorizontalBarChartQuery : Data source-specific query. This query defines where and how the data is fetched.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsHorizontalBarChartQueryValueLogs
 // - ApisDashboardsV1AstWidgetsHorizontalBarChartQueryValueMetrics
@@ -10703,7 +14056,7 @@ type ApisDashboardsV1AstWidgetsLineChartDataprimeQuery struct {
 	// Dataprime query.
 	DataprimeQuery *ApisDashboardsV1CommonDataprimeQuery `json:"dataprime_query" validate:"required"`
 
-	// Filters to be applied to query results.
+	// Filters to be applied to the query results.
 	Filters []ApisDashboardsV1AstFilterSourceIntf `json:"filters,omitempty"`
 }
 
@@ -10747,7 +14100,7 @@ type ApisDashboardsV1AstWidgetsLineChartLogsQuery struct {
 	// Aggregations.
 	Aggregations []ApisDashboardsV1CommonLogsAggregationIntf `json:"aggregations,omitempty"`
 
-	// Extra filtering on top of the Lucene query.
+	// Additional filtering done in addition to the Lucene query.
 	Filters []ApisDashboardsV1AstFilterLogsFilter `json:"filters,omitempty"`
 
 	// Group by fields.
@@ -10812,7 +14165,7 @@ func UnmarshalApisDashboardsV1AstWidgetsLineChartMetricsQuery(m map[string]json.
 	return
 }
 
-// ApisDashboardsV1AstWidgetsLineChartQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsLineChartQuery : Data source-specific query. This query defines where and how the data is fetched.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsLineChartQueryValueLogs
 // - ApisDashboardsV1AstWidgetsLineChartQueryValueMetrics
@@ -10862,16 +14215,16 @@ type ApisDashboardsV1AstWidgetsLineChartQueryDefinition struct {
 	// Unique identifier of the query within the widget.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source-specific query. This query defines where and how the data is fetched.
 	Query ApisDashboardsV1AstWidgetsLineChartQueryIntf `json:"query" validate:"required"`
 
-	// Template for series name in legend and tooltip.
+	// The template for the series name in the legend and the tooltip.
 	SeriesNameTemplate *string `json:"series_name_template,omitempty"`
 
 	// Maximum number of series to display.
 	SeriesCountLimit *string `json:"series_count_limit,omitempty"`
 
-	// Unit of the data.
+	// The unit type of the data.
 	Unit *string `json:"unit,omitempty"`
 
 	// Scale type.
@@ -10880,7 +14233,7 @@ type ApisDashboardsV1AstWidgetsLineChartQueryDefinition struct {
 	// Query name.
 	Name *string `json:"name,omitempty"`
 
-	// Whether data for this query should be visible on the chart.
+	// Whether data for this query will be visible on the chart.
 	IsVisible *bool `json:"is_visible" validate:"required"`
 
 	// Color scheme for the series.
@@ -10894,7 +14247,7 @@ type ApisDashboardsV1AstWidgetsLineChartQueryDefinition struct {
 }
 
 // Constants associated with the ApisDashboardsV1AstWidgetsLineChartQueryDefinition.Unit property.
-// Unit of the data.
+// The unit type of the data.
 const (
 	ApisDashboardsV1AstWidgetsLineChartQueryDefinition_Unit_Bytes = "bytes"
 	ApisDashboardsV1AstWidgetsLineChartQueryDefinition_Unit_BytesIec = "bytes_iec"
@@ -11106,7 +14459,7 @@ func UnmarshalApisDashboardsV1AstWidgetsMarkdown(m map[string]json.RawMessage, r
 
 // ApisDashboardsV1AstWidgetsPieChart : Pie chart widget.
 type ApisDashboardsV1AstWidgetsPieChart struct {
-	// Data source specific query, defines from where and how to fetch the data.
+	// Data source specific query. This query defines from where and how to fetch the data.
 	Query ApisDashboardsV1AstWidgetsPieChartQueryIntf `json:"query" validate:"required"`
 
 	// Maximum number of slices to display in the chart.
@@ -11127,7 +14480,7 @@ type ApisDashboardsV1AstWidgetsPieChart struct {
 	// Template for group labels.
 	GroupNameTemplate *string `json:"group_name_template,omitempty"`
 
-	// Unit of the data.
+	// The unit type of the data.
 	Unit *string `json:"unit,omitempty"`
 
 	// Color scheme name.
@@ -11138,7 +14491,7 @@ type ApisDashboardsV1AstWidgetsPieChart struct {
 }
 
 // Constants associated with the ApisDashboardsV1AstWidgetsPieChart.Unit property.
-// Unit of the data.
+// The unit type of the data.
 const (
 	ApisDashboardsV1AstWidgetsPieChart_Unit_Bytes = "bytes"
 	ApisDashboardsV1AstWidgetsPieChart_Unit_BytesIec = "bytes_iec"
@@ -11251,7 +14604,7 @@ type ApisDashboardsV1AstWidgetsPieChartDataprimeQuery struct {
 	// Fields to group by.
 	GroupNames []string `json:"group_names,omitempty"`
 
-	// Field to stack by.
+	// Field to be used for stacking.
 	StackedGroupName *string `json:"stacked_group_name,omitempty"`
 }
 
@@ -11366,7 +14719,7 @@ type ApisDashboardsV1AstWidgetsPieChartLogsQuery struct {
 	// Fields to group by.
 	GroupNamesFields []ApisDashboardsV1CommonObservationField `json:"group_names_fields,omitempty"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	StackedGroupNameField *ApisDashboardsV1CommonObservationField `json:"stacked_group_name_field,omitempty"`
 }
 
@@ -11425,7 +14778,7 @@ type ApisDashboardsV1AstWidgetsPieChartMetricsQuery struct {
 	// Fields to group by.
 	GroupNames []string `json:"group_names,omitempty"`
 
-	// Field to stack by.
+	// Field to be used for stacking.
 	StackedGroupName *string `json:"stacked_group_name,omitempty"`
 }
 
@@ -11468,7 +14821,7 @@ func UnmarshalApisDashboardsV1AstWidgetsPieChartMetricsQuery(m map[string]json.R
 	return
 }
 
-// ApisDashboardsV1AstWidgetsPieChartQuery : Data source specific query, defines from where and how to fetch the data.
+// ApisDashboardsV1AstWidgetsPieChartQuery : Data source specific query. This query defines from where and how to fetch the data.
 // Models which "extend" this model:
 // - ApisDashboardsV1AstWidgetsPieChartQueryValueLogs
 // - ApisDashboardsV1AstWidgetsPieChartQueryValueMetrics
@@ -11570,22 +14923,22 @@ type ApisDashboardsV1CommonLogsAggregation struct {
 	// Count the number of entries.
 	Count *ApisDashboardsV1CommonLogsAggregationCountEmpty `json:"count,omitempty"`
 
-	// Count the number of distinct values of log field.
+	// Count the number of distinct values of the log field.
 	CountDistinct *ApisDashboardsV1CommonLogsAggregationCountDistinct `json:"count_distinct,omitempty"`
 
-	// Sum values of log field.
+	// Sum values of the log field.
 	Sum *ApisDashboardsV1CommonLogsAggregationSum `json:"sum,omitempty"`
 
-	// Calculate average value of log field.
+	// Calculate average value of the log field.
 	Average *ApisDashboardsV1CommonLogsAggregationAverage `json:"average,omitempty"`
 
-	// Calculate minimum value of log field.
+	// Calculate the minimum value of the log field.
 	Min *ApisDashboardsV1CommonLogsAggregationMin `json:"min,omitempty"`
 
-	// Calculate maximum value of log field.
+	// Calculate maximum value of the log field.
 	Max *ApisDashboardsV1CommonLogsAggregationMax `json:"max,omitempty"`
 
-	// Calculate percentile value of log field.
+	// Calculate percentile value of the log field.
 	Percentile *ApisDashboardsV1CommonLogsAggregationPercentile `json:"percentile,omitempty"`
 }
 func (*ApisDashboardsV1CommonLogsAggregation) isaApisDashboardsV1CommonLogsAggregation() bool {
@@ -11638,9 +14991,9 @@ func UnmarshalApisDashboardsV1CommonLogsAggregation(m map[string]json.RawMessage
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationAverage : Calculate average value of log field.
+// ApisDashboardsV1CommonLogsAggregationAverage : Calculate average value of the log field.
 type ApisDashboardsV1CommonLogsAggregationAverage struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11668,9 +15021,9 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationAverage(m map[string]json.Raw
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationCountDistinct : Count the number of distinct values of log field.
+// ApisDashboardsV1CommonLogsAggregationCountDistinct : Count the number of distinct values of the log field.
 type ApisDashboardsV1CommonLogsAggregationCountDistinct struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11763,9 +15116,9 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationCountEmpty(m map[string]json.
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationMax : Calculate maximum value of log field.
+// ApisDashboardsV1CommonLogsAggregationMax : Calculate maximum value of the log field.
 type ApisDashboardsV1CommonLogsAggregationMax struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11793,9 +15146,9 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationMax(m map[string]json.RawMess
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationMin : Calculate minimum value of log field.
+// ApisDashboardsV1CommonLogsAggregationMin : Calculate the minimum value of the log field.
 type ApisDashboardsV1CommonLogsAggregationMin struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11823,12 +15176,12 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationMin(m map[string]json.RawMess
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationPercentile : Calculate percentile value of log field.
+// ApisDashboardsV1CommonLogsAggregationPercentile : Calculate percentile value of the log field.
 type ApisDashboardsV1CommonLogsAggregationPercentile struct {
 	// Value in range (0, 100].
 	Percent *float64 `json:"percent" validate:"required"`
 
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11862,9 +15215,9 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationPercentile(m map[string]json.
 	return
 }
 
-// ApisDashboardsV1CommonLogsAggregationSum : Sum values of log field.
+// ApisDashboardsV1CommonLogsAggregationSum : Sum values of the log field.
 type ApisDashboardsV1CommonLogsAggregationSum struct {
-	// Field to count distinct values of.
+	// Count the distinct values of the specified field.
 	ObservationField *ApisDashboardsV1CommonObservationField `json:"observation_field" validate:"required"`
 }
 
@@ -11910,7 +15263,7 @@ func UnmarshalApisDashboardsV1CommonLuceneQuery(m map[string]json.RawMessage, re
 	return
 }
 
-// ApisDashboardsV1CommonObservationField : Field to count distinct values of.
+// ApisDashboardsV1CommonObservationField : Count the distinct values of the specified field.
 type ApisDashboardsV1CommonObservationField struct {
 	// Path within the dataset scope.
 	Keypath []string `json:"keypath,omitempty"`
@@ -11947,15 +15300,15 @@ func UnmarshalApisDashboardsV1CommonObservationField(m map[string]json.RawMessag
 
 // ApisDashboardsV1CommonOrderingField : Column used for ordering the results.
 type ApisDashboardsV1CommonOrderingField struct {
-	// The field to order by.
+	// The field used for ordering.
 	Field *string `json:"field,omitempty"`
 
-	// The direction of the order: ascending or descending.
+	// Indicates if the order is ascending or descending.
 	OrderDirection *string `json:"order_direction,omitempty"`
 }
 
 // Constants associated with the ApisDashboardsV1CommonOrderingField.OrderDirection property.
-// The direction of the order: ascending or descending.
+// Indicates if the order is ascending or descending.
 const (
 	ApisDashboardsV1CommonOrderingField_OrderDirection_Asc = "asc"
 	ApisDashboardsV1CommonOrderingField_OrderDirection_Desc = "desc"
@@ -11997,7 +15350,7 @@ func UnmarshalApisDashboardsV1CommonPromQlQuery(m map[string]json.RawMessage, re
 	return
 }
 
-// ApisDashboardsV1CommonTimeFrame : Absolute time frame specifying a fixed start and end time.
+// ApisDashboardsV1CommonTimeFrame : The fixed start and end absolute time frame.
 type ApisDashboardsV1CommonTimeFrame struct {
 	// From is the start of the time frame.
 	From *strfmt.DateTime `json:"from,omitempty"`
@@ -12053,12 +15406,1485 @@ func UnmarshalApisDashboardsV1UUID(m map[string]json.RawMessage, result interfac
 	return
 }
 
+// ApisDataprimeV1AggregationBucketsLimitWarning : Warning for reaching the aggregation buckets limit.
+type ApisDataprimeV1AggregationBucketsLimitWarning struct {
+	// Limit of aggregation buckets.
+	AggregationBucketsLimit *int64 `json:"aggregation_buckets_limit" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1AggregationBucketsLimitWarning unmarshals an instance of ApisDataprimeV1AggregationBucketsLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1AggregationBucketsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1AggregationBucketsLimitWarning)
+	err = core.UnmarshalPrimitive(m, "aggregation_buckets_limit", &obj.AggregationBucketsLimit)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "aggregation_buckets_limit-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarning : Wrapper for archive related warnings.
+// Models which "extend" this model:
+// - ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData
+// - ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied
+// - ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed
+// - ApisDataprimeV1ArchiveWarningWarningTypeMissingData
+type ApisDataprimeV1ArchiveWarning struct {
+	NoMetastoreData *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty `json:"no_metastore_data,omitempty"`
+
+	BucketAccessDenied *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty `json:"bucket_access_denied,omitempty"`
+
+	BucketReadFailed *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty `json:"bucket_read_failed,omitempty"`
+
+	MissingData *ApisDataprimeV1ArchiveWarningMissingDataEmpty `json:"missing_data,omitempty"`
+}
+func (*ApisDataprimeV1ArchiveWarning) isaApisDataprimeV1ArchiveWarning() bool {
+	return true
+}
+
+type ApisDataprimeV1ArchiveWarningIntf interface {
+	isaApisDataprimeV1ArchiveWarning() bool
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarning unmarshals an instance of ApisDataprimeV1ArchiveWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarning)
+	err = core.UnmarshalModel(m, "no_metastore_data", &obj.NoMetastoreData, UnmarshalApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "no_metastore_data-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "bucket_access_denied", &obj.BucketAccessDenied, UnmarshalApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bucket_access_denied-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "bucket_read_failed", &obj.BucketReadFailed, UnmarshalApisDataprimeV1ArchiveWarningBucketReadFailedEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bucket_read_failed-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "missing_data", &obj.MissingData, UnmarshalApisDataprimeV1ArchiveWarningMissingDataEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "missing_data-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty : ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty struct
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty
+func (o *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty unmarshals an instance of ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty : ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty struct
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty.
+func (o *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty
+func (o *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningBucketReadFailedEmpty unmarshals an instance of ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningBucketReadFailedEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningMissingDataEmpty : ApisDataprimeV1ArchiveWarningMissingDataEmpty struct
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ArchiveWarningMissingDataEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ArchiveWarningMissingDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningMissingDataEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ArchiveWarningMissingDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningMissingDataEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ArchiveWarningMissingDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningMissingDataEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ArchiveWarningMissingDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningMissingDataEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ArchiveWarningMissingDataEmpty
+func (o *ApisDataprimeV1ArchiveWarningMissingDataEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningMissingDataEmpty unmarshals an instance of ApisDataprimeV1ArchiveWarningMissingDataEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningMissingDataEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningMissingDataEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty : ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty struct
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty.
+func (o *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty
+func (o *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty unmarshals an instance of ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1BlocksLimitWarningEmpty : Warning when the query has reached the maximum number of parquet blocks.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1BlocksLimitWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1BlocksLimitWarningEmpty.
+func (o *ApisDataprimeV1BlocksLimitWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1BlocksLimitWarningEmpty.
+func (o *ApisDataprimeV1BlocksLimitWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1BlocksLimitWarningEmpty.
+func (o *ApisDataprimeV1BlocksLimitWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1BlocksLimitWarningEmpty.
+func (o *ApisDataprimeV1BlocksLimitWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1BlocksLimitWarningEmpty
+func (o *ApisDataprimeV1BlocksLimitWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1BlocksLimitWarningEmpty unmarshals an instance of ApisDataprimeV1BlocksLimitWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1BlocksLimitWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1BlocksLimitWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1BytesScannedLimitWarningEmpty : Warning for reaching the bytes scanned limit.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1BytesScannedLimitWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1BytesScannedLimitWarningEmpty.
+func (o *ApisDataprimeV1BytesScannedLimitWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1BytesScannedLimitWarningEmpty.
+func (o *ApisDataprimeV1BytesScannedLimitWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1BytesScannedLimitWarningEmpty.
+func (o *ApisDataprimeV1BytesScannedLimitWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1BytesScannedLimitWarningEmpty.
+func (o *ApisDataprimeV1BytesScannedLimitWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1BytesScannedLimitWarningEmpty
+func (o *ApisDataprimeV1BytesScannedLimitWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1BytesScannedLimitWarningEmpty unmarshals an instance of ApisDataprimeV1BytesScannedLimitWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1BytesScannedLimitWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1BytesScannedLimitWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1CompileWarning : Warning from Dataprime compilation.
+type ApisDataprimeV1CompileWarning struct {
+	// Warning message.
+	WarningMessage *string `json:"warning_message" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1CompileWarning unmarshals an instance of ApisDataprimeV1CompileWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1CompileWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1CompileWarning)
+	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warning_message-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarning : Warning message.
+// Models which "extend" this model:
+// - ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning
+// - ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning
+type ApisDataprimeV1DataprimeWarning struct {
+	// Warning from Dataprime compilation.
+	CompileWarning *ApisDataprimeV1CompileWarning `json:"compile_warning,omitempty"`
+
+	// Warning from applying a time range to the query.
+	TimeRangeWarning *ApisDataprimeV1TimeRangeWarning `json:"time_range_warning,omitempty"`
+
+	// Warning from applying a limit on the number of results.
+	NumberOfResultsLimitWarning *ApisDataprimeV1NumberOfResultsLimitWarning `json:"number_of_results_limit_warning,omitempty"`
+
+	// Warning for reaching the bytes scanned limit.
+	BytesScannedLimitWarning *ApisDataprimeV1BytesScannedLimitWarningEmpty `json:"bytes_scanned_limit_warning,omitempty"`
+
+	// Warning about deprecated elements.
+	DeprecationWarning *ApisDataprimeV1DeprecationWarning `json:"deprecation_warning,omitempty"`
+
+	// Warning when the query has reached the maximum number of parquet blocks.
+	BlocksLimitWarning *ApisDataprimeV1BlocksLimitWarningEmpty `json:"blocks_limit_warning,omitempty"`
+
+	// Warning for reaching the aggregation buckets limit.
+	AggregationBucketsLimitWarning *ApisDataprimeV1AggregationBucketsLimitWarning `json:"aggregation_buckets_limit_warning,omitempty"`
+
+	// Wrapper for archive related warnings.
+	ArchiveWarning ApisDataprimeV1ArchiveWarningIntf `json:"archive_warning,omitempty"`
+
+	// Warning when OpenSearch scroll timeout is reached.
+	ScrollTimeoutWarning *ApisDataprimeV1ScrollTimeoutWarningEmpty `json:"scroll_timeout_warning,omitempty"`
+
+	// Warning when the result contains entries where the number of fields is truncated.
+	FieldCountLimitWarning *ApisDataprimeV1FieldCountLimitWarningEmpty `json:"field_count_limit_warning,omitempty"`
+
+	// Warning when the shuffle file size limit is reached - For example during a join with a large right side.
+	ShuffleFileSizeLimitReachedWarning *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty `json:"shuffle_file_size_limit_reached_warning,omitempty"`
+
+	// Batch of results
+	//  warning when the query has reached maximum number of parquet files.
+	FilesReadLimitWarning *ApisDataprimeV1FilesReadLimitWarningEmpty `json:"files_read_limit_warning,omitempty"`
+
+	// Warning when a field has reached the cardinality limit.
+	SidebarFilterCardinalityLimitWarning *ApisDataprimeV1SidebarFilterCardinalityLimitWarning `json:"sidebar_filter_cardinality_limit_warning,omitempty"`
+}
+func (*ApisDataprimeV1DataprimeWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+type ApisDataprimeV1DataprimeWarningIntf interface {
+	isaApisDataprimeV1DataprimeWarning() bool
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarning unmarshals an instance of ApisDataprimeV1DataprimeWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarning)
+	err = core.UnmarshalModel(m, "compile_warning", &obj.CompileWarning, UnmarshalApisDataprimeV1CompileWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "compile_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "time_range_warning", &obj.TimeRangeWarning, UnmarshalApisDataprimeV1TimeRangeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_range_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "number_of_results_limit_warning", &obj.NumberOfResultsLimitWarning, UnmarshalApisDataprimeV1NumberOfResultsLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "number_of_results_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "bytes_scanned_limit_warning", &obj.BytesScannedLimitWarning, UnmarshalApisDataprimeV1BytesScannedLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bytes_scanned_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "deprecation_warning", &obj.DeprecationWarning, UnmarshalApisDataprimeV1DeprecationWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deprecation_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "blocks_limit_warning", &obj.BlocksLimitWarning, UnmarshalApisDataprimeV1BlocksLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "blocks_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "aggregation_buckets_limit_warning", &obj.AggregationBucketsLimitWarning, UnmarshalApisDataprimeV1AggregationBucketsLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "aggregation_buckets_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "archive_warning", &obj.ArchiveWarning, UnmarshalApisDataprimeV1ArchiveWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "archive_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "scroll_timeout_warning", &obj.ScrollTimeoutWarning, UnmarshalApisDataprimeV1ScrollTimeoutWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "scroll_timeout_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "field_count_limit_warning", &obj.FieldCountLimitWarning, UnmarshalApisDataprimeV1FieldCountLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_count_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "shuffle_file_size_limit_reached_warning", &obj.ShuffleFileSizeLimitReachedWarning, UnmarshalApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "shuffle_file_size_limit_reached_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "files_read_limit_warning", &obj.FilesReadLimitWarning, UnmarshalApisDataprimeV1FilesReadLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "files_read_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "sidebar_filter_cardinality_limit_warning", &obj.SidebarFilterCardinalityLimitWarning, UnmarshalApisDataprimeV1SidebarFilterCardinalityLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "sidebar_filter_cardinality_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DeprecationWarning : Warning about deprecated elements.
+type ApisDataprimeV1DeprecationWarning struct {
+	// Warning message.
+	WarningMessage *string `json:"warning_message" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1DeprecationWarning unmarshals an instance of ApisDataprimeV1DeprecationWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DeprecationWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DeprecationWarning)
+	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warning_message-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1FieldCountLimitWarningEmpty : Warning when the result contains entries where the number of fields is truncated.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1FieldCountLimitWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1FieldCountLimitWarningEmpty.
+func (o *ApisDataprimeV1FieldCountLimitWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1FieldCountLimitWarningEmpty.
+func (o *ApisDataprimeV1FieldCountLimitWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1FieldCountLimitWarningEmpty.
+func (o *ApisDataprimeV1FieldCountLimitWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1FieldCountLimitWarningEmpty.
+func (o *ApisDataprimeV1FieldCountLimitWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1FieldCountLimitWarningEmpty
+func (o *ApisDataprimeV1FieldCountLimitWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1FieldCountLimitWarningEmpty unmarshals an instance of ApisDataprimeV1FieldCountLimitWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1FieldCountLimitWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1FieldCountLimitWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1FilesReadLimitWarningEmpty : Batch of results
+//  warning when the query has reached maximum number of parquet files.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1FilesReadLimitWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1FilesReadLimitWarningEmpty.
+func (o *ApisDataprimeV1FilesReadLimitWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1FilesReadLimitWarningEmpty.
+func (o *ApisDataprimeV1FilesReadLimitWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1FilesReadLimitWarningEmpty.
+func (o *ApisDataprimeV1FilesReadLimitWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1FilesReadLimitWarningEmpty.
+func (o *ApisDataprimeV1FilesReadLimitWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1FilesReadLimitWarningEmpty
+func (o *ApisDataprimeV1FilesReadLimitWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1FilesReadLimitWarningEmpty unmarshals an instance of ApisDataprimeV1FilesReadLimitWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1FilesReadLimitWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1FilesReadLimitWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseRunning : The query is still running.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseRunning struct {
+	// The query has been running since this time.
+	RunningSince *strfmt.DateTime `json:"running_since,omitempty"`
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseRunning unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseRunning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseRunning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseRunning)
+	err = core.UnmarshalPrimitive(m, "running_since", &obj.RunningSince)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running_since-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated : The query has been terminated.
+// Models which "extend" this model:
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated struct {
+	// The query was terminated at this time.
+	RunningSince *strfmt.DateTime `json:"running_since" validate:"required"`
+
+	// The query was terminated at this time.
+	TerminatedAt *strfmt.DateTime `json:"terminated_at" validate:"required"`
+
+	// The query has been terminated successfully.
+	Success *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty `json:"success,omitempty"`
+
+	// The query has been terminated with an error.
+	Error ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorIntf `json:"error,omitempty"`
+
+	// The query has been cancelled.
+	Cancelled *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty `json:"cancelled,omitempty"`
+}
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminated() bool {
+	return true
+}
+
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedIntf interface {
+	isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminated() bool
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminated unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminated(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated)
+	err = core.UnmarshalPrimitive(m, "running_since", &obj.RunningSince)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running_since-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "terminated_at", &obj.TerminatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "success", &obj.Success, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "success-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "error", &obj.Error, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "error-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "cancelled", &obj.Cancelled, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "cancelled-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty : The query has been cancelled.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError : The query has been terminated with an error.
+// Models which "extend" this model:
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled
+// - ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError struct {
+	// The query has been terminated due to a timeout.
+	TimedOut *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty `json:"timed_out,omitempty"`
+
+	// The query has been terminated due to a cancellation.
+	Cancelled *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty `json:"cancelled,omitempty"`
+
+	// The query has been terminated due to a failure.
+	Failed *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed `json:"failed,omitempty"`
+}
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError() bool {
+	return true
+}
+
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorIntf interface {
+	isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError() bool
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError)
+	err = core.UnmarshalModel(m, "timed_out", &obj.TimedOut, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "timed_out-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "cancelled", &obj.Cancelled, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "cancelled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "failed", &obj.Failed, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "failed-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty : The query has been terminated due to a cancellation.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed : The query has been terminated due to a failure.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed struct {
+	// The reason for the failure.
+	Reason *string `json:"reason" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed)
+	err = core.UnmarshalPrimitive(m, "reason", &obj.Reason)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "reason-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty : The query has been terminated due to a timeout.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty : The query has been terminated successfully.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty : ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty struct
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty.
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty
+func (o *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1NumberOfResultsLimitWarning : Warning from applying a limit on the number of results.
+type ApisDataprimeV1NumberOfResultsLimitWarning struct {
+	// Warning message.
+	NumberOfResultsLimit *int64 `json:"number_of_results_limit" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1NumberOfResultsLimitWarning unmarshals an instance of ApisDataprimeV1NumberOfResultsLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1NumberOfResultsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1NumberOfResultsLimitWarning)
+	err = core.UnmarshalPrimitive(m, "number_of_results_limit", &obj.NumberOfResultsLimit)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "number_of_results_limit-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ResponseMetadata : Does not contain duplicate messages.
+type ApisDataprimeV1ResponseMetadata struct {
+	Statistics *ApisDataprimeV1ResponseMetadataStatistics `json:"statistics,omitempty"`
+}
+
+// UnmarshalApisDataprimeV1ResponseMetadata unmarshals an instance of ApisDataprimeV1ResponseMetadata from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ResponseMetadata(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ResponseMetadata)
+	err = core.UnmarshalModel(m, "statistics", &obj.Statistics, UnmarshalApisDataprimeV1ResponseMetadataStatistics)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "statistics-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ResponseMetadataStatistics : ApisDataprimeV1ResponseMetadataStatistics struct
+type ApisDataprimeV1ResponseMetadataStatistics struct {
+	// Number of bytes scanned by the query.
+	BytesScanned *string `json:"bytes_scanned" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1ResponseMetadataStatistics unmarshals an instance of ApisDataprimeV1ResponseMetadataStatistics from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ResponseMetadataStatistics(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ResponseMetadataStatistics)
+	err = core.UnmarshalPrimitive(m, "bytes_scanned", &obj.BytesScanned)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bytes_scanned-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ScrollTimeoutWarningEmpty : Warning when OpenSearch scroll timeout is reached.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ScrollTimeoutWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ScrollTimeoutWarningEmpty.
+func (o *ApisDataprimeV1ScrollTimeoutWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ScrollTimeoutWarningEmpty.
+func (o *ApisDataprimeV1ScrollTimeoutWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ScrollTimeoutWarningEmpty.
+func (o *ApisDataprimeV1ScrollTimeoutWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ScrollTimeoutWarningEmpty.
+func (o *ApisDataprimeV1ScrollTimeoutWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ScrollTimeoutWarningEmpty
+func (o *ApisDataprimeV1ScrollTimeoutWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ScrollTimeoutWarningEmpty unmarshals an instance of ApisDataprimeV1ScrollTimeoutWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ScrollTimeoutWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ScrollTimeoutWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty : Warning when the shuffle file size limit is reached - For example during a join with a large right side.
+// This type supports additional properties of type interface{}.
+type ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty struct {
+
+	// Allows users to set arbitrary properties of type interface{}.
+	additionalProperties map[string]interface{}
+}
+
+// SetProperty allows the user to set an arbitrary property on an instance of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty.
+func (o *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty) SetProperty(key string, value interface{}) {
+	if o.additionalProperties == nil {
+		o.additionalProperties = make(map[string]interface{})
+	}
+	o.additionalProperties[key] = value
+}
+
+// SetProperties allows the user to set a map of arbitrary properties on an instance of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty.
+func (o *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty) SetProperties(m map[string]interface{}) {
+	o.additionalProperties = make(map[string]interface{})
+	for k, v := range m {
+		o.additionalProperties[k] = v
+	}
+}
+
+// GetProperty allows the user to retrieve an arbitrary property from an instance of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty.
+func (o *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty) GetProperty(key string) interface{} {
+	return o.additionalProperties[key]
+}
+
+// GetProperties allows the user to retrieve the map of arbitrary properties from an instance of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty.
+func (o *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty) GetProperties() map[string]interface{} {
+	return o.additionalProperties
+}
+
+// MarshalJSON performs custom serialization for instances of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty
+func (o *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty) MarshalJSON() (buffer []byte, err error) {
+	m := make(map[string]interface{})
+	if len(o.additionalProperties) > 0 {
+		for k, v := range o.additionalProperties {
+			m[k] = v
+		}
+	}
+	buffer, err = json.Marshal(m)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-marshal", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty unmarshals an instance of ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty)
+	for k := range m {
+		var v interface{}
+		e := core.UnmarshalPrimitive(m, k, &v)
+		if e != nil {
+			err = core.SDKErrorf(e, "", "additional-properties-error", common.GetComponentInfo())
+			return
+		}
+		obj.SetProperty(k, v)
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1SidebarFilterCardinalityLimitWarning : Warning when a field has reached the cardinality limit.
+type ApisDataprimeV1SidebarFilterCardinalityLimitWarning struct {
+	// List of fields that have reached the cardinality limit.
+	Fields []string `json:"fields" validate:"required"`
+
+	// Cardinality limit This is the limit for the number of unique values in a field. If the number of unique values in a
+	// field is greater than this limit, the field will be excluded from the results. This is a warning and not an error.
+	// The query will still run.
+	CardinalityLimit *string `json:"cardinality_limit" validate:"required"`
+}
+
+// UnmarshalApisDataprimeV1SidebarFilterCardinalityLimitWarning unmarshals an instance of ApisDataprimeV1SidebarFilterCardinalityLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1SidebarFilterCardinalityLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1SidebarFilterCardinalityLimitWarning)
+	err = core.UnmarshalPrimitive(m, "fields", &obj.Fields)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "fields-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "cardinality_limit", &obj.CardinalityLimit)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "cardinality_limit-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1TimeRangeWarning : Warning from applying a time range to the query.
+type ApisDataprimeV1TimeRangeWarning struct {
+	// Warning message.
+	WarningMessage *string `json:"warning_message" validate:"required"`
+
+	// Start date of the time range.
+	StartDate *strfmt.DateTime `json:"start_date,omitempty"`
+
+	// End date of the time range.
+	EndDate *strfmt.DateTime `json:"end_date,omitempty"`
+}
+
+// UnmarshalApisDataprimeV1TimeRangeWarning unmarshals an instance of ApisDataprimeV1TimeRangeWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1TimeRangeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1TimeRangeWarning)
+	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warning_message-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "start_date", &obj.StartDate)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "start_date-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "end_date", &obj.EndDate)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "end_date-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisEvents2metricsV2Aggregation : Represents Aggregation type list.
 // Models which "extend" this model:
 // - ApisEvents2metricsV2AggregationAggMetadataSamples
 // - ApisEvents2metricsV2AggregationAggMetadataHistogram
 type ApisEvents2metricsV2Aggregation struct {
-	// Is enabled.
+	// Determines if aggregation is enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Aggregation type.
@@ -12067,10 +16893,10 @@ type ApisEvents2metricsV2Aggregation struct {
 	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// E2M sample type metadata.
+	// Events to Metrics aggregation metadata of samples.
 	Samples *ApisEvents2metricsV2E2mAggSamples `json:"samples,omitempty"`
 
-	// E2M aggregate histogram type metadata.
+	// Events to Metrics aggregate histogram type metadata.
 	Histogram *ApisEvents2metricsV2E2mAggHistogram `json:"histogram,omitempty"`
 }
 
@@ -12126,9 +16952,9 @@ func UnmarshalApisEvents2metricsV2Aggregation(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisEvents2metricsV2E2mAggHistogram : E2M aggregate histogram type metadata.
+// ApisEvents2metricsV2E2mAggHistogram : Events to Metrics aggregate histogram type metadata.
 type ApisEvents2metricsV2E2mAggHistogram struct {
-	// Buckets of the E2M.
+	// Histogram buckets of the Events to Metrics.
 	Buckets []float32 `json:"buckets,omitempty"`
 }
 
@@ -12144,14 +16970,14 @@ func UnmarshalApisEvents2metricsV2E2mAggHistogram(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisEvents2metricsV2E2mAggSamples : E2M sample type metadata.
+// ApisEvents2metricsV2E2mAggSamples : Events to Metrics aggregation metadata of samples.
 type ApisEvents2metricsV2E2mAggSamples struct {
-	// Sample type min/max.
+	// Type of the sample.
 	SampleType *string `json:"sample_type,omitempty"`
 }
 
 // Constants associated with the ApisEvents2metricsV2E2mAggSamples.SampleType property.
-// Sample type min/max.
+// Type of the sample.
 const (
 	ApisEvents2metricsV2E2mAggSamples_SampleType_Max = "max"
 	ApisEvents2metricsV2E2mAggSamples_SampleType_Min = "min"
@@ -12172,7 +16998,7 @@ func UnmarshalApisEvents2metricsV2E2mAggSamples(m map[string]json.RawMessage, re
 
 // ApisEvents2metricsV2E2mPermutations : Represents the limit of the permutations and if the limit was exceeded.
 type ApisEvents2metricsV2E2mPermutations struct {
-	// E2M permutation limit.
+	// Events to Metrics permutation limit.
 	Limit *int64 `json:"limit,omitempty"`
 
 	// Flag to indicate if limit was exceeded.
@@ -12196,7 +17022,7 @@ func UnmarshalApisEvents2metricsV2E2mPermutations(m map[string]json.RawMessage, 
 	return
 }
 
-// ApisEvents2metricsV2MetricField : E2M metric fields.
+// ApisEvents2metricsV2MetricField : Events to Metrics metric fields.
 type ApisEvents2metricsV2MetricField struct {
 	// Target metric field alias name.
 	TargetBaseMetricName *string `json:"target_base_metric_name,omitempty"`
@@ -12204,7 +17030,7 @@ type ApisEvents2metricsV2MetricField struct {
 	// Source field.
 	SourceField *string `json:"source_field,omitempty"`
 
-	// Represents Aggregation type list.
+	// The list of available aggregation types.
 	Aggregations []ApisEvents2metricsV2AggregationIntf `json:"aggregations,omitempty"`
 }
 
@@ -12230,7 +17056,7 @@ func UnmarshalApisEvents2metricsV2MetricField(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisEvents2metricsV2MetricLabel : E2M metric labels.
+// ApisEvents2metricsV2MetricLabel : Events to Metrics metric labels.
 type ApisEvents2metricsV2MetricLabel struct {
 	// Metric label target alias name.
 	TargetLabel *string `json:"target_label,omitempty"`
@@ -12256,7 +17082,7 @@ func UnmarshalApisEvents2metricsV2MetricLabel(m map[string]json.RawMessage, resu
 	return
 }
 
-// ApisLogs2metricsV2LogsQuery : E2M logs query.
+// ApisLogs2metricsV2LogsQuery : Events to Metrics logs query.
 type ApisLogs2metricsV2LogsQuery struct {
 	// Lucene query.
 	Lucene *string `json:"lucene,omitempty"`
@@ -12320,10 +17146,10 @@ func UnmarshalApisLogs2metricsV2LogsQuery(m map[string]json.RawMessage, result i
 
 // ApisViewsV1CustomTimeSelection : Custom time selection.
 type ApisViewsV1CustomTimeSelection struct {
-	// Custom time selection start timestamp.
+	// Custom time selection starting timestamp.
 	FromTime *strfmt.DateTime `json:"from_time" validate:"required"`
 
-	// Custom time selection end timestamp.
+	// Custom time selection ending timestamp.
 	ToTime *strfmt.DateTime `json:"to_time" validate:"required"`
 }
 
@@ -12401,7 +17227,7 @@ type ApisViewsV1QuickTimeSelection struct {
 	// Quick time selection caption.
 	Caption *string `json:"caption" validate:"required"`
 
-	// Quick time selection amount of seconds.
+	// Quick time selection amount in seconds.
 	Seconds *int64 `json:"seconds" validate:"required"`
 }
 
@@ -12557,6 +17383,158 @@ func (options *AssignDashboardFolderOptions) SetHeaders(param map[string]string)
 	return options
 }
 
+// BackgroundQuery : Background query response.
+type BackgroundQuery struct {
+	// Generated query ID that can be used to obtain the status and results of a background query.
+	QueryID *strfmt.UUID `json:"query_id" validate:"required"`
+
+	// All warnings that can be issued when a query is run.
+	Warnings []ApisDataprimeV1DataprimeWarningIntf `json:"warnings" validate:"required"`
+}
+
+// UnmarshalBackgroundQuery unmarshals an instance of BackgroundQuery from the specified map of raw messages.
+func UnmarshalBackgroundQuery(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(BackgroundQuery)
+	err = core.UnmarshalPrimitive(m, "query_id", &obj.QueryID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "query_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "warnings", &obj.Warnings, UnmarshalApisDataprimeV1DataprimeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warnings-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// BackgroundQueryStatus : The status of a background query.
+// Models which "extend" this model:
+// - BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning
+// - BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated
+// - BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution
+type BackgroundQueryStatus struct {
+	// The query has been submitted.
+	SubmittedAt *strfmt.DateTime `json:"submitted_at" validate:"required"`
+
+	// Does not contain duplicate messages.
+	Metadata []ApisDataprimeV1ResponseMetadata `json:"metadata" validate:"required"`
+
+	// Includes all warnings (For example: warnings that can apprear during query
+	//  submission + runtime warnings).
+	Warnings []ApisDataprimeV1DataprimeWarningIntf `json:"warnings" validate:"required"`
+
+	// The query is still running.
+	Running *ApisDataprimeV1GetBackgroundQueryStatusResponseRunning `json:"running,omitempty"`
+
+	// The query has been terminated.
+	Terminated ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedIntf `json:"terminated,omitempty"`
+
+	WaitingForExecution *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty `json:"waiting_for_execution,omitempty"`
+}
+func (*BackgroundQueryStatus) isaBackgroundQueryStatus() bool {
+	return true
+}
+
+type BackgroundQueryStatusIntf interface {
+	isaBackgroundQueryStatus() bool
+}
+
+// UnmarshalBackgroundQueryStatus unmarshals an instance of BackgroundQueryStatus from the specified map of raw messages.
+func UnmarshalBackgroundQueryStatus(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(BackgroundQueryStatus)
+	err = core.UnmarshalPrimitive(m, "submitted_at", &obj.SubmittedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "submitted_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalApisDataprimeV1ResponseMetadata)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metadata-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "warnings", &obj.Warnings, UnmarshalApisDataprimeV1DataprimeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warnings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "running", &obj.Running, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseRunning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "terminated", &obj.Terminated, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminated)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "waiting_for_execution", &obj.WaitingForExecution, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "waiting_for_execution-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// CancelBackgroundQueryOptions : The CancelBackgroundQuery options.
+type CancelBackgroundQueryOptions struct {
+	// Generated query ID that can be used to obtain the status and results of a background query.
+	QueryID *strfmt.UUID `json:"query_id" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewCancelBackgroundQueryOptions : Instantiate CancelBackgroundQueryOptions
+func (*LogsV0) NewCancelBackgroundQueryOptions(queryID *strfmt.UUID) *CancelBackgroundQueryOptions {
+	return &CancelBackgroundQueryOptions{
+		QueryID: queryID,
+	}
+}
+
+// SetQueryID : Allow user to set QueryID
+func (_options *CancelBackgroundQueryOptions) SetQueryID(queryID *strfmt.UUID) *CancelBackgroundQueryOptions {
+	_options.QueryID = queryID
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CancelBackgroundQueryOptions) SetHeaders(param map[string]string) *CancelBackgroundQueryOptions {
+	options.Headers = param
+	return options
+}
+
+// CreateAlertDefOptions : The CreateAlertDef options.
+type CreateAlertDefOptions struct {
+	// Request model to create or update an alert. Only one alert type configuration is allowed and must be the same as in
+	// `type` field.
+	AlertDefinitionPrototype AlertDefinitionPrototypeIntf `json:"AlertDefinitionPrototype" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewCreateAlertDefOptions : Instantiate CreateAlertDefOptions
+func (*LogsV0) NewCreateAlertDefOptions(alertDefinitionPrototype AlertDefinitionPrototypeIntf) *CreateAlertDefOptions {
+	return &CreateAlertDefOptions{
+		AlertDefinitionPrototype: alertDefinitionPrototype,
+	}
+}
+
+// SetAlertDefinitionPrototype : Allow user to set AlertDefinitionPrototype
+func (_options *CreateAlertDefOptions) SetAlertDefinitionPrototype(alertDefinitionPrototype AlertDefinitionPrototypeIntf) *CreateAlertDefOptions {
+	_options.AlertDefinitionPrototype = alertDefinitionPrototype
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *CreateAlertDefOptions) SetHeaders(param map[string]string) *CreateAlertDefOptions {
+	options.Headers = param
+	return options
+}
+
 // CreateAlertOptions : The CreateAlert options.
 type CreateAlertOptions struct {
 	// Alert name.
@@ -12583,16 +17561,17 @@ type CreateAlertOptions struct {
 	// Alert filters.
 	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
-	// When should the alert be active.
+	// When will the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
 
-	// JSON keys to include in the alert notification, if left empty get the full log text in the alert notification.
+	// The JSON keys to be included in the alert notification. If unspecified, the full log text will be included in the
+	// alert notification.
 	NotificationPayloadFilters []string `json:"notification_payload_filters,omitempty"`
 
 	// The Meta labels to add to the alert.
 	MetaLabels []AlertsV1MetaLabel `json:"meta_labels,omitempty"`
 
-	// The Meta labels to add to the alert as string with ':' separator.
+	// The meta data added to the alert as a string separated by a ":" character.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
 
 	// Incident settings, will create the incident based on this configuration.
@@ -12707,15 +17686,15 @@ func (options *CreateAlertOptions) SetHeaders(param map[string]string) *CreateAl
 
 // CreateDashboardFolderOptions : The CreateDashboardFolder options.
 type CreateDashboardFolderOptions struct {
-	// The dashboard folder name, required.
+	// Name of the dashboard folder.
 	Name *string `json:"name" validate:"required"`
 
-	// The dashboard folder ID, uuid.
+	// The UUID of dashboard folder.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// The dashboard folder parent ID, optional. If not set, the folder is a root
-	//  folder, if set, the folder is a subfolder of the parent folder and needs to
-	//  be a uuid.
+	// (Optional) The dashboard folder parent ID, optional.
+	//  If not set, the folder is a root folder.
+	//  If set, the folder is a subfolder of the parent folder and needs to be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -12755,7 +17734,7 @@ func (options *CreateDashboardFolderOptions) SetHeaders(param map[string]string)
 
 // CreateDashboardOptions : The CreateDashboard options.
 type CreateDashboardOptions struct {
-	// Dashboard represents the structure and configuration of a Coralogix Custom Dashboard.
+	// Dashboard represents the structure and configuration of a custom dashboard.
 	Dashboard DashboardIntf `json:"Dashboard" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -12783,16 +17762,16 @@ func (options *CreateDashboardOptions) SetHeaders(param map[string]string) *Crea
 
 // CreateDataAccessRuleOptions : The CreateDataAccessRule options.
 type CreateDataAccessRuleOptions struct {
-	// Display Name for new Data Access Rule.
+	// Display Name for the data access rule.
 	DisplayName *string `json:"display_name" validate:"required"`
 
-	// Filters for new Data Access Rule.
+	// Filters for the data access rule.
 	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
 
-	// Default Expression for new Data Access Rule.
+	// Default Expression for the data access rule.
 	DefaultExpression *string `json:"default_expression" validate:"required"`
 
-	// Description for new Data Access Rule.
+	// Description for the data access rule.
 	Description *string `json:"description,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -12840,7 +17819,7 @@ func (options *CreateDataAccessRuleOptions) SetHeaders(param map[string]string) 
 
 // CreateE2mOptions : The CreateE2m options.
 type CreateE2mOptions struct {
-	// E2M Create message.
+	// Events to Metrics Create message.
 	Event2MetricPrototype Event2MetricPrototypeIntf `json:"Event2MetricPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -12912,7 +17891,7 @@ type CreateEventStreamTargetOptions struct {
 	// The DPXL expression of the Event stream.
 	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
 
-	// Whether the Event stream is active.
+	// Whether the event stream is active.
 	IsActive *bool `json:"is_active,omitempty"`
 
 	// The compression type of the stream.
@@ -12978,7 +17957,7 @@ func (options *CreateEventStreamTargetOptions) SetHeaders(param map[string]strin
 
 // CreateOutgoingWebhookOptions : The CreateOutgoingWebhook options.
 type CreateOutgoingWebhookOptions struct {
-	// The input data of the Outbound Integration.
+	// The input data of the outbound integration.
 	OutgoingWebhookPrototype OutgoingWebhookPrototypeIntf `json:"OutgoingWebhookPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -13037,21 +18016,21 @@ type CreateRuleGroupOptions struct {
 	// The name of the rule group.
 	Name *string `json:"name" validate:"required"`
 
-	// Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
-	// order.
+	// Rule subgroups. The first rule subgroup will be executed first. If there is no match, subsequent rule groups will be
+	// attempted until there is a match. Rule groups are attempted in order.
 	RuleSubgroups []RulesV1CreateRuleGroupRequestCreateRuleSubgroup `json:"rule_subgroups" validate:"required"`
 
-	// A description for the rule group, should express what is the rule group purpose.
+	// A description of the rule group. The description will describe the purpose of the rule group.
 	Description *string `json:"description,omitempty"`
 
 	// Whether or not the rule is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// Optional rule matchers which if matched will make the rule go through the rule group.
+	// Optional rule matchers which, if matched, will process the rule through the rule group.
 	RuleMatchers []RulesV1RuleMatcherIntf `json:"rule_matchers,omitempty"`
 
 	// The order in which the rule group will be evaluated. The lower the order, the more priority the group will have. Not
-	// providing the order will by default create a group with the last order.
+	// providing the order will, by default, create a group with the last order.
 	Order *int64 `json:"order,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -13201,7 +18180,7 @@ func (options *CreateViewOptions) SetHeaders(param map[string]string) *CreateVie
 	return options
 }
 
-// Dashboard : Dashboard represents the structure and configuration of a Coralogix Custom Dashboard.
+// Dashboard : Dashboard represents the structure and configuration of a custom dashboard.
 // Models which "extend" this model:
 // - DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame
 // - DashboardApisDashboardsV1AstDashboardTimeFrameRelativeTimeFrame
@@ -13235,7 +18214,7 @@ type Dashboard struct {
 	// List of annotations that can be applied to the dashboard's visual elements.
 	Annotations []ApisDashboardsV1AstAnnotation `json:"annotations,omitempty"`
 
-	// Absolute time frame specifying a fixed start and end time.
+	// The fixed start and end absolute time frame.
 	AbsoluteTimeFrame *ApisDashboardsV1CommonTimeFrame `json:"absolute_time_frame,omitempty"`
 
 	// Relative time frame specifying a duration from the current time.
@@ -13366,15 +18345,15 @@ func UnmarshalDashboardCollection(m map[string]json.RawMessage, result interface
 
 // DashboardFolder : Dashboard folder.
 type DashboardFolder struct {
-	// The dashboard folder ID, uuid.
+	// The UUID of dashboard folder.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// The dashboard folder name, required.
+	// Name of the dashboard folder.
 	Name *string `json:"name" validate:"required"`
 
-	// The dashboard folder parent ID, optional. If not set, the folder is a root
-	//  folder, if set, the folder is a subfolder of the parent folder and needs to
-	//  be a uuid.
+	// (Optional) The dashboard folder parent ID, optional.
+	//  If not set, the folder is a root folder.
+	//  If set, the folder is a subfolder of the parent folder and needs to be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
 }
 
@@ -13457,7 +18436,7 @@ type DashboardSummary struct {
 	UpdateTime *strfmt.DateTime `json:"update_time,omitempty"`
 
 	// Dashboard folder.
-	Folder *DashboardFolder `json:"folder" validate:"required"`
+	Folder *DashboardFolder `json:"folder,omitempty"`
 }
 
 // UnmarshalDashboardSummary unmarshals an instance of DashboardSummary from the specified map of raw messages.
@@ -13512,18 +18491,18 @@ func UnmarshalDashboardSummary(m map[string]json.RawMessage, result interface{})
 	return
 }
 
-// DataAccessRule : Data Access Rule details.
+// DataAccessRule : Data access rule details.
 type DataAccessRule struct {
-	// Data Access Rule ID.
+	// Data access rule ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Data Access Rule Display Name.
+	// Data access rule Display Name.
 	DisplayName *string `json:"display_name" validate:"required"`
 
-	// Optional Data Access Rule Description.
+	// Optional data access rule description.
 	Description *string `json:"description,omitempty"`
 
-	// List of filters that the Data Access Rule is composed of.
+	// List of the filters comprising the data access rule.
 	Filters []DataAccessRuleFilter `json:"filters,omitempty"`
 
 	// Default expression to use when no filter matches the query.
@@ -13564,7 +18543,7 @@ func UnmarshalDataAccessRule(m map[string]json.RawMessage, result interface{}) (
 
 // DataAccessRuleCollection : Get Data Access Rules Response.
 type DataAccessRuleCollection struct {
-	// Data Access Rule details.
+	// Data access rule details.
 	DataAccessRules []DataAccessRule `json:"data_access_rules" validate:"required"`
 }
 
@@ -13580,12 +18559,12 @@ func UnmarshalDataAccessRuleCollection(m map[string]json.RawMessage, result inte
 	return
 }
 
-// DataAccessRuleFilter : List of filters that the Data Access Rule is composed of.
+// DataAccessRuleFilter : List of the filters comprising the data access rule.
 type DataAccessRuleFilter struct {
 	// Filter's Entity Type.
 	EntityType *string `json:"entity_type" validate:"required"`
 
-	// Filter's Expression.
+	// Expression of the filter.
 	Expression *string `json:"expression" validate:"required"`
 }
 
@@ -13634,13 +18613,13 @@ type DataUsage struct {
 	// Blocked data in GB.
 	Size *float32 `json:"size" validate:"required"`
 
-	// Application for which the data usage is reported.
+	// Report data usage for this subsystem.
 	Application *string `json:"application,omitempty"`
 
 	// Subsystem for which the data usage is reported.
 	Subsystem *string `json:"subsystem,omitempty"`
 
-	// Entity type for which the data usage is reported.
+	// Report data usage for this entity type.
 	EntityType *string `json:"entity_type,omitempty"`
 
 	Severity *string `json:"severity,omitempty"`
@@ -13710,7 +18689,7 @@ func UnmarshalDataUsage(m map[string]json.RawMessage, result interface{}) (err e
 
 // DataUsageMetricsExportStatus : The data usage metrics export status.
 type DataUsageMetricsExportStatus struct {
-	// The "enabled" parameter for metrics export.
+	// Whether metrics export is enabled or not. When 'true' metrics are exported.
 	Enabled *bool `json:"enabled" validate:"required"`
 }
 
@@ -13736,6 +18715,34 @@ func UnmarshalDataUsageMetricsExportStatus(m map[string]json.RawMessage, result 
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// DeleteAlertDefOptions : The DeleteAlertDef options.
+type DeleteAlertDefOptions struct {
+	// Alert definition ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewDeleteAlertDefOptions : Instantiate DeleteAlertDefOptions
+func (*LogsV0) NewDeleteAlertDefOptions(id *strfmt.UUID) *DeleteAlertDefOptions {
+	return &DeleteAlertDefOptions{
+		ID: id,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteAlertDefOptions) SetID(id *strfmt.UUID) *DeleteAlertDefOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteAlertDefOptions) SetHeaders(param map[string]string) *DeleteAlertDefOptions {
+	options.Headers = param
+	return options
 }
 
 // DeleteAlertOptions : The DeleteAlert options.
@@ -13824,7 +18831,7 @@ func (options *DeleteDashboardOptions) SetHeaders(param map[string]string) *Dele
 
 // DeleteDataAccessRuleOptions : The DeleteDataAccessRule options.
 type DeleteDataAccessRuleOptions struct {
-	// ID of Data Access Rule to be deleted.
+	// ID of the data access rule to be deleted.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -13852,7 +18859,7 @@ func (options *DeleteDataAccessRuleOptions) SetHeaders(param map[string]string) 
 
 // DeleteE2mOptions : The DeleteE2m options.
 type DeleteE2mOptions struct {
-	// ID of e2m to be deleted.
+	// ID of Events to Metrics to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests.
@@ -13908,7 +18915,7 @@ func (options *DeleteEventStreamTargetOptions) SetHeaders(param map[string]strin
 
 // DeleteOutgoingWebhookOptions : The DeleteOutgoingWebhook options.
 type DeleteOutgoingWebhookOptions struct {
-	// The ID of the Outbound Integration to delete.
+	// The ID of the outbound integration to delete.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -14122,10 +19129,10 @@ func UnmarshalEnrichmentV1CustomEnrichmentType(m map[string]json.RawMessage, res
 // - EnrichmentV1EnrichmentTypeTypeSuspiciousIp
 // - EnrichmentV1EnrichmentTypeTypeCustomEnrichment
 type EnrichmentV1EnrichmentType struct {
-	// The geo ip enrichment.
+	// The geo IP enrichment.
 	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
 
-	// The suspicious ip enrichment.
+	// The suspicious IP enrichment.
 	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
 
 	// The custom enrichment.
@@ -14161,7 +19168,7 @@ func UnmarshalEnrichmentV1EnrichmentType(m map[string]json.RawMessage, result in
 	return
 }
 
-// EnrichmentV1GeoIpTypeEmpty : The geo ip enrichment.
+// EnrichmentV1GeoIpTypeEmpty : The geo IP enrichment.
 // This type supports additional properties of type interface{}.
 type EnrichmentV1GeoIpTypeEmpty struct {
 
@@ -14226,7 +19233,7 @@ func UnmarshalEnrichmentV1GeoIpTypeEmpty(m map[string]json.RawMessage, result in
 	return
 }
 
-// EnrichmentV1SuspiciousIpTypeEmpty : The suspicious ip enrichment.
+// EnrichmentV1SuspiciousIpTypeEmpty : The suspicious IP enrichment.
 // This type supports additional properties of type interface{}.
 type EnrichmentV1SuspiciousIpTypeEmpty struct {
 
@@ -14291,46 +19298,46 @@ func UnmarshalEnrichmentV1SuspiciousIpTypeEmpty(m map[string]json.RawMessage, re
 	return
 }
 
-// Event2Metric : E2M represents the Event to metrics base model.
+// Event2Metric : Events to Metrics represents the Event to metrics base model.
 // Models which "extend" this model:
 // - Event2MetricApisEvents2metricsV2E2mQueryLogsQuery
 type Event2Metric struct {
-	// E2M unique ID, required on update requests.
+	// Events to Metrics unique ID, required on update requests.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// Name of the E2M.
+	// Name of the Events to Metrics.
 	Name *string `json:"name" validate:"required"`
 
-	// Description of the E2M.
+	// Description of the Events to Metrics.
 	Description *string `json:"description,omitempty"`
 
-	// E2M create time.
+	// Events to Metrics create time.
 	CreateTime *string `json:"create_time,omitempty"`
 
-	// E2M update time.
+	// Events to Metrics update time.
 	UpdateTime *string `json:"update_time,omitempty"`
 
 	// Represents the limit of the permutations and if the limit was exceeded.
 	Permutations *ApisEvents2metricsV2E2mPermutations `json:"permutations,omitempty"`
 
-	// E2M metric labels.
+	// Events to Metrics metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// E2M metric fields.
+	// Events to Metrics metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// E2M type.
+	// Events to Metrics type.
 	Type *string `json:"type" validate:"required"`
 
-	// A flag that represents if the e2m is for internal usage.
+	// A flag that represents if the Events to Metrics is for internal usage.
 	IsInternal *bool `json:"is_internal,omitempty"`
 
-	// E2M logs query.
+	// Events to Metrics logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2Metric.Type property.
-// E2M type.
+// Events to Metrics type.
 const (
 	Event2Metric_Type_Logs2metrics = "logs2metrics"
 	Event2Metric_Type_Unspecified = "unspecified"
@@ -14405,7 +19412,7 @@ func UnmarshalEvent2Metric(m map[string]json.RawMessage, result interface{}) (er
 	return
 }
 
-// Event2MetricCollection : Represents response of.
+// Event2MetricCollection : Represents response of Events to Metrics collection.
 type Event2MetricCollection struct {
 	// List of event to metrics definitions.
 	Events2metrics []Event2MetricIntf `json:"events2metrics,omitempty"`
@@ -14423,34 +19430,34 @@ func UnmarshalEvent2MetricCollection(m map[string]json.RawMessage, result interf
 	return
 }
 
-// Event2MetricPrototype : E2M Create message.
+// Event2MetricPrototype : Events to Metrics Create message.
 // Models which "extend" this model:
 // - Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery
 type Event2MetricPrototype struct {
-	// Name of E2M to create.
+	// Name of Events to Metrics to create.
 	Name *string `json:"name" validate:"required"`
 
-	// Description of E2M to create.
+	// Description of Events to Metrics to create.
 	Description *string `json:"description,omitempty"`
 
-	// The permutation limit of the E2M.
+	// The permutation limit of the Events to Metrics.
 	PermutationsLimit *int64 `json:"permutations_limit,omitempty"`
 
-	// E2M metric labels.
+	// Events to Metrics metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// E2M metric fields.
+	// Events to Metrics metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// E2M type.
+	// Events to Metrics type.
 	Type *string `json:"type,omitempty"`
 
-	// E2M logs query.
+	// Events to Metrics logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricPrototype.Type property.
-// E2M type.
+// Events to Metrics type.
 const (
 	Event2MetricPrototype_Type_Logs2metrics = "logs2metrics"
 	Event2MetricPrototype_Type_Unspecified = "unspecified"
@@ -14507,7 +19514,7 @@ func UnmarshalEvent2MetricPrototype(m map[string]json.RawMessage, result interfa
 
 // ExportDataUsageOptions : The ExportDataUsage options.
 type ExportDataUsageOptions struct {
-	// Range of days to get the data usage for, by default it will use current month.
+	// The range of days to retrieve data usage, by default it will use current month.
 	Range *string `json:"range,omitempty"`
 
 	// Query to filter daily or detailed the data usage, by default it will use daily one.
@@ -14518,7 +19525,7 @@ type ExportDataUsageOptions struct {
 }
 
 // Constants associated with the ExportDataUsageOptions.Range property.
-// Range of days to get the data usage for, by default it will use current month.
+// The range of days to retrieve data usage, by default it will use current month.
 const (
 	ExportDataUsageOptions_Range_CurrentMonth = "current_month"
 	ExportDataUsageOptions_Range_Last30Days = "last_30_days"
@@ -14564,7 +19571,7 @@ type ExportDataUsageResponse struct {
 	// List of data usages.
 	DataUsages []DataUsage `json:"data_usages,omitempty"`
 
-	// The "enabled" parameter for metrics export.
+	// Whether metrics export is enabled or not. When 'true' metrics are exported.
 	Enabled *bool `json:"enabled,omitempty"`
 }
 func (*ExportDataUsageResponse) isaExportDataUsageResponse() bool {
@@ -14590,6 +19597,34 @@ func UnmarshalExportDataUsageResponse(m map[string]json.RawMessage, result inter
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// GetAlertDefOptions : The GetAlertDef options.
+type GetAlertDefOptions struct {
+	// Alert definition ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetAlertDefOptions : Instantiate GetAlertDefOptions
+func (*LogsV0) NewGetAlertDefOptions(id *strfmt.UUID) *GetAlertDefOptions {
+	return &GetAlertDefOptions{
+		ID: id,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *GetAlertDefOptions) SetID(id *strfmt.UUID) *GetAlertDefOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetAlertDefOptions) SetHeaders(param map[string]string) *GetAlertDefOptions {
+	options.Headers = param
+	return options
 }
 
 // GetAlertOptions : The GetAlert options.
@@ -14638,12 +19673,40 @@ func (options *GetAlertsOptions) SetHeaders(param map[string]string) *GetAlertsO
 	return options
 }
 
+// GetBackgroundQueryStatusOptions : The GetBackgroundQueryStatus options.
+type GetBackgroundQueryStatusOptions struct {
+	// Generated query ID that can be used to obtain the status and results of a background query.
+	QueryID *strfmt.UUID `json:"query_id" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetBackgroundQueryStatusOptions : Instantiate GetBackgroundQueryStatusOptions
+func (*LogsV0) NewGetBackgroundQueryStatusOptions(queryID *strfmt.UUID) *GetBackgroundQueryStatusOptions {
+	return &GetBackgroundQueryStatusOptions{
+		QueryID: queryID,
+	}
+}
+
+// SetQueryID : Allow user to set QueryID
+func (_options *GetBackgroundQueryStatusOptions) SetQueryID(queryID *strfmt.UUID) *GetBackgroundQueryStatusOptions {
+	_options.QueryID = queryID
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetBackgroundQueryStatusOptions) SetHeaders(param map[string]string) *GetBackgroundQueryStatusOptions {
+	options.Headers = param
+	return options
+}
+
 // GetCompanyPoliciesOptions : The GetCompanyPolicies options.
 type GetCompanyPoliciesOptions struct {
 	// Optionally filter only enabled policies.
 	EnabledOnly *bool `json:"enabled_only,omitempty"`
 
-	// Source type to filter policies by.
+	// Source type used to filter policies.
 	SourceType *string `json:"source_type,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -14651,7 +19714,7 @@ type GetCompanyPoliciesOptions struct {
 }
 
 // Constants associated with the GetCompanyPoliciesOptions.SourceType property.
-// Source type to filter policies by.
+// Source type used to filter policies.
 const (
 	GetCompanyPoliciesOptions_SourceType_Logs = "logs"
 	GetCompanyPoliciesOptions_SourceType_Unspecified = "unspecified"
@@ -14756,7 +19819,7 @@ func (options *GetDashboardOptions) SetHeaders(param map[string]string) *GetDash
 
 // GetE2mOptions : The GetE2m options.
 type GetE2mOptions struct {
-	// ID of e2m to be deleted.
+	// ID of Events to Metrics to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
 	// Allows users to set headers on API requests.
@@ -14820,7 +19883,7 @@ func (options *GetEventStreamTargetsOptions) SetHeaders(param map[string]string)
 
 // GetOutgoingWebhookOptions : The GetOutgoingWebhook options.
 type GetOutgoingWebhookOptions struct {
-	// The ID of the Outbound Integration to delete.
+	// The ID of the outbound integration to delete.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -14997,6 +20060,24 @@ func UnmarshalIbmEventStreams(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
+// ListAlertDefsOptions : The ListAlertDefs options.
+type ListAlertDefsOptions struct {
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewListAlertDefsOptions : Instantiate ListAlertDefsOptions
+func (*LogsV0) NewListAlertDefsOptions() *ListAlertDefsOptions {
+	return &ListAlertDefsOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ListAlertDefsOptions) SetHeaders(param map[string]string) *ListAlertDefsOptions {
+	options.Headers = param
+	return options
+}
+
 // ListDashboardFoldersOptions : The ListDashboardFolders options.
 type ListDashboardFoldersOptions struct {
 
@@ -15061,7 +20142,7 @@ func (options *ListE2mOptions) SetHeaders(param map[string]string) *ListE2mOptio
 
 // ListOutgoingWebhooksOptions : The ListOutgoingWebhooks options.
 type ListOutgoingWebhooksOptions struct {
-	// The type of the deployed Outbound Integrations to list.
+	// The type of the deployed outbound integrations to list.
 	Type *string `json:"type,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -15069,7 +20150,7 @@ type ListOutgoingWebhooksOptions struct {
 }
 
 // Constants associated with the ListOutgoingWebhooksOptions.Type property.
-// The type of the deployed Outbound Integrations to list.
+// The type of the deployed outbound integrations to list.
 const (
 	ListOutgoingWebhooksOptions_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -15145,37 +20226,38 @@ func (options *ListViewsOptions) SetHeaders(param map[string]string) *ListViewsO
 	return options
 }
 
-// OutgoingWebhook : The Outbound Integration.
+// OutgoingWebhook : The outbound integration.
 // Models which "extend" this model:
 // - OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications
 type OutgoingWebhook struct {
-	// The ID of the Outbound Integration.
+	// The ID of the outbound integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The type of the deployed Outbound Integrations to list.
+	// The type of the deployed outbound integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the Outbound Integration.
+	// The name of the outbound integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
+	// The URL of the outbound integration. This value is null for IBM Events Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the Outbound Integration.
+	// The time the outbound integration was created.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the Outbound Integration.
+	// The time the outbound integration was updated.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the Outbound Integration, for connecting with other parts of the system.
+	// The external ID of the outbound integration. This ID is used as integration_id for the notification configuration in
+	// Alerts.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 
-	// The configuration of the IBM Event Notifications Outbound Integration.
+	// The configuration of the IBM Event Notifications outbound integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhook.Type property.
-// The type of the deployed Outbound Integrations to list.
+// The type of the deployed outbound integrations to list.
 const (
 	OutgoingWebhook_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -15234,7 +20316,7 @@ func UnmarshalOutgoingWebhook(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// OutgoingWebhookCollection : Response for listing Outbound Integrations of a specified type.
+// OutgoingWebhookCollection : Response format of outbound integrations List of a specified type.
 type OutgoingWebhookCollection struct {
 	// The list of deployed Outbound Integrations.
 	OutgoingWebhooks []OutgoingWebhookSummary `json:"outgoing_webhooks,omitempty"`
@@ -15252,25 +20334,25 @@ func UnmarshalOutgoingWebhookCollection(m map[string]json.RawMessage, result int
 	return
 }
 
-// OutgoingWebhookPrototype : The input data of the Outbound Integration.
+// OutgoingWebhookPrototype : The input data of the outbound integration.
 // Models which "extend" this model:
 // - OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications
 type OutgoingWebhookPrototype struct {
-	// The type of the deployed Outbound Integrations to list.
+	// The type of the deployed outbound integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the Outbound Integration.
+	// The name of the outbound integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
+	// The URL of the outbound integration. This value is null for IBM Events Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The configuration of the IBM Event Notifications Outbound Integration.
+	// The configuration of the IBM Event Notifications outbound integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhookPrototype.Type property.
-// The type of the deployed Outbound Integrations to list.
+// The type of the deployed outbound integrations to list.
 const (
 	OutgoingWebhookPrototype_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -15311,22 +20393,23 @@ func UnmarshalOutgoingWebhookPrototype(m map[string]json.RawMessage, result inte
 
 // OutgoingWebhookSummary : The list of deployed Outbound Integrations.
 type OutgoingWebhookSummary struct {
-	// The ID of the Outbound Integration.
+	// The ID of the outbound integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The name of the Outbound Integration.
+	// The name of the outbound integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
+	// The URL of the outbound integration. This value is null for IBM Events Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the Outbound Integration.
+	// The time the outbound integration was created.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the Outbound Integration.
+	// The time the outbound integration was updated.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the Outbound Integration, for connecting with other parts of the system.
+	// The external ID of the outbound integration. This ID is used as integration_id for the notification configuration in
+	// Alerts.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 }
 
@@ -15367,7 +20450,7 @@ func UnmarshalOutgoingWebhookSummary(m map[string]json.RawMessage, result interf
 	return
 }
 
-// OutgoingWebhooksV1IbmEventNotificationsConfig : The configuration of the IBM Event Notifications Outbound Integration.
+// OutgoingWebhooksV1IbmEventNotificationsConfig : The configuration of the IBM Event Notifications outbound integration.
 type OutgoingWebhooksV1IbmEventNotificationsConfig struct {
 	// The ID of the selected IBM Event Notifications instance.
 	EventNotificationsInstanceID *strfmt.UUID `json:"event_notifications_instance_id" validate:"required"`
@@ -15376,19 +20459,19 @@ type OutgoingWebhooksV1IbmEventNotificationsConfig struct {
 	RegionID *string `json:"region_id" validate:"required"`
 
 	// The ID of the created source in the IBM Event Notifications instance. Corresponds to the Cloud Logs instance crn.
-	// Not required when creating an Outbound Integration.
+	// Not required when creating an outbound integration.
 	SourceID *string `json:"source_id,omitempty"`
 
-	// The name of the created source in the IBM Event Notifications instance. Not required when creating an Outbound
-	// Integration.
+	// The name of the created source in the IBM Event Notifications instance. Not required when creating an outbound
+	// integration.
 	SourceName *string `json:"source_name,omitempty"`
 
-	// The endpoint type of integration.
+	// The integration endpoint type.
 	EndpointType *string `json:"endpoint_type,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhooksV1IbmEventNotificationsConfig.EndpointType property.
-// The endpoint type of integration.
+// The integration endpoint type.
 const (
 	OutgoingWebhooksV1IbmEventNotificationsConfig_EndpointType_DefaultOrPublic = "default_or_public"
 	OutgoingWebhooksV1IbmEventNotificationsConfig_EndpointType_Private = "private"
@@ -15474,6 +20557,10 @@ type Policy struct {
 	// Policy ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
+	// The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+	// inserted after all existing policies.
+	Before *PolicyBefore `json:"before,omitempty"`
+
 	// Company ID.
 	CompanyID *int64 `json:"company_id" validate:"required"`
 
@@ -15483,22 +20570,23 @@ type Policy struct {
 	// Description of policy.
 	Description *string `json:"description" validate:"required"`
 
-	// The data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 	Priority *string `json:"priority,omitempty"`
 
 	// Soft deletion flag.
 	Deleted *bool `json:"deleted,omitempty"`
 
-	// Enabled flag.
+	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
+	// always enabled during creation.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Order of policy in relation to other policies.
 	Order *int64 `json:"order" validate:"required"`
 
-	// Rule for matching with application.
+	// Rule for matching the application name.
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
 
-	// Rule for matching with application.
+	// Rule for matching the application name.
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
 	// Created at date at utc+0.
@@ -15515,7 +20603,7 @@ type Policy struct {
 }
 
 // Constants associated with the Policy.Priority property.
-// The data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 const (
 	Policy_Priority_TypeBlock = "type_block"
 	Policy_Priority_TypeHigh = "type_high"
@@ -15537,6 +20625,11 @@ func UnmarshalPolicy(m map[string]json.RawMessage, result interface{}) (err erro
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "before", &obj.Before, UnmarshalPolicyBefore)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "before-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "company_id", &obj.CompanyID)
@@ -15608,7 +20701,67 @@ func UnmarshalPolicy(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
-// PolicyCollection : Response to get company policies request.
+// PolicyBefore : The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+// inserted after all existing policies.
+type PolicyBefore struct {
+	// The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+	// inserted after all existing policies.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Policy name.
+	Name *string `json:"name,omitempty"`
+}
+
+// UnmarshalPolicyBefore unmarshals an instance of PolicyBefore from the specified map of raw messages.
+func UnmarshalPolicyBefore(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PolicyBefore)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// PolicyBeforePrototype : The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+// inserted after all existing policies.
+type PolicyBeforePrototype struct {
+	// The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+	// inserted after all existing policies.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+}
+
+// NewPolicyBeforePrototype : Instantiate PolicyBeforePrototype (Generic Model Constructor)
+func (*LogsV0) NewPolicyBeforePrototype(id *strfmt.UUID) (_model *PolicyBeforePrototype, err error) {
+	_model = &PolicyBeforePrototype{
+		ID: id,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalPolicyBeforePrototype unmarshals an instance of PolicyBeforePrototype from the specified map of raw messages.
+func UnmarshalPolicyBeforePrototype(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(PolicyBeforePrototype)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// PolicyCollection : Get company policies response.
 type PolicyCollection struct {
 	// Company policies.
 	Policies []PolicyIntf `json:"policies,omitempty"`
@@ -15633,27 +20786,35 @@ type PolicyPrototype struct {
 	// Policy name.
 	Name *string `json:"name" validate:"required"`
 
+	// The policy will be inserted immediately before the existing policy with this ID. If unspecified, the policy will be
+	// inserted after all existing policies.
+	Before *PolicyBeforePrototype `json:"before,omitempty"`
+
 	// Policy description.
 	Description *string `json:"description,omitempty"`
 
-	// The data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 	Priority *string `json:"priority" validate:"required"`
 
-	// Rule for matching with application.
+	// Rule for matching the application name.
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
 
-	// Rule for matching with application.
+	// Rule for matching the application name.
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
 	// Archive retention definition.
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
+
+	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
+	// always enabled during creation.
+	Enabled *bool `json:"enabled,omitempty"`
 
 	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the PolicyPrototype.Priority property.
-// The data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 const (
 	PolicyPrototype_Priority_TypeBlock = "type_block"
 	PolicyPrototype_Priority_TypeHigh = "type_high"
@@ -15675,6 +20836,11 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "before", &obj.Before, UnmarshalPolicyBeforePrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "before-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
@@ -15702,6 +20868,11 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalModel(m, "log_rules", &obj.LogRules, UnmarshalQuotaV1LogRules)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "log_rules-error", common.GetComponentInfo())
@@ -15713,7 +20884,7 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 
 // QuotaV1ArchiveRetention : Archive retention definition.
 type QuotaV1ArchiveRetention struct {
-	// References archive retention definition.
+	// ID of the archive retention definition.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 }
 
@@ -15743,12 +20914,12 @@ func UnmarshalQuotaV1ArchiveRetention(m map[string]json.RawMessage, result inter
 
 // QuotaV1LogRules : Log rules.
 type QuotaV1LogRules struct {
-	// Source severities to match with.
+	// The source severities to be used when matching.
 	Severities []string `json:"severities,omitempty"`
 }
 
 // Constants associated with the QuotaV1LogRules.Severities property.
-// Source severities to match with.
+// The source severities to be used when matching.
 const (
 	QuotaV1LogRules_Severities_Critical = "critical"
 	QuotaV1LogRules_Severities_Debug = "debug"
@@ -15771,12 +20942,12 @@ func UnmarshalQuotaV1LogRules(m map[string]json.RawMessage, result interface{}) 
 	return
 }
 
-// QuotaV1Rule : Rule for matching with application.
+// QuotaV1Rule : Rule for matching the application name.
 type QuotaV1Rule struct {
 	// Identifier of the rule.
 	RuleTypeID *string `json:"rule_type_id" validate:"required"`
 
-	// Value of the rule. Multiple values can be provided as comma separated string of values.
+	// Name of the rule. Multiple values can be provided as comma separated string of values.
 	Name *string `json:"name" validate:"required"`
 }
 
@@ -15848,20 +21019,59 @@ func (options *RemoveEnrichmentsOptions) SetHeaders(param map[string]string) *Re
 	return options
 }
 
+// ReplaceAlertDefOptions : The ReplaceAlertDef options.
+type ReplaceAlertDefOptions struct {
+	// Alert definition ID.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// Request model to create or update an alert. Only one alert type configuration is allowed and must be the same as in
+	// `type` field.
+	AlertDefinitionPrototype AlertDefinitionPrototypeIntf `json:"AlertDefinitionPrototype" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewReplaceAlertDefOptions : Instantiate ReplaceAlertDefOptions
+func (*LogsV0) NewReplaceAlertDefOptions(id *strfmt.UUID, alertDefinitionPrototype AlertDefinitionPrototypeIntf) *ReplaceAlertDefOptions {
+	return &ReplaceAlertDefOptions{
+		ID: id,
+		AlertDefinitionPrototype: alertDefinitionPrototype,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *ReplaceAlertDefOptions) SetID(id *strfmt.UUID) *ReplaceAlertDefOptions {
+	_options.ID = id
+	return _options
+}
+
+// SetAlertDefinitionPrototype : Allow user to set AlertDefinitionPrototype
+func (_options *ReplaceAlertDefOptions) SetAlertDefinitionPrototype(alertDefinitionPrototype AlertDefinitionPrototypeIntf) *ReplaceAlertDefOptions {
+	_options.AlertDefinitionPrototype = alertDefinitionPrototype
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *ReplaceAlertDefOptions) SetHeaders(param map[string]string) *ReplaceAlertDefOptions {
+	options.Headers = param
+	return options
+}
+
 // ReplaceDashboardFolderOptions : The ReplaceDashboardFolder options.
 type ReplaceDashboardFolderOptions struct {
 	// The folder ID.
 	FolderID *strfmt.UUID `json:"folder_id" validate:"required"`
 
-	// The dashboard folder name, required.
+	// Name of the dashboard folder.
 	Name *string `json:"name" validate:"required"`
 
-	// The dashboard folder ID, uuid.
+	// The UUID of dashboard folder.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// The dashboard folder parent ID, optional. If not set, the folder is a root
-	//  folder, if set, the folder is a subfolder of the parent folder and needs to
-	//  be a uuid.
+	// (Optional) The dashboard folder parent ID, optional.
+	//  If not set, the folder is a root folder.
+	//  If set, the folder is a subfolder of the parent folder and needs to be a uuid.
 	ParentID *strfmt.UUID `json:"parent_id,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -15911,7 +21121,7 @@ type ReplaceDashboardOptions struct {
 	// The ID of the dashboard.
 	DashboardID *string `json:"dashboard_id" validate:"required,ne="`
 
-	// Dashboard represents the structure and configuration of a Coralogix Custom Dashboard.
+	// Dashboard represents the structure and configuration of a custom dashboard.
 	Dashboard DashboardIntf `json:"Dashboard" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -15974,10 +21184,10 @@ func (options *ReplaceDefaultDashboardOptions) SetHeaders(param map[string]strin
 
 // ReplaceE2mOptions : The ReplaceE2m options.
 type ReplaceE2mOptions struct {
-	// ID of e2m to be deleted.
+	// ID of Events to Metrics to be deleted.
 	ID *string `json:"id" validate:"required,ne="`
 
-	// E2M Create message.
+	// Events to Metrics Create message.
 	Event2MetricPrototype Event2MetricPrototypeIntf `json:"Event2MetricPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -16131,21 +21341,21 @@ type RuleGroup struct {
 	// The name of the rule group.
 	Name *string `json:"name" validate:"required"`
 
-	// A description for the rule group, should express what is the rule group purpose.
+	// A description of the rule group. The description will describe the purpose of the rule group.
 	Description *string `json:"description,omitempty"`
 
 	// Whether or not the rule is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// // Optional rule matchers which if matched will make the rule go through the rule group.
+	// Optional rule matchers which, if matched, will process the rule through the rule group.
 	RuleMatchers []RulesV1RuleMatcherIntf `json:"rule_matchers,omitempty"`
 
-	// Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
-	// order.
+	// Rule subgroups. The first rule subgroup will be executed first. If there is no match, subsequent rule groups will be
+	// attempted until there is a match. Rule groups are attempted in order.
 	RuleSubgroups []RulesV1RuleSubgroup `json:"rule_subgroups" validate:"required"`
 
-	// // The order in which the rule group will be evaluated. The lower the order, the more priority the group will have.
-	// Not providing the order will by default create a group with the last order.
+	// The order in which the rule group will be evaluated. The lower the order, the more priority the group will have. Not
+	// providing the order will, by default, create a group with the last order.
 	Order *int64 `json:"order,omitempty"`
 }
 
@@ -16209,9 +21419,9 @@ func UnmarshalRuleGroupCollection(m map[string]json.RawMessage, result interface
 	return
 }
 
-// RulesV1AllowParameters : Parameters for allow rule.
+// RulesV1AllowParameters : Parameters for the allow rule.
 type RulesV1AllowParameters struct {
-	// If true matched logs will be blocked, otherwise matched logs will be kept.
+	// If true, matched logs will be blocked, otherwise matched logs will be kept.
 	KeepBlockedLogs *bool `json:"keep_blocked_logs" validate:"required"`
 
 	// Regex which will match the source field and decide if the rule will apply.
@@ -16250,7 +21460,7 @@ func UnmarshalRulesV1AllowParameters(m map[string]json.RawMessage, result interf
 
 // RulesV1ApplicationNameConstraint : ApplicationName constraint.
 type RulesV1ApplicationNameConstraint struct {
-	// Only logs with this ApplicationName value will match.
+	// Only logs with this ApplicationName value will match the rule constraint.
 	Value *string `json:"value" validate:"required"`
 }
 
@@ -16280,7 +21490,7 @@ func UnmarshalRulesV1ApplicationNameConstraint(m map[string]json.RawMessage, res
 
 // RulesV1BlockParameters : Parameters for block rule.
 type RulesV1BlockParameters struct {
-	// If true matched logs will be kept, otherwise matched logs will be blocked.
+	// If true, matched logs will be kept, otherwise matched logs will be blocked.
 	KeepBlockedLogs *bool `json:"keep_blocked_logs" validate:"required"`
 
 	// Regex which will match the source field and decide if the rule will apply.
@@ -16317,8 +21527,8 @@ func UnmarshalRulesV1BlockParameters(m map[string]json.RawMessage, result interf
 	return
 }
 
-// RulesV1CreateRuleGroupRequestCreateRuleSubgroup : Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
-// order.
+// RulesV1CreateRuleGroupRequestCreateRuleSubgroup : Rule subgroups. The first rule subgroup will be executed first. If there is no match, subsequent rule groups will be
+// attempted until there is a match. Rule groups are attempted in order.
 type RulesV1CreateRuleGroupRequestCreateRuleSubgroup struct {
 	// Rules to run on the log.
 	Rules []RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule `json:"rules" validate:"required"`
@@ -16376,13 +21586,13 @@ type RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule struct {
 	// The field on which to execute the rule.
 	SourceField *string `json:"source_field" validate:"required"`
 
-	// Parameters for a rule which specifies how it should run.
+	// Parameters specifying how a rule runs.
 	Parameters RulesV1RuleParametersIntf `json:"parameters" validate:"required"`
 
 	// Rule parameters which define how the rule will execute.
 	Enabled *bool `json:"enabled" validate:"required"`
 
-	// The order in which the rule will execute inside the rule subgroup.
+	// The order the rule will execute inside the rule subgroup.
 	Order *int64 `json:"order" validate:"required"`
 }
 
@@ -16440,7 +21650,8 @@ func UnmarshalRulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule(m map[st
 
 // RulesV1ExtractParameters : Parameters for text extraction rule.
 type RulesV1ExtractParameters struct {
-	// Regex which will parse the source field and extract the json keys from it while retaining the original log.
+	// Regex which will parse the source field and extract the JSON keys from source field while retaining the original
+	// log.
 	Rule *string `json:"rule" validate:"required"`
 }
 
@@ -16470,15 +21681,15 @@ func UnmarshalRulesV1ExtractParameters(m map[string]json.RawMessage, result inte
 
 // RulesV1ExtractTimestampParameters : Parameters for extract timestamp rule.
 type RulesV1ExtractTimestampParameters struct {
-	// What time format to use on the extracted time.
+	// The time format to be used for the extracted time value.
 	Standard *string `json:"standard" validate:"required"`
 
-	// What time format the the source field to extract from has.
+	// The time format of the source field being extracted.
 	Format *string `json:"format" validate:"required"`
 }
 
 // Constants associated with the RulesV1ExtractTimestampParameters.Standard property.
-// What time format to use on the extracted time.
+// The time format to be used for the extracted time value.
 const (
 	RulesV1ExtractTimestampParameters_Standard_Golang = "golang"
 	RulesV1ExtractTimestampParameters_Standard_Javasdf = "javasdf"
@@ -16519,14 +21730,17 @@ func UnmarshalRulesV1ExtractTimestampParameters(m map[string]json.RawMessage, re
 	return
 }
 
-// RulesV1JSONExtractParameters : Parameters for json extract rule.
+// RulesV1JSONExtractParameters : Parameters for JSON extract rule.
 type RulesV1JSONExtractParameters struct {
-	// In which metadata field to store the extracted value.
-	DestinationField *string `json:"destination_field,omitempty"`
+	// The metadata field used to store the extracted value.
+	DestinationField *string `json:"destination_field" validate:"required"`
+
+	// Regex which will extract a JSON parameter from  the source field.
+	Rule *string `json:"rule" validate:"required"`
 }
 
 // Constants associated with the RulesV1JSONExtractParameters.DestinationField property.
-// In which metadata field to store the extracted value.
+// The metadata field used to store the extracted value.
 const (
 	RulesV1JSONExtractParameters_DestinationField_CategoryOrUnspecified = "category_or_unspecified"
 	RulesV1JSONExtractParameters_DestinationField_Classname = "classname"
@@ -16534,6 +21748,19 @@ const (
 	RulesV1JSONExtractParameters_DestinationField_Severity = "severity"
 	RulesV1JSONExtractParameters_DestinationField_Threadid = "threadid"
 )
+
+// NewRulesV1JSONExtractParameters : Instantiate RulesV1JSONExtractParameters (Generic Model Constructor)
+func (*LogsV0) NewRulesV1JSONExtractParameters(destinationField string, rule string) (_model *RulesV1JSONExtractParameters, err error) {
+	_model = &RulesV1JSONExtractParameters{
+		DestinationField: core.StringPtr(destinationField),
+		Rule: core.StringPtr(rule),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
 
 // UnmarshalRulesV1JSONExtractParameters unmarshals an instance of RulesV1JSONExtractParameters from the specified map of raw messages.
 func UnmarshalRulesV1JSONExtractParameters(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -16543,19 +21770,24 @@ func UnmarshalRulesV1JSONExtractParameters(m map[string]json.RawMessage, result 
 		err = core.SDKErrorf(err, "", "destination_field-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "rule", &obj.Rule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "rule-error", common.GetComponentInfo())
+		return
+	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
 }
 
-// RulesV1JSONParseParameters : Parameters for json parse rule.
+// RulesV1JSONParseParameters : Parameters for JSON parse rule.
 type RulesV1JSONParseParameters struct {
-	// Destination field under which to put the json object.
+	// Destination field where the JSON object will be placed.
 	DestinationField *string `json:"destination_field" validate:"required"`
 
 	// Whether or not to delete the source field after running this rule.
 	DeleteSource *bool `json:"delete_source,omitempty"`
 
-	// Destination field in which to put the json stringified content.
+	// The destination field where the JSON stringified content will be placed.
 	OverrideDest *bool `json:"override_dest" validate:"required"`
 }
 
@@ -16594,9 +21826,9 @@ func UnmarshalRulesV1JSONParseParameters(m map[string]json.RawMessage, result in
 	return
 }
 
-// RulesV1JSONStringifyParameters : Parameters for json stringify rule.
+// RulesV1JSONStringifyParameters : Parameters for JSON stringify rule.
 type RulesV1JSONStringifyParameters struct {
-	// Destination field in which to put the json stringified content.
+	// The destination field where the JSON stringified content will be placed.
 	DestinationField *string `json:"destination_field" validate:"required"`
 
 	// Whether or not to delete the source field after running this rule.
@@ -16634,10 +21866,10 @@ func UnmarshalRulesV1JSONStringifyParameters(m map[string]json.RawMessage, resul
 
 // RulesV1ParseParameters : Parameters for parse rule.
 type RulesV1ParseParameters struct {
-	// In which field to put the parsed text.
+	// The field to store the parsed text.
 	DestinationField *string `json:"destination_field" validate:"required"`
 
-	// Regex which will parse the source field and extract the json keys from it while removing the source field.
+	// Regex which will parse the source field and extract the JSON keys from it while removing the source field.
 	Rule *string `json:"rule" validate:"required"`
 }
 
@@ -16671,7 +21903,7 @@ func UnmarshalRulesV1ParseParameters(m map[string]json.RawMessage, result interf
 	return
 }
 
-// RulesV1RemoveFieldsParameters : Parameters for remove fields rule.
+// RulesV1RemoveFieldsParameters : Parameters for the remove fields rule.
 type RulesV1RemoveFieldsParameters struct {
 	// Json field paths to drop from the log.
 	Fields []string `json:"fields" validate:"required"`
@@ -16703,10 +21935,10 @@ func UnmarshalRulesV1RemoveFieldsParameters(m map[string]json.RawMessage, result
 
 // RulesV1ReplaceParameters : Parameters for replace rule.
 type RulesV1ReplaceParameters struct {
-	// In which field to put the modified text.
+	// The field used to store the modified text.
 	DestinationField *string `json:"destination_field" validate:"required"`
 
-	// The value to replace the matched text with.
+	// The value replacing the matched text.
 	ReplaceNewVal *string `json:"replace_new_val" validate:"required"`
 
 	// Regex which will match parts in the text to replace.
@@ -16760,10 +21992,10 @@ type RulesV1Rule struct {
 	// Description of the rule.
 	Description *string `json:"description,omitempty"`
 
-	// A field on which value to execute the rule.
+	// The field value used to execute the rule.
 	SourceField *string `json:"source_field" validate:"required"`
 
-	// Parameters for a rule which specifies how it should run.
+	// Parameters specifying how a rule runs.
 	Parameters RulesV1RuleParametersIntf `json:"parameters" validate:"required"`
 
 	// Whether or not to execute the rule.
@@ -16815,7 +22047,7 @@ func UnmarshalRulesV1Rule(m map[string]json.RawMessage, result interface{}) (err
 	return
 }
 
-// RulesV1RuleMatcher : // Optional rule matchers which if matched will make the rule go through the rule group.
+// RulesV1RuleMatcher : Optional rule matchers. If matched, the rule is processed by the rule group.
 // Models which "extend" this model:
 // - RulesV1RuleMatcherConstraintApplicationName
 // - RulesV1RuleMatcherConstraintSubsystemName
@@ -16860,7 +22092,7 @@ func UnmarshalRulesV1RuleMatcher(m map[string]json.RawMessage, result interface{
 	return
 }
 
-// RulesV1RuleParameters : Parameters for a rule which specifies how it should run.
+// RulesV1RuleParameters : Parameters specifying how a rule runs.
 // Models which "extend" this model:
 // - RulesV1RuleParametersRuleParametersExtractParameters
 // - RulesV1RuleParametersRuleParametersJSONExtractParameters
@@ -16876,7 +22108,7 @@ type RulesV1RuleParameters struct {
 	// Parameters for text extraction rule.
 	ExtractParameters *RulesV1ExtractParameters `json:"extract_parameters,omitempty"`
 
-	// Parameters for json extract rule.
+	// Parameters for JSON extract rule.
 	JSONExtractParameters *RulesV1JSONExtractParameters `json:"json_extract_parameters,omitempty"`
 
 	// Parameters for replace rule.
@@ -16885,7 +22117,7 @@ type RulesV1RuleParameters struct {
 	// Parameters for parse rule.
 	ParseParameters *RulesV1ParseParameters `json:"parse_parameters,omitempty"`
 
-	// Parameters for allow rule.
+	// Parameters for the allow rule.
 	AllowParameters *RulesV1AllowParameters `json:"allow_parameters,omitempty"`
 
 	// Parameters for block rule.
@@ -16894,13 +22126,13 @@ type RulesV1RuleParameters struct {
 	// Parameters for extract timestamp rule.
 	ExtractTimestampParameters *RulesV1ExtractTimestampParameters `json:"extract_timestamp_parameters,omitempty"`
 
-	// Parameters for remove fields rule.
+	// Parameters for the remove fields rule.
 	RemoveFieldsParameters *RulesV1RemoveFieldsParameters `json:"remove_fields_parameters,omitempty"`
 
-	// Parameters for json stringify rule.
+	// Parameters for JSON stringify rule.
 	JSONStringifyParameters *RulesV1JSONStringifyParameters `json:"json_stringify_parameters,omitempty"`
 
-	// Parameters for json parse rule.
+	// Parameters for JSON parse rule.
 	JSONParseParameters *RulesV1JSONParseParameters `json:"json_parse_parameters,omitempty"`
 }
 func (*RulesV1RuleParameters) isaRulesV1RuleParameters() bool {
@@ -16968,8 +22200,8 @@ func UnmarshalRulesV1RuleParameters(m map[string]json.RawMessage, result interfa
 	return
 }
 
-// RulesV1RuleSubgroup : Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
-// order.
+// RulesV1RuleSubgroup : Rule subgroups. The first rule subgroup will be executed first. If there is no match, subsequent rule groups will be
+// attempted until there is a match. Rule groups are attempted in order.
 type RulesV1RuleSubgroup struct {
 	// The ID of the rule subgroup.
 	ID *strfmt.UUID `json:"id" validate:"required"`
@@ -17054,7 +22286,7 @@ func UnmarshalRulesV1SeverityConstraint(m map[string]json.RawMessage, result int
 
 // RulesV1SubsystemNameConstraint : SubsystemName constraint.
 type RulesV1SubsystemNameConstraint struct {
-	// Only logs with this SubsystemName value will match.
+	// Only logs with this SubsystemName value will match the rule constraint.
 	Value *string `json:"value" validate:"required"`
 }
 
@@ -17090,7 +22322,7 @@ type Stream struct {
 	// The name of the Event stream.
 	Name *string `json:"name" validate:"required"`
 
-	// Whether the Event stream is active.
+	// Whether the event stream is active.
 	IsActive *bool `json:"is_active,omitempty"`
 
 	// The DPXL expression of the Event stream.
@@ -17163,9 +22395,9 @@ func UnmarshalStream(m map[string]json.RawMessage, result interface{}) (err erro
 	return
 }
 
-// StreamCollection : Collection of Event Streams.
+// StreamCollection : List of event streams.
 type StreamCollection struct {
-	// Collection of Event Streams.
+	// List of event streams.
 	Streams []Stream `json:"streams" validate:"required"`
 }
 
@@ -17179,6 +22411,84 @@ func UnmarshalStreamCollection(m map[string]json.RawMessage, result interface{})
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
 	return
+}
+
+// SubmitBackgroundQueryOptions : The SubmitBackgroundQuery options.
+type SubmitBackgroundQueryOptions struct {
+	// The background query to be run.
+	Query *string `json:"query" validate:"required"`
+
+	// The query syntax.
+	Syntax *string `json:"syntax" validate:"required"`
+
+	// Beginning of the time range for the query, default: end - 15 minutes or current
+	//  time - 15 minutes if end is not defined.
+	StartDate *strfmt.DateTime `json:"start_date,omitempty"`
+
+	// End of the time range for the query. Default: start + 15 minutes or current
+	//  time if start is not defined.
+	EndDate *strfmt.DateTime `json:"end_date,omitempty"`
+
+	// Contextual `now` for the query, default: current time. Used by functions
+	//  like now() in DataPrime.
+	NowDate *strfmt.DateTime `json:"now_date,omitempty"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// Constants associated with the SubmitBackgroundQueryOptions.Syntax property.
+// The query syntax.
+const (
+	SubmitBackgroundQueryOptions_Syntax_Dataprime = "dataprime"
+	SubmitBackgroundQueryOptions_Syntax_DataprimeUTF8Base64 = "dataprime_utf8_base64"
+	SubmitBackgroundQueryOptions_Syntax_Lucene = "lucene"
+	SubmitBackgroundQueryOptions_Syntax_LuceneUTF8Base64 = "lucene_utf8_base64"
+	SubmitBackgroundQueryOptions_Syntax_Unspecified = "unspecified"
+)
+
+// NewSubmitBackgroundQueryOptions : Instantiate SubmitBackgroundQueryOptions
+func (*LogsV0) NewSubmitBackgroundQueryOptions(query string, syntax string) *SubmitBackgroundQueryOptions {
+	return &SubmitBackgroundQueryOptions{
+		Query: core.StringPtr(query),
+		Syntax: core.StringPtr(syntax),
+	}
+}
+
+// SetQuery : Allow user to set Query
+func (_options *SubmitBackgroundQueryOptions) SetQuery(query string) *SubmitBackgroundQueryOptions {
+	_options.Query = core.StringPtr(query)
+	return _options
+}
+
+// SetSyntax : Allow user to set Syntax
+func (_options *SubmitBackgroundQueryOptions) SetSyntax(syntax string) *SubmitBackgroundQueryOptions {
+	_options.Syntax = core.StringPtr(syntax)
+	return _options
+}
+
+// SetStartDate : Allow user to set StartDate
+func (_options *SubmitBackgroundQueryOptions) SetStartDate(startDate *strfmt.DateTime) *SubmitBackgroundQueryOptions {
+	_options.StartDate = startDate
+	return _options
+}
+
+// SetEndDate : Allow user to set EndDate
+func (_options *SubmitBackgroundQueryOptions) SetEndDate(endDate *strfmt.DateTime) *SubmitBackgroundQueryOptions {
+	_options.EndDate = endDate
+	return _options
+}
+
+// SetNowDate : Allow user to set NowDate
+func (_options *SubmitBackgroundQueryOptions) SetNowDate(nowDate *strfmt.DateTime) *SubmitBackgroundQueryOptions {
+	_options.NowDate = nowDate
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SubmitBackgroundQueryOptions) SetHeaders(param map[string]string) *SubmitBackgroundQueryOptions {
+	options.Headers = param
+	return options
 }
 
 // UnpinDashboardOptions : The UnpinDashboard options.
@@ -17238,16 +22548,17 @@ type UpdateAlertOptions struct {
 	// Alert filters.
 	Filters *AlertsV1AlertFilters `json:"filters,omitempty"`
 
-	// When should the alert be active.
+	// When will the alert be active.
 	ActiveWhen *AlertsV1AlertActiveWhen `json:"active_when,omitempty"`
 
-	// JSON keys to include in the alert notification, if left empty get the full log text in the alert notification.
+	// The JSON keys to be included in the alert notification. If unspecified, the full log text will be included in the
+	// alert notification.
 	NotificationPayloadFilters []string `json:"notification_payload_filters,omitempty"`
 
 	// The Meta labels to add to the alert.
 	MetaLabels []AlertsV1MetaLabel `json:"meta_labels,omitempty"`
 
-	// The Meta labels to add to the alert as string with ':' separator.
+	// The meta data added to the alert as a string separated by a ":" character.
 	MetaLabelsStrings []string `json:"meta_labels_strings,omitempty"`
 
 	// Incident settings, will create the incident based on this configuration.
@@ -17369,19 +22680,19 @@ func (options *UpdateAlertOptions) SetHeaders(param map[string]string) *UpdateAl
 
 // UpdateDataAccessRuleOptions : The UpdateDataAccessRule options.
 type UpdateDataAccessRuleOptions struct {
-	// ID of Data Access Rule to be deleted.
+	// ID of the data access rule to be deleted.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// Display Name for new Data Access Rule.
+	// Display Name for the data access rule.
 	DisplayName *string `json:"display_name" validate:"required"`
 
-	// Filters for new Data Access Rule.
+	// Filters for the data access rule.
 	Filters []DataAccessRuleFilter `json:"filters" validate:"required"`
 
-	// Default Expression for new Data Access Rule.
+	// Default Expression for the data access rule.
 	DefaultExpression *string `json:"default_expression" validate:"required"`
 
-	// Description for new Data Access Rule.
+	// Description for the data access rule.
 	Description *string `json:"description,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -17436,7 +22747,7 @@ func (options *UpdateDataAccessRuleOptions) SetHeaders(param map[string]string) 
 
 // UpdateDataUsageMetricsExportStatusOptions : The UpdateDataUsageMetricsExportStatus options.
 type UpdateDataUsageMetricsExportStatusOptions struct {
-	// The "enabled" parameter for metrics export.
+	// Whether metrics export is enabled or not. When 'true' metrics are exported.
 	Enabled *bool `json:"enabled" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -17473,7 +22784,7 @@ type UpdateEventStreamTargetOptions struct {
 	// The DPXL expression of the Event stream.
 	DpxlExpression *string `json:"dpxl_expression" validate:"required"`
 
-	// Whether the Event stream is active.
+	// Whether the event stream is active.
 	IsActive *bool `json:"is_active,omitempty"`
 
 	// The compression type of the stream.
@@ -17546,10 +22857,10 @@ func (options *UpdateEventStreamTargetOptions) SetHeaders(param map[string]strin
 
 // UpdateOutgoingWebhookOptions : The UpdateOutgoingWebhook options.
 type UpdateOutgoingWebhookOptions struct {
-	// The ID of the Outbound Integration to delete.
+	// The ID of the outbound integration to delete.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The input data of the Outbound Integration.
+	// The input data of the outbound integration.
 	OutgoingWebhookPrototype OutgoingWebhookPrototypeIntf `json:"OutgoingWebhookPrototype" validate:"required"`
 
 	// Allows users to set headers on API requests.
@@ -17628,21 +22939,21 @@ type UpdateRuleGroupOptions struct {
 	// The name of the rule group.
 	Name *string `json:"name" validate:"required"`
 
-	// Rule subgroups. Will try to execute the first rule subgroup, and if not matched will try to match the next one in
-	// order.
+	// Rule subgroups. The first rule subgroup will be executed first. If there is no match, subsequent rule groups will be
+	// attempted until there is a match. Rule groups are attempted in order.
 	RuleSubgroups []RulesV1CreateRuleGroupRequestCreateRuleSubgroup `json:"rule_subgroups" validate:"required"`
 
-	// A description for the rule group, should express what is the rule group purpose.
+	// A description of the rule group. The description will describe the purpose of the rule group.
 	Description *string `json:"description,omitempty"`
 
 	// Whether or not the rule is enabled.
 	Enabled *bool `json:"enabled,omitempty"`
 
-	// Optional rule matchers which if matched will make the rule go through the rule group.
+	// Optional rule matchers which, if matched, will process the rule through the rule group.
 	RuleMatchers []RulesV1RuleMatcherIntf `json:"rule_matchers,omitempty"`
 
 	// The order in which the rule group will be evaluated. The lower the order, the more priority the group will have. Not
-	// providing the order will by default create a group with the last order.
+	// providing the order will, by default, create a group with the last order.
 	Order *int64 `json:"order,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -17820,6 +23131,3296 @@ func UnmarshalViewFolderCollection(m map[string]json.RawMessage, result interfac
 	err = core.UnmarshalModel(m, "view_folders", &obj.ViewFolders, UnmarshalViewFolder)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "view_folders-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for flow alerts.
+	Flow *ApisAlertDefinitionFlowType `json:"flow,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "flow", &obj.Flow, UnmarshalApisAlertDefinitionFlowType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "flow-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based anomaly detection alerts.
+	LogsAnomaly *ApisAlertDefinitionLogsAnomalyType `json:"logs_anomaly,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_anomaly", &obj.LogsAnomaly, UnmarshalApisAlertDefinitionLogsAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for immediate log-based alerts.
+	LogsImmediate *ApisAlertDefinitionLogsImmediateType `json:"logs_immediate,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_immediate", &obj.LogsImmediate, UnmarshalApisAlertDefinitionLogsImmediateType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_immediate-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for alerts triggered by new log values.
+	LogsNewValue *ApisAlertDefinitionLogsNewValueType `json:"logs_new_value,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_new_value", &obj.LogsNewValue, UnmarshalApisAlertDefinitionLogsNewValueType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_new_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based ratio threshold alerts.
+	LogsRatioThreshold *ApisAlertDefinitionLogsRatioThresholdType `json:"logs_ratio_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_ratio_threshold", &obj.LogsRatioThreshold, UnmarshalApisAlertDefinitionLogsRatioThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_ratio_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based threshold alerts.
+	LogsThreshold *ApisAlertDefinitionLogsThresholdType `json:"logs_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_threshold", &obj.LogsThreshold, UnmarshalApisAlertDefinitionLogsThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for time-relative log threshold alerts.
+	LogsTimeRelativeThreshold *ApisAlertDefinitionLogsTimeRelativeThresholdType `json:"logs_time_relative_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_time_relative_threshold", &obj.LogsTimeRelativeThreshold, UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_time_relative_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for alerts based on unique log value counts.
+	LogsUniqueCount *ApisAlertDefinitionLogsUniqueCountType `json:"logs_unique_count,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_unique_count", &obj.LogsUniqueCount, UnmarshalApisAlertDefinitionLogsUniqueCountType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_unique_count-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for metric-based anomaly detection alerts.
+	MetricAnomaly *ApisAlertDefinitionMetricAnomalyType `json:"metric_anomaly,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_anomaly", &obj.MetricAnomaly, UnmarshalApisAlertDefinitionMetricAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold : AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold struct
+// This model "extends" AlertDefinitionPrototype
+type AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold struct {
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data. Not supported for `logs_new_value` alert type.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not) Phantom alerts serve as building blocks for flow
+	// alerts without triggering independent notifications.  Enabling this will remove the 'Notifications' section from the
+	// alert definition.
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for metric-based threshold alerts.
+	MetricThreshold *ApisAlertDefinitionMetricThresholdType `json:"metric_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P1 = "p1"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P2 = "p2"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P3 = "p3"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P4 = "p4"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_Flow = "flow"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+// NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold : Instantiate AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold (Generic Model Constructor)
+func (*LogsV0) NewAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold(name string, typeVar string) (_model *AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold, err error) {
+	_model = &AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold{
+		Name: core.StringPtr(name),
+		Type: core.StringPtr(typeVar),
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+func (*AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold) isaAlertDefinitionPrototype() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold unmarshals an instance of AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold)
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_threshold", &obj.MetricThreshold, UnmarshalApisAlertDefinitionMetricThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for flow alerts.
+	Flow *ApisAlertDefinitionFlowType `json:"flow,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionFlow)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "flow", &obj.Flow, UnmarshalApisAlertDefinitionFlowType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "flow-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based anomaly detection alerts.
+	LogsAnomaly *ApisAlertDefinitionLogsAnomalyType `json:"logs_anomaly,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsAnomaly)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_anomaly", &obj.LogsAnomaly, UnmarshalApisAlertDefinitionLogsAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for immediate log-based alerts.
+	LogsImmediate *ApisAlertDefinitionLogsImmediateType `json:"logs_immediate,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsImmediate)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_immediate", &obj.LogsImmediate, UnmarshalApisAlertDefinitionLogsImmediateType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_immediate-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for alerts triggered by new log values.
+	LogsNewValue *ApisAlertDefinitionLogsNewValueType `json:"logs_new_value,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsNewValue)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_new_value", &obj.LogsNewValue, UnmarshalApisAlertDefinitionLogsNewValueType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_new_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based ratio threshold alerts.
+	LogsRatioThreshold *ApisAlertDefinitionLogsRatioThresholdType `json:"logs_ratio_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsRatioThreshold)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_ratio_threshold", &obj.LogsRatioThreshold, UnmarshalApisAlertDefinitionLogsRatioThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_ratio_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for the log-based threshold alerts.
+	LogsThreshold *ApisAlertDefinitionLogsThresholdType `json:"logs_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_threshold", &obj.LogsThreshold, UnmarshalApisAlertDefinitionLogsThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for time-relative log threshold alerts.
+	LogsTimeRelativeThreshold *ApisAlertDefinitionLogsTimeRelativeThresholdType `json:"logs_time_relative_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsTimeRelativeThreshold)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_time_relative_threshold", &obj.LogsTimeRelativeThreshold, UnmarshalApisAlertDefinitionLogsTimeRelativeThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_time_relative_threshold-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for alerts based on unique log value counts.
+	LogsUniqueCount *ApisAlertDefinitionLogsUniqueCountType `json:"logs_unique_count,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsUniqueCount)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "logs_unique_count", &obj.LogsUniqueCount, UnmarshalApisAlertDefinitionLogsUniqueCountType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "logs_unique_count-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for metric-based anomaly detection alerts.
+	MetricAnomaly *ApisAlertDefinitionMetricAnomalyType `json:"metric_anomaly,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricAnomaly)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_anomaly", &obj.MetricAnomaly, UnmarshalApisAlertDefinitionMetricAnomalyType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_anomaly-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold : AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold struct
+// This model "extends" AlertDefinition
+type AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold struct {
+	// This is the alert definition's persistent ID (UniqueIdentifier). This ID does not change when the alert is updated.
+	ID *strfmt.UUID `json:"id" validate:"required"`
+
+	// The time when the alert definition was created.
+	CreatedTime *strfmt.DateTime `json:"created_time,omitempty"`
+
+	// The time when the alert definition was last updated.
+	UpdatedTime *strfmt.DateTime `json:"updated_time,omitempty"`
+
+	// The previous or old alert ID.
+	AlertVersionID *strfmt.UUID `json:"alert_version_id,omitempty"`
+
+	// The name of the alert definition.
+	Name *string `json:"name" validate:"required"`
+
+	// A detailed description of what the alert monitors and when it triggers.
+	Description *string `json:"description,omitempty"`
+
+	// Whether the alert is currently active and monitoring. If true, alert is active.
+	Enabled *bool `json:"enabled,omitempty"`
+
+	// The priority of the alert definition.
+	Priority *string `json:"priority,omitempty"`
+
+	ActiveOn *ApisAlertDefinitionActivitySchedule `json:"active_on,omitempty"`
+
+	// Alert type.
+	Type *string `json:"type" validate:"required"`
+
+	// Keys used to group and aggregate alert data.
+	GroupByKeys []string `json:"group_by_keys,omitempty"`
+
+	IncidentsSettings *ApisAlertDefinitionAlertDefIncidentSettings `json:"incidents_settings,omitempty"`
+
+	NotificationGroup *ApisAlertDefinitionAlertDefNotificationGroup `json:"notification_group,omitempty"`
+
+	// Labels used to identify and categorize the alert entity.
+	EntityLabels map[string]string `json:"entity_labels,omitempty"`
+
+	// Whether the alert is in phantom mode (creating incidents or not).
+	PhantomMode *bool `json:"phantom_mode,omitempty"`
+
+	// Whether the alert has been marked as deleted.
+	Deleted *bool `json:"deleted,omitempty"`
+
+	// Configuration for metric-based threshold alerts.
+	MetricThreshold *ApisAlertDefinitionMetricThresholdType `json:"metric_threshold,omitempty"`
+}
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold.Priority property.
+// The priority of the alert definition.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P1 = "p1"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P2 = "p2"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P3 = "p3"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P4 = "p4"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Priority_P5OrUnspecified = "p5_or_unspecified"
+)
+
+// Constants associated with the AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold.Type property.
+// Alert type.
+const (
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_Flow = "flow"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsAnomaly = "logs_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsImmediateOrUnspecified = "logs_immediate_or_unspecified"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsNewValue = "logs_new_value"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsRatioThreshold = "logs_ratio_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsThreshold = "logs_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsTimeRelativeThreshold = "logs_time_relative_threshold"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_LogsUniqueCount = "logs_unique_count"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_MetricAnomaly = "metric_anomaly"
+	AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold_Type_MetricThreshold = "metric_threshold"
+)
+
+func (*AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold) isaAlertDefinition() bool {
+	return true
+}
+
+// UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold unmarshals an instance of AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold from the specified map of raw messages.
+func UnmarshalAlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(AlertDefinitionApisAlertDefinitionAlertDefPropertiesTypeDefinitionMetricThreshold)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "created_time", &obj.CreatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "created_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "updated_time", &obj.UpdatedTime)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "updated_time-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "alert_version_id", &obj.AlertVersionID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "alert_version_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "priority", &obj.Priority)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "priority-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "active_on", &obj.ActiveOn, UnmarshalApisAlertDefinitionActivitySchedule)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "active_on-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "type", &obj.Type)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "type-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "group_by_keys", &obj.GroupByKeys)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "group_by_keys-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "incidents_settings", &obj.IncidentsSettings, UnmarshalApisAlertDefinitionAlertDefIncidentSettings)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "incidents_settings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "notification_group", &obj.NotificationGroup, UnmarshalApisAlertDefinitionAlertDefNotificationGroup)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "notification_group-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "entity_labels", &obj.EntityLabels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "entity_labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "phantom_mode", &obj.PhantomMode)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "phantom_mode-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "deleted", &obj.Deleted)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deleted-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metric_threshold", &obj.MetricThreshold, UnmarshalApisAlertDefinitionMetricThresholdType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_threshold-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -18102,6 +26703,139 @@ func UnmarshalAlertsV2AlertNotificationIntegrationTypeRecipients(m map[string]js
 	return
 }
 
+// ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID : ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID struct
+// This model "extends" ApisAlertDefinitionIntegrationType
+type ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID struct {
+	// The integration ID for the notification.
+	IntegrationID *int64 `json:"integration_id,omitempty"`
+}
+
+func (*ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID) isaApisAlertDefinitionIntegrationType() bool {
+	return true
+}
+
+// UnmarshalApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID unmarshals an instance of ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID)
+	err = core.UnmarshalPrimitive(m, "integration_id", &obj.IntegrationID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "integration_id-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct : ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct struct
+// This model "extends" ApisAlertDefinitionMetricMissingValues
+type ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct struct {
+	// If set, specifies the minimum percentage of non-null values required for the alert to be triggered.
+	MinNonNullValuesPct *int64 `json:"min_non_null_values_pct,omitempty"`
+}
+
+func (*ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct) isaApisAlertDefinitionMetricMissingValues() bool {
+	return true
+}
+
+// UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct unmarshals an instance of ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricMissingValuesMissingValuesMinNonNullValuesPct)
+	err = core.UnmarshalPrimitive(m, "min_non_null_values_pct", &obj.MinNonNullValuesPct)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "min_non_null_values_pct-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero : ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero struct
+// This model "extends" ApisAlertDefinitionMetricMissingValues
+type ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero struct {
+	// If set to true, missing values will be replaced with zero.
+	ReplaceWithZero *bool `json:"replace_with_zero,omitempty"`
+}
+
+func (*ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero) isaApisAlertDefinitionMetricMissingValues() bool {
+	return true
+}
+
+// UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero unmarshals an instance of ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricMissingValuesMissingValuesReplaceWithZero)
+	err = core.UnmarshalPrimitive(m, "replace_with_zero", &obj.ReplaceWithZero)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replace_with_zero-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration : ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration struct
+// This model "extends" ApisAlertDefinitionMetricTimeWindow
+type ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration struct {
+	// The time window as a dynamic value.
+	MetricTimeWindowDynamicDuration *string `json:"metric_time_window_dynamic_duration,omitempty"`
+}
+
+func (*ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration) isaApisAlertDefinitionMetricTimeWindow() bool {
+	return true
+}
+
+// UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration unmarshals an instance of ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowDynamicDuration)
+	err = core.UnmarshalPrimitive(m, "metric_time_window_dynamic_duration", &obj.MetricTimeWindowDynamicDuration)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_time_window_dynamic_duration-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue : ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue struct
+// This model "extends" ApisAlertDefinitionMetricTimeWindow
+type ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue struct {
+	// The time window as a specific value.
+	MetricTimeWindowSpecificValue *string `json:"metric_time_window_specific_value,omitempty"`
+}
+
+// Constants associated with the ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue.MetricTimeWindowSpecificValue property.
+// The time window as a specific value.
+const (
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hour1 = "hour_1"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours12 = "hours_12"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours2 = "hours_2"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours24 = "hours_24"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours36 = "hours_36"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours4 = "hours_4"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Hours6 = "hours_6"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes10 = "minutes_10"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes15 = "minutes_15"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes1OrUnspecified = "minutes_1_or_unspecified"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes20 = "minutes_20"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes30 = "minutes_30"
+	ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue_MetricTimeWindowSpecificValue_Minutes5 = "minutes_5"
+)
+
+func (*ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue) isaApisAlertDefinitionMetricTimeWindow() bool {
+	return true
+}
+
+// UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue unmarshals an instance of ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue from the specified map of raw messages.
+func UnmarshalApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisAlertDefinitionMetricTimeWindowTypeMetricTimeWindowSpecificValue)
+	err = core.UnmarshalPrimitive(m, "metric_time_window_specific_value", &obj.MetricTimeWindowSpecificValue)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metric_time_window_specific_value-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisDashboardsV1AstAnnotationLogsSourceStrategyValueDuration : ApisDashboardsV1AstAnnotationLogsSourceStrategyValueDuration struct
 // This model "extends" ApisDashboardsV1AstAnnotationLogsSourceStrategy
 type ApisDashboardsV1AstAnnotationLogsSourceStrategyValueDuration struct {
@@ -18312,7 +27046,7 @@ func UnmarshalApisDashboardsV1AstFilterOperatorValueNotEquals(m map[string]json.
 // ApisDashboardsV1AstFilterSourceValueLogs : ApisDashboardsV1AstFilterSourceValueLogs struct
 // This model "extends" ApisDashboardsV1AstFilterSource
 type ApisDashboardsV1AstFilterSourceValueLogs struct {
-	// Extra filtering on top of the Lucene query.
+	// Additional filtering done in addition to the Lucene query.
 	Logs *ApisDashboardsV1AstFilterLogsFilter `json:"logs,omitempty"`
 }
 
@@ -18646,7 +27380,7 @@ func UnmarshalApisDashboardsV1AstMultiSelectSelectionValueList(m map[string]json
 // ApisDashboardsV1AstMultiSelectSourceValueConstantList : ApisDashboardsV1AstMultiSelectSourceValueConstantList struct
 // This model "extends" ApisDashboardsV1AstMultiSelectSource
 type ApisDashboardsV1AstMultiSelectSourceValueConstantList struct {
-	// List of constant values.
+	// List of constant source values.
 	ConstantList *ApisDashboardsV1AstMultiSelectConstantListSource `json:"constant_list,omitempty"`
 }
 
@@ -19541,7 +28275,7 @@ func UnmarshalApisDashboardsV1AstWidgetsPieChartQueryValueMetrics(m map[string]j
 // ApisDashboardsV1CommonLogsAggregationValueAverage : ApisDashboardsV1CommonLogsAggregationValueAverage struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueAverage struct {
-	// Calculate average value of log field.
+	// Calculate average value of the log field.
 	Average *ApisDashboardsV1CommonLogsAggregationAverage `json:"average,omitempty"`
 }
 
@@ -19587,7 +28321,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueCount(m map[string]json.
 // ApisDashboardsV1CommonLogsAggregationValueCountDistinct : ApisDashboardsV1CommonLogsAggregationValueCountDistinct struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueCountDistinct struct {
-	// Count the number of distinct values of log field.
+	// Count the number of distinct values of the log field.
 	CountDistinct *ApisDashboardsV1CommonLogsAggregationCountDistinct `json:"count_distinct,omitempty"`
 }
 
@@ -19610,7 +28344,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueCountDistinct(m map[stri
 // ApisDashboardsV1CommonLogsAggregationValueMax : ApisDashboardsV1CommonLogsAggregationValueMax struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueMax struct {
-	// Calculate maximum value of log field.
+	// Calculate maximum value of the log field.
 	Max *ApisDashboardsV1CommonLogsAggregationMax `json:"max,omitempty"`
 }
 
@@ -19633,7 +28367,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueMax(m map[string]json.Ra
 // ApisDashboardsV1CommonLogsAggregationValueMin : ApisDashboardsV1CommonLogsAggregationValueMin struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueMin struct {
-	// Calculate minimum value of log field.
+	// Calculate the minimum value of the log field.
 	Min *ApisDashboardsV1CommonLogsAggregationMin `json:"min,omitempty"`
 }
 
@@ -19656,7 +28390,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueMin(m map[string]json.Ra
 // ApisDashboardsV1CommonLogsAggregationValuePercentile : ApisDashboardsV1CommonLogsAggregationValuePercentile struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValuePercentile struct {
-	// Calculate percentile value of log field.
+	// Calculate percentile value of the log field.
 	Percentile *ApisDashboardsV1CommonLogsAggregationPercentile `json:"percentile,omitempty"`
 }
 
@@ -19679,7 +28413,7 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValuePercentile(m map[string]
 // ApisDashboardsV1CommonLogsAggregationValueSum : ApisDashboardsV1CommonLogsAggregationValueSum struct
 // This model "extends" ApisDashboardsV1CommonLogsAggregation
 type ApisDashboardsV1CommonLogsAggregationValueSum struct {
-	// Sum values of log field.
+	// Sum values of the log field.
 	Sum *ApisDashboardsV1CommonLogsAggregationSum `json:"sum,omitempty"`
 }
 
@@ -19699,10 +28433,584 @@ func UnmarshalApisDashboardsV1CommonLogsAggregationValueSum(m map[string]json.Ra
 	return
 }
 
+// ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied : ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied struct
+// This model "extends" ApisDataprimeV1ArchiveWarning
+type ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied struct {
+	BucketAccessDenied *ApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty `json:"bucket_access_denied,omitempty"`
+}
+
+func (*ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied) isaApisDataprimeV1ArchiveWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied unmarshals an instance of ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningWarningTypeBucketAccessDenied)
+	err = core.UnmarshalModel(m, "bucket_access_denied", &obj.BucketAccessDenied, UnmarshalApisDataprimeV1ArchiveWarningBucketAccessDeniedEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bucket_access_denied-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed : ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed struct
+// This model "extends" ApisDataprimeV1ArchiveWarning
+type ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed struct {
+	BucketReadFailed *ApisDataprimeV1ArchiveWarningBucketReadFailedEmpty `json:"bucket_read_failed,omitempty"`
+}
+
+func (*ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed) isaApisDataprimeV1ArchiveWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed unmarshals an instance of ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningWarningTypeBucketReadFailed)
+	err = core.UnmarshalModel(m, "bucket_read_failed", &obj.BucketReadFailed, UnmarshalApisDataprimeV1ArchiveWarningBucketReadFailedEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bucket_read_failed-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningWarningTypeMissingData : ApisDataprimeV1ArchiveWarningWarningTypeMissingData struct
+// This model "extends" ApisDataprimeV1ArchiveWarning
+type ApisDataprimeV1ArchiveWarningWarningTypeMissingData struct {
+	MissingData *ApisDataprimeV1ArchiveWarningMissingDataEmpty `json:"missing_data,omitempty"`
+}
+
+func (*ApisDataprimeV1ArchiveWarningWarningTypeMissingData) isaApisDataprimeV1ArchiveWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningWarningTypeMissingData unmarshals an instance of ApisDataprimeV1ArchiveWarningWarningTypeMissingData from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningWarningTypeMissingData(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningWarningTypeMissingData)
+	err = core.UnmarshalModel(m, "missing_data", &obj.MissingData, UnmarshalApisDataprimeV1ArchiveWarningMissingDataEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "missing_data-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData : ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData struct
+// This model "extends" ApisDataprimeV1ArchiveWarning
+type ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData struct {
+	NoMetastoreData *ApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty `json:"no_metastore_data,omitempty"`
+}
+
+func (*ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData) isaApisDataprimeV1ArchiveWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData unmarshals an instance of ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData from the specified map of raw messages.
+func UnmarshalApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1ArchiveWarningWarningTypeNoMetastoreData)
+	err = core.UnmarshalModel(m, "no_metastore_data", &obj.NoMetastoreData, UnmarshalApisDataprimeV1ArchiveWarningNoMetastoreDataEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "no_metastore_data-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning struct {
+	// Warning for reaching the aggregation buckets limit.
+	AggregationBucketsLimitWarning *ApisDataprimeV1AggregationBucketsLimitWarning `json:"aggregation_buckets_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeAggregationBucketsLimitWarning)
+	err = core.UnmarshalModel(m, "aggregation_buckets_limit_warning", &obj.AggregationBucketsLimitWarning, UnmarshalApisDataprimeV1AggregationBucketsLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "aggregation_buckets_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning : ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning struct {
+	// Wrapper for archive related warnings.
+	ArchiveWarning ApisDataprimeV1ArchiveWarningIntf `json:"archive_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeArchiveWarning)
+	err = core.UnmarshalModel(m, "archive_warning", &obj.ArchiveWarning, UnmarshalApisDataprimeV1ArchiveWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "archive_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning struct {
+	// Warning when the query has reached the maximum number of parquet blocks.
+	BlocksLimitWarning *ApisDataprimeV1BlocksLimitWarningEmpty `json:"blocks_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning)
+	err = core.UnmarshalModel(m, "blocks_limit_warning", &obj.BlocksLimitWarning, UnmarshalApisDataprimeV1BlocksLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "blocks_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning struct {
+	// Warning for reaching the bytes scanned limit.
+	BytesScannedLimitWarning *ApisDataprimeV1BytesScannedLimitWarningEmpty `json:"bytes_scanned_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning)
+	err = core.UnmarshalModel(m, "bytes_scanned_limit_warning", &obj.BytesScannedLimitWarning, UnmarshalApisDataprimeV1BytesScannedLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "bytes_scanned_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning : ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning struct {
+	// Warning from Dataprime compilation.
+	CompileWarning *ApisDataprimeV1CompileWarning `json:"compile_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeCompileWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeCompileWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning)
+	err = core.UnmarshalModel(m, "compile_warning", &obj.CompileWarning, UnmarshalApisDataprimeV1CompileWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "compile_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning : ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning struct {
+	// Warning about deprecated elements.
+	DeprecationWarning *ApisDataprimeV1DeprecationWarning `json:"deprecation_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning)
+	err = core.UnmarshalModel(m, "deprecation_warning", &obj.DeprecationWarning, UnmarshalApisDataprimeV1DeprecationWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deprecation_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning struct {
+	// Warning when the result contains entries where the number of fields is truncated.
+	FieldCountLimitWarning *ApisDataprimeV1FieldCountLimitWarningEmpty `json:"field_count_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeFieldCountLimitWarning)
+	err = core.UnmarshalModel(m, "field_count_limit_warning", &obj.FieldCountLimitWarning, UnmarshalApisDataprimeV1FieldCountLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "field_count_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning struct {
+	// Batch of results
+	//  warning when the query has reached maximum number of parquet files.
+	FilesReadLimitWarning *ApisDataprimeV1FilesReadLimitWarningEmpty `json:"files_read_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeFilesReadLimitWarning)
+	err = core.UnmarshalModel(m, "files_read_limit_warning", &obj.FilesReadLimitWarning, UnmarshalApisDataprimeV1FilesReadLimitWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "files_read_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning struct {
+	// Warning from applying a limit on the number of results.
+	NumberOfResultsLimitWarning *ApisDataprimeV1NumberOfResultsLimitWarning `json:"number_of_results_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning)
+	err = core.UnmarshalModel(m, "number_of_results_limit_warning", &obj.NumberOfResultsLimitWarning, UnmarshalApisDataprimeV1NumberOfResultsLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "number_of_results_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning : ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning struct {
+	// Warning when OpenSearch scroll timeout is reached.
+	ScrollTimeoutWarning *ApisDataprimeV1ScrollTimeoutWarningEmpty `json:"scroll_timeout_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeScrollTimeoutWarning)
+	err = core.UnmarshalModel(m, "scroll_timeout_warning", &obj.ScrollTimeoutWarning, UnmarshalApisDataprimeV1ScrollTimeoutWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "scroll_timeout_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning : ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning struct {
+	// Warning when the shuffle file size limit is reached - For example during a join with a large right side.
+	ShuffleFileSizeLimitReachedWarning *ApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty `json:"shuffle_file_size_limit_reached_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeShuffleFileSizeLimitReachedWarning)
+	err = core.UnmarshalModel(m, "shuffle_file_size_limit_reached_warning", &obj.ShuffleFileSizeLimitReachedWarning, UnmarshalApisDataprimeV1ShuffleFileSizeLimitReachedWarningEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "shuffle_file_size_limit_reached_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning struct {
+	// Warning when a field has reached the cardinality limit.
+	SidebarFilterCardinalityLimitWarning *ApisDataprimeV1SidebarFilterCardinalityLimitWarning `json:"sidebar_filter_cardinality_limit_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeSidebarFilterCardinalityLimitWarning)
+	err = core.UnmarshalModel(m, "sidebar_filter_cardinality_limit_warning", &obj.SidebarFilterCardinalityLimitWarning, UnmarshalApisDataprimeV1SidebarFilterCardinalityLimitWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "sidebar_filter_cardinality_limit_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning : ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning struct
+// This model "extends" ApisDataprimeV1DataprimeWarning
+type ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning struct {
+	// Warning from applying a time range to the query.
+	TimeRangeWarning *ApisDataprimeV1TimeRangeWarning `json:"time_range_warning,omitempty"`
+}
+
+func (*ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning) isaApisDataprimeV1DataprimeWarning() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning from the specified map of raw messages.
+func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning)
+	err = core.UnmarshalModel(m, "time_range_warning", &obj.TimeRangeWarning, UnmarshalApisDataprimeV1TimeRangeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "time_range_warning-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled struct {
+	// The query has been terminated due to a cancellation.
+	Cancelled *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty `json:"cancelled,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorCancelled)
+	err = core.UnmarshalModel(m, "cancelled", &obj.Cancelled, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorCancelledEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "cancelled-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed struct {
+	// The query has been terminated due to a failure.
+	Failed *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed `json:"failed,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorFailed)
+	err = core.UnmarshalModel(m, "failed", &obj.Failed, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorFailed)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "failed-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut struct {
+	// The query has been terminated due to a timeout.
+	TimedOut *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty `json:"timed_out,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorErrorTimedOut)
+	err = core.UnmarshalModel(m, "timed_out", &obj.TimedOut, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorTimedOutEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "timed_out-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled struct {
+	// The query was terminated at this time.
+	RunningSince *strfmt.DateTime `json:"running_since" validate:"required"`
+
+	// The query was terminated at this time.
+	TerminatedAt *strfmt.DateTime `json:"terminated_at" validate:"required"`
+
+	// The query has been cancelled.
+	Cancelled *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty `json:"cancelled,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminated() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusCancelled)
+	err = core.UnmarshalPrimitive(m, "running_since", &obj.RunningSince)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running_since-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "terminated_at", &obj.TerminatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "cancelled", &obj.Cancelled, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedCancelledEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "cancelled-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError struct {
+	// The query was terminated at this time.
+	RunningSince *strfmt.DateTime `json:"running_since" validate:"required"`
+
+	// The query was terminated at this time.
+	TerminatedAt *strfmt.DateTime `json:"terminated_at" validate:"required"`
+
+	// The query has been terminated with an error.
+	Error ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedErrorIntf `json:"error,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminated() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusError)
+	err = core.UnmarshalPrimitive(m, "running_since", &obj.RunningSince)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running_since-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "terminated_at", &obj.TerminatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "error", &obj.Error, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedError)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "error-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess : ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess struct
+// This model "extends" ApisDataprimeV1GetBackgroundQueryStatusResponseTerminated
+type ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess struct {
+	// The query was terminated at this time.
+	RunningSince *strfmt.DateTime `json:"running_since" validate:"required"`
+
+	// The query was terminated at this time.
+	TerminatedAt *strfmt.DateTime `json:"terminated_at" validate:"required"`
+
+	// The query has been terminated successfully.
+	Success *ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty `json:"success,omitempty"`
+}
+
+func (*ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess) isaApisDataprimeV1GetBackgroundQueryStatusResponseTerminated() bool {
+	return true
+}
+
+// UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess unmarshals an instance of ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess from the specified map of raw messages.
+func UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedStatusSuccess)
+	err = core.UnmarshalPrimitive(m, "running_since", &obj.RunningSince)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running_since-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "terminated_at", &obj.TerminatedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "success", &obj.Success, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedSuccessEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "success-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // ApisEvents2metricsV2AggregationAggMetadataHistogram : ApisEvents2metricsV2AggregationAggMetadataHistogram struct
 // This model "extends" ApisEvents2metricsV2Aggregation
 type ApisEvents2metricsV2AggregationAggMetadataHistogram struct {
-	// Is enabled.
+	// Determines if aggregation is enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Aggregation type.
@@ -19711,7 +29019,7 @@ type ApisEvents2metricsV2AggregationAggMetadataHistogram struct {
 	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// E2M aggregate histogram type metadata.
+	// Events to Metrics aggregate histogram type metadata.
 	Histogram *ApisEvents2metricsV2E2mAggHistogram `json:"histogram,omitempty"`
 }
 
@@ -19762,7 +29070,7 @@ func UnmarshalApisEvents2metricsV2AggregationAggMetadataHistogram(m map[string]j
 // ApisEvents2metricsV2AggregationAggMetadataSamples : ApisEvents2metricsV2AggregationAggMetadataSamples struct
 // This model "extends" ApisEvents2metricsV2Aggregation
 type ApisEvents2metricsV2AggregationAggMetadataSamples struct {
-	// Is enabled.
+	// Determines if aggregation is enabled or not.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Aggregation type.
@@ -19771,7 +29079,7 @@ type ApisEvents2metricsV2AggregationAggMetadataSamples struct {
 	// Target metric field alias name.
 	TargetMetricName *string `json:"target_metric_name,omitempty"`
 
-	// E2M sample type metadata.
+	// Events to Metrics aggregation metadata of samples.
 	Samples *ApisEvents2metricsV2E2mAggSamples `json:"samples,omitempty"`
 }
 
@@ -19859,6 +29167,149 @@ func UnmarshalApisViewsV1TimeSelectionSelectionTypeQuickSelection(m map[string]j
 	err = core.UnmarshalModel(m, "quick_selection", &obj.QuickSelection, UnmarshalApisViewsV1QuickTimeSelection)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "quick_selection-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning : BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning struct
+// This model "extends" BackgroundQueryStatus
+type BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning struct {
+	// The query has been submitted.
+	SubmittedAt *strfmt.DateTime `json:"submitted_at" validate:"required"`
+
+	// Does not contain duplicate messages.
+	Metadata []ApisDataprimeV1ResponseMetadata `json:"metadata" validate:"required"`
+
+	// Includes all warnings (For example: warnings that can apprear during query
+	//  submission + runtime warnings).
+	Warnings []ApisDataprimeV1DataprimeWarningIntf `json:"warnings" validate:"required"`
+
+	// The query is still running.
+	Running *ApisDataprimeV1GetBackgroundQueryStatusResponseRunning `json:"running,omitempty"`
+}
+
+func (*BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning) isaBackgroundQueryStatus() bool {
+	return true
+}
+
+// UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning unmarshals an instance of BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning from the specified map of raw messages.
+func UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusRunning)
+	err = core.UnmarshalPrimitive(m, "submitted_at", &obj.SubmittedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "submitted_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalApisDataprimeV1ResponseMetadata)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metadata-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "warnings", &obj.Warnings, UnmarshalApisDataprimeV1DataprimeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warnings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "running", &obj.Running, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseRunning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "running-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated : BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated struct
+// This model "extends" BackgroundQueryStatus
+type BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated struct {
+	// The query has been submitted.
+	SubmittedAt *strfmt.DateTime `json:"submitted_at" validate:"required"`
+
+	// Does not contain duplicate messages.
+	Metadata []ApisDataprimeV1ResponseMetadata `json:"metadata" validate:"required"`
+
+	// Includes all warnings (For example: warnings that can apprear during query
+	//  submission + runtime warnings).
+	Warnings []ApisDataprimeV1DataprimeWarningIntf `json:"warnings" validate:"required"`
+
+	// The query has been terminated.
+	Terminated ApisDataprimeV1GetBackgroundQueryStatusResponseTerminatedIntf `json:"terminated,omitempty"`
+}
+
+func (*BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated) isaBackgroundQueryStatus() bool {
+	return true
+}
+
+// UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated unmarshals an instance of BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated from the specified map of raw messages.
+func UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusTerminated)
+	err = core.UnmarshalPrimitive(m, "submitted_at", &obj.SubmittedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "submitted_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalApisDataprimeV1ResponseMetadata)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metadata-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "warnings", &obj.Warnings, UnmarshalApisDataprimeV1DataprimeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warnings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "terminated", &obj.Terminated, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseTerminated)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "terminated-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution : BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution struct
+// This model "extends" BackgroundQueryStatus
+type BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution struct {
+	// The query has been submitted.
+	SubmittedAt *strfmt.DateTime `json:"submitted_at" validate:"required"`
+
+	// Does not contain duplicate messages.
+	Metadata []ApisDataprimeV1ResponseMetadata `json:"metadata" validate:"required"`
+
+	// Includes all warnings (For example: warnings that can apprear during query
+	//  submission + runtime warnings).
+	Warnings []ApisDataprimeV1DataprimeWarningIntf `json:"warnings" validate:"required"`
+
+	WaitingForExecution *ApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty `json:"waiting_for_execution,omitempty"`
+}
+
+func (*BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution) isaBackgroundQueryStatus() bool {
+	return true
+}
+
+// UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution unmarshals an instance of BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution from the specified map of raw messages.
+func UnmarshalBackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(BackgroundQueryStatusApisDataprimeV1GetBackgroundQueryStatusResponseStatusWaitingForExecution)
+	err = core.UnmarshalPrimitive(m, "submitted_at", &obj.SubmittedAt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "submitted_at-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "metadata", &obj.Metadata, UnmarshalApisDataprimeV1ResponseMetadata)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "metadata-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "warnings", &obj.Warnings, UnmarshalApisDataprimeV1DataprimeWarning)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "warnings-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "waiting_for_execution", &obj.WaitingForExecution, UnmarshalApisDataprimeV1GetBackgroundQueryStatusResponseWaitingForExecutionEmpty)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "waiting_for_execution-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -20386,7 +29837,7 @@ type DashboardApisDashboardsV1AstDashboardTimeFrameAbsoluteTimeFrame struct {
 	// List of annotations that can be applied to the dashboard's visual elements.
 	Annotations []ApisDashboardsV1AstAnnotation `json:"annotations,omitempty"`
 
-	// Absolute time frame specifying a fixed start and end time.
+	// The fixed start and end absolute time frame.
 	AbsoluteTimeFrame *ApisDashboardsV1CommonTimeFrame `json:"absolute_time_frame,omitempty"`
 }
 
@@ -20584,7 +30035,7 @@ func UnmarshalEnrichmentV1EnrichmentTypeTypeCustomEnrichment(m map[string]json.R
 // EnrichmentV1EnrichmentTypeTypeGeoIp : EnrichmentV1EnrichmentTypeTypeGeoIp struct
 // This model "extends" EnrichmentV1EnrichmentType
 type EnrichmentV1EnrichmentTypeTypeGeoIp struct {
-	// The geo ip enrichment.
+	// The geo IP enrichment.
 	GeoIp *EnrichmentV1GeoIpTypeEmpty `json:"geo_ip,omitempty"`
 }
 
@@ -20607,7 +30058,7 @@ func UnmarshalEnrichmentV1EnrichmentTypeTypeGeoIp(m map[string]json.RawMessage, 
 // EnrichmentV1EnrichmentTypeTypeSuspiciousIp : EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct
 // This model "extends" EnrichmentV1EnrichmentType
 type EnrichmentV1EnrichmentTypeTypeSuspiciousIp struct {
-	// The suspicious ip enrichment.
+	// The suspicious IP enrichment.
 	SuspiciousIp *EnrichmentV1SuspiciousIpTypeEmpty `json:"suspicious_ip,omitempty"`
 }
 
@@ -20630,30 +30081,30 @@ func UnmarshalEnrichmentV1EnrichmentTypeTypeSuspiciousIp(m map[string]json.RawMe
 // Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery : Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery struct
 // This model "extends" Event2MetricPrototype
 type Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery struct {
-	// Name of E2M to create.
+	// Name of Events to Metrics to create.
 	Name *string `json:"name" validate:"required"`
 
-	// Description of E2M to create.
+	// Description of Events to Metrics to create.
 	Description *string `json:"description,omitempty"`
 
-	// The permutation limit of the E2M.
+	// The permutation limit of the Events to Metrics.
 	PermutationsLimit *int64 `json:"permutations_limit,omitempty"`
 
-	// E2M metric labels.
+	// Events to Metrics metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// E2M metric fields.
+	// Events to Metrics metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// E2M type.
+	// Events to Metrics type.
 	Type *string `json:"type,omitempty"`
 
-	// E2M logs query.
+	// Events to Metrics logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery.Type property.
-// E2M type.
+// Events to Metrics type.
 const (
 	Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery_Type_Logs2metrics = "logs2metrics"
 	Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery_Type_Unspecified = "unspecified"
@@ -20720,41 +30171,41 @@ func UnmarshalEvent2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQ
 // Event2MetricApisEvents2metricsV2E2mQueryLogsQuery : Event2MetricApisEvents2metricsV2E2mQueryLogsQuery struct
 // This model "extends" Event2Metric
 type Event2MetricApisEvents2metricsV2E2mQueryLogsQuery struct {
-	// E2M unique ID, required on update requests.
+	// Events to Metrics unique ID, required on update requests.
 	ID *strfmt.UUID `json:"id,omitempty"`
 
-	// Name of the E2M.
+	// Name of the Events to Metrics.
 	Name *string `json:"name" validate:"required"`
 
-	// Description of the E2M.
+	// Description of the Events to Metrics.
 	Description *string `json:"description,omitempty"`
 
-	// E2M create time.
+	// Events to Metrics create time.
 	CreateTime *string `json:"create_time,omitempty"`
 
-	// E2M update time.
+	// Events to Metrics update time.
 	UpdateTime *string `json:"update_time,omitempty"`
 
 	Permutations *ApisEvents2metricsV2E2mPermutations `json:"permutations,omitempty"`
 
-	// E2M metric labels.
+	// Events to Metrics metric labels.
 	MetricLabels []ApisEvents2metricsV2MetricLabel `json:"metric_labels,omitempty"`
 
-	// E2M metric fields.
+	// Events to Metrics metric fields.
 	MetricFields []ApisEvents2metricsV2MetricField `json:"metric_fields,omitempty"`
 
-	// E2M type.
+	// Events to Metrics type.
 	Type *string `json:"type" validate:"required"`
 
-	// A flag that represents if the e2m is for internal usage.
+	// A flag that represents if the Events to Metrics is for internal usage.
 	IsInternal *bool `json:"is_internal,omitempty"`
 
-	// E2M logs query.
+	// Events to Metrics logs query.
 	LogsQuery *ApisLogs2metricsV2LogsQuery `json:"logs_query,omitempty"`
 }
 
 // Constants associated with the Event2MetricApisEvents2metricsV2E2mQueryLogsQuery.Type property.
-// E2M type.
+// Events to Metrics type.
 const (
 	Event2MetricApisEvents2metricsV2E2mQueryLogsQuery_Type_Logs2metrics = "logs2metrics"
 	Event2MetricApisEvents2metricsV2E2mQueryLogsQuery_Type_Unspecified = "unspecified"
@@ -20852,7 +30303,7 @@ func UnmarshalExportDataUsageResponseDataUsageCollection(m map[string]json.RawMe
 // ExportDataUsageResponseDataUsageMetricsExportStatus : The data usage metrics export status.
 // This model "extends" ExportDataUsageResponse
 type ExportDataUsageResponseDataUsageMetricsExportStatus struct {
-	// The "enabled" parameter for metrics export.
+	// Whether metrics export is enabled or not. When 'true' metrics are exported.
 	Enabled *bool `json:"enabled" validate:"required"`
 }
 
@@ -20875,21 +30326,21 @@ func UnmarshalExportDataUsageResponseDataUsageMetricsExportStatus(m map[string]j
 // OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications : OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications struct
 // This model "extends" OutgoingWebhookPrototype
 type OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications struct {
-	// The type of the deployed Outbound Integrations to list.
+	// The type of the deployed outbound integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the Outbound Integration.
+	// The name of the outbound integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
+	// The URL of the outbound integration. This value is null for IBM Events Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The configuration of the IBM Event Notifications Outbound Integration.
+	// The configuration of the IBM Event Notifications outbound integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications.Type property.
-// The type of the deployed Outbound Integrations to list.
+// The type of the deployed outbound integrations to list.
 const (
 	OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -20941,33 +30392,34 @@ func UnmarshalOutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputData
 // OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications : OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications struct
 // This model "extends" OutgoingWebhook
 type OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications struct {
-	// The ID of the Outbound Integration.
+	// The ID of the outbound integration.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
-	// The type of the deployed Outbound Integrations to list.
+	// The type of the deployed outbound integrations to list.
 	Type *string `json:"type" validate:"required"`
 
-	// The name of the Outbound Integration.
+	// The name of the outbound integration.
 	Name *string `json:"name" validate:"required"`
 
-	// The URL of the Outbound Integration. Null for IBM Event Notifications integration.
+	// The URL of the outbound integration. This value is null for IBM Events Notifications integration.
 	URL *string `json:"url,omitempty"`
 
-	// The creation time of the Outbound Integration.
+	// The time the outbound integration was created.
 	CreatedAt *strfmt.DateTime `json:"created_at" validate:"required"`
 
-	// The update time of the Outbound Integration.
+	// The time the outbound integration was updated.
 	UpdatedAt *strfmt.DateTime `json:"updated_at" validate:"required"`
 
-	// The external ID of the Outbound Integration, for connecting with other parts of the system.
+	// The external ID of the outbound integration. This ID is used as integration_id for the notification configuration in
+	// Alerts.
 	ExternalID *int64 `json:"external_id" validate:"required"`
 
-	// The configuration of the IBM Event Notifications Outbound Integration.
+	// The configuration of the IBM Event Notifications outbound integration.
 	IbmEventNotifications *OutgoingWebhooksV1IbmEventNotificationsConfig `json:"ibm_event_notifications,omitempty"`
 }
 
 // Constants associated with the OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications.Type property.
-// The type of the deployed Outbound Integrations to list.
+// The type of the deployed outbound integrations to list.
 const (
 	OutgoingWebhooksV1OutgoingWebhookConfigIbmEventNotifications_Type_IbmEventNotifications = "ibm_event_notifications"
 )
@@ -21029,10 +30481,12 @@ type PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct {
 	// Policy name.
 	Name *string `json:"name" validate:"required"`
 
+	Before *PolicyBeforePrototype `json:"before,omitempty"`
+
 	// Policy description.
 	Description *string `json:"description,omitempty"`
 
-	// The data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 	Priority *string `json:"priority" validate:"required"`
 
 	ApplicationRule *QuotaV1Rule `json:"application_rule,omitempty"`
@@ -21041,12 +30495,16 @@ type PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct {
 
 	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
 
+	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
+	// always enabled during creation.
+	Enabled *bool `json:"enabled,omitempty"`
+
 	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
 }
 
 // Constants associated with the PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules.Priority property.
-// The data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 const (
 	PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules_Priority_TypeBlock = "type_block"
 	PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules_Priority_TypeHigh = "type_high"
@@ -21080,6 +30538,11 @@ func UnmarshalPolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules(m
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalModel(m, "before", &obj.Before, UnmarshalPolicyBeforePrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "before-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
@@ -21105,6 +30568,11 @@ func UnmarshalPolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules(m
 		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
 		return
 	}
+	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "enabled-error", common.GetComponentInfo())
+		return
+	}
 	err = core.UnmarshalModel(m, "log_rules", &obj.LogRules, UnmarshalQuotaV1LogRules)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "log_rules-error", common.GetComponentInfo())
@@ -21120,6 +30588,8 @@ type PolicyQuotaV1PolicySourceTypeRulesLogRules struct {
 	// Policy ID.
 	ID *strfmt.UUID `json:"id" validate:"required"`
 
+	Before *PolicyBefore `json:"before,omitempty"`
+
 	// Company ID.
 	CompanyID *int64 `json:"company_id" validate:"required"`
 
@@ -21129,13 +30599,14 @@ type PolicyQuotaV1PolicySourceTypeRulesLogRules struct {
 	// Description of policy.
 	Description *string `json:"description" validate:"required"`
 
-	// The data pipeline sources that match the policy rules will go through.
+	// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 	Priority *string `json:"priority,omitempty"`
 
 	// Soft deletion flag.
 	Deleted *bool `json:"deleted,omitempty"`
 
-	// Enabled flag.
+	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
+	// always enabled during creation.
 	Enabled *bool `json:"enabled,omitempty"`
 
 	// Order of policy in relation to other policies.
@@ -21158,7 +30629,7 @@ type PolicyQuotaV1PolicySourceTypeRulesLogRules struct {
 }
 
 // Constants associated with the PolicyQuotaV1PolicySourceTypeRulesLogRules.Priority property.
-// The data pipeline sources that match the policy rules will go through.
+// The data pipeline sources that match the policy rules will continue to be processed by Cloud Logs.
 const (
 	PolicyQuotaV1PolicySourceTypeRulesLogRules_Priority_TypeBlock = "type_block"
 	PolicyQuotaV1PolicySourceTypeRulesLogRules_Priority_TypeHigh = "type_high"
@@ -21177,6 +30648,11 @@ func UnmarshalPolicyQuotaV1PolicySourceTypeRulesLogRules(m map[string]json.RawMe
 	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "before", &obj.Before, UnmarshalPolicyBefore)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "before-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "company_id", &obj.CompanyID)
@@ -21320,7 +30796,7 @@ func UnmarshalRulesV1RuleMatcherConstraintSubsystemName(m map[string]json.RawMes
 // RulesV1RuleParametersRuleParametersAllowParameters : RulesV1RuleParametersRuleParametersAllowParameters struct
 // This model "extends" RulesV1RuleParameters
 type RulesV1RuleParametersRuleParametersAllowParameters struct {
-	// Parameters for allow rule.
+	// Parameters for the allow rule.
 	AllowParameters *RulesV1AllowParameters `json:"allow_parameters,omitempty"`
 }
 
@@ -21412,7 +30888,7 @@ func UnmarshalRulesV1RuleParametersRuleParametersExtractTimestampParameters(m ma
 // RulesV1RuleParametersRuleParametersJSONExtractParameters : RulesV1RuleParametersRuleParametersJSONExtractParameters struct
 // This model "extends" RulesV1RuleParameters
 type RulesV1RuleParametersRuleParametersJSONExtractParameters struct {
-	// Parameters for json extract rule.
+	// Parameters for JSON extract rule.
 	JSONExtractParameters *RulesV1JSONExtractParameters `json:"json_extract_parameters,omitempty"`
 }
 
@@ -21435,7 +30911,7 @@ func UnmarshalRulesV1RuleParametersRuleParametersJSONExtractParameters(m map[str
 // RulesV1RuleParametersRuleParametersJSONParseParameters : RulesV1RuleParametersRuleParametersJSONParseParameters struct
 // This model "extends" RulesV1RuleParameters
 type RulesV1RuleParametersRuleParametersJSONParseParameters struct {
-	// Parameters for json parse rule.
+	// Parameters for JSON parse rule.
 	JSONParseParameters *RulesV1JSONParseParameters `json:"json_parse_parameters,omitempty"`
 }
 
@@ -21458,7 +30934,7 @@ func UnmarshalRulesV1RuleParametersRuleParametersJSONParseParameters(m map[strin
 // RulesV1RuleParametersRuleParametersJSONStringifyParameters : RulesV1RuleParametersRuleParametersJSONStringifyParameters struct
 // This model "extends" RulesV1RuleParameters
 type RulesV1RuleParametersRuleParametersJSONStringifyParameters struct {
-	// Parameters for json stringify rule.
+	// Parameters for JSON stringify rule.
 	JSONStringifyParameters *RulesV1JSONStringifyParameters `json:"json_stringify_parameters,omitempty"`
 }
 
@@ -21504,7 +30980,7 @@ func UnmarshalRulesV1RuleParametersRuleParametersParseParameters(m map[string]js
 // RulesV1RuleParametersRuleParametersRemoveFieldsParameters : RulesV1RuleParametersRuleParametersRemoveFieldsParameters struct
 // This model "extends" RulesV1RuleParameters
 type RulesV1RuleParametersRuleParametersRemoveFieldsParameters struct {
-	// Parameters for remove fields rule.
+	// Parameters for the remove fields rule.
 	RemoveFieldsParameters *RulesV1RemoveFieldsParameters `json:"remove_fields_parameters,omitempty"`
 }
 

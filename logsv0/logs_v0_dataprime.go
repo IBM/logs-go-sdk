@@ -120,7 +120,7 @@ func (logs *LogsV0) QueryWithContext(ctx context.Context, queryOptions *QueryOpt
 		callback: callBack,
 	}
 
-	go queryListener.readEventLoop(ctx, reader, response)
+	go queryListener.readEventLoop(ctx, reader, response, false)
 
 	queryListener.OnClose()
 }
@@ -161,8 +161,7 @@ func decodeJSON(data []byte, result interface{}) (interface{}, error) {
 	return value, nil
 }
 
-// readEventLoop reads and processes the event data
-func (queryListener *QueryListener) readEventLoop(ctx context.Context, reader *bufio.Reader, response *core.DetailedResponse) {
+func (queryListener *QueryListener) readEventLoop(ctx context.Context, reader *bufio.Reader, response *core.DetailedResponse, isQuery bool) {
 	var buf bytes.Buffer
 
 	for {
@@ -176,7 +175,6 @@ func (queryListener *QueryListener) readEventLoop(ctx context.Context, reader *b
 				queryListener.closed <- true
 				return
 			}
-
 			if err != nil {
 				queryListener.OnError(err)
 				return
@@ -189,6 +187,7 @@ func (queryListener *QueryListener) readEventLoop(ctx context.Context, reader *b
 			// handles ": success" message
 			// do nothing
 			case hasPrefix(line, ":"):
+				// ignore keep-alive line
 
 			// handles "data: {}" message
 			case hasPrefix(line, "data: "):
@@ -210,26 +209,36 @@ func (queryListener *QueryListener) readEventLoop(ctx context.Context, reader *b
 				// so that we can use "core.UnmarshalModel" to unmarshal the response to QueryResponseStreamItem type
 				// QueryResponseStreamItem has a field which is type of "interface{}" so the normal unmarshalling will fail.
 				// core package has UnmarshalModel function which supports unmarshalling struts which containes fields which has interface{} type
-				var rawResponse map[string]json.RawMessage
-				result, err := decodeJSON(b, &rawResponse)
-				if err != nil {
-					queryListener.OnError(err)
-					return
-				}
 
-				var queryResponse *QueryResponseStreamItem
-				if result != nil {
-					err := core.UnmarshalModel(result, "", &queryResponse, UnmarshalQueryResponseStreamItem)
+				if isQuery {
+					var root BGQueryResponseStreamItem
+					err := json.Unmarshal(b, &root)
 					if err != nil {
 						queryListener.OnError(err)
 						return
 					}
+					response.Result = root.Response
+				} else {
+					var raw map[string]json.RawMessage
+					result, err := decodeJSON(b, &raw)
+					if err != nil {
+						queryListener.OnError(err)
+						return
+					}
+
+					var queryResponse *QueryResponseStreamItem
+					if result != nil {
+						err := core.UnmarshalModel(result, "", &queryResponse, UnmarshalQueryResponseStreamItem)
+						if err != nil {
+							queryListener.OnError(err)
+							return
+						}
+					}
+					response.Result = queryResponse
 				}
-				response.Result = queryResponse
 				response.RawResult = b
 				buf.Reset()
 				queryListener.callback.OnData(response)
-
 			default:
 				queryListener.OnError(fmt.Errorf(UNKNOWN_DATA_FORMAT, line))
 				return
@@ -360,22 +369,6 @@ func UnmarshalApisDataprimeV1BytesScannedLimitWarning(m map[string]json.RawMessa
 	return
 }
 
-// ApisDataprimeV1CompileWarning : ApisDataprimeV1CompileWarning struct
-type ApisDataprimeV1CompileWarning struct {
-	WarningMessage *string `json:"warning_message,omitempty"`
-}
-
-// UnmarshalApisDataprimeV1CompileWarning unmarshals an instance of ApisDataprimeV1CompileWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1CompileWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1CompileWarning)
-	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ApisDataprimeV1DataprimeError : ApisDataprimeV1DataprimeError struct
 type ApisDataprimeV1DataprimeError struct {
 	Message *string `json:"message,omitempty"`
@@ -458,83 +451,6 @@ func UnmarshalApisDataprimeV1DataprimeResultsKeyValue(m map[string]json.RawMessa
 	return
 }
 
-// ApisDataprimeV1DataprimeWarning : ApisDataprimeV1DataprimeWarning struct
-// Models which "extend" this model:
-// - ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning
-// - ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning
-// - ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning
-// - ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning
-// - ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning
-// - ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning
-type ApisDataprimeV1DataprimeWarning struct {
-	CompileWarning *ApisDataprimeV1CompileWarning `json:"compile_warning,omitempty"`
-
-	TimeRangeWarning *ApisDataprimeV1TimeRangeWarning `json:"time_range_warning,omitempty"`
-
-	NumberOfResultsLimitWarning *ApisDataprimeV1NumberOfResultsLimitWarning `json:"number_of_results_limit_warning,omitempty"`
-
-	BytesScannedLimitWarning *ApisDataprimeV1BytesScannedLimitWarning `json:"bytes_scanned_limit_warning,omitempty"`
-
-	DeprecationWarning *ApisDataprimeV1DeprecationWarning `json:"deprecation_warning,omitempty"`
-
-	BlocksLimitWarning *ApisDataprimeV1BlocksLimitWarning `json:"blocks_limit_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-type ApisDataprimeV1DataprimeWarningIntf interface {
-	isaApisDataprimeV1DataprimeWarning() bool
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarning unmarshals an instance of ApisDataprimeV1DataprimeWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarning)
-	err = core.UnmarshalModel(m, "compile_warning", &obj.CompileWarning, UnmarshalApisDataprimeV1CompileWarning)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "time_range_warning", &obj.TimeRangeWarning, UnmarshalApisDataprimeV1TimeRangeWarning)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "number_of_results_limit_warning", &obj.NumberOfResultsLimitWarning, UnmarshalApisDataprimeV1NumberOfResultsLimitWarning)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "bytes_scanned_limit_warning", &obj.BytesScannedLimitWarning, UnmarshalApisDataprimeV1BytesScannedLimitWarning)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "deprecation_warning", &obj.DeprecationWarning, UnmarshalApisDataprimeV1DeprecationWarning)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalModel(m, "blocks_limit_warning", &obj.BlocksLimitWarning, UnmarshalApisDataprimeV1BlocksLimitWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DeprecationWarning : ApisDataprimeV1DeprecationWarning struct
-type ApisDataprimeV1DeprecationWarning struct {
-	WarningMessage *string `json:"warning_message,omitempty"`
-}
-
-// UnmarshalApisDataprimeV1DeprecationWarning unmarshals an instance of ApisDataprimeV1DeprecationWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DeprecationWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DeprecationWarning)
-	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
 // ApisDataprimeV1Metadata : ApisDataprimeV1Metadata struct
 type ApisDataprimeV1Metadata struct {
 	StartDate *strfmt.DateTime `json:"start_date,omitempty"`
@@ -602,20 +518,6 @@ func UnmarshalApisDataprimeV1Metadata(m map[string]json.RawMessage, result inter
 }
 
 // ApisDataprimeV1NumberOfResultsLimitWarning : ApisDataprimeV1NumberOfResultsLimitWarning struct
-type ApisDataprimeV1NumberOfResultsLimitWarning struct {
-	NumberOfResultsLimit *int64 `json:"number_of_results_limit,omitempty"`
-}
-
-// UnmarshalApisDataprimeV1NumberOfResultsLimitWarning unmarshals an instance of ApisDataprimeV1NumberOfResultsLimitWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1NumberOfResultsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1NumberOfResultsLimitWarning)
-	err = core.UnmarshalPrimitive(m, "number_of_results_limit", &obj.NumberOfResultsLimit)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
 
 // ApisDataprimeV1QueryID : ApisDataprimeV1QueryID struct
 type ApisDataprimeV1QueryID struct {
@@ -626,34 +528,6 @@ type ApisDataprimeV1QueryID struct {
 func UnmarshalApisDataprimeV1QueryID(m map[string]json.RawMessage, result interface{}) (err error) {
 	obj := new(ApisDataprimeV1QueryID)
 	err = core.UnmarshalPrimitive(m, "query_id", &obj.QueryID)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1TimeRangeWarning : ApisDataprimeV1TimeRangeWarning struct
-type ApisDataprimeV1TimeRangeWarning struct {
-	WarningMessage *string `json:"warning_message,omitempty"`
-
-	StartDate *strfmt.DateTime `json:"start_date,omitempty"`
-
-	EndDate *strfmt.DateTime `json:"end_date,omitempty"`
-}
-
-// UnmarshalApisDataprimeV1TimeRangeWarning unmarshals an instance of ApisDataprimeV1TimeRangeWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1TimeRangeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1TimeRangeWarning)
-	err = core.UnmarshalPrimitive(m, "warning_message", &obj.WarningMessage)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "start_date", &obj.StartDate)
-	if err != nil {
-		return
-	}
-	err = core.UnmarshalPrimitive(m, "end_date", &obj.EndDate)
 	if err != nil {
 		return
 	}
@@ -791,132 +665,6 @@ func UnmarshalQueryResponseStreamItem(m map[string]json.RawMessage, result inter
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "status_code", &obj.StatusCode)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning struct {
-	BlocksLimitWarning *ApisDataprimeV1BlocksLimitWarning `json:"blocks_limit_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeBlocksLimitWarning)
-	err = core.UnmarshalModel(m, "blocks_limit_warning", &obj.BlocksLimitWarning, UnmarshalApisDataprimeV1BlocksLimitWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning struct {
-	BytesScannedLimitWarning *ApisDataprimeV1BytesScannedLimitWarning `json:"bytes_scanned_limit_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeBytesScannedLimitWarning)
-	err = core.UnmarshalModel(m, "bytes_scanned_limit_warning", &obj.BytesScannedLimitWarning, UnmarshalApisDataprimeV1BytesScannedLimitWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning : ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning struct {
-	CompileWarning *ApisDataprimeV1CompileWarning `json:"compile_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeCompileWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeCompileWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeCompileWarning)
-	err = core.UnmarshalModel(m, "compile_warning", &obj.CompileWarning, UnmarshalApisDataprimeV1CompileWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning : ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning struct {
-	DeprecationWarning *ApisDataprimeV1DeprecationWarning `json:"deprecation_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeDeprecationWarning)
-	err = core.UnmarshalModel(m, "deprecation_warning", &obj.DeprecationWarning, UnmarshalApisDataprimeV1DeprecationWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning : ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning struct {
-	NumberOfResultsLimitWarning *ApisDataprimeV1NumberOfResultsLimitWarning `json:"number_of_results_limit_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeNumberOfResultsLimitWarning)
-	err = core.UnmarshalModel(m, "number_of_results_limit_warning", &obj.NumberOfResultsLimitWarning, UnmarshalApisDataprimeV1NumberOfResultsLimitWarning)
-	if err != nil {
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning : ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning struct
-// This model "extends" ApisDataprimeV1DataprimeWarning
-type ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning struct {
-	TimeRangeWarning *ApisDataprimeV1TimeRangeWarning `json:"time_range_warning,omitempty"`
-}
-
-func (*ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning) isaApisDataprimeV1DataprimeWarning() bool {
-	return true
-}
-
-// UnmarshalApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning unmarshals an instance of ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning from the specified map of raw messages.
-func UnmarshalApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(ApisDataprimeV1DataprimeWarningWarningTypeTimeRangeWarning)
-	err = core.UnmarshalModel(m, "time_range_warning", &obj.TimeRangeWarning, UnmarshalApisDataprimeV1TimeRangeWarning)
 	if err != nil {
 		return
 	}

@@ -207,7 +207,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
 			)
-			updateAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			updateAlertOptions.SetDescription("Alert when the number of logs reaches a threshold.")
 			updateAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
 			updateAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			updateAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
@@ -329,7 +329,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				"info_or_unspecified",
 				alertsV2AlertConditionModel,
 			)
-			createAlertOptions.SetDescription("Alert if the number of logs reaches a threshold")
+			createAlertOptions.SetDescription("Alert when the number of logs reaches a threshold")
 			createAlertOptions.SetNotificationGroups([]logsv0.AlertsV2AlertNotificationGroups{*alertsV2AlertNotificationGroupsModel})
 			createAlertOptions.SetFilters(alertsV1AlertFiltersModel)
 			createAlertOptions.SetActiveWhen(alertsV1AlertActiveWhenModel)
@@ -641,6 +641,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				Priority: core.StringPtr("type_high"),
 				ApplicationRule: quotaV1RuleModel,
 				SubsystemRule: quotaV1RuleModel,
+				Enabled: core.BoolPtr(true),
 				LogRules: quotaV1LogRulesModel,
 			}
 
@@ -702,6 +703,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 				Priority: core.StringPtr("type_high"),
 				ApplicationRule: quotaV1RuleModel,
 				SubsystemRule: quotaV1RuleModel,
+				Enabled: core.BoolPtr(true),
 				LogRules: quotaV1LogRulesModel,
 			}
 
@@ -1214,7 +1216,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
 				Name: core.StringPtr("test em2"),
-				Description: core.StringPtr("Test e2m"),
+				Description: core.StringPtr("Test Events to Metrics"),
 				PermutationsLimit: core.Int64Ptr(int64(1)),
 				Type: core.StringPtr("logs2metrics"),
 				LogsQuery: apisLogs2metricsV2LogsQueryModel,
@@ -1268,7 +1270,7 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			event2MetricPrototypeModel := &logsv0.Event2MetricPrototypeApisEvents2metricsV2E2mCreateParamsQueryLogsQuery{
 				Name: core.StringPtr("test em2"),
-				Description: core.StringPtr("Test e2m updated"),
+				Description: core.StringPtr("Test Events to Metrics updated"),
 				PermutationsLimit: core.Int64Ptr(int64(1)),
 				Type: core.StringPtr("logs2metrics"),
 				LogsQuery: apisLogs2metricsV2LogsQueryModel,
@@ -1538,11 +1540,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			createDataAccessRuleOptions := logsService.NewCreateDataAccessRuleOptions(
-				"Test Data Access Rule",
+				"Test data access rule",
 				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
-				"<v1> foo == 'bar'",
+				"<v1>true",
 			)
-			createDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+			createDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
 			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
 			if err != nil {
@@ -1568,11 +1570,11 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 
 			updateDataAccessRuleOptions := logsService.NewUpdateDataAccessRuleOptions(
 				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				"Test Data Access Rule",
+				"Test data access rule",
 				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
-				"<v1> foo == 'bar'",
+				"<v1>true",
 			)
-			updateDataAccessRuleOptions.SetDescription("Data Access Rule intended for testing")
+			updateDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
 			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
 			if err != nil {
@@ -1754,6 +1756,322 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(stream).ToNot(BeNil())
+		})
+		It(`SubmitBackgroundQuery request example`, func() {
+			fmt.Println("\nSubmitBackgroundQuery() result:")
+			// begin-submit_background_query
+
+			submitBackgroundQueryOptions := logsService.NewSubmitBackgroundQueryOptions(
+				"source logs | filter $d.apiVersion == 42",
+				"dataprime_utf8_base64",
+			)
+
+			backgroundQuery, response, err := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(backgroundQuery, "", "  ")
+			fmt.Println(string(b))
+
+			// end-submit_background_query
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(backgroundQuery).ToNot(BeNil())
+		})
+		It(`GetBackgroundQueryStatus request example`, func() {
+			fmt.Println("\nGetBackgroundQueryStatus() result:")
+			// begin-get_background_query_status
+
+			getBackgroundQueryStatusOptions := logsService.NewGetBackgroundQueryStatusOptions(
+				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
+			)
+
+			backgroundQueryStatus, response, err := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(backgroundQueryStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_background_query_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(backgroundQueryStatus).ToNot(BeNil())
+		})
+		It(`CancelBackgroundQuery request example`, func() {
+			// begin-cancel_background_query
+
+			cancelBackgroundQueryOptions := logsService.NewCancelBackgroundQueryOptions(
+				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
+			)
+
+			response, err := logsService.CancelBackgroundQuery(cancelBackgroundQueryOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 202 {
+				fmt.Printf("\nUnexpected response status code received from CancelBackgroundQuery(): %d\n", response.StatusCode)
+			}
+
+			// end-cancel_background_query
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+		})
+		It(`GetAlertDef request example`, func() {
+			fmt.Println("\nGetAlertDef() result:")
+			// begin-get_alert_def
+
+			getAlertDefOptions := logsService.NewGetAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			alertDefinition, response, err := logsService.GetAlertDef(getAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinition).ToNot(BeNil())
+		})
+		It(`ReplaceAlertDef request example`, func() {
+			fmt.Println("\nReplaceAlertDef() result:")
+			// begin-replace_alert_def
+
+			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
+				Hours: core.Int64Ptr(int64(22)),
+			}
+
+			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
+				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
+				StartTime: apisAlertDefinitionTimeOfDayModel,
+				EndTime: apisAlertDefinitionTimeOfDayModel,
+			}
+
+			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
+				NotifyOn: core.StringPtr("triggered_only_unspecified"),
+				Minutes: core.Int64Ptr(int64(10)),
+			}
+
+			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
+			}
+
+			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
+				Integration: apisAlertDefinitionIntegrationTypeModel,
+			}
+
+			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
+				GroupByKeys: []string{},
+				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
+			}
+
+			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
+				Operation: core.StringPtr("starts_with"),
+			}
+
+			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
+				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				Severities: []string{},
+			}
+
+			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
+				LabelFilters: apisAlertDefinitionLabelFiltersModel,
+			}
+
+			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
+				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
+			}
+
+			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
+				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
+			}
+
+			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
+				Threshold: core.Float64Ptr(float64(1)),
+				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
+			}
+
+			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
+				Priority: core.StringPtr("p5_or_unspecified"),
+			}
+
+			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
+				Condition: apisAlertDefinitionLogsThresholdConditionModel,
+				Override: apisAlertDefinitionAlertDefOverrideModel,
+			}
+
+			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
+				LogsFilter: apisAlertDefinitionLogsFilterModel,
+				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
+				ConditionType: core.StringPtr("more_than_or_unspecified"),
+				NotificationPayloadFilter: []string{},
+			}
+
+			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
+				Name: core.StringPtr("Alert 1738141279354"),
+				Description: core.StringPtr("Example Alert definition"),
+				Enabled: core.BoolPtr(true),
+				Priority: core.StringPtr("p5_or_unspecified"),
+				ActiveOn: apisAlertDefinitionActivityScheduleModel,
+				Type: core.StringPtr("logs_threshold"),
+				GroupByKeys: []string{},
+				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
+				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
+				PhantomMode: core.BoolPtr(false),
+				Deleted: core.BoolPtr(false),
+				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
+			}
+
+			replaceAlertDefOptions := logsService.NewReplaceAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				alertDefinitionPrototypeModel,
+			)
+
+			alertDefinition, response, err := logsService.ReplaceAlertDef(replaceAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-replace_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinition).ToNot(BeNil())
+		})
+		It(`ListAlertDefs request example`, func() {
+			fmt.Println("\nListAlertDefs() result:")
+			// begin-list_alert_defs
+
+			listAlertDefsOptions := logsService.NewListAlertDefsOptions()
+
+			alertDefinitionCollection, response, err := logsService.ListAlertDefs(listAlertDefsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinitionCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_alert_defs
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinitionCollection).ToNot(BeNil())
+		})
+		It(`CreateAlertDef request example`, func() {
+			fmt.Println("\nCreateAlertDef() result:")
+			// begin-create_alert_def
+
+			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
+				Hours: core.Int64Ptr(int64(22)),
+			}
+
+			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
+				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
+				StartTime: apisAlertDefinitionTimeOfDayModel,
+				EndTime: apisAlertDefinitionTimeOfDayModel,
+			}
+
+			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
+				NotifyOn: core.StringPtr("triggered_only_unspecified"),
+				Minutes: core.Int64Ptr(int64(10)),
+			}
+
+			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
+			}
+
+			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
+				Integration: apisAlertDefinitionIntegrationTypeModel,
+			}
+
+			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
+				GroupByKeys: []string{},
+				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
+			}
+
+			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
+				Operation: core.StringPtr("starts_with"),
+			}
+
+			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
+				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				Severities: []string{},
+			}
+
+			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
+				LabelFilters: apisAlertDefinitionLabelFiltersModel,
+			}
+
+			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
+				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
+			}
+
+			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
+				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
+			}
+
+			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
+				Threshold: core.Float64Ptr(float64(1)),
+				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
+			}
+
+			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
+				Priority: core.StringPtr("p5_or_unspecified"),
+			}
+
+			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
+				Condition: apisAlertDefinitionLogsThresholdConditionModel,
+				Override: apisAlertDefinitionAlertDefOverrideModel,
+			}
+
+			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
+				LogsFilter: apisAlertDefinitionLogsFilterModel,
+				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
+				ConditionType: core.StringPtr("more_than_or_unspecified"),
+				NotificationPayloadFilter: []string{},
+			}
+
+			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
+				Name: core.StringPtr("Alert 1738141279354"),
+				Description: core.StringPtr("Example Alert definition"),
+				Enabled: core.BoolPtr(true),
+				Priority: core.StringPtr("p5_or_unspecified"),
+				ActiveOn: apisAlertDefinitionActivityScheduleModel,
+				Type: core.StringPtr("logs_threshold"),
+				GroupByKeys: []string{},
+				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
+				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
+				PhantomMode: core.BoolPtr(false),
+				Deleted: core.BoolPtr(false),
+				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
+			}
+
+			createAlertDefOptions := logsService.NewCreateAlertDefOptions(
+				alertDefinitionPrototypeModel,
+			)
+
+			alertDefinition, response, err := logsService.CreateAlertDef(createAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(alertDefinition).ToNot(BeNil())
 		})
 		It(`DeleteAlert request example`, func() {
 			// begin-delete_alert
@@ -2011,6 +2329,26 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-delete_event_stream_target
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteAlertDef request example`, func() {
+			// begin-delete_alert_def
+
+			deleteAlertDefOptions := logsService.NewDeleteAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteAlertDef(deleteAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteAlertDef(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_alert_def
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
