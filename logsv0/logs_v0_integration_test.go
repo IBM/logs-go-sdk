@@ -60,6 +60,7 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		viewFolderIdLink      strfmt.UUID
 		viewIdLink            int64
 		streamIdLink          int64
+		extensionIdLink       string
 	)
 
 	var shouldSkipTest = func() {
@@ -621,10 +622,6 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateView(createViewOptions *CreateViewOptions)`, func() {
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs"),
-			}
-
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
 				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
@@ -632,6 +629,11 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 
 			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
 				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query:      core.StringPtr("logs"),
+				SyntaxType: core.StringPtr("dataprime"),
 			}
 
 			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
@@ -645,9 +647,10 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 
 			createViewOptions := &logsv0.CreateViewOptions{
 				Name:          core.StringPtr("Logs view"),
-				SearchQuery:   apisViewsV1SearchQueryModel,
 				TimeSelection: apisViewsV1TimeSelectionModel,
+				SearchQuery:   apisViewsV1SearchQueryModel,
 				Filters:       apisViewsV1SelectedFiltersModel,
+				Tier:          core.StringPtr("priority_insights"),
 			}
 
 			view, response, err := logsService.CreateView(createViewOptions)
@@ -1554,10 +1557,6 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`ReplaceView(replaceViewOptions *ReplaceViewOptions)`, func() {
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs new"),
-			}
-
 			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
 				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
 				ToTime:   CreateMockDateTime("2024-01-25T11:37:13.238Z"),
@@ -1572,6 +1571,11 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 				SelectedValues: map[string]bool{"key1": true},
 			}
 
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query:      core.StringPtr("logs new"),
+				SyntaxType: core.StringPtr("dataprime"),
+			}
+
 			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
 				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
 			}
@@ -1579,9 +1583,10 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			replaceViewOptions := &logsv0.ReplaceViewOptions{
 				ID:            &viewIdLink,
 				Name:          core.StringPtr("Logs view"),
-				SearchQuery:   apisViewsV1SearchQueryModel,
 				TimeSelection: apisViewsV1TimeSelectionModel,
+				SearchQuery:   apisViewsV1SearchQueryModel,
 				Filters:       apisViewsV1SelectedFiltersModel,
+				Tier:          core.StringPtr("all_logs"),
 			}
 
 			view, response, err := logsService.ReplaceView(replaceViewOptions)
@@ -1973,6 +1978,100 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 			response, err := logsService.DeleteEventStreamTarget(deleteEventStreamTargetOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
+		})
+	})
+	Describe(`GetExtensions - Get list of extensions`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetExtensions(getExtensionsOptions *GetExtensionsOptions)`, func() {
+			getExtensionsOptions := &logsv0.GetExtensionsOptions{}
+
+			extensions, response, err := logsService.GetExtensions(getExtensionsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensions).ToNot(BeNil())
+		})
+	})
+	Describe(`GetDeployedExtensions - Get list of deployed extensions`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetDeployedExtensions(getExtensionsOptions *GetExtensionsOptions)`, func() {
+			getExtensionsOptions := &logsv0.GetExtensionsOptions{
+				Deployed: core.BoolPtr(true),
+			}
+
+			deployedExtensions, response, err := logsService.GetExtensions(getExtensionsOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(deployedExtensions).ToNot(BeNil())
+		})
+	})
+	Describe(`GetExtension - Get an extension by Id`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetExtension(getExtensionOptions *GetExtensionOptions)`, func() {
+			getExtensionOptions := &logsv0.GetExtensionOptions{
+				ID: core.StringPtr("IBMCloudKubernetes"),
+			}
+			extension, response, err := logsService.GetExtension(getExtensionOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extension).ToNot(BeNil())
+
+			extensionIdLink = *extension.ID
+			fmt.Fprintf(GinkgoWriter, "Saved extensionIdLink value: %v\n", extensionIdLink)
+		})
+	})
+	Describe(`UpdateExtensionDeployment - Deploy an extension`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateExtensionDeployment(updateExtensionDeployment *UpdateExtensionDeploymentOptions)`, func() {
+
+			getExtensionOptions := &logsv0.GetExtensionOptions{
+				ID: &extensionIdLink,
+			}
+			extension, extensionResponse, err := logsService.GetExtension(getExtensionOptions)
+			Expect(err).To(BeNil())
+			Expect(extensionResponse.StatusCode).To(Equal(200))
+			Expect(extension).ToNot(BeNil())
+
+			itemIDs := []string{}
+			for _, item := range extension.Revisions[0].Items {
+				itemid := item.ID
+				itemIDs = append(itemIDs, *itemid)
+			}
+
+			version := extension.Revisions[0].Version
+
+			updateExtensionDeployment := &logsv0.UpdateExtensionDeploymentOptions{
+				ID:      &extensionIdLink,
+				Version: version,
+				ItemIds: itemIDs,
+			}
+
+			extensionDeployment, response, err := logsService.UpdateExtensionDeployment(updateExtensionDeployment)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensionDeployment).ToNot(BeNil())
+		})
+	})
+	Describe(`DeleteExtensionDeployment - Delete an extension deployment`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteExtensionDeployment(deleteExtensionDeployment *DeleteExtensionDeploymentOptions)`, func() {
+
+			deleteExtensionDeployment := &logsv0.DeleteExtensionDeploymentOptions{
+				ID: &extensionIdLink,
+			}
+			extensionDeployment, response, err := logsService.DeleteExtensionDeployment(deleteExtensionDeployment)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensionDeployment).ToNot(BeNil())
 		})
 	})
 
