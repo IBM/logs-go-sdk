@@ -1,7 +1,7 @@
 //go:build examples
 
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,6 +102,259 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 	Describe(`LogsV0 request examples`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
+		})
+		It(`GetAlertDef request example`, func() {
+			fmt.Println("\nGetAlertDef() result:")
+			// begin-get_alert_def
+
+			getAlertDefOptions := logsService.NewGetAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			alertDefinition, response, err := logsService.GetAlertDef(getAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinition).ToNot(BeNil())
+		})
+		It(`ReplaceAlertDef request example`, func() {
+			fmt.Println("\nReplaceAlertDef() result:")
+			// begin-replace_alert_def
+
+			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
+				Hours: core.Int64Ptr(int64(22)),
+			}
+
+			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
+				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
+				StartTime: apisAlertDefinitionTimeOfDayModel,
+				EndTime: apisAlertDefinitionTimeOfDayModel,
+			}
+
+			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
+				NotifyOn: core.StringPtr("triggered_only_unspecified"),
+				Minutes: core.Int64Ptr(int64(10)),
+			}
+
+			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
+			}
+
+			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
+				Integration: apisAlertDefinitionIntegrationTypeModel,
+			}
+
+			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
+				GroupByKeys: []string{},
+				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
+			}
+
+			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
+				Operation: core.StringPtr("starts_with"),
+			}
+
+			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
+				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				Severities: []string{},
+			}
+
+			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
+				LabelFilters: apisAlertDefinitionLabelFiltersModel,
+			}
+
+			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
+				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
+			}
+
+			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
+				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
+			}
+
+			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
+				Threshold: core.Float64Ptr(float64(1)),
+				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
+			}
+
+			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
+				Priority: core.StringPtr("p5_or_unspecified"),
+			}
+
+			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
+				Condition: apisAlertDefinitionLogsThresholdConditionModel,
+				Override: apisAlertDefinitionAlertDefOverrideModel,
+			}
+
+			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
+				LogsFilter: apisAlertDefinitionLogsFilterModel,
+				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
+				ConditionType: core.StringPtr("more_than_or_unspecified"),
+				NotificationPayloadFilter: []string{},
+			}
+
+			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
+				Name: core.StringPtr("Alert 1738141279354"),
+				Description: core.StringPtr("Example Alert definition"),
+				Enabled: core.BoolPtr(true),
+				Priority: core.StringPtr("p5_or_unspecified"),
+				ActiveOn: apisAlertDefinitionActivityScheduleModel,
+				Type: core.StringPtr("logs_threshold"),
+				GroupByKeys: []string{},
+				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
+				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
+				PhantomMode: core.BoolPtr(false),
+				Deleted: core.BoolPtr(false),
+				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
+			}
+
+			replaceAlertDefOptions := logsService.NewReplaceAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				alertDefinitionPrototypeModel,
+			)
+
+			alertDefinition, response, err := logsService.ReplaceAlertDef(replaceAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-replace_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinition).ToNot(BeNil())
+		})
+		It(`ListAlertDefs request example`, func() {
+			fmt.Println("\nListAlertDefs() result:")
+			// begin-list_alert_defs
+
+			listAlertDefsOptions := logsService.NewListAlertDefsOptions()
+
+			alertDefinitionCollection, response, err := logsService.ListAlertDefs(listAlertDefsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinitionCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_alert_defs
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(alertDefinitionCollection).ToNot(BeNil())
+		})
+		It(`CreateAlertDef request example`, func() {
+			fmt.Println("\nCreateAlertDef() result:")
+			// begin-create_alert_def
+
+			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
+				Hours: core.Int64Ptr(int64(22)),
+			}
+
+			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
+				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
+				StartTime: apisAlertDefinitionTimeOfDayModel,
+				EndTime: apisAlertDefinitionTimeOfDayModel,
+			}
+
+			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
+				NotifyOn: core.StringPtr("triggered_only_unspecified"),
+				Minutes: core.Int64Ptr(int64(10)),
+			}
+
+			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
+			}
+
+			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
+				Integration: apisAlertDefinitionIntegrationTypeModel,
+			}
+
+			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
+				GroupByKeys: []string{},
+				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
+			}
+
+			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
+				Operation: core.StringPtr("starts_with"),
+			}
+
+			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
+				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
+				Severities: []string{},
+			}
+
+			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
+				LabelFilters: apisAlertDefinitionLabelFiltersModel,
+			}
+
+			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
+				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
+			}
+
+			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
+				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
+			}
+
+			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
+				Threshold: core.Float64Ptr(float64(1)),
+				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
+			}
+
+			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
+				Priority: core.StringPtr("p5_or_unspecified"),
+			}
+
+			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
+				Condition: apisAlertDefinitionLogsThresholdConditionModel,
+				Override: apisAlertDefinitionAlertDefOverrideModel,
+			}
+
+			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
+				LogsFilter: apisAlertDefinitionLogsFilterModel,
+				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
+				ConditionType: core.StringPtr("more_than_or_unspecified"),
+				NotificationPayloadFilter: []string{},
+			}
+
+			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
+				Name: core.StringPtr("Alert 1738141279354"),
+				Description: core.StringPtr("Example Alert definition"),
+				Enabled: core.BoolPtr(true),
+				Priority: core.StringPtr("p5_or_unspecified"),
+				ActiveOn: apisAlertDefinitionActivityScheduleModel,
+				Type: core.StringPtr("logs_threshold"),
+				GroupByKeys: []string{},
+				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
+				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
+				PhantomMode: core.BoolPtr(false),
+				Deleted: core.BoolPtr(false),
+				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
+			}
+
+			createAlertDefOptions := logsService.NewCreateAlertDefOptions(
+				alertDefinitionPrototypeModel,
+			)
+
+			alertDefinition, response, err := logsService.CreateAlertDef(createAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(alertDefinition).ToNot(BeNil())
 		})
 		It(`GetAlert request example`, func() {
 			fmt.Println("\nGetAlert() result:")
@@ -350,379 +603,68 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(alert).ToNot(BeNil())
 		})
-		It(`GetRuleGroup request example`, func() {
-			fmt.Println("\nGetRuleGroup() result:")
-			// begin-get_rule_group
+		It(`SubmitBackgroundQuery request example`, func() {
+			fmt.Println("\nSubmitBackgroundQuery() result:")
+			// begin-submit_background_query
 
-			getRuleGroupOptions := logsService.NewGetRuleGroupOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			submitBackgroundQueryOptions := logsService.NewSubmitBackgroundQueryOptions(
+				"source logs | filter $d.apiVersion == 42",
+				"dataprime_utf8_base64",
 			)
 
-			ruleGroup, response, err := logsService.GetRuleGroup(getRuleGroupOptions)
+			backgroundQuery, response, err := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
+			b, _ := json.MarshalIndent(backgroundQuery, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_rule_group
+			// end-submit_background_query
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(backgroundQuery).ToNot(BeNil())
+		})
+		It(`GetBackgroundQueryStatus request example`, func() {
+			fmt.Println("\nGetBackgroundQueryStatus() result:")
+			// begin-get_background_query_status
+
+			getBackgroundQueryStatusOptions := logsService.NewGetBackgroundQueryStatusOptions(
+				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
+			)
+
+			backgroundQueryStatus, response, err := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(backgroundQueryStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_background_query_status
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(ruleGroup).ToNot(BeNil())
+			Expect(backgroundQueryStatus).ToNot(BeNil())
 		})
-		It(`UpdateRuleGroup request example`, func() {
-			fmt.Println("\nUpdateRuleGroup() result:")
-			// begin-update_rule_group
+		It(`CancelBackgroundQuery request example`, func() {
+			// begin-cancel_background_query
 
-			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
-				DestinationField: core.StringPtr("text"),
-				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
-			}
-
-			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
-				ParseParameters: rulesV1ParseParametersModel,
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name: core.StringPtr("mysql-parse"),
-				Description: core.StringPtr("mysql-parse"),
-				SourceField: core.StringPtr("text"),
-				Parameters: rulesV1RuleParametersModel,
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
-				Value: core.StringPtr("mysql"),
-			}
-
-			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
-				SubsystemName: rulesV1SubsystemNameConstraintModel,
-			}
-
-			updateRuleGroupOptions := logsService.NewUpdateRuleGroupOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				"mysql-extractrule",
-				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
-			)
-			updateRuleGroupOptions.SetDescription("mysql audit logs parser")
-			updateRuleGroupOptions.SetEnabled(true)
-			updateRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
-			updateRuleGroupOptions.SetOrder(int64(39))
-
-			ruleGroup, response, err := logsService.UpdateRuleGroup(updateRuleGroupOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
-			fmt.Println(string(b))
-
-			// end-update_rule_group
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(ruleGroup).ToNot(BeNil())
-		})
-		It(`ListRuleGroups request example`, func() {
-			fmt.Println("\nListRuleGroups() result:")
-			// begin-list_rule_groups
-
-			listRuleGroupsOptions := logsService.NewListRuleGroupsOptions()
-
-			ruleGroupCollection, response, err := logsService.ListRuleGroups(listRuleGroupsOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(ruleGroupCollection, "", "  ")
-			fmt.Println(string(b))
-
-			// end-list_rule_groups
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(ruleGroupCollection).ToNot(BeNil())
-		})
-		It(`CreateRuleGroup request example`, func() {
-			fmt.Println("\nCreateRuleGroup() result:")
-			// begin-create_rule_group
-
-			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
-				DestinationField: core.StringPtr("text"),
-				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
-			}
-
-			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
-				ParseParameters: rulesV1ParseParametersModel,
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
-				Name: core.StringPtr("mysql-parse"),
-				Description: core.StringPtr("mysql-parse"),
-				SourceField: core.StringPtr("text"),
-				Parameters: rulesV1RuleParametersModel,
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
-				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
-				Enabled: core.BoolPtr(true),
-				Order: core.Int64Ptr(int64(1)),
-			}
-
-			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
-				Value: core.StringPtr("mysql"),
-			}
-
-			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
-				SubsystemName: rulesV1SubsystemNameConstraintModel,
-			}
-
-			createRuleGroupOptions := logsService.NewCreateRuleGroupOptions(
-				"mysql-extractrule",
-				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
-			)
-			createRuleGroupOptions.SetDescription("mysql audit logs  parser")
-			createRuleGroupOptions.SetEnabled(true)
-			createRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
-			createRuleGroupOptions.SetOrder(int64(39))
-
-			ruleGroup, response, err := logsService.CreateRuleGroup(createRuleGroupOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_rule_group
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(ruleGroup).ToNot(BeNil())
-		})
-		It(`ListOutgoingWebhooks request example`, func() {
-			fmt.Println("\nListOutgoingWebhooks() result:")
-			// begin-list_outgoing_webhooks
-
-			listOutgoingWebhooksOptions := logsService.NewListOutgoingWebhooksOptions()
-			listOutgoingWebhooksOptions.SetType("ibm_event_notifications")
-
-			outgoingWebhookCollection, response, err := logsService.ListOutgoingWebhooks(listOutgoingWebhooksOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(outgoingWebhookCollection, "", "  ")
-			fmt.Println(string(b))
-
-			// end-list_outgoing_webhooks
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(outgoingWebhookCollection).ToNot(BeNil())
-		})
-		It(`CreateOutgoingWebhook request example`, func() {
-			fmt.Println("\nCreateOutgoingWebhook() result:")
-			// begin-create_outgoing_webhook
-
-			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
-				Type: core.StringPtr("ibm_event_notifications"),
-				Name: core.StringPtr("Event Notifications Integration"),
-			}
-
-			createOutgoingWebhookOptions := logsService.NewCreateOutgoingWebhookOptions(
-				outgoingWebhookPrototypeModel,
+			cancelBackgroundQueryOptions := logsService.NewCancelBackgroundQueryOptions(
+				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
 			)
 
-			outgoingWebhook, response, err := logsService.CreateOutgoingWebhook(createOutgoingWebhookOptions)
+			response, err := logsService.CancelBackgroundQuery(cancelBackgroundQueryOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 202 {
+				fmt.Printf("\nUnexpected response status code received from CancelBackgroundQuery(): %d\n", response.StatusCode)
+			}
 
-			// end-create_outgoing_webhook
+			// end-cancel_background_query
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(outgoingWebhook).ToNot(BeNil())
-		})
-		It(`GetOutgoingWebhook request example`, func() {
-			fmt.Println("\nGetOutgoingWebhook() result:")
-			// begin-get_outgoing_webhook
-
-			getOutgoingWebhookOptions := logsService.NewGetOutgoingWebhookOptions(
-				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
-			)
-
-			outgoingWebhook, response, err := logsService.GetOutgoingWebhook(getOutgoingWebhookOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_outgoing_webhook
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(outgoingWebhook).ToNot(BeNil())
-		})
-		It(`UpdateOutgoingWebhook request example`, func() {
-			fmt.Println("\nUpdateOutgoingWebhook() result:")
-			// begin-update_outgoing_webhook
-
-			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
-				Type: core.StringPtr("ibm_event_notifications"),
-				Name: core.StringPtr("Event Notifications Integration"),
-			}
-
-			updateOutgoingWebhookOptions := logsService.NewUpdateOutgoingWebhookOptions(
-				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
-				outgoingWebhookPrototypeModel,
-			)
-
-			outgoingWebhook, response, err := logsService.UpdateOutgoingWebhook(updateOutgoingWebhookOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
-			fmt.Println(string(b))
-
-			// end-update_outgoing_webhook
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(outgoingWebhook).ToNot(BeNil())
-		})
-		It(`GetPolicy request example`, func() {
-			fmt.Println("\nGetPolicy() result:")
-			// begin-get_policy
-
-			getPolicyOptions := logsService.NewGetPolicyOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			policy, response, err := logsService.GetPolicy(getPolicyOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(policy, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_policy
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(policy).ToNot(BeNil())
-		})
-		It(`UpdatePolicy request example`, func() {
-			fmt.Println("\nUpdatePolicy() result:")
-			// begin-update_policy
-
-			quotaV1RuleModel := &logsv0.QuotaV1Rule{
-				RuleTypeID: core.StringPtr("is"),
-				Name: core.StringPtr("policy-test"),
-			}
-
-			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
-				Severities: []string{"debug", "verbose", "info", "warning", "error"},
-			}
-
-			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name: core.StringPtr("Med_policy"),
-				Description: core.StringPtr("Medium policy"),
-				Priority: core.StringPtr("type_high"),
-				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule: quotaV1RuleModel,
-				Enabled: core.BoolPtr(true),
-				LogRules: quotaV1LogRulesModel,
-			}
-
-			updatePolicyOptions := logsService.NewUpdatePolicyOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				policyPrototypeModel,
-			)
-
-			policy, response, err := logsService.UpdatePolicy(updatePolicyOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(policy, "", "  ")
-			fmt.Println(string(b))
-
-			// end-update_policy
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(policy).ToNot(BeNil())
-		})
-		It(`GetCompanyPolicies request example`, func() {
-			fmt.Println("\nGetCompanyPolicies() result:")
-			// begin-get_company_policies
-
-			getCompanyPoliciesOptions := logsService.NewGetCompanyPoliciesOptions()
-			getCompanyPoliciesOptions.SetEnabledOnly(true)
-			getCompanyPoliciesOptions.SetSourceType("logs")
-
-			policyCollection, response, err := logsService.GetCompanyPolicies(getCompanyPoliciesOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(policyCollection, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_company_policies
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(policyCollection).ToNot(BeNil())
-		})
-		It(`CreatePolicy request example`, func() {
-			fmt.Println("\nCreatePolicy() result:")
-			// begin-create_policy
-
-			quotaV1RuleModel := &logsv0.QuotaV1Rule{
-				RuleTypeID: core.StringPtr("is"),
-				Name: core.StringPtr("policy-test"),
-			}
-
-			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
-				Severities: []string{"debug", "verbose", "info", "warning", "error"},
-			}
-
-			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
-				Name: core.StringPtr("Med_policy"),
-				Description: core.StringPtr("Medium Policy"),
-				Priority: core.StringPtr("type_high"),
-				ApplicationRule: quotaV1RuleModel,
-				SubsystemRule: quotaV1RuleModel,
-				Enabled: core.BoolPtr(true),
-				LogRules: quotaV1LogRulesModel,
-			}
-
-			createPolicyOptions := logsService.NewCreatePolicyOptions(
-				policyPrototypeModel,
-			)
-
-			policy, response, err := logsService.CreatePolicy(createPolicyOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(policy, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_policy
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(policy).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
 		})
 		It(`GetDashboardCatalog request example`, func() {
 			fmt.Println("\nGetDashboardCatalog() result:")
@@ -1104,88 +1046,174 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-		It(`ListDashboardFolders request example`, func() {
-			fmt.Println("\nListDashboardFolders() result:")
-			// begin-list_dashboard_folders
+		It(`ListDataAccessRules request example`, func() {
+			fmt.Println("\nListDataAccessRules() result:")
+			// begin-list_data_access_rules
 
-			listDashboardFoldersOptions := logsService.NewListDashboardFoldersOptions()
+			listDataAccessRulesOptions := logsService.NewListDataAccessRulesOptions()
+			listDataAccessRulesOptions.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
 
-			dashboardFolderCollection, response, err := logsService.ListDashboardFolders(listDashboardFoldersOptions)
+			dataAccessRuleCollection, response, err := logsService.ListDataAccessRules(listDataAccessRulesOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dashboardFolderCollection, "", "  ")
+			b, _ := json.MarshalIndent(dataAccessRuleCollection, "", "  ")
 			fmt.Println(string(b))
 
-			// end-list_dashboard_folders
+			// end-list_data_access_rules
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dashboardFolderCollection).ToNot(BeNil())
+			Expect(dataAccessRuleCollection).ToNot(BeNil())
 		})
-		It(`CreateDashboardFolder request example`, func() {
-			fmt.Println("\nCreateDashboardFolder() result:")
-			// begin-create_dashboard_folder
+		It(`CreateDataAccessRule request example`, func() {
+			fmt.Println("\nCreateDataAccessRule() result:")
+			// begin-create_data_access_rule
 
-			createDashboardFolderOptions := logsService.NewCreateDashboardFolderOptions(
-				"My Folder",
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			createDataAccessRuleOptions := logsService.NewCreateDataAccessRuleOptions(
+				"Test data access rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1>true",
 			)
+			createDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
-			dashboardFolder, response, err := logsService.CreateDashboardFolder(createDashboardFolderOptions)
+			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
 			fmt.Println(string(b))
 
-			// end-create_dashboard_folder
+			// end-create_data_access_rule
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(dashboardFolder).ToNot(BeNil())
+			Expect(dataAccessRule).ToNot(BeNil())
 		})
-		It(`GetDashboardFolder request example`, func() {
-			fmt.Println("\nGetDashboardFolder() result:")
-			// begin-get_dashboard_folder
+		It(`UpdateDataAccessRule request example`, func() {
+			fmt.Println("\nUpdateDataAccessRule() result:")
+			// begin-update_data_access_rule
 
-			getDashboardFolderOptions := logsService.NewGetDashboardFolderOptions(
+			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
+				EntityType: core.StringPtr("logs"),
+				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			}
+
+			updateDataAccessRuleOptions := logsService.NewUpdateDataAccessRuleOptions(
 				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				"Test data access rule",
+				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
+				"<v1>true",
 			)
+			updateDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
-			dashboardFolder, response, err := logsService.GetDashboardFolder(getDashboardFolderOptions)
+			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_dashboard_folder
+			// end-update_data_access_rule
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dashboardFolder).ToNot(BeNil())
+			Expect(dataAccessRule).ToNot(BeNil())
 		})
-		It(`ReplaceDashboardFolder request example`, func() {
-			fmt.Println("\nReplaceDashboardFolder() result:")
-			// begin-replace_dashboard_folder
+		It(`ExportDataUsage request example`, func() {
+			fmt.Println("\nExportDataUsage() result:")
+			// begin-export_data_usage
 
-			replaceDashboardFolderOptions := logsService.NewReplaceDashboardFolderOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				"My Folder",
-			)
+			exportDataUsageOptions := logsService.NewExportDataUsageOptions()
+			exportDataUsageOptions.SetRange("last_week")
+			exportDataUsageOptions.SetQuery("daily")
 
-			dashboardFolder, response, err := logsService.ReplaceDashboardFolder(replaceDashboardFolderOptions)
+			exportDataUsageResponse, response, err := logsService.ExportDataUsage(exportDataUsageOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			b, _ := json.MarshalIndent(exportDataUsageResponse, "", "  ")
 			fmt.Println(string(b))
 
-			// end-replace_dashboard_folder
+			// end-export_data_usage
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dashboardFolder).ToNot(BeNil())
+			Expect(exportDataUsageResponse).ToNot(BeNil())
+		})
+		It(`UpdateDataUsageMetricsExportStatus request example`, func() {
+			fmt.Println("\nUpdateDataUsageMetricsExportStatus() result:")
+			// begin-update_data_usage_metrics_export_status
+
+			updateDataUsageMetricsExportStatusOptions := logsService.NewUpdateDataUsageMetricsExportStatusOptions(
+				true,
+			)
+
+			dataUsageMetricsExportStatus, response, err := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_data_usage_metrics_export_status
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+		})
+		It(`GetEnrichments request example`, func() {
+			fmt.Println("\nGetEnrichments() result:")
+			// begin-get_enrichments
+
+			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
+
+			enrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichmentCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_enrichments
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(enrichmentCollection).ToNot(BeNil())
+		})
+		It(`CreateEnrichment request example`, func() {
+			fmt.Println("\nCreateEnrichment() result:")
+			// begin-create_enrichment
+
+			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{
+			}
+
+			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
+				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
+			}
+
+			createEnrichmentOptions := logsService.NewCreateEnrichmentOptions(
+				"ip",
+				enrichmentV1EnrichmentTypeModel,
+			)
+
+			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(enrichment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_enrichment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(enrichment).ToNot(BeNil())
 		})
 		It(`ListE2m request example`, func() {
 			fmt.Println("\nListE2m() result:")
@@ -1294,138 +1322,172 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(event2Metric).ToNot(BeNil())
 		})
-		It(`ListViews request example`, func() {
-			fmt.Println("\nListViews() result:")
-			// begin-list_views
+		It(`GetExtension request example`, func() {
+			fmt.Println("\nGetExtension() result:")
+			// begin-get_extension
 
-			listViewsOptions := logsService.NewListViewsOptions()
+			getExtensionOptions := logsService.NewGetExtensionOptions(
+				"testString",
+			)
 
-			viewCollection, response, err := logsService.ListViews(listViewsOptions)
+			extension, response, err := logsService.GetExtension(getExtensionOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(viewCollection, "", "  ")
+			b, _ := json.MarshalIndent(extension, "", "  ")
 			fmt.Println(string(b))
 
-			// end-list_views
+			// end-get_extension
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(viewCollection).ToNot(BeNil())
+			Expect(extension).ToNot(BeNil())
 		})
-		It(`CreateView request example`, func() {
-			fmt.Println("\nCreateView() result:")
-			// begin-create_view
+		It(`GetExtensionDeployment request example`, func() {
+			fmt.Println("\nGetExtensionDeployment() result:")
+			// begin-get_extension_deployment
 
-			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
-				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
-			}
-
-			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
-				CustomSelection: apisViewsV1CustomTimeSelectionModel,
-			}
-
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs"),
-			}
-
-			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name: core.StringPtr("applicationName"),
-				SelectedValues: map[string]bool{"key1": true},
-			}
-
-			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
-				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
-			}
-
-			createViewOptions := logsService.NewCreateViewOptions(
-				"Logs view",
-				apisViewsV1TimeSelectionModel,
+			getExtensionDeploymentOptions := logsService.NewGetExtensionDeploymentOptions(
+				"testString",
 			)
-			createViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
-			createViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
 
-			view, response, err := logsService.CreateView(createViewOptions)
+			extensionDeployment, response, err := logsService.GetExtensionDeployment(getExtensionDeploymentOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(view, "", "  ")
+			b, _ := json.MarshalIndent(extensionDeployment, "", "  ")
 			fmt.Println(string(b))
 
-			// end-create_view
+			// end-get_extension_deployment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensionDeployment).ToNot(BeNil())
+		})
+		It(`UpdateExtensionDeployment request example`, func() {
+			fmt.Println("\nUpdateExtensionDeployment() result:")
+			// begin-update_extension_deployment
+
+			updateExtensionDeploymentOptions := logsService.NewUpdateExtensionDeploymentOptions(
+				"testString",
+				"testString",
+				[]string{"b9a5500c-715e-4ead-9bbe-56fdefffbfcd"},
+			)
+
+			extensionDeployment, response, err := logsService.UpdateExtensionDeployment(updateExtensionDeploymentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(extensionDeployment, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_extension_deployment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensionDeployment).ToNot(BeNil())
+		})
+		It(`GetExtensions request example`, func() {
+			fmt.Println("\nGetExtensions() result:")
+			// begin-get_extensions
+
+			getExtensionsOptions := logsService.NewGetExtensionsOptions()
+
+			extensionCollection, response, err := logsService.GetExtensions(getExtensionsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(extensionCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_extensions
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(extensionCollection).ToNot(BeNil())
+		})
+		It(`ListDashboardFolders request example`, func() {
+			fmt.Println("\nListDashboardFolders() result:")
+			// begin-list_dashboard_folders
+
+			listDashboardFoldersOptions := logsService.NewListDashboardFoldersOptions()
+
+			dashboardFolderCollection, response, err := logsService.ListDashboardFolders(listDashboardFoldersOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardFolderCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_dashboard_folders
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(dashboardFolderCollection).ToNot(BeNil())
+		})
+		It(`CreateDashboardFolder request example`, func() {
+			fmt.Println("\nCreateDashboardFolder() result:")
+			// begin-create_dashboard_folder
+
+			createDashboardFolderOptions := logsService.NewCreateDashboardFolderOptions(
+				"My Folder",
+			)
+
+			dashboardFolder, response, err := logsService.CreateDashboardFolder(createDashboardFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_dashboard_folder
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(view).ToNot(BeNil())
+			Expect(dashboardFolder).ToNot(BeNil())
 		})
-		It(`GetView request example`, func() {
-			fmt.Println("\nGetView() result:")
-			// begin-get_view
+		It(`GetDashboardFolder request example`, func() {
+			fmt.Println("\nGetDashboardFolder() result:")
+			// begin-get_dashboard_folder
 
-			getViewOptions := logsService.NewGetViewOptions(
-				int64(52),
+			getDashboardFolderOptions := logsService.NewGetDashboardFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
-			view, response, err := logsService.GetView(getViewOptions)
+			dashboardFolder, response, err := logsService.GetDashboardFolder(getDashboardFolderOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(view, "", "  ")
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_view
+			// end-get_dashboard_folder
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(view).ToNot(BeNil())
+			Expect(dashboardFolder).ToNot(BeNil())
 		})
-		It(`ReplaceView request example`, func() {
-			fmt.Println("\nReplaceView() result:")
-			// begin-replace_view
+		It(`ReplaceDashboardFolder request example`, func() {
+			fmt.Println("\nReplaceDashboardFolder() result:")
+			// begin-replace_dashboard_folder
 
-			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
-				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
-				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
-			}
-
-			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
-				CustomSelection: apisViewsV1CustomTimeSelectionModel,
-			}
-
-			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
-				Query: core.StringPtr("logs new"),
-			}
-
-			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
-				Name: core.StringPtr("applicationName"),
-				SelectedValues: map[string]bool{"key1": true},
-			}
-
-			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
-				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
-			}
-
-			replaceViewOptions := logsService.NewReplaceViewOptions(
-				int64(52),
-				"Logs view",
-				apisViewsV1TimeSelectionModel,
+			replaceDashboardFolderOptions := logsService.NewReplaceDashboardFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				"My Folder",
 			)
-			replaceViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
-			replaceViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
 
-			view, response, err := logsService.ReplaceView(replaceViewOptions)
+			dashboardFolder, response, err := logsService.ReplaceDashboardFolder(replaceDashboardFolderOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(view, "", "  ")
+			b, _ := json.MarshalIndent(dashboardFolder, "", "  ")
 			fmt.Println(string(b))
 
-			// end-replace_view
+			// end-replace_dashboard_folder
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(view).ToNot(BeNil())
+			Expect(dashboardFolder).ToNot(BeNil())
 		})
 		It(`ListViewFolders request example`, func() {
 			fmt.Println("\nListViewFolders() result:")
@@ -1510,174 +1572,379 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewFolder).ToNot(BeNil())
 		})
-		It(`ListDataAccessRules request example`, func() {
-			fmt.Println("\nListDataAccessRules() result:")
-			// begin-list_data_access_rules
+		It(`ListOutgoingWebhooks request example`, func() {
+			fmt.Println("\nListOutgoingWebhooks() result:")
+			// begin-list_outgoing_webhooks
 
-			listDataAccessRulesOptions := logsService.NewListDataAccessRulesOptions()
-			listDataAccessRulesOptions.SetID([]strfmt.UUID{"4f966911-4bda-407e-b069-477394effa59"})
+			listOutgoingWebhooksOptions := logsService.NewListOutgoingWebhooksOptions()
+			listOutgoingWebhooksOptions.SetType("ibm_event_notifications")
 
-			dataAccessRuleCollection, response, err := logsService.ListDataAccessRules(listDataAccessRulesOptions)
+			outgoingWebhookCollection, response, err := logsService.ListOutgoingWebhooks(listOutgoingWebhooksOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dataAccessRuleCollection, "", "  ")
+			b, _ := json.MarshalIndent(outgoingWebhookCollection, "", "  ")
 			fmt.Println(string(b))
 
-			// end-list_data_access_rules
+			// end-list_outgoing_webhooks
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dataAccessRuleCollection).ToNot(BeNil())
+			Expect(outgoingWebhookCollection).ToNot(BeNil())
 		})
-		It(`CreateDataAccessRule request example`, func() {
-			fmt.Println("\nCreateDataAccessRule() result:")
-			// begin-create_data_access_rule
+		It(`CreateOutgoingWebhook request example`, func() {
+			fmt.Println("\nCreateOutgoingWebhook() result:")
+			// begin-create_outgoing_webhook
 
-			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
-				EntityType: core.StringPtr("logs"),
-				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
+				Type: core.StringPtr("ibm_event_notifications"),
+				Name: core.StringPtr("Event Notifications Integration"),
 			}
 
-			createDataAccessRuleOptions := logsService.NewCreateDataAccessRuleOptions(
-				"Test data access rule",
-				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
-				"<v1>true",
+			createOutgoingWebhookOptions := logsService.NewCreateOutgoingWebhookOptions(
+				outgoingWebhookPrototypeModel,
 			)
-			createDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
-			dataAccessRule, response, err := logsService.CreateDataAccessRule(createDataAccessRuleOptions)
+			outgoingWebhook, response, err := logsService.CreateOutgoingWebhook(createOutgoingWebhookOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
 			fmt.Println(string(b))
 
-			// end-create_data_access_rule
+			// end-create_outgoing_webhook
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(dataAccessRule).ToNot(BeNil())
+			Expect(outgoingWebhook).ToNot(BeNil())
 		})
-		It(`UpdateDataAccessRule request example`, func() {
-			fmt.Println("\nUpdateDataAccessRule() result:")
-			// begin-update_data_access_rule
+		It(`GetOutgoingWebhook request example`, func() {
+			fmt.Println("\nGetOutgoingWebhook() result:")
+			// begin-get_outgoing_webhook
 
-			dataAccessRuleFilterModel := &logsv0.DataAccessRuleFilter{
-				EntityType: core.StringPtr("logs"),
-				Expression: core.StringPtr("<v1> foo == 'bar'"),
+			getOutgoingWebhookOptions := logsService.NewGetOutgoingWebhookOptions(
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
+			)
+
+			outgoingWebhook, response, err := logsService.GetOutgoingWebhook(getOutgoingWebhookOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_outgoing_webhook
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(outgoingWebhook).ToNot(BeNil())
+		})
+		It(`UpdateOutgoingWebhook request example`, func() {
+			fmt.Println("\nUpdateOutgoingWebhook() result:")
+			// begin-update_outgoing_webhook
+
+			outgoingWebhookPrototypeModel := &logsv0.OutgoingWebhookPrototypeOutgoingWebhooksV1OutgoingWebhookInputDataConfigIbmEventNotifications{
+				Type: core.StringPtr("ibm_event_notifications"),
+				Name: core.StringPtr("Event Notifications Integration"),
 			}
 
-			updateDataAccessRuleOptions := logsService.NewUpdateDataAccessRuleOptions(
+			updateOutgoingWebhookOptions := logsService.NewUpdateOutgoingWebhookOptions(
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
+				outgoingWebhookPrototypeModel,
+			)
+
+			outgoingWebhook, response, err := logsService.UpdateOutgoingWebhook(updateOutgoingWebhookOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(outgoingWebhook, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_outgoing_webhook
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(outgoingWebhook).ToNot(BeNil())
+		})
+		It(`GetPolicy request example`, func() {
+			fmt.Println("\nGetPolicy() result:")
+			// begin-get_policy
+
+			getPolicyOptions := logsService.NewGetPolicyOptions(
 				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				"Test data access rule",
-				[]logsv0.DataAccessRuleFilter{*dataAccessRuleFilterModel},
-				"<v1>true",
 			)
-			updateDataAccessRuleOptions.SetDescription("Data access rule intended for testing")
 
-			dataAccessRule, response, err := logsService.UpdateDataAccessRule(updateDataAccessRuleOptions)
+			policy, response, err := logsService.GetPolicy(getPolicyOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dataAccessRule, "", "  ")
+			b, _ := json.MarshalIndent(policy, "", "  ")
 			fmt.Println(string(b))
 
-			// end-update_data_access_rule
+			// end-get_policy
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dataAccessRule).ToNot(BeNil())
+			Expect(policy).ToNot(BeNil())
 		})
-		It(`GetEnrichments request example`, func() {
-			fmt.Println("\nGetEnrichments() result:")
-			// begin-get_enrichments
+		It(`UpdatePolicy request example`, func() {
+			fmt.Println("\nUpdatePolicy() result:")
+			// begin-update_policy
 
-			getEnrichmentsOptions := logsService.NewGetEnrichmentsOptions()
+			quotaV1RuleModel := &logsv0.QuotaV1Rule{
+				RuleTypeID: core.StringPtr("is"),
+				Name: core.StringPtr("policy-test"),
+			}
 
-			enrichmentCollection, response, err := logsService.GetEnrichments(getEnrichmentsOptions)
+			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
+				Severities: []string{"debug", "verbose", "info", "warning", "error"},
+			}
+
+			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
+				Name: core.StringPtr("Med_policy"),
+				Description: core.StringPtr("Medium policy"),
+				Priority: core.StringPtr("type_high"),
+				ApplicationRule: quotaV1RuleModel,
+				SubsystemRule: quotaV1RuleModel,
+				Enabled: core.BoolPtr(true),
+				LogRules: quotaV1LogRulesModel,
+			}
+
+			updatePolicyOptions := logsService.NewUpdatePolicyOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				policyPrototypeModel,
+			)
+
+			policy, response, err := logsService.UpdatePolicy(updatePolicyOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(enrichmentCollection, "", "  ")
+			b, _ := json.MarshalIndent(policy, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_enrichments
+			// end-update_policy
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(enrichmentCollection).ToNot(BeNil())
+			Expect(policy).ToNot(BeNil())
 		})
-		It(`CreateEnrichment request example`, func() {
-			fmt.Println("\nCreateEnrichment() result:")
-			// begin-create_enrichment
+		It(`GetCompanyPolicies request example`, func() {
+			fmt.Println("\nGetCompanyPolicies() result:")
+			// begin-get_company_policies
 
-			enrichmentV1GeoIpTypeEmptyModel := &logsv0.EnrichmentV1GeoIpTypeEmpty{
-			}
+			getCompanyPoliciesOptions := logsService.NewGetCompanyPoliciesOptions()
+			getCompanyPoliciesOptions.SetEnabledOnly(true)
+			getCompanyPoliciesOptions.SetSourceType("logs")
 
-			enrichmentV1EnrichmentTypeModel := &logsv0.EnrichmentV1EnrichmentTypeTypeGeoIp{
-				GeoIp: enrichmentV1GeoIpTypeEmptyModel,
-			}
-
-			createEnrichmentOptions := logsService.NewCreateEnrichmentOptions(
-				"ip",
-				enrichmentV1EnrichmentTypeModel,
-			)
-
-			enrichment, response, err := logsService.CreateEnrichment(createEnrichmentOptions)
+			policyCollection, response, err := logsService.GetCompanyPolicies(getCompanyPoliciesOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(enrichment, "", "  ")
+			b, _ := json.MarshalIndent(policyCollection, "", "  ")
 			fmt.Println(string(b))
 
-			// end-create_enrichment
+			// end-get_company_policies
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(policyCollection).ToNot(BeNil())
+		})
+		It(`CreatePolicy request example`, func() {
+			fmt.Println("\nCreatePolicy() result:")
+			// begin-create_policy
+
+			quotaV1RuleModel := &logsv0.QuotaV1Rule{
+				RuleTypeID: core.StringPtr("is"),
+				Name: core.StringPtr("policy-test"),
+			}
+
+			quotaV1LogRulesModel := &logsv0.QuotaV1LogRules{
+				Severities: []string{"debug", "verbose", "info", "warning", "error"},
+			}
+
+			policyPrototypeModel := &logsv0.PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules{
+				Name: core.StringPtr("Med_policy"),
+				Description: core.StringPtr("Medium Policy"),
+				Priority: core.StringPtr("type_high"),
+				ApplicationRule: quotaV1RuleModel,
+				SubsystemRule: quotaV1RuleModel,
+				Enabled: core.BoolPtr(true),
+				LogRules: quotaV1LogRulesModel,
+			}
+
+			createPolicyOptions := logsService.NewCreatePolicyOptions(
+				policyPrototypeModel,
+			)
+
+			policy, response, err := logsService.CreatePolicy(createPolicyOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(policy, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_policy
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(enrichment).ToNot(BeNil())
+			Expect(policy).ToNot(BeNil())
 		})
-		It(`ExportDataUsage request example`, func() {
-			fmt.Println("\nExportDataUsage() result:")
-			// begin-export_data_usage
+		It(`GetRuleGroup request example`, func() {
+			fmt.Println("\nGetRuleGroup() result:")
+			// begin-get_rule_group
 
-			exportDataUsageOptions := logsService.NewExportDataUsageOptions()
-			exportDataUsageOptions.SetRange("last_week")
-			exportDataUsageOptions.SetQuery("daily")
-
-			exportDataUsageResponse, response, err := logsService.ExportDataUsage(exportDataUsageOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(exportDataUsageResponse, "", "  ")
-			fmt.Println(string(b))
-
-			// end-export_data_usage
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(exportDataUsageResponse).ToNot(BeNil())
-		})
-		It(`UpdateDataUsageMetricsExportStatus request example`, func() {
-			fmt.Println("\nUpdateDataUsageMetricsExportStatus() result:")
-			// begin-update_data_usage_metrics_export_status
-
-			updateDataUsageMetricsExportStatusOptions := logsService.NewUpdateDataUsageMetricsExportStatusOptions(
-				true,
+			getRuleGroupOptions := logsService.NewGetRuleGroupOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
 			)
 
-			dataUsageMetricsExportStatus, response, err := logsService.UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions)
+			ruleGroup, response, err := logsService.GetRuleGroup(getRuleGroupOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(dataUsageMetricsExportStatus, "", "  ")
+			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
 			fmt.Println(string(b))
 
-			// end-update_data_usage_metrics_export_status
+			// end-get_rule_group
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(dataUsageMetricsExportStatus).ToNot(BeNil())
+			Expect(ruleGroup).ToNot(BeNil())
+		})
+		It(`UpdateRuleGroup request example`, func() {
+			fmt.Println("\nUpdateRuleGroup() result:")
+			// begin-update_rule_group
+
+			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
+				DestinationField: core.StringPtr("text"),
+				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+			}
+
+			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
+				ParseParameters: rulesV1ParseParametersModel,
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
+				Name: core.StringPtr("mysql-parse"),
+				Description: core.StringPtr("mysql-parse"),
+				SourceField: core.StringPtr("text"),
+				Parameters: rulesV1RuleParametersModel,
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
+				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
+				Value: core.StringPtr("mysql"),
+			}
+
+			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
+				SubsystemName: rulesV1SubsystemNameConstraintModel,
+			}
+
+			updateRuleGroupOptions := logsService.NewUpdateRuleGroupOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+				"mysql-extractrule",
+				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
+			)
+			updateRuleGroupOptions.SetDescription("mysql audit logs parser")
+			updateRuleGroupOptions.SetEnabled(true)
+			updateRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
+			updateRuleGroupOptions.SetOrder(int64(39))
+
+			ruleGroup, response, err := logsService.UpdateRuleGroup(updateRuleGroupOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
+			fmt.Println(string(b))
+
+			// end-update_rule_group
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(ruleGroup).ToNot(BeNil())
+		})
+		It(`ListRuleGroups request example`, func() {
+			fmt.Println("\nListRuleGroups() result:")
+			// begin-list_rule_groups
+
+			listRuleGroupsOptions := logsService.NewListRuleGroupsOptions()
+
+			ruleGroupCollection, response, err := logsService.ListRuleGroups(listRuleGroupsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(ruleGroupCollection, "", "  ")
+			fmt.Println(string(b))
+
+			// end-list_rule_groups
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(ruleGroupCollection).ToNot(BeNil())
+		})
+		It(`CreateRuleGroup request example`, func() {
+			fmt.Println("\nCreateRuleGroup() result:")
+			// begin-create_rule_group
+
+			rulesV1ParseParametersModel := &logsv0.RulesV1ParseParameters{
+				DestinationField: core.StringPtr("text"),
+				Rule: core.StringPtr("(?P<timestamp>[^,]+),(?P<hostname>[^,]+),(?P<username>[^,]+),(?P<ip>[^,]+),(?P<connectionId>[0-9]+),(?P<queryId>[0-9]+),(?P<operation>[^,]+),(?P<database>[^,]+),'?(?P<object>.*)'?,(?P<returnCode>[0-9]+)"),
+			}
+
+			rulesV1RuleParametersModel := &logsv0.RulesV1RuleParametersRuleParametersParseParameters{
+				ParseParameters: rulesV1ParseParametersModel,
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{
+				Name: core.StringPtr("mysql-parse"),
+				Description: core.StringPtr("mysql-parse"),
+				SourceField: core.StringPtr("text"),
+				Parameters: rulesV1RuleParametersModel,
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel := &logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{
+				Rules: []logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRule{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupCreateRuleModel},
+				Enabled: core.BoolPtr(true),
+				Order: core.Int64Ptr(int64(1)),
+			}
+
+			rulesV1SubsystemNameConstraintModel := &logsv0.RulesV1SubsystemNameConstraint{
+				Value: core.StringPtr("mysql"),
+			}
+
+			rulesV1RuleMatcherModel := &logsv0.RulesV1RuleMatcherConstraintSubsystemName{
+				SubsystemName: rulesV1SubsystemNameConstraintModel,
+			}
+
+			createRuleGroupOptions := logsService.NewCreateRuleGroupOptions(
+				"mysql-extractrule",
+				[]logsv0.RulesV1CreateRuleGroupRequestCreateRuleSubgroup{*rulesV1CreateRuleGroupRequestCreateRuleSubgroupModel},
+			)
+			createRuleGroupOptions.SetDescription("mysql audit logs  parser")
+			createRuleGroupOptions.SetEnabled(true)
+			createRuleGroupOptions.SetRuleMatchers([]logsv0.RulesV1RuleMatcherIntf{rulesV1RuleMatcherModel})
+			createRuleGroupOptions.SetOrder(int64(39))
+
+			ruleGroup, response, err := logsService.CreateRuleGroup(createRuleGroupOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(ruleGroup, "", "  ")
+			fmt.Println(string(b))
+
+			// end-create_rule_group
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(ruleGroup).ToNot(BeNil())
 		})
 		It(`GetEventStreamTargets request example`, func() {
 			fmt.Println("\nGetEventStreamTargets() result:")
@@ -1757,321 +2024,160 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(stream).ToNot(BeNil())
 		})
-		It(`SubmitBackgroundQuery request example`, func() {
-			fmt.Println("\nSubmitBackgroundQuery() result:")
-			// begin-submit_background_query
+		It(`ListViews request example`, func() {
+			fmt.Println("\nListViews() result:")
+			// begin-list_views
 
-			submitBackgroundQueryOptions := logsService.NewSubmitBackgroundQueryOptions(
-				"source logs | filter $d.apiVersion == 42",
-				"dataprime_utf8_base64",
-			)
+			listViewsOptions := logsService.NewListViewsOptions()
 
-			backgroundQuery, response, err := logsService.SubmitBackgroundQuery(submitBackgroundQueryOptions)
+			viewCollection, response, err := logsService.ListViews(listViewsOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(backgroundQuery, "", "  ")
+			b, _ := json.MarshalIndent(viewCollection, "", "  ")
 			fmt.Println(string(b))
 
-			// end-submit_background_query
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-			Expect(backgroundQuery).ToNot(BeNil())
-		})
-		It(`GetBackgroundQueryStatus request example`, func() {
-			fmt.Println("\nGetBackgroundQueryStatus() result:")
-			// begin-get_background_query_status
-
-			getBackgroundQueryStatusOptions := logsService.NewGetBackgroundQueryStatusOptions(
-				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
-			)
-
-			backgroundQueryStatus, response, err := logsService.GetBackgroundQueryStatus(getBackgroundQueryStatusOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(backgroundQueryStatus, "", "  ")
-			fmt.Println(string(b))
-
-			// end-get_background_query_status
+			// end-list_views
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(backgroundQueryStatus).ToNot(BeNil())
+			Expect(viewCollection).ToNot(BeNil())
 		})
-		It(`CancelBackgroundQuery request example`, func() {
-			// begin-cancel_background_query
+		It(`CreateView request example`, func() {
+			fmt.Println("\nCreateView() result:")
+			// begin-create_view
 
-			cancelBackgroundQueryOptions := logsService.NewCancelBackgroundQueryOptions(
-				CreateMockUUID("412036c3-04be-431a-b1e2-9ebf971be6c6"),
+			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
+				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
+				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+			}
+
+			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
+				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs"),
+				SyntaxType: core.StringPtr("dataprime"),
+			}
+
+			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
+				Name: core.StringPtr("applicationName"),
+			}
+
+			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
+				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
+			}
+
+			createViewOptions := logsService.NewCreateViewOptions(
+				"Logs view",
+				apisViewsV1TimeSelectionModel,
 			)
+			createViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
+			createViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
+			createViewOptions.SetTier("all_logs")
 
-			response, err := logsService.CancelBackgroundQuery(cancelBackgroundQueryOptions)
+			view, response, err := logsService.CreateView(createViewOptions)
 			if err != nil {
 				panic(err)
 			}
-			if response.StatusCode != 202 {
-				fmt.Printf("\nUnexpected response status code received from CancelBackgroundQuery(): %d\n", response.StatusCode)
-			}
-
-			// end-cancel_background_query
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-		})
-		It(`GetAlertDef request example`, func() {
-			fmt.Println("\nGetAlertDef() result:")
-			// begin-get_alert_def
-
-			getAlertDefOptions := logsService.NewGetAlertDefOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			alertDefinition, response, err := logsService.GetAlertDef(getAlertDefOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
+			b, _ := json.MarshalIndent(view, "", "  ")
 			fmt.Println(string(b))
 
-			// end-get_alert_def
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(alertDefinition).ToNot(BeNil())
-		})
-		It(`ReplaceAlertDef request example`, func() {
-			fmt.Println("\nReplaceAlertDef() result:")
-			// begin-replace_alert_def
-
-			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
-				Hours: core.Int64Ptr(int64(22)),
-			}
-
-			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
-				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				StartTime: apisAlertDefinitionTimeOfDayModel,
-				EndTime: apisAlertDefinitionTimeOfDayModel,
-			}
-
-			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
-				NotifyOn: core.StringPtr("triggered_only_unspecified"),
-				Minutes: core.Int64Ptr(int64(10)),
-			}
-
-			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
-			}
-
-			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
-				Integration: apisAlertDefinitionIntegrationTypeModel,
-			}
-
-			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
-				GroupByKeys: []string{},
-				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
-			}
-
-			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
-				Operation: core.StringPtr("starts_with"),
-			}
-
-			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
-				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
-				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
-				Severities: []string{},
-			}
-
-			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
-				LabelFilters: apisAlertDefinitionLabelFiltersModel,
-			}
-
-			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
-				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
-			}
-
-			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
-				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
-			}
-
-			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
-				Threshold: core.Float64Ptr(float64(1)),
-				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
-			}
-
-			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
-				Priority: core.StringPtr("p5_or_unspecified"),
-			}
-
-			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
-				Condition: apisAlertDefinitionLogsThresholdConditionModel,
-				Override: apisAlertDefinitionAlertDefOverrideModel,
-			}
-
-			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
-				LogsFilter: apisAlertDefinitionLogsFilterModel,
-				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
-				ConditionType: core.StringPtr("more_than_or_unspecified"),
-				NotificationPayloadFilter: []string{},
-			}
-
-			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
-				Name: core.StringPtr("Alert 1738141279354"),
-				Description: core.StringPtr("Example Alert definition"),
-				Enabled: core.BoolPtr(true),
-				Priority: core.StringPtr("p5_or_unspecified"),
-				ActiveOn: apisAlertDefinitionActivityScheduleModel,
-				Type: core.StringPtr("logs_threshold"),
-				GroupByKeys: []string{},
-				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
-				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
-				PhantomMode: core.BoolPtr(false),
-				Deleted: core.BoolPtr(false),
-				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
-			}
-
-			replaceAlertDefOptions := logsService.NewReplaceAlertDefOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-				alertDefinitionPrototypeModel,
-			)
-
-			alertDefinition, response, err := logsService.ReplaceAlertDef(replaceAlertDefOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
-			fmt.Println(string(b))
-
-			// end-replace_alert_def
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(alertDefinition).ToNot(BeNil())
-		})
-		It(`ListAlertDefs request example`, func() {
-			fmt.Println("\nListAlertDefs() result:")
-			// begin-list_alert_defs
-
-			listAlertDefsOptions := logsService.NewListAlertDefsOptions()
-
-			alertDefinitionCollection, response, err := logsService.ListAlertDefs(listAlertDefsOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(alertDefinitionCollection, "", "  ")
-			fmt.Println(string(b))
-
-			// end-list_alert_defs
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(alertDefinitionCollection).ToNot(BeNil())
-		})
-		It(`CreateAlertDef request example`, func() {
-			fmt.Println("\nCreateAlertDef() result:")
-			// begin-create_alert_def
-
-			apisAlertDefinitionTimeOfDayModel := &logsv0.ApisAlertDefinitionTimeOfDay{
-				Hours: core.Int64Ptr(int64(22)),
-			}
-
-			apisAlertDefinitionActivityScheduleModel := &logsv0.ApisAlertDefinitionActivitySchedule{
-				DayOfWeek: []string{"sunday", "monday_or_unspecified", "tuesday", "wednesday", "thursday", "friday", "saturday"},
-				StartTime: apisAlertDefinitionTimeOfDayModel,
-				EndTime: apisAlertDefinitionTimeOfDayModel,
-			}
-
-			apisAlertDefinitionAlertDefIncidentSettingsModel := &logsv0.ApisAlertDefinitionAlertDefIncidentSettings{
-				NotifyOn: core.StringPtr("triggered_only_unspecified"),
-				Minutes: core.Int64Ptr(int64(10)),
-			}
-
-			apisAlertDefinitionIntegrationTypeModel := &logsv0.ApisAlertDefinitionIntegrationTypeIntegrationTypeIntegrationID{
-			}
-
-			apisAlertDefinitionAlertDefWebhooksSettingsModel := &logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{
-				Integration: apisAlertDefinitionIntegrationTypeModel,
-			}
-
-			apisAlertDefinitionAlertDefNotificationGroupModel := &logsv0.ApisAlertDefinitionAlertDefNotificationGroup{
-				GroupByKeys: []string{},
-				Webhooks: []logsv0.ApisAlertDefinitionAlertDefWebhooksSettings{*apisAlertDefinitionAlertDefWebhooksSettingsModel},
-			}
-
-			apisAlertDefinitionLabelFilterTypeModel := &logsv0.ApisAlertDefinitionLabelFilterType{
-				Operation: core.StringPtr("starts_with"),
-			}
-
-			apisAlertDefinitionLabelFiltersModel := &logsv0.ApisAlertDefinitionLabelFilters{
-				ApplicationName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
-				SubsystemName: []logsv0.ApisAlertDefinitionLabelFilterType{*apisAlertDefinitionLabelFilterTypeModel},
-				Severities: []string{},
-			}
-
-			apisAlertDefinitionLogsSimpleFilterModel := &logsv0.ApisAlertDefinitionLogsSimpleFilter{
-				LabelFilters: apisAlertDefinitionLabelFiltersModel,
-			}
-
-			apisAlertDefinitionLogsFilterModel := &logsv0.ApisAlertDefinitionLogsFilter{
-				SimpleFilter: apisAlertDefinitionLogsSimpleFilterModel,
-			}
-
-			apisAlertDefinitionLogsTimeWindowModel := &logsv0.ApisAlertDefinitionLogsTimeWindow{
-				LogsTimeWindowSpecificValue: core.StringPtr("minutes_10"),
-			}
-
-			apisAlertDefinitionLogsThresholdConditionModel := &logsv0.ApisAlertDefinitionLogsThresholdCondition{
-				Threshold: core.Float64Ptr(float64(1)),
-				TimeWindow: apisAlertDefinitionLogsTimeWindowModel,
-			}
-
-			apisAlertDefinitionAlertDefOverrideModel := &logsv0.ApisAlertDefinitionAlertDefOverride{
-				Priority: core.StringPtr("p5_or_unspecified"),
-			}
-
-			apisAlertDefinitionLogsThresholdRuleModel := &logsv0.ApisAlertDefinitionLogsThresholdRule{
-				Condition: apisAlertDefinitionLogsThresholdConditionModel,
-				Override: apisAlertDefinitionAlertDefOverrideModel,
-			}
-
-			apisAlertDefinitionLogsThresholdTypeModel := &logsv0.ApisAlertDefinitionLogsThresholdType{
-				LogsFilter: apisAlertDefinitionLogsFilterModel,
-				Rules: []logsv0.ApisAlertDefinitionLogsThresholdRule{*apisAlertDefinitionLogsThresholdRuleModel},
-				ConditionType: core.StringPtr("more_than_or_unspecified"),
-				NotificationPayloadFilter: []string{},
-			}
-
-			alertDefinitionPrototypeModel := &logsv0.AlertDefinitionPrototypeApisAlertDefinitionAlertDefPropertiesTypeDefinitionLogsThreshold{
-				Name: core.StringPtr("Alert 1738141279354"),
-				Description: core.StringPtr("Example Alert definition"),
-				Enabled: core.BoolPtr(true),
-				Priority: core.StringPtr("p5_or_unspecified"),
-				ActiveOn: apisAlertDefinitionActivityScheduleModel,
-				Type: core.StringPtr("logs_threshold"),
-				GroupByKeys: []string{},
-				IncidentsSettings: apisAlertDefinitionAlertDefIncidentSettingsModel,
-				NotificationGroup: apisAlertDefinitionAlertDefNotificationGroupModel,
-				PhantomMode: core.BoolPtr(false),
-				Deleted: core.BoolPtr(false),
-				LogsThreshold: apisAlertDefinitionLogsThresholdTypeModel,
-			}
-
-			createAlertDefOptions := logsService.NewCreateAlertDefOptions(
-				alertDefinitionPrototypeModel,
-			)
-
-			alertDefinition, response, err := logsService.CreateAlertDef(createAlertDefOptions)
-			if err != nil {
-				panic(err)
-			}
-			b, _ := json.MarshalIndent(alertDefinition, "", "  ")
-			fmt.Println(string(b))
-
-			// end-create_alert_def
+			// end-create_view
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(alertDefinition).ToNot(BeNil())
+			Expect(view).ToNot(BeNil())
+		})
+		It(`GetView request example`, func() {
+			fmt.Println("\nGetView() result:")
+			// begin-get_view
+
+			getViewOptions := logsService.NewGetViewOptions(
+				int64(52),
+			)
+
+			view, response, err := logsService.GetView(getViewOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(view, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_view
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(view).ToNot(BeNil())
+		})
+		It(`ReplaceView request example`, func() {
+			fmt.Println("\nReplaceView() result:")
+			// begin-replace_view
+
+			apisViewsV1CustomTimeSelectionModel := &logsv0.ApisViewsV1CustomTimeSelection{
+				FromTime: CreateMockDateTime("2024-01-25T11:31:43.152Z"),
+				ToTime: CreateMockDateTime("2024-01-25T11:37:13.238Z"),
+			}
+
+			apisViewsV1TimeSelectionModel := &logsv0.ApisViewsV1TimeSelectionSelectionTypeCustomSelection{
+				CustomSelection: apisViewsV1CustomTimeSelectionModel,
+			}
+
+			apisViewsV1SearchQueryModel := &logsv0.ApisViewsV1SearchQuery{
+				Query: core.StringPtr("logs new"),
+				SyntaxType: core.StringPtr("lucene"),
+			}
+
+			apisViewsV1FilterModel := &logsv0.ApisViewsV1Filter{
+				Name: core.StringPtr("applicationName"),
+			}
+
+			apisViewsV1SelectedFiltersModel := &logsv0.ApisViewsV1SelectedFilters{
+				Filters: []logsv0.ApisViewsV1Filter{*apisViewsV1FilterModel},
+			}
+
+			replaceViewOptions := logsService.NewReplaceViewOptions(
+				int64(52),
+				"Logs view",
+				apisViewsV1TimeSelectionModel,
+			)
+			replaceViewOptions.SetSearchQuery(apisViewsV1SearchQueryModel)
+			replaceViewOptions.SetFilters(apisViewsV1SelectedFiltersModel)
+			replaceViewOptions.SetTier("priority_insights_templates")
+
+			view, response, err := logsService.ReplaceView(replaceViewOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(view, "", "  ")
+			fmt.Println(string(b))
+
+			// end-replace_view
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(view).ToNot(BeNil())
+		})
+		It(`DeleteAlertDef request example`, func() {
+			// begin-delete_alert_def
+
+			deleteAlertDefOptions := logsService.NewDeleteAlertDefOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteAlertDef(deleteAlertDefOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteAlertDef(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_alert_def
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`DeleteAlert request example`, func() {
 			// begin-delete_alert
@@ -2089,66 +2195,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			}
 
 			// end-delete_alert
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeleteRuleGroup request example`, func() {
-			// begin-delete_rule_group
-
-			deleteRuleGroupOptions := logsService.NewDeleteRuleGroupOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			response, err := logsService.DeleteRuleGroup(deleteRuleGroupOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteRuleGroup(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_rule_group
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeleteOutgoingWebhook request example`, func() {
-			// begin-delete_outgoing_webhook
-
-			deleteOutgoingWebhookOptions := logsService.NewDeleteOutgoingWebhookOptions(
-				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
-			)
-
-			response, err := logsService.DeleteOutgoingWebhook(deleteOutgoingWebhookOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteOutgoingWebhook(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_outgoing_webhook
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeletePolicy request example`, func() {
-			// begin-delete_policy
-
-			deletePolicyOptions := logsService.NewDeletePolicyOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			response, err := logsService.DeletePolicy(deletePolicyOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeletePolicy(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_policy
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
@@ -2193,86 +2239,6 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-		It(`DeleteDashboardFolder request example`, func() {
-			// begin-delete_dashboard_folder
-
-			deleteDashboardFolderOptions := logsService.NewDeleteDashboardFolderOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			response, err := logsService.DeleteDashboardFolder(deleteDashboardFolderOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteDashboardFolder(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_dashboard_folder
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeleteE2m request example`, func() {
-			// begin-delete_e2m
-
-			deleteE2mOptions := logsService.NewDeleteE2mOptions(
-				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
-			)
-
-			response, err := logsService.DeleteE2m(deleteE2mOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteE2m(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_e2m
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeleteView request example`, func() {
-			// begin-delete_view
-
-			deleteViewOptions := logsService.NewDeleteViewOptions(
-				int64(52),
-			)
-
-			response, err := logsService.DeleteView(deleteViewOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteView(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_view
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
-		It(`DeleteViewFolder request example`, func() {
-			// begin-delete_view_folder
-
-			deleteViewFolderOptions := logsService.NewDeleteViewFolderOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
-			)
-
-			response, err := logsService.DeleteViewFolder(deleteViewFolderOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteViewFolder(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_view_folder
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
 		It(`DeleteDataAccessRule request example`, func() {
 			// begin-delete_data_access_rule
 
@@ -2313,6 +2279,147 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
+		It(`DeleteE2m request example`, func() {
+			// begin-delete_e2m
+
+			deleteE2mOptions := logsService.NewDeleteE2mOptions(
+				"d6a3658e-78d2-47d0-9b81-b2c551f01b09",
+			)
+
+			response, err := logsService.DeleteE2m(deleteE2mOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteE2m(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_e2m
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteExtensionDeployment request example`, func() {
+			fmt.Println("\nDeleteExtensionDeployment() result:")
+			// begin-delete_extension_deployment
+
+			deleteExtensionDeploymentOptions := logsService.NewDeleteExtensionDeploymentOptions(
+				"testString",
+			)
+
+			undeployExtensionResponse, response, err := logsService.DeleteExtensionDeployment(deleteExtensionDeploymentOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(undeployExtensionResponse, "", "  ")
+			fmt.Println(string(b))
+
+			// end-delete_extension_deployment
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(undeployExtensionResponse).ToNot(BeNil())
+		})
+		It(`DeleteDashboardFolder request example`, func() {
+			// begin-delete_dashboard_folder
+
+			deleteDashboardFolderOptions := logsService.NewDeleteDashboardFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteDashboardFolder(deleteDashboardFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteDashboardFolder(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_dashboard_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteViewFolder request example`, func() {
+			// begin-delete_view_folder
+
+			deleteViewFolderOptions := logsService.NewDeleteViewFolderOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteViewFolder(deleteViewFolderOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteViewFolder(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_view_folder
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteOutgoingWebhook request example`, func() {
+			// begin-delete_outgoing_webhook
+
+			deleteOutgoingWebhookOptions := logsService.NewDeleteOutgoingWebhookOptions(
+				CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660"),
+			)
+
+			response, err := logsService.DeleteOutgoingWebhook(deleteOutgoingWebhookOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteOutgoingWebhook(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_outgoing_webhook
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeletePolicy request example`, func() {
+			// begin-delete_policy
+
+			deletePolicyOptions := logsService.NewDeletePolicyOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeletePolicy(deletePolicyOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeletePolicy(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_policy
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteRuleGroup request example`, func() {
+			// begin-delete_rule_group
+
+			deleteRuleGroupOptions := logsService.NewDeleteRuleGroupOptions(
+				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			)
+
+			response, err := logsService.DeleteRuleGroup(deleteRuleGroupOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteRuleGroup(): %d\n", response.StatusCode)
+			}
+
+			// end-delete_rule_group
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
 		It(`DeleteEventStreamTarget request example`, func() {
 			// begin-delete_event_stream_target
 
@@ -2333,22 +2440,22 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-		It(`DeleteAlertDef request example`, func() {
-			// begin-delete_alert_def
+		It(`DeleteView request example`, func() {
+			// begin-delete_view
 
-			deleteAlertDefOptions := logsService.NewDeleteAlertDefOptions(
-				CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f"),
+			deleteViewOptions := logsService.NewDeleteViewOptions(
+				int64(52),
 			)
 
-			response, err := logsService.DeleteAlertDef(deleteAlertDefOptions)
+			response, err := logsService.DeleteView(deleteViewOptions)
 			if err != nil {
 				panic(err)
 			}
 			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteAlertDef(): %d\n", response.StatusCode)
+				fmt.Printf("\nUnexpected response status code received from DeleteView(): %d\n", response.StatusCode)
 			}
 
-			// end-delete_alert_def
+			// end-delete_view
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))

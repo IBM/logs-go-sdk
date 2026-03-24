@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -164,6 +164,342 @@ func (logs *LogsV0) EnableRetries(maxRetries int, maxRetryInterval time.Duration
 // DisableRetries disables automatic retries for requests invoked for this service instance.
 func (logs *LogsV0) DisableRetries() {
 	logs.Service.DisableRetries()
+}
+
+// GetAlertDef : Get an alert definition by ID
+// Get details of an existing alert by using the alert ID.
+func (logs *LogsV0) GetAlertDef(getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetAlertDefWithContext(context.Background(), getAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetAlertDefWithContext is an alternate form of the GetAlertDef method which supports a Context parameter
+func (logs *LogsV0) GetAlertDefWithContext(ctx context.Context, getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getAlertDefOptions, "getAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getAlertDefOptions, "getAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*getAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceAlertDef : Update an alert definition by ID
+// Update an alert definition.
+func (logs *LogsV0) ReplaceAlertDef(replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceAlertDefWithContext(context.Background(), replaceAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceAlertDefWithContext is an alternate form of the ReplaceAlertDef method which supports a Context parameter
+func (logs *LogsV0) ReplaceAlertDefWithContext(ctx context.Context, replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceAlertDefOptions, "replaceAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceAlertDefOptions, "replaceAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*replaceAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(replaceAlertDefOptions.AlertDefinitionPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteAlertDef : Delete an alert definition by ID
+// Delete an alert definition.
+func (logs *LogsV0) DeleteAlertDef(deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteAlertDefWithContext(context.Background(), deleteAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteAlertDefWithContext is an alternate form of the DeleteAlertDef method which supports a Context parameter
+func (logs *LogsV0) DeleteAlertDefWithContext(ctx context.Context, deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteAlertDefOptions, "deleteAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteAlertDefOptions, "deleteAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteAlertDefOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListAlertDefs : List alert definitions
+// List alert definitions.
+func (logs *LogsV0) ListAlertDefs(listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListAlertDefsWithContext(context.Background(), listAlertDefsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListAlertDefsWithContext is an alternate form of the ListAlertDefs method which supports a Context parameter
+func (logs *LogsV0) ListAlertDefsWithContext(ctx context.Context, listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listAlertDefsOptions, "listAlertDefsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listAlertDefsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListAlertDefs")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_alert_defs", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinitionCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateAlertDef : Create an alert definition
+// Create an alert definition.
+func (logs *LogsV0) CreateAlertDef(createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateAlertDefWithContext(context.Background(), createAlertDefOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateAlertDefWithContext is an alternate form of the CreateAlertDef method which supports a Context parameter
+func (logs *LogsV0) CreateAlertDefWithContext(ctx context.Context, createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createAlertDefOptions, "createAlertDefOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createAlertDefOptions, "createAlertDefOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createAlertDefOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateAlertDef")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(createAlertDefOptions.AlertDefinitionPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_alert_def", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
 }
 
 // GetAlert : Get an alert by ID
@@ -582,114 +918,42 @@ func (logs *LogsV0) CreateAlertWithContext(ctx context.Context, createAlertOptio
 	return
 }
 
-// GetRuleGroup : Gets rule group by groupid
-// Gets rule group by groupid.
-func (logs *LogsV0) GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetRuleGroupWithContext(context.Background(), getRuleGroupOptions)
+// SubmitBackgroundQuery : Submit a background query to be processed asynchronously
+// Submits a query that runs in the background, allowing the client to continue without waiting for the results
+// immediately.
+func (logs *LogsV0) SubmitBackgroundQuery(submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
+	result, response, err = logs.SubmitBackgroundQueryWithContext(context.Background(), submitBackgroundQueryOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// GetRuleGroupWithContext is an alternate form of the GetRuleGroup method which supports a Context parameter
-func (logs *LogsV0) GetRuleGroupWithContext(ctx context.Context, getRuleGroupOptions *GetRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getRuleGroupOptions, "getRuleGroupOptions cannot be nil")
+// SubmitBackgroundQueryWithContext is an alternate form of the SubmitBackgroundQuery method which supports a Context parameter
+func (logs *LogsV0) SubmitBackgroundQueryWithContext(ctx context.Context, submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(submitBackgroundQueryOptions, "submitBackgroundQueryOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(getRuleGroupOptions, "getRuleGroupOptions")
+	err = core.ValidateStruct(submitBackgroundQueryOptions, "submitBackgroundQueryOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
-	pathParamsMap := map[string]string{
-		"group_id": fmt.Sprint(*getRuleGroupOptions.GroupID),
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
+	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range getRuleGroupOptions.Headers {
+	for headerName, headerValue := range submitBackgroundQueryOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetRuleGroup")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_rule_group", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// UpdateRuleGroup : Updates rule group by groupid
-// Updates rule group by groupid.
-func (logs *LogsV0) UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	result, response, err = logs.UpdateRuleGroupWithContext(context.Background(), updateRuleGroupOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// UpdateRuleGroupWithContext is an alternate form of the UpdateRuleGroup method which supports a Context parameter
-func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGroupOptions *UpdateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(updateRuleGroupOptions, "updateRuleGroupOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(updateRuleGroupOptions, "updateRuleGroupOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"group_id": fmt.Sprint(*updateRuleGroupOptions.GroupID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range updateRuleGroupOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateRuleGroup")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "SubmitBackgroundQuery")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -697,23 +961,20 @@ func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGr
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if updateRuleGroupOptions.Name != nil {
-		body["name"] = updateRuleGroupOptions.Name
+	if submitBackgroundQueryOptions.Query != nil {
+		body["query"] = submitBackgroundQueryOptions.Query
 	}
-	if updateRuleGroupOptions.RuleSubgroups != nil {
-		body["rule_subgroups"] = updateRuleGroupOptions.RuleSubgroups
+	if submitBackgroundQueryOptions.Syntax != nil {
+		body["syntax"] = submitBackgroundQueryOptions.Syntax
 	}
-	if updateRuleGroupOptions.Description != nil {
-		body["description"] = updateRuleGroupOptions.Description
+	if submitBackgroundQueryOptions.StartDate != nil {
+		body["start_date"] = submitBackgroundQueryOptions.StartDate
 	}
-	if updateRuleGroupOptions.Enabled != nil {
-		body["enabled"] = updateRuleGroupOptions.Enabled
+	if submitBackgroundQueryOptions.EndDate != nil {
+		body["end_date"] = submitBackgroundQueryOptions.EndDate
 	}
-	if updateRuleGroupOptions.RuleMatchers != nil {
-		body["rule_matchers"] = updateRuleGroupOptions.RuleMatchers
-	}
-	if updateRuleGroupOptions.Order != nil {
-		body["order"] = updateRuleGroupOptions.Order
+	if submitBackgroundQueryOptions.NowDate != nil {
+		body["now_date"] = submitBackgroundQueryOptions.NowDate
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -730,12 +991,12 @@ func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGr
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "update_rule_group", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "submit_background_query", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQuery)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -746,45 +1007,114 @@ func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGr
 	return
 }
 
-// DeleteRuleGroup : Deletes rule group by groupid
-// Deletes rule group by groupid.
-func (logs *LogsV0) DeleteRuleGroup(deleteRuleGroupOptions *DeleteRuleGroupOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteRuleGroupWithContext(context.Background(), deleteRuleGroupOptions)
+// GetBackgroundQueryStatus : Get the status of a background query
+// Get the status of a background query.
+func (logs *LogsV0) GetBackgroundQueryStatus(getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetBackgroundQueryStatusWithContext(context.Background(), getBackgroundQueryStatusOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// DeleteRuleGroupWithContext is an alternate form of the DeleteRuleGroup method which supports a Context parameter
-func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGroupOptions *DeleteRuleGroupOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteRuleGroupOptions, "deleteRuleGroupOptions cannot be nil")
+// GetBackgroundQueryStatusWithContext is an alternate form of the GetBackgroundQueryStatus method which supports a Context parameter
+func (logs *LogsV0) GetBackgroundQueryStatusWithContext(ctx context.Context, getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(deleteRuleGroupOptions, "deleteRuleGroupOptions")
+	err = core.ValidateStruct(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"group_id": fmt.Sprint(*deleteRuleGroupOptions.GroupID),
+		"query_id": fmt.Sprint(*getBackgroundQueryStatusOptions.QueryID),
 	}
 
-	builder := core.NewRequestBuilder(core.DELETE)
+	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/status`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range deleteRuleGroupOptions.Headers {
+	for headerName, headerValue := range getBackgroundQueryStatusOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteRuleGroup")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetBackgroundQueryStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_background_query_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQueryStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CancelBackgroundQuery : Cancel a background query
+// Cancel a background query.
+func (logs *LogsV0) CancelBackgroundQuery(cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.CancelBackgroundQueryWithContext(context.Background(), cancelBackgroundQueryOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CancelBackgroundQueryWithContext is an alternate form of the CancelBackgroundQuery method which supports a Context parameter
+func (logs *LogsV0) CancelBackgroundQueryWithContext(ctx context.Context, cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"query_id": fmt.Sprint(*cancelBackgroundQueryOptions.QueryID),
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/cancel`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range cancelBackgroundQueryOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CancelBackgroundQuery")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -797,7 +1127,7 @@ func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGr
 
 	response, err = logs.Service.Request(request, nil)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_rule_group", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "cancel_background_query", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
@@ -805,17 +1135,17 @@ func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGr
 	return
 }
 
-// ListRuleGroups : Gets all rule groups
-// Gets all rule groups.
-func (logs *LogsV0) ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions) (result *RuleGroupCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListRuleGroupsWithContext(context.Background(), listRuleGroupsOptions)
+// GetDashboardCatalog : Get dashboard catalog
+// Get dashboard catalog.
+func (logs *LogsV0) GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDashboardCatalogWithContext(context.Background(), getDashboardCatalogOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// ListRuleGroupsWithContext is an alternate form of the ListRuleGroups method which supports a Context parameter
-func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroupsOptions *ListRuleGroupsOptions) (result *RuleGroupCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listRuleGroupsOptions, "listRuleGroupsOptions")
+// GetDashboardCatalogWithContext is an alternate form of the GetDashboardCatalog method which supports a Context parameter
+func (logs *LogsV0) GetDashboardCatalogWithContext(ctx context.Context, getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getDashboardCatalogOptions, "getDashboardCatalogOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
@@ -824,17 +1154,17 @@ func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroup
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range listRuleGroupsOptions.Headers {
+	for headerName, headerValue := range getDashboardCatalogOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListRuleGroups")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardCatalog")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -849,12 +1179,12 @@ func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroup
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "list_rule_groups", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "get_dashboard_catalog", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroupCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardCollection)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -865,22 +1195,22 @@ func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroup
 	return
 }
 
-// CreateRuleGroup : Creates rule group
-// Creates rule group.
-func (logs *LogsV0) CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateRuleGroupWithContext(context.Background(), createRuleGroupOptions)
+// CreateDashboard : Creates a new dashboard
+// Creates a new dashboard.
+func (logs *LogsV0) CreateDashboard(createDashboardOptions *CreateDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateDashboardWithContext(context.Background(), createDashboardOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// CreateRuleGroupWithContext is an alternate form of the CreateRuleGroup method which supports a Context parameter
-func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGroupOptions *CreateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createRuleGroupOptions, "createRuleGroupOptions cannot be nil")
+// CreateDashboardWithContext is an alternate form of the CreateDashboard method which supports a Context parameter
+func (logs *LogsV0) CreateDashboardWithContext(ctx context.Context, createDashboardOptions *CreateDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createDashboardOptions, "createDashboardOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(createRuleGroupOptions, "createRuleGroupOptions")
+	err = core.ValidateStruct(createDashboardOptions, "createDashboardOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
@@ -889,17 +1219,598 @@ func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGr
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range createRuleGroupOptions.Headers {
+	for headerName, headerValue := range createDashboardOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateRuleGroup")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(createDashboardOptions.Dashboard)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetDashboard : Gets an existing dashboard
+// Gets an existing dashboard.
+func (logs *LogsV0) GetDashboard(getDashboardOptions *GetDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDashboardWithContext(context.Background(), getDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDashboardWithContext is an alternate form of the GetDashboard method which supports a Context parameter
+func (logs *LogsV0) GetDashboardWithContext(ctx context.Context, getDashboardOptions *GetDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getDashboardOptions, "getDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getDashboardOptions, "getDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *getDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceDashboard : Replaces an existing dashboard
+// Replaces an existing dashboard.
+func (logs *LogsV0) ReplaceDashboard(replaceDashboardOptions *ReplaceDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceDashboardWithContext(context.Background(), replaceDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceDashboardWithContext is an alternate form of the ReplaceDashboard method which supports a Context parameter
+func (logs *LogsV0) ReplaceDashboardWithContext(ctx context.Context, replaceDashboardOptions *ReplaceDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceDashboardOptions, "replaceDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceDashboardOptions, "replaceDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *replaceDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(replaceDashboardOptions.Dashboard)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteDashboard : Deletes an existing dashboard
+// Deletes an existing dashboard.
+func (logs *LogsV0) DeleteDashboard(deleteDashboardOptions *DeleteDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteDashboardWithContext(context.Background(), deleteDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteDashboardWithContext is an alternate form of the DeleteDashboard method which supports a Context parameter
+func (logs *LogsV0) DeleteDashboardWithContext(ctx context.Context, deleteDashboardOptions *DeleteDashboardOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteDashboardOptions, "deleteDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteDashboardOptions, "deleteDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *deleteDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// PinDashboard : Add dashboard to the favorite folder
+// Add dashboard to the favorite folder.
+func (logs *LogsV0) PinDashboard(pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.PinDashboardWithContext(context.Background(), pinDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// PinDashboardWithContext is an alternate form of the PinDashboard method which supports a Context parameter
+func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(pinDashboardOptions, "pinDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(pinDashboardOptions, "pinDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *pinDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/pinned`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range pinDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "PinDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "pin_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// UnpinDashboard : Remove dashboard to the favorite folder
+// Remove dashboard to the favorite folder.
+func (logs *LogsV0) UnpinDashboard(unpinDashboardOptions *UnpinDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.UnpinDashboardWithContext(context.Background(), unpinDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UnpinDashboardWithContext is an alternate form of the UnpinDashboard method which supports a Context parameter
+func (logs *LogsV0) UnpinDashboardWithContext(ctx context.Context, unpinDashboardOptions *UnpinDashboardOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(unpinDashboardOptions, "unpinDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(unpinDashboardOptions, "unpinDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *unpinDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/pinned`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range unpinDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UnpinDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "unpin_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ReplaceDefaultDashboard : Set dashboard as the default dashboard for the user
+// Set dashboard as the default dashboard for the user.
+func (logs *LogsV0) ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.ReplaceDefaultDashboardWithContext(context.Background(), replaceDefaultDashboardOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceDefaultDashboardWithContext is an alternate form of the ReplaceDefaultDashboard method which supports a Context parameter
+func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceDefaultDashboardOptions, "replaceDefaultDashboardOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceDefaultDashboardOptions, "replaceDefaultDashboardOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *replaceDefaultDashboardOptions.DashboardID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/default`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceDefaultDashboardOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDefaultDashboard")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_default_dashboard", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// AssignDashboardFolder : Assign a dashboard to a folder
+// Assign a dashboard to a folder.
+func (logs *LogsV0) AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.AssignDashboardFolderWithContext(context.Background(), assignDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// AssignDashboardFolderWithContext is an alternate form of the AssignDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(assignDashboardFolderOptions, "assignDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(assignDashboardFolderOptions, "assignDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"dashboard_id": *assignDashboardFolderOptions.DashboardID,
+		"folder_id": *assignDashboardFolderOptions.FolderID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/folder/{folder_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range assignDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "AssignDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "assign_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListDataAccessRules : Get service instance's Data Access Rules by ids
+// Get service instance's Data Access Rules by ids.
+func (logs *LogsV0) ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListDataAccessRulesWithContext(context.Background(), listDataAccessRulesOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListDataAccessRulesWithContext is an alternate form of the ListDataAccessRules method which supports a Context parameter
+func (logs *LogsV0) ListDataAccessRulesWithContext(ctx context.Context, listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listDataAccessRulesOptions, "listDataAccessRulesOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listDataAccessRulesOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDataAccessRules")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if listDataAccessRulesOptions.ID != nil {
+		err = builder.AddQuerySlice("id", listDataAccessRulesOptions.ID)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "add-query-slice-error", common.GetComponentInfo())
+			return
+		}
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_data_access_rules", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRuleCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateDataAccessRule : Create a data access rule
+// Create a data access rule.
+func (logs *LogsV0) CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateDataAccessRuleWithContext(context.Background(), createDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateDataAccessRuleWithContext is an alternate form of the CreateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) CreateDataAccessRuleWithContext(ctx context.Context, createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createDataAccessRuleOptions, "createDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createDataAccessRuleOptions, "createDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDataAccessRule")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -907,23 +1818,17 @@ func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGr
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if createRuleGroupOptions.Name != nil {
-		body["name"] = createRuleGroupOptions.Name
+	if createDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = createDataAccessRuleOptions.DisplayName
 	}
-	if createRuleGroupOptions.RuleSubgroups != nil {
-		body["rule_subgroups"] = createRuleGroupOptions.RuleSubgroups
+	if createDataAccessRuleOptions.Filters != nil {
+		body["filters"] = createDataAccessRuleOptions.Filters
 	}
-	if createRuleGroupOptions.Description != nil {
-		body["description"] = createRuleGroupOptions.Description
+	if createDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = createDataAccessRuleOptions.DefaultExpression
 	}
-	if createRuleGroupOptions.Enabled != nil {
-		body["enabled"] = createRuleGroupOptions.Enabled
-	}
-	if createRuleGroupOptions.RuleMatchers != nil {
-		body["rule_matchers"] = createRuleGroupOptions.RuleMatchers
-	}
-	if createRuleGroupOptions.Order != nil {
-		body["order"] = createRuleGroupOptions.Order
+	if createDataAccessRuleOptions.Description != nil {
+		body["description"] = createDataAccessRuleOptions.Description
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -940,17 +1845,1902 @@ func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGr
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "create_rule_group", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "create_data_access_rule", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
 		}
 		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataAccessRule : Update a data access rule
+// Update a data access rule.
+func (logs *LogsV0) UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataAccessRuleWithContext(context.Background(), updateDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataAccessRuleWithContext is an alternate form of the UpdateDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) UpdateDataAccessRuleWithContext(ctx context.Context, updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataAccessRuleOptions, "updateDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataAccessRuleOptions, "updateDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*updateDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataAccessRuleOptions.DisplayName != nil {
+		body["display_name"] = updateDataAccessRuleOptions.DisplayName
+	}
+	if updateDataAccessRuleOptions.Filters != nil {
+		body["filters"] = updateDataAccessRuleOptions.Filters
+	}
+	if updateDataAccessRuleOptions.DefaultExpression != nil {
+		body["default_expression"] = updateDataAccessRuleOptions.DefaultExpression
+	}
+	if updateDataAccessRuleOptions.Description != nil {
+		body["description"] = updateDataAccessRuleOptions.Description
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteDataAccessRule : Delete a data access rule
+// Delete a data access rule.
+func (logs *LogsV0) DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteDataAccessRuleWithContext(context.Background(), deleteDataAccessRuleOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteDataAccessRuleWithContext is an alternate form of the DeleteDataAccessRule method which supports a Context parameter
+func (logs *LogsV0) DeleteDataAccessRuleWithContext(ctx context.Context, deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteDataAccessRuleOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteDataAccessRuleOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDataAccessRule")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_data_access_rule", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ExportDataUsage : Get data usage metrics export status or return data usage report
+// Get Data usage and metrics export Status.
+func (logs *LogsV0) ExportDataUsage(exportDataUsageOptions *ExportDataUsageOptions) (result ExportDataUsageResponseIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ExportDataUsageWithContext(context.Background(), exportDataUsageOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ExportDataUsageWithContext is an alternate form of the ExportDataUsage method which supports a Context parameter
+func (logs *LogsV0) ExportDataUsageWithContext(ctx context.Context, exportDataUsageOptions *ExportDataUsageOptions) (result ExportDataUsageResponseIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(exportDataUsageOptions, "exportDataUsageOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range exportDataUsageOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ExportDataUsage")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if exportDataUsageOptions.Range != nil {
+		builder.AddQuery("range", fmt.Sprint(*exportDataUsageOptions.Range))
+	}
+	if exportDataUsageOptions.Query != nil {
+		builder.AddQuery("query", fmt.Sprint(*exportDataUsageOptions.Query))
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "export_data_usage", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExportDataUsageResponse)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateDataUsageMetricsExportStatus : Update data usage metrics export status
+// Update data usage metrics export status.
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateDataUsageMetricsExportStatusWithContext(context.Background(), updateDataUsageMetricsExportStatusOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateDataUsageMetricsExportStatusWithContext is an alternate form of the UpdateDataUsageMetricsExportStatus method which supports a Context parameter
+func (logs *LogsV0) UpdateDataUsageMetricsExportStatusWithContext(ctx context.Context, updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateDataUsageMetricsExportStatusOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataUsageMetricsExportStatus")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateDataUsageMetricsExportStatusOptions.Enabled != nil {
+		body["enabled"] = updateDataUsageMetricsExportStatusOptions.Enabled
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_data_usage_metrics_export_status", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetEnrichments : List all enrichments
+// List all enrichments.
+func (logs *LogsV0) GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetEnrichmentsWithContext(context.Background(), getEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetEnrichmentsWithContext is an alternate form of the GetEnrichments method which supports a Context parameter
+func (logs *LogsV0) GetEnrichmentsWithContext(ctx context.Context, getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getEnrichmentsOptions, "getEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichmentCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateEnrichment : Create an enrichment
+// Create an enrichment.
+func (logs *LogsV0) CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateEnrichmentWithContext(context.Background(), createEnrichmentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateEnrichmentWithContext is an alternate form of the CreateEnrichment method which supports a Context parameter
+func (logs *LogsV0) CreateEnrichmentWithContext(ctx context.Context, createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createEnrichmentOptions, "createEnrichmentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createEnrichmentOptions, "createEnrichmentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createEnrichmentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEnrichment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createEnrichmentOptions.FieldName != nil {
+		body["field_name"] = createEnrichmentOptions.FieldName
+	}
+	if createEnrichmentOptions.EnrichmentType != nil {
+		body["enrichment_type"] = createEnrichmentOptions.EnrichmentType
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_enrichment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichment)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// RemoveEnrichments : Delete enrichments
+// Delete enrichments.
+func (logs *LogsV0) RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.RemoveEnrichmentsWithContext(context.Background(), removeEnrichmentsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// RemoveEnrichmentsWithContext is an alternate form of the RemoveEnrichments method which supports a Context parameter
+func (logs *LogsV0) RemoveEnrichmentsWithContext(ctx context.Context, removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(removeEnrichmentsOptions, "removeEnrichmentsOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(removeEnrichmentsOptions, "removeEnrichmentsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*removeEnrichmentsOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range removeEnrichmentsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "RemoveEnrichments")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "remove_enrichments", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListE2m : Lists events to metrics definitions
+// Lists events to metrics definitions.
+func (logs *LogsV0) ListE2m(listE2mOptions *ListE2mOptions) (result *Event2MetricCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListE2mWithContext(context.Background(), listE2mOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListE2mWithContext is an alternate form of the ListE2m method which supports a Context parameter
+func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *ListE2mOptions) (result *Event2MetricCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listE2mOptions, "listE2mOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listE2mOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListE2m")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_e2m", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2MetricCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateE2m : Creates events to metrics definitions
+// Creates events to metrics definitions.
+func (logs *LogsV0) CreateE2m(createE2mOptions *CreateE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateE2mWithContext(context.Background(), createE2mOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateE2mWithContext is an alternate form of the CreateE2m method which supports a Context parameter
+func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *CreateE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createE2mOptions, "createE2mOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createE2mOptions, "createE2mOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createE2mOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateE2m")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(createE2mOptions.Event2MetricPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_e2m", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetE2m : Gets events to metrics definitions by ID
+// Gets events to metrics definitions by ID.
+func (logs *LogsV0) GetE2m(getE2mOptions *GetE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetE2mWithContext(context.Background(), getE2mOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetE2mWithContext is an alternate form of the GetE2m method which supports a Context parameter
+func (logs *LogsV0) GetE2mWithContext(ctx context.Context, getE2mOptions *GetE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getE2mOptions, "getE2mOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getE2mOptions, "getE2mOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *getE2mOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getE2mOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetE2m")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_e2m", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceE2m : Updates events to metrics definitions
+// Updates events to metrics definitions.
+func (logs *LogsV0) ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceE2mWithContext(context.Background(), replaceE2mOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceE2mWithContext is an alternate form of the ReplaceE2m method which supports a Context parameter
+func (logs *LogsV0) ReplaceE2mWithContext(ctx context.Context, replaceE2mOptions *ReplaceE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceE2mOptions, "replaceE2mOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceE2mOptions, "replaceE2mOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *replaceE2mOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceE2mOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceE2m")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	_, err = builder.SetBodyContentJSON(replaceE2mOptions.Event2MetricPrototype)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_e2m", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteE2m : Deletes events to metrics definitions by ID
+// Deletes events to metrics definitions by ID.
+func (logs *LogsV0) DeleteE2m(deleteE2mOptions *DeleteE2mOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteE2mWithContext(context.Background(), deleteE2mOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteE2mWithContext is an alternate form of the DeleteE2m method which supports a Context parameter
+func (logs *LogsV0) DeleteE2mWithContext(ctx context.Context, deleteE2mOptions *DeleteE2mOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteE2mOptions, "deleteE2mOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteE2mOptions, "deleteE2mOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *deleteE2mOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteE2mOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteE2m")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_e2m", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// GetExtension : Get an extension by ID
+// Get an extension by ID.
+func (logs *LogsV0) GetExtension(getExtensionOptions *GetExtensionOptions) (result *Extension, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetExtensionWithContext(context.Background(), getExtensionOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetExtensionWithContext is an alternate form of the GetExtension method which supports a Context parameter
+func (logs *LogsV0) GetExtensionWithContext(ctx context.Context, getExtensionOptions *GetExtensionOptions) (result *Extension, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getExtensionOptions, "getExtensionOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getExtensionOptions, "getExtensionOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *getExtensionOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/extensions/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getExtensionOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetExtension")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_extension", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExtension)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetExtensionDeployment : Get deployment details of an extension
+// Get deployment details of an extension using id of an extension.
+func (logs *LogsV0) GetExtensionDeployment(getExtensionDeploymentOptions *GetExtensionDeploymentOptions) (result *ExtensionDeployment, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetExtensionDeploymentWithContext(context.Background(), getExtensionDeploymentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetExtensionDeploymentWithContext is an alternate form of the GetExtensionDeployment method which supports a Context parameter
+func (logs *LogsV0) GetExtensionDeploymentWithContext(ctx context.Context, getExtensionDeploymentOptions *GetExtensionDeploymentOptions) (result *ExtensionDeployment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getExtensionDeploymentOptions, "getExtensionDeploymentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getExtensionDeploymentOptions, "getExtensionDeploymentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *getExtensionDeploymentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/extensions/{id}/deployment`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getExtensionDeploymentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetExtensionDeployment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_extension_deployment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExtensionDeployment)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateExtensionDeployment : Deploy or update deployment of an extension
+// Deploy or update deployment of an extension using extension ID.
+func (logs *LogsV0) UpdateExtensionDeployment(updateExtensionDeploymentOptions *UpdateExtensionDeploymentOptions) (result *ExtensionDeployment, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateExtensionDeploymentWithContext(context.Background(), updateExtensionDeploymentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateExtensionDeploymentWithContext is an alternate form of the UpdateExtensionDeployment method which supports a Context parameter
+func (logs *LogsV0) UpdateExtensionDeploymentWithContext(ctx context.Context, updateExtensionDeploymentOptions *UpdateExtensionDeploymentOptions) (result *ExtensionDeployment, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateExtensionDeploymentOptions, "updateExtensionDeploymentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateExtensionDeploymentOptions, "updateExtensionDeploymentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *updateExtensionDeploymentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/extensions/{id}/deployment`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateExtensionDeploymentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateExtensionDeployment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateExtensionDeploymentOptions.Version != nil {
+		body["version"] = updateExtensionDeploymentOptions.Version
+	}
+	if updateExtensionDeploymentOptions.ItemIds != nil {
+		body["item_ids"] = updateExtensionDeploymentOptions.ItemIds
+	}
+	if updateExtensionDeploymentOptions.Applications != nil {
+		body["applications"] = updateExtensionDeploymentOptions.Applications
+	}
+	if updateExtensionDeploymentOptions.Subsystems != nil {
+		body["subsystems"] = updateExtensionDeploymentOptions.Subsystems
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_extension_deployment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExtensionDeployment)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteExtensionDeployment : Delete deployment of an extension
+// Delete deployment of an extension using extension ID.
+func (logs *LogsV0) DeleteExtensionDeployment(deleteExtensionDeploymentOptions *DeleteExtensionDeploymentOptions) (result *UndeployExtensionResponse, response *core.DetailedResponse, err error) {
+	result, response, err = logs.DeleteExtensionDeploymentWithContext(context.Background(), deleteExtensionDeploymentOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteExtensionDeploymentWithContext is an alternate form of the DeleteExtensionDeployment method which supports a Context parameter
+func (logs *LogsV0) DeleteExtensionDeploymentWithContext(ctx context.Context, deleteExtensionDeploymentOptions *DeleteExtensionDeploymentOptions) (result *UndeployExtensionResponse, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteExtensionDeploymentOptions, "deleteExtensionDeploymentOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteExtensionDeploymentOptions, "deleteExtensionDeploymentOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": *deleteExtensionDeploymentOptions.ID,
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/extensions/{id}/deployment`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteExtensionDeploymentOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteExtensionDeployment")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_extension_deployment", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalUndeployExtensionResponse)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetExtensions : Get list of extensions
+// Get list of extensions.
+func (logs *LogsV0) GetExtensions(getExtensionsOptions *GetExtensionsOptions) (result *ExtensionCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetExtensionsWithContext(context.Background(), getExtensionsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetExtensionsWithContext is an alternate form of the GetExtensions method which supports a Context parameter
+func (logs *LogsV0) GetExtensionsWithContext(ctx context.Context, getExtensionsOptions *GetExtensionsOptions) (result *ExtensionCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getExtensionsOptions, "getExtensionsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/extensions`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getExtensionsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetExtensions")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	if getExtensionsOptions.Deployed != nil {
+		builder.AddQuery("deployed", fmt.Sprint(*getExtensionsOptions.Deployed))
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_extensions", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExtensionCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ListDashboardFolders : List all dashboard folders
+// List all dashboard folders.
+func (logs *LogsV0) ListDashboardFolders(listDashboardFoldersOptions *ListDashboardFoldersOptions) (result *DashboardFolderCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListDashboardFoldersWithContext(context.Background(), listDashboardFoldersOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListDashboardFoldersWithContext is an alternate form of the ListDashboardFolders method which supports a Context parameter
+func (logs *LogsV0) ListDashboardFoldersWithContext(ctx context.Context, listDashboardFoldersOptions *ListDashboardFoldersOptions) (result *DashboardFolderCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listDashboardFoldersOptions, "listDashboardFoldersOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listDashboardFoldersOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDashboardFolders")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_dashboard_folders", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolderCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateDashboardFolder : Create a dashboard folder
+// Create a dashboard folder.
+func (logs *LogsV0) CreateDashboardFolder(createDashboardFolderOptions *CreateDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateDashboardFolderWithContext(context.Background(), createDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateDashboardFolderWithContext is an alternate form of the CreateDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, createDashboardFolderOptions *CreateDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createDashboardFolderOptions, "createDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createDashboardFolderOptions, "createDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createDashboardFolderOptions.Name != nil {
+		body["name"] = createDashboardFolderOptions.Name
+	}
+	if createDashboardFolderOptions.ID != nil {
+		body["id"] = createDashboardFolderOptions.ID
+	}
+	if createDashboardFolderOptions.ParentID != nil {
+		body["parent_id"] = createDashboardFolderOptions.ParentID
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetDashboardFolder : Get a dashboard folder by ID
+// Get a dashboard folder by ID.
+func (logs *LogsV0) GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetDashboardFolderWithContext(context.Background(), getDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetDashboardFolderWithContext is an alternate form of the GetDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) GetDashboardFolderWithContext(ctx context.Context, getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getDashboardFolderOptions, "getDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getDashboardFolderOptions, "getDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"folder_id": fmt.Sprint(*getDashboardFolderOptions.FolderID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceDashboardFolder : Update a dashboard folder
+// Update a dashboard folder.
+func (logs *LogsV0) ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceDashboardFolderWithContext(context.Background(), replaceDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceDashboardFolderWithContext is an alternate form of the ReplaceDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceDashboardFolderOptions, "replaceDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceDashboardFolderOptions, "replaceDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"folder_id": fmt.Sprint(*replaceDashboardFolderOptions.FolderID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if replaceDashboardFolderOptions.Name != nil {
+		body["name"] = replaceDashboardFolderOptions.Name
+	}
+	if replaceDashboardFolderOptions.ID != nil {
+		body["id"] = replaceDashboardFolderOptions.ID
+	}
+	if replaceDashboardFolderOptions.ParentID != nil {
+		body["parent_id"] = replaceDashboardFolderOptions.ParentID
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteDashboardFolder : Delete a dashboard folder
+// Delete a dashboard folder.
+func (logs *LogsV0) DeleteDashboardFolder(deleteDashboardFolderOptions *DeleteDashboardFolderOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteDashboardFolderWithContext(context.Background(), deleteDashboardFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteDashboardFolderWithContext is an alternate form of the DeleteDashboardFolder method which supports a Context parameter
+func (logs *LogsV0) DeleteDashboardFolderWithContext(ctx context.Context, deleteDashboardFolderOptions *DeleteDashboardFolderOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteDashboardFolderOptions, "deleteDashboardFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteDashboardFolderOptions, "deleteDashboardFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"folder_id": fmt.Sprint(*deleteDashboardFolderOptions.FolderID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteDashboardFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDashboardFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_dashboard_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListViewFolders : List view's folders
+// List view's folders.
+func (logs *LogsV0) ListViewFolders(listViewFoldersOptions *ListViewFoldersOptions) (result *ViewFolderCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListViewFoldersWithContext(context.Background(), listViewFoldersOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListViewFoldersWithContext is an alternate form of the ListViewFolders method which supports a Context parameter
+func (logs *LogsV0) ListViewFoldersWithContext(ctx context.Context, listViewFoldersOptions *ListViewFoldersOptions) (result *ViewFolderCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listViewFoldersOptions, "listViewFoldersOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listViewFoldersOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListViewFolders")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "list_view_folders", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolderCollection)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// CreateViewFolder : Create view folder
+// Create view folder.
+func (logs *LogsV0) CreateViewFolder(createViewFolderOptions *CreateViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateViewFolderWithContext(context.Background(), createViewFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// CreateViewFolderWithContext is an alternate form of the CreateViewFolder method which supports a Context parameter
+func (logs *LogsV0) CreateViewFolderWithContext(ctx context.Context, createViewFolderOptions *CreateViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createViewFolderOptions, "createViewFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(createViewFolderOptions, "createViewFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.POST)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range createViewFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateViewFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if createViewFolderOptions.Name != nil {
+		body["name"] = createViewFolderOptions.Name
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "create_view_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// GetViewFolder : Get view folder
+// Get view folder.
+func (logs *LogsV0) GetViewFolder(getViewFolderOptions *GetViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetViewFolderWithContext(context.Background(), getViewFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetViewFolderWithContext is an alternate form of the GetViewFolder method which supports a Context parameter
+func (logs *LogsV0) GetViewFolderWithContext(ctx context.Context, getViewFolderOptions *GetViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getViewFolderOptions, "getViewFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getViewFolderOptions, "getViewFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*getViewFolderOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getViewFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetViewFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_view_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// ReplaceViewFolder : Replaces an existing view folder
+// Replaces an existing view folder.
+func (logs *LogsV0) ReplaceViewFolder(replaceViewFolderOptions *ReplaceViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ReplaceViewFolderWithContext(context.Background(), replaceViewFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ReplaceViewFolderWithContext is an alternate form of the ReplaceViewFolder method which supports a Context parameter
+func (logs *LogsV0) ReplaceViewFolderWithContext(ctx context.Context, replaceViewFolderOptions *ReplaceViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(replaceViewFolderOptions, "replaceViewFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(replaceViewFolderOptions, "replaceViewFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*replaceViewFolderOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range replaceViewFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceViewFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if replaceViewFolderOptions.Name != nil {
+		body["name"] = replaceViewFolderOptions.Name
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "replace_view_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// DeleteViewFolder : Deletes a view folder by ID
+// Deletes a view folder by ID.
+func (logs *LogsV0) DeleteViewFolder(deleteViewFolderOptions *DeleteViewFolderOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteViewFolderWithContext(context.Background(), deleteViewFolderOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// DeleteViewFolderWithContext is an alternate form of the DeleteViewFolder method which supports a Context parameter
+func (logs *LogsV0) DeleteViewFolderWithContext(ctx context.Context, deleteViewFolderOptions *DeleteViewFolderOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteViewFolderOptions, "deleteViewFolderOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(deleteViewFolderOptions, "deleteViewFolderOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"id": fmt.Sprint(*deleteViewFolderOptions.ID),
+	}
+
+	builder := core.NewRequestBuilder(core.DELETE)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range deleteViewFolderOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteViewFolder")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_view_folder", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
 	}
 
 	return
@@ -1639,36 +4429,45 @@ func (logs *LogsV0) CreatePolicyWithContext(ctx context.Context, createPolicyOpt
 	return
 }
 
-// GetDashboardCatalog : Get dashboard catalog
-// Get dashboard catalog.
-func (logs *LogsV0) GetDashboardCatalog(getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetDashboardCatalogWithContext(context.Background(), getDashboardCatalogOptions)
+// GetRuleGroup : Gets rule group by groupid
+// Gets rule group by groupid.
+func (logs *LogsV0) GetRuleGroup(getRuleGroupOptions *GetRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetRuleGroupWithContext(context.Background(), getRuleGroupOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// GetDashboardCatalogWithContext is an alternate form of the GetDashboardCatalog method which supports a Context parameter
-func (logs *LogsV0) GetDashboardCatalogWithContext(ctx context.Context, getDashboardCatalogOptions *GetDashboardCatalogOptions) (result *DashboardCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(getDashboardCatalogOptions, "getDashboardCatalogOptions")
+// GetRuleGroupWithContext is an alternate form of the GetRuleGroup method which supports a Context parameter
+func (logs *LogsV0) GetRuleGroupWithContext(ctx context.Context, getRuleGroupOptions *GetRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(getRuleGroupOptions, "getRuleGroupOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(getRuleGroupOptions, "getRuleGroupOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
+	}
+
+	pathParamsMap := map[string]string{
+		"group_id": fmt.Sprint(*getRuleGroupOptions.GroupID),
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range getDashboardCatalogOptions.Headers {
+	for headerName, headerValue := range getRuleGroupOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardCatalog")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetRuleGroup")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -1683,12 +4482,12 @@ func (logs *LogsV0) GetDashboardCatalogWithContext(ctx context.Context, getDashb
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "get_dashboard_catalog", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "get_rule_group", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -1699,614 +4498,45 @@ func (logs *LogsV0) GetDashboardCatalogWithContext(ctx context.Context, getDashb
 	return
 }
 
-// CreateDashboard : Creates a new dashboard
-// Creates a new dashboard.
-func (logs *LogsV0) CreateDashboard(createDashboardOptions *CreateDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateDashboardWithContext(context.Background(), createDashboardOptions)
+// UpdateRuleGroup : Updates rule group by groupid
+// Updates rule group by groupid.
+func (logs *LogsV0) UpdateRuleGroup(updateRuleGroupOptions *UpdateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateRuleGroupWithContext(context.Background(), updateRuleGroupOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// CreateDashboardWithContext is an alternate form of the CreateDashboard method which supports a Context parameter
-func (logs *LogsV0) CreateDashboardWithContext(ctx context.Context, createDashboardOptions *CreateDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createDashboardOptions, "createDashboardOptions cannot be nil")
+// UpdateRuleGroupWithContext is an alternate form of the UpdateRuleGroup method which supports a Context parameter
+func (logs *LogsV0) UpdateRuleGroupWithContext(ctx context.Context, updateRuleGroupOptions *UpdateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateRuleGroupOptions, "updateRuleGroupOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(createDashboardOptions, "createDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	_, err = builder.SetBodyContentJSON(createDashboardOptions.Dashboard)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// GetDashboard : Gets an existing dashboard
-// Gets an existing dashboard.
-func (logs *LogsV0) GetDashboard(getDashboardOptions *GetDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetDashboardWithContext(context.Background(), getDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetDashboardWithContext is an alternate form of the GetDashboard method which supports a Context parameter
-func (logs *LogsV0) GetDashboardWithContext(ctx context.Context, getDashboardOptions *GetDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getDashboardOptions, "getDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(getDashboardOptions, "getDashboardOptions")
+	err = core.ValidateStruct(updateRuleGroupOptions, "updateRuleGroupOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"dashboard_id": *getDashboardOptions.DashboardID,
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// ReplaceDashboard : Replaces an existing dashboard
-// Replaces an existing dashboard.
-func (logs *LogsV0) ReplaceDashboard(replaceDashboardOptions *ReplaceDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceDashboardWithContext(context.Background(), replaceDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ReplaceDashboardWithContext is an alternate form of the ReplaceDashboard method which supports a Context parameter
-func (logs *LogsV0) ReplaceDashboardWithContext(ctx context.Context, replaceDashboardOptions *ReplaceDashboardOptions) (result DashboardIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceDashboardOptions, "replaceDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(replaceDashboardOptions, "replaceDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *replaceDashboardOptions.DashboardID,
+		"group_id": fmt.Sprint(*updateRuleGroupOptions.GroupID),
 	}
 
 	builder := core.NewRequestBuilder(core.PUT)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range replaceDashboardOptions.Headers {
+	for headerName, headerValue := range updateRuleGroupOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	_, err = builder.SetBodyContentJSON(replaceDashboardOptions.Dashboard)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboard)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// DeleteDashboard : Deletes an existing dashboard
-// Deletes an existing dashboard.
-func (logs *LogsV0) DeleteDashboard(deleteDashboardOptions *DeleteDashboardOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteDashboardWithContext(context.Background(), deleteDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// DeleteDashboardWithContext is an alternate form of the DeleteDashboard method which supports a Context parameter
-func (logs *LogsV0) DeleteDashboardWithContext(ctx context.Context, deleteDashboardOptions *DeleteDashboardOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteDashboardOptions, "deleteDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteDashboardOptions, "deleteDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *deleteDashboardOptions.DashboardID,
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// PinDashboard : Add dashboard to the favorite folder
-// Add dashboard to the favorite folder.
-func (logs *LogsV0) PinDashboard(pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.PinDashboardWithContext(context.Background(), pinDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// PinDashboardWithContext is an alternate form of the PinDashboard method which supports a Context parameter
-func (logs *LogsV0) PinDashboardWithContext(ctx context.Context, pinDashboardOptions *PinDashboardOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(pinDashboardOptions, "pinDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(pinDashboardOptions, "pinDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *pinDashboardOptions.DashboardID,
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/pinned`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range pinDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "PinDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "pin_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// UnpinDashboard : Remove dashboard to the favorite folder
-// Remove dashboard to the favorite folder.
-func (logs *LogsV0) UnpinDashboard(unpinDashboardOptions *UnpinDashboardOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.UnpinDashboardWithContext(context.Background(), unpinDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// UnpinDashboardWithContext is an alternate form of the UnpinDashboard method which supports a Context parameter
-func (logs *LogsV0) UnpinDashboardWithContext(ctx context.Context, unpinDashboardOptions *UnpinDashboardOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(unpinDashboardOptions, "unpinDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(unpinDashboardOptions, "unpinDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *unpinDashboardOptions.DashboardID,
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/pinned`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range unpinDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UnpinDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "unpin_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ReplaceDefaultDashboard : Set dashboard as the default dashboard for the user
-// Set dashboard as the default dashboard for the user.
-func (logs *LogsV0) ReplaceDefaultDashboard(replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.ReplaceDefaultDashboardWithContext(context.Background(), replaceDefaultDashboardOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ReplaceDefaultDashboardWithContext is an alternate form of the ReplaceDefaultDashboard method which supports a Context parameter
-func (logs *LogsV0) ReplaceDefaultDashboardWithContext(ctx context.Context, replaceDefaultDashboardOptions *ReplaceDefaultDashboardOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceDefaultDashboardOptions, "replaceDefaultDashboardOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(replaceDefaultDashboardOptions, "replaceDefaultDashboardOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *replaceDefaultDashboardOptions.DashboardID,
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/default`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range replaceDefaultDashboardOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDefaultDashboard")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_default_dashboard", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// AssignDashboardFolder : Assign a dashboard to a folder
-// Assign a dashboard to a folder.
-func (logs *LogsV0) AssignDashboardFolder(assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.AssignDashboardFolderWithContext(context.Background(), assignDashboardFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// AssignDashboardFolderWithContext is an alternate form of the AssignDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) AssignDashboardFolderWithContext(ctx context.Context, assignDashboardFolderOptions *AssignDashboardFolderOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(assignDashboardFolderOptions, "assignDashboardFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(assignDashboardFolderOptions, "assignDashboardFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"dashboard_id": *assignDashboardFolderOptions.DashboardID,
-		"folder_id": *assignDashboardFolderOptions.FolderID,
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/dashboards/{dashboard_id}/folder/{folder_id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range assignDashboardFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "AssignDashboardFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "assign_dashboard_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ListDashboardFolders : List all dashboard folders
-// List all dashboard folders.
-func (logs *LogsV0) ListDashboardFolders(listDashboardFoldersOptions *ListDashboardFoldersOptions) (result *DashboardFolderCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListDashboardFoldersWithContext(context.Background(), listDashboardFoldersOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ListDashboardFoldersWithContext is an alternate form of the ListDashboardFolders method which supports a Context parameter
-func (logs *LogsV0) ListDashboardFoldersWithContext(ctx context.Context, listDashboardFoldersOptions *ListDashboardFoldersOptions) (result *DashboardFolderCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listDashboardFoldersOptions, "listDashboardFoldersOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range listDashboardFoldersOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDashboardFolders")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "list_dashboard_folders", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolderCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateDashboardFolder : Create a dashboard folder
-// Create a dashboard folder.
-func (logs *LogsV0) CreateDashboardFolder(createDashboardFolderOptions *CreateDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateDashboardFolderWithContext(context.Background(), createDashboardFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateDashboardFolderWithContext is an alternate form of the CreateDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, createDashboardFolderOptions *CreateDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createDashboardFolderOptions, "createDashboardFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createDashboardFolderOptions, "createDashboardFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createDashboardFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDashboardFolder")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateRuleGroup")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -2314,14 +4544,23 @@ func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, create
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if createDashboardFolderOptions.Name != nil {
-		body["name"] = createDashboardFolderOptions.Name
+	if updateRuleGroupOptions.Name != nil {
+		body["name"] = updateRuleGroupOptions.Name
 	}
-	if createDashboardFolderOptions.ID != nil {
-		body["id"] = createDashboardFolderOptions.ID
+	if updateRuleGroupOptions.RuleSubgroups != nil {
+		body["rule_subgroups"] = updateRuleGroupOptions.RuleSubgroups
 	}
-	if createDashboardFolderOptions.ParentID != nil {
-		body["parent_id"] = createDashboardFolderOptions.ParentID
+	if updateRuleGroupOptions.Description != nil {
+		body["description"] = updateRuleGroupOptions.Description
+	}
+	if updateRuleGroupOptions.Enabled != nil {
+		body["enabled"] = updateRuleGroupOptions.Enabled
+	}
+	if updateRuleGroupOptions.RuleMatchers != nil {
+		body["rule_matchers"] = updateRuleGroupOptions.RuleMatchers
+	}
+	if updateRuleGroupOptions.Order != nil {
+		body["order"] = updateRuleGroupOptions.Order
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -2338,12 +4577,12 @@ func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, create
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "create_dashboard_folder", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "update_rule_group", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2354,45 +4593,95 @@ func (logs *LogsV0) CreateDashboardFolderWithContext(ctx context.Context, create
 	return
 }
 
-// GetDashboardFolder : Get a dashboard folder by ID
-// Get a dashboard folder by ID.
-func (logs *LogsV0) GetDashboardFolder(getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetDashboardFolderWithContext(context.Background(), getDashboardFolderOptions)
+// DeleteRuleGroup : Deletes rule group by groupid
+// Deletes rule group by groupid.
+func (logs *LogsV0) DeleteRuleGroup(deleteRuleGroupOptions *DeleteRuleGroupOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteRuleGroupWithContext(context.Background(), deleteRuleGroupOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// GetDashboardFolderWithContext is an alternate form of the GetDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) GetDashboardFolderWithContext(ctx context.Context, getDashboardFolderOptions *GetDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getDashboardFolderOptions, "getDashboardFolderOptions cannot be nil")
+// DeleteRuleGroupWithContext is an alternate form of the DeleteRuleGroup method which supports a Context parameter
+func (logs *LogsV0) DeleteRuleGroupWithContext(ctx context.Context, deleteRuleGroupOptions *DeleteRuleGroupOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteRuleGroupOptions, "deleteRuleGroupOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(getDashboardFolderOptions, "getDashboardFolderOptions")
+	err = core.ValidateStruct(deleteRuleGroupOptions, "deleteRuleGroupOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"folder_id": fmt.Sprint(*getDashboardFolderOptions.FolderID),
+		"group_id": fmt.Sprint(*deleteRuleGroupOptions.GroupID),
 	}
 
-	builder := core.NewRequestBuilder(core.GET)
+	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups/{group_id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range getDashboardFolderOptions.Headers {
+	for headerName, headerValue := range deleteRuleGroupOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetDashboardFolder")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteRuleGroup")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "delete_rule_group", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
+// ListRuleGroups : Gets all rule groups
+// Gets all rule groups.
+func (logs *LogsV0) ListRuleGroups(listRuleGroupsOptions *ListRuleGroupsOptions) (result *RuleGroupCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.ListRuleGroupsWithContext(context.Background(), listRuleGroupsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// ListRuleGroupsWithContext is an alternate form of the ListRuleGroups method which supports a Context parameter
+func (logs *LogsV0) ListRuleGroupsWithContext(ctx context.Context, listRuleGroupsOptions *ListRuleGroupsOptions) (result *RuleGroupCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(listRuleGroupsOptions, "listRuleGroupsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range listRuleGroupsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListRuleGroups")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -2407,12 +4696,12 @@ func (logs *LogsV0) GetDashboardFolderWithContext(ctx context.Context, getDashbo
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "get_dashboard_folder", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "list_rule_groups", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroupCollection)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2423,45 +4712,41 @@ func (logs *LogsV0) GetDashboardFolderWithContext(ctx context.Context, getDashbo
 	return
 }
 
-// ReplaceDashboardFolder : Update a dashboard folder
-// Update a dashboard folder.
-func (logs *LogsV0) ReplaceDashboardFolder(replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceDashboardFolderWithContext(context.Background(), replaceDashboardFolderOptions)
+// CreateRuleGroup : Creates rule group
+// Creates rule group.
+func (logs *LogsV0) CreateRuleGroup(createRuleGroupOptions *CreateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateRuleGroupWithContext(context.Background(), createRuleGroupOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// ReplaceDashboardFolderWithContext is an alternate form of the ReplaceDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, replaceDashboardFolderOptions *ReplaceDashboardFolderOptions) (result *DashboardFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceDashboardFolderOptions, "replaceDashboardFolderOptions cannot be nil")
+// CreateRuleGroupWithContext is an alternate form of the CreateRuleGroup method which supports a Context parameter
+func (logs *LogsV0) CreateRuleGroupWithContext(ctx context.Context, createRuleGroupOptions *CreateRuleGroupOptions) (result *RuleGroup, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createRuleGroupOptions, "createRuleGroupOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(replaceDashboardFolderOptions, "replaceDashboardFolderOptions")
+	err = core.ValidateStruct(createRuleGroupOptions, "createRuleGroupOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
-	pathParamsMap := map[string]string{
-		"folder_id": fmt.Sprint(*replaceDashboardFolderOptions.FolderID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
+	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/rule_groups`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range replaceDashboardFolderOptions.Headers {
+	for headerName, headerValue := range createRuleGroupOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceDashboardFolder")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateRuleGroup")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -2469,14 +4754,23 @@ func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, repla
 	builder.AddHeader("Content-Type", "application/json")
 
 	body := make(map[string]interface{})
-	if replaceDashboardFolderOptions.Name != nil {
-		body["name"] = replaceDashboardFolderOptions.Name
+	if createRuleGroupOptions.Name != nil {
+		body["name"] = createRuleGroupOptions.Name
 	}
-	if replaceDashboardFolderOptions.ID != nil {
-		body["id"] = replaceDashboardFolderOptions.ID
+	if createRuleGroupOptions.RuleSubgroups != nil {
+		body["rule_subgroups"] = createRuleGroupOptions.RuleSubgroups
 	}
-	if replaceDashboardFolderOptions.ParentID != nil {
-		body["parent_id"] = replaceDashboardFolderOptions.ParentID
+	if createRuleGroupOptions.Description != nil {
+		body["description"] = createRuleGroupOptions.Description
+	}
+	if createRuleGroupOptions.Enabled != nil {
+		body["enabled"] = createRuleGroupOptions.Enabled
+	}
+	if createRuleGroupOptions.RuleMatchers != nil {
+		body["rule_matchers"] = createRuleGroupOptions.RuleMatchers
+	}
+	if createRuleGroupOptions.Order != nil {
+		body["order"] = createRuleGroupOptions.Order
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -2493,12 +4787,12 @@ func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, repla
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_dashboard_folder", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "create_rule_group", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDashboardFolder)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalRuleGroup)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2509,76 +4803,17 @@ func (logs *LogsV0) ReplaceDashboardFolderWithContext(ctx context.Context, repla
 	return
 }
 
-// DeleteDashboardFolder : Delete a dashboard folder
-// Delete a dashboard folder.
-func (logs *LogsV0) DeleteDashboardFolder(deleteDashboardFolderOptions *DeleteDashboardFolderOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteDashboardFolderWithContext(context.Background(), deleteDashboardFolderOptions)
+// GetEventStreamTargets : List all Event Streams
+// List all Event Streams.
+func (logs *LogsV0) GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetEventStreamTargetsWithContext(context.Background(), getEventStreamTargetsOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// DeleteDashboardFolderWithContext is an alternate form of the DeleteDashboardFolder method which supports a Context parameter
-func (logs *LogsV0) DeleteDashboardFolderWithContext(ctx context.Context, deleteDashboardFolderOptions *DeleteDashboardFolderOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteDashboardFolderOptions, "deleteDashboardFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteDashboardFolderOptions, "deleteDashboardFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"folder_id": fmt.Sprint(*deleteDashboardFolderOptions.FolderID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/folders/{folder_id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteDashboardFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDashboardFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_dashboard_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ListE2m : Lists events to metrics definitions
-// Lists events to metrics definitions.
-func (logs *LogsV0) ListE2m(listE2mOptions *ListE2mOptions) (result *Event2MetricCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListE2mWithContext(context.Background(), listE2mOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ListE2mWithContext is an alternate form of the ListE2m method which supports a Context parameter
-func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *ListE2mOptions) (result *Event2MetricCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listE2mOptions, "listE2mOptions")
+// GetEventStreamTargetsWithContext is an alternate form of the GetEventStreamTargets method which supports a Context parameter
+func (logs *LogsV0) GetEventStreamTargetsWithContext(ctx context.Context, getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getEventStreamTargetsOptions, "getEventStreamTargetsOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
@@ -2587,17 +4822,17 @@ func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *List
 	builder := core.NewRequestBuilder(core.GET)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range listE2mOptions.Headers {
+	for headerName, headerValue := range getEventStreamTargetsOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListE2m")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEventStreamTargets")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -2612,12 +4847,12 @@ func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *List
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "list_e2m", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "get_event_stream_targets", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2MetricCollection)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStreamCollection)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2628,22 +4863,22 @@ func (logs *LogsV0) ListE2mWithContext(ctx context.Context, listE2mOptions *List
 	return
 }
 
-// CreateE2m : Creates events to metrics definitions
-// Creates events to metrics definitions.
-func (logs *LogsV0) CreateE2m(createE2mOptions *CreateE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateE2mWithContext(context.Background(), createE2mOptions)
+// CreateEventStreamTarget : Create an Event Stream Integration
+// Create an Event Stream Integration.
+func (logs *LogsV0) CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	result, response, err = logs.CreateEventStreamTargetWithContext(context.Background(), createEventStreamTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// CreateE2mWithContext is an alternate form of the CreateE2m method which supports a Context parameter
-func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *CreateE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createE2mOptions, "createE2mOptions cannot be nil")
+// CreateEventStreamTargetWithContext is an alternate form of the CreateEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) CreateEventStreamTargetWithContext(ctx context.Context, createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(createEventStreamTargetOptions, "createEventStreamTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(createE2mOptions, "createE2mOptions")
+	err = core.ValidateStruct(createEventStreamTargetOptions, "createEventStreamTargetOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
@@ -2652,24 +4887,40 @@ func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *
 	builder := core.NewRequestBuilder(core.POST)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics`, nil)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range createE2mOptions.Headers {
+	for headerName, headerValue := range createEventStreamTargetOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateE2m")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEventStreamTarget")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	_, err = builder.SetBodyContentJSON(createE2mOptions.Event2MetricPrototype)
+	body := make(map[string]interface{})
+	if createEventStreamTargetOptions.Name != nil {
+		body["name"] = createEventStreamTargetOptions.Name
+	}
+	if createEventStreamTargetOptions.DpxlExpression != nil {
+		body["dpxl_expression"] = createEventStreamTargetOptions.DpxlExpression
+	}
+	if createEventStreamTargetOptions.IsActive != nil {
+		body["is_active"] = createEventStreamTargetOptions.IsActive
+	}
+	if createEventStreamTargetOptions.CompressionType != nil {
+		body["compression_type"] = createEventStreamTargetOptions.CompressionType
+	}
+	if createEventStreamTargetOptions.IbmEventStreams != nil {
+		body["ibm_event_streams"] = createEventStreamTargetOptions.IbmEventStreams
+	}
+	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
 		return
@@ -2684,12 +4935,12 @@ func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "create_e2m", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "create_event_stream_target", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2700,121 +4951,68 @@ func (logs *LogsV0) CreateE2mWithContext(ctx context.Context, createE2mOptions *
 	return
 }
 
-// GetE2m : Gets events to metrics definitions by ID
-// Gets events to metrics definitions by ID.
-func (logs *LogsV0) GetE2m(getE2mOptions *GetE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetE2mWithContext(context.Background(), getE2mOptions)
+// UpdateEventStreamTarget : Update an Event Stream
+// Update an Event Stream.
+func (logs *LogsV0) UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	result, response, err = logs.UpdateEventStreamTargetWithContext(context.Background(), updateEventStreamTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// GetE2mWithContext is an alternate form of the GetE2m method which supports a Context parameter
-func (logs *LogsV0) GetE2mWithContext(ctx context.Context, getE2mOptions *GetE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getE2mOptions, "getE2mOptions cannot be nil")
+// UpdateEventStreamTargetWithContext is an alternate form of the UpdateEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) UpdateEventStreamTargetWithContext(ctx context.Context, updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateEventStreamTargetOptions, "updateEventStreamTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(getE2mOptions, "getE2mOptions")
+	err = core.ValidateStruct(updateEventStreamTargetOptions, "updateEventStreamTargetOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *getE2mOptions.ID,
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getE2mOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetE2m")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_e2m", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// ReplaceE2m : Updates events to metrics definitions
-// Updates events to metrics definitions.
-func (logs *LogsV0) ReplaceE2m(replaceE2mOptions *ReplaceE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceE2mWithContext(context.Background(), replaceE2mOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ReplaceE2mWithContext is an alternate form of the ReplaceE2m method which supports a Context parameter
-func (logs *LogsV0) ReplaceE2mWithContext(ctx context.Context, replaceE2mOptions *ReplaceE2mOptions) (result Event2MetricIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceE2mOptions, "replaceE2mOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(replaceE2mOptions, "replaceE2mOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": *replaceE2mOptions.ID,
+		"id": fmt.Sprint(*updateEventStreamTargetOptions.ID),
 	}
 
 	builder := core.NewRequestBuilder(core.PUT)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range replaceE2mOptions.Headers {
+	for headerName, headerValue := range updateEventStreamTargetOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceE2m")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateEventStreamTarget")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
 
-	_, err = builder.SetBodyContentJSON(replaceE2mOptions.Event2MetricPrototype)
+	body := make(map[string]interface{})
+	if updateEventStreamTargetOptions.Name != nil {
+		body["name"] = updateEventStreamTargetOptions.Name
+	}
+	if updateEventStreamTargetOptions.DpxlExpression != nil {
+		body["dpxl_expression"] = updateEventStreamTargetOptions.DpxlExpression
+	}
+	if updateEventStreamTargetOptions.IsActive != nil {
+		body["is_active"] = updateEventStreamTargetOptions.IsActive
+	}
+	if updateEventStreamTargetOptions.CompressionType != nil {
+		body["compression_type"] = updateEventStreamTargetOptions.CompressionType
+	}
+	if updateEventStreamTargetOptions.IbmEventStreams != nil {
+		body["ibm_event_streams"] = updateEventStreamTargetOptions.IbmEventStreams
+	}
+	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
 		return
@@ -2829,12 +5027,12 @@ func (logs *LogsV0) ReplaceE2mWithContext(ctx context.Context, replaceE2mOptions
 	var rawResponse map[string]json.RawMessage
 	response, err = logs.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_e2m", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "update_event_stream_target", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
 	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEvent2Metric)
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
 		if err != nil {
 			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
 			return
@@ -2845,45 +5043,45 @@ func (logs *LogsV0) ReplaceE2mWithContext(ctx context.Context, replaceE2mOptions
 	return
 }
 
-// DeleteE2m : Deletes events to metrics definitions by ID
-// Deletes events to metrics definitions by ID.
-func (logs *LogsV0) DeleteE2m(deleteE2mOptions *DeleteE2mOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteE2mWithContext(context.Background(), deleteE2mOptions)
+// DeleteEventStreamTarget : Delete an Event Stream integration by ID
+// Delete an Event Stream integration by ID.
+func (logs *LogsV0) DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.DeleteEventStreamTargetWithContext(context.Background(), deleteEventStreamTargetOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// DeleteE2mWithContext is an alternate form of the DeleteE2m method which supports a Context parameter
-func (logs *LogsV0) DeleteE2mWithContext(ctx context.Context, deleteE2mOptions *DeleteE2mOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteE2mOptions, "deleteE2mOptions cannot be nil")
+// DeleteEventStreamTargetWithContext is an alternate form of the DeleteEventStreamTarget method which supports a Context parameter
+func (logs *LogsV0) DeleteEventStreamTargetWithContext(ctx context.Context, deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(deleteE2mOptions, "deleteE2mOptions")
+	err = core.ValidateStruct(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"id": *deleteE2mOptions.ID,
+		"id": fmt.Sprint(*deleteEventStreamTargetOptions.ID),
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
 	builder = builder.WithContext(ctx)
 	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/events2metrics/{id}`, pathParamsMap)
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
 		return
 	}
 
-	for headerName, headerValue := range deleteE2mOptions.Headers {
+	for headerName, headerValue := range deleteEventStreamTargetOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteE2m")
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteEventStreamTarget")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -2896,7 +5094,7 @@ func (logs *LogsV0) DeleteE2mWithContext(ctx context.Context, deleteE2mOptions *
 
 	response, err = logs.Service.Request(request, nil)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_e2m", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "delete_event_stream_target", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
@@ -3020,6 +5218,9 @@ func (logs *LogsV0) CreateViewWithContext(ctx context.Context, createViewOptions
 	}
 	if createViewOptions.FolderID != nil {
 		body["folder_id"] = createViewOptions.FolderID
+	}
+	if createViewOptions.Tier != nil {
+		body["tier"] = createViewOptions.Tier
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -3182,6 +5383,9 @@ func (logs *LogsV0) ReplaceViewWithContext(ctx context.Context, replaceViewOptio
 	if replaceViewOptions.FolderID != nil {
 		body["folder_id"] = replaceViewOptions.FolderID
 	}
+	if replaceViewOptions.Tier != nil {
+		body["tier"] = replaceViewOptions.Tier
+	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
@@ -3267,1844 +5471,6 @@ func (logs *LogsV0) DeleteViewWithContext(ctx context.Context, deleteViewOptions
 		core.EnrichHTTPProblem(err, "delete_view", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
-	}
-
-	return
-}
-
-// ListViewFolders : List view's folders
-// List view's folders.
-func (logs *LogsV0) ListViewFolders(listViewFoldersOptions *ListViewFoldersOptions) (result *ViewFolderCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListViewFoldersWithContext(context.Background(), listViewFoldersOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ListViewFoldersWithContext is an alternate form of the ListViewFolders method which supports a Context parameter
-func (logs *LogsV0) ListViewFoldersWithContext(ctx context.Context, listViewFoldersOptions *ListViewFoldersOptions) (result *ViewFolderCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listViewFoldersOptions, "listViewFoldersOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range listViewFoldersOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListViewFolders")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "list_view_folders", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolderCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateViewFolder : Create view folder
-// Create view folder.
-func (logs *LogsV0) CreateViewFolder(createViewFolderOptions *CreateViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateViewFolderWithContext(context.Background(), createViewFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateViewFolderWithContext is an alternate form of the CreateViewFolder method which supports a Context parameter
-func (logs *LogsV0) CreateViewFolderWithContext(ctx context.Context, createViewFolderOptions *CreateViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createViewFolderOptions, "createViewFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createViewFolderOptions, "createViewFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createViewFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateViewFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if createViewFolderOptions.Name != nil {
-		body["name"] = createViewFolderOptions.Name
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_view_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// GetViewFolder : Get view folder
-// Get view folder.
-func (logs *LogsV0) GetViewFolder(getViewFolderOptions *GetViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetViewFolderWithContext(context.Background(), getViewFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetViewFolderWithContext is an alternate form of the GetViewFolder method which supports a Context parameter
-func (logs *LogsV0) GetViewFolderWithContext(ctx context.Context, getViewFolderOptions *GetViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getViewFolderOptions, "getViewFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(getViewFolderOptions, "getViewFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*getViewFolderOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getViewFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetViewFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_view_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// ReplaceViewFolder : Replaces an existing view folder
-// Replaces an existing view folder.
-func (logs *LogsV0) ReplaceViewFolder(replaceViewFolderOptions *ReplaceViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceViewFolderWithContext(context.Background(), replaceViewFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ReplaceViewFolderWithContext is an alternate form of the ReplaceViewFolder method which supports a Context parameter
-func (logs *LogsV0) ReplaceViewFolderWithContext(ctx context.Context, replaceViewFolderOptions *ReplaceViewFolderOptions) (result *ViewFolder, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceViewFolderOptions, "replaceViewFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(replaceViewFolderOptions, "replaceViewFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*replaceViewFolderOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range replaceViewFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceViewFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if replaceViewFolderOptions.Name != nil {
-		body["name"] = replaceViewFolderOptions.Name
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_view_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalViewFolder)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// DeleteViewFolder : Deletes a view folder by ID
-// Deletes a view folder by ID.
-func (logs *LogsV0) DeleteViewFolder(deleteViewFolderOptions *DeleteViewFolderOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteViewFolderWithContext(context.Background(), deleteViewFolderOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// DeleteViewFolderWithContext is an alternate form of the DeleteViewFolder method which supports a Context parameter
-func (logs *LogsV0) DeleteViewFolderWithContext(ctx context.Context, deleteViewFolderOptions *DeleteViewFolderOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteViewFolderOptions, "deleteViewFolderOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteViewFolderOptions, "deleteViewFolderOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*deleteViewFolderOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/view_folders/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteViewFolderOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteViewFolder")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_view_folder", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ListDataAccessRules : Get service instance's Data Access Rules by ids
-// Get service instance's Data Access Rules by ids.
-func (logs *LogsV0) ListDataAccessRules(listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListDataAccessRulesWithContext(context.Background(), listDataAccessRulesOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ListDataAccessRulesWithContext is an alternate form of the ListDataAccessRules method which supports a Context parameter
-func (logs *LogsV0) ListDataAccessRulesWithContext(ctx context.Context, listDataAccessRulesOptions *ListDataAccessRulesOptions) (result *DataAccessRuleCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listDataAccessRulesOptions, "listDataAccessRulesOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range listDataAccessRulesOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListDataAccessRules")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	if listDataAccessRulesOptions.ID != nil {
-		err = builder.AddQuerySlice("id", listDataAccessRulesOptions.ID)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "add-query-slice-error", common.GetComponentInfo())
-			return
-		}
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "list_data_access_rules", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRuleCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateDataAccessRule : Create a data access rule
-// Create a data access rule.
-func (logs *LogsV0) CreateDataAccessRule(createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateDataAccessRuleWithContext(context.Background(), createDataAccessRuleOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateDataAccessRuleWithContext is an alternate form of the CreateDataAccessRule method which supports a Context parameter
-func (logs *LogsV0) CreateDataAccessRuleWithContext(ctx context.Context, createDataAccessRuleOptions *CreateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createDataAccessRuleOptions, "createDataAccessRuleOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createDataAccessRuleOptions, "createDataAccessRuleOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createDataAccessRuleOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateDataAccessRule")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if createDataAccessRuleOptions.DisplayName != nil {
-		body["display_name"] = createDataAccessRuleOptions.DisplayName
-	}
-	if createDataAccessRuleOptions.Filters != nil {
-		body["filters"] = createDataAccessRuleOptions.Filters
-	}
-	if createDataAccessRuleOptions.DefaultExpression != nil {
-		body["default_expression"] = createDataAccessRuleOptions.DefaultExpression
-	}
-	if createDataAccessRuleOptions.Description != nil {
-		body["description"] = createDataAccessRuleOptions.Description
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_data_access_rule", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// UpdateDataAccessRule : Update a data access rule
-// Update a data access rule.
-func (logs *LogsV0) UpdateDataAccessRule(updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
-	result, response, err = logs.UpdateDataAccessRuleWithContext(context.Background(), updateDataAccessRuleOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// UpdateDataAccessRuleWithContext is an alternate form of the UpdateDataAccessRule method which supports a Context parameter
-func (logs *LogsV0) UpdateDataAccessRuleWithContext(ctx context.Context, updateDataAccessRuleOptions *UpdateDataAccessRuleOptions) (result *DataAccessRule, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(updateDataAccessRuleOptions, "updateDataAccessRuleOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(updateDataAccessRuleOptions, "updateDataAccessRuleOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*updateDataAccessRuleOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range updateDataAccessRuleOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataAccessRule")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if updateDataAccessRuleOptions.DisplayName != nil {
-		body["display_name"] = updateDataAccessRuleOptions.DisplayName
-	}
-	if updateDataAccessRuleOptions.Filters != nil {
-		body["filters"] = updateDataAccessRuleOptions.Filters
-	}
-	if updateDataAccessRuleOptions.DefaultExpression != nil {
-		body["default_expression"] = updateDataAccessRuleOptions.DefaultExpression
-	}
-	if updateDataAccessRuleOptions.Description != nil {
-		body["description"] = updateDataAccessRuleOptions.Description
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "update_data_access_rule", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataAccessRule)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// DeleteDataAccessRule : Delete a data access rule
-// Delete a data access rule.
-func (logs *LogsV0) DeleteDataAccessRule(deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteDataAccessRuleWithContext(context.Background(), deleteDataAccessRuleOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// DeleteDataAccessRuleWithContext is an alternate form of the DeleteDataAccessRule method which supports a Context parameter
-func (logs *LogsV0) DeleteDataAccessRuleWithContext(ctx context.Context, deleteDataAccessRuleOptions *DeleteDataAccessRuleOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteDataAccessRuleOptions, "deleteDataAccessRuleOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*deleteDataAccessRuleOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_access_rules/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteDataAccessRuleOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteDataAccessRule")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_data_access_rule", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// GetEnrichments : List all enrichments
-// List all enrichments.
-func (logs *LogsV0) GetEnrichments(getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetEnrichmentsWithContext(context.Background(), getEnrichmentsOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetEnrichmentsWithContext is an alternate form of the GetEnrichments method which supports a Context parameter
-func (logs *LogsV0) GetEnrichmentsWithContext(ctx context.Context, getEnrichmentsOptions *GetEnrichmentsOptions) (result *EnrichmentCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(getEnrichmentsOptions, "getEnrichmentsOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getEnrichmentsOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEnrichments")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_enrichments", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichmentCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateEnrichment : Create an enrichment
-// Create an enrichment.
-func (logs *LogsV0) CreateEnrichment(createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateEnrichmentWithContext(context.Background(), createEnrichmentOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateEnrichmentWithContext is an alternate form of the CreateEnrichment method which supports a Context parameter
-func (logs *LogsV0) CreateEnrichmentWithContext(ctx context.Context, createEnrichmentOptions *CreateEnrichmentOptions) (result *Enrichment, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createEnrichmentOptions, "createEnrichmentOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createEnrichmentOptions, "createEnrichmentOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createEnrichmentOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEnrichment")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if createEnrichmentOptions.FieldName != nil {
-		body["field_name"] = createEnrichmentOptions.FieldName
-	}
-	if createEnrichmentOptions.EnrichmentType != nil {
-		body["enrichment_type"] = createEnrichmentOptions.EnrichmentType
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_enrichment", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalEnrichment)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// RemoveEnrichments : Delete enrichments
-// Delete enrichments.
-func (logs *LogsV0) RemoveEnrichments(removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.RemoveEnrichmentsWithContext(context.Background(), removeEnrichmentsOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// RemoveEnrichmentsWithContext is an alternate form of the RemoveEnrichments method which supports a Context parameter
-func (logs *LogsV0) RemoveEnrichmentsWithContext(ctx context.Context, removeEnrichmentsOptions *RemoveEnrichmentsOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(removeEnrichmentsOptions, "removeEnrichmentsOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(removeEnrichmentsOptions, "removeEnrichmentsOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*removeEnrichmentsOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/enrichments/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range removeEnrichmentsOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "RemoveEnrichments")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "remove_enrichments", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ExportDataUsage : Get data usage metrics export status or return data usage report
-// Get Data usage and metrics export Status.
-func (logs *LogsV0) ExportDataUsage(exportDataUsageOptions *ExportDataUsageOptions) (result ExportDataUsageResponseIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ExportDataUsageWithContext(context.Background(), exportDataUsageOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ExportDataUsageWithContext is an alternate form of the ExportDataUsage method which supports a Context parameter
-func (logs *LogsV0) ExportDataUsageWithContext(ctx context.Context, exportDataUsageOptions *ExportDataUsageOptions) (result ExportDataUsageResponseIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(exportDataUsageOptions, "exportDataUsageOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range exportDataUsageOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ExportDataUsage")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	if exportDataUsageOptions.Range != nil {
-		builder.AddQuery("range", fmt.Sprint(*exportDataUsageOptions.Range))
-	}
-	if exportDataUsageOptions.Query != nil {
-		builder.AddQuery("query", fmt.Sprint(*exportDataUsageOptions.Query))
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "export_data_usage", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalExportDataUsageResponse)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// UpdateDataUsageMetricsExportStatus : Update data usage metrics export status
-// Update data usage metrics export status.
-func (logs *LogsV0) UpdateDataUsageMetricsExportStatus(updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
-	result, response, err = logs.UpdateDataUsageMetricsExportStatusWithContext(context.Background(), updateDataUsageMetricsExportStatusOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// UpdateDataUsageMetricsExportStatusWithContext is an alternate form of the UpdateDataUsageMetricsExportStatus method which supports a Context parameter
-func (logs *LogsV0) UpdateDataUsageMetricsExportStatusWithContext(ctx context.Context, updateDataUsageMetricsExportStatusOptions *UpdateDataUsageMetricsExportStatusOptions) (result *DataUsageMetricsExportStatus, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(updateDataUsageMetricsExportStatusOptions, "updateDataUsageMetricsExportStatusOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/data_usage`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range updateDataUsageMetricsExportStatusOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateDataUsageMetricsExportStatus")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if updateDataUsageMetricsExportStatusOptions.Enabled != nil {
-		body["enabled"] = updateDataUsageMetricsExportStatusOptions.Enabled
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "update_data_usage_metrics_export_status", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalDataUsageMetricsExportStatus)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// GetEventStreamTargets : List all Event Streams
-// List all Event Streams.
-func (logs *LogsV0) GetEventStreamTargets(getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetEventStreamTargetsWithContext(context.Background(), getEventStreamTargetsOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetEventStreamTargetsWithContext is an alternate form of the GetEventStreamTargets method which supports a Context parameter
-func (logs *LogsV0) GetEventStreamTargetsWithContext(ctx context.Context, getEventStreamTargetsOptions *GetEventStreamTargetsOptions) (result *StreamCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(getEventStreamTargetsOptions, "getEventStreamTargetsOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getEventStreamTargetsOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetEventStreamTargets")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_event_stream_targets", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStreamCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateEventStreamTarget : Create an Event Stream Integration
-// Create an Event Stream Integration.
-func (logs *LogsV0) CreateEventStreamTarget(createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateEventStreamTargetWithContext(context.Background(), createEventStreamTargetOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateEventStreamTargetWithContext is an alternate form of the CreateEventStreamTarget method which supports a Context parameter
-func (logs *LogsV0) CreateEventStreamTargetWithContext(ctx context.Context, createEventStreamTargetOptions *CreateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createEventStreamTargetOptions, "createEventStreamTargetOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createEventStreamTargetOptions, "createEventStreamTargetOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createEventStreamTargetOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateEventStreamTarget")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if createEventStreamTargetOptions.Name != nil {
-		body["name"] = createEventStreamTargetOptions.Name
-	}
-	if createEventStreamTargetOptions.DpxlExpression != nil {
-		body["dpxl_expression"] = createEventStreamTargetOptions.DpxlExpression
-	}
-	if createEventStreamTargetOptions.IsActive != nil {
-		body["is_active"] = createEventStreamTargetOptions.IsActive
-	}
-	if createEventStreamTargetOptions.CompressionType != nil {
-		body["compression_type"] = createEventStreamTargetOptions.CompressionType
-	}
-	if createEventStreamTargetOptions.IbmEventStreams != nil {
-		body["ibm_event_streams"] = createEventStreamTargetOptions.IbmEventStreams
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_event_stream_target", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// DeleteEventStreamTarget : Delete an Event Stream integration by ID
-// Delete an Event Stream integration by ID.
-func (logs *LogsV0) DeleteEventStreamTarget(deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteEventStreamTargetWithContext(context.Background(), deleteEventStreamTargetOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// DeleteEventStreamTargetWithContext is an alternate form of the DeleteEventStreamTarget method which supports a Context parameter
-func (logs *LogsV0) DeleteEventStreamTargetWithContext(ctx context.Context, deleteEventStreamTargetOptions *DeleteEventStreamTargetOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteEventStreamTargetOptions, "deleteEventStreamTargetOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*deleteEventStreamTargetOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteEventStreamTargetOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteEventStreamTarget")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_event_stream_target", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// UpdateEventStreamTarget : Update an Event Stream
-// Update an Event Stream.
-func (logs *LogsV0) UpdateEventStreamTarget(updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	result, response, err = logs.UpdateEventStreamTargetWithContext(context.Background(), updateEventStreamTargetOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// UpdateEventStreamTargetWithContext is an alternate form of the UpdateEventStreamTarget method which supports a Context parameter
-func (logs *LogsV0) UpdateEventStreamTargetWithContext(ctx context.Context, updateEventStreamTargetOptions *UpdateEventStreamTargetOptions) (result *Stream, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(updateEventStreamTargetOptions, "updateEventStreamTargetOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(updateEventStreamTargetOptions, "updateEventStreamTargetOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*updateEventStreamTargetOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/streams/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range updateEventStreamTargetOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateEventStreamTarget")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if updateEventStreamTargetOptions.Name != nil {
-		body["name"] = updateEventStreamTargetOptions.Name
-	}
-	if updateEventStreamTargetOptions.DpxlExpression != nil {
-		body["dpxl_expression"] = updateEventStreamTargetOptions.DpxlExpression
-	}
-	if updateEventStreamTargetOptions.IsActive != nil {
-		body["is_active"] = updateEventStreamTargetOptions.IsActive
-	}
-	if updateEventStreamTargetOptions.CompressionType != nil {
-		body["compression_type"] = updateEventStreamTargetOptions.CompressionType
-	}
-	if updateEventStreamTargetOptions.IbmEventStreams != nil {
-		body["ibm_event_streams"] = updateEventStreamTargetOptions.IbmEventStreams
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "update_event_stream_target", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalStream)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// SubmitBackgroundQuery : Submit a background query to be processed asynchronously
-// Submits a query that runs in the background, allowing the client to continue without waiting for the results
-// immediately.
-func (logs *LogsV0) SubmitBackgroundQuery(submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
-	result, response, err = logs.SubmitBackgroundQueryWithContext(context.Background(), submitBackgroundQueryOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// SubmitBackgroundQueryWithContext is an alternate form of the SubmitBackgroundQuery method which supports a Context parameter
-func (logs *LogsV0) SubmitBackgroundQueryWithContext(ctx context.Context, submitBackgroundQueryOptions *SubmitBackgroundQueryOptions) (result *BackgroundQuery, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(submitBackgroundQueryOptions, "submitBackgroundQueryOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(submitBackgroundQueryOptions, "submitBackgroundQueryOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range submitBackgroundQueryOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "SubmitBackgroundQuery")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	body := make(map[string]interface{})
-	if submitBackgroundQueryOptions.Query != nil {
-		body["query"] = submitBackgroundQueryOptions.Query
-	}
-	if submitBackgroundQueryOptions.Syntax != nil {
-		body["syntax"] = submitBackgroundQueryOptions.Syntax
-	}
-	if submitBackgroundQueryOptions.StartDate != nil {
-		body["start_date"] = submitBackgroundQueryOptions.StartDate
-	}
-	if submitBackgroundQueryOptions.EndDate != nil {
-		body["end_date"] = submitBackgroundQueryOptions.EndDate
-	}
-	if submitBackgroundQueryOptions.NowDate != nil {
-		body["now_date"] = submitBackgroundQueryOptions.NowDate
-	}
-	_, err = builder.SetBodyContentJSON(body)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "submit_background_query", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQuery)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// GetBackgroundQueryStatus : Get the status of a background query
-// Get the status of a background query.
-func (logs *LogsV0) GetBackgroundQueryStatus(getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetBackgroundQueryStatusWithContext(context.Background(), getBackgroundQueryStatusOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetBackgroundQueryStatusWithContext is an alternate form of the GetBackgroundQueryStatus method which supports a Context parameter
-func (logs *LogsV0) GetBackgroundQueryStatusWithContext(ctx context.Context, getBackgroundQueryStatusOptions *GetBackgroundQueryStatusOptions) (result BackgroundQueryStatusIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(getBackgroundQueryStatusOptions, "getBackgroundQueryStatusOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"query_id": fmt.Sprint(*getBackgroundQueryStatusOptions.QueryID),
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/status`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getBackgroundQueryStatusOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetBackgroundQueryStatus")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_background_query_status", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalBackgroundQueryStatus)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CancelBackgroundQuery : Cancel a background query
-// Cancel a background query.
-func (logs *LogsV0) CancelBackgroundQuery(cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.CancelBackgroundQueryWithContext(context.Background(), cancelBackgroundQueryOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CancelBackgroundQueryWithContext is an alternate form of the CancelBackgroundQuery method which supports a Context parameter
-func (logs *LogsV0) CancelBackgroundQueryWithContext(ctx context.Context, cancelBackgroundQueryOptions *CancelBackgroundQueryOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(cancelBackgroundQueryOptions, "cancelBackgroundQueryOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"query_id": fmt.Sprint(*cancelBackgroundQueryOptions.QueryID),
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/background_query/{query_id}/cancel`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range cancelBackgroundQueryOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CancelBackgroundQuery")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "cancel_background_query", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// GetAlertDef : Get an alert definition by ID
-// Get details of an existing alert by using the alert ID.
-func (logs *LogsV0) GetAlertDef(getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.GetAlertDefWithContext(context.Background(), getAlertDefOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// GetAlertDefWithContext is an alternate form of the GetAlertDef method which supports a Context parameter
-func (logs *LogsV0) GetAlertDefWithContext(ctx context.Context, getAlertDefOptions *GetAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(getAlertDefOptions, "getAlertDefOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(getAlertDefOptions, "getAlertDefOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*getAlertDefOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range getAlertDefOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetAlertDef")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "get_alert_def", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// ReplaceAlertDef : Update an alert definition by ID
-// Update an alert definition.
-func (logs *LogsV0) ReplaceAlertDef(replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ReplaceAlertDefWithContext(context.Background(), replaceAlertDefOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ReplaceAlertDefWithContext is an alternate form of the ReplaceAlertDef method which supports a Context parameter
-func (logs *LogsV0) ReplaceAlertDefWithContext(ctx context.Context, replaceAlertDefOptions *ReplaceAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(replaceAlertDefOptions, "replaceAlertDefOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(replaceAlertDefOptions, "replaceAlertDefOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*replaceAlertDefOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.PUT)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range replaceAlertDefOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ReplaceAlertDef")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	_, err = builder.SetBodyContentJSON(replaceAlertDefOptions.AlertDefinitionPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "replace_alert_def", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// DeleteAlertDef : Delete an alert definition by ID
-// Delete an alert definition.
-func (logs *LogsV0) DeleteAlertDef(deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
-	response, err = logs.DeleteAlertDefWithContext(context.Background(), deleteAlertDefOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// DeleteAlertDefWithContext is an alternate form of the DeleteAlertDef method which supports a Context parameter
-func (logs *LogsV0) DeleteAlertDefWithContext(ctx context.Context, deleteAlertDefOptions *DeleteAlertDefOptions) (response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(deleteAlertDefOptions, "deleteAlertDefOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(deleteAlertDefOptions, "deleteAlertDefOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	pathParamsMap := map[string]string{
-		"id": fmt.Sprint(*deleteAlertDefOptions.ID),
-	}
-
-	builder := core.NewRequestBuilder(core.DELETE)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions/{id}`, pathParamsMap)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range deleteAlertDefOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "DeleteAlertDef")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	response, err = logs.Service.Request(request, nil)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "delete_alert_def", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-
-	return
-}
-
-// ListAlertDefs : List alert definitions
-// List alert definitions.
-func (logs *LogsV0) ListAlertDefs(listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
-	result, response, err = logs.ListAlertDefsWithContext(context.Background(), listAlertDefsOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// ListAlertDefsWithContext is an alternate form of the ListAlertDefs method which supports a Context parameter
-func (logs *LogsV0) ListAlertDefsWithContext(ctx context.Context, listAlertDefsOptions *ListAlertDefsOptions) (result *AlertDefinitionCollection, response *core.DetailedResponse, err error) {
-	err = core.ValidateStruct(listAlertDefsOptions, "listAlertDefsOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.GET)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range listAlertDefsOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "ListAlertDefs")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "list_alert_defs", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinitionCollection)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
-	}
-
-	return
-}
-
-// CreateAlertDef : Create an alert definition
-// Create an alert definition.
-func (logs *LogsV0) CreateAlertDef(createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	result, response, err = logs.CreateAlertDefWithContext(context.Background(), createAlertDefOptions)
-	err = core.RepurposeSDKProblem(err, "")
-	return
-}
-
-// CreateAlertDefWithContext is an alternate form of the CreateAlertDef method which supports a Context parameter
-func (logs *LogsV0) CreateAlertDefWithContext(ctx context.Context, createAlertDefOptions *CreateAlertDefOptions) (result AlertDefinitionIntf, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(createAlertDefOptions, "createAlertDefOptions cannot be nil")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
-		return
-	}
-	err = core.ValidateStruct(createAlertDefOptions, "createAlertDefOptions")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
-		return
-	}
-
-	builder := core.NewRequestBuilder(core.POST)
-	builder = builder.WithContext(ctx)
-	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
-	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/alert_definitions`, nil)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
-		return
-	}
-
-	for headerName, headerValue := range createAlertDefOptions.Headers {
-		builder.AddHeader(headerName, headerValue)
-	}
-
-	sdkHeaders := common.GetSdkHeaders("logs", "V0", "CreateAlertDef")
-	for headerName, headerValue := range sdkHeaders {
-		builder.AddHeader(headerName, headerValue)
-	}
-	builder.AddHeader("Accept", "application/json")
-	builder.AddHeader("Content-Type", "application/json")
-
-	_, err = builder.SetBodyContentJSON(createAlertDefOptions.AlertDefinitionPrototype)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
-		return
-	}
-
-	request, err := builder.Build()
-	if err != nil {
-		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
-		return
-	}
-
-	var rawResponse map[string]json.RawMessage
-	response, err = logs.Service.Request(request, &rawResponse)
-	if err != nil {
-		core.EnrichHTTPProblem(err, "create_alert_def", getServiceComponentInfo())
-		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
-		return
-	}
-	if rawResponse != nil {
-		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalAlertDefinition)
-		if err != nil {
-			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
-			return
-		}
-		response.Result = result
 	}
 
 	return
@@ -17189,14 +17555,13 @@ type ApisViewsV1Filter struct {
 	Name *string `json:"name" validate:"required"`
 
 	// Filter selected values.
-	SelectedValues map[string]bool `json:"selected_values" validate:"required"`
+	SelectedValues map[string]bool `json:"selected_values,omitempty"`
 }
 
 // NewApisViewsV1Filter : Instantiate ApisViewsV1Filter (Generic Model Constructor)
-func (*LogsV0) NewApisViewsV1Filter(name string, selectedValues map[string]bool) (_model *ApisViewsV1Filter, err error) {
+func (*LogsV0) NewApisViewsV1Filter(name string) (_model *ApisViewsV1Filter, err error) {
 	_model = &ApisViewsV1Filter{
 		Name: core.StringPtr(name),
-		SelectedValues: selectedValues,
 	}
 	err = core.ValidateStruct(_model, "required parameters")
 	if err != nil {
@@ -17265,7 +17630,17 @@ func UnmarshalApisViewsV1QuickTimeSelection(m map[string]json.RawMessage, result
 type ApisViewsV1SearchQuery struct {
 	// View search query.
 	Query *string `json:"query" validate:"required"`
+
+	// Syntax type for the query used in views.
+	SyntaxType *string `json:"syntax_type,omitempty"`
 }
+
+// Constants associated with the ApisViewsV1SearchQuery.SyntaxType property.
+// Syntax type for the query used in views.
+const (
+	ApisViewsV1SearchQuery_SyntaxType_Dataprime = "dataprime"
+	ApisViewsV1SearchQuery_SyntaxType_Lucene = "lucene"
+)
 
 // NewApisViewsV1SearchQuery : Instantiate ApisViewsV1SearchQuery (Generic Model Constructor)
 func (*LogsV0) NewApisViewsV1SearchQuery(query string) (_model *ApisViewsV1SearchQuery, err error) {
@@ -17285,6 +17660,11 @@ func UnmarshalApisViewsV1SearchQuery(m map[string]json.RawMessage, result interf
 	err = core.UnmarshalPrimitive(m, "query", &obj.Query)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "query-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "syntax_type", &obj.SyntaxType)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "syntax_type-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -18132,9 +18512,21 @@ type CreateViewOptions struct {
 	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
 
+	// Type of view.
+	Tier *string `json:"tier,omitempty"`
+
 	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
+
+// Constants associated with the CreateViewOptions.Tier property.
+// Type of view.
+const (
+	CreateViewOptions_Tier_AllLogs = "all_logs"
+	CreateViewOptions_Tier_AllLogsTemplates = "all_logs_templates"
+	CreateViewOptions_Tier_PriorityInsights = "priority_insights"
+	CreateViewOptions_Tier_PriorityInsightsTemplates = "priority_insights_templates"
+)
 
 // NewCreateViewOptions : Instantiate CreateViewOptions
 func (*LogsV0) NewCreateViewOptions(name string, timeSelection ApisViewsV1TimeSelectionIntf) *CreateViewOptions {
@@ -18171,6 +18563,12 @@ func (_options *CreateViewOptions) SetFilters(filters *ApisViewsV1SelectedFilter
 // SetFolderID : Allow user to set FolderID
 func (_options *CreateViewOptions) SetFolderID(folderID *strfmt.UUID) *CreateViewOptions {
 	_options.FolderID = folderID
+	return _options
+}
+
+// SetTier : Allow user to set Tier
+func (_options *CreateViewOptions) SetTier(tier string) *CreateViewOptions {
+	_options.Tier = core.StringPtr(tier)
 	return _options
 }
 
@@ -18913,6 +19311,34 @@ func (options *DeleteEventStreamTargetOptions) SetHeaders(param map[string]strin
 	return options
 }
 
+// DeleteExtensionDeploymentOptions : The DeleteExtensionDeployment options.
+type DeleteExtensionDeploymentOptions struct {
+	// The unique identifier of the extension.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewDeleteExtensionDeploymentOptions : Instantiate DeleteExtensionDeploymentOptions
+func (*LogsV0) NewDeleteExtensionDeploymentOptions(id string) *DeleteExtensionDeploymentOptions {
+	return &DeleteExtensionDeploymentOptions{
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *DeleteExtensionDeploymentOptions) SetID(id string) *DeleteExtensionDeploymentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *DeleteExtensionDeploymentOptions) SetHeaders(param map[string]string) *DeleteExtensionDeploymentOptions {
+	options.Headers = param
+	return options
+}
+
 // DeleteOutgoingWebhookOptions : The DeleteOutgoingWebhook options.
 type DeleteOutgoingWebhookOptions struct {
 	// The ID of the outbound integration to delete.
@@ -19599,6 +20025,339 @@ func UnmarshalExportDataUsageResponse(m map[string]json.RawMessage, result inter
 	return
 }
 
+// Extension : Response model for a given extension.
+type Extension struct {
+	// The ID of the Extension.
+	ID *string `json:"id" validate:"required"`
+
+	// The name of the Extension.
+	Name *string `json:"name" validate:"required"`
+
+	// The list of all revisions of the Extension, each representing a versioned snapshot of the Extension's functionality
+	// and appearance.
+	Revisions []ExtensionsV1ExtensionRevision `json:"revisions,omitempty"`
+
+	// The list of keywords to enhance search capabilities on the front-end side.
+	Keywords []string `json:"keywords,omitempty"`
+
+	// The of changelog entries made in each version of the Extension.
+	Changelog []ExtensionsV1ChangelogEntry `json:"changelog,omitempty"`
+
+	// Deployment details of an Extension scoped by extension ID in the path.
+	Deployment *ExtensionDeployment `json:"deployment,omitempty"`
+
+	// Deprecation details of the Extension.
+	Deprecation *ExtensionsV1Deprecation `json:"deprecation,omitempty"`
+}
+
+// UnmarshalExtension unmarshals an instance of Extension from the specified map of raw messages.
+func UnmarshalExtension(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(Extension)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "revisions", &obj.Revisions, UnmarshalExtensionsV1ExtensionRevision)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "revisions-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "keywords", &obj.Keywords)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "keywords-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "changelog", &obj.Changelog, UnmarshalExtensionsV1ChangelogEntry)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "changelog-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "deployment", &obj.Deployment, UnmarshalExtensionDeployment)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deployment-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "deprecation", &obj.Deprecation, UnmarshalExtensionsV1Deprecation)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "deprecation-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionCollection : Response for getting all Extensions.
+type ExtensionCollection struct {
+	// List of Extensions.
+	Extensions []Extension `json:"extensions,omitempty"`
+}
+
+// UnmarshalExtensionCollection unmarshals an instance of ExtensionCollection from the specified map of raw messages.
+func UnmarshalExtensionCollection(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionCollection)
+	err = core.UnmarshalModel(m, "extensions", &obj.Extensions, UnmarshalExtension)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "extensions-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionDeployment : Deployment details of an Extension scoped by extension ID in the path.
+type ExtensionDeployment struct {
+	// The version of the Extension revision to deploy.
+	Version *string `json:"version" validate:"required"`
+
+	// The list of Extension item IDs to deploy.
+	ItemIds []string `json:"item_ids" validate:"required"`
+
+	// Applications that the Extension is deployed for. When this is empty, it is applied to all applications.
+	Applications []string `json:"applications,omitempty"`
+
+	// Subsystems that the Extension is deployed. When this is empty, it is applied to all subsystems.
+	Subsystems []string `json:"subsystems,omitempty"`
+}
+
+// NewExtensionDeployment : Instantiate ExtensionDeployment (Generic Model Constructor)
+func (*LogsV0) NewExtensionDeployment(version string, itemIds []string) (_model *ExtensionDeployment, err error) {
+	_model = &ExtensionDeployment{
+		Version: core.StringPtr(version),
+		ItemIds: itemIds,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalExtensionDeployment unmarshals an instance of ExtensionDeployment from the specified map of raw messages.
+func UnmarshalExtensionDeployment(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionDeployment)
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "item_ids", &obj.ItemIds)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "item_ids-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "applications", &obj.Applications)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "applications-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "subsystems", &obj.Subsystems)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "subsystems-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionsV1ChangelogEntry : The of changelog entries made in each version of the Extension.
+type ExtensionsV1ChangelogEntry struct {
+	// The version of the Extension this changelog entry refers to.
+	Version *string `json:"version" validate:"required"`
+
+	// The description of the changes made in this version, formatted in Markdown for rich text presentation.
+	DescriptionMd *string `json:"description_md" validate:"required"`
+}
+
+// UnmarshalExtensionsV1ChangelogEntry unmarshals an instance of ExtensionsV1ChangelogEntry from the specified map of raw messages.
+func UnmarshalExtensionsV1ChangelogEntry(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionsV1ChangelogEntry)
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description_md", &obj.DescriptionMd)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description_md-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionsV1Deprecation : Deprecation details of the Extension.
+type ExtensionsV1Deprecation struct {
+	// The reason why the element (e.g., an Extension or a version of it) is being deprecated.
+	Reason *string `json:"reason" validate:"required"`
+
+	// The list of Extension IDs that serve as replacements for the deprecated element.
+	ReplacementExtensions []string `json:"replacement_extensions,omitempty"`
+}
+
+// UnmarshalExtensionsV1Deprecation unmarshals an instance of ExtensionsV1Deprecation from the specified map of raw messages.
+func UnmarshalExtensionsV1Deprecation(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionsV1Deprecation)
+	err = core.UnmarshalPrimitive(m, "reason", &obj.Reason)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "reason-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "replacement_extensions", &obj.ReplacementExtensions)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "replacement_extensions-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionsV1ExtensionItem : The Extension items included in this revision.
+type ExtensionsV1ExtensionItem struct {
+	// The ID of the Extension item.
+	ID *string `json:"id" validate:"required"`
+
+	// The name of the Extension item.
+	Name *string `json:"name" validate:"required"`
+
+	// The detailed description of the Extension item.
+	Description *string `json:"description,omitempty"`
+
+	// The domain of the Extension item.
+	TargetDomain *string `json:"target_domain" validate:"required"`
+
+	// A flag to indicate if the Extension item is mandatory or not. Mandatory items must be specified when deploying the
+	// Extension.
+	IsMandatory *bool `json:"is_mandatory,omitempty"`
+}
+
+// Constants associated with the ExtensionsV1ExtensionItem.TargetDomain property.
+// The domain of the Extension item.
+const (
+	ExtensionsV1ExtensionItem_TargetDomain_Alert = "alert"
+	ExtensionsV1ExtensionItem_TargetDomain_AlertDefinition = "alert_definition"
+	ExtensionsV1ExtensionItem_TargetDomain_Dashboard = "dashboard"
+	ExtensionsV1ExtensionItem_TargetDomain_Enrichment = "enrichment"
+	ExtensionsV1ExtensionItem_TargetDomain_EventsToMetrics = "events_to_metrics"
+	ExtensionsV1ExtensionItem_TargetDomain_RuleGroup = "rule_group"
+	ExtensionsV1ExtensionItem_TargetDomain_View = "view"
+)
+
+// UnmarshalExtensionsV1ExtensionItem unmarshals an instance of ExtensionsV1ExtensionItem from the specified map of raw messages.
+func UnmarshalExtensionsV1ExtensionItem(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionsV1ExtensionItem)
+	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "target_domain", &obj.TargetDomain)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "target_domain-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "is_mandatory", &obj.IsMandatory)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "is_mandatory-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionsV1ExtensionRevision : The list of all revisions of the Extension, each representing a versioned snapshot of the Extension's functionality
+// and appearance.
+type ExtensionsV1ExtensionRevision struct {
+	// The version identifier for this revision of the Extension.
+	Version *string `json:"version" validate:"required"`
+
+	// The detailed description of what this revision includes, changes made, and any important information users should be
+	// aware of.
+	Description *string `json:"description,omitempty"`
+
+	// The brief summary or excerpt of the Extension's description for quick reference.
+	Excerpt *string `json:"excerpt,omitempty"`
+
+	// The list of labels or tags associated with the Extension for front-end categorization and filtering.
+	Labels []string `json:"labels,omitempty"`
+
+	// The Extension items included in this revision.
+	Items []ExtensionsV1ExtensionItem `json:"items,omitempty"`
+}
+
+// UnmarshalExtensionsV1ExtensionRevision unmarshals an instance of ExtensionsV1ExtensionRevision from the specified map of raw messages.
+func UnmarshalExtensionsV1ExtensionRevision(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionsV1ExtensionRevision)
+	err = core.UnmarshalPrimitive(m, "version", &obj.Version)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "version-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "description", &obj.Description)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "description-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "excerpt", &obj.Excerpt)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "excerpt-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "labels", &obj.Labels)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "labels-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalModel(m, "items", &obj.Items, UnmarshalExtensionsV1ExtensionItem)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "items-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
+// ExtensionsV1UndeployExtensionResponseFailedItem : An extension item that failed to undeploy.
+type ExtensionsV1UndeployExtensionResponseFailedItem struct {
+	// The ID of the item that failed to undeploy.
+	ItemID *string `json:"item_id" validate:"required"`
+
+	// The reason of the failure.
+	Reason *string `json:"reason" validate:"required"`
+}
+
+// UnmarshalExtensionsV1UndeployExtensionResponseFailedItem unmarshals an instance of ExtensionsV1UndeployExtensionResponseFailedItem from the specified map of raw messages.
+func UnmarshalExtensionsV1UndeployExtensionResponseFailedItem(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(ExtensionsV1UndeployExtensionResponseFailedItem)
+	err = core.UnmarshalPrimitive(m, "item_id", &obj.ItemID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "item_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "reason", &obj.Reason)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "reason-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // GetAlertDefOptions : The GetAlertDef options.
 type GetAlertDefOptions struct {
 	// Alert definition ID.
@@ -19877,6 +20636,89 @@ func (*LogsV0) NewGetEventStreamTargetsOptions() *GetEventStreamTargetsOptions {
 
 // SetHeaders : Allow user to set Headers
 func (options *GetEventStreamTargetsOptions) SetHeaders(param map[string]string) *GetEventStreamTargetsOptions {
+	options.Headers = param
+	return options
+}
+
+// GetExtensionDeploymentOptions : The GetExtensionDeployment options.
+type GetExtensionDeploymentOptions struct {
+	// The unique identifier of the extension.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetExtensionDeploymentOptions : Instantiate GetExtensionDeploymentOptions
+func (*LogsV0) NewGetExtensionDeploymentOptions(id string) *GetExtensionDeploymentOptions {
+	return &GetExtensionDeploymentOptions{
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *GetExtensionDeploymentOptions) SetID(id string) *GetExtensionDeploymentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetExtensionDeploymentOptions) SetHeaders(param map[string]string) *GetExtensionDeploymentOptions {
+	options.Headers = param
+	return options
+}
+
+// GetExtensionOptions : The GetExtension options.
+type GetExtensionOptions struct {
+	// The unique identifier of the extension.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetExtensionOptions : Instantiate GetExtensionOptions
+func (*LogsV0) NewGetExtensionOptions(id string) *GetExtensionOptions {
+	return &GetExtensionOptions{
+		ID: core.StringPtr(id),
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *GetExtensionOptions) SetID(id string) *GetExtensionOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetExtensionOptions) SetHeaders(param map[string]string) *GetExtensionOptions {
+	options.Headers = param
+	return options
+}
+
+// GetExtensionsOptions : The GetExtensions options.
+type GetExtensionsOptions struct {
+	// Optional deployment filter. If omitted, returns all extensions. If true, returns only deployed extensions. If false,
+	// returns only non-deployed extensions.
+	Deployed *bool `json:"deployed,omitempty"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetExtensionsOptions : Instantiate GetExtensionsOptions
+func (*LogsV0) NewGetExtensionsOptions() *GetExtensionsOptions {
+	return &GetExtensionsOptions{}
+}
+
+// SetDeployed : Allow user to set Deployed
+func (_options *GetExtensionsOptions) SetDeployed(deployed bool) *GetExtensionsOptions {
+	_options.Deployed = core.BoolPtr(deployed)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetExtensionsOptions) SetHeaders(param map[string]string) *GetExtensionsOptions {
 	options.Headers = param
 	return options
 }
@@ -21278,9 +22120,21 @@ type ReplaceViewOptions struct {
 	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
 
+	// Type of view.
+	Tier *string `json:"tier,omitempty"`
+
 	// Allows users to set headers on API requests.
 	Headers map[string]string
 }
+
+// Constants associated with the ReplaceViewOptions.Tier property.
+// Type of view.
+const (
+	ReplaceViewOptions_Tier_AllLogs = "all_logs"
+	ReplaceViewOptions_Tier_AllLogsTemplates = "all_logs_templates"
+	ReplaceViewOptions_Tier_PriorityInsights = "priority_insights"
+	ReplaceViewOptions_Tier_PriorityInsightsTemplates = "priority_insights_templates"
+)
 
 // NewReplaceViewOptions : Instantiate ReplaceViewOptions
 func (*LogsV0) NewReplaceViewOptions(id int64, name string, timeSelection ApisViewsV1TimeSelectionIntf) *ReplaceViewOptions {
@@ -21324,6 +22178,12 @@ func (_options *ReplaceViewOptions) SetFilters(filters *ApisViewsV1SelectedFilte
 // SetFolderID : Allow user to set FolderID
 func (_options *ReplaceViewOptions) SetFolderID(folderID *strfmt.UUID) *ReplaceViewOptions {
 	_options.FolderID = folderID
+	return _options
+}
+
+// SetTier : Allow user to set Tier
+func (_options *ReplaceViewOptions) SetTier(tier string) *ReplaceViewOptions {
+	_options.Tier = core.StringPtr(tier)
 	return _options
 }
 
@@ -22491,6 +23351,24 @@ func (options *SubmitBackgroundQueryOptions) SetHeaders(param map[string]string)
 	return options
 }
 
+// UndeployExtensionResponse : Response for undeploying an Extension.
+type UndeployExtensionResponse struct {
+	// The list of failed items.
+	FailedItems []ExtensionsV1UndeployExtensionResponseFailedItem `json:"failed_items,omitempty"`
+}
+
+// UnmarshalUndeployExtensionResponse unmarshals an instance of UndeployExtensionResponse from the specified map of raw messages.
+func UnmarshalUndeployExtensionResponse(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(UndeployExtensionResponse)
+	err = core.UnmarshalModel(m, "failed_items", &obj.FailedItems, UnmarshalExtensionsV1UndeployExtensionResponseFailedItem)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "failed_items-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
+}
+
 // UnpinDashboardOptions : The UnpinDashboard options.
 type UnpinDashboardOptions struct {
 	// The ID of the dashboard.
@@ -22855,6 +23733,72 @@ func (options *UpdateEventStreamTargetOptions) SetHeaders(param map[string]strin
 	return options
 }
 
+// UpdateExtensionDeploymentOptions : The UpdateExtensionDeployment options.
+type UpdateExtensionDeploymentOptions struct {
+	// The unique identifier of the extension.
+	ID *string `json:"id" validate:"required,ne="`
+
+	// The version of the Extension revision to deploy.
+	Version *string `json:"version" validate:"required"`
+
+	// The list of Extension item IDs to deploy.
+	ItemIds []string `json:"item_ids" validate:"required"`
+
+	// Applications that the Extension is deployed for. When this is empty, it is applied to all applications.
+	Applications []string `json:"applications,omitempty"`
+
+	// Subsystems that the Extension is deployed. When this is empty, it is applied to all subsystems.
+	Subsystems []string `json:"subsystems,omitempty"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewUpdateExtensionDeploymentOptions : Instantiate UpdateExtensionDeploymentOptions
+func (*LogsV0) NewUpdateExtensionDeploymentOptions(id string, version string, itemIds []string) *UpdateExtensionDeploymentOptions {
+	return &UpdateExtensionDeploymentOptions{
+		ID: core.StringPtr(id),
+		Version: core.StringPtr(version),
+		ItemIds: itemIds,
+	}
+}
+
+// SetID : Allow user to set ID
+func (_options *UpdateExtensionDeploymentOptions) SetID(id string) *UpdateExtensionDeploymentOptions {
+	_options.ID = core.StringPtr(id)
+	return _options
+}
+
+// SetVersion : Allow user to set Version
+func (_options *UpdateExtensionDeploymentOptions) SetVersion(version string) *UpdateExtensionDeploymentOptions {
+	_options.Version = core.StringPtr(version)
+	return _options
+}
+
+// SetItemIds : Allow user to set ItemIds
+func (_options *UpdateExtensionDeploymentOptions) SetItemIds(itemIds []string) *UpdateExtensionDeploymentOptions {
+	_options.ItemIds = itemIds
+	return _options
+}
+
+// SetApplications : Allow user to set Applications
+func (_options *UpdateExtensionDeploymentOptions) SetApplications(applications []string) *UpdateExtensionDeploymentOptions {
+	_options.Applications = applications
+	return _options
+}
+
+// SetSubsystems : Allow user to set Subsystems
+func (_options *UpdateExtensionDeploymentOptions) SetSubsystems(subsystems []string) *UpdateExtensionDeploymentOptions {
+	_options.Subsystems = subsystems
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateExtensionDeploymentOptions) SetHeaders(param map[string]string) *UpdateExtensionDeploymentOptions {
+	options.Headers = param
+	return options
+}
+
 // UpdateOutgoingWebhookOptions : The UpdateOutgoingWebhook options.
 type UpdateOutgoingWebhookOptions struct {
 	// The ID of the outbound integration to delete.
@@ -23036,7 +23980,19 @@ type View struct {
 
 	// View folder ID.
 	FolderID *strfmt.UUID `json:"folder_id,omitempty"`
+
+	// Type of view.
+	Tier *string `json:"tier,omitempty"`
 }
+
+// Constants associated with the View.Tier property.
+// Type of view.
+const (
+	View_Tier_AllLogs = "all_logs"
+	View_Tier_AllLogsTemplates = "all_logs_templates"
+	View_Tier_PriorityInsights = "priority_insights"
+	View_Tier_PriorityInsightsTemplates = "priority_insights_templates"
+)
 
 // UnmarshalView unmarshals an instance of View from the specified map of raw messages.
 func UnmarshalView(m map[string]json.RawMessage, result interface{}) (err error) {
@@ -23069,6 +24025,11 @@ func UnmarshalView(m map[string]json.RawMessage, result interface{}) (err error)
 	err = core.UnmarshalPrimitive(m, "folder_id", &obj.FolderID)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "folder_id-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "tier", &obj.Tier)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "tier-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
