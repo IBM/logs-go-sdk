@@ -10,8 +10,8 @@ import (
 	"sync"
 
 	"github.com/IBM/go-sdk-core/v5/core"
-	"github.com/go-openapi/strfmt"
 	"github.com/IBM/logs-go-sdk/logsv0"
+	"github.com/go-openapi/strfmt"
 )
 
 func getRandomName() string {
@@ -26,7 +26,7 @@ func main() {
 		ApiKey:       os.Getenv("LOGS_API_KEY"),
 		ClientId:     "bx",
 		ClientSecret: "bx",
-		URL:          "https://iam.test.cloud.ibm.com",
+		URL:          "https://iam.cloud.ibm.com",
 	}
 
 	// Initialize the service options.

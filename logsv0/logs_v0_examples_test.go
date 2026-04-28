@@ -1572,6 +1572,45 @@ var _ = Describe(`LogsV0 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(viewFolder).ToNot(BeNil())
 		})
+		It(`GetLogDataRetentionTags request example`, func() {
+			fmt.Println("\nGetLogDataRetentionTags() result:")
+			// begin-get_log_data_retention_tags
+
+			getLogDataRetentionTagsOptions := logsService.NewGetLogDataRetentionTagsOptions()
+
+			logDataRetentionTags, response, err := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(logDataRetentionTags, "", "  ")
+			fmt.Println(string(b))
+
+			// end-get_log_data_retention_tags
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(logDataRetentionTags).ToNot(BeNil())
+		})
+		It(`UpdateLogDataRetentionTags request example`, func() {
+			// begin-update_log_data_retention_tags
+
+			updateLogDataRetentionTagsOptions := logsService.NewUpdateLogDataRetentionTagsOptions(
+				[]string{"Short", "Intermediate", "Long"},
+			)
+
+			response, err := logsService.UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptions)
+			if err != nil {
+				panic(err)
+			}
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from UpdateLogDataRetentionTags(): %d\n", response.StatusCode)
+			}
+
+			// end-update_log_data_retention_tags
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
+		})
 		It(`ListOutgoingWebhooks request example`, func() {
 			fmt.Println("\nListOutgoingWebhooks() result:")
 			// begin-list_outgoing_webhooks
