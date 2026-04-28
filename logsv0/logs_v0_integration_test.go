@@ -1108,6 +1108,47 @@ var _ = Describe(`LogsV0 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`GetLogDataRetentionTags - Get log data retention tags`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetLogDataRetentionTags(getLogDataRetentionTagsOptions *GetLogDataRetentionTagsOptions)`, func() {
+			getLogDataRetentionTagsOptions := &logsv0.GetLogDataRetentionTagsOptions{}
+
+			logDataRetentionTags, response, err := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptions)
+			// 404 is expected if retention tags have not been activated yet
+			if response.StatusCode == 404 {
+				Expect(err).ToNot(BeNil())
+				fmt.Fprintf(GinkgoWriter, "Log data retention tags not activated (404), skipping validation\n")
+			} else {
+				Expect(err).To(BeNil())
+				Expect(response.StatusCode).To(Equal(200))
+				Expect(logDataRetentionTags).ToNot(BeNil())
+			}
+		})
+	})
+
+	Describe(`UpdateLogDataRetentionTags - Update log data retention tags`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptions *UpdateLogDataRetentionTagsOptions)`, func() {
+			updateLogDataRetentionTagsOptions := &logsv0.UpdateLogDataRetentionTagsOptions{
+				Tags: []string{"Short", "Intermediate", "Long"},
+			}
+
+			response, err := logsService.UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptions)
+			// 404 is expected if retention tags have not been activated yet or archive bucket not configured
+			if response.StatusCode == 404 {
+				Expect(err).ToNot(BeNil())
+				fmt.Fprintf(GinkgoWriter, "Log data retention tags not activated or archive bucket not configured (404), skipping validation\n")
+			} else {
+				Expect(err).To(BeNil())
+				Expect(response.StatusCode).To(Equal(204))
+			}
+		})
+	})
+
 	Describe(`ListOutgoingWebhooks - List Outbound Integrations`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()

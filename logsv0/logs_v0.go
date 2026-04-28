@@ -3746,6 +3746,133 @@ func (logs *LogsV0) DeleteViewFolderWithContext(ctx context.Context, deleteViewF
 	return
 }
 
+// GetLogDataRetentionTags : Get log data retention tags
+// Get log data retention tags. Returns 404 if retention tags have not been activated.
+func (logs *LogsV0) GetLogDataRetentionTags(getLogDataRetentionTagsOptions *GetLogDataRetentionTagsOptions) (result *LogDataRetentionTags, response *core.DetailedResponse, err error) {
+	result, response, err = logs.GetLogDataRetentionTagsWithContext(context.Background(), getLogDataRetentionTagsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// GetLogDataRetentionTagsWithContext is an alternate form of the GetLogDataRetentionTags method which supports a Context parameter
+func (logs *LogsV0) GetLogDataRetentionTagsWithContext(ctx context.Context, getLogDataRetentionTagsOptions *GetLogDataRetentionTagsOptions) (result *LogDataRetentionTags, response *core.DetailedResponse, err error) {
+	err = core.ValidateStruct(getLogDataRetentionTagsOptions, "getLogDataRetentionTagsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.GET)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/log_data_retention_tags`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range getLogDataRetentionTagsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "GetLogDataRetentionTags")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = logs.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "get_log_data_retention_tags", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalLogDataRetentionTags)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
+// UpdateLogDataRetentionTags : Update log data retention tags
+// Update log data retention tags. If retention tags have not been activated yet, the first successful PUT request will
+// activate them. An archive bucket must be configured before retention tags can be activated.
+func (logs *LogsV0) UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptions *UpdateLogDataRetentionTagsOptions) (response *core.DetailedResponse, err error) {
+	response, err = logs.UpdateLogDataRetentionTagsWithContext(context.Background(), updateLogDataRetentionTagsOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// UpdateLogDataRetentionTagsWithContext is an alternate form of the UpdateLogDataRetentionTags method which supports a Context parameter
+func (logs *LogsV0) UpdateLogDataRetentionTagsWithContext(ctx context.Context, updateLogDataRetentionTagsOptions *UpdateLogDataRetentionTagsOptions) (response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(updateLogDataRetentionTagsOptions, "updateLogDataRetentionTagsOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(updateLogDataRetentionTagsOptions, "updateLogDataRetentionTagsOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	builder := core.NewRequestBuilder(core.PUT)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = logs.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(logs.Service.Options.URL, `/v1/log_data_retention_tags`, nil)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range updateLogDataRetentionTagsOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("logs", "V0", "UpdateLogDataRetentionTags")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Content-Type", "application/json")
+
+	body := make(map[string]interface{})
+	if updateLogDataRetentionTagsOptions.Tags != nil {
+		body["tags"] = updateLogDataRetentionTagsOptions.Tags
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	response, err = logs.Service.Request(request, nil)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "update_log_data_retention_tags", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+
+	return
+}
+
 // ListOutgoingWebhooks : List Outbound Integrations
 // List Outbound Integrations.
 func (logs *LogsV0) ListOutgoingWebhooks(listOutgoingWebhooksOptions *ListOutgoingWebhooksOptions) (result *OutgoingWebhookCollection, response *core.DetailedResponse, err error) {
@@ -20723,6 +20850,24 @@ func (options *GetExtensionsOptions) SetHeaders(param map[string]string) *GetExt
 	return options
 }
 
+// GetLogDataRetentionTagsOptions : The GetLogDataRetentionTags options.
+type GetLogDataRetentionTagsOptions struct {
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewGetLogDataRetentionTagsOptions : Instantiate GetLogDataRetentionTagsOptions
+func (*LogsV0) NewGetLogDataRetentionTagsOptions() *GetLogDataRetentionTagsOptions {
+	return &GetLogDataRetentionTagsOptions{}
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *GetLogDataRetentionTagsOptions) SetHeaders(param map[string]string) *GetLogDataRetentionTagsOptions {
+	options.Headers = param
+	return options
+}
+
 // GetOutgoingWebhookOptions : The GetOutgoingWebhook options.
 type GetOutgoingWebhookOptions struct {
 	// The ID of the outbound integration to delete.
@@ -21066,6 +21211,37 @@ func (*LogsV0) NewListViewsOptions() *ListViewsOptions {
 func (options *ListViewsOptions) SetHeaders(param map[string]string) *ListViewsOptions {
 	options.Headers = param
 	return options
+}
+
+// LogDataRetentionTags : Log data retention tags configuration. Manages the three editable archive retention tags used for log retention
+// policies. The 'Default' tag is system-managed and cannot be modified through this API.
+type LogDataRetentionTags struct {
+	// List of editable archive retention tags, excluding non-editable tags such as Default.
+	Tags []string `json:"tags" validate:"required"`
+}
+
+// NewLogDataRetentionTags : Instantiate LogDataRetentionTags (Generic Model Constructor)
+func (*LogsV0) NewLogDataRetentionTags(tags []string) (_model *LogDataRetentionTags, err error) {
+	_model = &LogDataRetentionTags{
+		Tags: tags,
+	}
+	err = core.ValidateStruct(_model, "required parameters")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
+	}
+	return
+}
+
+// UnmarshalLogDataRetentionTags unmarshals an instance of LogDataRetentionTags from the specified map of raw messages.
+func UnmarshalLogDataRetentionTags(m map[string]json.RawMessage, result interface{}) (err error) {
+	obj := new(LogDataRetentionTags)
+	err = core.UnmarshalPrimitive(m, "tags", &obj.Tags)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "tags-error", common.GetComponentInfo())
+		return
+	}
+	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
+	return
 }
 
 // OutgoingWebhook : The outbound integration.
@@ -21437,8 +21613,8 @@ type Policy struct {
 	// Updated at date at utc+0.
 	UpdatedAt *string `json:"updated_at" validate:"required"`
 
-	// Archive retention definition.
-	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
+	// Archive retention tag. Required when retention tags are active. Cannot be set when retention tags are not active.
+	ArchiveRetentionTag *string `json:"archive_retention_tag,omitempty"`
 
 	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
@@ -21529,9 +21705,9 @@ func UnmarshalPolicy(m map[string]json.RawMessage, result interface{}) (err erro
 		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "archive_retention", &obj.ArchiveRetention, UnmarshalQuotaV1ArchiveRetention)
+	err = core.UnmarshalPrimitive(m, "archive_retention_tag", &obj.ArchiveRetentionTag)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "archive_retention_tag-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalModel(m, "log_rules", &obj.LogRules, UnmarshalQuotaV1LogRules)
@@ -21644,8 +21820,8 @@ type PolicyPrototype struct {
 	// Rule for matching the application name.
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
-	// Archive retention definition.
-	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
+	// Archive retention tag. Required when retention tags are active. Cannot be set when retention tags are not active.
+	ArchiveRetentionTag *string `json:"archive_retention_tag,omitempty"`
 
 	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
 	// always enabled during creation.
@@ -21705,9 +21881,9 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 		err = core.SDKErrorf(err, "", "subsystem_rule-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "archive_retention", &obj.ArchiveRetention, UnmarshalQuotaV1ArchiveRetention)
+	err = core.UnmarshalPrimitive(m, "archive_retention_tag", &obj.ArchiveRetentionTag)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "archive_retention_tag-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
@@ -21718,36 +21894,6 @@ func UnmarshalPolicyPrototype(m map[string]json.RawMessage, result interface{}) 
 	err = core.UnmarshalModel(m, "log_rules", &obj.LogRules, UnmarshalQuotaV1LogRules)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "log_rules-error", common.GetComponentInfo())
-		return
-	}
-	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
-	return
-}
-
-// QuotaV1ArchiveRetention : Archive retention definition.
-type QuotaV1ArchiveRetention struct {
-	// ID of the archive retention definition.
-	ID *strfmt.UUID `json:"id" validate:"required"`
-}
-
-// NewQuotaV1ArchiveRetention : Instantiate QuotaV1ArchiveRetention (Generic Model Constructor)
-func (*LogsV0) NewQuotaV1ArchiveRetention(id *strfmt.UUID) (_model *QuotaV1ArchiveRetention, err error) {
-	_model = &QuotaV1ArchiveRetention{
-		ID: id,
-	}
-	err = core.ValidateStruct(_model, "required parameters")
-	if err != nil {
-		err = core.SDKErrorf(err, "", "model-missing-required", common.GetComponentInfo())
-	}
-	return
-}
-
-// UnmarshalQuotaV1ArchiveRetention unmarshals an instance of QuotaV1ArchiveRetention from the specified map of raw messages.
-func UnmarshalQuotaV1ArchiveRetention(m map[string]json.RawMessage, result interface{}) (err error) {
-	obj := new(QuotaV1ArchiveRetention)
-	err = core.UnmarshalPrimitive(m, "id", &obj.ID)
-	if err != nil {
-		err = core.SDKErrorf(err, "", "id-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))
@@ -21767,7 +21913,6 @@ const (
 	QuotaV1LogRules_Severities_Debug = "debug"
 	QuotaV1LogRules_Severities_Error = "error"
 	QuotaV1LogRules_Severities_Info = "info"
-	QuotaV1LogRules_Severities_Unspecified = "unspecified"
 	QuotaV1LogRules_Severities_Verbose = "verbose"
 	QuotaV1LogRules_Severities_Warning = "warning"
 )
@@ -23795,6 +23940,34 @@ func (_options *UpdateExtensionDeploymentOptions) SetSubsystems(subsystems []str
 
 // SetHeaders : Allow user to set Headers
 func (options *UpdateExtensionDeploymentOptions) SetHeaders(param map[string]string) *UpdateExtensionDeploymentOptions {
+	options.Headers = param
+	return options
+}
+
+// UpdateLogDataRetentionTagsOptions : The UpdateLogDataRetentionTags options.
+type UpdateLogDataRetentionTagsOptions struct {
+	// List of editable archive retention tags, excluding non-editable tags such as Default.
+	Tags []string `json:"tags" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewUpdateLogDataRetentionTagsOptions : Instantiate UpdateLogDataRetentionTagsOptions
+func (*LogsV0) NewUpdateLogDataRetentionTagsOptions(tags []string) *UpdateLogDataRetentionTagsOptions {
+	return &UpdateLogDataRetentionTagsOptions{
+		Tags: tags,
+	}
+}
+
+// SetTags : Allow user to set Tags
+func (_options *UpdateLogDataRetentionTagsOptions) SetTags(tags []string) *UpdateLogDataRetentionTagsOptions {
+	_options.Tags = tags
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *UpdateLogDataRetentionTagsOptions) SetHeaders(param map[string]string) *UpdateLogDataRetentionTagsOptions {
 	options.Headers = param
 	return options
 }
@@ -31454,7 +31627,8 @@ type PolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules struct {
 
 	SubsystemRule *QuotaV1Rule `json:"subsystem_rule,omitempty"`
 
-	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
+	// Archive retention tag. Required when retention tags are active. Cannot be set when retention tags are not active.
+	ArchiveRetentionTag *string `json:"archive_retention_tag,omitempty"`
 
 	// Flag to enable or disable a policy. This flag is supported only while updating a policy, since the policies are
 	// always enabled during creation.
@@ -31524,9 +31698,9 @@ func UnmarshalPolicyPrototypeQuotaV1CreatePolicyRequestSourceTypeRulesLogRules(m
 		err = core.SDKErrorf(err, "", "subsystem_rule-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "archive_retention", &obj.ArchiveRetention, UnmarshalQuotaV1ArchiveRetention)
+	err = core.UnmarshalPrimitive(m, "archive_retention_tag", &obj.ArchiveRetentionTag)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "archive_retention_tag-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "enabled", &obj.Enabled)
@@ -31583,7 +31757,8 @@ type PolicyQuotaV1PolicySourceTypeRulesLogRules struct {
 	// Updated at date at utc+0.
 	UpdatedAt *string `json:"updated_at" validate:"required"`
 
-	ArchiveRetention *QuotaV1ArchiveRetention `json:"archive_retention,omitempty"`
+	// Archive retention tag. Required when retention tags are active. Cannot be set when retention tags are not active.
+	ArchiveRetentionTag *string `json:"archive_retention_tag,omitempty"`
 
 	// Log rules.
 	LogRules *QuotaV1LogRules `json:"log_rules,omitempty"`
@@ -31671,9 +31846,9 @@ func UnmarshalPolicyQuotaV1PolicySourceTypeRulesLogRules(m map[string]json.RawMe
 		err = core.SDKErrorf(err, "", "updated_at-error", common.GetComponentInfo())
 		return
 	}
-	err = core.UnmarshalModel(m, "archive_retention", &obj.ArchiveRetention, UnmarshalQuotaV1ArchiveRetention)
+	err = core.UnmarshalPrimitive(m, "archive_retention_tag", &obj.ArchiveRetentionTag)
 	if err != nil {
-		err = core.SDKErrorf(err, "", "archive_retention-error", common.GetComponentInfo())
+		err = core.SDKErrorf(err, "", "archive_retention_tag-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalModel(m, "log_rules", &obj.LogRules, UnmarshalQuotaV1LogRules)

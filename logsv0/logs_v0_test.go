@@ -14722,6 +14722,290 @@ var _ = Describe(`LogsV0`, func() {
 			})
 		})
 	})
+	Describe(`GetLogDataRetentionTags(getLogDataRetentionTagsOptions *GetLogDataRetentionTagsOptions) - Operation response error`, func() {
+		getLogDataRetentionTagsPath := "/v1/log_data_retention_tags"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getLogDataRetentionTagsPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetLogDataRetentionTags with error: Operation response processing error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := new(logsv0.GetLogDataRetentionTagsOptions)
+				getLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				logsService.EnableRetries(0, 0)
+				result, response, operationErr = logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetLogDataRetentionTags(getLogDataRetentionTagsOptions *GetLogDataRetentionTagsOptions)`, func() {
+		getLogDataRetentionTagsPath := "/v1/log_data_retention_tags"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getLogDataRetentionTagsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"tags": ["Tags"]}`)
+				}))
+			})
+			It(`Invoke GetLogDataRetentionTags successfully with retries`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+				logsService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := new(logsv0.GetLogDataRetentionTagsOptions)
+				getLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := logsService.GetLogDataRetentionTagsWithContext(ctx, getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				logsService.DisableRetries()
+				result, response, operationErr := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = logsService.GetLogDataRetentionTagsWithContext(ctx, getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getLogDataRetentionTagsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"tags": ["Tags"]}`)
+				}))
+			})
+			It(`Invoke GetLogDataRetentionTags successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := logsService.GetLogDataRetentionTags(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := new(logsv0.GetLogDataRetentionTagsOptions)
+				getLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetLogDataRetentionTags with error: Operation request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := new(logsv0.GetLogDataRetentionTagsOptions)
+				getLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetLogDataRetentionTags successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := new(logsv0.GetLogDataRetentionTagsOptions)
+				getLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := logsService.GetLogDataRetentionTags(getLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptions *UpdateLogDataRetentionTagsOptions)`, func() {
+		updateLogDataRetentionTagsPath := "/v1/log_data_retention_tags"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(updateLogDataRetentionTagsPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke UpdateLogDataRetentionTags successfully`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := logsService.UpdateLogDataRetentionTags(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the UpdateLogDataRetentionTagsOptions model
+				updateLogDataRetentionTagsOptionsModel := new(logsv0.UpdateLogDataRetentionTagsOptions)
+				updateLogDataRetentionTagsOptionsModel.Tags = []string{"Short", "Intermediate", "Long"}
+				updateLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = logsService.UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke UpdateLogDataRetentionTags with error: Operation validation and request error`, func() {
+				logsService, serviceErr := logsv0.NewLogsV0(&logsv0.LogsV0Options{
+					URL:           testServer.URL,
+					Authenticator: &core.NoAuthAuthenticator{},
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(logsService).ToNot(BeNil())
+
+				// Construct an instance of the UpdateLogDataRetentionTagsOptions model
+				updateLogDataRetentionTagsOptionsModel := new(logsv0.UpdateLogDataRetentionTagsOptions)
+				updateLogDataRetentionTagsOptionsModel.Tags = []string{"Short", "Intermediate", "Long"}
+				updateLogDataRetentionTagsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := logsService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := logsService.UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the UpdateLogDataRetentionTagsOptions model with no property values
+				updateLogDataRetentionTagsOptionsModelNew := new(logsv0.UpdateLogDataRetentionTagsOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = logsService.UpdateLogDataRetentionTags(updateLogDataRetentionTagsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ListOutgoingWebhooks(listOutgoingWebhooksOptions *ListOutgoingWebhooksOptions) - Operation response error`, func() {
 		listOutgoingWebhooksPath := "/v1/outgoing_webhooks"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
@@ -15915,7 +16199,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetPolicy successfully with retries`, func() {
@@ -15969,7 +16253,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke GetPolicy successfully`, func() {
@@ -16097,10 +16381,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16113,7 +16393,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16173,7 +16453,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke UpdatePolicy successfully with retries`, func() {
@@ -16194,10 +16474,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16210,7 +16486,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16273,7 +16549,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke UpdatePolicy successfully`, func() {
@@ -16299,10 +16575,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16315,7 +16587,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16349,10 +16621,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16365,7 +16633,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16420,10 +16688,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16436,7 +16700,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16594,7 +16858,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke GetCompanyPolicies successfully with retries`, func() {
@@ -16651,7 +16915,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}]}`)
+					fmt.Fprintf(res, "%s", `{"policies": [{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}]}`)
 				}))
 			})
 			It(`Invoke GetCompanyPolicies successfully`, func() {
@@ -16775,10 +17039,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16791,7 +17051,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16850,7 +17110,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreatePolicy successfully with retries`, func() {
@@ -16871,10 +17131,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16887,7 +17143,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -16949,7 +17205,7 @@ var _ = Describe(`LogsV0`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f"}, "log_rules": {"severities": ["critical"]}}`)
+					fmt.Fprintf(res, "%s", `{"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "before": {"id": "3dc02998-0b50-4ea8-b68a-4779d716fa1f", "name": "My Policy"}, "company_id": 1234, "name": "Policy Name", "description": "Policy description", "priority": "type_high", "deleted": true, "enabled": true, "order": 1, "application_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "subsystem_rule": {"rule_type_id": "includes", "name": "Rule Name"}, "created_at": "2023-06-21 14:24:39", "updated_at": "2023-06-21 14:24:39", "archive_retention_tag": "Default", "log_rules": {"severities": ["critical"]}}`)
 				}))
 			})
 			It(`Invoke CreatePolicy successfully`, func() {
@@ -16975,10 +17231,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -16991,7 +17243,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -17024,10 +17276,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -17040,7 +17288,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -17094,10 +17342,6 @@ var _ = Describe(`LogsV0`, func() {
 				quotaV1RuleModel.RuleTypeID = core.StringPtr("is")
 				quotaV1RuleModel.Name = core.StringPtr("policy-test")
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				quotaV1LogRulesModel.Severities = []string{"debug", "verbose", "info", "warning", "error"}
@@ -17110,7 +17354,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 
@@ -22258,12 +22502,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(quotaV1RuleModel.RuleTypeID).To(Equal(core.StringPtr("includes")))
 				Expect(quotaV1RuleModel.Name).To(Equal(core.StringPtr("Rule Name")))
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				Expect(quotaV1ArchiveRetentionModel).ToNot(BeNil())
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				Expect(quotaV1ArchiveRetentionModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				Expect(quotaV1LogRulesModel).ToNot(BeNil())
@@ -22279,7 +22517,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 				Expect(policyPrototypeModel.Name).To(Equal(core.StringPtr("My Policy")))
@@ -22288,7 +22526,7 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(policyPrototypeModel.Priority).To(Equal(core.StringPtr("type_high")))
 				Expect(policyPrototypeModel.ApplicationRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.SubsystemRule).To(Equal(quotaV1RuleModel))
-				Expect(policyPrototypeModel.ArchiveRetention).To(Equal(quotaV1ArchiveRetentionModel))
+				Expect(policyPrototypeModel.ArchiveRetentionTag).To(Equal(core.StringPtr("Default")))
 				Expect(policyPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(policyPrototypeModel.LogRules).To(Equal(quotaV1LogRulesModel))
 
@@ -22736,6 +22974,13 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(getExtensionsOptionsModel.Deployed).To(Equal(core.BoolPtr(true)))
 				Expect(getExtensionsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetLogDataRetentionTagsOptions successfully`, func() {
+				// Construct an instance of the GetLogDataRetentionTagsOptions model
+				getLogDataRetentionTagsOptionsModel := logsService.NewGetLogDataRetentionTagsOptions()
+				getLogDataRetentionTagsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getLogDataRetentionTagsOptionsModel).ToNot(BeNil())
+				Expect(getLogDataRetentionTagsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the GetOutgoingWebhookOptions model
 				id := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
@@ -22853,6 +23098,12 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(listViewsOptionsModel).ToNot(BeNil())
 				Expect(listViewsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewLogDataRetentionTags successfully`, func() {
+				tags := []string{"Short", "Intermediate", "Long"}
+				_model, err := logsService.NewLogDataRetentionTags(tags)
+				Expect(_model).ToNot(BeNil())
+				Expect(err).To(BeNil())
+			})
 			It(`Invoke NewOutgoingWebhooksV1IbmEventNotificationsConfig successfully`, func() {
 				eventNotificationsInstanceID := CreateMockUUID("585bea36-bdd1-4bfb-9a26-51f1f8a12660")
 				regionID := "eu-es"
@@ -22873,12 +23124,6 @@ var _ = Describe(`LogsV0`, func() {
 			It(`Invoke NewPolicyBeforePrototype successfully`, func() {
 				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
 				_model, err := logsService.NewPolicyBeforePrototype(id)
-				Expect(_model).ToNot(BeNil())
-				Expect(err).To(BeNil())
-			})
-			It(`Invoke NewQuotaV1ArchiveRetention successfully`, func() {
-				id := CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				_model, err := logsService.NewQuotaV1ArchiveRetention(id)
 				Expect(_model).ToNot(BeNil())
 				Expect(err).To(BeNil())
 			})
@@ -24107,6 +24352,16 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(updateExtensionDeploymentOptionsModel.Subsystems).To(Equal([]string{"ltest_0401"}))
 				Expect(updateExtensionDeploymentOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewUpdateLogDataRetentionTagsOptions successfully`, func() {
+				// Construct an instance of the UpdateLogDataRetentionTagsOptions model
+				updateLogDataRetentionTagsOptionsTags := []string{"Short", "Intermediate", "Long"}
+				updateLogDataRetentionTagsOptionsModel := logsService.NewUpdateLogDataRetentionTagsOptions(updateLogDataRetentionTagsOptionsTags)
+				updateLogDataRetentionTagsOptionsModel.SetTags([]string{"Short", "Intermediate", "Long"})
+				updateLogDataRetentionTagsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(updateLogDataRetentionTagsOptionsModel).ToNot(BeNil())
+				Expect(updateLogDataRetentionTagsOptionsModel.Tags).To(Equal([]string{"Short", "Intermediate", "Long"}))
+				Expect(updateLogDataRetentionTagsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewUpdateOutgoingWebhookOptions successfully`, func() {
 				// Construct an instance of the OutgoingWebhooksV1IbmEventNotificationsConfig model
 				outgoingWebhooksV1IbmEventNotificationsConfigModel := new(logsv0.OutgoingWebhooksV1IbmEventNotificationsConfig)
@@ -24161,12 +24416,6 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(quotaV1RuleModel.RuleTypeID).To(Equal(core.StringPtr("includes")))
 				Expect(quotaV1RuleModel.Name).To(Equal(core.StringPtr("Rule Name")))
 
-				// Construct an instance of the QuotaV1ArchiveRetention model
-				quotaV1ArchiveRetentionModel := new(logsv0.QuotaV1ArchiveRetention)
-				Expect(quotaV1ArchiveRetentionModel).ToNot(BeNil())
-				quotaV1ArchiveRetentionModel.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-				Expect(quotaV1ArchiveRetentionModel.ID).To(Equal(CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")))
-
 				// Construct an instance of the QuotaV1LogRules model
 				quotaV1LogRulesModel := new(logsv0.QuotaV1LogRules)
 				Expect(quotaV1LogRulesModel).ToNot(BeNil())
@@ -24182,7 +24431,7 @@ var _ = Describe(`LogsV0`, func() {
 				policyPrototypeModel.Priority = core.StringPtr("type_high")
 				policyPrototypeModel.ApplicationRule = quotaV1RuleModel
 				policyPrototypeModel.SubsystemRule = quotaV1RuleModel
-				policyPrototypeModel.ArchiveRetention = quotaV1ArchiveRetentionModel
+				policyPrototypeModel.ArchiveRetentionTag = core.StringPtr("Default")
 				policyPrototypeModel.Enabled = core.BoolPtr(true)
 				policyPrototypeModel.LogRules = quotaV1LogRulesModel
 				Expect(policyPrototypeModel.Name).To(Equal(core.StringPtr("My Policy")))
@@ -24191,7 +24440,7 @@ var _ = Describe(`LogsV0`, func() {
 				Expect(policyPrototypeModel.Priority).To(Equal(core.StringPtr("type_high")))
 				Expect(policyPrototypeModel.ApplicationRule).To(Equal(quotaV1RuleModel))
 				Expect(policyPrototypeModel.SubsystemRule).To(Equal(quotaV1RuleModel))
-				Expect(policyPrototypeModel.ArchiveRetention).To(Equal(quotaV1ArchiveRetentionModel))
+				Expect(policyPrototypeModel.ArchiveRetentionTag).To(Equal(core.StringPtr("Default")))
 				Expect(policyPrototypeModel.Enabled).To(Equal(core.BoolPtr(true)))
 				Expect(policyPrototypeModel.LogRules).To(Equal(quotaV1LogRulesModel))
 
@@ -29155,6 +29404,24 @@ var _ = Describe(`LogsV0`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalLogDataRetentionTags successfully`, func() {
+			// Construct an instance of the model.
+			model := new(logsv0.LogDataRetentionTags)
+			model.Tags = []string{"Short", "Intermediate", "Long"}
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *logsv0.LogDataRetentionTags
+			err = logsv0.UnmarshalLogDataRetentionTags(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 		It(`Invoke UnmarshalOutgoingWebhookPrototype successfully`, func() {
 			// Construct an instance of the model.
 			model := new(logsv0.OutgoingWebhookPrototype)
@@ -29225,7 +29492,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Priority = core.StringPtr("type_high")
 			model.ApplicationRule = nil
 			model.SubsystemRule = nil
-			model.ArchiveRetention = nil
+			model.ArchiveRetentionTag = core.StringPtr("Default")
 			model.Enabled = core.BoolPtr(true)
 			model.LogRules = nil
 
@@ -29238,24 +29505,6 @@ var _ = Describe(`LogsV0`, func() {
 
 			var result *logsv0.PolicyPrototype
 			err = logsv0.UnmarshalPolicyPrototype(raw, &result)
-			Expect(err).To(BeNil())
-			Expect(result).ToNot(BeNil())
-			Expect(result).To(Equal(model))
-		})
-		It(`Invoke UnmarshalQuotaV1ArchiveRetention successfully`, func() {
-			// Construct an instance of the model.
-			model := new(logsv0.QuotaV1ArchiveRetention)
-			model.ID = CreateMockUUID("3dc02998-0b50-4ea8-b68a-4779d716fa1f")
-
-			b, err := json.Marshal(model)
-			Expect(err).To(BeNil())
-
-			var raw map[string]json.RawMessage
-			err = json.Unmarshal(b, &raw)
-			Expect(err).To(BeNil())
-
-			var result *logsv0.QuotaV1ArchiveRetention
-			err = logsv0.UnmarshalQuotaV1ArchiveRetention(raw, &result)
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
@@ -31833,7 +32082,7 @@ var _ = Describe(`LogsV0`, func() {
 			model.Priority = core.StringPtr("type_high")
 			model.ApplicationRule = nil
 			model.SubsystemRule = nil
-			model.ArchiveRetention = nil
+			model.ArchiveRetentionTag = core.StringPtr("Default")
 			model.Enabled = core.BoolPtr(true)
 			model.LogRules = nil
 
