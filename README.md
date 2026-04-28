@@ -1,11 +1,8 @@
 [![Build Status](https://v3.travis-ci.com/IBM/logs-go-sdk.svg?token=Z799xXryYYPor3yyJxEs&branch=main)](https://v3.travis.ibm.com/IBM/logs-go-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Logs Services Go SDK 0.6.0
+# IBM Cloud Logs Services Go SDK 0.7.0
 Go client library to interact with the various [IBM Cloud Logs Services APIs](https://cloud.ibm.com/apidocs?category=logs).
-
-Disclaimer: this SDK is being released initially as a **pre-release** version.
-Changes might occur which impact applications that use this SDK.
 
 ## Table of Contents
 <!--
@@ -40,7 +37,7 @@ The IBM Cloud Logs Services Go SDK allows developers to programmatically interac
 
 Service Name | Package name 
 --- | --- 
-[logs](https://test.cloud.ibm.com/apidocs/cloud-logs-service-api/cloud-logs-v1-beta) | logsv0
+[logs](https://cloud.ibm.com/apidocs/logs-service-api) | logsv0
 
 ## Prerequisites
 
@@ -51,7 +48,7 @@ Service Name | Package name
 * Go version 1.19 or above.
 
 ## Installation
-The current version of this SDK: 0.6.0
+The current version of this SDK: 0.7.0
 
 ### Go modules  
 If your application uses Go modules for dependency management (recommended), just add an import for each service 

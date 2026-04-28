@@ -15,7 +15,7 @@ authenticator := &core.IamAuthenticator{
     ApiKey:       os.Getenv("LOGS_API_KEY"),
     ClientId:     "bx",
     ClientSecret: "bx",
-    URL:          "https://iam.test.cloud.ibm.com",
+    URL:          "https://iam.cloud.ibm.com",
 }
 ```
 
